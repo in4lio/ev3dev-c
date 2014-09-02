@@ -11,7 +11,7 @@
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
-    ev3dev-c is a C library for LEGO Windstorms EV3 Debian Linux.
+    ev3dev-c is a C library for LEGO Mindstorms EV3 Debian Linux.
     The library supports remote access to EV3 board over UDP.
     So, it's possible to run EV3 programs, e.g. under OS Windows,
     if you have set up WLAN of course...
