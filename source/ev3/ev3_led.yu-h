@@ -1,0 +1,58 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,ev3dev LEDs.)
+
+($import stdlib)
+($import h)
+
+($h-begin-named)
+
+($extern-c-begin)
+
+/**
+ *  \addtogroup ev3dev
+ *  \{
+ */
+
+($import "ev3_led-dict.yu")
+
+enum {
+	($LED_ID \i.]
+		($upper ($i)),
+
+	[ )
+	LED__COUNT_
+};
+
+enum {
+	($LED_TRIGGER_ID \i.]
+		TRIGGER_($i),
+
+	[ )
+	TRIGGER__COUNT_
+};
+
+($define,,LED_ATTR__COUNT_,,($len LED_ATTR_ID))
+
+($each-LED_ATTR \i.]
+	extern const char * const led_attr_($i LED_ATTR_ID)[];
+	($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
+	($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
+
+[ )
+
+extern const char * const led_trigger[];
+
+($h-extern) size_t set_led_trigger_index( uint8_t id, uint8_t index );
+($h-extern) uint8_t get_led_trigger_index( uint8_t id );
+
+/** \} */
+
+($extern-c-end)
+
+($h-end)

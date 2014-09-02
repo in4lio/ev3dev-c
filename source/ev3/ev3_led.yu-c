@@ -1,0 +1,89 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,ev3dev LEDs.)
+
+($import stdlib)
+($import h)
+
+($implement-named)
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include "ev3.h"
+#include "ev3_led.h"
+
+/**
+ *  \addtogroup ev3dev
+ *  \{
+ */
+
+($import "ev3_led-dict.yu")
+
+($each-LED_ATTR \i.]
+
+	const char * const led_attr_($i LED_ATTR_ID)[] = {
+		($each-LED \ii.]
+			($LED_PATH) "/" ($ii LED_NAME) "/" ($i LED_ATTR_NAME),
+
+		[ )
+	};
+
+[ )
+
+const char * const led_trigger[] = {
+	($each-LED_TRIGGER \i.]
+		($i LED_TRIGGER_NAME),
+
+	[ )
+	"<unknown>"
+};
+
+($each-LED_ATTR \i.]
+
+	size_t get_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
+	{
+		if ( id >= LED__COUNT_ ) return ( 0 );
+
+		return ev3_read_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ id ], buf($[, sz] ? ($i LED_ATTR_ARRAY)) );
+	}
+
+	size_t set_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
+	{
+		if ( id >= LED__COUNT_ ) return ( 0 );
+
+		return ev3_write_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ id ], value );
+	}
+
+[ )
+
+size_t set_led_trigger_index( uint8_t id, uint8_t index )
+{
+	return set_led_trigger( id, ( char *) led_trigger[ index ]);
+}
+
+uint8_t get_led_trigger_index( uint8_t id )
+{
+	char buf[ 255 ];
+	char *p;
+	uint8_t i = 0;
+
+	if ( !get_led_trigger( id, buf, sizeof( buf ))) return ( TRIGGER__COUNT_ );
+
+	p = strtok( buf, " " );
+	while ( p ) {
+		if ( *p == '[' ) return ( i );
+		i++;
+		p = strtok( NULL, " " );
+	}
+	return ( TRIGGER__COUNT_ );
+}
+
+/** \} */

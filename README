@@ -1,0 +1,22 @@
+
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+    ___         __________________________________
+    ___ VERSION __________________________________
+
+    yup.py      0.2a2
+                2014-09-02
+    ___             ______________________________
+    ___ WHAT IS IT? ______________________________
+
+    ev3dev-c is a C library for LEGO Windstorms EV3 Debian Linux.
+    The library supports remote access to EV3 board over UDP.
+    So, it's possible to run EV3 programs, e.g. under OS Windows,
+    if you have set up WLAN of course...
+    The library is written using yupp C preprocessor, but generated
+    source files in C also included.
+
+
+    COMING SOON... ))

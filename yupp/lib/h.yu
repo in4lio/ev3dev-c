@@ -1,0 +1,62 @@
+($!
+	($h-begin-named)
+
+	($h-extern-init,,int a[ 4 ],,{ 0, 1, 2, 3 })
+	($h-extern) int b;
+
+	($extern-c-begin)
+	($h-extern) int f( void );
+	($extern-c-end)
+
+	($h-end)
+)
+
+($macro h-begin (name)
+($set h-name ($upper ($name)))
+#ifndef ($h-name)_H
+#define ($h-name)_H
+
+#ifdef  ($h-name)_IMPLEMENT
+#define ($h-name)_EXT
+#define ($h-name)_EXT_INIT( dec, init ) \
+	dec = init
+#else
+#define ($h-name)_EXT extern
+#define ($h-name)_EXT_INIT( dec, init ) \
+	extern dec
+#endif
+
+#ifndef COMMA
+#define COMMA   ,
+#endif
+)
+
+($macro h-end ()
+#endif
+)
+
+($macro h-begin-named ()
+($set h-name ($__MODULE_NAME__))
+($h-begin ($__MODULE_NAME__))
+)
+
+($macro implement (name)
+#define ($upper ($name))_IMPLEMENT
+)
+
+($macro implement-named () ($implement ($__MODULE_NAME__)))
+
+($macro extern-c-begin ()
+#ifdef __cplusplus
+extern "C" {
+#endif
+)
+
+($macro extern-c-end ()
+#ifdef __cplusplus
+}
+#endif
+)
+
+($macro h-extern () ($h-name)_EXT)
+($macro h-extern-init ( dec init ) ($h-name)_EXT_INIT( ($dec), ($replace [($init)] [,] [ COMMA ]) );)

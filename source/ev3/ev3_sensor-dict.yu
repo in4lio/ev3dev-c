@@ -1,0 +1,59 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($set CLASS_PATH "/sys/class/msensor")
+($set CLASS_FOLDER_PREF "sensor")
+($set CLASS_ID ($unq CLASS_FOLDER_PREF))
+
+($set CLASS_PORT_PREF in)
+($set CLASS_PORT (1 2 3 4))
+
+($dict CLASS_TYPE
+	(` CLASS_TYPE_NAME   CLASS_TYPE_ID  )
+	(`
+	(  "ev3_touch"       16             )
+	(  "ev3_color"       29             )
+	(  "ev3_ultrasonic"  30             )
+	(  "ev3_gyro"        32             )
+	(  "ev3_infrared"    33             )
+	)
+)
+
+($dict CLASS_ATTR
+	(` CLASS_ATTR_NAME    CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
+	(`
+	(  "bin_data"         byte             2                 1                 )
+	(  "bin_data_format"  char             1                 0                 )
+	(  "dp"               dword            0                 0                 )
+	(  "fw_version"       char             1                 0                 )
+	(  "i2c_addr"         int              0                 0                 )
+	(  "mode"             char             1                 1                 )
+	(  "modes"            char             1                 0                 )
+	(  "num_values"       dword            0                 0                 )
+	(  "poll_ms"          dword            0                 1                 )
+	(  "port_name"        char             1                 0                 )
+	(  "units"            char             1                 0                 )
+	(  "type_id"          dword            0                 0                 )
+	(  "value0"           float            0                 0                 )
+	(  "value1"           float            0                 0                 )
+	(  "value2"           float            0                 0                 )
+	(  "value3"           float            0                 0                 )
+	(  "value4"           float            0                 0                 )
+	(  "value5"           float            0                 0                 )
+	(  "value6"           float            0                 0                 )
+	(  "value7"           float            0                 0                 )
+	)
+)
+
+($dict CLASS_AVEC
+	(` CLASS_AVEC_NAME  CLASS_AVEC_SIZE  CLASS_AVEC_TYPE  CLASS_AVEC_ARRAY  CLASS_AVEC_WRITE  )
+	(`
+	(  "value"          8                int              0                 0                 )
+	)
+)
+
+($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
+($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

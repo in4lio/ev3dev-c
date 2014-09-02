@@ -1,0 +1,54 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($set CLASS_PATH "/sys/class/tacho-motor/")
+($set CLASS_FOLDER_PREF "tacho-motor")
+($set CLASS_ID tacho)
+
+($set CLASS_PORT_PREF out)
+($set CLASS_PORT (A B C D))
+
+($dict CLASS_TYPE
+	(` CLASS_TYPE_NAME   CLASS_TYPE_ID  )
+	(`
+	(  "tacho"           1              )
+	(  "minitacho"       2              )
+	)
+)
+
+($dict CLASS_ATTR
+	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
+	(`
+	(  "duty_cycle"            int              0                 0                 )
+	(  "duty_cycle_sp"         int              0                 1                 )
+	(  "polarity_mode"         char             1                 0                 )
+	(  "port_name"             char             1                 0                 )
+	(  "position"              int              0                 1                 )
+	(  "position_mode"         char             1                 1                 )
+	(  "position_sp"           int              0                 1                 )
+	(  "pulses_per_second"     int              0                 0                 )
+	(  "pulses_per_second_sp"  int              0                 1                 )
+	(  "ramp_down_sp"          dword            0                 1                 )
+	(  "ramp_up_sp"            dword            0                 1                 )
+	(  "regulation_mode"       char             1                 1                 )
+	(  "run"                   bool             0                 1                 )
+	(  "run_mode"              char             1                 1                 )
+	(  "state"                 char             1                 0                 )
+	(  "stop_mode"             char             1                 1                 )
+	(  "stop_modes"            char             1                 0                 )
+	(  "time_sp"               dword            0                 1                 )
+	(  "type"                  char             1                 0                 )
+	)
+)
+
+($dict CLASS_AVEC
+	(` CLASS_AVEC_NAME  CLASS_AVEC_SIZE  CLASS_AVEC_TYPE  CLASS_AVEC_ARRAY  CLASS_AVEC_WRITE  )
+	(`
+	)
+)
+
+($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
+($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

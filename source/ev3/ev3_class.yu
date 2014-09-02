@@ -1,0 +1,90 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($set PATH_PREF ($join (($unq CLASS_PATH) ($unq CLASS_FOLDER_PREF)) [/]))
+#define PATH_PREF_LEN  ($len PATH_PREF)
+
+($each-CLASS_ATTR \i.]
+#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) "///" ($i CLASS_ATTR_NAME)
+
+[ )
+
+($each-CLASS_AVEC \i.]
+#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) "///" ($i CLASS_AVEC_NAME)
+
+[ )
+
+($each-CLASS_ATTR \i.]
+
+	size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) )
+	{
+		char s[] = PATH_($upper ($i CLASS_ATTR_ID));
+		*modp_uitoa10( id, s + PATH_PREF_LEN ) = '/';
+
+		return ev3_read_($i CLASS_ATTR_TYPE)($[_array] ? ($i CLASS_ATTR_ARRAY))( s, buf($[, sz] ? ($i CLASS_ATTR_ARRAY)) );
+	}
+
+	($if ($i CLASS_ATTR_WRITE) ]
+		size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) )
+		{
+			char s[] = PATH_($upper ($i CLASS_ATTR_ID));
+			*modp_uitoa10( id, s + PATH_PREF_LEN ) = '/';
+
+			return ev3_write_($i CLASS_ATTR_TYPE)($[_array] ? ($i CLASS_ATTR_ARRAY))( s, value($[, sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+		}
+	[ )
+
+[ )
+
+($each-CLASS_AVEC \i.]
+
+	size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t ind, uint8_t id, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) )
+	{
+		char s[] = PATH_($upper ($i CLASS_AVEC_ID)) "    ";
+
+		if ( ind > ($i CLASS_AVEC_SIZE) ) return ( 0 );
+
+		*modp_uitoa10( id, s + PATH_PREF_LEN ) = '/';
+		modp_uitoa10( ind, s + PATH_PREF_LEN + 3 + ($len ($i CLASS_AVEC_ID)) );
+
+		return ev3_read_($i CLASS_AVEC_TYPE)($[_array] ? ($i CLASS_AVEC_ARRAY))( s, buf($[, sz] ? ($i CLASS_AVEC_ARRAY)) );
+	}
+
+[ )
+
+char *get_($CLASS_ID)_type_id_string( uint8_t type_id )
+{
+	switch ( type_id ) {
+	($each-CLASS_TYPE \i.]
+	case ($i CLASS_TYPE_ID):
+		return ($upper ($i CLASS_TYPE_NAME));
+
+	[ )
+	}
+	return "";
+}
+
+int search_($CLASS_ID)_port( uint8_t type_id )
+{
+	int i;
+
+	for ( i = 0; i < ($upper CLASS_PORT_PREF)__COUNT_; i++ ) {
+		if ( ev3_($CLASS_ID)[ i ].detected && ( ev3_($CLASS_ID)[ i ].type_id == type_id )) return ( i );
+	}
+	return ( EOF );
+}
+
+static bool get_string_suffix( const char *prefix, char *s, uint32_t *buf )
+{
+	char *end;
+	uint32_t l = strlen( prefix );
+
+	if ( memcmp( s, prefix, l )) return ( false );
+	*buf = strtoul( s + l, &end, 0 );
+	if ( *end ) return ( false );
+
+	return ( true );
+}

@@ -1,0 +1,104 @@
+($!
+	($dict ID
+		(` id_0       id_1       ... id_N )
+		(`
+		(  id_0_val_0 id_1_val_0 ... id_N_val_0 )
+		(  id_0_val_1 id_1_val_1 ... id_N_val_1 )
+		                         ...
+		(  id_0_val_K id_1_val_K ... id_N_val_K )
+		)
+	)
+	($each-ID \i.($i id_N))
+)
+($macro dict (id cols body)
+	($set cols-($id) ($range ($len (($cols)) )))
+	($set each-($id) ($range ($len (($body)) )))
+	($set (($cols))
+		($cols-($id) \__i.($ (($body)) \__var.($__i __var)))
+	)
+)
+
+($!
+	($if cond [leg_T] [leg_F])
+)
+($set if \cond.\then:[].\else:[].($ then ? cond | else))
+
+($!
+	($unfold N [val_0] [val_1] [...] \n.(val_($n)))
+)
+($set unfold \count.\...]
+	($set __last ($sub ($len ($lazy __va_args__)) 1))
+	($set __func ($__last ($lazy __va_args__)))
+	($($range count) \__i.($if { __i < __last } ($__i ($lazy __va_args__)) ($__func __i)))
+[\set )
+
+($!
+	($do,,foo(); bar(); )
+)
+($macro do(body)do {
+($body)
+} while ( 0 ))
+
+($!
+	($define,,array_length( x ),,( sizeof( x ) / sizeof(( x )[ 0 ])))
+)
+($set __EOL__ EOL ? ($not_ ($isatom EOL)) | ,,
+)
+($set define \sig.\body.($join ($split [#define ($sig) ($body)] __EOL__),, \($__EOL__)))
+
+($!
+	($def LINK_MODULE)
+)
+($macro def (name)($set ($name) 1)
+#define ($name))
+
+($!
+	($undef LINK_MODULE)
+)
+($macro undef (name)($set ($name) 0)
+#undef  ($name))
+
+($!
+	($skip-if-not LINK_MODULE)
+)
+($macro skip-if (cond)($if ($cond) ($skip)))
+($macro skip-if-not (cond)($if ($not_ ($cond)) ($skip)))
+
+($!
+	($BIN,,11001010110010100000)
+)
+($set BIN \b.($atoi b 2))
+
+($!
+	($BB,,10110011,,10110010,,10110001,,10110000)
+)
+($set BB \...($sum ($($range ($len __va_args__)) \__i.{ ($BIN ($__i ($reversed __va_args__))) << ($__i) * 8 })))
+
+($!
+	($def-fn-argv int sum ]
+		int result = 0;
+		($ &arg-begin)
+		while ( ($ &arg-count)-- ) result += ($ &arg-value &type);
+		($ &arg-end)
+		return ( result );
+	[ )
+)
+($set def-fn-argv \type.\name.\type..\arg-begin..\arg-count..\arg-value..\arg-end..\body.]
+($type) ($name)( int argcnt, ... )
+{
+	($body \type type \arg-begin ]
+		va_list argptr;
+		va_start( argptr, argcnt );
+	[\arg-count ]
+		argcnt
+	[\arg-value \type.]
+		va_arg( argptr, ($type) )
+	[\arg-end ]
+		va_end( argptr );
+	[\body )
+}
+[\set )
+
+($set INT_MAX { sys.maxint })
+
+($set INT_MIN { -sys.maxint - 1 })

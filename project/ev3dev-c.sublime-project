@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": "../",
+			"file_exclude_patterns": ["args", "*.bak", "*.log", "*.git*", ".tags"],
+			"folder_exclude_patterns": ["project", "etc", "object", "bin"]
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4,
+		"translate_tabs_to_spaces": false
+	}
+}

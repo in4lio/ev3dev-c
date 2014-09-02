@@ -1,0 +1,45 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+enum {
+	($CLASS_PORT \i.]
+		($upper CLASS_PORT_PREF)($i),
+
+	[ )
+	($upper CLASS_PORT_PREF)__COUNT_
+};
+
+($h-extern) struct {
+	bool     detected;
+	uint32_t id;
+	uint32_t type_id;
+
+} ev3_($CLASS_ID)[ ($upper CLASS_PORT_PREF)__COUNT_ ];
+
+enum {
+	($each-CLASS_TYPE \i.]
+		($upper ($unq ($i CLASS_TYPE_NAME))) = ($i CLASS_TYPE_ID),
+
+	[ )
+};
+
+($each-CLASS_ATTR \i.]
+	($h-extern) size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) );
+	($if ($i CLASS_ATTR_WRITE) ]
+		($h-extern) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+
+	[ )
+
+[ )
+
+($each-CLASS_AVEC \i.]
+	($h-extern) size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t ind, uint8_t id, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) );
+
+[ )
+
+($h-extern) char *get_($CLASS_ID)_type_id_string( uint8_t type_id );
+
+($h-extern) int search_($CLASS_ID)_port( uint8_t type_id );

@@ -1,0 +1,53 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($set LED_PATH "/sys/class/leds")
+
+($dict LED
+	(` LED_NAME           )
+	(`
+	(  "ev3:green:left"   )
+	(  "ev3:green:right"  )
+	(  "ev3:red:left"     )
+	(  "ev3:red:right"    )
+	)
+)
+
+($set LED_ID ($each-LED \i.($replace,,($unq ($i LED_NAME)),,:,,_)))
+
+($dict LED_ATTR
+	(` LED_ATTR_NAME  LED_ATTR_TYPE  LED_ATTR_ARRAY  )
+	(`
+	(  "brightness"   int            0               )
+	(  "delay_off"    int            0               )
+	(  "delay_on"     int            0               )
+	(  "trigger"      char           1               )
+	)
+)
+
+($set LED_ATTR_ID ($each-LED \i.($unq ($i LED_ATTR_NAME))))
+
+($dict LED_TRIGGER
+	(` LED_TRIGGER_NAME                             )
+	(`
+	(  "none"                                       )
+	(  "mmc0"                                       )
+	(  "timer"                                      )
+	(  "heartbeat"                                  )
+	(  "default-on"                                 )
+	(  "legoev3-battery-charging-or-full"           )
+	(  "legoev3-battery-charging"                   )
+	(  "legoev3-battery-full"                       )
+	(  "legoev3-battery-charging-blink-full-solid"  )
+	(  "phy0rx"                                     )
+	(  "phy0tx"                                     )
+	(  "phy0assoc"                                  )
+	(  "phy0radio"                                  )
+	(  "phy0tpt"                                    )
+	)
+)
+
+($set LED_TRIGGER_ID ($each-LED_TRIGGER \i.($upper ($replace,,($unq ($i LED_TRIGGER_NAME)),,-,,_))))

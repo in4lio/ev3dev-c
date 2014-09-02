@@ -1,0 +1,61 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,ev3dev lights (green and red LEDs at once).)
+
+($import stdlib)
+($import h)
+
+($h-begin-named)
+
+($extern-c-begin)
+
+/**
+ *  \addtogroup ev3dev
+ *  \{
+ */
+
+enum {
+	LIT_LEFT,
+	LIT_RIGHT,
+	LIT__LOC__
+};
+
+($dict LIT_COLOR
+	(` LIT_COLOR_NAME  )
+	(`
+	(  "OFF"           )
+	(  "GREEN"         )
+	(  "RED"           )
+	(  "AMBER"         )
+	)
+)
+
+enum {
+	($each-LIT_COLOR \i.]
+		LIT_($unq ($i LIT_COLOR_NAME)),
+
+	[ )
+	LIT__COL__
+};
+
+($h-extern-init,,const char * const LIT_COLOR[],,{ ($each-LIT_COLOR \i.[($i LIT_COLOR_NAME), ])"<unknown>" })
+
+($h-extern) void set_light( uint8_t loc, uint8_t col );
+($h-extern) uint8_t get_light( uint8_t loc );
+
+($h-extern) void set_light_trigger( uint8_t loc, uint8_t col, uint8_t trigger );
+($h-extern) uint8_t get_light_trigger( uint8_t loc, uint8_t col );
+
+($h-extern) bool set_light_blink( uint8_t loc, uint8_t col, int delay_on, int delay_off );
+($h-extern) bool get_light_blink( uint8_t loc, uint8_t col );
+
+/** \} */
+
+($extern-c-end)
+
+($h-end)

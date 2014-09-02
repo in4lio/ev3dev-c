@@ -1,0 +1,60 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,ev3dev sensors.)
+
+($import stdlib)
+($import h)
+
+($implement-named)
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include "modp_numtoa.h"
+#include "ev3.h"
+#include "ev3_sensor.h"
+
+/**
+ *  \addtogroup ev3dev
+ *  \{
+ */
+
+($import "ev3_sensor-dict.yu")
+($import "ev3_class.yu")
+
+int ev3_sensor_init( void )
+{
+	char list[ 255 ], s[ 255 ];
+	char *p;
+	uint32_t id, port;
+	uint8_t cnt = 0;
+
+	memset( ev3_sensor, 0, sizeof( ev3_sensor ));
+
+	if ( !ev3_listdir( ($CLASS_PATH), list, sizeof( list ))) return ( EOF );
+
+	p = strtok( list, " " );
+	while ( p ) {
+		if ( get_string_suffix( ($CLASS_FOLDER_PREF), p, &id )) {
+			if ( get_sensor_port_name( id, s, sizeof( s )) && get_string_suffix( ($q CLASS_PORT_PREF), s, &port )) {
+				if ( port && ( port <= IN__COUNT_ )) {
+					ev3_sensor[ --port ].detected = true;
+					ev3_sensor[ port ].id = id;
+					get_sensor_type_id( id, &ev3_sensor[ port ].type_id );
+					cnt++;
+				}
+			}
+		}
+		p = strtok( NULL, " " );
+	}
+	return ( cnt );
+}
+
+/** \} */
