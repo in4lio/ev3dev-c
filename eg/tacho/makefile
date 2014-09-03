@@ -22,7 +22,7 @@ EV3 = 0
 else
 PLATFORM = __UNIX__
 # -- EV3 BOARD
-EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__), 1, 0)
+EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 endif
 
 YUPP_HOME = ../../yupp
