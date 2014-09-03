@@ -12,14 +12,55 @@
     ___ WHAT IS IT? ______________________________
 
     ev3dev-c is a C library for LEGO Mindstorms EV3 Debian
-    (http://www.ev3dev.org/) which wraps access to EV3 hardware.
+    (http://www.ev3dev.org/) which wraps access to the EV3 hardware.
 
-    The library supports remote access to EV3 board over UDP.
-    So, it's possible to run EV3 programs on another machine,
-    e.g. under Windows, if you have set up WLAN of course...
+    The library also supports remote access to the EV3 board over UDP.
+    So, it's possible to drive the EV3 hardware from your computer,
+    e.g. under Windows, if you have set up WLAN of course.
 
-    The library is written using yupp C preprocessor, but
+    ___       ____________________________________
+    ___ F A Q ____________________________________
+
+    * * *  What are unusual ".yu" files for?
+
+    ev3dev-c is written using yupp C preprocessor, but don't panic,
     generated source files in C also included.
 
+    * * *  How can I see some examples?
+
+    There are a few examples in "eg" folder:
+    "led"    - LEDs blinking example,
+    "sensor" - TOUCH and COLOR sensors example,
+    "tacho"  - MINITACHO motor running for 5 sec.
+
+    > cd eg/led/
+    > make
+    > bin/led
+    or
+    > bin\mingw\led.exe
+
+    * * *  How can I drive the EV3 hardware remotely?
+
+    (https://github.com/ev3dev/ev3dev/wiki/Setting-Up-wifi-Networking)
+    (https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link)
 
     COMING SOON... ))
+
+    ___     ______________________________________
+    ___ GIT ______________________________________
+
+    Enter in the following on your command-line to clone the library
+    repository:
+
+        git clone https://github.com/in4lio/ev3dev-c.git
+
+    ___         __________________________________
+    ___ CONTACT __________________________________
+
+    Please feel free to contact me at in4lio@gmail.com if you have
+    any questions about the library.
+
+    ___         __________________________________
+    ___ LICENSE __________________________________
+
+    Please see the file called "LICENSE".
