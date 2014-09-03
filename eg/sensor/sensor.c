@@ -14,6 +14,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 #include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_sensor.h"
@@ -23,6 +24,8 @@
 
 #include <windows.h>
 #include <conio.h>
+
+#define CHAR_ENTER  '\x0D'
 
 /* Non-blocking console input */
 static int __getch( void )
@@ -45,6 +48,8 @@ static void getch_uninit( void )
 #include <termios.h>
 
 #define Sleep( msec ) usleep(( msec ) * 1000 )
+
+#define CHAR_ENTER  '\x0A'
 
 /* Non-blocking console input */
 static int __getch( void )
@@ -83,8 +88,9 @@ static bool __pressed( int port )
 {
 	int val;
 
-	if ( port == EOF ) return ( __getch() == '\x0D' );
-	return get_sensor_value( 0, ev3_sensor[ port ].id, &val ) && ( val != 0 );
+	if ( port == EOF ) return ( __getch() == CHAR_ENTER );
+
+	return ( get_sensor_value( 0, ev3_sensor[ port ].id, &val ) && ( val != 0 ));
 }
 
 int main( void )
@@ -96,19 +102,18 @@ int main( void )
 	uint32_t n, i, ii;
 
 	printf( "\n*** ( ev3dev-c ) Hello! ***\n" );
-	getch_init();
 	ev3_init();
 	printf( "Waiting EV3 board on-line...\n" );
 	while ( ev3_sensor_init() == EOF ) Sleep( 1000 );
+	getch_init();
 
 	printf( "Found sensors:\n" );
-	for ( i = 0; i < IN__COUNT_; i++ ) {
-		if ( ev3_sensor[ i ].detected ) {
+	for ( i = 0; i < INPUT__COUNT_; i++ ) {
+		if ( ev3_sensor[ i ].connected ) {
 			uint8_t id = ev3_sensor[ i ].id;
 
 			printf( "  port = in%d\n", i + 1 );
-
-			pch = get_sensor_type_id_string( ev3_sensor[ i ].type_id );
+			pch = ev3_sensor_type( ev3_sensor[ i ].type_id );
 			if ( pch ) {
 				printf( "  type = %s\n", pch );
 			} else {
@@ -126,33 +131,34 @@ int main( void )
 			}
 		}
 	}
-	p_touch = search_sensor_port( EV3_TOUCH );
-	if ( p_touch == EOF ) {
-		printf( "EV3_TOUCH is not found, press ENTER for EXIT...\n" );
-	} else {
+	p_touch = ev3_sensor_port( EV3_TOUCH );
+	if ( p_touch != EOF ) {
 		printf( "EV3_TOUCH is found, press BUTTON for EXIT...\n" );
-	}
-	p_color = search_sensor_port( EV3_COLOR );
-	if ( p_color == EOF ) {
-		printf( "EV3_COLOR is not found\n" );
-		while ( !__pressed( p_touch )) Sleep( 100 );
 	} else {
+		printf( "EV3_TOUCH is not found, press ENTER for EXIT...\n" );
+	}
+	p_color = ev3_sensor_port( EV3_COLOR );
+	if ( p_color != EOF ) {
 		uint8_t id = ev3_sensor[ p_color ].id;
 
 		printf( "EV3_COLOR is found, reading COLOR...\n" );
 		set_sensor_mode( id, "COL-COLOR" );
-
 		for ( ; ; ) {
 			if ( !get_sensor_value( 0, id, &val ) || ( val < 0 ) || ( val >= COLOR_COUNT )) {
 				val = 0;
 			}
 			printf( "\r(%s)", color[ val ]);
+			fflush( stdout );
 			if ( __pressed( p_touch )) break;
 			Sleep( 200 );
 			printf( "\r        " );
+			fflush( stdout );
 			if ( __pressed( p_touch )) break;
 			Sleep( 200 );
 		}
+	} else {
+		printf( "EV3_COLOR is not found\n" );
+		while ( !__pressed( p_touch )) Sleep( 100 );
 	}
 	getch_uninit();
 	printf( "\n*** ( ev3dev-c ) Bye! ***\n" );

@@ -8,7 +8,7 @@
 sensor
 [ )
 ($set VERSION ]
-0.1
+0.2
 [ )
 ($set AUTHORS ]
 Vitaly Kravtsov (in4lio@gmail.com)

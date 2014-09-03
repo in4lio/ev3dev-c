@@ -45,18 +45,16 @@ int main( void )
 	while ( ev3_tacho_init() == EOF ) Sleep( 1000 );
 
 	printf( "Found tacho-motors:\n" );
-	for ( i = 0; i < OUT__COUNT_; i++ ) {
-		if ( ev3_tacho[ i ].detected ) {
+	for ( i = 0; i < OUTPUT__COUNT_; i++ ) {
+		if ( ev3_tacho[ i ].connected ) {
 			printf( "  port = out%d\n", i + 1 );
 			if ( get_tacho_type( ev3_tacho[ i ].id, s, sizeof( s ))) {
 				printf( "  type = %s\n", s );
 			}
 		}
 	}
-	p = search_tacho_port( MINITACHO );
-	if ( p == EOF ) {
-		printf( "MINITACHO is not found\n" );
-	} else {
+	p = ev3_tacho_port( MINITACHO );
+	if ( p != EOF ) {
 		uint8_t id = ev3_tacho[ p ].id;
 
 		printf( "MINITACHO is found, run for 5 sec...\n" );
@@ -68,6 +66,8 @@ int main( void )
 		set_tacho_ramp_up_sp( id, 2000 );
 		set_tacho_ramp_down_sp( id, 2000 );
 		set_tacho_run( id, true );
+	} else {
+		printf( "MINITACHO is not found\n" );
 	}
 
 	printf( "\n*** ( ev3dev-c ) Bye! ***\n" );

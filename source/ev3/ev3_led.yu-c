@@ -64,23 +64,23 @@ const char * const led_trigger[] = {
 
 [ )
 
-size_t set_led_trigger_index( uint8_t id, uint8_t index )
+size_t set_led_trigger_inx( uint8_t id, uint8_t inx )
 {
-	return set_led_trigger( id, ( char *) led_trigger[ index ]);
+	return set_led_trigger( id, ( char *) led_trigger[ inx ]);
 }
 
-uint8_t get_led_trigger_index( uint8_t id )
+uint8_t get_led_trigger_inx( uint8_t id )
 {
 	char buf[ 255 ];
 	char *p;
-	uint8_t i = 0;
+	uint8_t inx = 0;
 
 	if ( !get_led_trigger( id, buf, sizeof( buf ))) return ( TRIGGER__COUNT_ );
 
 	p = strtok( buf, " " );
 	while ( p ) {
-		if ( *p == '[' ) return ( i );
-		i++;
+		if ( *p == '[' ) return ( inx );
+		inx++;
 		p = strtok( NULL, " " );
 	}
 	return ( TRIGGER__COUNT_ );

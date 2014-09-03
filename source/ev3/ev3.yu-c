@@ -151,7 +151,6 @@ size_t ev3_write_float( const char *fn, float value )
 {
 	char s[ 32 ];
 
-//!!!	snprintf( s, sizeof( s ), "%g", value );
 	modp_dtoa2( value, s, 4 );
 	return ev3_write( fn, s );
 }

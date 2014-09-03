@@ -272,7 +272,7 @@ static int __receive( void )
 
 					return ( EOF );
 				}
-				// printf( "WRITE %s\n", __r_msg.body );
+				/* printf( "WRITE %s\n", __r_msg.body ); */
 				t->type = EV3_RESULT_WRITE;
 				t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				__transmit( 0 );
@@ -285,11 +285,11 @@ static int __receive( void )
 				return ( EOF );
 			}
 			if ( h->type == EV3_LIST_DIR ) {
-				// printf( "LIST %s\n", __r_msg.body );
+				/* printf( "LIST %s\n", __r_msg.body ); */
 				t->type = EV3_DIRECTORY;
 				t->data_size = __ev3_listdir( __r_msg.body, __t_msg.body, h->data_size );
 			} else {
-				// printf( "READ %s\n", __r_msg.body );
+				/* printf( "READ %s\n", __r_msg.body ); */
 				t->type = EV3_DATA_READ;
 				t->data_size = __ev3_read_binary( __r_msg.body, __t_msg.body, h->data_size );
 			}

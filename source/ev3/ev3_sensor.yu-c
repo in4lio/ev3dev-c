@@ -42,10 +42,10 @@ int ev3_sensor_init( void )
 
 	p = strtok( list, " " );
 	while ( p ) {
-		if ( get_string_suffix( ($CLASS_FOLDER_PREF), p, &id )) {
-			if ( get_sensor_port_name( id, s, sizeof( s )) && get_string_suffix( ($q CLASS_PORT_PREF), s, &port )) {
-				if ( port && ( port <= IN__COUNT_ )) {
-					ev3_sensor[ --port ].detected = true;
+		if ( get_str_suffix( ($CLASS_FOLDER_PREF), p, &id )) {
+			if ( get_sensor_port_name( id, s, sizeof( s )) && get_str_suffix( ($CLASS_PORT_PREF), s, &port )) {
+				if ( port && ( port <= INPUT__COUNT_ )) {
+					ev3_sensor[ --port ].connected = true;
 					ev3_sensor[ port ].id = id;
 					get_sensor_type_id( id, &ev3_sensor[ port ].type_id );
 					cnt++;

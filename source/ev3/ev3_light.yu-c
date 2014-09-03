@@ -64,8 +64,8 @@ void set_light_trigger( uint8_t loc, uint8_t col, uint8_t trigger )
 {
 	if (( loc >= LIT__LOC__ ) || ( col >= LIT__COL__ )) return;
 
-	if ( __LED_GREEN_TRIGGER[ col ]) set_led_trigger_index( __LED_GREEN[ loc ], trigger );
-	if ( __LED_RED_TRIGGER[ col ]) set_led_trigger_index( __LED_RED[ loc ], trigger );
+	if ( __LED_GREEN_TRIGGER[ col ]) set_led_trigger_inx( __LED_GREEN[ loc ], trigger );
+	if ( __LED_RED_TRIGGER[ col ]) set_led_trigger_inx( __LED_RED[ loc ], trigger );
 }
 
 uint8_t get_light_trigger( uint8_t loc, uint8_t col )
@@ -75,11 +75,11 @@ uint8_t get_light_trigger( uint8_t loc, uint8_t col )
 	if (( loc >= LIT__LOC__ ) || ( col >= LIT__COL__ )) return ( TRIGGER__COUNT_ );
 
 	if ( __LED_GREEN_TRIGGER[ col ]) {
-		green = get_led_trigger_index( __LED_GREEN[ loc ]);
+		green = get_led_trigger_inx( __LED_GREEN[ loc ]);
 		if ( !__LED_RED_TRIGGER[ col ]) return ( green );
 	}
 	if ( __LED_RED_TRIGGER[ col ]) {
-		red = get_led_trigger_index( __LED_RED[ loc ]);
+		red = get_led_trigger_inx( __LED_RED[ loc ]);
 		if ( !__LED_GREEN_TRIGGER[ col ]) return ( red );
 	}
 	return (( green == red ) ? green : TRIGGER__COUNT_ );

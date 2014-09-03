@@ -8,7 +8,7 @@
 # Should-Stop:
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Allows remote access to EV3
+# Short-Description: Allows remote access to EV3 board
 # Description:
 ### END INIT INFO
 
@@ -28,5 +28,5 @@ case "$1" in
     exit 1
     ;;
 esac
- 
+
 exit 0
