@@ -15,8 +15,8 @@
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME   CLASS_TYPE_ID  )
 	(`
-	(  "tacho"           1              )
-	(  "minitacho"       2              )
+	(  "tacho"           7              )
+	(  "minitacho"       8              )
 	)
 )
 

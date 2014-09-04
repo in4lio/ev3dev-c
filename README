@@ -14,9 +14,12 @@
     ev3dev-c is a C library for LEGO Mindstorms EV3 Debian
     (http://www.ev3dev.org/) which wraps access to the EV3 hardware.
 
-    The library also supports remote access to the EV3 board over UDP.
+    The library also supports remote access to the EV3 brick over UDP.
     So, it's possible to drive the EV3 hardware from your computer,
     e.g. under Windows, if you have set up WLAN of course.
+
+    I would like to say thanks to Ralph Hempel, David Lechner
+    and community, ev3dev - it's a mighty interesting project!
 
     ___       ____________________________________
     ___ F A Q ____________________________________
@@ -41,10 +44,7 @@
 
     * * *  How can I drive the EV3 hardware remotely?
 
-    (https://github.com/ev3dev/ev3dev/wiki/Setting-Up-wifi-Networking)
-    (https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link)
-
-    COMING SOON... ))
+    https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link
 
     ___     ______________________________________
     ___ GIT ______________________________________

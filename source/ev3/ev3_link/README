@@ -6,5 +6,49 @@
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
+    ev3_link is a part of ev3dev-c library which provides your program
+    with remote access to the EV3 brick over UDP.
+    Also ev3_link is used as a stand-alone program (server) on the EV3 brick
+    to handle requests from a remote computer (client).
+
+    ___        ___________________________________
+    ___ SERVER ___________________________________
+
+    ev3_link server must be running on the brick to drive the EV3 hardware
+    remotely.
+    There are makefile in "source/ev3/ev3_link" folder to build the server.
+
+    * * *  How to automatically start ev3_link server on boot?
+
+    > sudo apt-get install psmisc  # install killall
+    > cd ev3dev-c/
+    > sudo cp source/ev3/ev3_link/ev3_link_d /etc/init.d/
+    > sudo cp source/ev3/ev3_link/ev3_link /usr/local/sbin/
+    > sudo chmod 755 /etc/init.d/ev3_link_d
+    > sudo update-rc.d ev3_link_d defaults
+
+    * * *  How to set WLAN up on the EV3 brick?
+
+	https://github.com/ev3dev/ev3dev/wiki/Setting-Up-wifi-Networking
+
+    ___        ___________________________________
+    ___ CLIENT ___________________________________
+
+    The remote access to the EV3 brick is implied when you build a program
+    under Windows or Linux (not on __ARM_ARCH_4T__).
+    You need only specify a correct IP address of the brick before
+    the initialization.
+
+    #include "ev3.h"
+
+#ifndef __ARM_ARCH_4T__
+    ev3_brick_addr = "192.168.0.204";
+
+#endif
+
+    ev3_init();
+
+    ___     ______________________________________
+    ___ UDP ______________________________________
 
     COMING SOON... ))
