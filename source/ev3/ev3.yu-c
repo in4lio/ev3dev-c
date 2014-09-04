@@ -25,7 +25,7 @@
  *  \{
  */
 
-// EV3 BOARD /////////////////////////////////////
+// EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
 #include <sys/types.h>
@@ -100,7 +100,7 @@ int ev3_poweroff( void )
 
 void ev3_init( void )
 {
-	udp_ev3_open( ev3_board_addr, ev3_board_port );
+	udp_ev3_open( ev3_brick_addr, ev3_brick_port );
 }
 
 size_t ev3_write_binary( const char *fn, void *data, size_t sz )

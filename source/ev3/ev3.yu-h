@@ -23,8 +23,8 @@
 // CLIENT ////////////////////////////////////////
 #ifndef __ARM_ARCH_4T__
 
-($h-extern-init,,char *ev3_board_addr,,"192.168.0.204")
-($h-extern-init,,uint16_t ev3_board_port,,8800)
+($h-extern-init,,char *ev3_brick_addr,,"192.168.0.204")
+($h-extern-init,,uint16_t ev3_brick_port,,8800)
 
 //////////////////////////////////////////////////
 #endif

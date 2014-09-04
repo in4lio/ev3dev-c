@@ -82,7 +82,7 @@ static EV3_MESSAGE __r_msg;
 static EV3_MESSAGE __t_msg;
 static struct sockaddr_in __r_addr, __t_addr;
 
-// EV3 BOARD /////////////////////////////////////
+// EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
 static size_t __ev3_write_binary( char *fn, void *data, size_t sz )
@@ -246,7 +246,7 @@ static int __receive( void )
 
 		switch ( h->type ) {
 
-// EV3 BOARD /////////////////////////////////////
+// EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
 		case EV3_WRITE_FILE:
@@ -338,7 +338,7 @@ static int __receive( void )
 	return ( EV3_NONE );
 }
 
-// EV3 BOARD /////////////////////////////////////
+// EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
 static uint16_t port = 8800;

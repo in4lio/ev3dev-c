@@ -8,7 +8,7 @@
 # Should-Stop:
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Allows remote access to EV3 board
+# Short-Description: Allows remote access to the EV3 brick
 # Description:
 ### END INIT INFO
 

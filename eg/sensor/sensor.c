@@ -103,7 +103,7 @@ int main( void )
 
 	printf( "\n*** ( ev3dev-c ) Hello! ***\n" );
 	ev3_init();
-	printf( "Waiting EV3 board on-line...\n" );
+	printf( "Waiting EV3 brick on-line...\n" );
 	while ( ev3_sensor_init() == EOF ) Sleep( 1000 );
 	getch_init();
 
