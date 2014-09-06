@@ -8,7 +8,7 @@
 tacho
 [ )
 ($set VERSION ]
-0.2
+0.3
 [ )
 ($set AUTHORS ]
 Vitaly Kravtsov (in4lio@gmail.com)

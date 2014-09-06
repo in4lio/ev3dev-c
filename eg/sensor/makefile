@@ -173,9 +173,9 @@ O = $(O_CXX) $(O_C) $(O_ASM)
 ifeq ($(OS),Windows_NT)
 # -- too long command line workaround
 define wrap
-	echo $2 > .\args
-	$1 @.\args
-	del .\args
+	echo $2 > args
+	$1 @args
+	-rm args
 endef
 else
 define wrap

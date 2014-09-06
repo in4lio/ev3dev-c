@@ -34,9 +34,10 @@
 
 int main( void )
 {
-	printf( "\n*** ( ev3dev-c ) Hello! ***\n" );
-
+	printf( "Waiting the EV3 brick online...\n" );
 	ev3_init();
+	printf( "*** ( EV3 ) Hello! ***\n" );
+
 	set_light_blink( LIT_RIGHT, LIT_GREEN, 1000, 500 );
 	Sleep( 500 );
 	set_light_blink( LIT_RIGHT, LIT_RED, 1000, 500 );
@@ -58,7 +59,8 @@ int main( void )
 	set_light( LIT_LEFT, LIT_GREEN );
 	set_light( LIT_RIGHT, LIT_GREEN );
 
-	printf( "\n*** ( ev3dev-c ) Bye! ***\n" );
+	ev3_uninit();
+	printf( "*** ( EV3 ) Bye! ***\n" );
 
 	return ( 0 );
 }

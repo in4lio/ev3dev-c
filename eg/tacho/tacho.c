@@ -39,10 +39,15 @@ int main( void )
 	int p;
 	int i;
 
-	printf( "\n*** ( ev3dev-c ) Hello! ***\n" );
+#ifndef __ARM_ARCH_4T__
+	ev3_brick_addr = "192.168.1.204";
+
+#endif
 	ev3_init();
-	printf( "Waiting EV3 brick on-line...\n" );
+	printf( "Waiting the EV3 brick online...\n" );
 	while ( ev3_tacho_init() == EOF ) Sleep( 1000 );
+
+	printf( "*** ( EV3 ) Hello! ***\n" );
 
 	printf( "Found tacho-motors:\n" );
 	for ( i = 0; i < OUTPUT__COUNT_; i++ ) {
@@ -69,8 +74,8 @@ int main( void )
 	} else {
 		printf( "MINITACHO is not found\n" );
 	}
-
-	printf( "\n*** ( ev3dev-c ) Bye! ***\n" );
+	ev3_uninit();
+	printf( "*** ( EV3 ) Bye! ***\n" );
 
 	return ( 0 );
 }

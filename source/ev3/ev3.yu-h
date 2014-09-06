@@ -23,7 +23,7 @@
 // CLIENT ////////////////////////////////////////
 #ifndef __ARM_ARCH_4T__
 
-($h-extern-init,,char *ev3_brick_addr,,"192.168.0.204")
+($h-extern-init,,char *ev3_brick_addr,,NULL)
 ($h-extern-init,,uint16_t ev3_brick_port,,8800)
 
 //////////////////////////////////////////////////
@@ -35,7 +35,8 @@ typedef unsigned int dword;
 
 #endif
 
-($h-extern) void ev3_init( void );
+($h-extern) bool ev3_init( void );
+($h-extern) void ev3_uninit( void );
 
 ($h-extern) size_t ev3_write_binary( const char *fn, void *data, size_t sz );
 ($h-extern) size_t ev3_write( const char *fn, char *value );
@@ -57,7 +58,7 @@ typedef unsigned int dword;
 
 ($h-extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
 
-($h-extern) int ev3_poweroff( void );
+($h-extern) bool ev3_poweroff( void );
 
 /** \} */
 

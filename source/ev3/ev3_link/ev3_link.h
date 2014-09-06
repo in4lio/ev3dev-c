@@ -13,6 +13,8 @@
 #pragma once
 
 extern int udp_ev3_open( char *addr, uint16_t port );
+extern int udp_ev3_close( void );
+extern int udp_ev3_catch_address( void );
 extern int udp_ev3_read( char *fn, void *buf, int sz );
 extern int udp_ev3_write( char *fn, void *data, int sz );
 extern int udp_ev3_listdir( char *fn, void *buf, int sz );

@@ -41,13 +41,14 @@
 
 #include "ev3_link.h"
 
-#define PROGRAM  "ev3_link"
-
 #define UDP_MESSAGE_LIMIT  1500
 
-#define UDP_RECEIVE_TRIES  50
-#define UDP_RECEIVE_WAIT   10  /* msec */
-#define UDP_TRANSMIT_TRIES 2
+#define UDP_CLIENT_RX_TRIES  50
+#define UDP_CLIENT_RX_WAIT   10  /* ms */
+#define UDP_CLIENT_TX_TRIES  2
+
+#define UDP_SERVER_RX_DELAY  100  /* us */
+#define UDP_SERVER_TX_DELAY  3000000
 
 enum {
 	EV3_NONE,
@@ -63,6 +64,8 @@ enum {
 
 	EV3_POWEROFF,
 	EV3_COMPLETION,
+
+	EV3_WELLCOME,
 };
 
 typedef struct {
@@ -97,7 +100,6 @@ static size_t __ev3_write_binary( char *fn, void *data, size_t sz )
 	}
 	result = fwrite( data, 1, sz, f );
 	fclose( f );
-
 	return ( result );
 }
 
@@ -113,7 +115,6 @@ static size_t __ev3_read_binary( char *fn, void *buf, size_t sz )
 	}
 	result = fread( buf, 1, sz, f );
 	fclose( f );
-
 	return ( result );
 }
 
@@ -137,7 +138,6 @@ static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 		}
 	}
 	closedir( d );
-
 	return (( void *) p - buf );
 }
 
@@ -151,7 +151,7 @@ static uint16_t __t_last = 0;
 
 int udp_ev3_open( char *addr, uint16_t port )
 {
-	int val = 1;
+	u_long optval = 1;
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
@@ -161,36 +161,27 @@ int udp_ev3_open( char *addr, uint16_t port )
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
 		perror( "    WSAStartup()" );
 		printf( "\n" );
-
-		return ( 0 );
+		sockfd = EOF;
+		return ( EOF );
 	}
 
 //////////////////////////////////////////////////
 #endif
-
 	sockfd = socket( PF_INET, SOCK_DGRAM, 0 );
 	if ( sockfd < 0 ) {
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", sockfd );
 		perror( "    socket()" );
 		printf( "\n" );
-		sockfd = 0;
+		sockfd = EOF;
 
-		return ( 0 );
-	}
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
-	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char *) &val, sizeof( val ));
-	u_long opt = 1;
-	ioctlsocket( sockfd, FIONBIO, &opt );
-
-// UNIX //////////////////////////////////////////
-#else
-	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, &val, sizeof( val ));
-	fcntl( sockfd, F_SETFL, O_NONBLOCK );
+		WSACleanup();
 
 //////////////////////////////////////////////////
 #endif
-
+		return ( EOF );
+	}
 	bzero( &__r_addr, sizeof( struct sockaddr_in ));
 	__r_addr.sin_family = AF_INET;
 	__r_addr.sin_port = htons( port );
@@ -198,20 +189,52 @@ int udp_ev3_open( char *addr, uint16_t port )
 
 	int ret = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
 	if ( ret < 0 ) {
-		close( sockfd );
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", ret );
 		perror( "    bind()" );
 		printf( "\n" );
-		sockfd = 0;
+		close( sockfd );
+		sockfd = EOF;
 
-		return ( 0 );
+// WIN32 /////////////////////////////////////////
+#ifdef __WIN32__
+		WSACleanup();
+
+//////////////////////////////////////////////////
+#endif
+		return ( EOF );
 	}
+
+// WIN32 /////////////////////////////////////////
+#ifdef __WIN32__
+	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char * ) &optval, sizeof( optval ));
+	ioctlsocket( sockfd, FIONBIO, &optval );
+
+// UNIX //////////////////////////////////////////
+#else
+	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, &optval, sizeof( optval ));
+	fcntl( sockfd, F_SETFL, O_NONBLOCK );
+
+//////////////////////////////////////////////////
+#endif
 	bzero( &__t_addr, sizeof( struct sockaddr_in ));
 	__t_addr.sin_family = AF_INET;
 	__t_addr.sin_port = htons( port );
-	__t_addr.sin_addr.s_addr = inet_addr( addr );
+	__t_addr.sin_addr.s_addr = ( addr ) ? inet_addr( addr ) : htonl( -1 );
+	return ( 0 );
+}
 
-	return ( 1 );
+int udp_ev3_close( void )
+{
+	if ( sockfd < 0 ) return ( EOF );
+	close( sockfd );
+
+// WIN32 /////////////////////////////////////////
+#ifdef __WIN32__
+	WSACleanup();
+
+//////////////////////////////////////////////////
+#endif
+	return ( 0 );
 }
 
 static void __transmit( uint16_t sz )
@@ -219,8 +242,8 @@ static void __transmit( uint16_t sz )
 	int res, l;
 
 	l = sizeof( EV3_MESSAGE_HEADER ) + sz;
-	res = sendto( sockfd, (const char *) &__t_msg, l, 0, ( struct sockaddr * ) &__t_addr, sizeof( __t_addr ));
-	if ( res != l ) {
+	res = sendto( sockfd, ( const char * ) &__t_msg, l, 0, ( struct sockaddr * ) &__t_addr, sizeof( __t_addr ));
+	if ( res < 0 ) {
 		printf( "\n*** ERROR *** (ev3_link) transmit: sendto = %d\n", errno );
 		perror( "    sendto()" );
 		printf( "\n" );
@@ -239,7 +262,6 @@ static int __receive( void )
 
 		if ( msg_l < ( int ) sizeof( EV3_MESSAGE_HEADER )) {
 			printf( "\n*** ERROR *** (ev3_link) receive: HEADER: msg_l = %d\n", msg_l );
-
 			return ( EOF );
 		}
 		msg_l -= sizeof( EV3_MESSAGE_HEADER );
@@ -257,7 +279,6 @@ static int __receive( void )
 
 			if (( h->fn_size == 0 ) || ( msg_l < ( int ) h->fn_size )) {
 				printf( "*** ERROR *** (ev3_link) receive: FILE: msg_l = %d fn_size = %d\n", msg_l, h->fn_size );
-
 				return ( EOF );
 			}
 			msg_l -= h->fn_size;
@@ -269,19 +290,16 @@ static int __receive( void )
 				if (( h->data_size == 0 ) || ( msg_l != ( int ) h->data_size )) {
 					printf( "*** ERROR *** (ev3_link) receive: DATA: msg_l = %d data_size = %d\n"
 					, msg_l, h->data_size );
-
 					return ( EOF );
 				}
 				/* printf( "WRITE %s\n", __r_msg.body ); */
 				t->type = EV3_RESULT_WRITE;
 				t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				__transmit( 0 );
-
 				return ( h->type );
 			}
 			if (( h->data_size == 0 ) || (( int ) h->data_size > sizeof( __t_msg.body ))) {
 				printf( "*** ERROR *** (ev3_link) receive: DATA: data_size = %d\n", h->data_size );
-
 				return ( EOF );
 			}
 			if ( h->type == EV3_LIST_DIR ) {
@@ -294,15 +312,13 @@ static int __receive( void )
 				t->data_size = __ev3_read_binary( __r_msg.body, __t_msg.body, h->data_size );
 			}
 			__transmit( t->data_size );
-
 			return ( h->type );
 
 		case EV3_POWEROFF:
 
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
 
-			if (( h->fn_size != 0x55 ) || ( h->data_size != 0xAA )) {
-
+			if (( h->fn_size != 0x5555 ) || ( h->data_size != 0xAAAA )) {
 				return ( EOF );
 			}
 			t->id = h->id;
@@ -312,7 +328,6 @@ static int __receive( void )
 			__transmit( 0 );
 
 			system( "shutdown -h now" );
-
 			return ( h->type );
 
 // CLIENT ////////////////////////////////////////
@@ -328,7 +343,7 @@ static int __receive( void )
 
 		case EV3_RESULT_WRITE:
 		case EV3_COMPLETION:
-
+		case EV3_WELLCOME:
 			return ( h->type );
 
 //////////////////////////////////////////////////
@@ -349,9 +364,21 @@ static void __sig_handler( int sig )
 	alive = 0;
 }
 
+void __welcome( void )
+{
+	PEV3_MESSAGE_HEADER t = &__t_msg.head;
+
+	t->type = EV3_WELLCOME;
+	t->id = 0;
+	t->fn_size = 0;
+	t->data_size = 0;
+	__transmit( 0 );
+}
+
 int main( int argc, char **argv )
 {
 	struct sigaction sigint;
+	uint32_t i = 0;
 
 	if ( argc > 1 ) {
 		char *end;
@@ -359,14 +386,13 @@ int main( int argc, char **argv )
 		if (( *end == '\x00' ) && ( val > 0 ) && ( val < USHRT_MAX )) {
 			port = val;
 		} else {
-			printf( "\nUsage: " PROGRAM " [port]\n" );
-
+			printf( "\nUsage: ev3_link [port]\n" );
 			return ( 2 );
 		}
 	}
-	printf( "\n*** ( " PROGRAM " ) Hello! ***\n" );
+	printf( "\n*** ( ev3_link ) Hello! ***\n" );
 
-	if ( !udp_ev3_open( "", port )) return ( 1 );
+	if ( udp_ev3_open( NULL, port ) == EOF ) return ( 1 );
 
 	sigint.sa_handler = __sig_handler;
 	sigemptyset( &sigint.sa_mask );
@@ -374,11 +400,16 @@ int main( int argc, char **argv )
 	sigaction( SIGINT, &sigint, NULL );
 
 	while ( alive ) {
-		usleep( 100 );
+		usleep( UDP_SERVER_RX_DELAY );
 		__receive();
+		if ( ++i == UDP_SERVER_TX_DELAY / UDP_SERVER_RX_DELAY ) {
+			i = 0;
+			/* every 8 sec, in the real...)) */
+			__welcome();
+		}
 	}
-	printf( "\n*** ( " PROGRAM " ) Bye! ***\n" );
-
+	udp_ev3_close();
+	printf( "\n*** ( ev3_link ) Bye! ***\n" );
 	return ( 0 );
 }
 
@@ -389,8 +420,8 @@ static int __wait_reply( void )
 {
 	int i;
 
-	for ( i = 0; i < UDP_RECEIVE_TRIES; i++ ) {
-		Sleep( UDP_RECEIVE_WAIT );
+	for ( i = 0; i < UDP_CLIENT_RX_TRIES; i++ ) {
+		Sleep( UDP_CLIENT_RX_WAIT );
 
 		switch ( __receive()) {
 		case EOF:
@@ -419,10 +450,9 @@ int udp_ev3_write( char *fn, void *data, int sz )
 	t->data_size = sz;
 	memcpy( __t_msg.body, fn, t->fn_size );
 	memcpy( __t_msg.body + t->fn_size, data, t->data_size );
-	for ( i = 0; i < UDP_TRANSMIT_TRIES; i++ ) {
+	for ( i = 0; i < UDP_CLIENT_TX_TRIES; i++ ) {
 		__transmit( t->fn_size + t->data_size );
 		if ( __wait_reply()) {
-
 			return ( __r_msg.head.data_size );
 		}
 	}
@@ -439,11 +469,10 @@ static int __udp_ev3_read( int cmd, char *fn, void *buf, int sz )
 	h->fn_size = strlen( fn ) + 1;
 	h->data_size = sz;
 	memcpy( __t_msg.body, fn, h->fn_size );
-	for ( i = 0; i < UDP_TRANSMIT_TRIES; i++ ) {
+	for ( i = 0; i < UDP_CLIENT_TX_TRIES; i++ ) {
 		__transmit( h->fn_size );
 		if ( __wait_reply()) {
 			memcpy( buf, __r_msg.body, __r_msg.head.data_size );
-
 			return ( __r_msg.head.data_size );
 		}
 	}
@@ -460,6 +489,15 @@ int udp_ev3_listdir( char *fn, void *buf, int sz )
 	return __udp_ev3_read( EV3_LIST_DIR, fn, buf, sz );
 }
 
+int udp_ev3_catch_address( void )
+{
+	if ( __receive() == EV3_WELLCOME ) {
+		__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
+		return ( 1 );
+	}
+	return ( 0 );
+}
+
 int udp_ev3_poweroff( void )
 {
 	PEV3_MESSAGE_HEADER h = &__t_msg.head;
@@ -467,12 +505,11 @@ int udp_ev3_poweroff( void )
 
 	h->type = EV3_POWEROFF;
 	h->id = ++__t_last;
-	h->fn_size = 0x55;
-	h->data_size = 0xAA;
-	for ( i = 0; i < UDP_TRANSMIT_TRIES; i++ ) {
+	h->fn_size = 0x5555;
+	h->data_size = 0xAAAA;
+	for ( i = 0; i < UDP_CLIENT_TX_TRIES; i++ ) {
 		__transmit( 0 );
 		if ( __wait_reply()) {
-
 			return ( 1 );
 		}
 	}

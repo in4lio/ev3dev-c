@@ -101,10 +101,10 @@ int main( void )
 	int val;
 	uint32_t n, i, ii;
 
-	printf( "\n*** ( ev3dev-c ) Hello! ***\n" );
+	printf( "Waiting the EV3 brick online...\n" );
 	ev3_init();
-	printf( "Waiting EV3 brick on-line...\n" );
-	while ( ev3_sensor_init() == EOF ) Sleep( 1000 );
+	printf( "*** ( EV3 ) Hello! ***\n" );
+	ev3_sensor_init();
 	getch_init();
 
 	printf( "Found sensors:\n" );
@@ -161,7 +161,8 @@ int main( void )
 		while ( !__pressed( p_touch )) Sleep( 100 );
 	}
 	getch_uninit();
-	printf( "\n*** ( ev3dev-c ) Bye! ***\n" );
+	ev3_uninit();
+	printf( "*** ( EV3 ) Bye! ***\n" );
 
 	return ( 0 );
 }
