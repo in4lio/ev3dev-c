@@ -36,8 +36,12 @@
 
     The remote access to the EV3 brick is implied when you build a program
     under Windows or Linux (not on __ARM_ARCH_4T__).
-    You need only specify a correct IP address of the brick before
-    the initialization.
+
+    Approximately every 8 seconds the broadcast message is sent by the server
+    on port 8800 (or specified when the server starts). The client detects
+    the IP address of the server catching a message like that.
+
+    Also you can specify the IP address before the brick initialization.
 
     #include "ev3.h"
 
