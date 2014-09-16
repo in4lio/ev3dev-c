@@ -12,6 +12,10 @@
 
 ($h-begin-named)
 
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 ($extern-c-begin)
 
 /**
@@ -35,10 +39,12 @@ typedef unsigned int dword;
 
 #endif
 
-($h-extern) bool ev3_init( void );
+#define EV3_NONE  -1
+
+($h-extern) int ev3_init( void );
 ($h-extern) void ev3_uninit( void );
 
-($h-extern) size_t ev3_write_binary( const char *fn, void *data, size_t sz );
+($h-extern) size_t ev3_write_binary( const char *fn, char *data, size_t sz );
 ($h-extern) size_t ev3_write( const char *fn, char *value );
 ($h-extern) size_t ev3_write_bool( const char *fn, bool value );
 ($h-extern) size_t ev3_write_int( const char *fn, int value );
@@ -47,12 +53,12 @@ typedef unsigned int dword;
 ($h-extern) size_t ev3_write_char_array( const char *fn, char *value );
 ($h-extern) size_t ev3_write_byte_array( const char *fn, uint8_t *value, size_t sz );
 
-($h-extern) size_t ev3_read_binary( const char *fn, void *buf, size_t sz );
+($h-extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
 ($h-extern) size_t ev3_read( const char *fn, char *buf, size_t sz );
-($h-extern) size_t ev3_read_bool( const char *fn, bool *value );
-($h-extern) size_t ev3_read_int( const char *fn, int *value );
-($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *value );
-($h-extern) size_t ev3_read_float( const char *fn, float *value );
+($h-extern) size_t ev3_read_bool( const char *fn, bool *buf );
+($h-extern) size_t ev3_read_int( const char *fn, int *buf );
+($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
+($h-extern) size_t ev3_read_float( const char *fn, float *buf );
 ($h-extern) size_t ev3_read_char_array( const char *fn, char *buf, size_t sz );
 ($h-extern) size_t ev3_read_byte_array( const char *fn, uint8_t *buf, size_t sz );
 

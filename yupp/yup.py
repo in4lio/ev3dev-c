@@ -15,7 +15,7 @@ COPYRIGHT   = 'Copyright (c) 2011, 13, 14'
 AUTHORS     = 'Vitaly Kravtsov (in4lio@gmail.com)'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.7b4'
+VERSION     = '0.7b5'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -848,9 +848,9 @@ def _unq( st ):
         return st
 
 #   ---------------------------------------------------------------------------
-def _import_source( lib ):
-#   -- prevent re-import
-    if lib in yushell.source:
+def _import_source( lib, once ):
+#   -- prevent libraries re-import
+    if once and lib in yushell.source:
 #       -- library has already been imported
         return '<null>'
 
@@ -1063,8 +1063,10 @@ def ps_import( sou, depth = 0 ):
         ( sou, leg ) = ps_quote( sou, depth + 1 )
         if leg is None:
             raise SyntaxError( '%s: name of imported file expected' % ( callee()) + sou.loc())
+        once = False
     else:
         leg = "%s.yu" % ( leg )
+        once = True
 #   ---- gap
     ( sou, _ ) = ps_gap( sou, depth + 1 )
 #   ---- \import
@@ -1074,7 +1076,7 @@ def ps_import( sou, depth = 0 ):
     if sou[ :1 ] != ')':
         raise SyntaxError( '%s: ")" expected' % ( callee()) + sou.loc())
 
-    return ( sou[ 1: ], yuparse( _import_source( _unq( leg ))))
+    return ( sou[ 1: ], yuparse( _import_source( _unq( leg ), once )))
 
 #   ---------------------------------------------------------------------------
 @echo__ps_

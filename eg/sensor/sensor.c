@@ -10,12 +10,7 @@
  *  \copyright  The MIT License
  */
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <stdio.h>
-#include <string.h>
-#include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_sensor.h"
 
@@ -88,14 +83,14 @@ static bool __pressed( int port )
 {
 	int val;
 
-	if ( port == EOF ) return ( __getch() == CHAR_ENTER );
+	if ( port == EV3_NONE ) return ( __getch() == CHAR_ENTER );
 
 	return ( get_sensor_value( 0, ev3_sensor[ port ].id, &val ) && ( val != 0 ));
 }
 
 int main( void )
 {
-	char s[ 255 ];
+	char s[ 256 ];
 	char *pch;
 	int p_color, p_touch;
 	int val;
@@ -132,13 +127,13 @@ int main( void )
 		}
 	}
 	p_touch = ev3_sensor_port( EV3_TOUCH );
-	if ( p_touch != EOF ) {
+	if ( p_touch != EV3_NONE ) {
 		printf( "EV3_TOUCH is found, press BUTTON for EXIT...\n" );
 	} else {
 		printf( "EV3_TOUCH is not found, press ENTER for EXIT...\n" );
 	}
 	p_color = ev3_sensor_port( EV3_COLOR );
-	if ( p_color != EOF ) {
+	if ( p_color != EV3_NONE ) {
 		uint8_t id = ev3_sensor[ p_color ].id;
 
 		printf( "EV3_COLOR is found, reading COLOR...\n" );
@@ -162,7 +157,7 @@ int main( void )
 	}
 	getch_uninit();
 	ev3_uninit();
-	printf( "*** ( EV3 ) Bye! ***\n" );
+	printf( "\n*** ( EV3 ) Bye! ***\n" );
 
 	return ( 0 );
 }

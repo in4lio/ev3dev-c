@@ -12,6 +12,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 extern int udp_ev3_open( char *addr, uint16_t port );
 extern int udp_ev3_close( void );
 extern int udp_ev3_catch_address( void );

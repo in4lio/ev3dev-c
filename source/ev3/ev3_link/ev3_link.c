@@ -10,8 +10,8 @@
  *  \copyright  The MIT License
  */
 
-#include <signal.h>
 #include <stdlib.h>
+#include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -48,10 +48,10 @@
 #define UDP_CLIENT_TX_TRIES  2
 
 #define UDP_SERVER_RX_DELAY  100  /* us */
-#define UDP_SERVER_TX_DELAY  3000000
+#define UDP_SERVER_TX_DELAY  2000000
 
 enum {
-	EV3_NONE,
+	EV3_IDLE,
 
 	EV3_WRITE_FILE,
 	EV3_RESULT_WRITE,
@@ -88,7 +88,7 @@ static struct sockaddr_in __r_addr, __t_addr;
 // EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
-static size_t __ev3_write_binary( char *fn, void *data, size_t sz )
+static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 {
 	FILE *f;
 	size_t result;
@@ -103,7 +103,7 @@ static size_t __ev3_write_binary( char *fn, void *data, size_t sz )
 	return ( result );
 }
 
-static size_t __ev3_read_binary( char *fn, void *buf, size_t sz )
+static size_t __ev3_read_binary( char *fn, char *buf, size_t sz )
 {
 	FILE *f;
 	size_t result;
@@ -152,11 +152,12 @@ static uint16_t __t_last = 0;
 int udp_ev3_open( char *addr, uint16_t port )
 {
 	u_long optval = 1;
+	int res;
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
 	WSADATA wsa;
-	int res = WSAStartup( MAKEWORD( 2, 2 ), &wsa );
+	res = WSAStartup( MAKEWORD( 2, 2 ), &wsa );
 	if ( res ) {
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
 		perror( "    WSAStartup()" );
@@ -187,9 +188,9 @@ int udp_ev3_open( char *addr, uint16_t port )
 	__r_addr.sin_port = htons( port );
 	__r_addr.sin_addr.s_addr = htonl( INADDR_ANY );
 
-	int ret = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
-	if ( ret < 0 ) {
-		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", ret );
+	res = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
+	if ( res < 0 ) {
+		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
 		perror( "    bind()" );
 		printf( "\n" );
 		close( sockfd );
@@ -350,7 +351,7 @@ static int __receive( void )
 #endif
 		}
 	}
-	return ( EV3_NONE );
+	return ( EV3_IDLE );
 }
 
 // EV3 BRICK /////////////////////////////////////
@@ -404,7 +405,7 @@ int main( int argc, char **argv )
 		__receive();
 		if ( ++i == UDP_SERVER_TX_DELAY / UDP_SERVER_RX_DELAY ) {
 			i = 0;
-			/* every 8 sec, in the real...)) */
+			/* every 5 sec, in the real...)) */
 			__welcome();
 		}
 	}

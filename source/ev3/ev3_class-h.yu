@@ -12,12 +12,14 @@ enum {
 	($CLASS_PORT_ID)__COUNT_
 };
 
-($h-extern) struct {
+typedef struct {
 	bool     connected;
 	uint32_t id;
 	uint32_t type_id;
 
-} ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
+} EV3_($upper CLASS_ID)_T;
+
+($h-extern) EV3_($upper CLASS_ID)_T ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
 
 enum {
 	($each-CLASS_TYPE \i.]
@@ -44,3 +46,4 @@ enum {
 
 ($h-extern) char *ev3_($CLASS_ID)_type( uint8_t type_id );
 ($h-extern) int ev3_($CLASS_ID)_port( uint8_t type_id );
+($h-extern) EV3_($upper CLASS_ID)_T *ev3_get_($CLASS_ID)( uint8_t port );

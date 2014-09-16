@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.2a4
-                2014-09-06
+    ev3dev-c    0.3a1
+                2014-09-16
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -18,8 +18,9 @@
     So, it's possible to drive the EV3 hardware from your computer,
     e.g. under Windows, if you have set up WLAN of course.
 
-    I would like to say thanks to Ralph Hempel, David Lechner
-    and community, ev3dev - it's a mighty interesting project!
+    Python library (see "python/ev3dev" folder) is automatically
+    generated from C library using SWIG tool and "python/ev3.yu-i"
+    interface file.
 
     ___       ____________________________________
     ___ F A Q ____________________________________
@@ -41,6 +42,8 @@
     > bin/led
     or
     > bin\mingw\led.exe
+
+    Similar examples on Python could be found in "python/eg" folder.
 
     * * *  How can I drive the EV3 hardware remotely?
 

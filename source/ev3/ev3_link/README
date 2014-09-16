@@ -37,7 +37,7 @@
     The remote access to the EV3 brick is implied when you build a program
     under Windows or Linux (not on __ARM_ARCH_4T__).
 
-    Approximately every 8 seconds the broadcast message is sent by the server
+    Approximately every 5 seconds the broadcast message is sent by the server
     on port 8800 (or specified when the server starts). The client detects
     the IP address of the server catching a message like that.
 

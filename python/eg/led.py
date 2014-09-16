@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+#pylint: skip-file
+
+import sys
+sys.path.append( '..' )
+from ev3dev import *
+
+if ev3_init() == EV3_NONE: sys.exit( 1 )
+
+ok, state = get_led_brightness( EV3_RED_LEFT )
+if ok:
+    print 'get_led_brightness( EV3_RED_LEFT ) =', state
+else:
+    print 'ERROR: get_led_brightness'
+
+if not set_led_brightness( EV3_RED_LEFT, 0 ):
+    print 'ERROR: set_led_brightness'
+
+state = get_led_trigger_inx( EV3_RED_RIGHT )
+print 'get_led_trigger_inx( EV3_RED_RIGHT ) =', state
+
+if not set_led_trigger( EV3_RED_RIGHT, 'none' ):
+    print 'ERROR: set_led_trigger'
+
+ev3_uninit()

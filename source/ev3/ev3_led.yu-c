@@ -12,9 +12,6 @@
 
 ($implement-named)
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 #include "ev3.h"
@@ -71,7 +68,7 @@ size_t set_led_trigger_inx( uint8_t id, uint8_t inx )
 
 uint8_t get_led_trigger_inx( uint8_t id )
 {
-	char buf[ 255 ];
+	char buf[ 256 ];
 	char *p;
 	uint8_t inx = 0;
 

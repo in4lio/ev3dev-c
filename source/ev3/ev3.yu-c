@@ -13,8 +13,6 @@
 ($implement-named)
 
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 #include "modp_numtoa.h"
@@ -31,9 +29,9 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-bool ev3_init( void )
+int ev3_init( void )
 {
-	return ( true );
+	return ( 0 );
 }
 
 void ev3_uninit( void )
@@ -41,7 +39,7 @@ void ev3_uninit( void )
 
 }
 
-size_t ev3_write_binary( const char *fn, void *data, size_t sz )
+size_t ev3_write_binary( const char *fn, char *data, size_t sz )
 {
 	FILE *f;
 	size_t result;
@@ -54,7 +52,7 @@ size_t ev3_write_binary( const char *fn, void *data, size_t sz )
 	return ( result );
 }
 
-size_t ev3_read_binary( const char *fn, void *buf, size_t sz )
+size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 {
 	FILE *f;
 	size_t result;
@@ -115,14 +113,24 @@ bool ev3_poweroff( void )
 //////////////////////////////////////////////////
 #endif
 
-bool ev3_init( void )
+#define BRICK_WAIT_DELAY  1000  /* msec */
+#define BRICK_WAIT_TRIES  10
+
+int ev3_init( void )
 {
-	if ( udp_ev3_open( ev3_brick_addr, ev3_brick_port ) == EOF ) return ( false );
+	int i;
+
+	if ( udp_ev3_open( ev3_brick_addr, ev3_brick_port ) == EOF ) return ( EV3_NONE );
 
 	if ( !ev3_brick_addr ) {
-		while ( !udp_ev3_catch_address()) Sleep( 1000 );
+
+		for ( i = 0; i < BRICK_WAIT_TRIES; i++ ) {
+			if ( udp_ev3_catch_address()) return ( true );
+			Sleep( BRICK_WAIT_DELAY );
+		}
+		return ( EV3_NONE );
 	}
-	return ( true );
+	return ( 0 );
 }
 
 void ev3_uninit( void )
@@ -130,14 +138,14 @@ void ev3_uninit( void )
 	udp_ev3_close();
 }
 
-size_t ev3_write_binary( const char *fn, void *data, size_t sz )
+size_t ev3_write_binary( const char *fn, char *data, size_t sz )
 {
-	return udp_ev3_write(( char *) fn, data, sz );
+	return udp_ev3_write(( char* ) fn, data, sz );
 }
 
-size_t ev3_read_binary( const char *fn, void *buf, size_t sz )
+size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 {
-	return udp_ev3_read(( char *) fn, buf, sz );
+	return udp_ev3_read(( char* ) fn, buf, sz );
 }
 
 static size_t __ev3_listdir( char *fn, char *buf, size_t sz )
@@ -194,7 +202,7 @@ size_t ev3_write_char_array( const char *fn, char *value )
 
 size_t ev3_write_byte_array( const char *fn, uint8_t *value, size_t sz )
 {
-	return ev3_write_binary( fn, value, sz );
+	return ev3_write_binary( fn, ( char* ) value, sz );
 }
 
 size_t ev3_read( const char *fn, char *buf, size_t sz )
@@ -208,13 +216,13 @@ size_t ev3_read( const char *fn, char *buf, size_t sz )
 	return ( c );
 }
 
-size_t ev3_read_int( const char *fn, int *value )
+size_t ev3_read_int( const char *fn, int *buf )
 {
-	char buf[ ($inc ($len ($str ($INT_MIN)))) ];
+	char s[ ($inc ($len ($str ($INT_MIN)))) ];
 	char *end;
 
-	if ( ev3_read( fn, buf, sizeof( buf ))) {
-		*value = strtol( buf, &end, 0 );
+	if ( ev3_read( fn, s, sizeof( s ))) {
+		*buf = strtol( s, &end, 0 );
 		if ( *end ) return ( 0 );
 
 		return ( sizeof( int ));
@@ -222,13 +230,13 @@ size_t ev3_read_int( const char *fn, int *value )
 	return ( 0 );
 }
 
-size_t ev3_read_dword( const char *fn, uint32_t *value )
+size_t ev3_read_dword( const char *fn, uint32_t *buf )
 {
-	char buf[ ($len ($str ($INT_MIN))) ];
+	char s[ ($len ($str ($INT_MIN))) ];
 	char *end;
 
-	if ( ev3_read( fn, buf, sizeof( buf ))) {
-		*value = strtoul( buf, &end, 0 );
+	if ( ev3_read( fn, s, sizeof( s ))) {
+		*buf = strtoul( s, &end, 0 );
 		if ( *end ) return ( 0 );
 
 		return ( sizeof( uint32_t ));
@@ -236,13 +244,13 @@ size_t ev3_read_dword( const char *fn, uint32_t *value )
 	return ( 0 );
 }
 
-size_t ev3_read_float( const char *fn, float *value )
+size_t ev3_read_float( const char *fn, float *buf )
 {
-	char buf[ 16 ];
+	char s[ 16 ];
 	char *end;
 
-	if ( ev3_read( fn, buf, sizeof( buf ))) {
-		*value = ( float ) strtod( buf, &end );
+	if ( ev3_read( fn, s, sizeof( s ))) {
+		*buf = ( float ) strtod( s, &end );
 		if ( *end ) return ( 0 );
 
 		return ( sizeof( float ));
@@ -250,11 +258,11 @@ size_t ev3_read_float( const char *fn, float *value )
 	return ( 0 );
 }
 
-size_t ev3_read_bool( const char *fn, bool *value )
+size_t ev3_read_bool( const char *fn, bool *buf )
 {
 	int _int;
 	if ( ev3_read_int( fn, &_int )) {
-		*value = !!_int;
+		*buf = !!_int;
 
 		return ( sizeof( bool ));
 	}
@@ -268,7 +276,7 @@ size_t ev3_read_char_array( const char *fn, char *buf, size_t sz )
 
 size_t ev3_read_byte_array( const char *fn, uint8_t *buf, size_t sz )
 {
-	return ev3_read_binary( fn, buf, sz );
+	return ev3_read_binary( fn, ( char* ) buf, sz );
 }
 
 size_t ev3_listdir( const char *fn, char *buf, size_t sz )
@@ -277,7 +285,7 @@ size_t ev3_listdir( const char *fn, char *buf, size_t sz )
 
 	if ( sz < 1 ) return ( 0 );
 
-	c = __ev3_listdir(( char *) fn, buf, sz );
+	c = __ev3_listdir(( char* ) fn, buf, sz );
 	buf[ c - 1 ] = '\x00';
 	return ( c );
 }

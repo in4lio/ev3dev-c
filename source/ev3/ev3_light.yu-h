@@ -12,6 +12,10 @@
 
 ($h-begin-named)
 
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 ($extern-c-begin)
 
 /**
@@ -22,6 +26,7 @@
 enum {
 	LIT_LEFT,
 	LIT_RIGHT,
+
 	LIT__LOC__
 };
 

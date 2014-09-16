@@ -10,11 +10,7 @@
  *  \copyright  The MIT License
  */
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <stdio.h>
-#include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_tacho.h"
 
@@ -35,17 +31,21 @@
 
 int main( void )
 {
-	char s[ 255 ];
+	char s[ 256 ];
 	int p;
 	int i;
 
 #ifndef __ARM_ARCH_4T__
-	ev3_brick_addr = "192.168.1.204";
+	/* Disable auto-detection of the brick (you have to set the correct address below) */
+	ev3_brick_addr = "192.168.0.204";
 
 #endif
 	ev3_init();
-	printf( "Waiting the EV3 brick online...\n" );
-	while ( ev3_tacho_init() == EOF ) Sleep( 1000 );
+#ifndef __ARM_ARCH_4T__
+	printf( "The EV3 brick auto-detection is DISABLED, waiting %s online...\n", ev3_brick_addr );
+
+#endif
+	while ( ev3_tacho_init() == EV3_NONE ) Sleep( 1000 );
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
@@ -59,7 +59,7 @@ int main( void )
 		}
 	}
 	p = ev3_tacho_port( MINITACHO );
-	if ( p != EOF ) {
+	if ( p != EV3_NONE ) {
 		uint8_t id = ev3_tacho[ p ].id;
 
 		printf( "MINITACHO is found, run for 5 sec...\n" );

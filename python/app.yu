@@ -5,10 +5,10 @@
                                                ((())))
 
 ($set PROGRAM ]
-sensor
+ev3.py
 [ )
 ($set VERSION ]
-0.4
+0.1
 [ )
 ($set AUTHORS ]
 Vitaly Kravtsov (in4lio@gmail.com)

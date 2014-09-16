@@ -25,10 +25,18 @@ PLATFORM = __UNIX__
 EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 endif
 
-YUPP_HOME = ../../yupp
+TOP = ../..
 
-# -- preprocessor (yupp)
+# -- yupp preprocessor
+YUPP_HOME = $(TOP)/yupp
+
+SKIP_PP = 0
+
+ifeq ($(SKIP_PP),0)
 PP = python -u $(YUPP_HOME)/yup.py
+else
+PP = @echo makefile: warning: preprocessing step is skipped,
+endif
 
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
@@ -59,12 +67,12 @@ MINSTACK = 1024k
 endif
 
 # -- yupp import directories
-D_YU = ../../source/ev3
+D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = . ../../source/ev3 ../../lib
+D_C = . $(TOP)/source/ev3 $(TOP)/lib
 ifeq ($(EV3),0)
-D_C := $(D_C) ../../source/ev3/ev3_link
+D_C := $(D_C) $(TOP)/source/ev3/ev3_link
 endif
 
 D_CXX = $(D_C)
@@ -108,12 +116,16 @@ else
 E_BIN =
 endif
 
+# -- binary full name
+F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
+
 # -- LIST and MAP suffixes
 E_MAP = .map
 E_LIST = .listing
 
 # -- link options
 LIBS = -lm
+
 ifeq ($(PLATFORM),__MINGW__)
 LIBS := $(LIBS) -lws2_32
 endif
@@ -194,7 +206,12 @@ endef
 endif
 
 # -- removal list
-R = $(D_BIN)/$(BIN)$(E_BIN) $(O) $(G_H) $(G_C) $(G_CXX)
+R = $(F_BIN) $(O)
+
+ifeq ($(SKIP_PP),0)
+R := $(R) $(G_H) $(G_C) $(G_CXX)
+endif
+
 ifeq ($(MAP),1)
 R := $(R) $(D_MAP)/$(BIN)$(E_MAP)
 endif
@@ -226,12 +243,12 @@ vpath %$(E_YUC) $(D_C)
 # -- build project
 .PHONY: all
 
-all: $(D_BIN)/$(BIN)$(E_BIN)
+all: $(F_BIN)
 
-$(D_BIN)/$(BIN)$(E_BIN) : $(O)
+$(F_BIN) : $(O)
 	$(call wrap,$(CC),$^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
-	@echo "*** $(D_BIN)/$(BIN)$(E_BIN) ***"
+	@echo "*** $(F_BIN) ***"
 
 $(G_C) $(G_CXX) $(G_H) : $(S_YU)
 

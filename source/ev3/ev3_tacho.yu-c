@@ -13,8 +13,6 @@
 ($implement-named)
 
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 #include "modp_numtoa.h"
@@ -31,7 +29,7 @@
 
 int ev3_tacho_init( void )
 {
-	char list[ 255 ], s[ 255 ];
+	char list[ 256 ], s[ 256 ];
 	char *p;
 	uint32_t id;
 	int port;
@@ -39,7 +37,7 @@ int ev3_tacho_init( void )
 
 	memset( ev3_tacho, 0, sizeof( ev3_tacho ));
 
-	if ( !ev3_listdir( ($CLASS_PATH), list, sizeof( list ))) return ( EOF );
+	if ( !ev3_listdir( ($CLASS_PATH), list, sizeof( list ))) return ( EV3_NONE );
 
 	p = strtok( list, " " );
 	while ( p ) {
@@ -50,9 +48,9 @@ int ev3_tacho_init( void )
 					else
 
 				[ )
-					port = EOF;
+					port = EV3_NONE;
 
-				if ( port != EOF ) {
+				if ( port != EV3_NONE ) {
 					ev3_tacho[ port ].connected = true;
 					ev3_tacho[ port ].id = id;
 					get_tacho_type( id, s, sizeof( s ));

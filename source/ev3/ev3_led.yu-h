@@ -12,6 +12,10 @@
 
 ($h-begin-named)
 
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 ($extern-c-begin)
 
 /**
@@ -47,7 +51,6 @@ enum {
 [ )
 
 extern const char * const led_trigger[];
-
 ($h-extern) uint8_t get_led_trigger_inx( uint8_t id );
 ($h-extern) size_t set_led_trigger_inx( uint8_t id, uint8_t inx );
 

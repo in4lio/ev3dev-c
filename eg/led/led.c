@@ -10,12 +10,8 @@
  *  \copyright  The MIT License
  */
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include "ev3.h"
-#include "ev3_led.h"
 #include "ev3_light.h"
 
 // WIN32 /////////////////////////////////////////

@@ -1,0 +1,148 @@
+($import "app.yu")
+($TITLE,,Swig interface file.)
+($macro h-extern () extern)
+
+%module ev3
+%include "cstring.i"
+%include "stdint.i"
+
+%{
+#include "../source/ev3/ev3.h"
+#include "../source/ev3/ev3_led.h"
+#include "../source/ev3/ev3_light.h"
+#include "../source/ev3/ev3_sensor.h"
+#include "../source/ev3/ev3_tacho.h"
+%}
+
+/* Unfortunately incompatible with %typemap( default ) size_t sz {	$1 = DEFAULT_BUF_SIZE; } */
+%cstring_output_maxsize( char *buf, size_t sz );
+
+%apply bool *OUTPUT { bool *buf };
+%apply int *OUTPUT { int *buf };
+%apply uint8_t *OUTPUT { uint8_t *buf };
+%apply uint8_t *OUTPUT { byte *buf };
+%apply uint32_t *OUTPUT { uint32_t *buf };
+%apply uint32_t *OUTPUT { dword *buf };
+%apply float *OUTPUT { float *buf };
+
+%apply uint32_t { dword };
+
+/*
+ *  ev3
+ */
+
+#define EV3_NONE  -1
+
+%include "./platform.h"
+
+// CLIENT ////////////////////////////////////////
+#if EV3_BRICK == 0
+
+%rename( brick_addr ) ev3_brick_addr;
+($h-extern) char *ev3_brick_addr;
+%rename( brick_port ) ev3_brick_port;
+($h-extern) uint16_t ev3_brick_port;
+
+//////////////////////////////////////////////////
+#endif
+
+($h-extern) int ev3_init( void );
+($h-extern) void ev3_uninit( void );
+
+($h-extern) size_t ev3_write_binary( const char *fn, char *STRING, size_t LENGTH );
+($h-extern) size_t ev3_write( const char *fn, char *value );
+($h-extern) size_t ev3_write_bool( const char *fn, bool value );
+($h-extern) size_t ev3_write_int( const char *fn, int value );
+($h-extern) size_t ev3_write_dword( const char *fn, uint32_t value );
+($h-extern) size_t ev3_write_float( const char *fn, float value );
+
+($h-extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
+($h-extern) size_t ev3_read( const char *fn, char *buf, size_t sz );
+($h-extern) size_t ev3_read_bool( const char *fn, bool *buf );
+($h-extern) size_t ev3_read_int( const char *fn, int *buf );
+($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
+($h-extern) size_t ev3_read_float( const char *fn, float *buf );
+
+($h-extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
+($h-extern) bool ev3_poweroff( void );
+
+($import stdlib)
+
+/*
+ *  ev3_led
+ */
+
+($import "../source/ev3/ev3_led-dict.yu")
+
+enum {
+	($LED_ID \i.]
+		($upper ($i)),
+
+	[ )
+	LED__COUNT_
+};
+
+enum {
+	($LED_TRIGGER_ID \i.]
+		TRIGGER_($i),
+
+	[ )
+	TRIGGER__COUNT_
+};
+
+($each-LED_ATTR \i.]
+	($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
+	($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
+
+[ )
+
+($h-extern) uint8_t get_led_trigger_inx( uint8_t id );
+($h-extern) size_t set_led_trigger_inx( uint8_t id, uint8_t inx );
+
+/*
+ *  ev3_light
+ */
+
+enum {
+	LIT_LEFT,
+	LIT_RIGHT,
+
+	LIT__LOC__
+};
+
+enum {
+	LIT_OFF,
+	LIT_GREEN,
+	LIT_RED,
+	LIT_AMBER,
+
+	LIT__COL__
+};
+
+($h-extern) void set_light( uint8_t loc, uint8_t col );
+($h-extern) uint8_t get_light( uint8_t loc );
+
+($h-extern) void set_light_trigger( uint8_t loc, uint8_t col, uint8_t trigger );
+($h-extern) uint8_t get_light_trigger( uint8_t loc, uint8_t col );
+
+($h-extern) bool set_light_blink( uint8_t loc, uint8_t col, int delay_on, int delay_off );
+($h-extern) bool get_light_blink( uint8_t loc, uint8_t col );
+
+/*
+ *  ev3_sensor
+ */
+
+($import "../source/ev3/ev3_sensor-dict.yu")
+($import "../source/ev3/ev3_class-h.yu")
+
+($h-extern) int ev3_sensor_init( void );
+
+/*
+ *  ev3_tacho
+ */
+
+($import "../source/ev3/ev3_tacho-dict.yu")
+($import "../source/ev3/ev3_class-h.yu")
+
+($h-extern) int ev3_tacho_init( void );
+

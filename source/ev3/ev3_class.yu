@@ -76,7 +76,12 @@ int ev3_($CLASS_ID)_port( uint8_t type_id )
 	for ( i = 0; i < ($CLASS_PORT_ID)__COUNT_; i++ ) {
 		if ( ev3_($CLASS_ID)[ i ].connected && ( ev3_($CLASS_ID)[ i ].type_id == type_id )) return ( i );
 	}
-	return ( EOF );
+	return ( EV3_NONE );
+}
+
+EV3_($upper CLASS_ID)_T *ev3_get_($CLASS_ID)( uint8_t port )
+{
+	return ( ev3_($CLASS_ID) + (( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ));
 }
 
 static bool get_str_suffix( const char *prefix, char *s, uint32_t *buf )
