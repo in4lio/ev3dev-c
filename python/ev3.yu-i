@@ -14,7 +14,7 @@
 #include "../source/ev3/ev3_tacho.h"
 %}
 
-/* Unfortunately incompatible with %typemap( default ) size_t sz {	$1 = DEFAULT_BUF_SIZE; } */
+/* Unfortunately incompatible with %typemap( default ) size_t sz { $1 = DEFAULT_BUF_SIZE; } */
 %cstring_output_maxsize( char *buf, size_t sz );
 
 %apply bool *OUTPUT { bool *buf };
