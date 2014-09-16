@@ -19,8 +19,7 @@
     e.g. under Windows, if you have set up WLAN of course.
 
     Python library (see "python/ev3dev" folder) is automatically
-    generated from C library using SWIG tool and "python/ev3.yu-i"
-    interface file.
+    generated from C library using SWIG tool.
 
     ___       ____________________________________
     ___ F A Q ____________________________________
