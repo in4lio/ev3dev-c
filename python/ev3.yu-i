@@ -1,5 +1,5 @@
 ($import "app.yu")
-($TITLE,,Swig interface file.)
+($TITLE,,SWIG interface file.)
 ($macro h-extern () extern)
 
 %module ev3
