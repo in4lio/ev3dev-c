@@ -7,7 +7,7 @@
  *  \file  sensor.c
  *  \brief  ev3dev-c sensors example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
- *  \copyright  The MIT License
+ *  \copyright  See the LICENSE file.
  */
 
 #include <stdio.h>

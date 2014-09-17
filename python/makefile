@@ -3,7 +3,7 @@
 #   |   |  _   _|   | |  _   _|
 #   |  _|_| |___ ___|_|___  |
 #   |_|                   |_|
-#   yu-c makefile
+#   makefile ( yupp, SWIG, gcc )
 
 # -- binary name (without extension)
 BIN = ev3

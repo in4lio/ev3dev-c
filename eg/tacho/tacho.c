@@ -7,7 +7,7 @@
  *  \file  tacho.c
  *  \brief  ev3dev-c tacho-motors example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
- *  \copyright  The MIT License
+ *  \copyright  See the LICENSE file.
  */
 
 #include <stdio.h>

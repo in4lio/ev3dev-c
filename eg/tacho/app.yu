@@ -14,7 +14,7 @@ tacho
 Vitaly Kravtsov (in4lio@gmail.com)
 [ )
 ($set LICENSE ]
-The MIT License
+See the LICENSE file.
 [ )
 ($set COMPILER ]
 gcc

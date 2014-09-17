@@ -7,7 +7,7 @@
  *  \file  led.c
  *  \brief  ev3dev-c LEDs example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
- *  \copyright  The MIT License
+ *  \copyright  See the LICENSE file.
  */
 
 #include <stdio.h>

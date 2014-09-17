@@ -7,7 +7,7 @@
  *  \file  ev3_link.c
  *  \brief  EV3 remote access.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
- *  \copyright  The MIT License
+ *  \copyright  See the LICENSE file.
  */
 
 #include <stdlib.h>
