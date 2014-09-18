@@ -35,7 +35,7 @@ SKIP_PP = 0
 ifeq ($(SKIP_PP),0)
 PP = python -u $(YUPP_HOME)/yup.py
 else
-PP = @echo -e makefile: warning: preprocessing step is skipped,
+PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- simplified wrapper and interface generator
@@ -70,6 +70,7 @@ MINSTACK = 1024k
 endif
 
 # -- yupp import directories
+#    WARNING! single directory only, see the rule for __init__.py
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
@@ -272,38 +273,41 @@ vpath %$(E_YUC) $(D_C)
 
 all: $(F_BIN)
 
-$(F_BIN) : $(O)
+$(F_BIN): $(O)
 	$(call wrap,$(CC),-shared $^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
-$(BIN)_wrap.c : $(BIN).i
+$(BIN)_wrap.c: $(BIN).i $(D_BIN)/__init__.py
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
 	$(SWIG) -python -outdir ev3dev -globals ev3 $<
 
-$(BIN).i : $(BIN).yu-i
+$(BIN).i: $(BIN).yu-i
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(G_C) $(G_CXX) $(G_H) : $(S_YU)
+$(D_BIN)/__init__.py: $(D_YU)/app.yu
+	$(call wrap,$(PP),$(PPFLAGS) $(D_BIN)/__init__.yu-py)
 
-$(G_C) : %$(E_C) : %$(E_YUC)
+$(G_C) $(G_CXX) $(G_H): $(S_YU)
+
+$(G_C): %$(E_C): %$(E_YUC)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(G_CXX) : %$(E_CXX) : %$(E_YUCXX)
+$(G_CXX): %$(E_CXX): %$(E_YUCXX)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(G_H) : %$(E_H) : %$(E_YUH)
+$(G_H): %$(E_H): %$(E_YUH)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(S_C) $(S_CXX) : $(G_H)
+$(S_C) $(S_CXX): $(G_H)
 
-$(O_C) : $(D_OBJ)/%$(E_OBJ) : %$(E_C)
+$(O_C): $(D_OBJ)/%$(E_OBJ): %$(E_C)
 	$(call wrap,$(CC),$(CFLAGS) -c $< -o $@)
 
-$(O_CXX) : $(D_OBJ)/%$(E_OBJ) : %$(E_CXX)
+$(O_CXX): $(D_OBJ)/%$(E_OBJ): %$(E_CXX)
 	$(call wrap,$(CXX),$(CXXFLAGS) -c $< -o $@)
 
-$(O_ASM) : $(D_OBJ)/%$(E_OBJ) : %$(E_ASM)
+$(O_ASM): $(D_OBJ)/%$(E_OBJ): %$(E_ASM)
 	$(call wrap,$(CC),$(ASMFLAGS) -c $< -o $@)
 
 # -- remove temporary files

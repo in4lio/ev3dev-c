@@ -4,17 +4,26 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($set PROGRAM ]
-ev3.py
+($set LIBRARY ]
+ev3dev-c
 [ )
 ($set VERSION ]
-0.1
+0.3b4
 [ )
-($set AUTHORS ]
-Vitaly Kravtsov (in4lio@gmail.com)
+($set DESCRIPTION ]
+LEGO Mindstorms EV3 Debian C library + Python wrapper
+[ )
+($set AUTHOR ]
+Vitaly Kravtsov
+[ )
+($set AUTHOR_EMAIL ]
+in4lio@gmail.com
 [ )
 ($set LICENSE ]
 See the LICENSE file.
+[ )
+($set URL ]
+https://github.com/in4lio/ev3dev-c
 [ )
 ($set COMPILER ]
 gcc
@@ -23,7 +32,7 @@ gcc
 ($macro TITLE (brief)($__TITLE__)/**
  *  \file  ($unq ($__OUTPUT_FILE__)) (($unq ($__FILE__)))
  *  \brief  ($brief)
- *  \author  ($AUTHORS)
+ *  \author  ($AUTHOR) (($AUTHOR_EMAIL))
  *  \copyright  ($LICENSE)
  */
 )

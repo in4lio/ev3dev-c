@@ -3,7 +3,6 @@
 
 from time import sleep
 import sys
-sys.path.append( '..' )
 from ev3dev import *
 
 color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]

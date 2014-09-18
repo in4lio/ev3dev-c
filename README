@@ -1,25 +1,36 @@
 
-     ____ __     ____   ___    ____ __         (((((()
+    _____ __     ____   ___    ____ __         (((((()
     | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.3a1
-                2014-09-16
+    ev3dev-c    0.3b4
+                2014-09-18
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
     ev3dev-c is a C library for LEGO Mindstorms EV3 Debian
-    (http://www.ev3dev.org/) which wraps access to the EV3 hardware.
+    (http://www.ev3dev.org/) which wraps an access to the EV3 hardware.
 
-    The library also supports remote access to the EV3 brick over UDP.
-    So, it's possible to drive the EV3 hardware from your computer,
-    e.g. under Windows, if you have set up WLAN of course.
+    The library also supports a remote access to the EV3 brick over UDP.
+    So, if you set up WLAN on the brick you will be able to drive
+    the EV3 hardware from your computer, e.g. under Windows.
 
     Python library (see "python/ev3dev" folder) is automatically
     generated from C library using SWIG tool.
+
+    Use pip or easy_install to install ev3dev-c Python package, e.g.
+
+        pip install --pre ev3dev-c
+
+    ev3dev-c is currently in a beta stage, therefore you have to use
+    the key "--pre".
+
+    The package contains the following binary modules:
+    _ev3.pyd    - for remote access, under Windows (x86);
+    _ev3.so     - for LEGO Mindstorms EV3 Debian.
 
     ___       ____________________________________
     ___ F A Q ____________________________________
@@ -31,7 +42,7 @@
 
     * * *  How can I see some examples?
 
-    There are a few examples in "eg" folder:
+    There are a few examples on C in "eg" folder:
     "led"    - LEDs blinking example,
     "sensor" - TOUCH and COLOR sensors example,
     "tacho"  - MINITACHO motor running for 5 sec.
@@ -42,7 +53,7 @@
     or
     > bin\mingw\led.exe
 
-    Similar examples on Python could be found in "python/eg" folder.
+    Similar examples on Python could be found in "python/ev3dev/eg".
 
     * * *  How can I drive the EV3 hardware remotely?
 

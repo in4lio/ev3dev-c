@@ -1,0 +1,9 @@
+build/
+downloads/
+*.egg-info/
+
+*.bat
+*.egg
+
+.pypirc
+README

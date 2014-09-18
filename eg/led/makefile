@@ -245,31 +245,31 @@ vpath %$(E_YUC) $(D_C)
 
 all: $(F_BIN)
 
-$(F_BIN) : $(O)
+$(F_BIN): $(O)
 	$(call wrap,$(CC),$^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
-$(G_C) $(G_CXX) $(G_H) : $(S_YU)
+$(G_C) $(G_CXX) $(G_H): $(S_YU)
 
-$(G_C) : %$(E_C) : %$(E_YUC)
+$(G_C): %$(E_C): %$(E_YUC)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(G_CXX) : %$(E_CXX) : %$(E_YUCXX)
+$(G_CXX): %$(E_CXX): %$(E_YUCXX)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(G_H) : %$(E_H) : %$(E_YUH)
+$(G_H): %$(E_H): %$(E_YUH)
 	$(call wrap,$(PP),$(PPFLAGS) $<)
 
-$(S_C) $(S_CXX) : $(G_H)
+$(S_C) $(S_CXX): $(G_H)
 
-$(O_C) : $(D_OBJ)/%$(E_OBJ) : %$(E_C)
+$(O_C): $(D_OBJ)/%$(E_OBJ): %$(E_C)
 	$(call wrap,$(CC),$(CFLAGS) -c $< -o $@)
 
-$(O_CXX) : $(D_OBJ)/%$(E_OBJ) : %$(E_CXX)
+$(O_CXX): $(D_OBJ)/%$(E_OBJ): %$(E_CXX)
 	$(call wrap,$(CXX),$(CXXFLAGS) -c $< -o $@)
 
-$(O_ASM) : $(D_OBJ)/%$(E_OBJ) : %$(E_ASM)
+$(O_ASM): $(D_OBJ)/%$(E_OBJ): %$(E_ASM)
 	$(call wrap,$(CC),$(ASMFLAGS) -c $< -o $@)
 
 # -- remove temporary files

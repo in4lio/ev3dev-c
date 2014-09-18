@@ -2,7 +2,6 @@
 #pylint: skip-file
 
 import sys
-sys.path.append( '..' )
 from ev3dev import *
 
 if ev3_init() == EV3_NONE: sys.exit( 1 )

@@ -3,7 +3,6 @@
 
 from time import sleep
 import sys
-sys.path.append( '..' )
 from ev3dev import *
 
 if __name__ == '__main__':

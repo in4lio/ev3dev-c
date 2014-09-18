@@ -1,0 +1,10 @@
+from ev3 import *
+
+($import "app.yu")
+
+__library__ = ($q LIBRARY)
+__version__ = ($q VERSION)
+__description__ = ($q DESCRIPTION)
+__author__ = ($q AUTHOR)
+__author_email__ = ($q AUTHOR_EMAIL)
+__url__ = ($q URL)

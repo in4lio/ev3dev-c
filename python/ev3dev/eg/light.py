@@ -3,7 +3,6 @@
 
 from time import sleep
 import sys
-sys.path.append( '..' )
 from ev3dev import *
 
 print 'Waiting the EV3 brick online...'
