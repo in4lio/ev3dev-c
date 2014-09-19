@@ -5,11 +5,8 @@
 #   |_|                   |_|
 #   makefile ( yupp, gcc )
 
-# -- binary name (without extension)
-BIN = led
-
-# -- creating MAP file
-MAP = 0
+# -- binary name (without prefix and extension)
+BIN = ev3dev-c
 
 ifeq ($(OS),Windows_NT)
 # -- platform (core)
@@ -18,33 +15,44 @@ ifeq ($(OS),Windows_NT)
 # WIN32: __MINGW__
 # UNIX: __UNIX__
 PLATFORM = __MINGW__
-EV3 = 0
 else
 PLATFORM = __UNIX__
-# -- EV3 BRICK
-EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 endif
 
 TOP = ../..
-
-# -- yupp preprocessor
-YUPP_HOME = $(TOP)/yupp
-
-SKIP_PP = 0
-
-ifeq ($(SKIP_PP),0)
-PP = python -u $(YUPP_HOME)/yup.py
-else
-PP = @echo makefile: warning: preprocessing step is skipped,
-endif
 
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
 CC = $(DJGPP_HOME)/bin/gcc.exe
 CXX = $(DJGPP_HOME)/bin/gxx.exe
+AR = $(DJGPP_HOME)/bin/ar.exe
 else
 CC = gcc
 CXX = g++
+AR = ar
+endif
+
+# -- on EV3 BRICK
+ifeq ($(PLATFORM),__UNIX__)
+EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
+else
+EV3 = 0
+endif
+
+# -- yupp preprocessor
+YUPP_HOME = $(TOP)/yupp
+
+# -- perform preprocessing anywhere
+# SKIP_PP = 0
+# -- skip preprocessing on the EV3 brick (it's a bit slow), would be better to use pre-generated sources
+SKIP_PP = $(EV3)
+# -- skip preprocessing anywhere
+# SKIP_PP = 1
+
+ifeq ($(SKIP_PP),0)
+PP = python -u $(YUPP_HOME)/yup.py
+else
+PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
@@ -60,40 +68,44 @@ endif
 
 endif
 
-# -- platform specific options
+# -- install directory
 ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
+D_INSTALL = $(DJGPP_HOME)
+else
+
+ifeq ($(PLATFORM),__MINGW__)
+D_INSTALL = $(MINGW_HOME)
+else
+D_INSTALL = /usr/local
+endif
+
 endif
 
 # -- yupp import directories
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = . $(TOP)/source/ev3 $(TOP)/lib
+D_C = $(TOP)/source/ev3 $(TOP)/3d_party
+
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
 endif
 
-D_CXX = $(D_C)
-D_ASM = source
+# D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
 
-D_C := $(if $(D_PLATFORM), source/$(D_PLATFORM) $(D_C), $(D_C))
+D_CXX = $(D_C)
+D_ASM = $(TOP)/source
 
 # -- include directories
 D_H = $(D_C)
 
 # -- binary directory
-D_BIN = bin
+D_BIN = $(TOP)/lib
 D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
-D_OBJ = object
+D_OBJ = $(TOP)/object
 D_OBJ := $(if $(D_PLATFORM), $(D_OBJ)/$(D_PLATFORM), $(D_OBJ))
-
-# -- LIST and MAP directories
-D_MAP = object
-D_LIST = object
 
 # -- source code suffix
 E_YU = .yu
@@ -111,38 +123,40 @@ E_OBJ = .o
 
 # -- binary suffix
 ifeq ($(OS),Windows_NT)
-E_BIN = .exe
+E_BIN = .a
 else
-E_BIN =
+E_BIN = .a
 endif
 
 # -- binary full name
-F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
+F_BIN = $(D_BIN)/lib$(BIN)$(E_BIN)
 
-# -- LIST and MAP suffixes
-E_MAP = .map
-E_LIST = .listing
-
-# -- link options
-LIBS = -lm
-
-ifeq ($(PLATFORM),__MINGW__)
-LIBS := $(LIBS) -lws2_32
-endif
-
-LFLAGS =
-
-ifeq ($(MAP),1)
-LFLAGS := $(LFLAGS) -Wl,-Map,$(D_MAP)/$(BIN)$(E_MAP)
-endif
+# -- ar flags
+ARFLAGS = rcs
 
 # -- preprocessor flags
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
 
 # -- compiler flags
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99
+
+ifeq ($(PLATFORM),__UNIX__)
+CFLAGS := $(CFLAGS) -fPIC
+endif
+
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
+
+ifeq ($(PLATFORM),__UNIX__)
+CXXFLAGS := $(CXXFLAGS) -fPIC
+endif
+
 ASMFLAGS = -Wall
+
+# -- platform specific options
+ifeq ($(PLATFORM),__DJGPP__)
+BUFSIZE = 16k
+MINSTACK = 1024k
+endif
 
 # ---------------------------------
 #   files lists
@@ -212,10 +226,6 @@ ifeq ($(SKIP_PP),0)
 R := $(R) $(G_H) $(G_C) $(G_CXX)
 endif
 
-ifeq ($(MAP),1)
-R := $(R) $(D_MAP)/$(BIN)$(E_MAP)
-endif
-
 ifeq ($(OS),Windows_NT)
 #CLEAN = cmd /c "del $(subst /,\,$(R))"
 CLEAN = rm -rf $(R)
@@ -224,11 +234,10 @@ CLEAN = rm -rf $(R)
 endif
 
 # -- install
-ifeq ($(OS),Windows_NT)
-INSTALL =
-else
-INSTALL =
-endif
+define install
+	cp -f $(F_BIN) $(D_INSTALL)/lib
+	cp -f $(G_H) $(D_INSTALL)/include
+endef
 
 # ---------------------------------
 #   make rules
@@ -246,7 +255,7 @@ vpath %$(E_YUC) $(D_C)
 all: $(F_BIN)
 
 $(F_BIN): $(O)
-	$(call wrap,$(CC),$^ -o $@ $(LIBS) $(LFLAGS))
+	$(call wrap,$(AR),$(ARFLAGS) $@ $^)
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
@@ -282,6 +291,6 @@ clean:
 .PHONY: install
 
 install:
-	$(INSTALL)
+	$(call install)
 
 # -- EOF

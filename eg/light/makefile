@@ -6,7 +6,7 @@
 #   makefile ( yupp, gcc )
 
 # -- binary name (without extension)
-BIN = sensor
+BIN = light
 
 # -- creating MAP file
 MAP = 0

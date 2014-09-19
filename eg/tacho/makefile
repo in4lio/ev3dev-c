@@ -18,25 +18,11 @@ ifeq ($(OS),Windows_NT)
 # WIN32: __MINGW__
 # UNIX: __UNIX__
 PLATFORM = __MINGW__
-EV3 = 0
 else
 PLATFORM = __UNIX__
-# -- EV3 BRICK
-EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 endif
 
 TOP = ../..
-
-# -- yupp preprocessor
-YUPP_HOME = $(TOP)/yupp
-
-SKIP_PP = 0
-
-ifeq ($(SKIP_PP),0)
-PP = python -u $(YUPP_HOME)/yup.py
-else
-PP = @echo makefile: warning: preprocessing step is skipped,
-endif
 
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
@@ -45,6 +31,29 @@ CXX = $(DJGPP_HOME)/bin/gxx.exe
 else
 CC = gcc
 CXX = g++
+endif
+
+# -- on EV3 BRICK
+ifeq ($(PLATFORM),__UNIX__)
+EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
+else
+EV3 = 0
+endif
+
+# -- yupp preprocessor
+YUPP_HOME = $(TOP)/yupp
+
+# -- perform preprocessing anywhere
+# SKIP_PP = 0
+# -- skip preprocessing on the EV3 brick (it's a bit slow), would be better to use pre-generated sources
+SKIP_PP = $(EV3)
+# -- skip preprocessing anywhere
+# SKIP_PP = 1
+
+ifeq ($(SKIP_PP),0)
+PP = python -u $(YUPP_HOME)/yup.py
+else
+PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
@@ -60,25 +69,20 @@ endif
 
 endif
 
-# -- platform specific options
-ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
-endif
-
 # -- yupp import directories
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = . $(TOP)/source/ev3 $(TOP)/lib
+D_C = . $(TOP)/source/ev3 $(TOP)/3d_party
+
+# D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
+
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
 endif
 
 D_CXX = $(D_C)
-D_ASM = source
-
-D_C := $(if $(D_PLATFORM), source/$(D_PLATFORM) $(D_C), $(D_C))
+D_ASM = $(TOP)/source
 
 # -- include directories
 D_H = $(D_C)
@@ -143,6 +147,12 @@ PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
 ASMFLAGS = -Wall
+
+# -- platform specific options
+ifeq ($(PLATFORM),__DJGPP__)
+BUFSIZE = 16k
+MINSTACK = 1024k
+endif
 
 # ---------------------------------
 #   files lists
@@ -224,11 +234,9 @@ CLEAN = rm -rf $(R)
 endif
 
 # -- install
-ifeq ($(OS),Windows_NT)
-INSTALL =
-else
-INSTALL =
-endif
+define install
+
+endef
 
 # ---------------------------------
 #   make rules
@@ -282,6 +290,6 @@ clean:
 .PHONY: install
 
 install:
-	$(INSTALL)
+	$(call install)
 
 # -- EOF

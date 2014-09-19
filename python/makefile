@@ -5,11 +5,8 @@
 #   |_|                   |_|
 #   makefile ( yupp, SWIG, gcc )
 
-# -- binary name (without extension)
+# -- binary name (without prefix and extension)
 BIN = ev3
-
-# -- creating MAP file
-MAP = 0
 
 ifeq ($(OS),Windows_NT)
 # -- platform (core)
@@ -18,25 +15,11 @@ ifeq ($(OS),Windows_NT)
 # WIN32: __MINGW__
 # UNIX: __UNIX__
 PLATFORM = __MINGW__
-EV3 = 0
 else
 PLATFORM = __UNIX__
-# -- EV3 BRICK
-EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 endif
 
 TOP = ..
-
-# -- yupp preprocessor
-YUPP_HOME = $(TOP)/yupp
-
-SKIP_PP = 0
-
-ifeq ($(SKIP_PP),0)
-PP = python -u $(YUPP_HOME)/yup.py
-else
-PP = @echo makefile: warning: preprocessing step is skipped,
-endif
 
 # -- simplified wrapper and interface generator
 SWIG = swig
@@ -48,6 +31,29 @@ CXX = $(DJGPP_HOME)/bin/gxx.exe
 else
 CC = gcc
 CXX = g++
+endif
+
+# -- on EV3 BRICK
+ifeq ($(PLATFORM),__UNIX__)
+EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
+else
+EV3 = 0
+endif
+
+# -- yupp preprocessor
+YUPP_HOME = $(TOP)/yupp
+
+# -- perform preprocessing anywhere
+# SKIP_PP = 0
+# -- skip preprocessing on the EV3 brick (it's a bit slow), would be better to use pre-generated sources
+SKIP_PP = $(EV3)
+# -- skip preprocessing anywhere
+# SKIP_PP = 1
+
+ifeq ($(SKIP_PP),0)
+PP = python -u $(YUPP_HOME)/yup.py
+else
+PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
@@ -63,27 +69,21 @@ endif
 
 endif
 
-# -- platform specific options
-ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
-endif
-
 # -- yupp import directories
 #    WARNING! single directory only, see the rule for __init__.py
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = . $(TOP)/source/ev3 $(TOP)/lib
+D_C = . $(TOP)/source/ev3 $(TOP)/3d_party
 
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
 endif
 
-D_CXX = $(D_C)
-D_ASM = source
+# D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
 
-D_C := $(if $(D_PLATFORM), source/$(D_PLATFORM) $(D_C), $(D_C))
+D_CXX = $(D_C)
+D_ASM = $(TOP)/source
 
 # -- python headers
 ifeq ($(OS),Windows_NT)
@@ -97,15 +97,11 @@ D_H = $(D_C) $(D_PY)
 
 # -- binary directory
 D_BIN = ev3dev
-#D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
+# D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
 D_OBJ = object
 D_OBJ := $(if $(D_PLATFORM), $(D_OBJ)/$(D_PLATFORM), $(D_OBJ))
-
-# -- LIST and MAP directories
-D_MAP = object
-D_LIST = object
 
 # -- source code suffix
 E_YU = .yu
@@ -131,10 +127,6 @@ endif
 # -- binary full name
 F_BIN = $(D_BIN)/_$(BIN)$(E_BIN)
 
-# -- LIST and MAP suffixes
-E_MAP = .map
-E_LIST = .listing
-
 # -- link options
 LIBS = -lm
 
@@ -149,10 +141,6 @@ endif
 endif
 
 LFLAGS =
-
-ifeq ($(MAP),1)
-LFLAGS := $(LFLAGS) -Wl,-Map,$(D_MAP)/$(BIN)$(E_MAP)
-endif
 
 # -- preprocessor flags
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
@@ -171,6 +159,12 @@ CXXFLAGS := $(CXXFLAGS) -fPIC
 endif
 
 ASMFLAGS = -Wall
+
+# -- platform specific options
+ifeq ($(PLATFORM),__DJGPP__)
+BUFSIZE = 16k
+MINSTACK = 1024k
+endif
 
 # ---------------------------------
 #   files lists
@@ -240,10 +234,6 @@ ifeq ($(SKIP_PP),0)
 R := $(R) $(G_H) $(G_C) $(G_CXX)
 endif
 
-ifeq ($(MAP),1)
-R := $(R) $(D_MAP)/$(BIN)$(E_MAP)
-endif
-
 ifeq ($(OS),Windows_NT)
 #CLEAN = cmd /c "del $(subst /,\,$(R))"
 CLEAN = rm -rf $(R)
@@ -252,11 +242,9 @@ CLEAN = rm -rf $(R)
 endif
 
 # -- install
-ifeq ($(OS),Windows_NT)
-INSTALL =
-else
-INSTALL =
-endif
+define install
+
+endef
 
 # ---------------------------------
 #   make rules
@@ -320,6 +308,6 @@ clean:
 .PHONY: install
 
 install:
-	$(INSTALL)
+	$(call install)
 
 # -- EOF

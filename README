@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.3b4
-                2014-09-18
+    ev3dev-c    0.3b5
+                2014-09-19
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -43,21 +43,28 @@
     * * *  How can I see some examples?
 
     There are a few examples on C in "eg" folder:
-    "led"    - LEDs blinking example,
-    "sensor" - TOUCH and COLOR sensors example,
-    "tacho"  - MINITACHO motor running for 5 sec.
+    "light"    - LEDs blinking example,
+    "sensor"   - TOUCH and COLOR sensors example,
+    "tacho"    - MINITACHO motor running for 5 sec,
+    "poweroff" - power-off the EV3 brick.
 
-    > cd eg/led/
+    > cd eg/light/
     > make
-    > bin/led
+    > bin/light
     or
-    > bin\mingw\led.exe
+    > bin\mingw\light.exe
 
     Similar examples on Python could be found in "python/ev3dev/eg".
 
-    * * *  How can I drive the EV3 hardware remotely?
+    * * *  How to drive the EV3 hardware remotely?
 
     https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link
+
+    * * *  How to make a static library?
+
+    > cd source/ev3/
+    > make
+    > make install
 
     ___     ______________________________________
     ___ GIT ______________________________________
