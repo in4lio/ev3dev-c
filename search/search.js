@@ -8,17 +8,19 @@
 var indexSectionsWithContent =
 {
   0: "elm",
-  1: "m",
-  2: "e",
-  3: "l"
+  1: "e",
+  2: "em",
+  3: "e",
+  4: "l"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "groups",
-  3: "pages"
+  1: "classes",
+  2: "files",
+  3: "groups",
+  4: "pages"
 };
 
 function convertToId(search)
