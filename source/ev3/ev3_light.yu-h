@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,ev3dev lights (green and red LEDs at once).)
+($TITLE,,EV3 lights (green and red LEDs at once).)
 
 ($import stdlib)
 ($import h)
@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \addtogroup ev3dev
+ *  \defgroup ev3_light EV3 lights
  *  \{
  */
 

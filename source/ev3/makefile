@@ -85,13 +85,13 @@ endif
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = $(TOP)/source/ev3 $(TOP)/3d_party
-
-ifeq ($(EV3),0)
-D_C := $(D_C) $(TOP)/source/ev3/ev3_link
-endif
+D_C = . $(TOP)/3d_party
 
 # D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
+
+ifeq ($(EV3),0)
+D_C := $(D_C) ev3_link
+endif
 
 D_CXX = $(D_C)
 D_ASM = $(TOP)/source

@@ -6,14 +6,15 @@
 
 ($set PATH_PREF ($join (($unq CLASS_PATH) ($unq CLASS_FOLDER_PREF)) [/]))
 #define PATH_PREF_LEN  ($len PATH_PREF)
+#define _ID_SPOT  "///"
 
 ($each-CLASS_ATTR \i.]
-#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) "///" ($i CLASS_ATTR_NAME)
+#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) _ID_SPOT ($i CLASS_ATTR_NAME)
 
 [ )
 
 ($each-CLASS_AVEC \i.]
-#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) "///" ($i CLASS_AVEC_NAME)
+#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) _ID_SPOT ($i CLASS_AVEC_NAME)
 
 [ )
 
@@ -79,7 +80,7 @@ int ev3_($CLASS_ID)_port( uint8_t type_id )
 	return ( EV3_NONE );
 }
 
-EV3_($upper CLASS_ID)_T *ev3_get_($CLASS_ID)( uint8_t port )
+EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port )
 {
 	return ( ev3_($CLASS_ID) + (( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ));
 }

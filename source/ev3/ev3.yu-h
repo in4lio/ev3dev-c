@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,ev3dev file operations.)
+($TITLE,,EV3 file operations.)
 
 ($import stdlib)
 ($import h)
@@ -19,8 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3dev ev3dev
- *  \ingroup app
+ *  \defgroup ev3 EV3 file operations
  *  \{
  */
 

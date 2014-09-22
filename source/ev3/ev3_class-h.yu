@@ -17,9 +17,9 @@ typedef struct {
 	uint32_t id;
 	uint32_t type_id;
 
-} EV3_($upper CLASS_ID)_T;
+} EV3_($upper CLASS_ID);
 
-($h-extern) EV3_($upper CLASS_ID)_T ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
+($h-extern) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
 
 enum {
 	($each-CLASS_TYPE \i.]
@@ -46,4 +46,4 @@ enum {
 
 ($h-extern) char *ev3_($CLASS_ID)_type( uint8_t type_id );
 ($h-extern) int ev3_($CLASS_ID)_port( uint8_t type_id );
-($h-extern) EV3_($upper CLASS_ID)_T *ev3_get_($CLASS_ID)( uint8_t port );
+($h-extern) EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port );

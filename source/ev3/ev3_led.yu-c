@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,ev3dev LEDs.)
+($TITLE,,EV3 LEDs.)
 
 ($import stdlib)
 ($import h)
@@ -18,7 +18,7 @@
 #include "ev3_led.h"
 
 /**
- *  \addtogroup ev3dev
+ *  \addtogroup ev3_led
  *  \{
  */
 

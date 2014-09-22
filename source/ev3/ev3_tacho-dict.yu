@@ -4,7 +4,7 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($set CLASS_PATH "/sys/class/tacho-motor/")
+($set CLASS_PATH "/sys/class/tacho-motor")
 ($set CLASS_FOLDER_PREF "tacho-motor")
 ($set CLASS_ID tacho)
 

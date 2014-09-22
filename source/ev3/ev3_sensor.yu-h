@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,ev3dev sensors.)
+($TITLE,,EV3 sensors.)
 
 ($import stdlib)
 ($import h)
@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \addtogroup ev3dev
+ *  \defgroup ev3_sensor EV3 sensors
  *  \{
  */
 
