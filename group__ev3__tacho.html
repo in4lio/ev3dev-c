@@ -25,6 +25,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -52,7 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -304,8 +305,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_tacho_type</b> 
 <tr class="memitem:gaa8c21129314701631648df3a36226683"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa8c21129314701631648df3a36226683"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_tacho_port</b> (uint8_t type_id)</td></tr>
 <tr class="separator:gaa8c21129314701631648df3a36226683"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab11e1b2aa21554e4d7e69834b0418918"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab11e1b2aa21554e4d7e69834b0418918"></a>
-<a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_get_tacho</b> (uint8_t port)</td></tr>
+<tr class="memitem:gab11e1b2aa21554e4d7e69834b0418918"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> (uint8_t port)</td></tr>
+<tr class="memdesc:gab11e1b2aa21554e4d7e69834b0418918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a connected tacho info.  <a href="#gab11e1b2aa21554e4d7e69834b0418918">More...</a><br /></td></tr>
 <tr class="separator:gab11e1b2aa21554e4d7e69834b0418918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6912f96d1f2dfab0cbd80939120f96cb"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_tacho_init</b> (void)</td></tr>
@@ -318,10 +319,34 @@ Variables</h2></td></tr>
 <tr class="separator:ga03446051bd6fb2f25e9fd045cc1464b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gab11e1b2aa21554e4d7e69834b0418918"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> * ev3_get_tacho </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>EV3 port. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to a connected tacho info. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 19:01:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 23 2014 17:32:06 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

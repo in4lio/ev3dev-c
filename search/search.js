@@ -11,7 +11,8 @@ var indexSectionsWithContent =
   1: "e",
   2: "em",
   3: "e",
-  4: "l"
+  4: "e",
+  5: "el"
 };
 
 var indexSectionNames =
@@ -19,8 +20,9 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "groups",
-  4: "pages"
+  3: "functions",
+  4: "groups",
+  5: "pages"
 };
 
 function convertToId(search)

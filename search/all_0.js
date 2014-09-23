@@ -3,12 +3,15 @@ var searchData=
   ['ev3_20file_20operations',['EV3 file operations',['../group__ev3.html',1,'']]],
   ['ev3_2ec',['ev3.c',['../ev3_8c.html',1,'']]],
   ['ev3_2eh',['ev3.h',['../ev3_8h.html',1,'']]],
+  ['ev3_5fget_5fsensor',['ev3_get_sensor',['../group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321',1,'ev3_sensor.c']]],
+  ['ev3_5fget_5ftacho',['ev3_get_tacho',['../group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918',1,'ev3_tacho.c']]],
   ['ev3_20leds',['EV3 LEDs',['../group__ev3__led.html',1,'']]],
   ['ev3_5fled_2ec',['ev3_led.c',['../ev3__led_8c.html',1,'']]],
   ['ev3_5fled_2eh',['ev3_led.h',['../ev3__led_8h.html',1,'']]],
   ['ev3_20lights',['EV3 lights',['../group__ev3__light.html',1,'']]],
   ['ev3_5flight_2ec',['ev3_light.c',['../ev3__light_8c.html',1,'']]],
   ['ev3_5flight_2eh',['ev3_light.h',['../ev3__light_8h.html',1,'']]],
+  ['ev3_20remote_20access',['EV3 remote access',['../group__ev3__link.html',1,'']]],
   ['ev3_5flink_2ec',['ev3_link.c',['../ev3__link_8c.html',1,'']]],
   ['ev3_5flink_2eh',['ev3_link.h',['../ev3__link_8h.html',1,'']]],
   ['ev3_5fmessage',['EV3_MESSAGE',['../structEV3__MESSAGE.html',1,'']]],
@@ -18,5 +21,7 @@ var searchData=
   ['ev3_5fsensor_2eh',['ev3_sensor.h',['../ev3__sensor_8h.html',1,'']]],
   ['ev3_5ftacho',['EV3_TACHO',['../structEV3__TACHO.html',1,'EV3_TACHO'],['../group__ev3__tacho.html',1,'(Global Namespace)']]],
   ['ev3_5ftacho_2ec',['ev3_tacho.c',['../ev3__tacho_8c.html',1,'']]],
-  ['ev3_5ftacho_2eh',['ev3_tacho.h',['../ev3__tacho_8h.html',1,'']]]
+  ['ev3_5ftacho_2eh',['ev3_tacho.h',['../ev3__tacho_8h.html',1,'']]],
+  ['examples_20in_20c',['Examples in C',['../page_c_eg.html',1,'']]],
+  ['examples_20in_20python',['Examples in Python',['../page_python_eg.html',1,'']]]
 ];

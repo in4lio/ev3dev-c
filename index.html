@@ -25,6 +25,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -52,7 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -66,14 +67,93 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">LEGO Mindstorms EV3 Debian C library + Python wrapper </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><center> <div class="fragment"><div class="line"> ____ __     ____   ___    ____ __         (((((()</div>
-<div class="line">| |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /   </div>
-<div class="line">|_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \   </div>
-<div class="line">                                           ((())))</div>
-</div><!-- fragment --> </center> </div></div><!-- contents -->
+<div class="textblock"><center> <div class="fragment"><div class="line"> </div>
+<div class="line"> ____ __     ____   ___    ____ __      ____</div>
+<div class="line">| |_  \ \  /   ) ) | |  ) | |_  \ \  / / /  </div>
+<div class="line">|_|__  \_\/  __)_) |_|_/  |_|__  \_\/  \_\__</div>
+<div class="line"> </div>
+<div class="line"> </div>
+</div><!-- fragment --> </center><h2>The library hierarchic structure</h2>
+<h3>I LEVEL</h3>
+<p>This level contains functions for a <a class="el" href="group__ev3.html">local</a> and <a class="el" href="group__ev3__link.html">remote</a> access to the file system of the EV3 brick. The following code will write the value in the file (on the brick) or will send the UDP message to the brick (on the remote computer). </p><div class="fragment"><div class="line">ev3_init();</div>
+<div class="line"></div>
+<div class="line">ev3_write( <span class="stringliteral">&quot;/sys/class/leds/ev3:red:right/trigger&quot;</span>, <span class="stringliteral">&quot;heartbeat&quot;</span> );</div>
+<div class="line"></div>
+<div class="line">ev3_uninit();</div>
+</div><!-- fragment --><p> For more information about a remote access to the EV3 brick go to <a href="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</a>.</p>
+<h3>II LEVEL</h3>
+<p>Basic <a class="el" href="group__ev3__led.html">functions</a> to read and write attributes of LEDs, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</a>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> ok, val;</div>
+<div class="line"></div>
+<div class="line">ev3_init();</div>
+<div class="line"></div>
+<div class="line">ok = get_led_brightness( EV3_GREEN_LEFT, &amp;val );</div>
+<div class="line"><span class="keywordflow">if</span> ( ok ) {</div>
+<div class="line">    printf( <span class="stringliteral">&quot;EV3_GREEN_LEFT is %s&quot;</span>, ( val ) ? <span class="stringliteral">&quot;ON&quot;</span> : <span class="stringliteral">&quot;OFF&quot;</span> );</div>
+<div class="line">}</div>
+<div class="line">ev3_uninit();</div>
+</div><!-- fragment --><p> Basic <a class="el" href="group__ev3__sensor.html">functions</a> to read and write attributes of sensors, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-the-Mindstorms-Sensor-Device-Class">"Using sensors"</a>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> val;</div>
+<div class="line"></div>
+<div class="line">ev3_init();</div>
+<div class="line">ev3_sensor_init();</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">if</span> ( get_sensor_value( 0, INPUT_1, &amp;val )) {</div>
+<div class="line">    printf( <span class="stringliteral">&quot;EV3_TOUCH value = %d&quot;</span>, val );</div>
+<div class="line">}</div>
+<div class="line">ev3_uninit();</div>
+</div><!-- fragment --><p> Basic <a class="el" href="group__ev3__tacho.html">functions</a> to read and write attributes of tacho-motors, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-Motors">"Using motors"</a>. </p><div class="fragment"><div class="line">ev3_init();</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">if</span> ( ev3_tacho_init() != EV3_NONE ) {</div>
+<div class="line">    uint8_t <span class="keywordtype">id</span> = ev3_tacho[ OUTPUT_A ].id;</div>
+<div class="line"></div>
+<div class="line">    set_tacho_regulation_mode( <span class="keywordtype">id</span>, <span class="stringliteral">&quot;off&quot;</span> );</div>
+<div class="line">    set_tacho_run_mode( <span class="keywordtype">id</span>, <span class="stringliteral">&quot;time&quot;</span> );</div>
+<div class="line">    set_tacho_stop_mode( <span class="keywordtype">id</span>, <span class="stringliteral">&quot;brake&quot;</span> );</div>
+<div class="line">    set_tacho_duty_cycle_sp( <span class="keywordtype">id</span>, 100 );</div>
+<div class="line">    set_tacho_time_sp( <span class="keywordtype">id</span>, 5000 );</div>
+<div class="line">    set_tacho_ramp_up_sp( <span class="keywordtype">id</span>, 2000 );</div>
+<div class="line">    set_tacho_ramp_down_sp( <span class="keywordtype">id</span>, 2000 );</div>
+<div class="line">    set_tacho_run( <span class="keywordtype">id</span>, <span class="keyword">true</span> );</div>
+<div class="line">}</div>
+<div class="line">ev3_uninit();</div>
+</div><!-- fragment --><h3>III LEVEL</h3>
+<p>Task-focused user-friendly functions. Only <a class="el" href="group__ev3__light.html">light</a> module in this category at the moment. </p><div class="fragment"><div class="line">ev3_init();</div>
+<div class="line"></div>
+<div class="line">set_light_blink( LIT_LEFT, LIT_AMBER, 1000, 500 );</div>
+<div class="line"></div>
+<div class="line">ev3_uninit();</div>
+</div><!-- fragment --><p><br />
+ </p><h2>Python and other languages</h2>
+<p>The <a href="https://pypi.python.org/pypi/ev3dev-c/">library</a> on Python has been generated using <a href="http://www.swig.org/">SWIG</a>. The SWIG interface file called "ev3.i", its source is <a href="https://github.com/in4lio/ev3dev-c/blob/master/python/ev3.yu-i">"ev3.yu-i"</a>. </p>
+<p>Features of Python library:</p><ol type="1">
+<li>Functions return a value as the second element of the result tuple;</li>
+<li>Access to lists of detected devices only through <a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a> and <a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> functions;</li>
+<li>Access to other global variables through "ev3" namespace.</li>
+</ol>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;color = [ <span class="stringliteral">&#39;?&#39;</span>, <span class="stringliteral">&#39;BLACK&#39;</span>, <span class="stringliteral">&#39;BLUE&#39;</span>, <span class="stringliteral">&#39;GREEN&#39;</span>, <span class="stringliteral">&#39;YELLOW&#39;</span>, <span class="stringliteral">&#39;RED&#39;</span>, <span class="stringliteral">&#39;WHITE&#39;</span>, <span class="stringliteral">&#39;BROWN&#39;</span> ]</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keywordflow">if</span> <span class="keywordflow">not</span> EV3_BRICK:</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    ev3.brick_addr = <span class="stringliteral">&#39;192.168.0.204&#39;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;ev3_init()</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;ev3_sensor_init()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;port = ev3_sensor_port( EV3_COLOR )</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordflow">if</span> port != EV3_NONE:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    id = <a class="code" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a>( port ).id</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    set_sensor_mode( id, <span class="stringliteral">&#39;COL-COLOR&#39;</span> )</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ok, val = get_sensor_value( 0, id )</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span> ok:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;EV3_COLOR =&#39;</span>, color[ val ]</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;ev3_uninit()</div>
+</div><!-- fragment --><p> Similarly, you can use SWIG to wrap the library in a number of other languages.</p>
+<p><br />
+ </p><h2>TODO</h2>
+<p>EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc... </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 19:01:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 23 2014 17:32:06 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -25,6 +25,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -52,7 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -253,8 +254,8 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_sensor_type</b>
 <tr class="memitem:ga821db2d36cac6ebfd2387944b10b6031"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga821db2d36cac6ebfd2387944b10b6031"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_sensor_port</b> (uint8_t type_id)</td></tr>
 <tr class="separator:ga821db2d36cac6ebfd2387944b10b6031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5bc1b3f7a1585b6f3c2132a61872321"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae5bc1b3f7a1585b6f3c2132a61872321"></a>
-<a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_get_sensor</b> (uint8_t port)</td></tr>
+<tr class="memitem:gae5bc1b3f7a1585b6f3c2132a61872321"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a> (uint8_t port)</td></tr>
+<tr class="memdesc:gae5bc1b3f7a1585b6f3c2132a61872321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a connected sensor info.  <a href="#gae5bc1b3f7a1585b6f3c2132a61872321">More...</a><br /></td></tr>
 <tr class="separator:gae5bc1b3f7a1585b6f3c2132a61872321"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08e26f670c96ed449419b2ac62aec842"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga08e26f670c96ed449419b2ac62aec842"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_sensor_init</b> (void)</td></tr>
@@ -267,10 +268,34 @@ Variables</h2></td></tr>
 <tr class="separator:ga522f00269d37af1a037966c309bff9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gae5bc1b3f7a1585b6f3c2132a61872321"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> * ev3_get_sensor </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>EV3 port. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to a connected sensor info. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 19:01:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 23 2014 17:32:06 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

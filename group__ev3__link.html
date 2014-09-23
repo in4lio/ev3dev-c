@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>ev3_link.c File Reference</title>
+<title>EV3 remote access</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -47,12 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>Globals</span></a></li>
-    </ul>
-  </div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +62,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_f81aa6984f612c32817dba3e623b02be.html">ev3</a></li><li class="navelem"><a class="el" href="dir_ff3fdbe3129d12894226e1dcd67831ec.html">ev3_link</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
@@ -80,26 +70,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">ev3_link.c File Reference</div>  </div>
+<div class="title">EV3 remote access</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>EV3 remote access.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;signal.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;limits.h&gt;</code><br />
-<code>#include &lt;dirent.h&gt;</code><br />
-<code>#include &lt;netinet/in.h&gt;</code><br />
-<code>#include &lt;sys/socket.h&gt;</code><br />
-<code>#include &lt;sys/un.h&gt;</code><br />
-<code>#include &lt;arpa/inet.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ev3__link_8h_source.html">ev3_link.h</a>&quot;</code><br />
-</div><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html">EV3_MESSAGE_HEADER</a></td></tr>
@@ -109,9 +83,6 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a9c1142f9e5626bc87967d567c0b94b51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c1142f9e5626bc87967d567c0b94b51"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>Sleep</b>(msec)&#160;&#160;&#160;usleep(( msec ) * 1000 )</td></tr>
-<tr class="separator:a9c1142f9e5626bc87967d567c0b94b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8441b3dfa5d3040305280b8877cb37fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8441b3dfa5d3040305280b8877cb37fd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_MESSAGE_LIMIT</b>&#160;&#160;&#160;1500</td></tr>
 <tr class="separator:ga8441b3dfa5d3040305280b8877cb37fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,12 +155,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_poweroff</b> (
 <tr class="separator:gaf1d0cb000f1636c7e0f71d9893b18c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>See the LICENSE file. </dd></dl>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Sep 23 2014 17:32:05 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 23 2014 17:32:06 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

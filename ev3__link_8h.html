@@ -25,6 +25,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -49,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -56,7 +58,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,27 +88,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3ae55babbf08af092fee670d4e593c62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ae55babbf08af092fee670d4e593c62"></a>
+<tr class="memitem:ga3ae55babbf08af092fee670d4e593c62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ae55babbf08af092fee670d4e593c62"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_open</b> (char *addr, uint16_t port)</td></tr>
-<tr class="separator:a3ae55babbf08af092fee670d4e593c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a177bca1e36e341cb35329f03275ebc6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a177bca1e36e341cb35329f03275ebc6a"></a>
+<tr class="separator:ga3ae55babbf08af092fee670d4e593c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga177bca1e36e341cb35329f03275ebc6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga177bca1e36e341cb35329f03275ebc6a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_close</b> (void)</td></tr>
-<tr class="separator:a177bca1e36e341cb35329f03275ebc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73342ac8a3f9657d415a9bf6eeaf52b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad73342ac8a3f9657d415a9bf6eeaf52b"></a>
+<tr class="separator:ga177bca1e36e341cb35329f03275ebc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad73342ac8a3f9657d415a9bf6eeaf52b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad73342ac8a3f9657d415a9bf6eeaf52b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_catch_address</b> (void)</td></tr>
-<tr class="separator:ad73342ac8a3f9657d415a9bf6eeaf52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe0891c5d35da4131cdb82012683261a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe0891c5d35da4131cdb82012683261a"></a>
+<tr class="separator:gad73342ac8a3f9657d415a9bf6eeaf52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe0891c5d35da4131cdb82012683261a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabe0891c5d35da4131cdb82012683261a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_read</b> (char *fn, void *buf, int sz)</td></tr>
-<tr class="separator:abe0891c5d35da4131cdb82012683261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f6dc70d733f48ae0be35b1aa93631f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f6dc70d733f48ae0be35b1aa93631f1"></a>
+<tr class="separator:gabe0891c5d35da4131cdb82012683261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f6dc70d733f48ae0be35b1aa93631f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2f6dc70d733f48ae0be35b1aa93631f1"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_write</b> (char *fn, void *data, int sz)</td></tr>
-<tr class="separator:a2f6dc70d733f48ae0be35b1aa93631f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0133aa4621026c32f2dfd773ca2eecf3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0133aa4621026c32f2dfd773ca2eecf3"></a>
+<tr class="separator:ga2f6dc70d733f48ae0be35b1aa93631f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0133aa4621026c32f2dfd773ca2eecf3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0133aa4621026c32f2dfd773ca2eecf3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_listdir</b> (char *fn, void *buf, int sz)</td></tr>
-<tr class="separator:a0133aa4621026c32f2dfd773ca2eecf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d0cb000f1636c7e0f71d9893b18c1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1d0cb000f1636c7e0f71d9893b18c1f"></a>
+<tr class="separator:ga0133aa4621026c32f2dfd773ca2eecf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1d0cb000f1636c7e0f71d9893b18c1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf1d0cb000f1636c7e0f71d9893b18c1f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_poweroff</b> (void)</td></tr>
-<tr class="separator:af1d0cb000f1636c7e0f71d9893b18c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gaf1d0cb000f1636c7e0f71d9893b18c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
@@ -114,7 +116,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>udp_ev3_poweroff</b> (
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 20 2014 19:01:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 23 2014 17:32:05 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
