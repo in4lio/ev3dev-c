@@ -15,7 +15,7 @@ if __name__ == '__main__':
     if ev3_init() == EV3_NONE: sys.exit( 1 )
 
     print '*** ( EV3 ) Hello! ***'
-    ev3_sensor_init();
+    ev3_sensor_init()
 
     print 'Found sensors:'
     for i in range( INPUT__COUNT_ ):

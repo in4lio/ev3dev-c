@@ -19,6 +19,7 @@
  *  Please build and install ev3dev-c static library before make this example.
  *  See README.
  */
+
 int main( void )
 {
 	char s[ 256 ];

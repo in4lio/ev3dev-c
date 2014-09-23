@@ -41,6 +41,11 @@
 
 #include "ev3_link.h"
 
+/**
+ *  \addtogroup ev3_link
+ *  \{
+ */
+
 #define UDP_MESSAGE_LIMIT  1500
 
 #define UDP_CLIENT_RX_TRIES  50
@@ -519,3 +524,5 @@ int udp_ev3_poweroff( void )
 
 //////////////////////////////////////////////////
 #endif
+
+/** \} */

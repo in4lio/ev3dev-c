@@ -5,10 +5,142 @@
 
 <CENTER>
 \code
-     ____ __     ____   ___    ____ __         (((((()
-    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /   
-    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \   
-                                               ((())))
+ 
+ ____ __     ____   ___    ____ __      ____
+| |_  \ \  /   ) ) | |  ) | |_  \ \  / / /  
+|_|__  \_\/  __)_) |_|_/  |_|__  \_\/  \_\__
+ 
+ 
 \endcode
 </CENTER>
+
+<H2>The library hierarchic structure</H2>
+
+<H3>I LEVEL</H3>
+
+This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
+access to the file system of the EV3 brick. The following code will write
+the value in the file (on the brick) or will send the UDP message to the brick
+(on the remote computer).
+\code {.c}
+ev3_init();
+
+ev3_write( "/sys/class/leds/ev3:red:right/trigger", "heartbeat" );
+
+ev3_uninit();
+\endcode
+For more information about a remote access to the EV3 brick go to
+<A HREF="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</A>.
+
+<H3>II LEVEL</H3>
+
+Basic \ref ev3_led "functions" to read and write attributes of LEDs, see
+<A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</A>.
+\code {.c}
+int ok, val;
+
+ev3_init();
+
+ok = get_led_brightness( EV3_GREEN_LEFT, &val );
+if ( ok ) {
+	printf( "EV3_GREEN_LEFT is %s", ( val ) ? "ON" : "OFF" );
+}
+ev3_uninit();
+\endcode
+Basic \ref ev3_sensor "functions" to read and write attributes of sensors, see
+<A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-the-Mindstorms-Sensor-Device-Class">"Using sensors"</A>.
+\code {.c}
+int val;
+
+ev3_init();
+ev3_sensor_init();
+
+if ( get_sensor_value( 0, INPUT_1, &val )) {
+	printf( "EV3_TOUCH value = %d", val );
+}
+ev3_uninit();
+\endcode
+Basic \ref ev3_tacho "functions" to read and write attributes of tacho-motors, see
+<A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-Motors">"Using motors"</A>.
+\code {.c}
+ev3_init();
+
+if ( ev3_tacho_init() != EV3_NONE ) {
+	uint8_t id = ev3_tacho[ OUTPUT_A ].id;
+
+	set_tacho_regulation_mode( id, "off" );
+	set_tacho_run_mode( id, "time" );
+	set_tacho_stop_mode( id, "brake" );
+	set_tacho_duty_cycle_sp( id, 100 );
+	set_tacho_time_sp( id, 5000 );
+	set_tacho_ramp_up_sp( id, 2000 );
+	set_tacho_ramp_down_sp( id, 2000 );
+	set_tacho_run( id, true );
+}
+ev3_uninit();
+\endcode
+
+<H3>III	LEVEL</H3>
+
+Task-focused user-friendly functions. Only \ref ev3_light "light" module in
+this category at the moment.
+\code {.c}
+	ev3_init();
+
+	set_light_blink( LIT_LEFT, LIT_AMBER, 1000, 500 );
+
+	ev3_uninit();
+\endcode
+
+<BR>
+<H2>Python and other languages</H2>
+
+The <A HREF="https://pypi.python.org/pypi/ev3dev-c/">library</A> on Python
+has been generated using <A HREF="http://www.swig.org/">SWIG</A>.
+The SWIG interface file called "ev3.i", its source is
+<A HREF="https://github.com/in4lio/ev3dev-c/blob/master/python/ev3.yu-i">"ev3.yu-i"</A>.
+<P>Features of Python library:
+1. Functions return a value as the second element of the result tuple;
+2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions;
+3. Access to other global variables through "ev3" namespace.</P>
+\code {.py}
+color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]
+
+if not EV3_BRICK:
+    ev3.brick_addr = '192.168.0.204'
+ev3_init()
+ev3_sensor_init()
+
+port = ev3_sensor_port( EV3_COLOR )
+if port != EV3_NONE:
+    id = ev3_get_sensor( port ).id
+    set_sensor_mode( id, 'COL-COLOR' )
+
+    ok, val = get_sensor_value( 0, id )
+    if ok:
+        print 'EV3_COLOR =', color[ val ]
+
+ev3_uninit()
+\endcode
+Similarly, you can use SWIG to wrap the library in a number of other languages.
+
+<BR>
+<H2>TODO</H2>
+EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
+ */
+
+/** \page page_c_eg Examples in C
+\include poweroff.c
+\include sensor.c
+\include tacho.c
+\include light.c
+ */
+
+/** \page page_python_eg Examples in Python
+\include io.py
+\include poweroff.py
+\include led.py
+\include sensor.py
+\include tacho.py
+\include light.py
  */

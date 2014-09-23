@@ -46,4 +46,10 @@ enum {
 
 ($h-extern) char *ev3_($CLASS_ID)_type( uint8_t type_id );
 ($h-extern) int ev3_($CLASS_ID)_port( uint8_t type_id );
+
+/**
+ *  \brief Get a connected ($CLASS_ID) info.
+ *  \param port EV3 port.
+ *  \return Pointer to a connected ($CLASS_ID) info.
+ */
 ($h-extern) EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port );
