@@ -7,12 +7,14 @@
 
 var indexSectionsWithContent =
 {
-  0: "elm",
+  0: "cegilmost",
   1: "e",
   2: "em",
-  3: "e",
-  4: "e",
-  5: "el"
+  3: "egs",
+  4: "ceit",
+  5: "io",
+  6: "e",
+  7: "el"
 };
 
 var indexSectionNames =
@@ -21,8 +23,10 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "groups",
-  5: "pages"
+  4: "variables",
+  5: "enumvalues",
+  6: "groups",
+  7: "pages"
 };
 
 function convertToId(search)
