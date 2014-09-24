@@ -43,9 +43,9 @@
     * * *  How can I see some examples?
 
     There are a few examples on C in "eg" folder:
-    "light"    - LEDs blinking example,
-    "sensor"   - TOUCH and COLOR sensors example,
-    "tacho"    - MINITACHO motor running for 5 sec,
+    "light"    - LEDs blinking example;
+    "sensor"   - TOUCH and COLOR sensors example;
+    "tacho"    - MINITACHO motor running for 5 sec;
     "poweroff" - power-off the EV3 brick.
 
     > cd eg/light/

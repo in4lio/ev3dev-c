@@ -26,6 +26,10 @@
 ($import "ev3_tacho-dict.yu")
 ($import "ev3_class-h.yu")
 
+/**
+ *  \brief Auto-detection of connected tacho-motors.
+ *  \return The number of found tacho-motors or EV3_NONE in case of an error.
+ */
 ($h-extern) int ev3_tacho_init( void );
 
 /** \} */

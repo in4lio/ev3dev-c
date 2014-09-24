@@ -14,14 +14,14 @@
 \endcode
 </CENTER>
 
-<H2>The library hierarchic structure</H2>
+<H2>The <A HREF="https://github.com/in4lio/ev3dev-c/">library</A> hierarchic structure</H2>
 
 <H3>I LEVEL</H3>
 
 This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
 access to the file system of the EV3 brick. The following code will write
-the value in the file (on the brick) or will send the UDP message to the brick
-(on the remote computer).
+the value in the file (on the brick) or will send these data in a UDP message
+to the brick (on the remote computer).
 \code {.c}
 ev3_init();
 

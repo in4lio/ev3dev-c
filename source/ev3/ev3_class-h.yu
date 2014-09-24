@@ -4,23 +4,35 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
+/**
+ *  \brief EV3 ports to plug in a ($CLASS_ID).
+ */
 enum {
 	($CLASS_PORT \i.]
 		($CLASS_PORT_ID)_($i),
 
 	[ )
-	($CLASS_PORT_ID)__COUNT_
+	($CLASS_PORT_ID)__COUNT_  /**< Count of EV3 ($CLASS_PORT_PREF) ports. */
 };
 
+/**
+ *  \brief Structure of a ($CLASS_ID) descriptor.
+ */
 typedef struct {
-	bool     connected;
-	uint32_t id;
-	uint32_t type_id;
+	bool     connected;  /**< Flag - the ($CLASS_ID) is connected. */
+	uint32_t id;         /**< Identifier of the ($CLASS_ID). */
+	uint32_t type_id;    /**< The ($CLASS_ID) type. */
 
 } EV3_($upper CLASS_ID);
 
+/**
+ *  \brief Vector of ($CLASS_ID) descriptors for each port.
+ */
 ($h-extern) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
 
+/**
+ *  \brief Types of ($CLASS_ID)s.
+ */
 enum {
 	($each-CLASS_TYPE \i.]
 		($upper ($unq ($i CLASS_TYPE_NAME))) = ($i CLASS_TYPE_ID),
@@ -30,9 +42,23 @@ enum {
 
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Get ($q ($i CLASS_ATTR_ID)) attribute of the ($CLASS_ID).
+		 *  \param id Identifier of the ($CLASS_ID).
+		 *  \param[out] buf Buffer for result.
+		 ($[*  \param sz Buffer size.] ? ($i CLASS_ATTR_ARRAY))
+		 *  \return Count of read bytes.
+		 */
 		($h-extern) size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) );
 	[ )
 	($if ($ge ($i CLASS_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Set ($q ($i CLASS_ATTR_ID)) attribute of the ($CLASS_ID).
+		 *  \param id Identifier of the ($CLASS_ID).
+		 *  \param value Attribute value.
+		 ($[*  \param sz Size of attribute value.] ? ($i CLASS_ATTR_ARRAY))
+		 *  \return Count of written bytes.
+		 */
 		($h-extern) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 
 	[ )
@@ -40,16 +66,35 @@ enum {
 [ )
 
 ($each-CLASS_AVEC \i.]
+	/**
+	 *  \brief Get ($q ($i CLASS_AVEC_ID)) attribute of the ($CLASS_ID).
+	 *  \param inx Attribute index.
+	 *  \param id Identifier of the ($CLASS_ID).
+	 *  \param[out] buf Buffer for result.
+	 ($[*  \param sz Buffer size.] ? ($i CLASS_AVEC_ARRAY))
+	 *  \return Count of read bytes.
+	 */
 	($h-extern) size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t inx, uint8_t id, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) );
 
 [ )
 
+/**
+ *  \brief Get the name of the specified ($CLASS_ID) type.
+ *  \param type_id The ($CLASS_ID) type.
+ *  \return Name of the ($CLASS_ID) type.
+ */
 ($h-extern) char *ev3_($CLASS_ID)_type( uint8_t type_id );
+
+/**
+ *  \brief Search the port of the specified ($CLASS_ID) type.
+ *  \param type_id The ($CLASS_ID) type.
+ *  \return EV3 port.
+ */
 ($h-extern) int ev3_($CLASS_ID)_port( uint8_t type_id );
 
 /**
- *  \brief Get a connected ($CLASS_ID) info.
+ *  \brief Get the descriptor of a ($CLASS_ID) connected to the specified port.
  *  \param port EV3 port.
- *  \return Pointer to a connected ($CLASS_ID) info.
+ *  \return Pointer to the ($CLASS_ID) descriptor.
  */
 ($h-extern) EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port );
