@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_5f_5fcount_5f',['OUTPUT__COUNT_',['../group__ev3__tacho.html#gga726ca809ffd3d67ab4b8476646f26635accbe1788802e61f7618717f5fe6e1078',1,'ev3_tacho.h']]]
+  ['lego_20mindstorms_20ev3_20debian_20c_20library_20_2b_20python_20wrapper',['LEGO Mindstorms EV3 Debian C library + Python wrapper',['../index.html',1,'']]]
 ];

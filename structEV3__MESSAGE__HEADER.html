@@ -75,29 +75,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">EV3_MESSAGE_HEADER Struct Reference<div class="ingroups"><a class="el" href="group__ev3__link.html">EV3 remote access</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Header of an UDP message.  
+ <a href="structEV3__MESSAGE__HEADER.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:acb5cfd209ba75c853d03f701e7f91679"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb5cfd209ba75c853d03f701e7f91679"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="memitem:acb5cfd209ba75c853d03f701e7f91679"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html#acb5cfd209ba75c853d03f701e7f91679">type</a></td></tr>
 <tr class="separator:acb5cfd209ba75c853d03f701e7f91679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fc3a0c58dfbd1e68224521185cb9384"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="memitem:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html#a4fc3a0c58dfbd1e68224521185cb9384">id</a></td></tr>
 <tr class="separator:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29a9ac01b35d8c8b3e47babc0f797eef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29a9ac01b35d8c8b3e47babc0f797eef"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>fn_size</b></td></tr>
+<tr class="memitem:a29a9ac01b35d8c8b3e47babc0f797eef"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html#a29a9ac01b35d8c8b3e47babc0f797eef">fn_size</a></td></tr>
 <tr class="separator:a29a9ac01b35d8c8b3e47babc0f797eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae6bdbdf6ea1ad3da5af37f0a91d3ea0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae6bdbdf6ea1ad3da5af37f0a91d3ea0"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>data_size</b></td></tr>
+<tr class="memitem:aae6bdbdf6ea1ad3da5af37f0a91d3ea0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html#aae6bdbdf6ea1ad3da5af37f0a91d3ea0">data_size</a></td></tr>
 <tr class="separator:aae6bdbdf6ea1ad3da5af37f0a91d3ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header of an UDP message. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="aae6bdbdf6ea1ad3da5af37f0a91d3ea0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t data_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Data size. </p>
+
+</div>
+</div>
+<a class="anchor" id="a29a9ac01b35d8c8b3e47babc0f797eef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t fn_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Filename size. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4fc3a0c58dfbd1e68224521185cb9384"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Message counter. </p>
+
+</div>
+</div>
+<a class="anchor" id="acb5cfd209ba75c853d03f701e7f91679"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Command type. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="ev3__link_8c.html">ev3_link.c</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 25 2014 18:30:22 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 25 2014 19:33:51 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

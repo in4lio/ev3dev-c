@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['type_5fid',['type_id',['../structEV3__SENSOR.html#ab8545e80e4c421e6283a2f848fc2ca3e',1,'EV3_SENSOR::type_id()'],['../structEV3__TACHO.html#ab8545e80e4c421e6283a2f848fc2ca3e',1,'EV3_TACHO::type_id()']]],
-  ['the_20interchange_20protocol_20over_20udp',['The interchange protocol over UDP',['../udp.html',1,'']]]
+  ['output_5f_5fcount_5f',['OUTPUT__COUNT_',['../group__ev3__tacho.html#gga726ca809ffd3d67ab4b8476646f26635accbe1788802e61f7618717f5fe6e1078',1,'ev3_tacho.h']]]
 ];
