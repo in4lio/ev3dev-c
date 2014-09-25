@@ -67,13 +67,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">LEGO Mindstorms EV3 Debian C library + Python wrapper </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><center> <div class="fragment"><div class="line"> </div>
-<div class="line"> ____ __     ____   ___    ____ __      ____</div>
-<div class="line">| |_  \ \  /   ) ) | |  ) | |_  \ \  / / /  </div>
-<div class="line">|_|__  \_\/  __)_) |_|_/  |_|__  \_\/  \_\__</div>
-<div class="line"> </div>
-<div class="line"> </div>
-</div><!-- fragment --> </center><h2>The <a href="https://github.com/in4lio/ev3dev-c/">library</a> hierarchic structure</h2>
+<div class="textblock"><center> <pre class="fragment"> 
+ ____ __     ____   ___    ____ __         (((((()
+| |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /   
+|_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \   
+                                           ((())))
+ 
+</pre> </center><h2>The <a href="https://github.com/in4lio/ev3dev-c/">library</a> hierarchic structure</h2>
 <h3>I LEVEL</h3>
 <p>This level contains functions for a <a class="el" href="group__ev3.html">local</a> and <a class="el" href="group__ev3__link.html">remote</a> access to the file system of the EV3 brick. The following code will write the value in the file (on the brick) or will send these data in a UDP message to the brick (on the remote computer). </p><div class="fragment"><div class="line">ev3_init();</div>
 <div class="line"></div>
@@ -122,7 +122,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">ev3_uninit();</div>
 </div><!-- fragment --><p><br />
- </p><h2>Python and other languages</h2>
+</p><hr/>
+ <h2>Python and other languages</h2>
 <p>The <a href="https://pypi.python.org/pypi/ev3dev-c/">library</a> on Python has been generated using <a href="http://www.swig.org/">SWIG</a>. The SWIG interface file called "ev3.i", its source is <a href="https://github.com/in4lio/ev3dev-c/blob/master/python/ev3.yu-i">"ev3.yu-i"</a>. </p>
 <p>Features of Python library:</p><ol type="1">
 <li>Functions return a value as the second element of the result tuple;</li>
@@ -148,12 +149,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;ev3_uninit()</div>
 </div><!-- fragment --><p> Similarly, you can use SWIG to wrap the library in a number of other languages.</p>
 <p><br />
- </p><h2>TODO</h2>
+</p><hr/>
+ <h2>TODO</h2>
 <p>EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc... </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 24 2014 15:18:46 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 25 2014 18:30:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

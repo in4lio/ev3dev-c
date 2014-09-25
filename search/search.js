@@ -12,9 +12,9 @@ var indexSectionsWithContent =
   2: "em",
   3: "egs",
   4: "ceit",
-  5: "io",
+  5: "eio",
   6: "e",
-  7: "el"
+  7: "elt"
 };
 
 var indexSectionNames =

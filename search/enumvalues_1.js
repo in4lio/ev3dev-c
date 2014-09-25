@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_5f_5fcount_5f',['OUTPUT__COUNT_',['../group__ev3__tacho.html#gga726ca809ffd3d67ab4b8476646f26635accbe1788802e61f7618717f5fe6e1078',1,'ev3_tacho.h']]]
+  ['input_5f_5fcount_5f',['INPUT__COUNT_',['../group__ev3__sensor.html#ggadc29c2ff13d900c2f185ee95427fb06ca5187dcd232b9334898ddf4f2d79fe6cc',1,'ev3_sensor.h']]]
 ];
