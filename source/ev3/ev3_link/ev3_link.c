@@ -58,19 +58,19 @@
 enum {
 	EV3_IDLE,
 
-	EV3_WRITE_FILE,
-	EV3_RESULT_WRITE,
+	EV3_WRITE_FILE   = 1,  /**< File write command. */
+	EV3_RESULT_WRITE = 2,  /**< Write result reply. */
 
-	EV3_READ_FILE,
-	EV3_DATA_READ,
+	EV3_READ_FILE    = 3,  /**< File read command. */
+	EV3_DATA_READ    = 4,  /**< Read data reply. */
 
-	EV3_LIST_DIR,
-	EV3_DIRECTORY,
+	EV3_LIST_DIR     = 5,  /**< List directory command. */
+	EV3_DIRECTORY    = 6,  /**< List directory reply. */
 
-	EV3_POWEROFF,
-	EV3_COMPLETION,
+	EV3_POWEROFF     = 7,  /**< Power-off the brick command. */
+	EV3_COMPLETION   = 8,  /**< Completion of work reply. */
 
-	EV3_WELLCOME,
+	EV3_WELCOME      = 9,  /**< A broadcast beacon. */
 };
 
 typedef struct {
@@ -143,7 +143,7 @@ static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 		}
 	}
 	closedir( d );
-	return (( void *) p - buf );
+	return (( void* ) p - buf );
 }
 
 // CLIENT ////////////////////////////////////////
@@ -193,7 +193,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 	__r_addr.sin_port = htons( port );
 	__r_addr.sin_addr.s_addr = htonl( INADDR_ANY );
 
-	res = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
+	res = bind( sockfd, ( struct sockaddr* ) &__r_addr, sizeof( __r_addr ));
 	if ( res < 0 ) {
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
 		perror( "    bind()" );
@@ -212,7 +212,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
-	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char * ) &optval, sizeof( optval ));
+	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char* ) &optval, sizeof( optval ));
 	ioctlsocket( sockfd, FIONBIO, &optval );
 
 // UNIX //////////////////////////////////////////
@@ -248,7 +248,7 @@ static void __transmit( uint16_t sz )
 	int res, l;
 
 	l = sizeof( EV3_MESSAGE_HEADER ) + sz;
-	res = sendto( sockfd, ( const char * ) &__t_msg, l, 0, ( struct sockaddr * ) &__t_addr, sizeof( __t_addr ));
+	res = sendto( sockfd, ( const char* ) &__t_msg, l, 0, ( struct sockaddr* ) &__t_addr, sizeof( __t_addr ));
 	if ( res < 0 ) {
 		printf( "\n*** ERROR *** (ev3_link) transmit: sendto = %d\n", errno );
 		perror( "    sendto()" );
@@ -261,7 +261,7 @@ static int __receive( void )
 	int msg_l;
 	socklen_t addr_l = sizeof( struct sockaddr_in );
 
-	msg_l = recvfrom( sockfd, (char *) &__r_msg, sizeof( __r_msg ), 0, ( struct sockaddr * ) &__r_addr, &addr_l );
+	msg_l = recvfrom( sockfd, ( char* ) &__r_msg, sizeof( __r_msg ), 0, ( struct sockaddr* ) &__r_addr, &addr_l );
 	if ( msg_l > 0 ) {
 		PEV3_MESSAGE_HEADER h = &__r_msg.head;
 		PEV3_MESSAGE_HEADER t = &__t_msg.head;
@@ -349,7 +349,7 @@ static int __receive( void )
 
 		case EV3_RESULT_WRITE:
 		case EV3_COMPLETION:
-		case EV3_WELLCOME:
+		case EV3_WELCOME:
 			return ( h->type );
 
 //////////////////////////////////////////////////
@@ -374,7 +374,7 @@ void __welcome( void )
 {
 	PEV3_MESSAGE_HEADER t = &__t_msg.head;
 
-	t->type = EV3_WELLCOME;
+	t->type = EV3_WELCOME;
 	t->id = 0;
 	t->fn_size = 0;
 	t->data_size = 0;
@@ -497,7 +497,7 @@ int udp_ev3_listdir( char *fn, void *buf, int sz )
 
 int udp_ev3_catch_address( void )
 {
-	if ( __receive() == EV3_WELLCOME ) {
+	if ( __receive() == EV3_WELCOME ) {
 		__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
 		return ( 1 );
 	}

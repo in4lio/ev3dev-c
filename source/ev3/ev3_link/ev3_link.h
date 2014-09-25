@@ -10,6 +10,105 @@
  *  \copyright  See the LICENSE file.
  */
 
+/** \page udp The interchange protocol over UDP
+    \brief Description of message formats for a remote access to the EV3 brick.
+
+Also see
+<A HREF="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</A>.
+
+<H3>Write data into the specified file on the EV3 brick</H3>
+
+Host application command
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_WRITE_FILE              |
+|  2 .. 3                           |  Message counter (id)             |
+|  4 .. 5                           |  Filename size (f_sz)             |
+|  6 .. 7                           |  Data size (d_sz)                 |
+|  8 .. 8 + f_sz - 1                |  Filename                         |
+|  8 + f_sz .. 8 + f_sz + d_sz - 1  |  Data                             |
+
+Brick server reply
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_RESULT_WRITE            |
+|  2 .. 3                           |  id                               |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  Count of written bytes           |
+
+<HR>
+<H3>Read data from the specified file on the EV3 brick</H3>
+
+Host application command
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_READ_FILE               |
+|  2 .. 3                           |  Message counter (id)             |
+|  4 .. 5                           |  Filename size (f_sz)             |
+|  6 .. 7                           |  Max data size                    |
+|  8 .. 8 + f_sz - 1                |  Filename                         |
+
+Brick server reply
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_DATA_READ               |
+|  2 .. 3                           |  id                               |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  Count of read bytes (d_sz)       |
+|  8 .. 8 + d_sz - 1                |  Data                             |
+
+<HR>
+<H3>List files in the specified directory on the EV3 brick</H3>
+
+Host application command
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_LIST_DIR                |
+|  2 .. 3                           |  Message counter (id)             |
+|  4 .. 5                           |  Directory name size (f_sz)       |
+|  6 .. 7                           |  Max files list size              |
+|  8 .. 8 + f_sz - 1                |  Directory name                   |
+
+Brick server reply
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_DIRECTORY               |
+|  2 .. 3                           |  id                               |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  Files list size (d_sz)           |
+|  8 .. 8 + d_sz - 1                |  Files list                       |
+
+<HR>
+<H3>Power-off the EV3 brick</H3>
+
+Host application command
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_POWEROFF                |
+|  2 .. 3                           |  Message counter (id)             |
+|  4 .. 5                           |  0x5555                           |
+|  6 .. 7                           |  0xAAAA                           |
+
+Brick server reply
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_COMPLETION              |
+|  2 .. 3                           |  id                               |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  0                                |
+
+<HR>
+<H3>Notify a host that the brick server is online.</H3>
+
+Brick server beacon
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_WELCOME                 |
+|  2 .. 3                           |  0                                |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  0                                |
+ */
+
 #pragma once
 
 #include <stdint.h>

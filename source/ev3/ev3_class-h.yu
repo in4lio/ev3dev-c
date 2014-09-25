@@ -26,7 +26,7 @@ typedef struct {
 } EV3_($upper CLASS_ID);
 
 /**
- *  \brief Vector of ($CLASS_ID) descriptors for each port.
+ *  \brief Vector of ($CLASS_ID) descriptors for each port (filled by \ref ev3_($CLASS_ID)_init).
  */
 ($h-extern) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($CLASS_PORT_ID)__COUNT_ ];
 

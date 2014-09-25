@@ -2910,8 +2910,8 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_EV3_SENSOR_T swig_types[0]
-#define SWIGTYPE_p_EV3_TACHO_T swig_types[1]
+#define SWIGTYPE_p_EV3_SENSOR swig_types[0]
+#define SWIGTYPE_p_EV3_TACHO swig_types[1]
 #define SWIGTYPE_p_bool swig_types[2]
 #define SWIGTYPE_p_byte swig_types[3]
 #define SWIGTYPE_p_char swig_types[4]
@@ -4551,9 +4551,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4562,15 +4562,15 @@ SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_connected_set(PyObject *SWIGUNUSEDPARM(s
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_T_connected_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_connected_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_connected_set" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_connected_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_T_connected_set" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_connected_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = (bool)(val2);
   if (arg1) (arg1)->connected = arg2;
@@ -4581,20 +4581,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_T_connected_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_connected_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_connected_get" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_connected_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   result = (bool) ((arg1)->connected);
   resultobj = SWIG_From_bool((bool)(result));
   return resultobj;
@@ -4603,9 +4603,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   uint32_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4614,15 +4614,15 @@ SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_id_set(PyObject *SWIGUNUSEDPARM(self), P
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_T_id_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_id_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_id_set" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_id_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_T_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_id_set" "', argument " "2"" of type '" "uint32_t""'");
   } 
   arg2 = (uint32_t)(val2);
   if (arg1) (arg1)->id = arg2;
@@ -4633,20 +4633,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   uint32_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_T_id_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_id_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_id_get" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_id_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   result = (uint32_t) ((arg1)->id);
   resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
   return resultobj;
@@ -4655,9 +4655,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   uint32_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4666,15 +4666,15 @@ SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_type_id_set(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_T_type_id_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_type_id_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_type_id_set" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_id_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_T_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
   } 
   arg2 = (uint32_t)(val2);
   if (arg1) (arg1)->type_id = arg2;
@@ -4685,20 +4685,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_T_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   uint32_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_T_type_id_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_type_id_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_T_type_id_get" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_id_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   result = (uint32_t) ((arg1)->type_id);
   resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
   return resultobj;
@@ -4707,32 +4707,32 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_EV3_SENSOR_T(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_EV3_SENSOR(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *result = 0 ;
+  EV3_SENSOR *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":new_EV3_SENSOR_T")) SWIG_fail;
-  result = (EV3_SENSOR_T *)calloc(1, sizeof(EV3_SENSOR_T));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR_T, SWIG_POINTER_NEW |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":new_EV3_SENSOR")) SWIG_fail;
+  result = (EV3_SENSOR *)calloc(1, sizeof(EV3_SENSOR));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_EV3_SENSOR_T(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_EV3_SENSOR(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_SENSOR_T *arg1 = (EV3_SENSOR_T *) 0 ;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_EV3_SENSOR_T",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR_T, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_EV3_SENSOR",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EV3_SENSOR_T" "', argument " "1"" of type '" "EV3_SENSOR_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EV3_SENSOR" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
-  arg1 = (EV3_SENSOR_T *)(argp1);
+  arg1 = (EV3_SENSOR *)(argp1);
   free((char *) arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4741,24 +4741,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *EV3_SENSOR_T_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *EV3_SENSOR_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_EV3_SENSOR_T, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_EV3_SENSOR, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 SWIGINTERN int Swig_var_ev3_sensor_set(PyObject *_val) {
   {
-    EV3_SENSOR_T *inp = 0;
-    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_SENSOR_T,  0 );
+    EV3_SENSOR *inp = 0;
+    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_SENSOR,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR_T [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)INPUT__COUNT_; ++ii) *(EV3_SENSOR_T *)&ev3_sensor[ii] = *((EV3_SENSOR_T *)inp + ii);
+      for (; ii < (size_t)INPUT__COUNT_; ++ii) *(EV3_SENSOR *)&ev3_sensor[ii] = *((EV3_SENSOR *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR_T [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
     }
   }
   return 0;
@@ -4770,7 +4770,7 @@ fail:
 SWIGINTERN PyObject *Swig_var_ev3_sensor_get(void) {
   PyObject *pyobj = 0;
   
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(ev3_sensor), SWIGTYPE_p_EV3_SENSOR_T,  0 );
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(ev3_sensor), SWIGTYPE_p_EV3_SENSOR,  0 );
   return pyobj;
 }
 
@@ -5656,7 +5656,7 @@ SWIGINTERN PyObject *_wrap_ev3_get_sensor(PyObject *SWIGUNUSEDPARM(self), PyObje
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  EV3_SENSOR_T *result = 0 ;
+  EV3_SENSOR *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_sensor",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
@@ -5664,8 +5664,8 @@ SWIGINTERN PyObject *_wrap_ev3_get_sensor(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_sensor" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_SENSOR_T *)ev3_get_sensor(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR_T, 0 |  0 );
+  result = (EV3_SENSOR *)ev3_get_sensor(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5685,9 +5685,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -5696,15 +5696,15 @@ SWIGINTERN PyObject *_wrap_EV3_TACHO_T_connected_set(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_T_connected_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_connected_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_connected_set" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_connected_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_T_connected_set" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_connected_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = (bool)(val2);
   if (arg1) (arg1)->connected = arg2;
@@ -5715,20 +5715,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_T_connected_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_connected_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_connected_get" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_connected_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   result = (bool) ((arg1)->connected);
   resultobj = SWIG_From_bool((bool)(result));
   return resultobj;
@@ -5737,9 +5737,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   uint32_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -5748,15 +5748,15 @@ SWIGINTERN PyObject *_wrap_EV3_TACHO_T_id_set(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_T_id_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_id_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_id_set" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_id_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_T_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_id_set" "', argument " "2"" of type '" "uint32_t""'");
   } 
   arg2 = (uint32_t)(val2);
   if (arg1) (arg1)->id = arg2;
@@ -5767,20 +5767,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   uint32_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_T_id_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_id_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_id_get" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_id_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   result = (uint32_t) ((arg1)->id);
   resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
   return resultobj;
@@ -5789,9 +5789,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   uint32_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -5800,15 +5800,15 @@ SWIGINTERN PyObject *_wrap_EV3_TACHO_T_type_id_set(PyObject *SWIGUNUSEDPARM(self
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_T_type_id_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_type_id_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_type_id_set" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_id_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_T_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
   } 
   arg2 = (uint32_t)(val2);
   if (arg1) (arg1)->type_id = arg2;
@@ -5819,20 +5819,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_T_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   uint32_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_T_type_id_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_type_id_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_T_type_id_get" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_id_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   result = (uint32_t) ((arg1)->type_id);
   resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
   return resultobj;
@@ -5841,32 +5841,32 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_EV3_TACHO_T(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_EV3_TACHO(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *result = 0 ;
+  EV3_TACHO *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":new_EV3_TACHO_T")) SWIG_fail;
-  result = (EV3_TACHO_T *)calloc(1, sizeof(EV3_TACHO_T));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO_T, SWIG_POINTER_NEW |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":new_EV3_TACHO")) SWIG_fail;
+  result = (EV3_TACHO *)calloc(1, sizeof(EV3_TACHO));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_EV3_TACHO_T(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_EV3_TACHO(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  EV3_TACHO_T *arg1 = (EV3_TACHO_T *) 0 ;
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_EV3_TACHO_T",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO_T, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_EV3_TACHO",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EV3_TACHO_T" "', argument " "1"" of type '" "EV3_TACHO_T *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EV3_TACHO" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
-  arg1 = (EV3_TACHO_T *)(argp1);
+  arg1 = (EV3_TACHO *)(argp1);
   free((char *) arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5875,24 +5875,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *EV3_TACHO_T_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *EV3_TACHO_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_EV3_TACHO_T, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_EV3_TACHO, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 SWIGINTERN int Swig_var_ev3_tacho_set(PyObject *_val) {
   {
-    EV3_TACHO_T *inp = 0;
-    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_TACHO_T,  0 );
+    EV3_TACHO *inp = 0;
+    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_TACHO,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO_T [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)OUTPUT__COUNT_; ++ii) *(EV3_TACHO_T *)&ev3_tacho[ii] = *((EV3_TACHO_T *)inp + ii);
+      for (; ii < (size_t)OUTPUT__COUNT_; ++ii) *(EV3_TACHO *)&ev3_tacho[ii] = *((EV3_TACHO *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO_T [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
     }
   }
   return 0;
@@ -5904,7 +5904,7 @@ fail:
 SWIGINTERN PyObject *Swig_var_ev3_tacho_get(void) {
   PyObject *pyobj = 0;
   
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(ev3_tacho), SWIGTYPE_p_EV3_TACHO_T,  0 );
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(ev3_tacho), SWIGTYPE_p_EV3_TACHO,  0 );
   return pyobj;
 }
 
@@ -7288,7 +7288,7 @@ SWIGINTERN PyObject *_wrap_ev3_get_tacho(PyObject *SWIGUNUSEDPARM(self), PyObjec
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  EV3_TACHO_T *result = 0 ;
+  EV3_TACHO *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_tacho",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
@@ -7296,8 +7296,8 @@ SWIGINTERN PyObject *_wrap_ev3_get_tacho(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_tacho" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_TACHO_T *)ev3_get_tacho(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO_T, 0 |  0 );
+  result = (EV3_TACHO *)ev3_get_tacho(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7351,15 +7351,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"get_light_trigger", _wrap_get_light_trigger, METH_VARARGS, NULL},
 	 { (char *)"set_light_blink", _wrap_set_light_blink, METH_VARARGS, NULL},
 	 { (char *)"get_light_blink", _wrap_get_light_blink, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_connected_set", _wrap_EV3_SENSOR_T_connected_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_connected_get", _wrap_EV3_SENSOR_T_connected_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_id_set", _wrap_EV3_SENSOR_T_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_id_get", _wrap_EV3_SENSOR_T_id_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_type_id_set", _wrap_EV3_SENSOR_T_type_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_type_id_get", _wrap_EV3_SENSOR_T_type_id_get, METH_VARARGS, NULL},
-	 { (char *)"new_EV3_SENSOR_T", _wrap_new_EV3_SENSOR_T, METH_VARARGS, NULL},
-	 { (char *)"delete_EV3_SENSOR_T", _wrap_delete_EV3_SENSOR_T, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_T_swigregister", EV3_SENSOR_T_swigregister, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_connected_set", _wrap_EV3_SENSOR_connected_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_connected_get", _wrap_EV3_SENSOR_connected_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_id_set", _wrap_EV3_SENSOR_id_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_id_get", _wrap_EV3_SENSOR_id_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_type_id_set", _wrap_EV3_SENSOR_type_id_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_type_id_get", _wrap_EV3_SENSOR_type_id_get, METH_VARARGS, NULL},
+	 { (char *)"new_EV3_SENSOR", _wrap_new_EV3_SENSOR, METH_VARARGS, NULL},
+	 { (char *)"delete_EV3_SENSOR", _wrap_delete_EV3_SENSOR, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_swigregister", EV3_SENSOR_swigregister, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_bin_data", _wrap_get_sensor_bin_data, METH_VARARGS, NULL},
 	 { (char *)"set_sensor_bin_data", _wrap_set_sensor_bin_data, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format, METH_VARARGS, NULL},
@@ -7388,15 +7388,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ev3_sensor_port", _wrap_ev3_sensor_port, METH_VARARGS, NULL},
 	 { (char *)"ev3_get_sensor", _wrap_ev3_get_sensor, METH_VARARGS, NULL},
 	 { (char *)"ev3_sensor_init", _wrap_ev3_sensor_init, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_connected_set", _wrap_EV3_TACHO_T_connected_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_connected_get", _wrap_EV3_TACHO_T_connected_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_id_set", _wrap_EV3_TACHO_T_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_id_get", _wrap_EV3_TACHO_T_id_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_type_id_set", _wrap_EV3_TACHO_T_type_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_type_id_get", _wrap_EV3_TACHO_T_type_id_get, METH_VARARGS, NULL},
-	 { (char *)"new_EV3_TACHO_T", _wrap_new_EV3_TACHO_T, METH_VARARGS, NULL},
-	 { (char *)"delete_EV3_TACHO_T", _wrap_delete_EV3_TACHO_T, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_T_swigregister", EV3_TACHO_T_swigregister, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_connected_set", _wrap_EV3_TACHO_connected_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_connected_get", _wrap_EV3_TACHO_connected_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_id_set", _wrap_EV3_TACHO_id_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_id_get", _wrap_EV3_TACHO_id_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_type_id_set", _wrap_EV3_TACHO_type_id_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_type_id_get", _wrap_EV3_TACHO_type_id_get, METH_VARARGS, NULL},
+	 { (char *)"new_EV3_TACHO", _wrap_new_EV3_TACHO, METH_VARARGS, NULL},
+	 { (char *)"delete_EV3_TACHO", _wrap_delete_EV3_TACHO, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_swigregister", EV3_TACHO_swigregister, METH_VARARGS, NULL},
 	 { (char *)"get_tacho_duty_cycle", _wrap_get_tacho_duty_cycle, METH_VARARGS, NULL},
 	 { (char *)"get_tacho_duty_cycle_sp", _wrap_get_tacho_duty_cycle_sp, METH_VARARGS, NULL},
 	 { (char *)"set_tacho_duty_cycle_sp", _wrap_set_tacho_duty_cycle_sp, METH_VARARGS, NULL},
@@ -7447,8 +7447,8 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_EV3_SENSOR_T = {"_p_EV3_SENSOR_T", "EV3_SENSOR_T *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EV3_TACHO_T = {"_p_EV3_TACHO_T", "EV3_TACHO_T *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_EV3_SENSOR = {"_p_EV3_SENSOR", "EV3_SENSOR *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_EV3_TACHO = {"_p_EV3_TACHO", "EV3_TACHO *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_byte = {"_p_byte", "byte *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -7464,8 +7464,8 @@ static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_EV3_SENSOR_T,
-  &_swigt__p_EV3_TACHO_T,
+  &_swigt__p_EV3_SENSOR,
+  &_swigt__p_EV3_TACHO,
   &_swigt__p_bool,
   &_swigt__p_byte,
   &_swigt__p_char,
@@ -7481,8 +7481,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_short,
 };
 
-static swig_cast_info _swigc__p_EV3_SENSOR_T[] = {  {&_swigt__p_EV3_SENSOR_T, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EV3_TACHO_T[] = {  {&_swigt__p_EV3_TACHO_T, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_EV3_SENSOR[] = {  {&_swigt__p_EV3_SENSOR, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_EV3_TACHO[] = {  {&_swigt__p_EV3_TACHO, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_byte[] = {  {&_swigt__p_byte, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -7498,8 +7498,8 @@ static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_l
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_EV3_SENSOR_T,
-  _swigc__p_EV3_TACHO_T,
+  _swigc__p_EV3_SENSOR,
+  _swigc__p_EV3_TACHO,
   _swigc__p_bool,
   _swigc__p_byte,
   _swigc__p_char,

@@ -63,7 +63,7 @@ const char * const led_trigger[] = {
 
 size_t set_led_trigger_inx( uint8_t id, uint8_t inx )
 {
-	return set_led_trigger( id, ( char *) led_trigger[ inx ]);
+	return set_led_trigger( id, ( char* ) led_trigger[ inx ]);
 }
 
 uint8_t get_led_trigger_inx( uint8_t id )

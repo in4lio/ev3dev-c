@@ -232,29 +232,29 @@ INPUT_2 = _ev3.INPUT_2
 INPUT_3 = _ev3.INPUT_3
 INPUT_4 = _ev3.INPUT_4
 INPUT__COUNT_ = _ev3.INPUT__COUNT_
-class EV3_SENSOR_T(_object):
+class EV3_SENSOR(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_SENSOR_T, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_SENSOR, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, EV3_SENSOR_T, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, EV3_SENSOR, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["connected"] = _ev3.EV3_SENSOR_T_connected_set
-    __swig_getmethods__["connected"] = _ev3.EV3_SENSOR_T_connected_get
-    if _newclass:connected = _swig_property(_ev3.EV3_SENSOR_T_connected_get, _ev3.EV3_SENSOR_T_connected_set)
-    __swig_setmethods__["id"] = _ev3.EV3_SENSOR_T_id_set
-    __swig_getmethods__["id"] = _ev3.EV3_SENSOR_T_id_get
-    if _newclass:id = _swig_property(_ev3.EV3_SENSOR_T_id_get, _ev3.EV3_SENSOR_T_id_set)
-    __swig_setmethods__["type_id"] = _ev3.EV3_SENSOR_T_type_id_set
-    __swig_getmethods__["type_id"] = _ev3.EV3_SENSOR_T_type_id_get
-    if _newclass:type_id = _swig_property(_ev3.EV3_SENSOR_T_type_id_get, _ev3.EV3_SENSOR_T_type_id_set)
+    __swig_setmethods__["connected"] = _ev3.EV3_SENSOR_connected_set
+    __swig_getmethods__["connected"] = _ev3.EV3_SENSOR_connected_get
+    if _newclass:connected = _swig_property(_ev3.EV3_SENSOR_connected_get, _ev3.EV3_SENSOR_connected_set)
+    __swig_setmethods__["id"] = _ev3.EV3_SENSOR_id_set
+    __swig_getmethods__["id"] = _ev3.EV3_SENSOR_id_get
+    if _newclass:id = _swig_property(_ev3.EV3_SENSOR_id_get, _ev3.EV3_SENSOR_id_set)
+    __swig_setmethods__["type_id"] = _ev3.EV3_SENSOR_type_id_set
+    __swig_getmethods__["type_id"] = _ev3.EV3_SENSOR_type_id_get
+    if _newclass:type_id = _swig_property(_ev3.EV3_SENSOR_type_id_get, _ev3.EV3_SENSOR_type_id_set)
     def __init__(self): 
-        this = _ev3.new_EV3_SENSOR_T()
+        this = _ev3.new_EV3_SENSOR()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _ev3.delete_EV3_SENSOR_T
+    __swig_destroy__ = _ev3.delete_EV3_SENSOR
     __del__ = lambda self : None;
-EV3_SENSOR_T_swigregister = _ev3.EV3_SENSOR_T_swigregister
-EV3_SENSOR_T_swigregister(EV3_SENSOR_T)
+EV3_SENSOR_swigregister = _ev3.EV3_SENSOR_swigregister
+EV3_SENSOR_swigregister(EV3_SENSOR)
 ev3 = _ev3.ev3
 
 EV3_TOUCH = _ev3.EV3_TOUCH
@@ -379,29 +379,29 @@ OUTPUT_B = _ev3.OUTPUT_B
 OUTPUT_C = _ev3.OUTPUT_C
 OUTPUT_D = _ev3.OUTPUT_D
 OUTPUT__COUNT_ = _ev3.OUTPUT__COUNT_
-class EV3_TACHO_T(_object):
+class EV3_TACHO(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_TACHO_T, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_TACHO, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, EV3_TACHO_T, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, EV3_TACHO, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["connected"] = _ev3.EV3_TACHO_T_connected_set
-    __swig_getmethods__["connected"] = _ev3.EV3_TACHO_T_connected_get
-    if _newclass:connected = _swig_property(_ev3.EV3_TACHO_T_connected_get, _ev3.EV3_TACHO_T_connected_set)
-    __swig_setmethods__["id"] = _ev3.EV3_TACHO_T_id_set
-    __swig_getmethods__["id"] = _ev3.EV3_TACHO_T_id_get
-    if _newclass:id = _swig_property(_ev3.EV3_TACHO_T_id_get, _ev3.EV3_TACHO_T_id_set)
-    __swig_setmethods__["type_id"] = _ev3.EV3_TACHO_T_type_id_set
-    __swig_getmethods__["type_id"] = _ev3.EV3_TACHO_T_type_id_get
-    if _newclass:type_id = _swig_property(_ev3.EV3_TACHO_T_type_id_get, _ev3.EV3_TACHO_T_type_id_set)
+    __swig_setmethods__["connected"] = _ev3.EV3_TACHO_connected_set
+    __swig_getmethods__["connected"] = _ev3.EV3_TACHO_connected_get
+    if _newclass:connected = _swig_property(_ev3.EV3_TACHO_connected_get, _ev3.EV3_TACHO_connected_set)
+    __swig_setmethods__["id"] = _ev3.EV3_TACHO_id_set
+    __swig_getmethods__["id"] = _ev3.EV3_TACHO_id_get
+    if _newclass:id = _swig_property(_ev3.EV3_TACHO_id_get, _ev3.EV3_TACHO_id_set)
+    __swig_setmethods__["type_id"] = _ev3.EV3_TACHO_type_id_set
+    __swig_getmethods__["type_id"] = _ev3.EV3_TACHO_type_id_get
+    if _newclass:type_id = _swig_property(_ev3.EV3_TACHO_type_id_get, _ev3.EV3_TACHO_type_id_set)
     def __init__(self): 
-        this = _ev3.new_EV3_TACHO_T()
+        this = _ev3.new_EV3_TACHO()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _ev3.delete_EV3_TACHO_T
+    __swig_destroy__ = _ev3.delete_EV3_TACHO
     __del__ = lambda self : None;
-EV3_TACHO_T_swigregister = _ev3.EV3_TACHO_T_swigregister
-EV3_TACHO_T_swigregister(EV3_TACHO_T)
+EV3_TACHO_swigregister = _ev3.EV3_TACHO_swigregister
+EV3_TACHO_swigregister(EV3_TACHO)
 
 TACHO = _ev3.TACHO
 MINITACHO = _ev3.MINITACHO
