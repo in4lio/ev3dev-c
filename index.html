@@ -75,34 +75,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  
 </pre> </center><h2>The <a href="https://github.com/in4lio/ev3dev-c/">library</a> hierarchic structure</h2>
 <h3>I LEVEL</h3>
-<p>This level contains functions for a <a class="el" href="group__ev3.html">local</a> and <a class="el" href="group__ev3__link.html">remote</a> access to the file system of the EV3 brick. The following code will write the value in the file (on the brick) or will send these data in an UDP message to the brick (on the remote computer). </p><div class="fragment"><div class="line">ev3_init();</div>
+<p>This level contains functions for a <a class="el" href="group__ev3.html">local</a> and <a class="el" href="group__ev3__link.html">remote</a> access to the file system of the EV3 brick. The following code will write the value in the file (on the brick) or will send these data in an UDP message to the brick (on the remote computer). </p><div class="fragment"><div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>();</div>
 <div class="line"></div>
-<div class="line">ev3_write( <span class="stringliteral">&quot;/sys/class/leds/ev3:red:right/trigger&quot;</span>, <span class="stringliteral">&quot;heartbeat&quot;</span> );</div>
+<div class="line"><a class="code" href="group__ev3.html#ga4fa0d81a67bb2ffa3ad2c9979218582e">ev3_write</a>( <span class="stringliteral">&quot;/sys/class/leds/ev3:red:right/trigger&quot;</span>, <span class="stringliteral">&quot;heartbeat&quot;</span> );</div>
 <div class="line"></div>
-<div class="line">ev3_uninit();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 </div><!-- fragment --><p> For more information about a remote access to the EV3 brick go to <a href="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</a>.</p>
 <h3>II LEVEL</h3>
 <p>Basic <a class="el" href="group__ev3__led.html">functions</a> to read and write attributes of LEDs, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</a>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> ok, val;</div>
 <div class="line"></div>
-<div class="line">ev3_init();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>();</div>
 <div class="line"></div>
 <div class="line">ok = get_led_brightness( EV3_GREEN_LEFT, &amp;val );</div>
 <div class="line"><span class="keywordflow">if</span> ( ok ) {</div>
 <div class="line">    printf( <span class="stringliteral">&quot;EV3_GREEN_LEFT is %s&quot;</span>, ( val ) ? <span class="stringliteral">&quot;ON&quot;</span> : <span class="stringliteral">&quot;OFF&quot;</span> );</div>
 <div class="line">}</div>
-<div class="line">ev3_uninit();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 </div><!-- fragment --><p> Basic <a class="el" href="group__ev3__sensor.html">functions</a> to read and write attributes of sensors, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-the-Mindstorms-Sensor-Device-Class">"Using sensors"</a>. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> val;</div>
 <div class="line"></div>
-<div class="line">ev3_init();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>();</div>
 <div class="line"><a class="code" href="group__ev3__sensor.html#ga08e26f670c96ed449419b2ac62aec842">ev3_sensor_init</a>();</div>
 <div class="line"></div>
 <div class="line"><span class="keywordflow">if</span> ( <a class="code" href="group__ev3__sensor.html#ga10a576cc626d6da2d19351d1eb315e5d">get_sensor_value</a>( 0, INPUT_1, &amp;val )) {</div>
 <div class="line">    printf( <span class="stringliteral">&quot;EV3_TOUCH value = %d&quot;</span>, val );</div>
 <div class="line">}</div>
-<div class="line">ev3_uninit();</div>
-</div><!-- fragment --><p> Basic <a class="el" href="group__ev3__tacho.html">functions</a> to read and write attributes of tacho-motors, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-Motors">"Using motors"</a>. </p><div class="fragment"><div class="line">ev3_init();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
+</div><!-- fragment --><p> Basic <a class="el" href="group__ev3__tacho.html">functions</a> to read and write attributes of tacho-motors, see <a href="https://github.com/ev3dev/ev3dev/wiki/Using-Motors">"Using motors"</a>. </p><div class="fragment"><div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>();</div>
 <div class="line"></div>
-<div class="line"><span class="keywordflow">if</span> ( <a class="code" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a>() != EV3_NONE ) {</div>
+<div class="line"><span class="keywordflow">if</span> ( <a class="code" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a>() != <a class="code" href="group__ev3.html#ga862146c096657ab26f391a77cccc72a8">EV3_NONE</a> ) {</div>
 <div class="line">    uint8_t <span class="keywordtype">id</span> = <a class="code" href="group__ev3__tacho.html#ga03446051bd6fb2f25e9fd045cc1464b1">ev3_tacho</a>[ OUTPUT_A ].<a class="code" href="structEV3__TACHO.html#abaabdc509cdaba7df9f56c6c76f3ae19">id</a>;</div>
 <div class="line"></div>
 <div class="line">    <a class="code" href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">set_tacho_regulation_mode</a>( <span class="keywordtype">id</span>, <span class="stringliteral">&quot;off&quot;</span> );</div>
@@ -114,13 +114,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <a class="code" href="group__ev3__tacho.html#ga51735a8ab67aed34c02f54b66159eae8">set_tacho_ramp_down_sp</a>( <span class="keywordtype">id</span>, 2000 );</div>
 <div class="line">    <a class="code" href="group__ev3__tacho.html#gab0b729201d692161541d0fd29b007f1e">set_tacho_run</a>( <span class="keywordtype">id</span>, <span class="keyword">true</span> );</div>
 <div class="line">}</div>
-<div class="line">ev3_uninit();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 </div><!-- fragment --><h3>III LEVEL</h3>
-<p>Task-focused user-friendly functions. Only <a class="el" href="group__ev3__light.html">light</a> module in this category at the moment. </p><div class="fragment"><div class="line">ev3_init();</div>
+<p>Task-focused user-friendly functions. Only <a class="el" href="group__ev3__light.html">light</a> module in this category at the moment. </p><div class="fragment"><div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>();</div>
 <div class="line"></div>
 <div class="line">set_light_blink( LIT_LEFT, LIT_AMBER, 1000, 500 );</div>
 <div class="line"></div>
-<div class="line">ev3_uninit();</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 </div><!-- fragment --><p><br />
 </p><hr/>
  <h2>Python and other languages</h2>
@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keywordflow">if</span> <span class="keywordflow">not</span> EV3_BRICK:</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    ev3.brick_addr = <span class="stringliteral">&#39;192.168.0.204&#39;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;ev3_init()</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>()</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="group__ev3__sensor.html#ga08e26f670c96ed449419b2ac62aec842">ev3_sensor_init</a>()</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;port = <a class="code" href="group__ev3__sensor.html#ga821db2d36cac6ebfd2387944b10b6031">ev3_sensor_port</a>( EV3_COLOR )</div>
@@ -146,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;EV3_COLOR =&#39;</span>, color[ val ]</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;ev3_uninit()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>()</div>
 </div><!-- fragment --><p> Similarly, you can use SWIG to wrap the library in a number of other languages.</p>
 <p><br />
 </p><hr/>
@@ -155,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 25 2014 19:33:51 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 26 2014 18:47:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

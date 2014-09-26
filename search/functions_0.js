@@ -1,11 +1,28 @@
 var searchData=
 [
+  ['ev3_5fext_5finit',['EV3_EXT_INIT',['../group__ev3.html#ga377bcee0066eadc1b584c39492a92887',1,'EV3_EXT_INIT(char *ev3_brick_addr, NULL):&#160;ev3.h'],['../group__ev3.html#ga1ec06ee09a43dae612fe98dbef1d5e11',1,'EV3_EXT_INIT(uint16_t ev3_brick_port, 8800):&#160;ev3.h']]],
   ['ev3_5fget_5fsensor',['ev3_get_sensor',['../group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321',1,'ev3_sensor.c']]],
   ['ev3_5fget_5ftacho',['ev3_get_tacho',['../group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918',1,'ev3_tacho.c']]],
+  ['ev3_5finit',['ev3_init',['../group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707',1,'ev3.c']]],
+  ['ev3_5flistdir',['ev3_listdir',['../group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0',1,'ev3.c']]],
+  ['ev3_5fpoweroff',['ev3_poweroff',['../group__ev3.html#ga594c82738fc7b7723470f81e893154da',1,'ev3.c']]],
+  ['ev3_5fread',['ev3_read',['../group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8',1,'ev3.c']]],
+  ['ev3_5fread_5fbinary',['ev3_read_binary',['../group__ev3.html#ga3de62e3f2581edd65d7d6500c387e054',1,'ev3.c']]],
+  ['ev3_5fread_5fbool',['ev3_read_bool',['../group__ev3.html#ga496393569c4d644c426367c8c1af73d0',1,'ev3.c']]],
+  ['ev3_5fread_5fdword',['ev3_read_dword',['../group__ev3.html#ga2d84f6178cbce31f53f14dcdbdfa875a',1,'ev3.c']]],
+  ['ev3_5fread_5ffloat',['ev3_read_float',['../group__ev3.html#ga7f8dbce26893d1bc967552e3af0fb690',1,'ev3.c']]],
+  ['ev3_5fread_5fint',['ev3_read_int',['../group__ev3.html#ga24436e6a324b9b0dffd264e6f325042f',1,'ev3.c']]],
   ['ev3_5fsensor_5finit',['ev3_sensor_init',['../group__ev3__sensor.html#ga08e26f670c96ed449419b2ac62aec842',1,'ev3_sensor.c']]],
   ['ev3_5fsensor_5fport',['ev3_sensor_port',['../group__ev3__sensor.html#ga821db2d36cac6ebfd2387944b10b6031',1,'ev3_sensor.c']]],
   ['ev3_5fsensor_5ftype',['ev3_sensor_type',['../group__ev3__sensor.html#ga1a9525a8fa2a05a4787c013e8cbe38f4',1,'ev3_sensor.c']]],
   ['ev3_5ftacho_5finit',['ev3_tacho_init',['../group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb',1,'ev3_tacho.c']]],
   ['ev3_5ftacho_5fport',['ev3_tacho_port',['../group__ev3__tacho.html#gaa8c21129314701631648df3a36226683',1,'ev3_tacho.c']]],
-  ['ev3_5ftacho_5ftype',['ev3_tacho_type',['../group__ev3__tacho.html#gac0b09487315a7a2433d9809400fc4341',1,'ev3_tacho.c']]]
+  ['ev3_5ftacho_5ftype',['ev3_tacho_type',['../group__ev3__tacho.html#gac0b09487315a7a2433d9809400fc4341',1,'ev3_tacho.c']]],
+  ['ev3_5funinit',['ev3_uninit',['../group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e',1,'ev3.c']]],
+  ['ev3_5fwrite',['ev3_write',['../group__ev3.html#ga4fa0d81a67bb2ffa3ad2c9979218582e',1,'ev3.c']]],
+  ['ev3_5fwrite_5fbinary',['ev3_write_binary',['../group__ev3.html#ga20ad37059b75ceea01f5b53be715ff2c',1,'ev3.c']]],
+  ['ev3_5fwrite_5fbool',['ev3_write_bool',['../group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a',1,'ev3.c']]],
+  ['ev3_5fwrite_5fdword',['ev3_write_dword',['../group__ev3.html#gac2a07eb08a0710a91409db0a34e13a1c',1,'ev3.c']]],
+  ['ev3_5fwrite_5ffloat',['ev3_write_float',['../group__ev3.html#ga9bfaa861cdc45a82017f3bfe963fb482',1,'ev3.c']]],
+  ['ev3_5fwrite_5fint',['ev3_write_int',['../group__ev3.html#ga0116ad65b312375a47cd91de675a4554',1,'ev3.c']]]
 ];
