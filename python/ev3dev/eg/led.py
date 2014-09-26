@@ -4,7 +4,7 @@
 import sys
 from ev3dev import *
 
-if ev3_init() == EV3_NONE: sys.exit( 1 )
+if ev3_init() < 1: sys.exit( 1 )
 
 ok, state = get_led_brightness( EV3_RED_LEFT )
 if ok:

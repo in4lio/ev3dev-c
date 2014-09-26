@@ -31,7 +31,8 @@
 int main( void )
 {
 	printf( "Waiting the EV3 brick online...\n" );
-	ev3_init();
+	if ( ev3_init() < 1 ) return ( 1 );
+
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
 	set_light_blink( LIT_RIGHT, LIT_GREEN, 1000, 500 );

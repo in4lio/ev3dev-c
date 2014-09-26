@@ -4,7 +4,7 @@
 import sys
 from ev3dev import *
 
-if ev3_init() == EV3_NONE: sys.exit( 1 )
+if ev3_init() < 1: sys.exit( 1 )
 
 ok, ls = ev3_listdir( '/sys/class/leds', 256 )
 print ls if ok else 'ERROR: ev3_listdir'

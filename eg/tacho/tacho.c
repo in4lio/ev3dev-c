@@ -39,7 +39,8 @@ int main( void )
 	ev3_brick_addr = "192.168.0.204";
 
 #endif
-	ev3_init();
+	if ( ev3_init() == EV3_NONE ) return ( 1 );
+
 #ifndef __ARM_ARCH_4T__
 	printf( "The EV3 brick auto-detection is DISABLED, waiting %s online...\n", ev3_brick_addr );
 

@@ -98,7 +98,7 @@ Brick server reply
 |  6 .. 7                           |  0                                |
 
 <HR>
-<H3>Notify a host that the brick server is online.</H3>
+<H3>Notify a host that the brick server is online</H3>
 
 Brick server beacon
 | Bytes                             |  Content                          |
@@ -115,15 +115,61 @@ Brick server beacon
 
 /**
  *  \defgroup ev3_link EV3 remote access
+ *  \brief Remote access to the EV3 brick over UDP.
  *  \{
  */
 
+/**
+ *  \brief Open an UDP socket.
+ *  \param addr IP address of the EV3 brick.
+ *  \param port UDP port.
+ *  \return 0 - finished successfully, EOF - an error has occurred.
+ */
 extern int udp_ev3_open( char *addr, uint16_t port );
+
+/**
+ *  \brief Close an UDP socket.
+ *  \return 0 - finished successfully, EOF - an error has occurred.
+ */
 extern int udp_ev3_close( void );
+
+/**
+ *  \brief Check for a beacon from the EV3 brick.
+ *  \return 0 - no beacon, 1 - beacon has been received.
+ */
 extern int udp_ev3_catch_address( void );
+
+/**
+ *  \brief Read data from the specified file over UDP.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for data.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
 extern int udp_ev3_read( char *fn, void *buf, int sz );
+
+/**
+ *  \brief Write data into the specified file over UDP.
+ *  \param fn Filename.
+ *  \param data Data.
+ *  \param sz Data size.
+ *  \return Count of written bytes.
+ */
 extern int udp_ev3_write( char *fn, void *data, int sz );
+
+/**
+ *  \brief List files in the specified directory over UDP.
+ *  \param fn Directory name.
+ *  \param[out] buf Buffer for files list.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
 extern int udp_ev3_listdir( char *fn, void *buf, int sz );
+
+/**
+ *  \brief Power-off the EV3 brick.
+ *  \return 0 - no reply, 1 - OK.
+ */
 extern int udp_ev3_poweroff( void );
 
 /** \} */

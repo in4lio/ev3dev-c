@@ -20,13 +20,24 @@
 
 /**
  *  \defgroup ev3 EV3 file operations
+ *  \brief Access to the file system of the EV3 brick.
+ *
+ *  This module contains functions for the local access to the file system of the EV3 brick,
+ *  in case of the remote access appropriate functions from \ref ev3_link "ev3_link" module will be called.
  *  \{
  */
 
 // CLIENT ////////////////////////////////////////
 #ifndef __ARM_ARCH_4T__
 
+/**
+ *  \brief Predefined IP address of the EV3 brick.
+ */
 ($h-extern-init,,char *ev3_brick_addr,,NULL)
+
+/**
+ *  \brief UDP port of the EV3 brick.
+ */
 ($h-extern-init,,uint16_t ev3_brick_port,,8800)
 
 //////////////////////////////////////////////////
@@ -38,31 +49,143 @@ typedef unsigned int dword;
 
 #endif
 
+/**
+ *  \brief Negative result of operation.
+ */
 #define EV3_NONE  -1
 
+/**
+ *  \brief Initialize the remote access and detect the EV3 brick.
+ *  This function do nothing in the case of the local access.
+ *  To disable the brick detection just specify IP address before the call of this function.
+ *  \return 1 - the local access, 0 - the brick detection is disabled, EV3_NONE - an error has occurred,
+ *  or the number of found bricks.
+ */
 ($h-extern) int ev3_init( void );
+
+/**
+ *  \brief Uninitialize the remote access.
+ */
 ($h-extern) void ev3_uninit( void );
 
+/**
+ *  \brief Write binary data into the specified file of the EV3 brick.
+ *  \param fn Filename.
+ *  \param data Data.
+ *  \param sz Data size.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write_binary( const char *fn, char *data, size_t sz );
+
+/**
+ *  \brief Write a string into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write( const char *fn, char *value );
+
+/**
+ *  \brief Write a boolean value into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write_bool( const char *fn, bool value );
+
+/**
+ *  \brief Write an integer value into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write_int( const char *fn, int value );
+
+/**
+ *  \brief Write an unsigned integer value into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write_dword( const char *fn, uint32_t value );
+
+/**
+ *  \brief Write a float value into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
 ($h-extern) size_t ev3_write_float( const char *fn, float value );
+
 ($h-extern) size_t ev3_write_char_array( const char *fn, char *value );
 ($h-extern) size_t ev3_write_byte_array( const char *fn, uint8_t *value, size_t sz );
 
+/**
+ *  \brief Read binary data from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for data.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
+
+/**
+ *  \brief Read a string from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for string.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read( const char *fn, char *buf, size_t sz );
+
+/**
+ *  \brief Read a boolean value from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for a value.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read_bool( const char *fn, bool *buf );
+
+/**
+ *  \brief Read an integer value from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for a value.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read_int( const char *fn, int *buf );
+
+/**
+ *  \brief Read an unsigned integer value from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for a value.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
+
+/**
+ *  \brief Read a float value from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for a value.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_read_float( const char *fn, float *buf );
+
 ($h-extern) size_t ev3_read_char_array( const char *fn, char *buf, size_t sz );
 ($h-extern) size_t ev3_read_byte_array( const char *fn, uint8_t *buf, size_t sz );
 
+/**
+ *  \brief List files in the specified directory of the EV3 brick.
+ *  \param fn Directory name.
+ *  \param[out] buf Buffer for files list.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
 ($h-extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
 
+/**
+ *  \brief Power-off the EV3 brick.
+ *  \return false - no reply, true - OK.
+ */
 ($h-extern) bool ev3_poweroff( void );
 
 /** \} */

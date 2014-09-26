@@ -12,7 +12,7 @@ def _touch_pressed( id ):
 
 if __name__ == '__main__':
     print 'Waiting the EV3 brick online...'
-    if ev3_init() == EV3_NONE: sys.exit( 1 )
+    if ev3_init() < 1: sys.exit( 1 )
 
     print '*** ( EV3 ) Hello! ***'
     ev3_sensor_init()

@@ -24,6 +24,9 @@ TOP = ..
 # -- simplified wrapper and interface generator
 SWIG = swig
 
+# -- swig interface file source - interface file from python directory is used
+F_SWIG_YUI = ../python/ev3.yu-i
+
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
 CC = $(DJGPP_HOME)/bin/gcc.exe
@@ -70,7 +73,6 @@ endif
 endif
 
 # -- yupp import directories
-#    WARNING! single directory only, see the rule for __init__.py
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
@@ -85,18 +87,22 @@ endif
 D_CXX = $(D_C)
 D_ASM = $(TOP)/source
 
-# -- python headers
+# -- ruby headers
+ifndef RUBY_INCLUDE
+
 ifeq ($(OS),Windows_NT)
-D_PY = d:/prog/python27/include
+RUBY_INCLUDE = d:/prog/ruby/include/ruby-2.0.0
 else
-D_PY = /usr/include/python2.7
+RUBY_INCLUDE = /usr/include/ruby2.0.0
+endif
+
 endif
 
 # -- include directories
-D_H = $(D_C) $(D_PY)
+D_H = $(D_C) $(RUBY_INCLUDE)
 
 # -- binary directory
-D_BIN = ev3dev
+D_BIN = .
 # D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
@@ -119,7 +125,7 @@ E_OBJ = .o
 
 # -- binary suffix
 ifeq ($(OS),Windows_NT)
-E_BIN = .pyd
+E_BIN = .so
 else
 E_BIN = .so
 endif
@@ -128,17 +134,28 @@ endif
 G_REST = $(BIN)_wrap.c $(BIN).i platform.h $(D_BIN)/__init__.py
 
 # -- binary full name
-F_BIN = $(D_BIN)/_$(BIN)$(E_BIN)
+F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
 
 # -- link options
 LIBS = -lm
 
+# -- ruby headers
+ifndef RUBY_LIB
+
+ifeq ($(OS),Windows_NT)
+RUBY_LIB = d:/prog/ruby/lib
+else
+RUBY_LIB = /usr/lib/ruby2.0.0
+endif
+
+endif
+
 ifeq ($(PLATFORM),__MINGW__)
-LIBS := $(LIBS) -lws2_32 -lpython27
+LIBS := $(LIBS) -lws2_32 -lmsvcrt-ruby200.dll -L$(RUBY_LIB)
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-LIBS := $(LIBS) -lpython2.7
+LIBS := $(LIBS) -lruby2.0.0
 endif
 
 endif
@@ -149,13 +166,13 @@ LFLAGS =
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
 
 # -- compiler flags
-CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99
+CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -Wno-unused-parameter -std=gnu99
 
 ifeq ($(PLATFORM),__UNIX__)
 CFLAGS := $(CFLAGS) -fPIC
 endif
 
-CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
+CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment -Wno-unused-parameter
 
 ifeq ($(PLATFORM),__UNIX__)
 CXXFLAGS := $(CXXFLAGS) -fPIC
@@ -269,15 +286,12 @@ $(F_BIN): $(O)
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
-$(BIN)_wrap.c: $(BIN).i $(D_BIN)/__init__.py
+$(BIN)_wrap.c: $(BIN).i
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
-	$(SWIG) -python -outdir ev3dev -globals ev3 $<
+	$(SWIG) -ruby $<
 
-$(BIN).i: $(BIN).yu-i
-	$(call wrap,$(PP),$(PPFLAGS) $<)
-
-$(D_BIN)/__init__.py: $(D_YU)/app.yu
-	$(call wrap,$(PP),$(PPFLAGS) $(D_BIN)/__init__.yu-py)
+$(BIN).i: $(F_SWIG_YUI)
+	$(call wrap,$(PP),$(PPFLAGS) -o. $<)
 
 $(G_C) $(G_CXX) $(G_H): $(S_YU)
 

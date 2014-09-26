@@ -97,7 +97,8 @@ int main( void )
 	uint32_t n, i, ii;
 
 	printf( "Waiting the EV3 brick online...\n" );
-	ev3_init();
+	if ( ev3_init() < 1 ) return ( 1 );
+
 	printf( "*** ( EV3 ) Hello! ***\n" );
 	ev3_sensor_init();
 	getch_init();

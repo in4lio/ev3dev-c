@@ -20,7 +20,7 @@
 
 This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
 access to the file system of the EV3 brick. The following code will write
-the value in the file (on the brick) or will send these data in a UDP message
+the value in the file (on the brick) or will send these data in an UDP message
 to the brick (on the remote computer).
 \code {.c}
 ev3_init();

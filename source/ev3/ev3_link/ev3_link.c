@@ -73,13 +73,19 @@ enum {
 	EV3_WELCOME      = 9,  /**< A broadcast beacon. */
 };
 
+/**
+ *  \brief Header of an UDP message.
+ */
 typedef struct {
-	uint16_t type;
-	uint16_t id;
-	uint16_t fn_size;
-	uint16_t data_size;
+	uint16_t type;       /**< Command type. */
+	uint16_t id;         /**< Message counter. */
+	uint16_t fn_size;    /**< Filename size. */
+	uint16_t data_size;  /**< Data size. */
 } EV3_MESSAGE_HEADER, *PEV3_MESSAGE_HEADER;
 
+/**
+ *  \brief UDP message.
+ */
 typedef struct {
 	EV3_MESSAGE_HEADER head;
 	char body[ UDP_MESSAGE_LIMIT - sizeof( EV3_MESSAGE_HEADER )];

@@ -15,7 +15,7 @@ COPYRIGHT   = 'Copyright (c) 2011, 13, 14'
 AUTHORS     = 'Vitaly Kravtsov (in4lio@gmail.com)'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.7b5'
+VERSION     = '0.7b6'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -68,8 +68,8 @@ PP_SKIP_C_COMMENT = True
 #   PP_TRIM_APP_INDENT
 #   -----------------------------------
 PP_TRIM_APP_INDENT_HELP = """
-use an application ($ _ ) indent as a base for all substituting lines,
-delete spacing after ($set _ ), ($macro _ ) and ($! _ )
+use the application ($ _ ) indent as the base for all substituting lines,
+delete a spacing after ($set _ ), ($macro _ ) and ($! _ )
 """
 PP_TRIM_APP_INDENT = True
 
@@ -77,7 +77,7 @@ PP_TRIM_APP_INDENT = True
 #   PP_REDUCE_EMPTINESS
 #   -----------------------------------
 PP_REDUCE_EMPTINESS_HELP = """
-reduce number of successive empty lines up to one
+reduce the number of successive empty lines up to one
 """
 PP_REDUCE_EMPTINESS = True
 
@@ -2480,6 +2480,9 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
         return 'yueval'
 
 #   ---------------
+#   This is an experimental release of the eval-apply cycle, it's slightly theoretically incorrect and unstable,
+#   you may run into problems using a recursion or to face with a wrong scope of a name binding.
+#   TODO: fix what is described above
 #   TODO: region
                                                                                                                        #pylint: disable=E1103
     try:
@@ -3142,13 +3145,15 @@ E_C     = '.c'
 E_BAK   = '.bak'
 E_AST   = '.ast'
 
+OUTPUT_DIRECTORY = ''
+
 QUIET_HELP = """
-don't show the usual greeting, version message and processed file
+don't show the usual greeting, the version message and the processed file
 """
 QUIET = False
 
 TYPE_FILE_HELP = """
-show content of output file
+show the contents of the output file
 """
 TYPE_FILE = False
 
@@ -3173,9 +3178,12 @@ def shell_argparse():
     , help = "an input text (used by Web Console)" )
 #   -- a source of input text (used by Web Console)
     argp.add_argument( '--input-source', metavar = 'NAME', type = str, dest = 'text_source', default = ''
-    , help = "a source of input text (used by Web Console)" )
+    , help = "an input text source (used by Web Console)" )
 #   -- input files
     argp.add_argument( 'files', metavar = 'FILE', type = str, nargs = '*', help = "an input file" )
+#   -- an output directory
+    argp.add_argument( '-o', '--output', metavar = 'DIR', dest = 'output_directory', default = ''
+    , help = "an output directory" )
 #   -- an import directory
     argp.add_argument( '-d', action = 'append', metavar = 'DIR', dest = 'directory', default = DIRECTORY
     , help = "an import directory" )
@@ -3187,13 +3195,13 @@ def shell_argparse():
 #   -- debug options
     argp.add_argument( '-l', '--log', metavar = 'LEVEL', type = int, dest = 'log_level'
     , default = ( LOG_LEVEL // LOG_LEVEL_SCALE ), choices = range( 1, 6 )
-    , help = "set logging level: 1 - DEBUG 2 - INFO 3 - WARNING 4 - ERROR 5 - CRITICAL" )
+    , help = "set the logging level: 1 - DEBUG 2 - INFO 3 - WARNING 4 - ERROR 5 - CRITICAL" )
     argp.add_argument( '-t', '--trace', metavar = 'STAGE', type = int, dest = 'tr_stage'
     , default = TR_STAGE, choices = range( 0, 4 )
     , help = "set tracing stages: 0 - NONE 1 - PARSE 2 - EVAL 3 - BOTH" )
     argp.add_argument( '-b', '--traceback', metavar = 'TYPE', type = int, dest = 'traceback'
     , default = TRACEBACK, choices = range( 0, 3 )
-    , help = "set exceptions traceback: 0 - NONE 1 - PYTHON 2 - ALL" )
+    , help = "set the traceback of exceptions: 0 - NONE 1 - PYTHON 2 - ALL" )
 #   -- preprocessor options
     argp.add_argument( '--pp-skip-c-comment', action = 'store_true', dest = 'pp_skip_c_comment'
     , help = PP_SKIP_C_COMMENT_HELP )
@@ -3247,7 +3255,9 @@ def shell_savetofile( fn, text ):
 
 #   ---------------------------------------------------------------------------
 def _output_fn( fn ):
-    fn_o, e = os.path.splitext( fn )
+    fn_reloc = os.path.join( OUTPUT_DIRECTORY, os.path.basename( fn )) if OUTPUT_DIRECTORY else fn
+
+    fn_o, e = os.path.splitext( fn_reloc )
     if e == E_C:
 #   ---- .c --> .yu.c
         return fn_o + E_YU + E_C
@@ -3255,7 +3265,7 @@ def _output_fn( fn ):
     e_yu = re_e_yu.search( e )
     if e_yu is None:
 #   ---- * --> *.c
-        return fn + E_C
+        return fn_reloc + E_C
 
     if e_yu.group( 1 ):
 #   ---- .yu-* --> .*
@@ -3435,6 +3445,7 @@ if __name__ == '__main__':
     PP_TRIM_APP_INDENT = shell.pp_trim_app_indent
     PP_REDUCE_EMPTINESS = shell.pp_reduce_emptiness
     DIRECTORY = shell.directory
+    OUTPUT_DIRECTORY = shell.output_directory
 
     if not QUIET:
         print TITLE

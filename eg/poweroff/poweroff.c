@@ -25,7 +25,7 @@ int main( void )
 	char s[ 256 ];
 	char *p;
 
-	if ( ev3_init() == EV3_NONE ) return ( 1 );
+	if ( ev3_init() < 1 ) return ( 1 );
 
 	if ( ev3_listdir( "/sys/class/msensor", s, sizeof( s ))) {
 		printf( "sensors: %s\n", s );
