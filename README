@@ -18,8 +18,8 @@
     So, if you set up WLAN on the brick you will be able to drive
     the EV3 hardware from your computer, e.g. under Windows.
 
-    Python library (see "python/ev3dev" folder) is automatically
-    generated from C library using SWIG tool.
+    Python (see "python/ev3dev" folder) and Ruby (see "ruby" folder)
+    libraries are automatically generated from C library using SWIG tool.
 
     Use pip or easy_install to install ev3dev-c Python package, e.g.
 
@@ -31,9 +31,6 @@
     The package contains the following binary modules:
     _ev3.pyd    - for a remote access, under Windows (x86);
     _ev3.so     - for LEGO Mindstorms EV3 Debian.
-
-    Ruby library (see "ruby" folder) is also automatically
-    generated from C library using SWIG tool.
 
     ___       ____________________________________
     ___ F A Q ____________________________________
