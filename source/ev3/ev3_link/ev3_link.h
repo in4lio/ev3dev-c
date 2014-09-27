@@ -114,7 +114,7 @@ Brick server beacon
 #include <stdint.h>
 
 /**
- *  \defgroup ev3_link EV3 remote access
+ *  \defgroup ev3_link Remote access
  *  \brief Remote access to the EV3 brick over UDP.
  *  \{
  */

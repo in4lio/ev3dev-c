@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3_sensor EV3 sensors
+ *  \defgroup ev3_sensor Sensors
  *  \brief Access to the EV3 brick sensors.
  *  \{
  */

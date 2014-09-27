@@ -10,6 +10,7 @@
  *  \copyright  See the LICENSE file.
  */
 
+#include <string.h>
 #include <stdio.h>
 #include "ev3.h"
 #include "ev3_sensor.h"

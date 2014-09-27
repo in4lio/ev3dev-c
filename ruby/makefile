@@ -24,8 +24,8 @@ TOP = ..
 # -- simplified wrapper and interface generator
 SWIG = swig
 
-# -- swig interface file source - interface file from python directory is used
-F_SWIG_YUI = ../python/ev3.yu-i
+# -- swig interface file source
+F_SWIG_YUI = $(TOP)/ev3.yu-i
 
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
@@ -72,6 +72,10 @@ endif
 
 endif
 
+# -- ruby directory
+D_RUBY = d:/prog/ruby
+D_RUBY = c:/dev/ruby
+
 # -- yupp import directories
 D_YU = $(TOP)/source/ev3
 
@@ -90,10 +94,14 @@ D_ASM = $(TOP)/source
 # -- ruby headers
 ifndef RUBY_INCLUDE
 
-ifeq ($(OS),Windows_NT)
-RUBY_INCLUDE = d:/prog/ruby/include/ruby-2.0.0
+ifeq ($(PLATFORM),__MINGW__)
+RUBY_INCLUDE = $(D_RUBY)/include/ruby-2.0.0
 else
-RUBY_INCLUDE = /usr/include/ruby2.0.0
+
+ifeq ($(PLATFORM),__UNIX__)
+RUBY_INCLUDE = /usr/include/ruby-1.9.1
+endif
+
 endif
 
 endif
@@ -103,7 +111,7 @@ D_H = $(D_C) $(RUBY_INCLUDE)
 
 # -- binary directory
 D_BIN = .
-# D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
+D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
 D_OBJ = object
@@ -139,23 +147,17 @@ F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
 # -- link options
 LIBS = -lm
 
-# -- ruby headers
-ifndef RUBY_LIB
-
-ifeq ($(OS),Windows_NT)
-RUBY_LIB = d:/prog/ruby/lib
-else
-RUBY_LIB = /usr/lib/ruby2.0.0
-endif
-
-endif
-
 ifeq ($(PLATFORM),__MINGW__)
+
+ifndef RUBY_LIB
+RUBY_LIB = $(D_RUBY)/lib
+endif
+
 LIBS := $(LIBS) -lws2_32 -lmsvcrt-ruby200.dll -L$(RUBY_LIB)
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-LIBS := $(LIBS) -lruby2.0.0
+LIBS := $(LIBS) -lruby-1.9.1
 endif
 
 endif
@@ -205,7 +207,7 @@ define uniq =
 	${seen}
 endef
 
-S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) ./$(BIN)_wrap.c)
+S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
 $(call uniq, $(S_C)) # remove duplicates
 
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))

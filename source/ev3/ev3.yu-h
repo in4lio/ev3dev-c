@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3 EV3 file operations
+ *  \defgroup ev3 File operations
  *  \brief Access to the file system of the EV3 brick.
  *
  *  This module contains functions for the local access to the file system of the EV3 brick,

@@ -65,7 +65,7 @@ Basic \ref ev3_tacho "functions" to read and write attributes of tacho-motors, s
 \code {.c}
 ev3_init();
 
-if ( ev3_tacho_init() != EV3_NONE ) {
+if ( ev3_tacho_init() > 0 ) {
 	uint8_t id = ev3_tacho[ OUTPUT_A ].id;
 
 	set_tacho_regulation_mode( id, "off" );
@@ -93,12 +93,12 @@ this category at the moment.
 \endcode
 
 <BR><HR>
-<H2>Python and other languages</H2>
+<H2>Python, Ruby and other languages</H2>
 
-The <A HREF="https://pypi.python.org/pypi/ev3dev-c/">library</A> on Python
-has been generated using <A HREF="http://www.swig.org/">SWIG</A>.
+<A HREF="https://pypi.python.org/pypi/ev3dev-c/">Libraries</A> on Python and Ruby
+have been generated using <A HREF="http://www.swig.org/">SWIG</A>.
 The SWIG interface file called "ev3.i", its source is
-<A HREF="https://github.com/in4lio/ev3dev-c/blob/master/python/ev3.yu-i">"ev3.yu-i"</A>.
+<A HREF="https://github.com/in4lio/ev3dev-c/blob/master/ev3.yu-i">"ev3.yu-i"</A>.
 <P>Features of Python library:
 1. Functions return a value as the second element of the result tuple;
 2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions;
@@ -119,6 +119,22 @@ if port != EV3_NONE:
     ok, val = get_sensor_value( 0, id )
     if ok:
         print 'EV3_COLOR =', color[ val ]
+
+ev3_uninit()
+\endcode
+<P>Features of Ruby library:
+1. Functions return a value as the second element of the result tuple, the first element has a boolean type;
+2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions.</P>
+\code {.rb}
+include Ev3
+if ev3_init() < 1 then exit( 1 ) end
+ev3_sensor_init()
+
+p_touch = ev3_sensor_port( EV3_TOUCH )
+if p_touch != EV3_NONE
+  id_touch = ev3_get_sensor( p_touch ).id
+  while get_sensor_value( 0, id_touch )[ 1 ] == 0 do end
+end
 
 ev3_uninit()
 \endcode
@@ -143,4 +159,13 @@ EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
 \include sensor.py
 \include tacho.py
 \include light.py
+ */
+
+/** \page eg_ruby Examples in Ruby
+\include io.rb
+\include poweroff.rb
+\include led.rb
+\include sensor.rb
+\include tacho.rb
+\include light.rb
  */

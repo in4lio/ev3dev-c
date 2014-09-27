@@ -1819,6 +1819,34 @@ static VALUE mEv3;
 #include <stdint.h>		// Use the C99 official header
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Ruby 1.9 changed the file name of this header */
+#ifdef HAVE_RUBY_IO_H
+#include "ruby/io.h"
+#else
+#include "rubyio.h"
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+struct timeval rb_time_timeval(VALUE);
+#endif
+#ifdef __cplusplus
+}
+#endif
+
+
 #include "../source/ev3/ev3.h"
 #include "../source/ev3/ev3_led.h"
 #include "../source/ev3/ev3_light.h"
@@ -1938,7 +1966,7 @@ SWIG_ruby_failed(void)
 } 
 
 
-/*@SWIG:d:\prog\swigwin\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
+/*@SWIG:c:\dev\swig\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
 SWIGINTERN VALUE SWIG_AUX_NUM2ULONG(VALUE *args)
 {
   VALUE obj = args[0];
@@ -1996,14 +2024,7 @@ SWIG_AsVal_size_t (VALUE obj, size_t *val)
 }
 
 
-SWIGINTERNINLINE VALUE
-SWIG_From_size_t  (size_t value)
-{    
-  return SWIG_From_unsigned_SS_long  ((unsigned long)(value));
-}
-
-
-/*@SWIG:d:\prog\swigwin\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
+/*@SWIG:c:\dev\swig\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
 SWIGINTERN VALUE SWIG_AUX_NUM2LONG(VALUE *args)
 {
   VALUE obj = args[0];
@@ -2111,7 +2132,7 @@ SWIG_AsVal_unsigned_SS_int (VALUE obj, unsigned int *val)
 #endif
 
 
-/*@SWIG:d:\prog\swigwin\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
+/*@SWIG:c:\dev\swig\Lib\ruby\rubyprimtypes.swg,19,%ruby_aux_method@*/
 SWIGINTERN VALUE SWIG_AUX_NUM2DBL(VALUE *args)
 {
   VALUE obj = args[0];
@@ -2157,13 +2178,6 @@ SWIG_AsVal_float (VALUE obj, float *val)
 
 
 SWIGINTERNINLINE VALUE
-SWIG_From_bool  (bool value)
-{
-  return value ? Qtrue : Qfalse;
-}
-
-
-SWIGINTERNINLINE VALUE
 SWIG_From_unsigned_SS_int  (unsigned int value)
 {    
   return SWIG_From_unsigned_SS_long  (value);
@@ -2200,6 +2214,13 @@ SWIGINTERNINLINE VALUE
 SWIG_From_unsigned_SS_char  (unsigned char value)
 {    
   return SWIG_From_unsigned_SS_long  (value);
+}
+
+
+SWIGINTERNINLINE VALUE
+SWIG_From_bool  (bool value)
+{
+  return value ? Qtrue : Qfalse;
 }
 
 SWIGINTERN VALUE
@@ -2315,7 +2336,9 @@ _wrap_ev3_write_binary(int argc, VALUE *argv, VALUE self) {
   arg2 = (char *)(buf2);
   arg3 = (size_t)(size2 - 1);
   result = ev3_write_binary((char const *)arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
@@ -2353,7 +2376,9 @@ _wrap_ev3_write(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = ev3_write((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
@@ -2371,8 +2396,6 @@ _wrap_ev3_write_bool(int argc, VALUE *argv, VALUE self) {
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
   size_t result;
   VALUE vresult = Qnil;
   
@@ -2384,13 +2407,13 @@ _wrap_ev3_write_bool(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_write_bool", 1, argv[0] ));
   }
   arg1 = (char *)(buf1);
-  ecode2 = SWIG_AsVal_bool(argv[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "bool","ev3_write_bool", 2, argv[1] ));
-  } 
-  arg2 = (bool)(val2);
+  {
+    arg2 = argv[1] == Qtrue ? 1 : 0; 
+  }
   result = ev3_write_bool((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return vresult;
 fail:
@@ -2425,7 +2448,9 @@ _wrap_ev3_write_int(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = ev3_write_int((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return vresult;
 fail:
@@ -2460,7 +2485,9 @@ _wrap_ev3_write_dword(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (uint32_t)(val2);
   result = ev3_write_dword((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return vresult;
 fail:
@@ -2495,7 +2522,9 @@ _wrap_ev3_write_float(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (float)(val2);
   result = ev3_write_float((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return vresult;
 fail:
@@ -2534,7 +2563,9 @@ _wrap_ev3_read_binary(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = ev3_read_binary((char const *)arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (buff2) free((char*)buff2);
@@ -2576,7 +2607,9 @@ _wrap_ev3_read(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = ev3_read((char const *)arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (buff2) free((char*)buff2);
@@ -2584,43 +2617,6 @@ _wrap_ev3_read(int argc, VALUE *argv, VALUE self) {
 fail:
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (buff2) free((char*)buff2);
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_ev3_read_bool(int argc, VALUE *argv, VALUE self) {
-  char *arg1 = (char *) 0 ;
-  bool *arg2 = (bool *) 0 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  bool temp2 ;
-  int res2 = SWIG_TMPOBJ ;
-  size_t result;
-  VALUE vresult = Qnil;
-  
-  arg2 = &temp2;
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
-  }
-  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_read_bool", 1, argv[0] ));
-  }
-  arg1 = (char *)(buf1);
-  result = ev3_read_bool((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
-  if (SWIG_IsTmpObj(res2)) {
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_bool((*arg2)));
-  } else {
-    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_bool, new_flags));
-  }
-  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
-  return vresult;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return Qnil;
 }
 
@@ -2647,7 +2643,9 @@ _wrap_ev3_read_int(int argc, VALUE *argv, VALUE self) {
   }
   arg1 = (char *)(buf1);
   result = ev3_read_int((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -2684,7 +2682,9 @@ _wrap_ev3_read_dword(int argc, VALUE *argv, VALUE self) {
   }
   arg1 = (char *)(buf1);
   result = ev3_read_dword((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -2721,7 +2721,9 @@ _wrap_ev3_read_float(int argc, VALUE *argv, VALUE self) {
   }
   arg1 = (char *)(buf1);
   result = ev3_read_float((char const *)arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -2766,7 +2768,9 @@ _wrap_ev3_listdir(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = ev3_listdir((char const *)arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   if (buff2) free((char*)buff2);
@@ -2787,7 +2791,9 @@ _wrap_ev3_poweroff(int argc, VALUE *argv, VALUE self) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
   }
   result = (bool)ev3_poweroff();
-  vresult = SWIG_From_bool((bool)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -2815,7 +2821,9 @@ _wrap_get_led_brightness(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_led_brightness(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -2853,7 +2861,9 @@ _wrap_set_led_brightness(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_led_brightness(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -2881,7 +2891,9 @@ _wrap_get_led_delay_off(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_led_delay_off(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -2919,7 +2931,9 @@ _wrap_set_led_delay_off(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_led_delay_off(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -2947,7 +2961,9 @@ _wrap_get_led_delay_on(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_led_delay_on(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -2985,7 +3001,9 @@ _wrap_set_led_delay_on(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_led_delay_on(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3021,7 +3039,9 @@ _wrap_get_led_trigger(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_led_trigger(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -3057,7 +3077,9 @@ _wrap_set_led_trigger(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_led_trigger(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -3115,7 +3137,9 @@ _wrap_set_led_trigger_inx(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (uint8_t)(val2);
   result = set_led_trigger_inx(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3285,7 +3309,9 @@ _wrap_set_light_blink(int argc, VALUE *argv, VALUE self) {
   } 
   arg4 = (int)(val4);
   result = (bool)set_light_blink(arg1,arg2,arg3,arg4);
-  vresult = SWIG_From_bool((bool)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3317,7 +3343,9 @@ _wrap_get_light_blink(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (uint8_t)(val2);
   result = (bool)get_light_blink(arg1,arg2);
-  vresult = SWIG_From_bool((bool)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3332,8 +3360,6 @@ _wrap_EV3_SENSOR_connected_set(int argc, VALUE *argv, VALUE self) {
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
   
   if ((argc < 1) || (argc > 1)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
@@ -3343,11 +3369,9 @@ _wrap_EV3_SENSOR_connected_set(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","connected", 1, self )); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_bool(argv[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "bool","connected", 2, argv[0] ));
-  } 
-  arg2 = (bool)(val2);
+  {
+    arg2 = argv[0] == Qtrue ? 1 : 0; 
+  }
   if (arg1) (arg1)->connected = arg2;
   return Qnil;
 fail:
@@ -3372,7 +3396,9 @@ _wrap_EV3_SENSOR_connected_get(int argc, VALUE *argv, VALUE self) {
   }
   arg1 = (EV3_SENSOR *)(argp1);
   result = (bool) ((arg1)->connected);
-  vresult = SWIG_From_bool((bool)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3580,7 +3606,9 @@ _wrap_get_sensor_bin_data(int argc, VALUE *argv, VALUE self) {
   } 
   arg3 = (size_t)(val3);
   result = get_sensor_bin_data(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
   } else {
@@ -3626,7 +3654,9 @@ _wrap_set_sensor_bin_data(int argc, VALUE *argv, VALUE self) {
   } 
   arg3 = (size_t)(val3);
   result = set_sensor_bin_data(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -3662,7 +3692,9 @@ _wrap_get_sensor_bin_data_format(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_bin_data_format(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -3693,7 +3725,9 @@ _wrap_get_sensor_dp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_dp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -3735,7 +3769,9 @@ _wrap_get_sensor_fw_version(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_fw_version(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -3766,7 +3802,9 @@ _wrap_get_sensor_i2c_addr(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_i2c_addr(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -3808,7 +3846,9 @@ _wrap_get_sensor_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -3844,7 +3884,9 @@ _wrap_set_sensor_mode(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_sensor_mode(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -3882,7 +3924,9 @@ _wrap_get_sensor_modes(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_modes(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -3913,7 +3957,9 @@ _wrap_get_sensor_num_values(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_num_values(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -3947,7 +3993,9 @@ _wrap_get_sensor_poll_ms(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_poll_ms(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -3985,7 +4033,9 @@ _wrap_set_sensor_poll_ms(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (dword)(val2);
   result = set_sensor_poll_ms(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -4021,7 +4071,9 @@ _wrap_get_sensor_port_name(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_port_name(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -4060,7 +4112,9 @@ _wrap_get_sensor_units(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_units(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -4091,7 +4145,9 @@ _wrap_get_sensor_type_id(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_type_id(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -4125,7 +4181,9 @@ _wrap_get_sensor_value0(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value0(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4159,7 +4217,9 @@ _wrap_get_sensor_value1(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value1(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4193,7 +4253,9 @@ _wrap_get_sensor_value2(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value2(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4227,7 +4289,9 @@ _wrap_get_sensor_value3(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value3(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4261,7 +4325,9 @@ _wrap_get_sensor_value4(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value4(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4295,7 +4361,9 @@ _wrap_get_sensor_value5(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value5(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4329,7 +4397,9 @@ _wrap_get_sensor_value6(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value6(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4363,7 +4433,9 @@ _wrap_get_sensor_value7(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_sensor_value7(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_float((*arg2)));
   } else {
@@ -4405,7 +4477,9 @@ _wrap_get_sensor_value(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (uint8_t)(val2);
   result = get_sensor_value(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res3)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg3)));
   } else {
@@ -4514,8 +4588,6 @@ _wrap_EV3_TACHO_connected_set(int argc, VALUE *argv, VALUE self) {
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
   
   if ((argc < 1) || (argc > 1)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
@@ -4525,11 +4597,9 @@ _wrap_EV3_TACHO_connected_set(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","connected", 1, self )); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_bool(argv[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "bool","connected", 2, argv[0] ));
-  } 
-  arg2 = (bool)(val2);
+  {
+    arg2 = argv[0] == Qtrue ? 1 : 0; 
+  }
   if (arg1) (arg1)->connected = arg2;
   return Qnil;
 fail:
@@ -4554,7 +4624,9 @@ _wrap_EV3_TACHO_connected_get(int argc, VALUE *argv, VALUE self) {
   }
   arg1 = (EV3_TACHO *)(argp1);
   result = (bool) ((arg1)->connected);
-  vresult = SWIG_From_bool((bool)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -4754,7 +4826,9 @@ _wrap_get_tacho_duty_cycle(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_duty_cycle(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -4788,7 +4862,9 @@ _wrap_get_tacho_duty_cycle_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_duty_cycle_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -4826,7 +4902,9 @@ _wrap_set_tacho_duty_cycle_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_duty_cycle_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -4862,7 +4940,9 @@ _wrap_get_tacho_polarity_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_polarity_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -4901,7 +4981,9 @@ _wrap_get_tacho_port_name(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_port_name(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -4932,7 +5014,9 @@ _wrap_get_tacho_position(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_position(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -4970,7 +5054,9 @@ _wrap_set_tacho_position(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_position(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5006,7 +5092,9 @@ _wrap_get_tacho_position_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_position_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -5042,7 +5130,9 @@ _wrap_set_tacho_position_mode(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_tacho_position_mode(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -5072,7 +5162,9 @@ _wrap_get_tacho_position_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_position_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5110,7 +5202,9 @@ _wrap_set_tacho_position_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_position_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5138,7 +5232,9 @@ _wrap_get_tacho_pulses_per_second(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_pulses_per_second(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5172,7 +5268,9 @@ _wrap_get_tacho_pulses_per_second_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_pulses_per_second_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5210,7 +5308,9 @@ _wrap_set_tacho_pulses_per_second_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_pulses_per_second_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5238,7 +5338,9 @@ _wrap_get_tacho_ramp_down_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_ramp_down_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -5276,7 +5378,9 @@ _wrap_set_tacho_ramp_down_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (dword)(val2);
   result = set_tacho_ramp_down_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5304,7 +5408,9 @@ _wrap_get_tacho_ramp_up_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_ramp_up_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -5342,7 +5448,9 @@ _wrap_set_tacho_ramp_up_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (dword)(val2);
   result = set_tacho_ramp_up_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5378,7 +5486,9 @@ _wrap_get_tacho_regulation_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_regulation_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -5414,7 +5524,9 @@ _wrap_set_tacho_regulation_mode(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_tacho_regulation_mode(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -5429,8 +5541,6 @@ _wrap_set_tacho_reset(int argc, VALUE *argv, VALUE self) {
   bool arg2 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
   size_t result;
   VALUE vresult = Qnil;
   
@@ -5442,13 +5552,13 @@ _wrap_set_tacho_reset(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_tacho_reset", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  ecode2 = SWIG_AsVal_bool(argv[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "bool","set_tacho_reset", 2, argv[1] ));
-  } 
-  arg2 = (bool)(val2);
+  {
+    arg2 = argv[1] == Qtrue ? 1 : 0; 
+  }
   result = set_tacho_reset(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5476,7 +5586,9 @@ _wrap_get_tacho_run(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_run(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_bool((*arg2)));
   } else {
@@ -5495,8 +5607,6 @@ _wrap_set_tacho_run(int argc, VALUE *argv, VALUE self) {
   bool arg2 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
   size_t result;
   VALUE vresult = Qnil;
   
@@ -5508,13 +5618,13 @@ _wrap_set_tacho_run(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_tacho_run", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  ecode2 = SWIG_AsVal_bool(argv[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "bool","set_tacho_run", 2, argv[1] ));
-  } 
-  arg2 = (bool)(val2);
+  {
+    arg2 = argv[1] == Qtrue ? 1 : 0; 
+  }
   result = set_tacho_run(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5550,7 +5660,9 @@ _wrap_get_tacho_run_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_run_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -5586,7 +5698,9 @@ _wrap_set_tacho_run_mode(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_tacho_run_mode(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -5616,7 +5730,9 @@ _wrap_get_tacho_speed_regulation_D(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_speed_regulation_D(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5654,7 +5770,9 @@ _wrap_set_tacho_speed_regulation_D(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_speed_regulation_D(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5682,7 +5800,9 @@ _wrap_get_tacho_speed_regulation_I(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_speed_regulation_I(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5720,7 +5840,9 @@ _wrap_set_tacho_speed_regulation_I(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_speed_regulation_I(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5748,7 +5870,9 @@ _wrap_get_tacho_speed_regulation_K(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_speed_regulation_K(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5786,7 +5910,9 @@ _wrap_set_tacho_speed_regulation_K(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_speed_regulation_K(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5814,7 +5940,9 @@ _wrap_get_tacho_speed_regulation_P(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_speed_regulation_P(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
   } else {
@@ -5852,7 +5980,9 @@ _wrap_set_tacho_speed_regulation_P(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (int)(val2);
   result = set_tacho_speed_regulation_P(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -5888,7 +6018,9 @@ _wrap_get_tacho_state(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_state(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -5927,7 +6059,9 @@ _wrap_get_tacho_stop_mode(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_stop_mode(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -5963,7 +6097,9 @@ _wrap_set_tacho_stop_mode(int argc, VALUE *argv, VALUE self) {
   }
   arg2 = (char *)(buf2);
   result = set_tacho_stop_mode(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return vresult;
 fail:
@@ -6001,7 +6137,9 @@ _wrap_get_tacho_stop_modes(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_stop_modes(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -6032,7 +6170,9 @@ _wrap_get_tacho_time_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg1 = (uint8_t)(val1);
   result = get_tacho_time_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   if (SWIG_IsTmpObj(res2)) {
     vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
   } else {
@@ -6070,7 +6210,9 @@ _wrap_set_tacho_time_sp(int argc, VALUE *argv, VALUE self) {
   } 
   arg2 = (dword)(val2);
   result = set_tacho_time_sp(arg1,arg2);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   return vresult;
 fail:
   return Qnil;
@@ -6106,7 +6248,9 @@ _wrap_get_tacho_type(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_tacho_type(arg1,arg2,arg3);
-  vresult = SWIG_From_size_t((size_t)(result));
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
   vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
   return vresult;
@@ -6547,7 +6691,6 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "ev3_write_float", _wrap_ev3_write_float, -1);
   rb_define_module_function(mEv3, "ev3_read_binary", _wrap_ev3_read_binary, -1);
   rb_define_module_function(mEv3, "ev3_read", _wrap_ev3_read, -1);
-  rb_define_module_function(mEv3, "ev3_read_bool", _wrap_ev3_read_bool, -1);
   rb_define_module_function(mEv3, "ev3_read_int", _wrap_ev3_read_int, -1);
   rb_define_module_function(mEv3, "ev3_read_dword", _wrap_ev3_read_dword, -1);
   rb_define_module_function(mEv3, "ev3_read_float", _wrap_ev3_read_float, -1);

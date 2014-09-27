@@ -5,6 +5,7 @@
 %module ev3
 %include "cstring.i"
 %include "stdint.i"
+%include "typemaps.i"
 
 %{
 #include "../source/ev3/ev3.h"
@@ -26,6 +27,12 @@
 %apply float *OUTPUT { float *buf };
 
 %apply uint32_t { dword };
+
+#ifdef SWIGRUBY
+%typemap( out ) size_t, bool { $result = $1 ? Qtrue : Qfalse; };
+%typemap( in ) bool { $1 = $input == Qtrue ? 1 : 0; };
+
+#endif
 
 /*
  *  ev3
@@ -58,7 +65,11 @@
 
 ($h-extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
 ($h-extern) size_t ev3_read( const char *fn, char *buf, size_t sz );
+
+#ifndef SWIGRUBY
 ($h-extern) size_t ev3_read_bool( const char *fn, bool *buf );
+
+#endif
 ($h-extern) size_t ev3_read_int( const char *fn, int *buf );
 ($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
 ($h-extern) size_t ev3_read_float( const char *fn, float *buf );
@@ -145,4 +156,3 @@ enum {
 ($import "../source/ev3/ev3_class-h.yu")
 
 ($h-extern) int ev3_tacho_init( void );
-

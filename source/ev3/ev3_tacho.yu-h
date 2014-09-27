@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3_tacho EV3 tacho-motors
+ *  \defgroup ev3_tacho Tacho-motors
  *  \brief Access to the EV3 brick tacho-motors.
  *  \{
  */

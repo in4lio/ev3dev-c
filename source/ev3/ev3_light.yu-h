@@ -19,7 +19,7 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3_light EV3 lights
+ *  \defgroup ev3_light Lights
  *  \{
  */
 

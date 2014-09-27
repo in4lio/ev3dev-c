@@ -24,6 +24,9 @@ TOP = ..
 # -- simplified wrapper and interface generator
 SWIG = swig
 
+# -- swig interface file source
+F_SWIG_YUI = $(TOP)/ev3.yu-i
+
 # -- compilers
 ifeq ($(PLATFORM),__DJGPP__)
 CC = $(DJGPP_HOME)/bin/gcc.exe
@@ -69,6 +72,10 @@ endif
 
 endif
 
+# -- python directory
+D_PYTHON = d:/prog/python27
+D_PYTHON = c:/dev/python27
+
 # -- yupp import directories
 #    WARNING! single directory only, see the rule for __init__.py
 D_YU = $(TOP)/source/ev3
@@ -86,14 +93,18 @@ D_CXX = $(D_C)
 D_ASM = $(TOP)/source
 
 # -- python headers
-ifeq ($(OS),Windows_NT)
-D_PY = d:/prog/python27/include
+ifeq ($(PLATFORM),__MINGW__)
+PYTHON_INCLUDE = $(D_PYTHON)/include
 else
-D_PY = /usr/include/python2.7
+
+ifeq ($(PLATFORM),__UNIX__)
+PYTHON_INCLUDE = /usr/include/python2.7
+endif
+
 endif
 
 # -- include directories
-D_H = $(D_C) $(D_PY)
+D_H = $(D_C) $(PYTHON_INCLUDE)
 
 # -- binary directory
 D_BIN = ev3dev
@@ -134,7 +145,7 @@ F_BIN = $(D_BIN)/_$(BIN)$(E_BIN)
 LIBS = -lm
 
 ifeq ($(PLATFORM),__MINGW__)
-LIBS := $(LIBS) -lws2_32 -lpython27
+LIBS := $(LIBS) -lws2_32 -lpython27 -L$(D_PYTHON)/libs
 else
 
 ifeq ($(PLATFORM),__UNIX__)
@@ -188,7 +199,7 @@ define uniq =
 	${seen}
 endef
 
-S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) ./$(BIN)_wrap.c)
+S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
 $(call uniq, $(S_C)) # remove duplicates
 
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
@@ -273,8 +284,8 @@ $(BIN)_wrap.c: $(BIN).i $(D_BIN)/__init__.py
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
 	$(SWIG) -python -outdir ev3dev -globals ev3 $<
 
-$(BIN).i: $(BIN).yu-i
-	$(call wrap,$(PP),$(PPFLAGS) $<)
+$(BIN).i: $(F_SWIG_YUI)
+	$(call wrap,$(PP),$(PPFLAGS) -o. $<)
 
 $(D_BIN)/__init__.py: $(D_YU)/app.yu
 	$(call wrap,$(PP),$(PPFLAGS) $(D_BIN)/__init__.yu-py)
