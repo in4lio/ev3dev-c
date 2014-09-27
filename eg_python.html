@@ -231,7 +231,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        desc = <a class="code" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a>( i )</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> desc.connected:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  port = out%d&#39;</span> % ( i + 1 )</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            ok, _type = <a class="code" href="group__ev3__tacho.html#gac4da0afe31144f0fda2356bb4ea7f89b">get_tacho_type</a>( desc.type_id, 256 )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            ok, _type = <a class="code" href="group__ev3__tacho.html#gac4da0afe31144f0fda2356bb4ea7f89b">get_tacho_type</a>( desc.id, 256 )</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">print</span> <span class="stringliteral">&#39;  type =&#39;</span>, _type</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment"># Look for minitacho motor</span></div>
@@ -240,9 +240,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _id = <a class="code" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a>( p ).id</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;MINITACHO is found, run for 5 sec...&#39;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">set_tacho_regulation_mode</a>( _id, <span class="stringliteral">&quot;off&quot;</span> )</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga21e3fc1479dbd87a0d4072a62c060e0a">set_tacho_run_mode</a>( _id, <span class="stringliteral">&quot;time&quot;</span> )</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga29908b3da0a7642fe8aa63f128ffc5a9">set_tacho_stop_mode</a>( _id, <span class="stringliteral">&quot;brake&quot;</span> )</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">set_tacho_regulation_mode</a>( _id, <span class="stringliteral">&#39;off&#39;</span> )</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga21e3fc1479dbd87a0d4072a62c060e0a">set_tacho_run_mode</a>( _id, <span class="stringliteral">&#39;time&#39;</span> )</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga29908b3da0a7642fe8aa63f128ffc5a9">set_tacho_stop_mode</a>( _id, <span class="stringliteral">&#39;brake&#39;</span> )</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga18e589671fe635eab77d969213b3ae72">set_tacho_duty_cycle_sp</a>( _id, 100 )</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="group__ev3__tacho.html#gaeba97d5fad26f7bff1bdbde1b48ecdbe">set_tacho_time_sp</a>( _id, 5000 )</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="group__ev3__tacho.html#ga13021aa68eb93544e995ae874ab6f8b5">set_tacho_ramp_up_sp</a>( _id, 2000 )</div>
@@ -291,7 +291,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 26 2014 18:47:37 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Sep 28 2014 01:25:23 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
