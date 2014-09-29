@@ -50,13 +50,14 @@ enum {
 		 *  \return Count of read bytes.
 		 */
 		($h-extern) size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) );
+
 	[ )
 	($if ($ge ($i CLASS_ATTR_WRITE) RW) ]
 		/**
 		 *  \brief Set ($q ($i CLASS_ATTR_ID)) attribute of the ($CLASS_ID).
 		 *  \param id Identifier of the ($CLASS_ID).
 		 *  \param value Attribute value.
-		 ($[*  \param sz Size of attribute value.] ? ($i CLASS_ATTR_ARRAY))
+		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
 		 *  \return Count of written bytes.
 		 */
 		($h-extern) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t id, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );

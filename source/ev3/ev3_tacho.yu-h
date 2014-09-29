@@ -20,7 +20,7 @@
 
 /**
  *  \defgroup ev3_tacho Tacho-motors
- *  \brief Access to the EV3 brick tacho-motors.
+ *  \brief Access to EV3 tacho-motors.
  *  \{
  */
 

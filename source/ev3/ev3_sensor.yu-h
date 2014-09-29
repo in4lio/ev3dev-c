@@ -20,7 +20,7 @@
 
 /**
  *  \defgroup ev3_sensor Sensors
- *  \brief Access to the EV3 brick sensors.
+ *  \brief Access to EV3 sensors.
  *  \{
  */
 

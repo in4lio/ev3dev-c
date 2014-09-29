@@ -32,6 +32,8 @@
     _ev3.pyd    - for a remote access, under Windows (x86);
     _ev3.so     - for LEGO Mindstorms EV3 Debian.
 
+    You have to install "ruby-dev" package to build Ruby library.
+
     ___       ____________________________________
     ___ F A Q ____________________________________
 

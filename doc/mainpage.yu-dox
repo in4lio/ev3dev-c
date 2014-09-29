@@ -125,7 +125,7 @@ ev3_uninit()
 <P>Features of Ruby library:
 1. Functions return a value as the second element of the result tuple, the first element has a boolean type;
 2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions.</P>
-\code {.rb}
+\code {.py}
 include Ev3
 if ev3_init() < 1 then exit( 1 ) end
 ev3_sensor_init()

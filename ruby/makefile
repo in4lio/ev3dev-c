@@ -139,7 +139,7 @@ E_BIN = .so
 endif
 
 # -- the rest of removal list
-G_REST = $(BIN)_wrap.c $(BIN).i platform.h $(D_BIN)/__init__.py
+G_REST = $(BIN)_wrap.c $(BIN).i platform.h
 
 # -- binary full name
 F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
