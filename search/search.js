@@ -11,8 +11,8 @@ var indexSectionsWithContent =
   1: "e",
   2: "em",
   3: "egsu",
-  4: "cdefit",
-  5: "eio",
+  4: "cdefilt",
+  5: "eilot",
   6: "flrst",
   7: "elt"
 };

@@ -16,6 +16,7 @@ var searchData=
   ['ev3_5fled_2eh',['ev3_led.h',['../ev3__led_8h.html',1,'']]],
   ['ev3_5flight_2ec',['ev3_light.c',['../ev3__light_8c.html',1,'']]],
   ['ev3_5flight_2eh',['ev3_light.h',['../ev3__light_8h.html',1,'']]],
+  ['ev3_5flight_5fext_5finit',['EV3_LIGHT_EXT_INIT',['../group__ev3__light.html#ga03359dff20585f105e685db7e7cd140b',1,'ev3_light.h']]],
   ['ev3_5flink_2ec',['ev3_link.c',['../ev3__link_8c.html',1,'']]],
   ['ev3_5flink_2eh',['ev3_link.h',['../ev3__link_8h.html',1,'']]],
   ['ev3_5flist_5fdir',['EV3_LIST_DIR',['../group__ev3__link.html#ggabed82baf7f470b522273a3e37c24c600af9c5fec63edbe74af4c4cb08319eed95',1,'ev3_link.c']]],

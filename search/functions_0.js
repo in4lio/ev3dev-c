@@ -4,6 +4,7 @@ var searchData=
   ['ev3_5fget_5fsensor',['ev3_get_sensor',['../group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321',1,'ev3_sensor.c']]],
   ['ev3_5fget_5ftacho',['ev3_get_tacho',['../group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918',1,'ev3_tacho.c']]],
   ['ev3_5finit',['ev3_init',['../group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707',1,'ev3.c']]],
+  ['ev3_5flight_5fext_5finit',['EV3_LIGHT_EXT_INIT',['../group__ev3__light.html#ga03359dff20585f105e685db7e7cd140b',1,'ev3_light.h']]],
   ['ev3_5flistdir',['ev3_listdir',['../group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0',1,'ev3.c']]],
   ['ev3_5fpoweroff',['ev3_poweroff',['../group__ev3.html#ga594c82738fc7b7723470f81e893154da',1,'ev3.c']]],
   ['ev3_5fread',['ev3_read',['../group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8',1,'ev3.c']]],

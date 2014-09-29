@@ -1,5 +1,13 @@
 var searchData=
 [
+  ['set_5fled_5fbrightness',['set_led_brightness',['../group__ev3__led.html#gaf0484eb04be96342452d32378a75acd9',1,'ev3_led.c']]],
+  ['set_5fled_5fdelay_5foff',['set_led_delay_off',['../group__ev3__led.html#gacad1dd61317d11d6f4e9d04bee7936a9',1,'ev3_led.c']]],
+  ['set_5fled_5fdelay_5fon',['set_led_delay_on',['../group__ev3__led.html#ga9fd640f0e802badc4ff18e9d3d3e489f',1,'ev3_led.c']]],
+  ['set_5fled_5ftrigger',['set_led_trigger',['../group__ev3__led.html#gaf238bc59b83af90e5bac81fb0e5a1ed6',1,'ev3_led.c']]],
+  ['set_5fled_5ftrigger_5finx',['set_led_trigger_inx',['../group__ev3__led.html#ga99a15995d388d8c087e3cb69d32a332e',1,'ev3_led.c']]],
+  ['set_5flight',['set_light',['../group__ev3__light.html#gaab029fa4333aa38cb89c3b565c21650f',1,'ev3_light.c']]],
+  ['set_5flight_5fblink',['set_light_blink',['../group__ev3__light.html#gab565a1029451f145ab3b4b2ab58885f8',1,'ev3_light.c']]],
+  ['set_5flight_5ftrigger',['set_light_trigger',['../group__ev3__light.html#ga190a2bbf95c8af76993c9b89746e6096',1,'ev3_light.c']]],
   ['set_5fsensor_5fbin_5fdata',['set_sensor_bin_data',['../group__ev3__sensor.html#ga4b158a44a852700653c134890c6aedd2',1,'ev3_sensor.c']]],
   ['set_5fsensor_5fmode',['set_sensor_mode',['../group__ev3__sensor.html#gab1d8488d679f6f46102087be68da7540',1,'ev3_sensor.c']]],
   ['set_5fsensor_5fpoll_5fms',['set_sensor_poll_ms',['../group__ev3__sensor.html#ga6002246c6f8fa18bd1734bff36debce1',1,'ev3_sensor.c']]],
