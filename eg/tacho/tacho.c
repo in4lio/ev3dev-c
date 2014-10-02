@@ -45,7 +45,7 @@ int main( void )
 	printf( "The EV3 brick auto-detection is DISABLED, waiting %s online...\n", ev3_brick_addr );
 
 #endif
-	while ( ev3_tacho_init() == EV3_NONE ) Sleep( 1000 );
+	while ( ev3_tacho_init() == 0 ) Sleep( 1000 );
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 

@@ -99,3 +99,24 @@ enum {
  *  \return Pointer to the ($CLASS_ID) descriptor.
  */
 ($h-extern) EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port );
+
+/**
+ *  \brief Get the flag that the ($CLASS_ID) is connected to the specified port.
+ *  \param port EV3 port.
+ *  \return Flag - the ($CLASS_ID) is connected.
+ */
+($h-extern) bool ev3_get_($CLASS_ID)_connected( uint8_t port );
+
+/**
+ *  \brief Get the identifier of the ($CLASS_ID) connected to the specified port.
+ *  \param port EV3 port.
+ *  \return Identifier of the ($CLASS_ID).
+ */
+($h-extern) uint32_t ev3_get_($CLASS_ID)_id( uint8_t port );
+
+/**
+ *  \brief Get the type of the ($CLASS_ID) connected to the specified port.
+ *  \param port EV3 port.
+ *  \return The ($CLASS_ID) type.
+ */
+($h-extern) uint32_t ev3_get_($CLASS_ID)_type_id( uint8_t port );

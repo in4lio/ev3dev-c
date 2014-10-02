@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.3b9
-                2014-09-27
+    ev3dev-c    0.4b1
+                2014-10-02
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -18,8 +18,9 @@
     So, if you set up WLAN on the brick you will be able to drive
     the EV3 hardware from your computer, e.g. under Windows.
 
-    Python (see "python/ev3dev" folder) and Ruby (see "ruby" folder)
-    libraries are automatically generated from C library using SWIG tool.
+    Python (see "python/ev3dev" folder), Ruby (see "ruby" folder) and
+    Perl (see "perl" folder) libraries are automatically generated from
+    C library using SWIG tool.
 
     Use pip or easy_install to install ev3dev-c Python package, e.g.
 
@@ -32,7 +33,8 @@
     _ev3.pyd    - for a remote access, under Windows (x86);
     _ev3.so     - for LEGO Mindstorms EV3 Debian.
 
-    You have to install "ruby-dev" package to build Ruby library.
+    You have to install "ruby-dev" package to build Ruby library and
+    "libperl-dev" package to build Perl library.
 
     ___       ____________________________________
     ___ F A Q ____________________________________
@@ -57,7 +59,7 @@
     > bin\mingw\light.exe
 
     Similar examples on Python could be found in "python/ev3dev/eg".
-    Examples on Ruby is placed in "ruby/eg".
+    Examples on Ruby is placed in "ruby/eg", on Perl in "perl/eg".
 
     * * *  How to drive the EV3 hardware remotely?
 

@@ -72,9 +72,9 @@ endif
 
 endif
 
-# -- ruby directory
-#D_RUBY = c:/dev/ruby
-D_RUBY = d:/prog/ruby
+# -- perl directory
+#D_PERL = c:/dev/perl/perl
+D_PERL = d:/prog/perl-no64/perl/
 
 # -- yupp import directories
 D_YU = $(TOP)/source/ev3
@@ -91,27 +91,23 @@ endif
 D_CXX = $(D_C)
 D_ASM = $(TOP)/source
 
-# -- ruby headers
-ifndef RUBY_INCLUDE
-
+# -- perl headers
 ifeq ($(PLATFORM),__MINGW__)
-RUBY_INCLUDE = $(D_RUBY)/include/ruby-2.0.0
+PERL_INCLUDE = $(D_PERL)/lib/CORE
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-RUBY_INCLUDE = /usr/include/ruby-1.9.1
-endif
-
+PERL_INCLUDE = /usr/lib/perl/5.14/CORE
 endif
 
 endif
 
 # -- include directories
-D_H = $(D_C) $(RUBY_INCLUDE)
+D_H = $(D_C) $(PERL_INCLUDE)
 
 # -- binary directory
 D_BIN = .
-D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
+#D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
 D_OBJ = object
@@ -133,7 +129,7 @@ E_OBJ = .o
 
 # -- binary suffix
 ifeq ($(OS),Windows_NT)
-E_BIN = .so
+E_BIN = .dll
 else
 E_BIN = .so
 endif
@@ -153,15 +149,13 @@ LIBS = -lm
 
 ifeq ($(PLATFORM),__MINGW__)
 
-ifndef RUBY_LIB
-RUBY_LIB = $(D_RUBY)/lib
-endif
+PERL_LIB = $(D_PERL)/lib/CORE
 
-LIBS := $(LIBS) -lws2_32 -lmsvcrt-ruby200.dll -L$(RUBY_LIB)
+LIBS := $(LIBS) -lws2_32 -lperl520 -L$(PERL_LIB)
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-LIBS := $(LIBS) -lruby-1.9.1
+LIBS := $(LIBS) -lperl
 endif
 
 endif
@@ -172,10 +166,12 @@ LFLAGS =
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
 
 # -- compiler flags
-CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment -Wno-unused-parameter
+CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
+CFLAGS_WRAP = -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-variable
 
 ifeq ($(PLATFORM),__UNIX__)
 CFLAGS := $(CFLAGS) -fPIC
+CFLAGS_WRAP := $(CFLAGS_WRAP) -D_GNU_SOURCE
 endif
 
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
@@ -211,7 +207,7 @@ define uniq =
 	${seen}
 endef
 
-S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) $(BIN)_wrap.c)
+S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
 $(call uniq, $(S_C)) # remove duplicates
 
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
@@ -224,6 +220,7 @@ O_C = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_C))))
 O_ASM = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_ASM)))))
 
 O = $(O_CXX) $(O_C) $(O_ASM)
+O_WRAP = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(BIN)_wrap))
 
 # ---------------------------------
 #   commands
@@ -287,14 +284,16 @@ vpath %$(E_YUC) $(D_C)
 
 all: $(F_BIN)
 
-$(F_BIN): $(O)
+$(F_BIN): $(O) $(O_WRAP)
 	$(call wrap,$(CC),-shared $^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
 $(BIN)_wrap.c: $(BIN).i
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
-	$(SWIG) -ruby $<
+	$(SWIG) -perl $<
+
+$(O_WRAP): CFLAGS_EX = $(CFLAGS_WRAP)
 
 $(BIN).i: $(F_SWIG_YUI)
 	$(call wrap,$(PP),$(PPFLAGS) -o. $<)
@@ -312,8 +311,8 @@ $(G_H): %$(E_H): %$(E_YUH)
 
 $(S_C) $(S_CXX): $(G_H)
 
-$(O_C): $(D_OBJ)/%$(E_OBJ): %$(E_C)
-	$(call wrap,$(CC),$(CFLAGS) -c $< -o $@)
+$(O_C) $(O_WRAP): $(D_OBJ)/%$(E_OBJ): %$(E_C)
+	$(call wrap,$(CC),$(CFLAGS) $(CFLAGS_EX) -c $< -o $@)
 
 $(O_CXX): $(D_OBJ)/%$(E_OBJ): %$(E_CXX)
 	$(call wrap,$(CXX),$(CXXFLAGS) -c $< -o $@)

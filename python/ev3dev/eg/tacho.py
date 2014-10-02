@@ -14,22 +14,21 @@ if __name__ == '__main__':
     if not EV3_BRICK:
         print 'The EV3 brick auto-detection is DISABLED, waiting %s online...' % ( ev3.brick_addr )
 
-    while ev3_tacho_init() == EV3_NONE: sleep( 1.0 )
+    while ev3_tacho_init() == 0: sleep( 1.0 )
 
     print '*** ( EV3 ) Hello! ***'
 
     print 'Found tacho-motors:'
     for i in range( OUTPUT__COUNT_ ):
-        desc = ev3_get_tacho( i )
-        if desc.connected:
+        if ev3_get_tacho_connected( i ):
             print '  port = out%d' % ( i + 1 )
-            ok, _type = get_tacho_type( desc.id, 256 )
+            ok, _type = get_tacho_type( ev3_get_tacho_id( i ), 256 )
             if ok:
                 print '  type =', _type
     # Look for minitacho motor
     p = ev3_tacho_port( MINITACHO )
     if p != EV3_NONE:
-        _id = ev3_get_tacho( p ).id
+        _id = ev3_get_tacho_id( p )
 
         print 'MINITACHO is found, run for 5 sec...'
         set_tacho_regulation_mode( _id, 'off' )

@@ -93,7 +93,7 @@ this category at the moment.
 \endcode
 
 <BR><HR>
-<H2>Python, Ruby and other languages</H2>
+<H2>Python, Ruby, Perl and other languages</H2>
 
 <A HREF="https://pypi.python.org/pypi/ev3dev-c/">Libraries</A> on Python and Ruby
 have been generated using <A HREF="http://www.swig.org/">SWIG</A>.
@@ -101,7 +101,7 @@ The SWIG interface file called "ev3.i", its source is
 <A HREF="https://github.com/in4lio/ev3dev-c/blob/master/ev3.yu-i">"ev3.yu-i"</A>.
 <P>Features of Python library:
 1. Functions return a value as the second element of the result tuple;
-2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions;
+2. Access to lists of detected devices only through \ref ev3_get_sensor, \ref ev3_get_tacho and ev3_get_<class>_<field> functions;
 3. Access to other global variables through "ev3" namespace.</P>
 \code {.py}
 color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]
@@ -113,7 +113,7 @@ ev3_sensor_init()
 
 port = ev3_sensor_port( EV3_COLOR )
 if port != EV3_NONE:
-    id = ev3_get_sensor( port ).id
+    id = ev3_get_sensor_id( port )
     set_sensor_mode( id, 'COL-COLOR' )
 
     ok, val = get_sensor_value( 0, id )
@@ -124,7 +124,7 @@ ev3_uninit()
 \endcode
 <P>Features of Ruby library:
 1. Functions return a value as the second element of the result tuple, the first element has a boolean type;
-2. Access to lists of detected devices only through \ref ev3_get_sensor and \ref ev3_get_tacho functions.</P>
+2. Access to lists of detected devices only through \ref ev3_get_sensor, \ref ev3_get_tacho and ev3_get_<class>_<field>(port) functions.</P>
 \code {.py}
 include Ev3
 if ev3_init() < 1 then exit( 1 ) end
@@ -132,11 +132,32 @@ ev3_sensor_init()
 
 p_touch = ev3_sensor_port( EV3_TOUCH )
 if p_touch != EV3_NONE
-  id_touch = ev3_get_sensor( p_touch ).id
+  id_touch = ev3_get_sensor_id( p_touch )
   while get_sensor_value( 0, id_touch )[ 1 ] == 0 do end
 end
 
 ev3_uninit()
+\endcode
+<P>Features of Perl library:
+1. Functions return a value as the second element of the result tuple;
+2. Access to lists of detected devices only through ev3_get_<class>_<field>(port) functions.</P>
+\code {.c}
+use ev3;
+
+ev3::ev3_init() > 0 || exit( 1 );
+ev3::ev3_tacho_init();
+
+my $port = ev3::ev3_tacho_port( $ev3::MINITACHO );
+if ( $port != $ev3::EV3_NONE ) {
+    my $id = ev3::ev3_get_tacho_id( $port );
+
+    ev3::set_tacho_regulation_mode( $id, "off" );
+    ev3::set_tacho_duty_cycle_sp( $id, 50 );
+    ev3::set_tacho_run( $id, true );
+    sleep( 2 );
+    ev3::set_tacho_run( $id, false );
+}
+ev3::ev3_uninit();
 \endcode
 Similarly, you can use SWIG to wrap the library in a number of other languages.
 

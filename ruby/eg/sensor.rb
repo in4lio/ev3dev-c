@@ -48,11 +48,11 @@ if __FILE__ == $0
   p_touch = ev3_sensor_port( EV3_TOUCH )
   if p_touch != EV3_NONE
     puts 'EV3_TOUCH is found, press BUTTON for EXIT...'
-    id_touch = ev3_get_sensor( p_touch ).id
+    id_touch = ev3_get_sensor_id( p_touch )
     # Look for color sensor
     p_color = ev3_sensor_port( EV3_COLOR )
     if p_color != EV3_NONE
-      id_color = ev3_get_sensor( p_color ).id
+      id_color = ev3_get_sensor_id( p_color )
       puts 'EV3_COLOR is found, reading COLOR...'
       set_sensor_mode( id_color, 'COL-COLOR' )
       loop do

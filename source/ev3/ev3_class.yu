@@ -85,6 +85,21 @@ EV3_($upper CLASS_ID) *ev3_get_($CLASS_ID)( uint8_t port )
 	return ( ev3_($CLASS_ID) + (( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ));
 }
 
+bool ev3_get_($CLASS_ID)_connected( uint8_t port )
+{
+	return ( ev3_($CLASS_ID)[( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ].connected );
+}
+
+uint32_t ev3_get_($CLASS_ID)_id( uint8_t port )
+{
+	return ( ev3_($CLASS_ID)[( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ].id );
+}
+
+uint32_t ev3_get_($CLASS_ID)_type_id( uint8_t port )
+{
+	return ( ev3_($CLASS_ID)[( port < ($CLASS_PORT_ID)__COUNT_ ) ? port : 0 ].type_id );
+}
+
 static bool get_str_suffix( const char *prefix, char *s, uint32_t *buf )
 {
 	char *end;

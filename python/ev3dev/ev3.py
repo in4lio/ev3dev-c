@@ -69,8 +69,8 @@ except AttributeError:
     _newclass = 0
 
 
-EV3_NONE = _ev3.EV3_NONE
 EV3_BRICK = _ev3.EV3_BRICK
+EV3_NONE = _ev3.EV3_NONE
 
 def ev3_init():
   return _ev3.ev3_init()
@@ -371,6 +371,18 @@ def ev3_get_sensor(*args):
   return _ev3.ev3_get_sensor(*args)
 ev3_get_sensor = _ev3.ev3_get_sensor
 
+def ev3_get_sensor_connected(*args):
+  return _ev3.ev3_get_sensor_connected(*args)
+ev3_get_sensor_connected = _ev3.ev3_get_sensor_connected
+
+def ev3_get_sensor_id(*args):
+  return _ev3.ev3_get_sensor_id(*args)
+ev3_get_sensor_id = _ev3.ev3_get_sensor_id
+
+def ev3_get_sensor_type_id(*args):
+  return _ev3.ev3_get_sensor_type_id(*args)
+ev3_get_sensor_type_id = _ev3.ev3_get_sensor_type_id
+
 def ev3_sensor_init():
   return _ev3.ev3_sensor_init()
 ev3_sensor_init = _ev3.ev3_sensor_init
@@ -577,6 +589,18 @@ ev3_tacho_port = _ev3.ev3_tacho_port
 def ev3_get_tacho(*args):
   return _ev3.ev3_get_tacho(*args)
 ev3_get_tacho = _ev3.ev3_get_tacho
+
+def ev3_get_tacho_connected(*args):
+  return _ev3.ev3_get_tacho_connected(*args)
+ev3_get_tacho_connected = _ev3.ev3_get_tacho_connected
+
+def ev3_get_tacho_id(*args):
+  return _ev3.ev3_get_tacho_id(*args)
+ev3_get_tacho_id = _ev3.ev3_get_tacho_id
+
+def ev3_get_tacho_type_id(*args):
+  return _ev3.ev3_get_tacho_type_id(*args)
+ev3_get_tacho_type_id = _ev3.ev3_get_tacho_type_id
 
 def ev3_tacho_init():
   return _ev3.ev3_tacho_init()

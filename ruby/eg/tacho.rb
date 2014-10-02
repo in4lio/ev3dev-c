@@ -16,16 +16,15 @@ if __FILE__ == $0
     puts "The EV3 brick auto-detection is DISABLED, waiting #{ev3.brick_addr} online..."
   end
 
-  while ev3_tacho_init() == EV3_NONE do sleep( 1.0 ) end
+  while ev3_tacho_init() == 0 do sleep( 1.0 ) end
 
   puts '*** ( EV3 ) Hello! ***'
 
   puts 'Found tacho-motors:'
   OUTPUT__COUNT_.times do |i|
-    desc = ev3_get_tacho( i )
-    if desc.connected
+    if ev3_get_tacho_connected( i )
       puts "  port = out#{i + 1}"
-      ok, _type = get_tacho_type( desc.id, 256 )
+      ok, _type = get_tacho_type( ev3_get_tacho_id( i ), 256 )
       if ok
         puts "  type = #{_type}"
       end
@@ -34,7 +33,7 @@ if __FILE__ == $0
   # Look for minitacho motor
   p = ev3_tacho_port( MINITACHO )
   if p != EV3_NONE
-    _id = ev3_get_tacho( p ).id
+    _id = ev3_get_tacho_id( p )
 
     puts 'MINITACHO is found, run for 5 sec...'
     set_tacho_regulation_mode( _id, 'off' )

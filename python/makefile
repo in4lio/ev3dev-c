@@ -73,15 +73,15 @@ endif
 endif
 
 # -- python directory
+#D_PYTHON = c:/dev/python27
 D_PYTHON = d:/prog/python27
-D_PYTHON = c:/dev/python27
 
 # -- yupp import directories
 #    WARNING! single directory only, see the rule for __init__.py
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = . $(TOP)/source/ev3 $(TOP)/3d_party
+D_C = $(TOP)/source/ev3 $(TOP)/3d_party
 
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
@@ -136,7 +136,11 @@ E_BIN = .so
 endif
 
 # -- the rest of removal list
-G_REST = $(BIN)_wrap.c $(BIN).i platform.h $(D_BIN)/__init__.py
+G_REST = $(BIN)_wrap.c platform.h
+
+ifeq ($(SKIP_PP),0)
+G_REST := $(BIN).i $(D_BIN)/__init__.py
+endif
 
 # -- binary full name
 F_BIN = $(D_BIN)/_$(BIN)$(E_BIN)
@@ -160,7 +164,7 @@ LFLAGS =
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
 
 # -- compiler flags
-CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99
+CFLAGS = $(addprefix -I, $(D_H)) -O2  -std=gnu99 -W -Wall -Wno-comment
 
 ifeq ($(PLATFORM),__UNIX__)
 CFLAGS := $(CFLAGS) -fPIC
@@ -199,7 +203,7 @@ define uniq =
 	${seen}
 endef
 
-S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
+S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) $(BIN)_wrap.c)
 $(call uniq, $(S_C)) # remove duplicates
 
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
