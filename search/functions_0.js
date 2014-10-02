@@ -2,7 +2,13 @@ var searchData=
 [
   ['ev3_5fext_5finit',['EV3_EXT_INIT',['../group__ev3.html#ga377bcee0066eadc1b584c39492a92887',1,'EV3_EXT_INIT(char *ev3_brick_addr, NULL):&#160;ev3.h'],['../group__ev3.html#ga1ec06ee09a43dae612fe98dbef1d5e11',1,'EV3_EXT_INIT(uint16_t ev3_brick_port, 8800):&#160;ev3.h']]],
   ['ev3_5fget_5fsensor',['ev3_get_sensor',['../group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321',1,'ev3_sensor.c']]],
+  ['ev3_5fget_5fsensor_5fconnected',['ev3_get_sensor_connected',['../group__ev3__sensor.html#ga244cfd3b298dcf8ac0a50ff74d98e8e6',1,'ev3_sensor.c']]],
+  ['ev3_5fget_5fsensor_5fid',['ev3_get_sensor_id',['../group__ev3__sensor.html#ga5f09f12f42d67e06e1443bf4c5dbe120',1,'ev3_sensor.c']]],
+  ['ev3_5fget_5fsensor_5ftype_5fid',['ev3_get_sensor_type_id',['../group__ev3__sensor.html#ga4c7e3edf3b29419f66fb27315675c55c',1,'ev3_sensor.c']]],
   ['ev3_5fget_5ftacho',['ev3_get_tacho',['../group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918',1,'ev3_tacho.c']]],
+  ['ev3_5fget_5ftacho_5fconnected',['ev3_get_tacho_connected',['../group__ev3__tacho.html#ga32fdf5e839ed930f09e1250a42ea5bab',1,'ev3_tacho.c']]],
+  ['ev3_5fget_5ftacho_5fid',['ev3_get_tacho_id',['../group__ev3__tacho.html#ga969401261602562382cb8ab8e9e969a1',1,'ev3_tacho.c']]],
+  ['ev3_5fget_5ftacho_5ftype_5fid',['ev3_get_tacho_type_id',['../group__ev3__tacho.html#ga5d0bccf6021c94ccf031f371cb11e209',1,'ev3_tacho.c']]],
   ['ev3_5finit',['ev3_init',['../group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707',1,'ev3.c']]],
   ['ev3_5flight_5fext_5finit',['EV3_LIGHT_EXT_INIT',['../group__ev3__light.html#ga03359dff20585f105e685db7e7cd140b',1,'ev3_light.h']]],
   ['ev3_5flistdir',['ev3_listdir',['../group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0',1,'ev3.c']]],

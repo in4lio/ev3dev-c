@@ -197,11 +197,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  p_touch = ev3_sensor_port( EV3_TOUCH )</div>
 <div class="line">  if p_touch != EV3_NONE</div>
 <div class="line">    puts &#39;EV3_TOUCH is found, press BUTTON for EXIT...&#39;</div>
-<div class="line">    id_touch = ev3_get_sensor( p_touch ).id</div>
+<div class="line">    id_touch = ev3_get_sensor_id( p_touch )</div>
 <div class="line">    # Look for color sensor</div>
 <div class="line">    p_color = ev3_sensor_port( EV3_COLOR )</div>
 <div class="line">    if p_color != EV3_NONE</div>
-<div class="line">      id_color = ev3_get_sensor( p_color ).id</div>
+<div class="line">      id_color = ev3_get_sensor_id( p_color )</div>
 <div class="line">      puts &#39;EV3_COLOR is found, reading COLOR...&#39;</div>
 <div class="line">      set_sensor_mode( id_color, &#39;COL-COLOR&#39; )</div>
 <div class="line">      loop do</div>
@@ -253,16 +253,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    puts &quot;The EV3 brick auto-detection is DISABLED, waiting #{ev3.brick_addr} online...&quot;</div>
 <div class="line">  end</div>
 <div class="line"></div>
-<div class="line">  while ev3_tacho_init() == EV3_NONE do sleep( 1.0 ) end</div>
+<div class="line">  while ev3_tacho_init() == 0 do sleep( 1.0 ) end</div>
 <div class="line"></div>
 <div class="line">  puts &#39;*** ( EV3 ) Hello! ***&#39;</div>
 <div class="line"></div>
 <div class="line">  puts &#39;Found tacho-motors:&#39;</div>
 <div class="line">  OUTPUT__COUNT_.times do |i|</div>
-<div class="line">    desc = ev3_get_tacho( i )</div>
-<div class="line">    if desc.connected</div>
+<div class="line">    if ev3_get_tacho_connected( i )</div>
 <div class="line">      puts &quot;  port = out#{i + 1}&quot;</div>
-<div class="line">      ok, _type = get_tacho_type( desc.id, 256 )</div>
+<div class="line">      ok, _type = get_tacho_type( ev3_get_tacho_id( i ), 256 )</div>
 <div class="line">      if ok</div>
 <div class="line">        puts &quot;  type = #{_type}&quot;</div>
 <div class="line">      end</div>
@@ -271,7 +270,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">  # Look for minitacho motor</div>
 <div class="line">  p = ev3_tacho_port( MINITACHO )</div>
 <div class="line">  if p != EV3_NONE</div>
-<div class="line">    _id = ev3_get_tacho( p ).id</div>
+<div class="line">    _id = ev3_get_tacho_id( p )</div>
 <div class="line"></div>
 <div class="line">    puts &#39;MINITACHO is found, run for 5 sec...&#39;</div>
 <div class="line">    set_tacho_regulation_mode( _id, &#39;off&#39; )</div>
@@ -325,7 +324,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 29 2014 13:24:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 13:18:32 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

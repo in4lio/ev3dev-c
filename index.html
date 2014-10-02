@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>LEGO Mindstorms EV3 Debian C library + Python and Ruby wrapper</title>
+<title>LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LEGO Mindstorms EV3 Debian C library + Python and Ruby wrapper </div>  </div>
+<div class="title">LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><center> <pre class="fragment"> 
@@ -123,11 +123,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 </div><!-- fragment --><p><br />
 </p><hr/>
- <h2>Python, Ruby and other languages</h2>
+ <h2>Python, Ruby, Perl and other languages</h2>
 <p><a href="https://pypi.python.org/pypi/ev3dev-c/">Libraries</a> on Python and Ruby have been generated using <a href="http://www.swig.org/">SWIG</a>. The SWIG interface file called "ev3.i", its source is <a href="https://github.com/in4lio/ev3dev-c/blob/master/ev3.yu-i">"ev3.yu-i"</a>. </p>
 <p>Features of Python library:</p><ol type="1">
 <li>Functions return a value as the second element of the result tuple;</li>
-<li>Access to lists of detected devices only through <a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a> and <a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> functions;</li>
+<li>Access to lists of detected devices only through <a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a>, <a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> and ev3_get_&lt;class&gt;_&lt;field&gt; functions;</li>
 <li>Access to other global variables through "ev3" namespace.</li>
 </ol>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;color = [ <span class="stringliteral">&#39;?&#39;</span>, <span class="stringliteral">&#39;BLACK&#39;</span>, <span class="stringliteral">&#39;BLUE&#39;</span>, <span class="stringliteral">&#39;GREEN&#39;</span>, <span class="stringliteral">&#39;YELLOW&#39;</span>, <span class="stringliteral">&#39;RED&#39;</span>, <span class="stringliteral">&#39;WHITE&#39;</span>, <span class="stringliteral">&#39;BROWN&#39;</span> ]</div>
@@ -139,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;port = <a class="code" href="group__ev3__sensor.html#ga821db2d36cac6ebfd2387944b10b6031">ev3_sensor_port</a>( EV3_COLOR )</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordflow">if</span> port != EV3_NONE:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    id = <a class="code" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a>( port ).id</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    id = <a class="code" href="group__ev3__sensor.html#ga5f09f12f42d67e06e1443bf4c5dbe120">ev3_get_sensor_id</a>( port )</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="group__ev3__sensor.html#gab1d8488d679f6f46102087be68da7540">set_sensor_mode</a>( id, <span class="stringliteral">&#39;COL-COLOR&#39;</span> )</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ok, val = <a class="code" href="group__ev3__sensor.html#ga10a576cc626d6da2d19351d1eb315e5d">get_sensor_value</a>( 0, id )</div>
@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>()</div>
 </div><!-- fragment --> <p>Features of Ruby library:</p><ol type="1">
 <li>Functions return a value as the second element of the result tuple, the first element has a boolean type;</li>
-<li>Access to lists of detected devices only through <a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a> and <a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> functions.</li>
+<li>Access to lists of detected devices only through <a class="el" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a>, <a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> and ev3_get_&lt;class&gt;_&lt;field&gt;(port) functions.</li>
 </ol>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;include Ev3</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keywordflow">if</span> <a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>() &lt; 1 then exit( 1 ) end</div>
@@ -157,11 +157,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;p_touch = <a class="code" href="group__ev3__sensor.html#ga821db2d36cac6ebfd2387944b10b6031">ev3_sensor_port</a>( EV3_TOUCH )</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordflow">if</span> p_touch != EV3_NONE</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  id_touch = <a class="code" href="group__ev3__sensor.html#gae5bc1b3f7a1585b6f3c2132a61872321">ev3_get_sensor</a>( p_touch ).id</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  id_touch = <a class="code" href="group__ev3__sensor.html#ga5f09f12f42d67e06e1443bf4c5dbe120">ev3_get_sensor_id</a>( p_touch )</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordflow">while</span> <a class="code" href="group__ev3__sensor.html#ga10a576cc626d6da2d19351d1eb315e5d">get_sensor_value</a>( 0, id_touch )[ 1 ] == 0 do end</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;end</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>()</div>
+</div><!-- fragment --> <p>Features of Perl library:</p><ol type="1">
+<li>Functions return a value as the second element of the result tuple;</li>
+<li>Access to lists of detected devices only through ev3_get_&lt;class&gt;_&lt;field&gt;(port) functions.</li>
+</ol>
+<div class="fragment"><div class="line">use ev3;</div>
+<div class="line"></div>
+<div class="line"><a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3::ev3_init</a>() &gt; 0 || exit( 1 );</div>
+<div class="line"><a class="code" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3::ev3_tacho_init</a>();</div>
+<div class="line"></div>
+<div class="line">my $port = <a class="code" href="group__ev3__tacho.html#gaa8c21129314701631648df3a36226683">ev3::ev3_tacho_port</a>( $ev3::MINITACHO );</div>
+<div class="line"><span class="keywordflow">if</span> ( $port != <a class="code" href="group__ev3.html#ga862146c096657ab26f391a77cccc72a8">$ev3::EV3_NONE</a> ) {</div>
+<div class="line">    my $id = <a class="code" href="group__ev3__tacho.html#ga969401261602562382cb8ab8e9e969a1">ev3::ev3_get_tacho_id</a>( $port );</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">ev3::set_tacho_regulation_mode</a>( $id, <span class="stringliteral">&quot;off&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__tacho.html#ga18e589671fe635eab77d969213b3ae72">ev3::set_tacho_duty_cycle_sp</a>( $id, 50 );</div>
+<div class="line">    <a class="code" href="group__ev3__tacho.html#gab0b729201d692161541d0fd29b007f1e">ev3::set_tacho_run</a>( $id, <span class="keyword">true</span> );</div>
+<div class="line">    sleep( 2 );</div>
+<div class="line">    <a class="code" href="group__ev3__tacho.html#gab0b729201d692161541d0fd29b007f1e">ev3::set_tacho_run</a>( $id, <span class="keyword">false</span> );</div>
+<div class="line">}</div>
+<div class="line"><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3::ev3_uninit</a>();</div>
 </div><!-- fragment --><p> Similarly, you can use SWIG to wrap the library in a number of other languages.</p>
 <p><br />
 </p><hr/>
@@ -170,7 +190,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 29 2014 13:24:28 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 13:18:33 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

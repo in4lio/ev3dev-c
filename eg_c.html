@@ -308,7 +308,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    printf( <span class="stringliteral">&quot;The EV3 brick auto-detection is DISABLED, waiting %s online...\n&quot;</span>, ev3_brick_addr );</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line">    <span class="keywordflow">while</span> ( <a class="code" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a>() == <a class="code" href="group__ev3.html#ga862146c096657ab26f391a77cccc72a8">EV3_NONE</a> ) Sleep( 1000 );</div>
+<div class="line">    <span class="keywordflow">while</span> ( <a class="code" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a>() == 0 ) Sleep( 1000 );</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Hello! ***\n&quot;</span> );</div>
 <div class="line"></div>
@@ -401,7 +401,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 29 2014 13:24:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 2 2014 13:18:32 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
