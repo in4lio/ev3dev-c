@@ -197,18 +197,8 @@ G_CXX = $(addsuffix $(E_CXX), $(basename $(S_YUCXX)))
 G_C = $(addsuffix $(E_C), $(basename $(S_YUC)))
 G_H = $(addsuffix $(E_H), $(basename $(S_YUH)))
 
-define uniq =
-	$(eval seen :=)
-	$(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
-	${seen}
-endef
-
 S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) $(BIN)_wrap.c)
-$(call uniq, $(S_C)) # remove duplicates
-
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
-$(call uniq, $(S_CXX)) # remove duplicates
-
 S_ASM = $(wildcard $(addsuffix /*$(E_ASM), $(D_ASM)))
 
 O_CXX = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_CXX)))))
