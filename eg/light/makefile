@@ -11,27 +11,20 @@ BIN = light
 # -- creating MAP file
 MAP = 0
 
-ifeq ($(OS),Windows_NT)
 # -- platform (core)
-# ARM Cortex-M3: __MDKARM__
-# DOS: __DJGPP__
-# WIN32: __MINGW__
-# UNIX: __UNIX__
+ifeq ($(OS),Windows_NT)
+# WIN32
 PLATFORM = __MINGW__
 else
+# UNIX
 PLATFORM = __UNIX__
 endif
 
 TOP = ../..
 
 # -- compilers
-ifeq ($(PLATFORM),__DJGPP__)
-CC = $(DJGPP_HOME)/bin/gcc.exe
-CXX = $(DJGPP_HOME)/bin/gxx.exe
-else
 CC = gcc
 CXX = g++
-endif
 
 # -- on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -57,16 +50,10 @@ PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
-ifeq ($(PLATFORM),__DJGPP__)
-D_PLATFORM = djgpp
-else
-
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
 else
 D_PLATFORM =
-endif
-
 endif
 
 # -- yupp import directories
@@ -148,12 +135,6 @@ CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
 ASMFLAGS = -Wall
 
-# -- platform specific options
-ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
-endif
-
 # ---------------------------------
 #   files lists
 # ---------------------------------
@@ -196,14 +177,8 @@ endef
 endif
 
 # -- optional final tools
-ifeq ($(PLATFORM),__DJGPP__)
-define final
-	stubedit $1 minstack=$(MINSTACK) bufsize=$(BUFSIZE)
-endef
-else
 define final
 endef
-endif
 
 # -- removal list
 R = $(F_BIN) $(O)

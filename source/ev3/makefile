@@ -8,29 +8,21 @@
 # -- binary name (without prefix and extension)
 BIN = ev3dev-c
 
-ifeq ($(OS),Windows_NT)
 # -- platform (core)
-# ARM Cortex-M3: __MDKARM__
-# DOS: __DJGPP__
-# WIN32: __MINGW__
-# UNIX: __UNIX__
+ifeq ($(OS),Windows_NT)
+# WIN32
 PLATFORM = __MINGW__
 else
+# UNIX
 PLATFORM = __UNIX__
 endif
 
 TOP = ../..
 
 # -- compilers
-ifeq ($(PLATFORM),__DJGPP__)
-CC = $(DJGPP_HOME)/bin/gcc.exe
-CXX = $(DJGPP_HOME)/bin/gxx.exe
-AR = $(DJGPP_HOME)/bin/ar.exe
-else
 CC = gcc
 CXX = g++
 AR = ar
-endif
 
 # -- on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -56,29 +48,17 @@ PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
-ifeq ($(PLATFORM),__DJGPP__)
-D_PLATFORM = djgpp
-else
-
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
 else
 D_PLATFORM =
 endif
 
-endif
-
 # -- install directory
-ifeq ($(PLATFORM),__DJGPP__)
-D_INSTALL = $(DJGPP_HOME)
-else
-
 ifeq ($(PLATFORM),__MINGW__)
 D_INSTALL = $(MINGW_HOME)
 else
 D_INSTALL = /usr/local
-endif
-
 endif
 
 # -- yupp import directories
@@ -152,12 +132,6 @@ endif
 
 ASMFLAGS = -Wall
 
-# -- platform specific options
-ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
-endif
-
 # ---------------------------------
 #   files lists
 # ---------------------------------
@@ -200,14 +174,8 @@ endef
 endif
 
 # -- optional final tools
-ifeq ($(PLATFORM),__DJGPP__)
-define final
-	stubedit $1 minstack=$(MINSTACK) bufsize=$(BUFSIZE)
-endef
-else
 define final
 endef
-endif
 
 # -- removal list
 R = $(F_BIN) $(O)
