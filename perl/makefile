@@ -97,7 +97,7 @@ PERL_INCLUDE = $(D_PERL)/lib/CORE
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-PERL_INCLUDE = /usr/lib/perl/5.14/CORE
+PERL_INCLUDE = /usr/lib/arm-linux-gnueabi/perl/5.20.1/CORE
 endif
 
 endif

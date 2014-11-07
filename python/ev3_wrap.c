@@ -2919,14 +2919,15 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_float swig_types[6]
 #define SWIGTYPE_p_int swig_types[7]
 #define SWIGTYPE_p_long_long swig_types[8]
-#define SWIGTYPE_p_short swig_types[9]
-#define SWIGTYPE_p_signed_char swig_types[10]
-#define SWIGTYPE_p_unsigned_char swig_types[11]
-#define SWIGTYPE_p_unsigned_int swig_types[12]
-#define SWIGTYPE_p_unsigned_long_long swig_types[13]
-#define SWIGTYPE_p_unsigned_short swig_types[14]
-static swig_type_info *swig_types[16];
-static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
+#define SWIGTYPE_p_p_char swig_types[9]
+#define SWIGTYPE_p_short swig_types[10]
+#define SWIGTYPE_p_signed_char swig_types[11]
+#define SWIGTYPE_p_unsigned_char swig_types[12]
+#define SWIGTYPE_p_unsigned_int swig_types[13]
+#define SWIGTYPE_p_unsigned_long_long swig_types[14]
+#define SWIGTYPE_p_unsigned_short swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2962,6 +2963,9 @@ static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
 
 
 #include "../source/ev3/ev3.h"
+#include "../source/ev3/ev3_port.h"
+#include "../source/ev3/ev3_output.h"
+#include "../source/ev3/ev3_input.h"
 #include "../source/ev3/ev3_led.h"
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
@@ -3384,6 +3388,22 @@ SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_char (PyObject * obj, unsigned char *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UCHAR_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = (unsigned char)(v);
+    }
+  }  
+  return res;
+}
+
+
 /* Getting isfinite working pre C99 across multiple platforms is non-trivial. Users can provide SWIG_isfinite on older platforms. */
 #ifndef SWIG_isfinite
 # if defined(isfinite)
@@ -3435,6 +3455,13 @@ SWIGINTERNINLINE PyObject*
 }
 
 
+SWIGINTERNINLINE PyObject *
+SWIG_From_unsigned_SS_char  (unsigned char value)
+{    
+  return SWIG_From_unsigned_SS_long  (value);
+}
+
+
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -3442,29 +3469,6 @@ SWIGINTERNINLINE PyObject *
 SWIG_From_float  (float value)
 {    
   return SWIG_From_double  (value);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_char (PyObject * obj, unsigned char *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > UCHAR_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = (unsigned char)(v);
-    }
-  }  
-  return res;
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_unsigned_SS_char  (unsigned char value)
-{    
-  return SWIG_From_unsigned_SS_long  (value);
 }
 
 #ifdef __cplusplus
@@ -3725,6 +3729,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ev3_write_byte(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  uint8_t arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ev3_write_byte",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ev3_write_byte" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = (char *)(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_write_byte" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  result = ev3_write_byte((char const *)arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ev3_write_float(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -3946,6 +3984,41 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ev3_read_byte(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  size_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_read_byte",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ev3_read_byte" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = (char *)(buf1);
+  result = ev3_read_byte((char const *)arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ev3_read_float(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -4038,10 +4111,10 @@ fail:
 SWIGINTERN PyObject *_wrap_get_led_brightness(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
-  int *arg2 = (int *) 0 ;
+  byte *arg2 = (byte *) 0 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int temp2 ;
+  byte temp2 ;
   int res2 = SWIG_TMPOBJ ;
   PyObject * obj0 = 0 ;
   size_t result;
@@ -4056,10 +4129,10 @@ SWIGINTERN PyObject *_wrap_get_led_brightness(PyObject *SWIGUNUSEDPARM(self), Py
   result = get_led_brightness(arg1,arg2);
   resultobj = SWIG_From_size_t((size_t)(result));
   if (SWIG_IsTmpObj(res2)) {
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
   } else {
     int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_byte, new_flags));
   }
   return resultobj;
 fail:
@@ -4070,10 +4143,10 @@ fail:
 SWIGINTERN PyObject *_wrap_set_led_brightness(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
-  int arg2 ;
+  byte arg2 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -4085,11 +4158,11 @@ SWIGINTERN PyObject *_wrap_set_led_brightness(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_led_brightness" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_led_brightness" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_led_brightness" "', argument " "2"" of type '" "byte""'");
   } 
-  arg2 = (int)(val2);
+  arg2 = (byte)(val2);
   result = set_led_brightness(arg1,arg2);
   resultobj = SWIG_From_size_t((size_t)(result));
   return resultobj;
@@ -4349,6 +4422,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ev3_led_trigger(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_led_trigger",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_led_trigger" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_led_trigger(arg1);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int Swig_var_LIT_COLOR_set(PyObject *_val SWIGUNUSED) {
+  SWIG_Error(SWIG_AttributeError,"Variable LIT_COLOR is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LIT_COLOR_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(LIT_COLOR), SWIGTYPE_p_p_char,  0 );
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_set_light(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
@@ -4550,29 +4659,750 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_output_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_output_mode",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_output_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_output_mode" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_mode(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_output_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_output_mode",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_output_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_output_mode" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = (char *)(buf2);
+  result = set_output_mode(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_output_modes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_output_modes",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_output_modes" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_output_modes" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_modes(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_output_pin5_mv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  size_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_output_pin5_mv",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_output_pin5_mv" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_output_pin5_mv(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_output_state(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_output_state",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_output_state" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_output_state" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_state(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_output_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_output_mode",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_output_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_output_mode(arg1);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_output_mode_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:get_output_mode_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_output_mode_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_output_mode_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_output_mode_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_output_mode_inx",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_output_mode_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_output_mode_inx" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  result = set_output_mode_inx(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_output_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_output_inx",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ev3_output_inx" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_output_inx((char const *)arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_output_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_output_name",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_output_name" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_output_name(arg1);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_input_mode",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_input_mode" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_mode(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_input_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_input_mode",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_input_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_input_mode" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = (char *)(buf2);
+  result = set_input_mode(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_modes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_input_modes",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_modes" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_input_modes" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_modes(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_pin1_mv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  size_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_input_pin1_mv",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_pin1_mv" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_input_pin1_mv(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_pin6_mv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  size_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_input_pin6_mv",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_pin6_mv" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_input_pin6_mv(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_state(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_input_state",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_state" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_input_state" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_state(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_input_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_input_mode",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_input_mode" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_input_mode(arg1);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_input_mode_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:get_input_mode_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_input_mode_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_input_mode_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_input_mode_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_input_mode_inx",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_input_mode_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_input_mode_inx" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  result = set_input_mode_inx(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_input_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_input_inx",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ev3_input_inx" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_input_inx((char const *)arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_input_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ev3_input_name",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_input_name" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_input_name" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  result = (char *)ev3_input_name(arg1,arg2);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_port_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_port_inx",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ev3_port_inx" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_port_inx((char const *)arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_port_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ev3_port_name",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_port_name" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_port_name" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  result = (char *)ev3_port_name(arg1,arg2);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_inx_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  bool arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_connected_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_type_inx_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_connected_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_inx_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_connected_set" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_type_inx_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (bool)(val2);
-  if (arg1) (arg1)->connected = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->type_inx = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4580,51 +5410,51 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_inx_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  bool result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_connected_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_type_inx_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_connected_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_inx_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  result = (bool) ((arg1)->connected);
-  resultobj = SWIG_From_bool((bool)(result));
+  result = (uint8_t) ((arg1)->type_inx);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_port_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_id_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_port_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_id_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_port_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_port_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->port = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4632,51 +5462,51 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_port_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_id_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_port_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_id_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_port_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  result = (uint32_t) ((arg1)->id);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->port);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_extport_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_type_id_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_extport_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_id_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_extport_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_extport_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->type_id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->extport = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4684,22 +5514,74 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_SENSOR_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_extport_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_type_id_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_extport_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_type_id_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_extport_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  result = (uint32_t) ((arg1)->type_id);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->extport);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_addr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_SENSOR_addr_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_addr_set" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_addr_set" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->addr = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EV3_SENSOR_addr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_SENSOR_addr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_SENSOR_addr_get" "', argument " "1"" of type '" "EV3_SENSOR *""'"); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  result = (uint8_t) ((arg1)->addr);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
@@ -4752,12 +5634,12 @@ SWIGINTERN int Swig_var_ev3_sensor_set(PyObject *_val) {
     EV3_SENSOR *inp = 0;
     int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_SENSOR,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR [64]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)INPUT__COUNT_; ++ii) *(EV3_SENSOR *)&ev3_sensor[ii] = *((EV3_SENSOR *)inp + ii);
+      for (; ii < (size_t)64; ++ii) *(EV3_SENSOR *)&ev3_sensor[ii] = *((EV3_SENSOR *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR [64]""'");
     }
   }
   return 0;
@@ -4963,31 +5845,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_get_sensor_i2c_addr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_sensor_address(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
-  int *arg2 = (int *) 0 ;
+  byte *arg2 = (byte *) 0 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int temp2 ;
+  byte temp2 ;
   int res2 = SWIG_TMPOBJ ;
   PyObject * obj0 = 0 ;
   size_t result;
   
   arg2 = &temp2;
-  if (!PyArg_ParseTuple(args,(char *)"O:get_sensor_i2c_addr",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_sensor_address",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_i2c_addr" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_address" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = get_sensor_i2c_addr(arg1,arg2);
+  result = get_sensor_address(arg1,arg2);
   resultobj = SWIG_From_size_t((size_t)(result));
   if (SWIG_IsTmpObj(res2)) {
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
   } else {
     int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_byte, new_flags));
   }
   return resultobj;
 fail:
@@ -5095,6 +5977,44 @@ SWIGINTERN PyObject *_wrap_get_sensor_modes(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_modes(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_sensor_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_sensor_name",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_name" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_sensor_name" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_sensor_name(arg1,arg2,arg3);
   resultobj = SWIG_From_size_t((size_t)(result));
   resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
   if (buff2) free((char*)buff2);
@@ -5272,38 +6192,6 @@ SWIGINTERN PyObject *_wrap_get_sensor_units(PyObject *SWIGUNUSEDPARM(self), PyOb
   return resultobj;
 fail:
   if (buff2) free((char*)buff2);
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_sensor_type_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  uint8_t arg1 ;
-  dword *arg2 = (dword *) 0 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  dword temp2 ;
-  int res2 = SWIG_TMPOBJ ;
-  PyObject * obj0 = 0 ;
-  size_t result;
-  
-  arg2 = &temp2;
-  if (!PyArg_ParseTuple(args,(char *)"O:get_sensor_type_id",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_type_id" "', argument " "1"" of type '" "uint8_t""'");
-  } 
-  arg1 = (uint8_t)(val1);
-  result = get_sensor_type_id(arg1,arg2);
-  resultobj = SWIG_From_size_t((size_t)(result));
-  if (SWIG_IsTmpObj(res2)) {
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_int((*arg2)));
-  } else {
-    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_dword, new_flags));
-  }
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -5627,29 +6515,61 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_sensor_port(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_sensor_type_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_port",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_sensor_type_inx",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_port" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_type_inx" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (int)ev3_sensor_port(arg1);
-  resultobj = SWIG_From_int((int)(result));
+  result = (uint8_t)get_sensor_type_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_sensor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_sensor_port_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_sensor_port_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_port_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_sensor_port_inx(arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_sensor_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
@@ -5657,13 +6577,13 @@ SWIGINTERN PyObject *_wrap_ev3_get_sensor(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject * obj0 = 0 ;
   EV3_SENSOR *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_sensor",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_desc",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_sensor" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_desc" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_SENSOR *)ev3_get_sensor(arg1);
+  result = (EV3_SENSOR *)ev3_sensor_desc(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   return resultobj;
 fail:
@@ -5671,66 +6591,198 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_sensor_connected(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ev3_sensor_desc_type_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_desc_type_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_desc_type_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_type_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_sensor_desc_port(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_desc_port",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_desc_port" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_port(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_sensor_desc_extport(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_desc_extport",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_desc_extport" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_extport(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_sensor_desc_addr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_sensor_desc_addr",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_desc_addr" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_addr(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_search_sensor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  uint8_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_sensor_connected",&obj0)) SWIG_fail;
+  {
+    arg3 = 0; 
+  }
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O|O:ev3_search_sensor",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_sensor_connected" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_sensor" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (bool)ev3_get_sensor_connected(arg1);
+  if (obj1) {
+    ecode3 = SWIG_AsVal_unsigned_SS_char(obj1, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ev3_search_sensor" "', argument " "3"" of type '" "uint8_t""'");
+    } 
+    arg3 = (uint8_t)(val3);
+  }
+  result = (bool)ev3_search_sensor(arg1,arg2,arg3);
   resultobj = SWIG_From_bool((bool)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_sensor_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ev3_search_sensor_plugged_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
+  uint8_t arg2 ;
+  uint8_t arg3 ;
+  uint8_t *arg4 = (uint8_t *) 0 ;
+  uint8_t arg5 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  uint8_t temp4 ;
+  int res4 = SWIG_TMPOBJ ;
+  unsigned char val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_sensor_id",&obj0)) SWIG_fail;
+  {
+    arg5 = 0; 
+  }
+  arg4 = &temp4;
+  if (!PyArg_ParseTuple(args,(char *)"OOO|O:ev3_search_sensor_plugged_in",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_sensor_id" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_sensor_plugged_in" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_sensor_id(arg1);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ev3_get_sensor_type_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  uint8_t arg1 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  uint32_t result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_sensor_type_id",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_sensor_type_id" "', argument " "1"" of type '" "uint8_t""'");
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_search_sensor_plugged_in" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_sensor_type_id(arg1);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  arg2 = (uint8_t)(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ev3_search_sensor_plugged_in" "', argument " "3"" of type '" "uint8_t""'");
+  } 
+  arg3 = (uint8_t)(val3);
+  if (obj3) {
+    ecode5 = SWIG_AsVal_unsigned_SS_char(obj3, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ev3_search_sensor_plugged_in" "', argument " "5"" of type '" "uint8_t""'");
+    } 
+    arg5 = (uint8_t)(val5);
+  }
+  result = (bool)ev3_search_sensor_plugged_in(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_From_bool((bool)(result));
+  if (SWIG_IsTmpObj(res4)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg4)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res4) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg4), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5750,29 +6802,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_connected_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_type_inx_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  bool arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_connected_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_type_inx_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_connected_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_inx_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_connected_set" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_type_inx_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (bool)(val2);
-  if (arg1) (arg1)->connected = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->type_inx = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5780,51 +6832,51 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_connected_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_type_inx_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  bool result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_connected_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_type_inx_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_connected_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_inx_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  result = (bool) ((arg1)->connected);
-  resultobj = SWIG_From_bool((bool)(result));
+  result = (uint8_t) ((arg1)->type_inx);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_port_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_id_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_port_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_id_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_port_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_port_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->port = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5832,51 +6884,51 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_port_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_id_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_port_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_id_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_port_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  result = (uint32_t) ((arg1)->id);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->port);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_type_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_extport_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_type_id_set",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:EV3_TACHO_extport_set",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_id_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_extport_set" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_type_id_set" "', argument " "2"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_extport_set" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->type_id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->extport = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5884,22 +6936,22 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EV3_TACHO_type_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EV3_TACHO_extport_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_type_id_get",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:EV3_TACHO_extport_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_type_id_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_TACHO_extport_get" "', argument " "1"" of type '" "EV3_TACHO *""'"); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  result = (uint32_t) ((arg1)->type_id);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->extport);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
@@ -5952,12 +7004,12 @@ SWIGINTERN int Swig_var_ev3_tacho_set(PyObject *_val) {
     EV3_TACHO *inp = 0;
     int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_TACHO,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO [64]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)OUTPUT__COUNT_; ++ii) *(EV3_TACHO *)&ev3_tacho[ii] = *((EV3_TACHO *)inp + ii);
+      for (; ii < (size_t)64; ++ii) *(EV3_TACHO *)&ev3_tacho[ii] = *((EV3_TACHO *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO [64]""'");
     }
   }
   return 0;
@@ -7325,29 +8377,61 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_tacho_port(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_tacho_type_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  uint8_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_tacho_port",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_tacho_type_inx",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_port" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_tacho_type_inx" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (int)ev3_tacho_port(arg1);
-  resultobj = SWIG_From_int((int)(result));
+  result = (uint8_t)get_tacho_type_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_tacho(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_tacho_port_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_tacho_port_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_tacho_port_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_tacho_port_inx(arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_tacho_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
@@ -7355,13 +8439,13 @@ SWIGINTERN PyObject *_wrap_ev3_get_tacho(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj0 = 0 ;
   EV3_TACHO *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_tacho",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_tacho_desc",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_tacho" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_desc" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_TACHO *)ev3_get_tacho(arg1);
+  result = (EV3_TACHO *)ev3_tacho_desc(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   return resultobj;
 fail:
@@ -7369,66 +8453,167 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_tacho_connected(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ev3_tacho_desc_type_inx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_tacho_desc_type_inx",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_desc_type_inx" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_type_inx(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_tacho_desc_port(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_tacho_desc_port",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_desc_port" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_port(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_tacho_desc_extport(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  uint8_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ev3_tacho_desc_extport",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_desc_extport" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_extport(arg1);
+  resultobj = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ev3_search_tacho(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  uint8_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_tacho_connected",&obj0)) SWIG_fail;
+  {
+    arg3 = 0; 
+  }
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O|O:ev3_search_tacho",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_tacho_connected" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_tacho" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (bool)ev3_get_tacho_connected(arg1);
+  if (obj1) {
+    ecode3 = SWIG_AsVal_unsigned_SS_char(obj1, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ev3_search_tacho" "', argument " "3"" of type '" "uint8_t""'");
+    } 
+    arg3 = (uint8_t)(val3);
+  }
+  result = (bool)ev3_search_tacho(arg1,arg2,arg3);
   resultobj = SWIG_From_bool((bool)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_ev3_get_tacho_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ev3_search_tacho_plugged_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
+  uint8_t arg2 ;
+  uint8_t *arg3 = (uint8_t *) 0 ;
+  uint8_t arg4 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  uint8_t temp3 ;
+  int res3 = SWIG_TMPOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
-  uint32_t result;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_tacho_id",&obj0)) SWIG_fail;
+  {
+    arg4 = 0; 
+  }
+  arg3 = &temp3;
+  if (!PyArg_ParseTuple(args,(char *)"OO|O:ev3_search_tacho_plugged_in",&obj0,&obj1,&obj2)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_tacho_id" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_tacho_plugged_in" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_tacho_id(arg1);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ev3_get_tacho_type_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  uint8_t arg1 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  uint32_t result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ev3_get_tacho_type_id",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_get_tacho_type_id" "', argument " "1"" of type '" "uint8_t""'");
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_search_tacho_plugged_in" "', argument " "2"" of type '" "uint8_t""'");
   } 
-  arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_tacho_type_id(arg1);
-  resultobj = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  arg2 = (uint8_t)(val2);
+  if (obj2) {
+    ecode4 = SWIG_AsVal_unsigned_SS_char(obj2, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ev3_search_tacho_plugged_in" "', argument " "4"" of type '" "uint8_t""'");
+    } 
+    arg4 = (uint8_t)(val4);
+  }
+  result = (bool)ev3_search_tacho_plugged_in(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_bool((bool)(result));
+  if (SWIG_IsTmpObj(res3)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg3)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res3) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg3), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return resultobj;
 fail:
   return NULL;
@@ -7457,12 +8642,14 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ev3_write_bool", _wrap_ev3_write_bool, METH_VARARGS, NULL},
 	 { (char *)"ev3_write_int", _wrap_ev3_write_int, METH_VARARGS, NULL},
 	 { (char *)"ev3_write_dword", _wrap_ev3_write_dword, METH_VARARGS, NULL},
+	 { (char *)"ev3_write_byte", _wrap_ev3_write_byte, METH_VARARGS, NULL},
 	 { (char *)"ev3_write_float", _wrap_ev3_write_float, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_binary", _wrap_ev3_read_binary, METH_VARARGS, NULL},
 	 { (char *)"ev3_read", _wrap_ev3_read, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_bool", _wrap_ev3_read_bool, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_int", _wrap_ev3_read_int, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_dword", _wrap_ev3_read_dword, METH_VARARGS, NULL},
+	 { (char *)"ev3_read_byte", _wrap_ev3_read_byte, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_float", _wrap_ev3_read_float, METH_VARARGS, NULL},
 	 { (char *)"ev3_listdir", _wrap_ev3_listdir, METH_VARARGS, NULL},
 	 { (char *)"ev3_poweroff", _wrap_ev3_poweroff, METH_VARARGS, NULL},
@@ -7476,18 +8663,44 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"set_led_trigger", _wrap_set_led_trigger, METH_VARARGS, NULL},
 	 { (char *)"get_led_trigger_inx", _wrap_get_led_trigger_inx, METH_VARARGS, NULL},
 	 { (char *)"set_led_trigger_inx", _wrap_set_led_trigger_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_led_trigger", _wrap_ev3_led_trigger, METH_VARARGS, NULL},
 	 { (char *)"set_light", _wrap_set_light, METH_VARARGS, NULL},
 	 { (char *)"get_light", _wrap_get_light, METH_VARARGS, NULL},
 	 { (char *)"set_light_trigger", _wrap_set_light_trigger, METH_VARARGS, NULL},
 	 { (char *)"get_light_trigger", _wrap_get_light_trigger, METH_VARARGS, NULL},
 	 { (char *)"set_light_blink", _wrap_set_light_blink, METH_VARARGS, NULL},
 	 { (char *)"get_light_blink", _wrap_get_light_blink, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_connected_set", _wrap_EV3_SENSOR_connected_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_connected_get", _wrap_EV3_SENSOR_connected_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_id_set", _wrap_EV3_SENSOR_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_id_get", _wrap_EV3_SENSOR_id_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_type_id_set", _wrap_EV3_SENSOR_type_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_SENSOR_type_id_get", _wrap_EV3_SENSOR_type_id_get, METH_VARARGS, NULL},
+	 { (char *)"get_output_mode", _wrap_get_output_mode, METH_VARARGS, NULL},
+	 { (char *)"set_output_mode", _wrap_set_output_mode, METH_VARARGS, NULL},
+	 { (char *)"get_output_modes", _wrap_get_output_modes, METH_VARARGS, NULL},
+	 { (char *)"get_output_pin5_mv", _wrap_get_output_pin5_mv, METH_VARARGS, NULL},
+	 { (char *)"get_output_state", _wrap_get_output_state, METH_VARARGS, NULL},
+	 { (char *)"ev3_output_mode", _wrap_ev3_output_mode, METH_VARARGS, NULL},
+	 { (char *)"get_output_mode_inx", _wrap_get_output_mode_inx, METH_VARARGS, NULL},
+	 { (char *)"set_output_mode_inx", _wrap_set_output_mode_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_output_inx", _wrap_ev3_output_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_output_name", _wrap_ev3_output_name, METH_VARARGS, NULL},
+	 { (char *)"get_input_mode", _wrap_get_input_mode, METH_VARARGS, NULL},
+	 { (char *)"set_input_mode", _wrap_set_input_mode, METH_VARARGS, NULL},
+	 { (char *)"get_input_modes", _wrap_get_input_modes, METH_VARARGS, NULL},
+	 { (char *)"get_input_pin1_mv", _wrap_get_input_pin1_mv, METH_VARARGS, NULL},
+	 { (char *)"get_input_pin6_mv", _wrap_get_input_pin6_mv, METH_VARARGS, NULL},
+	 { (char *)"get_input_state", _wrap_get_input_state, METH_VARARGS, NULL},
+	 { (char *)"ev3_input_mode", _wrap_ev3_input_mode, METH_VARARGS, NULL},
+	 { (char *)"get_input_mode_inx", _wrap_get_input_mode_inx, METH_VARARGS, NULL},
+	 { (char *)"set_input_mode_inx", _wrap_set_input_mode_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_input_inx", _wrap_ev3_input_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_input_name", _wrap_ev3_input_name, METH_VARARGS, NULL},
+	 { (char *)"ev3_port_inx", _wrap_ev3_port_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_port_name", _wrap_ev3_port_name, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_type_inx_set", _wrap_EV3_SENSOR_type_inx_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_type_inx_get", _wrap_EV3_SENSOR_type_inx_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_port_set", _wrap_EV3_SENSOR_port_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_port_get", _wrap_EV3_SENSOR_port_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_extport_set", _wrap_EV3_SENSOR_extport_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_extport_get", _wrap_EV3_SENSOR_extport_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_addr_set", _wrap_EV3_SENSOR_addr_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_SENSOR_addr_get", _wrap_EV3_SENSOR_addr_get, METH_VARARGS, NULL},
 	 { (char *)"new_EV3_SENSOR", _wrap_new_EV3_SENSOR, METH_VARARGS, NULL},
 	 { (char *)"delete_EV3_SENSOR", _wrap_delete_EV3_SENSOR, METH_VARARGS, NULL},
 	 { (char *)"EV3_SENSOR_swigregister", EV3_SENSOR_swigregister, METH_VARARGS, NULL},
@@ -7496,16 +8709,16 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_dp", _wrap_get_sensor_dp, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_fw_version", _wrap_get_sensor_fw_version, METH_VARARGS, NULL},
-	 { (char *)"get_sensor_i2c_addr", _wrap_get_sensor_i2c_addr, METH_VARARGS, NULL},
+	 { (char *)"get_sensor_address", _wrap_get_sensor_address, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_mode", _wrap_get_sensor_mode, METH_VARARGS, NULL},
 	 { (char *)"set_sensor_mode", _wrap_set_sensor_mode, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_modes", _wrap_get_sensor_modes, METH_VARARGS, NULL},
+	 { (char *)"get_sensor_name", _wrap_get_sensor_name, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_num_values", _wrap_get_sensor_num_values, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_poll_ms", _wrap_get_sensor_poll_ms, METH_VARARGS, NULL},
 	 { (char *)"set_sensor_poll_ms", _wrap_set_sensor_poll_ms, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_port_name", _wrap_get_sensor_port_name, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_units", _wrap_get_sensor_units, METH_VARARGS, NULL},
-	 { (char *)"get_sensor_type_id", _wrap_get_sensor_type_id, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_value0", _wrap_get_sensor_value0, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_value1", _wrap_get_sensor_value1, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_value2", _wrap_get_sensor_value2, METH_VARARGS, NULL},
@@ -7516,18 +8729,22 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"get_sensor_value7", _wrap_get_sensor_value7, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_value", _wrap_get_sensor_value, METH_VARARGS, NULL},
 	 { (char *)"ev3_sensor_type", _wrap_ev3_sensor_type, METH_VARARGS, NULL},
-	 { (char *)"ev3_sensor_port", _wrap_ev3_sensor_port, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_sensor", _wrap_ev3_get_sensor, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_sensor_connected", _wrap_ev3_get_sensor_connected, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_sensor_id", _wrap_ev3_get_sensor_id, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_sensor_type_id", _wrap_ev3_get_sensor_type_id, METH_VARARGS, NULL},
+	 { (char *)"get_sensor_type_inx", _wrap_get_sensor_type_inx, METH_VARARGS, NULL},
+	 { (char *)"get_sensor_port_inx", _wrap_get_sensor_port_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_sensor_desc", _wrap_ev3_sensor_desc, METH_VARARGS, NULL},
+	 { (char *)"ev3_sensor_desc_type_inx", _wrap_ev3_sensor_desc_type_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_sensor_desc_port", _wrap_ev3_sensor_desc_port, METH_VARARGS, NULL},
+	 { (char *)"ev3_sensor_desc_extport", _wrap_ev3_sensor_desc_extport, METH_VARARGS, NULL},
+	 { (char *)"ev3_sensor_desc_addr", _wrap_ev3_sensor_desc_addr, METH_VARARGS, NULL},
+	 { (char *)"ev3_search_sensor", _wrap_ev3_search_sensor, METH_VARARGS, NULL},
+	 { (char *)"ev3_search_sensor_plugged_in", _wrap_ev3_search_sensor_plugged_in, METH_VARARGS, NULL},
 	 { (char *)"ev3_sensor_init", _wrap_ev3_sensor_init, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_connected_set", _wrap_EV3_TACHO_connected_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_connected_get", _wrap_EV3_TACHO_connected_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_id_set", _wrap_EV3_TACHO_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_id_get", _wrap_EV3_TACHO_id_get, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_type_id_set", _wrap_EV3_TACHO_type_id_set, METH_VARARGS, NULL},
-	 { (char *)"EV3_TACHO_type_id_get", _wrap_EV3_TACHO_type_id_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_type_inx_set", _wrap_EV3_TACHO_type_inx_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_type_inx_get", _wrap_EV3_TACHO_type_inx_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_port_set", _wrap_EV3_TACHO_port_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_port_get", _wrap_EV3_TACHO_port_get, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_extport_set", _wrap_EV3_TACHO_extport_set, METH_VARARGS, NULL},
+	 { (char *)"EV3_TACHO_extport_get", _wrap_EV3_TACHO_extport_get, METH_VARARGS, NULL},
 	 { (char *)"new_EV3_TACHO", _wrap_new_EV3_TACHO, METH_VARARGS, NULL},
 	 { (char *)"delete_EV3_TACHO", _wrap_delete_EV3_TACHO, METH_VARARGS, NULL},
 	 { (char *)"EV3_TACHO_swigregister", EV3_TACHO_swigregister, METH_VARARGS, NULL},
@@ -7572,11 +8789,14 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"set_tacho_time_sp", _wrap_set_tacho_time_sp, METH_VARARGS, NULL},
 	 { (char *)"get_tacho_type", _wrap_get_tacho_type, METH_VARARGS, NULL},
 	 { (char *)"ev3_tacho_type", _wrap_ev3_tacho_type, METH_VARARGS, NULL},
-	 { (char *)"ev3_tacho_port", _wrap_ev3_tacho_port, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_tacho", _wrap_ev3_get_tacho, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_tacho_connected", _wrap_ev3_get_tacho_connected, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_tacho_id", _wrap_ev3_get_tacho_id, METH_VARARGS, NULL},
-	 { (char *)"ev3_get_tacho_type_id", _wrap_ev3_get_tacho_type_id, METH_VARARGS, NULL},
+	 { (char *)"get_tacho_type_inx", _wrap_get_tacho_type_inx, METH_VARARGS, NULL},
+	 { (char *)"get_tacho_port_inx", _wrap_get_tacho_port_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_tacho_desc", _wrap_ev3_tacho_desc, METH_VARARGS, NULL},
+	 { (char *)"ev3_tacho_desc_type_inx", _wrap_ev3_tacho_desc_type_inx, METH_VARARGS, NULL},
+	 { (char *)"ev3_tacho_desc_port", _wrap_ev3_tacho_desc_port, METH_VARARGS, NULL},
+	 { (char *)"ev3_tacho_desc_extport", _wrap_ev3_tacho_desc_extport, METH_VARARGS, NULL},
+	 { (char *)"ev3_search_tacho", _wrap_ev3_search_tacho, METH_VARARGS, NULL},
+	 { (char *)"ev3_search_tacho_plugged_in", _wrap_ev3_search_tacho_plugged_in, METH_VARARGS, NULL},
 	 { (char *)"ev3_tacho_init", _wrap_ev3_tacho_init, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -7593,6 +8813,7 @@ static swig_type_info _swigt__p_dword = {"_p_dword", "dword *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
@@ -7610,6 +8831,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_float,
   &_swigt__p_int,
   &_swigt__p_long_long,
+  &_swigt__p_p_char,
   &_swigt__p_short,
   &_swigt__p_signed_char,
   &_swigt__p_unsigned_char,
@@ -7627,6 +8849,7 @@ static swig_cast_info _swigc__p_dword[] = {  {&_swigt__p_dword, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -7644,6 +8867,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_float,
   _swigc__p_int,
   _swigc__p_long_long,
+  _swigc__p_p_char,
   _swigc__p_short,
   _swigc__p_signed_char,
   _swigc__p_unsigned_char,
@@ -8335,7 +9559,6 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   SWIG_Python_SetConstant(d, "EV3_BRICK",SWIG_From_int((int)(0)));
-  SWIG_Python_SetConstant(d, "EV3_NONE",SWIG_From_int((int)(-1)));
   PyDict_SetItemString(md,(char*)"ev3", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"brick_addr",Swig_var_brick_addr_get, Swig_var_brick_addr_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"brick_port",Swig_var_brick_port_get, Swig_var_brick_port_set);
@@ -8359,6 +9582,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "TRIGGER_PHY0RADIO",SWIG_From_int((int)(TRIGGER_PHY0RADIO)));
   SWIG_Python_SetConstant(d, "TRIGGER_PHY0TPT",SWIG_From_int((int)(TRIGGER_PHY0TPT)));
   SWIG_Python_SetConstant(d, "TRIGGER__COUNT_",SWIG_From_int((int)(TRIGGER__COUNT_)));
+  SWIG_Python_SetConstant(d, "LED_ATTR__COUNT_",SWIG_From_int((int)(4)));
   SWIG_Python_SetConstant(d, "LIT_LEFT",SWIG_From_int((int)(LIT_LEFT)));
   SWIG_Python_SetConstant(d, "LIT_RIGHT",SWIG_From_int((int)(LIT_RIGHT)));
   SWIG_Python_SetConstant(d, "LIT__LOC__",SWIG_From_int((int)(LIT__LOC__)));
@@ -8367,25 +9591,83 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "LIT_RED",SWIG_From_int((int)(LIT_RED)));
   SWIG_Python_SetConstant(d, "LIT_AMBER",SWIG_From_int((int)(LIT_AMBER)));
   SWIG_Python_SetConstant(d, "LIT__COL__",SWIG_From_int((int)(LIT__COL__)));
-  SWIG_Python_SetConstant(d, "INPUT_1",SWIG_From_int((int)(INPUT_1)));
-  SWIG_Python_SetConstant(d, "INPUT_2",SWIG_From_int((int)(INPUT_2)));
-  SWIG_Python_SetConstant(d, "INPUT_3",SWIG_From_int((int)(INPUT_3)));
-  SWIG_Python_SetConstant(d, "INPUT_4",SWIG_From_int((int)(INPUT_4)));
-  SWIG_Python_SetConstant(d, "INPUT__COUNT_",SWIG_From_int((int)(INPUT__COUNT_)));
-  SWIG_addvarlink(SWIG_globals(),(char*)"ev3_sensor",Swig_var_ev3_sensor_get, Swig_var_ev3_sensor_set);
-  SWIG_Python_SetConstant(d, "EV3_TOUCH",SWIG_From_int((int)(EV3_TOUCH)));
-  SWIG_Python_SetConstant(d, "EV3_COLOR",SWIG_From_int((int)(EV3_COLOR)));
-  SWIG_Python_SetConstant(d, "EV3_ULTRASONIC",SWIG_From_int((int)(EV3_ULTRASONIC)));
-  SWIG_Python_SetConstant(d, "EV3_GYRO",SWIG_From_int((int)(EV3_GYRO)));
-  SWIG_Python_SetConstant(d, "EV3_INFRARED",SWIG_From_int((int)(EV3_INFRARED)));
+  SWIG_addvarlink(SWIG_globals(),(char*)"LIT_COLOR",Swig_var_LIT_COLOR_get, Swig_var_LIT_COLOR_set);
+  SWIG_Python_SetConstant(d, "OUTPUT__BASE_",SWIG_From_int((int)(128)));
   SWIG_Python_SetConstant(d, "OUTPUT_A",SWIG_From_int((int)(OUTPUT_A)));
   SWIG_Python_SetConstant(d, "OUTPUT_B",SWIG_From_int((int)(OUTPUT_B)));
   SWIG_Python_SetConstant(d, "OUTPUT_C",SWIG_From_int((int)(OUTPUT_C)));
   SWIG_Python_SetConstant(d, "OUTPUT_D",SWIG_From_int((int)(OUTPUT_D)));
-  SWIG_Python_SetConstant(d, "OUTPUT__COUNT_",SWIG_From_int((int)(OUTPUT__COUNT_)));
+  SWIG_Python_SetConstant(d, "OUTPUT__COUNT_",SWIG_From_int((int)(4)));
+  SWIG_Python_SetConstant(d, "OUTPUT_AUTO",SWIG_From_int((int)(OUTPUT_AUTO)));
+  SWIG_Python_SetConstant(d, "OUTPUT_EV3_TACHO_MOTOR",SWIG_From_int((int)(OUTPUT_EV3_TACHO_MOTOR)));
+  SWIG_Python_SetConstant(d, "OUTPUT_RCX_MOTOR",SWIG_From_int((int)(OUTPUT_RCX_MOTOR)));
+  SWIG_Python_SetConstant(d, "OUTPUT_RCX_LED",SWIG_From_int((int)(OUTPUT_RCX_LED)));
+  SWIG_Python_SetConstant(d, "OUTPUT_RAW",SWIG_From_int((int)(OUTPUT_RAW)));
+  SWIG_Python_SetConstant(d, "OUTPUT_MODE__COUNT_",SWIG_From_int((int)(OUTPUT_MODE__COUNT_)));
+  SWIG_Python_SetConstant(d, "INPUT__BASE_",SWIG_From_int((int)(1)));
+  SWIG_Python_SetConstant(d, "INPUT_1",SWIG_From_int((int)(INPUT_1)));
+  SWIG_Python_SetConstant(d, "INPUT_2",SWIG_From_int((int)(INPUT_2)));
+  SWIG_Python_SetConstant(d, "INPUT_3",SWIG_From_int((int)(INPUT_3)));
+  SWIG_Python_SetConstant(d, "INPUT_4",SWIG_From_int((int)(INPUT_4)));
+  SWIG_Python_SetConstant(d, "INPUT__COUNT_",SWIG_From_int((int)(4)));
+  SWIG_Python_SetConstant(d, "INPUT_AUTO",SWIG_From_int((int)(INPUT_AUTO)));
+  SWIG_Python_SetConstant(d, "INPUT_EV3_ANALOG",SWIG_From_int((int)(INPUT_EV3_ANALOG)));
+  SWIG_Python_SetConstant(d, "INPUT_EV3_UART",SWIG_From_int((int)(INPUT_EV3_UART)));
+  SWIG_Python_SetConstant(d, "INPUT_NXT_ANALOG",SWIG_From_int((int)(INPUT_NXT_ANALOG)));
+  SWIG_Python_SetConstant(d, "INPUT_NXT_COLOR",SWIG_From_int((int)(INPUT_NXT_COLOR)));
+  SWIG_Python_SetConstant(d, "INPUT_NXT_I2C",SWIG_From_int((int)(INPUT_NXT_I2C)));
+  SWIG_Python_SetConstant(d, "INPUT_OTHER_UART",SWIG_From_int((int)(INPUT_OTHER_UART)));
+  SWIG_Python_SetConstant(d, "INPUT_RAW",SWIG_From_int((int)(INPUT_RAW)));
+  SWIG_Python_SetConstant(d, "INPUT_MODE__COUNT_",SWIG_From_int((int)(INPUT_MODE__COUNT_)));
+  SWIG_Python_SetConstant(d, "EV3_PORT__NONE_",SWIG_From_int((int)(0)));
+  SWIG_Python_SetConstant(d, "SENSOR_DESC__LIMIT_",SWIG_From_int((int)(64)));
+  SWIG_Python_SetConstant(d, "SENSOR__NONE_",SWIG_From_int((int)(64)));
+  SWIG_addvarlink(SWIG_globals(),(char*)"ev3_sensor",Swig_var_ev3_sensor_get, Swig_var_ev3_sensor_set);
+  SWIG_Python_SetConstant(d, "SENSOR_TYPE__NONE_",SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
+  SWIG_Python_SetConstant(d, "EV3_ANALOG_XX",SWIG_From_int((int)(EV3_ANALOG_XX)));
+  SWIG_Python_SetConstant(d, "NXT_ANALOG",SWIG_From_int((int)(NXT_ANALOG)));
+  SWIG_Python_SetConstant(d, "NXT_I2C",SWIG_From_int((int)(NXT_I2C)));
+  SWIG_Python_SetConstant(d, "HT_NXT_COLOR",SWIG_From_int((int)(HT_NXT_COLOR)));
+  SWIG_Python_SetConstant(d, "HT_NXT_ANGLE",SWIG_From_int((int)(HT_NXT_ANGLE)));
+  SWIG_Python_SetConstant(d, "HT_NXT_ACCEL",SWIG_From_int((int)(HT_NXT_ACCEL)));
+  SWIG_Python_SetConstant(d, "HT_NXT_BAROMETRIC",SWIG_From_int((int)(HT_NXT_BAROMETRIC)));
+  SWIG_Python_SetConstant(d, "HT_NXT_COLOR_V2",SWIG_From_int((int)(HT_NXT_COLOR_V2)));
+  SWIG_Python_SetConstant(d, "HT_NXT_EOPD",SWIG_From_int((int)(HT_NXT_EOPD)));
+  SWIG_Python_SetConstant(d, "HT_NXT_FORCE",SWIG_From_int((int)(HT_NXT_FORCE)));
+  SWIG_Python_SetConstant(d, "HT_NXT_GYRO",SWIG_From_int((int)(HT_NXT_GYRO)));
+  SWIG_Python_SetConstant(d, "HT_NXT_IR_LINK",SWIG_From_int((int)(HT_NXT_IR_LINK)));
+  SWIG_Python_SetConstant(d, "HT_NXT_IR_RECEIVER",SWIG_From_int((int)(HT_NXT_IR_RECEIVER)));
+  SWIG_Python_SetConstant(d, "HT_NXT_PIR",SWIG_From_int((int)(HT_NXT_PIR)));
+  SWIG_Python_SetConstant(d, "HT_NXT_COMPASS",SWIG_From_int((int)(HT_NXT_COMPASS)));
+  SWIG_Python_SetConstant(d, "HT_NXT_MAG",SWIG_From_int((int)(HT_NXT_MAG)));
+  SWIG_Python_SetConstant(d, "HT_NXT_IR_SEEKER_V2",SWIG_From_int((int)(HT_NXT_IR_SEEKER_V2)));
+  SWIG_Python_SetConstant(d, "HT_NXT_SMUX",SWIG_From_int((int)(HT_NXT_SMUX)));
+  SWIG_Python_SetConstant(d, "HT_SUPER_PRO",SWIG_From_int((int)(HT_SUPER_PRO)));
+  SWIG_Python_SetConstant(d, "EV3_UART_30",SWIG_From_int((int)(EV3_UART_30)));
+  SWIG_Python_SetConstant(d, "EV3_UART_32",SWIG_From_int((int)(EV3_UART_32)));
+  SWIG_Python_SetConstant(d, "EV3_UART_29",SWIG_From_int((int)(EV3_UART_29)));
+  SWIG_Python_SetConstant(d, "LEGO_EV3_TOUCH",SWIG_From_int((int)(LEGO_EV3_TOUCH)));
+  SWIG_Python_SetConstant(d, "EV3_UART_33",SWIG_From_int((int)(EV3_UART_33)));
+  SWIG_Python_SetConstant(d, "LEGO_POWER_STORAGE",SWIG_From_int((int)(LEGO_POWER_STORAGE)));
+  SWIG_Python_SetConstant(d, "TMP275",SWIG_From_int((int)(TMP275)));
+  SWIG_Python_SetConstant(d, "LEGO_NXT_TOUCH",SWIG_From_int((int)(LEGO_NXT_TOUCH)));
+  SWIG_Python_SetConstant(d, "LEGO_NXT_LIGHT",SWIG_From_int((int)(LEGO_NXT_LIGHT)));
+  SWIG_Python_SetConstant(d, "LEGO_NXT_SOUND",SWIG_From_int((int)(LEGO_NXT_SOUND)));
+  SWIG_Python_SetConstant(d, "LEGO_NXT_ULTRASONIC",SWIG_From_int((int)(LEGO_NXT_ULTRASONIC)));
+  SWIG_Python_SetConstant(d, "MS_LIGHT_ARRAY",SWIG_From_int((int)(MS_LIGHT_ARRAY)));
+  SWIG_Python_SetConstant(d, "MS_8CH_SERVO",SWIG_From_int((int)(MS_8CH_SERVO)));
+  SWIG_Python_SetConstant(d, "PCF8574",SWIG_From_int((int)(PCF8574)));
+  SWIG_Python_SetConstant(d, "PCF8591",SWIG_From_int((int)(PCF8591)));
+  SWIG_Python_SetConstant(d, "DS1307",SWIG_From_int((int)(DS1307)));
+  SWIG_Python_SetConstant(d, "MS_NXT_TOUCH_MUX",SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));
+  SWIG_Python_SetConstant(d, "SENSOR_TYPE__COUNT_",SWIG_From_int((int)(SENSOR_TYPE__COUNT_)));
+  SWIG_Python_SetConstant(d, "TACHO_DESC__LIMIT_",SWIG_From_int((int)(64)));
+  SWIG_Python_SetConstant(d, "TACHO__NONE_",SWIG_From_int((int)(64)));
   SWIG_addvarlink(SWIG_globals(),(char*)"ev3_tacho",Swig_var_ev3_tacho_get, Swig_var_ev3_tacho_set);
+  SWIG_Python_SetConstant(d, "TACHO_TYPE__NONE_",SWIG_From_int((int)(TACHO_TYPE__NONE_)));
   SWIG_Python_SetConstant(d, "TACHO",SWIG_From_int((int)(TACHO)));
   SWIG_Python_SetConstant(d, "MINITACHO",SWIG_From_int((int)(MINITACHO)));
+  SWIG_Python_SetConstant(d, "TACHO_TYPE__COUNT_",SWIG_From_int((int)(TACHO_TYPE__COUNT_)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

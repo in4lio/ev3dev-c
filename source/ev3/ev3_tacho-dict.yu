@@ -5,18 +5,23 @@
                                                ((())))
 
 ($set CLASS_PATH "/sys/class/tacho-motor")
-($set CLASS_FOLDER_PREF "tacho-motor")
+($set CLASS_FOLDER_PREF "motor")
 ($set CLASS_ID tacho)
 
-($set CLASS_PORT_PREF "out")
-($set CLASS_PORT_ID OUTPUT)
-($set CLASS_PORT (A B C D))
+($dict CLASS_DESC
+	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
+	(`
+	(  type_inx       uint8_t          "type"              )
+	(  port           uint8_t          "EV3 port"          )
+	(  extport        uint8_t          "extended port"     )
+	)
+)
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME   CLASS_TYPE_ID  )
+	(` CLASS_TYPE_NAME  )
 	(`
-	(  "tacho"           7              )
-	(  "minitacho"       8              )
+	(  "tacho"          )
+	(  "minitacho"      )
 	)
 )
 
@@ -60,5 +65,9 @@
 	)
 )
 
+($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "name")
+($set CLASS_ADDR_INX ($index CLASS_ATTR_NAME "address"))
+
+($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
 ($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
 ($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

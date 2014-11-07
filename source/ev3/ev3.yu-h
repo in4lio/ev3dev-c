@@ -49,17 +49,14 @@ typedef unsigned int dword;
 
 #endif
 
-/**
- *  \brief Negative result of operation.
- */
-#define EV3_NONE  -1
+#define STR_unknown_  "<unknown>"
 
 /**
  *  \brief Initialize the remote access and detect the EV3 brick.
  *  This function do nothing in the case of the local access.
  *  To disable the brick detection just specify IP address before the call of this function.
- *  \return 1 - the local access, 0 - the brick detection is disabled, EV3_NONE - an error has occurred,
- *  or the number of found bricks.
+ *  \return 0 - the brick is NOT found or auto-detection is disabled; 1 - the brick is found;
+ *  -1 - an error has occurred.
  */
 ($h-extern) int ev3_init( void );
 
@@ -108,6 +105,14 @@ typedef unsigned int dword;
  *  \return Count of written bytes.
  */
 ($h-extern) size_t ev3_write_dword( const char *fn, uint32_t value );
+
+/**
+ *  \brief Write a byte value into the specified file.
+ *  \param fn Filename.
+ *  \param value Value.
+ *  \return Count of written bytes.
+ */
+($h-extern) size_t ev3_write_byte( const char *fn, uint8_t value );
 
 /**
  *  \brief Write a float value into the specified file.
@@ -163,6 +168,14 @@ typedef unsigned int dword;
 ($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
 
 /**
+ *  \brief Read a byte value from the specified file.
+ *  \param fn Filename.
+ *  \param[out] buf Buffer for a value.
+ *  \return Count of read bytes.
+ */
+($h-extern) size_t ev3_read_byte( const char *fn, uint8_t *buf );
+
+/**
  *  \brief Read a float value from the specified file.
  *  \param fn Filename.
  *  \param[out] buf Buffer for a value.
@@ -184,9 +197,18 @@ typedef unsigned int dword;
 
 /**
  *  \brief Power-off the EV3 brick.
- *  \return false - no reply, true - OK.
+ *  \return false - no reply; true - OK.
  */
 ($h-extern) bool ev3_poweroff( void );
+
+/**
+ *  \brief Get a numerical suffix of the string.
+ *  \param s in - pointer to the string (char *); out - pointer to the next character after the suffix.
+ *  \param[out] buf Buffer for a numerical suffix.
+ *  \return 0 - suffix is not found; 1 - suffix is found at the string end;
+ *  2 - suffix is found but the string is not over.
+ */
+($h-extern) int ev3_string_suffix( const char *prefix, char **s, uint32_t *buf );
 
 /** \} */
 

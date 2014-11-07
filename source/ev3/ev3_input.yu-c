@@ -1,0 +1,73 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,EV3 input ports.)
+
+($import stdlib)
+($import h)
+
+($implement-named)
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "ev3.h"
+#include "ev3_port.h"
+#include "ev3_input.h"
+
+/**
+ *  \addtogroup ev3_port
+ *  \{
+ */
+
+($import "ev3_input-dict.yu")
+($import "ev3_port.yu")
+
+uint8_t ev3_input_inx( const char *name, uint8_t *extport )
+{
+	uint32_t inx, extinx;
+	char *s = ( char* ) name;
+
+	*extport = EV3_PORT__NONE_;
+	switch ( ev3_string_suffix( ($PORT_PREF), &s, &inx )) {
+	case 2:
+		if ( ev3_string_suffix( ($PORT_EXT_PREF), &s, &extinx ) == 1 ) {
+			*extport = ( uint8_t ) extinx;
+		}
+		/* fallthrough */
+	case 1:
+		if (( inx >= INPUT__BASE_) && ( inx < INPUT__BASE_ + INPUT__COUNT_ )) return ( inx );
+	}
+	return ( EV3_PORT__NONE_ );
+}
+
+const char *ev3_input_name( uint8_t inx, uint8_t extport )
+{
+	static char s[ 32 ];
+
+	switch ( inx ) {
+	($PORT \i.]
+	case ($upper PORT_PREF_ID)_($i):
+		switch ( extport ) {
+		case EV3_PORT__NONE_:
+			return ($q,,($unq PORT_PREF)($i));
+		($($range 1 5) \ii.]
+		case ($ii):
+			return ($q,,($unq PORT_PREF)($i)($unq PORT_EXT_PREF)($ii));
+
+		[ )
+		default:
+			snprintf( s, sizeof( s ), ($q,,($unq PORT_PREF)($i)($unq PORT_EXT_PREF)%d), extport );
+			return ( s );
+		}
+
+	[ )
+	}
+	return STR_unknown_;
+}
+
+/** \} */

@@ -99,7 +99,7 @@ RUBY_INCLUDE = $(D_RUBY)/include/ruby-2.0.0
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-RUBY_INCLUDE = /usr/include/ruby-1.9.1
+RUBY_INCLUDE = /usr/include/ruby-2.1.0 /usr/include/arm-linux-gnueabi/ruby-2.1.0
 endif
 
 endif
@@ -161,7 +161,7 @@ LIBS := $(LIBS) -lws2_32 -lmsvcrt-ruby200.dll -L$(RUBY_LIB)
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-LIBS := $(LIBS) -lruby-1.9.1
+LIBS := $(LIBS) -lruby-2.1
 endif
 
 endif

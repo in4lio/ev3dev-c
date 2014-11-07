@@ -1,6 +1,7 @@
 ($import "app.yu")
 ($TITLE,,SWIG interface file.)
 ($macro h-extern () extern)
+($macro h-extern-init ( dec init ) extern ($dec) = ($init);)
 
 %module ev3
 %include "cstring.i"
@@ -9,6 +10,9 @@
 
 %{
 #include "../source/ev3/ev3.h"
+#include "../source/ev3/ev3_port.h"
+#include "../source/ev3/ev3_output.h"
+#include "../source/ev3/ev3_input.h"
 #include "../source/ev3/ev3_led.h"
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
@@ -30,11 +34,14 @@
 %apply int *OUTPUT { int *buf };
 %apply uint8_t *OUTPUT { uint8_t *buf };
 %apply uint8_t *OUTPUT { byte *buf };
+%apply uint8_t *OUTPUT { uint8_t *extport };
+%apply uint8_t *OUTPUT { uint8_t *sn };
 %apply uint32_t *OUTPUT { uint32_t *buf };
 %apply uint32_t *OUTPUT { dword *buf };
 %apply float *OUTPUT { float *buf };
 
 %apply uint32_t { dword };
+%apply uint8_t { byte };
 
 #ifdef SWIGRUBY
 %typemap( out ) size_t, bool { $result = $1 ? Qtrue : Qfalse; };
@@ -42,11 +49,11 @@
 
 #endif
 
+%typemap( default ) uint8_t from { $1 = 0; }
+
 /*
  *  ev3
  */
-
-#define EV3_NONE  -1
 
 // CLIENT ////////////////////////////////////////
 #if EV3_BRICK == 0
@@ -67,6 +74,7 @@
 ($h-extern) size_t ev3_write_bool( const char *fn, bool value );
 ($h-extern) size_t ev3_write_int( const char *fn, int value );
 ($h-extern) size_t ev3_write_dword( const char *fn, uint32_t value );
+($h-extern) size_t ev3_write_byte( const char *fn, uint8_t value );
 ($h-extern) size_t ev3_write_float( const char *fn, float value );
 
 ($h-extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
@@ -78,6 +86,7 @@
 #endif
 ($h-extern) size_t ev3_read_int( const char *fn, int *buf );
 ($h-extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
+($h-extern) size_t ev3_read_byte( const char *fn, uint8_t *buf );
 ($h-extern) size_t ev3_read_float( const char *fn, float *buf );
 
 ($h-extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
@@ -91,35 +100,80 @@
 
 ($import "../source/ev3/ev3_led-dict.yu")
 
+/**
+ *  \brief Identifiers of LEDs.
+ */
 enum {
 	($LED_ID \i.]
-		($upper ($i)),
+		($upper i),
 
 	[ )
-	LED__COUNT_
+	LED__COUNT_  /**< Count of EV3 LEDs. */
 };
 
+/**
+ *  \brief Triggers identifiers of LEDs.
+ */
 enum {
 	($LED_TRIGGER_ID \i.]
-		TRIGGER_($i),
+		TRIGGER_($upper i),
 
 	[ )
-	TRIGGER__COUNT_
+	TRIGGER__COUNT_  /**< Count of EV3 triggers. */
 };
 
+($define,,LED_ATTR__COUNT_,,($len LED_ATTR_ID))
+
 ($each-LED_ATTR \i.]
-	($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
-	($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
+
+	/**
+	 *  \brief Get ($i LED_ATTR_NAME) attribute of the LED.
+	 *  \param inx Index of the LED.
+	 *  \param[out] buf Buffer for result.
+	 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
+	 *  \return Count of read bytes.
+	 */
+	($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
+
+	/**
+	 *  \brief Set ($i LED_ATTR_NAME) attribute of the LED.
+	 *  \param inx Index of the LED.
+	 *  \param value Attribute value.
+	 *  \return Count of written bytes.
+	 */
+	($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
 
 [ )
 
-($h-extern) uint8_t get_led_trigger_inx( uint8_t id );
-($h-extern) size_t set_led_trigger_inx( uint8_t id, uint8_t inx );
+/**
+ *  \brief Get the trigger index of the LED.
+ *  \param inx Index of the LED.
+ *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
+ */
+($h-extern) uint8_t get_led_trigger_inx( uint8_t inx );
+
+/**
+ *  \brief Set the trigger of the LED by index.
+ *  \param inx Index of the LED.
+ *  \param trigger_inx Index of trigger.
+ *  \return Count of written bytes.
+ */
+($h-extern) size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx );
+
+/**
+ *  \brief Get name of the specified LED trigger.
+ *  \param trigger_inx Index of trigger.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_led_trigger( uint8_t trigger_inx );
 
 /*
  *  ev3_light
  */
 
+/**
+ *  \brief Identifiers of light locations.
+ */
 enum {
 	LIT_LEFT,
 	LIT_RIGHT,
@@ -127,23 +181,147 @@ enum {
 	LIT__LOC__
 };
 
-enum {
-	LIT_OFF,
-	LIT_GREEN,
-	LIT_RED,
-	LIT_AMBER,
+($dict LIT_COLOR
+	(` LIT_COLOR_NAME  )
+	(`
+	(  "OFF"           )
+	(  "GREEN"         )
+	(  "RED"           )
+	(  "AMBER"         )
+	)
+)
 
+/**
+ *  \brief Identifiers of light colors.
+ */
+enum {
+	($each-LIT_COLOR \i.]
+		LIT_($unq ($i LIT_COLOR_NAME)),
+
+	[ )
 	LIT__COL__
 };
 
+/**
+ *  \brief Light colors.
+ */
+($h-extern-init,,const char * const LIT_COLOR[],,{ ($each-LIT_COLOR \i.[($i LIT_COLOR_NAME), ])STR_unknown_ })
+
+/**
+ *  \brief Set the light color.
+ *  \param loc Location.
+ *  \param col Color.
+ */
 ($h-extern) void set_light( uint8_t loc, uint8_t col );
+
+/**
+ *  \brief Get the light color.
+ *  \param loc Location.
+ *  \return Color.
+ */
 ($h-extern) uint8_t get_light( uint8_t loc );
 
+/**
+ *  \brief Set the light trigger.
+ *  \param loc Location.
+ *  \param col Color.
+ *  \param trigger Index of trigger.
+ */
 ($h-extern) void set_light_trigger( uint8_t loc, uint8_t col, uint8_t trigger );
+
+/**
+ *  \brief Get the light trigger.
+ *  \param loc Location.
+ *  \param col Color.
+ *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
+ */
 ($h-extern) uint8_t get_light_trigger( uint8_t loc, uint8_t col );
 
+/**
+ *  \brief Set the light blink.
+ *  \param loc Location.
+ *  \param col Color.
+ *  \param delay_on Time of "on" state in ms.
+ *  \param delay_off Time of "off" state in ms.
+ */
 ($h-extern) void set_light_blink( uint8_t loc, uint8_t col, int delay_on, int delay_off );
+
+/**
+ *  \brief Check the light is blinking.
+ *  \param loc Location.
+ *  \param col Color.
+ *  \return Flag - the light is blinking.
+ */
 ($h-extern) bool get_light_blink( uint8_t loc, uint8_t col );
+
+/*
+ *  ev3_output
+ */
+
+($import "../source/ev3/ev3_output-dict.yu")
+($import "../source/ev3/ev3_port-h.yu")
+
+/**
+ *  \brief Get index of the EV3 output port from the port name.
+ *  \param name Port name.
+ *  \return EV3 output port index.
+ */
+($h-extern) uint8_t ev3_output_inx( const char *name );
+
+/**
+ *  \brief Get name of the specified EV3 output port.
+ *  \param inx Port index.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_output_name( uint8_t inx );
+
+/*
+ *  ev3_input
+ */
+
+($import "../source/ev3/ev3_input-dict.yu")
+($import "../source/ev3/ev3_port-h.yu")
+
+/**
+ *  \brief Get indexes of the EV3 input port and the extended port from the port name.
+ *  \param name Port name.
+ *  \param extport Buffer for the extended port index.
+ *  \return EV3 input port index.
+ */
+($h-extern) uint8_t ev3_input_inx( const char *name, uint8_t *extport );
+
+/**
+ *  \brief Get name of the specified EV3 input port.
+ *  \param inx Port index.
+ *  \param extport Extended port index.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_input_name( uint8_t inx, uint8_t extport );
+
+/*
+ *  ev3_port
+ */
+
+/**
+ *  \brief Undefined EV3 port.
+ */
+#define EV3_PORT__NONE_  0
+
+/**
+ *  \brief Get indexes of the EV3 port and the extended port from the port name.
+ *  \param name Port name.
+ *  \param extport Buffer for the extended port index.
+ *  \return EV3 port index.
+ */
+($h-extern) uint8_t ev3_port_inx( const char *name, uint8_t *extport );
+
+/**
+ *  \brief Get name of the specified EV3 port.
+ *  \param inx Port index.
+ *  \param extport Extended port index.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_port_name( uint8_t inx, uint8_t extport );
 
 /*
  *  ev3_sensor
@@ -152,13 +330,9 @@ enum {
 ($import "../source/ev3/ev3_sensor-dict.yu")
 ($import "../source/ev3/ev3_class-h.yu")
 
-($h-extern) int ev3_sensor_init( void );
-
 /*
  *  ev3_tacho
  */
 
 ($import "../source/ev3/ev3_tacho-dict.yu")
 ($import "../source/ev3/ev3_class-h.yu")
-
-($h-extern) int ev3_tacho_init( void );

@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.4b1
-                2014-10-02
+    ev3dev-c    0.5a1
+                2014-11-07
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -33,8 +33,8 @@
     _ev3.pyd    - for a remote access, under Windows (x86);
     _ev3.so     - for LEGO Mindstorms EV3 Debian.
 
-    You have to install "ruby-dev" package to build Ruby library and
-    "libperl-dev" package to build Perl library.
+    You have to install "python-dev", "ruby-dev" and "libperl-dev"
+    packages to build the corresponding library.
 
     ___       ____________________________________
     ___ F A Q ____________________________________

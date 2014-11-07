@@ -58,7 +58,7 @@ enum {
 /**
  *  \brief Light colors.
  */
-($h-extern-init,,const char * const LIT_COLOR[],,{ ($each-LIT_COLOR \i.[($i LIT_COLOR_NAME), ])"<unknown>" })
+($h-extern-init,,const char * const LIT_COLOR[],,{ ($each-LIT_COLOR \i.[($i LIT_COLOR_NAME), ])STR_unknown_ })
 
 /**
  *  \brief Set the light color.

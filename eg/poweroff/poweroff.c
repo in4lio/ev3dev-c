@@ -27,12 +27,6 @@ int main( void )
 
 	if ( ev3_init() < 1 ) return ( 1 );
 
-	if ( ev3_listdir( "/sys/class/msensor", s, sizeof( s ))) {
-		printf( "sensors: %s\n", s );
-	}
-	if ( ev3_listdir( "/sys/class/tacho-motor", s, sizeof( s ))) {
-		printf( "tacho-motors: %s\n", s );
-	}
 	printf( "Enter 'bye' to power-off the EV3 brick: " );
 	scanf( "%4s", s );
 	for ( p = s; *p; p++ ) *p = tolower( *p );

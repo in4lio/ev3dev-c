@@ -6,46 +6,46 @@ require 'ev3'
 include Ev3
 
 if __FILE__ == $0
-  if not EV3_BRICK
+  puts "EV3_BRICK = #{EV3_BRICK}"
+
+  if EV3_BRICK == 0
     # Disable auto-detection of the brick (you have to set the correct address below)
-    Ev3.brick_addr = '192.168.0.204'
+    Ev3.brick_addr = '192.168.0.244'
   end
-  if ev3_init() == EV3_NONE then exit( 1 ) end
+  if ev3_init() == -1 then exit( 1 ) end
 
-  if not EV3_BRICK
-    puts "The EV3 brick auto-detection is DISABLED, waiting #{ev3.brick_addr} online..."
+  if EV3_BRICK == 0
+    puts "The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online..."
+    $stdout.flush
   end
 
-  while ev3_tacho_init() == 0 do sleep( 1.0 ) end
+  while ev3_tacho_init() < 1 do sleep( 1.0 ) end
 
   puts '*** ( EV3 ) Hello! ***'
 
   puts 'Found tacho-motors:'
-  OUTPUT__COUNT_.times do |i|
-    if ev3_get_tacho_connected( i )
-      puts "  port = out#{i + 1}"
-      ok, _type = get_tacho_type( ev3_get_tacho_id( i ), 256 )
-      if ok
-        puts "  type = #{_type}"
-      end
+  TACHO_DESC__LIMIT_.times do |i|
+    type_inx = ev3_tacho_desc_type_inx( i )
+    if type_inx != TACHO_TYPE__NONE_
+      _type = ev3_tacho_type( type_inx )
+      puts "  type = #{_type}"
+      port_name = ev3_port_name( ev3_tacho_desc_port( i ), ev3_tacho_desc_extport( i ))
+      puts "  port = #{port_name}"
     end
   end
-  # Look for minitacho motor
-  p = ev3_tacho_port( MINITACHO )
-  if p != EV3_NONE
-    _id = ev3_get_tacho_id( p )
-
-    puts 'MINITACHO is found, run for 5 sec...'
-    set_tacho_regulation_mode( _id, 'off' )
-    set_tacho_run_mode( _id, 'time' )
-    set_tacho_stop_mode( _id, 'brake' )
-    set_tacho_duty_cycle_sp( _id, 100 )
-    set_tacho_time_sp( _id, 5000 )
-    set_tacho_ramp_up_sp( _id, 2000 )
-    set_tacho_ramp_down_sp( _id, 2000 )
-    set_tacho_run( _id, true )
+  ok, sn = ev3_search_tacho( MINITACHO )
+  if ok
+    puts 'MINITACHO motor is found, run for 5 sec...'
+    set_tacho_regulation_mode( sn, 'off' )
+    set_tacho_run_mode( sn, 'time' )
+    set_tacho_stop_mode( sn, 'brake' )
+    set_tacho_duty_cycle_sp( sn, 100 )
+    set_tacho_time_sp( sn, 5000 )
+    set_tacho_ramp_up_sp( sn, 2000 )
+    set_tacho_ramp_down_sp( sn, 2000 )
+    set_tacho_run( sn, true )
   else
-    puts 'MINITACHO is not found'
+    puts 'MINITACHO motor is NOT found'
   end
   ev3_uninit()
   puts '*** ( EV3 ) Bye! ***'

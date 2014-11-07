@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include "modp_numtoa.h"
 #include "ev3.h"
+#include "ev3_port.h"
 #include "ev3_sensor.h"
 
 /**
@@ -26,33 +27,5 @@
 
 ($import "ev3_sensor-dict.yu")
 ($import "ev3_class.yu")
-
-int ev3_sensor_init( void )
-{
-	char list[ 256 ], s[ 256 ];
-	char *p;
-	uint32_t id, port;
-	uint8_t cnt = 0;
-
-	memset( ev3_sensor, 0, sizeof( ev3_sensor ));
-
-	if ( !ev3_listdir( ($CLASS_PATH), list, sizeof( list ))) return ( EV3_NONE );
-
-	p = strtok( list, " " );
-	while ( p ) {
-		if ( get_str_suffix( ($CLASS_FOLDER_PREF), p, &id )) {
-			if ( get_sensor_port_name( id, s, sizeof( s )) && get_str_suffix( ($CLASS_PORT_PREF), s, &port )) {
-				if ( port && ( port <= INPUT__COUNT_ )) {
-					ev3_sensor[ --port ].connected = true;
-					ev3_sensor[ port ].id = id;
-					get_sensor_type_id( id, &ev3_sensor[ port ].type_id );
-					cnt++;
-				}
-			}
-		}
-		p = strtok( NULL, " " );
-	}
-	return ( cnt );
-}
 
 /** \} */

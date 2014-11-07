@@ -12,7 +12,11 @@
 # Description:
 ### END INIT INFO
 
+SCRIPTNAME=/etc/init.d/ev3_link_d
+
 . /lib/lsb/init-functions
+
+[ -x /usr/local/sbin/ev3_link ] || exit 0
 
 case "$1" in
   start)
@@ -24,9 +28,7 @@ case "$1" in
     killall ev3_link
     ;;
   *)
-    echo "Usage: /etc/init.d/ev3_link_d {start|stop}"
-    exit 1
+    echo "Usage: $SCRIPTNAME {start|stop}" >&2
+    exit 3
     ;;
 esac
-
-exit 0

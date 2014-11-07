@@ -26,7 +26,7 @@
 
 ($each-LED_ATTR \i.]
 
-	const char * const led_attr_($i LED_ATTR_ID)[] = {
+	static const char * const led_attr_($i LED_ATTR_ID)[] = {
 		($each-LED \ii.]
 			($LED_PATH) "/" ($ii LED_NAME) "/" ($i LED_ATTR_NAME),
 
@@ -35,52 +35,55 @@
 
 [ )
 
-const char * const led_trigger[] = {
-	($each-LED_TRIGGER \i.]
-		($i LED_TRIGGER_NAME),
-
-	[ )
-	"<unknown>"
-};
-
 ($each-LED_ATTR \i.]
 
-	size_t get_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
+	size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
 	{
-		if ( id >= LED__COUNT_ ) return ( 0 );
+		if ( inx >= LED__COUNT_ ) return ( 0 );
 
-		return ev3_read_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ id ], buf($[, sz] ? ($i LED_ATTR_ARRAY)) );
+		return ev3_read_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], buf($[, sz] ? ($i LED_ATTR_ARRAY)) );
 	}
 
-	size_t set_led_($i LED_ATTR_ID)( uint8_t id, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
+	size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
 	{
-		if ( id >= LED__COUNT_ ) return ( 0 );
+		if ( inx >= LED__COUNT_ ) return ( 0 );
 
-		return ev3_write_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ id ], value );
+		return ev3_write_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], value );
 	}
 
 [ )
 
-size_t set_led_trigger_inx( uint8_t id, uint8_t inx )
+const char *ev3_led_trigger( uint8_t trigger_inx )
 {
-	return set_led_trigger( id, ( char* ) led_trigger[ inx ]);
+	switch ( trigger_inx ) {
+	($each-LED_TRIGGER \i.]
+	case TRIGGER_($upper ($i LED_TRIGGER_ID)):
+		return ($i LED_TRIGGER_NAME);
+
+	[ )
+	}
+	return STR_unknown_;
 }
 
-uint8_t get_led_trigger_inx( uint8_t id )
+uint8_t get_led_trigger_inx( uint8_t inx )
 {
 	char buf[ 256 ];
 	char *p;
-	uint8_t inx = 0;
+	uint8_t trigger_inx = 0;
 
-	if ( !get_led_trigger( id, buf, sizeof( buf ))) return ( TRIGGER__COUNT_ );
+	if ( !get_led_trigger( inx, buf, sizeof( buf ))) return ( TRIGGER__COUNT_ );
 
 	p = strtok( buf, " " );
 	while ( p ) {
-		if ( *p == '[' ) return ( inx );
-		inx++;
+		if ( *p == '[' ) return ( trigger_inx );
+		++trigger_inx;
 		p = strtok( NULL, " " );
 	}
 	return ( TRIGGER__COUNT_ );
 }
 
+size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx )
+{
+	return set_led_trigger( inx, ( char* ) ev3_led_trigger( trigger_inx ));
+}
 /** \} */

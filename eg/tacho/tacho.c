@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include "ev3.h"
+#include "ev3_port.h"
 #include "ev3_tacho.h"
 
 // WIN32 /////////////////////////////////////////
@@ -30,49 +31,43 @@
 
 int main( void )
 {
-	char s[ 256 ];
-	int p;
 	int i;
+	uint8_t sn;
 
 #ifndef __ARM_ARCH_4T__
 	/* Disable auto-detection of the brick (you have to set the correct address below) */
-	ev3_brick_addr = "192.168.0.204";
+	ev3_brick_addr = "192.168.0.244";
 
 #endif
-	if ( ev3_init() == EV3_NONE ) return ( 1 );
+	if ( ev3_init() == -1 ) return ( 1 );
 
 #ifndef __ARM_ARCH_4T__
 	printf( "The EV3 brick auto-detection is DISABLED, waiting %s online...\n", ev3_brick_addr );
 
 #endif
-	while ( ev3_tacho_init() == 0 ) Sleep( 1000 );
+	while ( ev3_tacho_init() < 1 ) Sleep( 1000 );
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
 	printf( "Found tacho-motors:\n" );
-	for ( i = 0; i < OUTPUT__COUNT_; i++ ) {
-		if ( ev3_tacho[ i ].connected ) {
-			printf( "  port = out%d\n", i + 1 );
-			if ( get_tacho_type( ev3_tacho[ i ].id, s, sizeof( s ))) {
-				printf( "  type = %s\n", s );
-			}
+	for ( i = 0; i < TACHO_DESC__LIMIT_; i++ ) {
+		if ( ev3_tacho[ i ].type_inx != TACHO_TYPE__NONE_ ) {
+			printf( "  type = %s\n", ev3_tacho_type( ev3_tacho[ i ].type_inx ));
+			printf( "  port = %s\n", ev3_port_name( ev3_tacho[ i ].port, ev3_tacho[ i ].extport ));
 		}
 	}
-	p = ev3_tacho_port( MINITACHO );
-	if ( p != EV3_NONE ) {
-		uint8_t id = ev3_tacho[ p ].id;
-
-		printf( "MINITACHO is found, run for 5 sec...\n" );
-		set_tacho_regulation_mode( id, "off" );
-		set_tacho_run_mode( id, "time" );
-		set_tacho_stop_mode( id, "brake" );
-		set_tacho_duty_cycle_sp( id, 100 );
-		set_tacho_time_sp( id, 5000 );
-		set_tacho_ramp_up_sp( id, 2000 );
-		set_tacho_ramp_down_sp( id, 2000 );
-		set_tacho_run( id, true );
+	if ( ev3_search_tacho( MINITACHO, &sn, 0 )) {
+		printf( "MINITACHO motor is found, run for 5 sec...\n" );
+		set_tacho_regulation_mode( sn, "off" );
+		set_tacho_run_mode( sn, "time" );
+		set_tacho_stop_mode( sn, "brake" );
+		set_tacho_duty_cycle_sp( sn, 100 );
+		set_tacho_time_sp( sn, 5000 );
+		set_tacho_ramp_up_sp( sn, 2000 );
+		set_tacho_ramp_down_sp( sn, 2000 );
+		set_tacho_run( sn, true );
 	} else {
-		printf( "MINITACHO is not found\n" );
+		printf( "MINITACHO motor is not found\n" );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

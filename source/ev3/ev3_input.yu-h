@@ -1,0 +1,49 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,EV3 input ports.)
+
+($import stdlib)
+($import h)
+
+($h-begin-named)
+
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+($extern-c-begin)
+
+/**
+ *  \addtogroup ev3_port
+ *  \{
+ */
+
+($import "ev3_input-dict.yu")
+($import "ev3_port-h.yu")
+
+/**
+ *  \brief Get indexes of the EV3 input port and the extended port from the port name.
+ *  \param name Port name.
+ *  \param extport Buffer for the extended port index.
+ *  \return EV3 input port index.
+ */
+($h-extern) uint8_t ev3_input_inx( const char *name, uint8_t *extport );
+
+/**
+ *  \brief Get name of the specified EV3 input port.
+ *  \param inx Port index.
+ *  \param extport Extended port index.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_input_name( uint8_t inx, uint8_t extport );
+
+/** \} */
+
+($extern-c-end)
+
+($h-end)

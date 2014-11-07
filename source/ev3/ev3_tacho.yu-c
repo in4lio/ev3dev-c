@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include "modp_numtoa.h"
 #include "ev3.h"
+#include "ev3_port.h"
 #include "ev3_tacho.h"
 
 /**
@@ -26,48 +27,5 @@
 
 ($import "ev3_tacho-dict.yu")
 ($import "ev3_class.yu")
-
-int ev3_tacho_init( void )
-{
-	char list[ 256 ], s[ 256 ];
-	char *p;
-	uint32_t id;
-	int port;
-	uint8_t cnt = 0;
-
-	memset( ev3_tacho, 0, sizeof( ev3_tacho ));
-
-	if ( !ev3_listdir( ($CLASS_PATH), list, sizeof( list ))) return ( EV3_NONE );
-
-	p = strtok( list, " " );
-	while ( p ) {
-		if ( get_str_suffix( ($CLASS_FOLDER_PREF), p, &id )) {
-			if ( get_tacho_port_name( id, s, sizeof( s ))) {
-				($CLASS_PORT \i.]
-					if ( strcmp( s, ($CLASS_PORT_PREF)($q i)) == 0 ) port = ($CLASS_PORT_ID)_($i);
-					else
-
-				[ )
-					port = EV3_NONE;
-
-				if ( port != EV3_NONE ) {
-					ev3_tacho[ port ].connected = true;
-					ev3_tacho[ port ].id = id;
-					get_tacho_type( id, s, sizeof( s ));
-					($each-CLASS_TYPE \i.]
-						if ( strcmp( s, ($i CLASS_TYPE_NAME)) == 0 ) ev3_tacho[ port ].type_id = ($i CLASS_TYPE_ID);
-						else
-
-					[ )
-						ev3_tacho[ port ].type_id = 0;
-
-					cnt++;
-				}
-			}
-		}
-		p = strtok( NULL, " " );
-	}
-	return ( cnt );
-}
 
 /** \} */

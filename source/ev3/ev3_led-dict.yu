@@ -19,7 +19,7 @@
 ($dict LED_ATTR
 	(` LED_ATTR_NAME  LED_ATTR_TYPE  LED_ATTR_ARRAY  )
 	(`
-	(  "brightness"   int            0               )
+	(  "brightness"   byte           0               )
 	(  "delay_off"    int            0               )
 	(  "delay_on"     int            0               )
 	(  "trigger"      char           1               )
@@ -48,4 +48,4 @@
 
 ($set LED_ID ($each-LED \i.($replace,,($unq ($i LED_NAME)),,:,,_)))
 ($set LED_ATTR_ID ($each-LED \i.($unq ($i LED_ATTR_NAME))))
-($set LED_TRIGGER_ID ($each-LED_TRIGGER \i.($upper ($replace,,($unq ($i LED_TRIGGER_NAME)),,-,,_))))
+($set LED_TRIGGER_ID ($each-LED_TRIGGER \i.($replace,,($unq ($i LED_TRIGGER_NAME)),,-,,_)))

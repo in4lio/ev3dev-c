@@ -9,3 +9,4 @@ html/
 *.sublime-workspace
 
 .tags
+sftp-config.json

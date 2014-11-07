@@ -21,17 +21,12 @@
 /**
  *  \defgroup ev3_sensor Sensors
  *  \brief Access to EV3 sensors.
+ *  \see http://www.ev3dev.org/docs/drivers/msensor-class/
  *  \{
  */
 
 ($import "ev3_sensor-dict.yu")
 ($import "ev3_class-h.yu")
-
-/**
- *  \brief Auto-detection of connected sensors.
- *  \return The number of found sensors or EV3_NONE in case of an error.
- */
-($h-extern) int ev3_sensor_init( void );
 
 /** \} */
 

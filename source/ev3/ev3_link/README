@@ -20,7 +20,6 @@
 
     * * *  How to automatically start ev3_link server on boot?
 
-    > sudo apt-get install psmisc  # install killall
     > cd ev3dev-c/
     > sudo cp source/ev3/ev3_link/ev3_link_d /etc/init.d/
     > sudo cp source/ev3/ev3_link/ev3_link /usr/local/sbin/

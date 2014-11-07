@@ -1786,14 +1786,15 @@ int SWIG_Ruby_arity( VALUE proc, int minimal )
 #define SWIGTYPE_p_float swig_types[6]
 #define SWIGTYPE_p_int swig_types[7]
 #define SWIGTYPE_p_long_long swig_types[8]
-#define SWIGTYPE_p_short swig_types[9]
-#define SWIGTYPE_p_signed_char swig_types[10]
-#define SWIGTYPE_p_unsigned_char swig_types[11]
-#define SWIGTYPE_p_unsigned_int swig_types[12]
-#define SWIGTYPE_p_unsigned_long_long swig_types[13]
-#define SWIGTYPE_p_unsigned_short swig_types[14]
-static swig_type_info *swig_types[16];
-static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
+#define SWIGTYPE_p_p_char swig_types[9]
+#define SWIGTYPE_p_short swig_types[10]
+#define SWIGTYPE_p_signed_char swig_types[11]
+#define SWIGTYPE_p_unsigned_char swig_types[12]
+#define SWIGTYPE_p_unsigned_int swig_types[13]
+#define SWIGTYPE_p_unsigned_long_long swig_types[14]
+#define SWIGTYPE_p_unsigned_short swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1848,6 +1849,9 @@ struct timeval rb_time_timeval(VALUE);
 
 
 #include "../source/ev3/ev3.h"
+#include "../source/ev3/ev3_port.h"
+#include "../source/ev3/ev3_output.h"
+#include "../source/ev3/ev3_input.h"
 #include "../source/ev3/ev3_led.h"
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
@@ -2105,6 +2109,22 @@ SWIG_AsVal_unsigned_SS_int (VALUE obj, unsigned int *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_char (VALUE obj, unsigned char *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UCHAR_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = (unsigned char)(v);
+    }
+  }  
+  return res;
+}
+
+
 #include <float.h>
 
 
@@ -2184,6 +2204,13 @@ SWIG_From_unsigned_SS_int  (unsigned int value)
 }
 
 
+SWIGINTERNINLINE VALUE
+SWIG_From_unsigned_SS_char  (unsigned char value)
+{    
+  return SWIG_From_unsigned_SS_long  (value);
+}
+
+
   #define SWIG_From_double   rb_float_new 
 
 
@@ -2191,29 +2218,6 @@ SWIGINTERNINLINE VALUE
 SWIG_From_float  (float value)
 {    
   return SWIG_From_double  (value);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_char (VALUE obj, unsigned char *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > UCHAR_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = (unsigned char)(v);
-    }
-  }  
-  return res;
-}
-
-
-SWIGINTERNINLINE VALUE
-SWIG_From_unsigned_SS_char  (unsigned char value)
-{    
-  return SWIG_From_unsigned_SS_long  (value);
 }
 
 
@@ -2497,6 +2501,43 @@ fail:
 
 
 SWIGINTERN VALUE
+_wrap_ev3_write_byte(int argc, VALUE *argv, VALUE self) {
+  char *arg1 = (char *) 0 ;
+  uint8_t arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_write_byte", 1, argv[0] ));
+  }
+  arg1 = (char *)(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","ev3_write_byte", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  result = ev3_write_byte((char const *)arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return vresult;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
 _wrap_ev3_write_float(int argc, VALUE *argv, VALUE self) {
   char *arg1 = (char *) 0 ;
   float arg2 ;
@@ -2700,6 +2741,45 @@ fail:
 
 
 SWIGINTERN VALUE
+_wrap_ev3_read_byte(int argc, VALUE *argv, VALUE self) {
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_read_byte", 1, argv[0] ));
+  }
+  arg1 = (char *)(buf1);
+  result = ev3_read_byte((char const *)arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return vresult;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
 _wrap_ev3_read_float(int argc, VALUE *argv, VALUE self) {
   char *arg1 = (char *) 0 ;
   float *arg2 = (float *) 0 ;
@@ -2803,10 +2883,10 @@ fail:
 SWIGINTERN VALUE
 _wrap_get_led_brightness(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
-  int *arg2 = (int *) 0 ;
+  byte *arg2 = (byte *) 0 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int temp2 ;
+  byte temp2 ;
   int res2 = SWIG_TMPOBJ ;
   size_t result;
   VALUE vresult = Qnil;
@@ -2825,10 +2905,10 @@ _wrap_get_led_brightness(int argc, VALUE *argv, VALUE self) {
     vresult = result ? Qtrue : Qfalse; 
   }
   if (SWIG_IsTmpObj(res2)) {
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
   } else {
     int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_byte, new_flags));
   }
   return vresult;
 fail:
@@ -2839,10 +2919,10 @@ fail:
 SWIGINTERN VALUE
 _wrap_set_led_brightness(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
-  int arg2 ;
+  byte arg2 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   size_t result;
   VALUE vresult = Qnil;
@@ -2855,11 +2935,11 @@ _wrap_set_led_brightness(int argc, VALUE *argv, VALUE self) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_led_brightness", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  ecode2 = SWIG_AsVal_int(argv[1], &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "int","set_led_brightness", 2, argv[1] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "byte","set_led_brightness", 2, argv[1] ));
   } 
-  arg2 = (int)(val2);
+  arg2 = (byte)(val2);
   result = set_led_brightness(arg1,arg2);
   {
     vresult = result ? Qtrue : Qfalse; 
@@ -3147,6 +3227,39 @@ fail:
 
 
 SWIGINTERN VALUE
+_wrap_ev3_led_trigger(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_led_trigger", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_led_trigger(arg1);
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_LIT_COLOR_get(VALUE self) {
+  VALUE _val;
+  
+  _val = SWIG_NewPointerObj(SWIG_as_voidptr(LIT_COLOR), SWIGTYPE_p_p_char,  0 );
+  return _val;
+}
+
+
+SWIGINTERN VALUE
 _wrap_set_light(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   uint8_t arg2 ;
@@ -3347,50 +3460,275 @@ fail:
 }
 
 
-static swig_class SwigClassEV3_SENSOR;
+SWIGINTERN VALUE
+_wrap_get_output_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_output_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_output_mode", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_mode(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_connected_set(int argc, VALUE *argv, VALUE self) {
-  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+_wrap_set_output_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
   
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_output_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(argv[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "char *","set_output_mode", 2, argv[1] ));
+  }
+  arg2 = (char *)(buf2);
+  result = set_output_mode(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return vresult;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_output_modes(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_output_modes", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_output_modes", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_modes(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_output_pin5_mv(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
   if ((argc < 1) || (argc > 1)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","connected", 1, self )); 
-  }
-  arg1 = (EV3_SENSOR *)(argp1);
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_output_pin5_mv", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_output_pin5_mv(arg1,arg2);
   {
-    arg2 = argv[0] == Qtrue ? 1 : 0; 
+    vresult = result ? Qtrue : Qfalse; 
   }
-  if (arg1) (arg1)->connected = arg2;
-  return Qnil;
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return vresult;
 fail:
   return Qnil;
 }
 
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_connected_get(int argc, VALUE *argv, VALUE self) {
-  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
+_wrap_get_output_state(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
   VALUE vresult = Qnil;
   
-  if ((argc < 0) || (argc > 0)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","connected", 1, self )); 
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_output_state", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_output_state", 2, argv[1] ));
   }
-  arg1 = (EV3_SENSOR *)(argp1);
-  result = (bool) ((arg1)->connected);
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_output_state(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_output_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_output_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_output_mode(arg1);
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_output_mode_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_output_mode_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_output_mode_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_set_output_mode_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_output_mode_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","set_output_mode_inx", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  result = set_output_mode_inx(arg1,arg2);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
@@ -3401,52 +3739,50 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_id_set(int argc, VALUE *argv, VALUE self) {
-  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
+_wrap_ev3_output_inx(int argc, VALUE *argv, VALUE self) {
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
   
   if ((argc < 1) || (argc > 1)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_output_inx", 1, argv[0] ));
   }
-  arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(argv[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint32_t","id", 2, argv[0] ));
-  } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->id = arg2;
-  return Qnil;
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_output_inx((char const *)arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return vresult;
 fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return Qnil;
 }
 
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_id_get(int argc, VALUE *argv, VALUE self) {
-  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
+_wrap_ev3_output_name(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  char *result = 0 ;
   VALUE vresult = Qnil;
   
-  if ((argc < 0) || (argc > 0)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","id", 1, self )); 
-  }
-  arg1 = (EV3_SENSOR *)(argp1);
-  result = (uint32_t) ((arg1)->id);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_output_name", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_output_name(arg1);
+  vresult = SWIG_FromCharPtr((const char *)result);
   return vresult;
 fail:
   return Qnil;
@@ -3454,12 +3790,466 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_type_id_set(int argc, VALUE *argv, VALUE self) {
+_wrap_get_input_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_input_mode", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_mode(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_set_input_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_input_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(argv[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "char *","set_input_mode", 2, argv[1] ));
+  }
+  arg2 = (char *)(buf2);
+  result = set_input_mode(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return vresult;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_input_modes(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_modes", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_input_modes", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_modes(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_input_pin1_mv(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_pin1_mv", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_input_pin1_mv(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_input_pin6_mv(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_pin6_mv", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_input_pin6_mv(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_input_state(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_state", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_input_state", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_input_state(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_input_mode(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_input_mode", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (char *)ev3_input_mode(arg1);
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_input_mode_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_input_mode_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_input_mode_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_set_input_mode_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_input_mode_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","set_input_mode_inx", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  result = set_input_mode_inx(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_input_inx(int argc, VALUE *argv, VALUE self) {
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_input_inx", 1, argv[0] ));
+  }
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_input_inx((char const *)arg1,arg2);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return vresult;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_input_name(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_input_name", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","ev3_input_name", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  result = (char *)ev3_input_name(arg1,arg2);
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_port_inx(int argc, VALUE *argv, VALUE self) {
+  char *arg1 = (char *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_AsCharPtrAndSize(argv[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "char const *","ev3_port_inx", 1, argv[0] ));
+  }
+  arg1 = (char *)(buf1);
+  result = (uint8_t)ev3_port_inx((char const *)arg1,arg2);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return vresult;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_port_name(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_port_name", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","ev3_port_name", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  result = (char *)ev3_port_name(arg1,arg2);
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+static swig_class SwigClassEV3_SENSOR;
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_type_inx_set(int argc, VALUE *argv, VALUE self) {
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   
   if ((argc < 1) || (argc > 1)) {
@@ -3467,15 +4257,15 @@ _wrap_EV3_SENSOR_type_id_set(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","type_id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","type_inx", 1, self )); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(argv[0], &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint32_t","type_id", 2, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","type_inx", 2, argv[0] ));
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->type_id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->type_inx = arg2;
   return Qnil;
 fail:
   return Qnil;
@@ -3483,11 +4273,11 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_SENSOR_type_id_get(int argc, VALUE *argv, VALUE self) {
+_wrap_EV3_SENSOR_type_inx_get(int argc, VALUE *argv, VALUE self) {
   EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  uint32_t result;
+  uint8_t result;
   VALUE vresult = Qnil;
   
   if ((argc < 0) || (argc > 0)) {
@@ -3495,11 +4285,170 @@ _wrap_EV3_SENSOR_type_id_get(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","type_id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","type_inx", 1, self )); 
   }
   arg1 = (EV3_SENSOR *)(argp1);
-  result = (uint32_t) ((arg1)->type_id);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->type_inx);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_port_set(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","port", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","port", 2, argv[0] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->port = arg2;
+  return Qnil;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_port_get(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","port", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  result = (uint8_t) ((arg1)->port);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_extport_set(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","extport", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","extport", 2, argv[0] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->extport = arg2;
+  return Qnil;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_extport_get(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","extport", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  result = (uint8_t) ((arg1)->extport);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_addr_set(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","addr", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","addr", 2, argv[0] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->addr = arg2;
+  return Qnil;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_SENSOR_addr_get(int argc, VALUE *argv, VALUE self) {
+  EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_SENSOR *","addr", 1, self )); 
+  }
+  arg1 = (EV3_SENSOR *)(argp1);
+  result = (uint8_t) ((arg1)->addr);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return vresult;
 fail:
   return Qnil;
@@ -3558,12 +4507,12 @@ _wrap_ev3_sensor_set(VALUE self, VALUE _val) {
     EV3_SENSOR *inp = 0;
     int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_SENSOR,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_sensor""' of type '""EV3_SENSOR [64]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)INPUT__COUNT_; ++ii) *(EV3_SENSOR *)&ev3_sensor[ii] = *((EV3_SENSOR *)inp + ii);
+      for (; ii < (size_t)64; ++ii) *(EV3_SENSOR *)&ev3_sensor[ii] = *((EV3_SENSOR *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR [INPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_sensor""' of type '""EV3_SENSOR [64]""'");
     }
   }
   return _val;
@@ -3777,12 +4726,12 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_get_sensor_i2c_addr(int argc, VALUE *argv, VALUE self) {
+_wrap_get_sensor_address(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
-  int *arg2 = (int *) 0 ;
+  byte *arg2 = (byte *) 0 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int temp2 ;
+  byte temp2 ;
   int res2 = SWIG_TMPOBJ ;
   size_t result;
   VALUE vresult = Qnil;
@@ -3793,18 +4742,18 @@ _wrap_get_sensor_i2c_addr(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_i2c_addr", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_address", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = get_sensor_i2c_addr(arg1,arg2);
+  result = get_sensor_address(arg1,arg2);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
   if (SWIG_IsTmpObj(res2)) {
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
   } else {
     int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_byte, new_flags));
   }
   return vresult;
 fail:
@@ -3919,6 +4868,47 @@ _wrap_get_sensor_modes(int argc, VALUE *argv, VALUE self) {
   arg3 = (size_t)(size2);
   arg2 = (char *)(buff2);
   result = get_sensor_modes(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_sensor_name(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_name", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_sensor_name", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_sensor_name(arg1,arg2,arg3);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
@@ -4115,42 +5105,6 @@ _wrap_get_sensor_units(int argc, VALUE *argv, VALUE self) {
   return vresult;
 fail:
   if (buff2) free((char*)buff2);
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_get_sensor_type_id(int argc, VALUE *argv, VALUE self) {
-  uint8_t arg1 ;
-  dword *arg2 = (dword *) 0 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  dword temp2 ;
-  int res2 = SWIG_TMPOBJ ;
-  size_t result;
-  VALUE vresult = Qnil;
-  
-  arg2 = &temp2;
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
-  }
-  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_type_id", 1, argv[0] ));
-  } 
-  arg1 = (uint8_t)(val1);
-  result = get_sensor_type_id(arg1,arg2);
-  {
-    vresult = result ? Qtrue : Qfalse; 
-  }
-  if (SWIG_IsTmpObj(res2)) {
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_int((*arg2)));
-  } else {
-    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
-    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_dword, new_flags));
-  }
-  return vresult;
-fail:
   return Qnil;
 }
 
@@ -4512,11 +5466,11 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_sensor_port(int argc, VALUE *argv, VALUE self) {
+_wrap_get_sensor_type_inx(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int result;
+  uint8_t result;
   VALUE vresult = Qnil;
   
   if ((argc < 1) || (argc > 1)) {
@@ -4524,11 +5478,11 @@ _wrap_ev3_sensor_port(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_port", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_type_inx", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (int)ev3_sensor_port(arg1);
-  vresult = SWIG_From_int((int)(result));
+  result = (uint8_t)get_sensor_type_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return vresult;
 fail:
   return Qnil;
@@ -4536,7 +5490,41 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_sensor(int argc, VALUE *argv, VALUE self) {
+_wrap_get_sensor_port_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_port_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_sensor_port_inx(arg1,arg2);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_sensor_desc(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
@@ -4548,10 +5536,10 @@ _wrap_ev3_get_sensor(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_sensor", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_desc", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_SENSOR *)ev3_get_sensor(arg1);
+  result = (EV3_SENSOR *)ev3_sensor_desc(arg1);
   vresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_SENSOR, 0 |  0 );
   return vresult;
 fail:
@@ -4560,25 +5548,144 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_sensor_connected(int argc, VALUE *argv, VALUE self) {
+_wrap_ev3_sensor_desc_type_inx(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_desc_type_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_type_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_sensor_desc_port(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_desc_port", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_port(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_sensor_desc_extport(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_desc_extport", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_extport(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_sensor_desc_addr(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_sensor_desc_addr", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_sensor_desc_addr(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_search_sensor(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  uint8_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
   bool result;
   VALUE vresult = Qnil;
   
-  if ((argc < 1) || (argc > 1)) {
+  {
+    arg3 = 0; 
+  }
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 2)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_sensor_connected", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (bool)ev3_get_sensor_connected(arg1);
+  if (argc > 1) {
+    ecode3 = SWIG_AsVal_unsigned_SS_char(argv[1], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor", 3, argv[1] ));
+    } 
+    arg3 = (uint8_t)(val3);
+  }
+  result = (bool)ev3_search_sensor(arg1,arg2,arg3);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return vresult;
 fail:
   return Qnil;
@@ -4586,47 +5693,64 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_sensor_id(int argc, VALUE *argv, VALUE self) {
+_wrap_ev3_search_sensor_plugged_in(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
+  uint8_t arg2 ;
+  uint8_t arg3 ;
+  uint8_t *arg4 = (uint8_t *) 0 ;
+  uint8_t arg5 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  uint32_t result;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  uint8_t temp4 ;
+  int res4 = SWIG_TMPOBJ ;
+  unsigned char val5 ;
+  int ecode5 = 0 ;
+  bool result;
   VALUE vresult = Qnil;
   
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  {
+    arg5 = 0; 
+  }
+  arg4 = &temp4;
+  if ((argc < 3) || (argc > 4)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 3)",argc); SWIG_fail;
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_sensor_id", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor_plugged_in", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_sensor_id(arg1);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
-  return vresult;
-fail:
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_ev3_get_sensor_type_id(int argc, VALUE *argv, VALUE self) {
-  uint8_t arg1 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  uint32_t result;
-  VALUE vresult = Qnil;
-  
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor_plugged_in", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(argv[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor_plugged_in", 3, argv[2] ));
+  } 
+  arg3 = (uint8_t)(val3);
+  if (argc > 3) {
+    ecode5 = SWIG_AsVal_unsigned_SS_char(argv[3], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), Ruby_Format_TypeError( "", "uint8_t","ev3_search_sensor_plugged_in", 5, argv[3] ));
+    } 
+    arg5 = (uint8_t)(val5);
   }
-  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_sensor_type_id", 1, argv[0] ));
-  } 
-  arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_sensor_type_id(arg1);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (bool)ev3_search_sensor_plugged_in(arg1,arg2,arg3,arg4,arg5);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res4)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg4)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res4) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg4), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return vresult;
 fail:
   return Qnil;
@@ -4652,63 +5776,12 @@ fail:
 static swig_class SwigClassEV3_TACHO;
 
 SWIGINTERN VALUE
-_wrap_EV3_TACHO_connected_set(int argc, VALUE *argv, VALUE self) {
+_wrap_EV3_TACHO_type_inx_set(int argc, VALUE *argv, VALUE self) {
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  bool arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
-  }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","connected", 1, self )); 
-  }
-  arg1 = (EV3_TACHO *)(argp1);
-  {
-    arg2 = argv[0] == Qtrue ? 1 : 0; 
-  }
-  if (arg1) (arg1)->connected = arg2;
-  return Qnil;
-fail:
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_EV3_TACHO_connected_get(int argc, VALUE *argv, VALUE self) {
-  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  VALUE vresult = Qnil;
-  
-  if ((argc < 0) || (argc > 0)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
-  }
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","connected", 1, self )); 
-  }
-  arg1 = (EV3_TACHO *)(argp1);
-  result = (bool) ((arg1)->connected);
-  {
-    vresult = result ? Qtrue : Qfalse; 
-  }
-  return vresult;
-fail:
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_EV3_TACHO_id_set(int argc, VALUE *argv, VALUE self) {
-  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   
   if ((argc < 1) || (argc > 1)) {
@@ -4716,15 +5789,15 @@ _wrap_EV3_TACHO_id_set(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","type_inx", 1, self )); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(argv[0], &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint32_t","id", 2, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","type_inx", 2, argv[0] ));
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->type_inx = arg2;
   return Qnil;
 fail:
   return Qnil;
@@ -4732,11 +5805,11 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_TACHO_id_get(int argc, VALUE *argv, VALUE self) {
+_wrap_EV3_TACHO_type_inx_get(int argc, VALUE *argv, VALUE self) {
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  uint32_t result;
+  uint8_t result;
   VALUE vresult = Qnil;
   
   if ((argc < 0) || (argc > 0)) {
@@ -4744,11 +5817,11 @@ _wrap_EV3_TACHO_id_get(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","type_inx", 1, self )); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  result = (uint32_t) ((arg1)->id);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->type_inx);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return vresult;
 fail:
   return Qnil;
@@ -4756,12 +5829,12 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_TACHO_type_id_set(int argc, VALUE *argv, VALUE self) {
+_wrap_EV3_TACHO_port_set(int argc, VALUE *argv, VALUE self) {
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-  uint32_t arg2 ;
+  uint8_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  unsigned int val2 ;
+  unsigned char val2 ;
   int ecode2 = 0 ;
   
   if ((argc < 1) || (argc > 1)) {
@@ -4769,15 +5842,15 @@ _wrap_EV3_TACHO_type_id_set(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","type_id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","port", 1, self )); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(argv[0], &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint32_t","type_id", 2, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","port", 2, argv[0] ));
   } 
-  arg2 = (uint32_t)(val2);
-  if (arg1) (arg1)->type_id = arg2;
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->port = arg2;
   return Qnil;
 fail:
   return Qnil;
@@ -4785,11 +5858,11 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_EV3_TACHO_type_id_get(int argc, VALUE *argv, VALUE self) {
+_wrap_EV3_TACHO_port_get(int argc, VALUE *argv, VALUE self) {
   EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  uint32_t result;
+  uint8_t result;
   VALUE vresult = Qnil;
   
   if ((argc < 0) || (argc > 0)) {
@@ -4797,11 +5870,64 @@ _wrap_EV3_TACHO_type_id_get(int argc, VALUE *argv, VALUE self) {
   }
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","type_id", 1, self )); 
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","port", 1, self )); 
   }
   arg1 = (EV3_TACHO *)(argp1);
-  result = (uint32_t) ((arg1)->type_id);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (uint8_t) ((arg1)->port);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_TACHO_extport_set(int argc, VALUE *argv, VALUE self) {
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","extport", 1, self )); 
+  }
+  arg1 = (EV3_TACHO *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","extport", 2, argv[0] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  if (arg1) (arg1)->extport = arg2;
+  return Qnil;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_EV3_TACHO_extport_get(int argc, VALUE *argv, VALUE self) {
+  EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_EV3_TACHO, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "EV3_TACHO *","extport", 1, self )); 
+  }
+  arg1 = (EV3_TACHO *)(argp1);
+  result = (uint8_t) ((arg1)->extport);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return vresult;
 fail:
   return Qnil;
@@ -4860,12 +5986,12 @@ _wrap_ev3_tacho_set(VALUE self, VALUE _val) {
     EV3_TACHO *inp = 0;
     int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_TACHO,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_tacho""' of type '""EV3_TACHO [64]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)OUTPUT__COUNT_; ++ii) *(EV3_TACHO *)&ev3_tacho[ii] = *((EV3_TACHO *)inp + ii);
+      for (; ii < (size_t)64; ++ii) *(EV3_TACHO *)&ev3_tacho[ii] = *((EV3_TACHO *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO [OUTPUT__COUNT_]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_tacho""' of type '""EV3_TACHO [64]""'");
     }
   }
   return _val;
@@ -6354,11 +7480,11 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_tacho_port(int argc, VALUE *argv, VALUE self) {
+_wrap_get_tacho_type_inx(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  int result;
+  uint8_t result;
   VALUE vresult = Qnil;
   
   if ((argc < 1) || (argc > 1)) {
@@ -6366,11 +7492,11 @@ _wrap_ev3_tacho_port(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_tacho_port", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_tacho_type_inx", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (int)ev3_tacho_port(arg1);
-  vresult = SWIG_From_int((int)(result));
+  result = (uint8_t)get_tacho_type_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
   return vresult;
 fail:
   return Qnil;
@@ -6378,7 +7504,41 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_tacho(int argc, VALUE *argv, VALUE self) {
+_wrap_get_tacho_port_inx(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_tacho_port_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)get_tacho_port_inx(arg1,arg2);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_tacho_desc(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
@@ -6390,10 +7550,10 @@ _wrap_ev3_get_tacho(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_tacho", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_tacho_desc", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (EV3_TACHO *)ev3_get_tacho(arg1);
+  result = (EV3_TACHO *)ev3_tacho_desc(arg1);
   vresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_TACHO, 0 |  0 );
   return vresult;
 fail:
@@ -6402,25 +7562,120 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_tacho_connected(int argc, VALUE *argv, VALUE self) {
+_wrap_ev3_tacho_desc_type_inx(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_tacho_desc_type_inx", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_type_inx(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_tacho_desc_port(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_tacho_desc_port", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_port(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_tacho_desc_extport(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_tacho_desc_extport", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = (uint8_t)ev3_tacho_desc_extport(arg1);
+  vresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_ev3_search_tacho(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  uint8_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  uint8_t temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
   bool result;
   VALUE vresult = Qnil;
   
-  if ((argc < 1) || (argc > 1)) {
+  {
+    arg3 = 0; 
+  }
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 2)) {
     rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_tacho_connected", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_search_tacho", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (bool)ev3_get_tacho_connected(arg1);
+  if (argc > 1) {
+    ecode3 = SWIG_AsVal_unsigned_SS_char(argv[1], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), Ruby_Format_TypeError( "", "uint8_t","ev3_search_tacho", 3, argv[1] ));
+    } 
+    arg3 = (uint8_t)(val3);
+  }
+  result = (bool)ev3_search_tacho(arg1,arg2,arg3);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return vresult;
 fail:
   return Qnil;
@@ -6428,47 +7683,56 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_ev3_get_tacho_id(int argc, VALUE *argv, VALUE self) {
+_wrap_ev3_search_tacho_plugged_in(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
+  uint8_t arg2 ;
+  uint8_t *arg3 = (uint8_t *) 0 ;
+  uint8_t arg4 ;
   unsigned char val1 ;
   int ecode1 = 0 ;
-  uint32_t result;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  uint8_t temp3 ;
+  int res3 = SWIG_TMPOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  bool result;
   VALUE vresult = Qnil;
   
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  {
+    arg4 = 0; 
+  }
+  arg3 = &temp3;
+  if ((argc < 2) || (argc > 3)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_tacho_id", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_search_tacho_plugged_in", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_tacho_id(arg1);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
-  return vresult;
-fail:
-  return Qnil;
-}
-
-
-SWIGINTERN VALUE
-_wrap_ev3_get_tacho_type_id(int argc, VALUE *argv, VALUE self) {
-  uint8_t arg1 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  uint32_t result;
-  VALUE vresult = Qnil;
-  
-  if ((argc < 1) || (argc > 1)) {
-    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  ecode2 = SWIG_AsVal_unsigned_SS_char(argv[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "uint8_t","ev3_search_tacho_plugged_in", 2, argv[1] ));
+  } 
+  arg2 = (uint8_t)(val2);
+  if (argc > 2) {
+    ecode4 = SWIG_AsVal_unsigned_SS_char(argv[2], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), Ruby_Format_TypeError( "", "uint8_t","ev3_search_tacho_plugged_in", 4, argv[2] ));
+    } 
+    arg4 = (uint8_t)(val4);
   }
-  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","ev3_get_tacho_type_id", 1, argv[0] ));
-  } 
-  arg1 = (uint8_t)(val1);
-  result = (uint32_t)ev3_get_tacho_type_id(arg1);
-  vresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  result = (bool)ev3_search_tacho_plugged_in(arg1,arg2,arg3,arg4);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res3)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg3)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res3) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg3), SWIGTYPE_p_unsigned_char, new_flags));
+  }
   return vresult;
 fail:
   return Qnil;
@@ -6503,6 +7767,7 @@ static swig_type_info _swigt__p_dword = {"_p_dword", "dword *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
@@ -6520,6 +7785,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_float,
   &_swigt__p_int,
   &_swigt__p_long_long,
+  &_swigt__p_p_char,
   &_swigt__p_short,
   &_swigt__p_signed_char,
   &_swigt__p_unsigned_char,
@@ -6537,6 +7803,7 @@ static swig_cast_info _swigc__p_dword[] = {  {&_swigt__p_dword, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -6554,6 +7821,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_float,
   _swigc__p_int,
   _swigc__p_long_long,
+  _swigc__p_p_char,
   _swigc__p_short,
   _swigc__p_signed_char,
   _swigc__p_unsigned_char,
@@ -6819,7 +8087,6 @@ SWIGEXPORT void Init_ev3(void) {
   
   SWIG_RubyInitializeTrackings();
   rb_define_const(mEv3, "EV3_BRICK", SWIG_From_int((int)(0)));
-  rb_define_const(mEv3, "EV3_NONE", SWIG_From_int((int)(-1)));
   rb_define_singleton_method(mEv3, "brick_addr", _wrap_brick_addr_get, 0);
   rb_define_singleton_method(mEv3, "brick_addr=", _wrap_brick_addr_set, 1);
   rb_define_singleton_method(mEv3, "brick_port", _wrap_brick_port_get, 0);
@@ -6831,11 +8098,13 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "ev3_write_bool", _wrap_ev3_write_bool, -1);
   rb_define_module_function(mEv3, "ev3_write_int", _wrap_ev3_write_int, -1);
   rb_define_module_function(mEv3, "ev3_write_dword", _wrap_ev3_write_dword, -1);
+  rb_define_module_function(mEv3, "ev3_write_byte", _wrap_ev3_write_byte, -1);
   rb_define_module_function(mEv3, "ev3_write_float", _wrap_ev3_write_float, -1);
   rb_define_module_function(mEv3, "ev3_read_binary", _wrap_ev3_read_binary, -1);
   rb_define_module_function(mEv3, "ev3_read", _wrap_ev3_read, -1);
   rb_define_module_function(mEv3, "ev3_read_int", _wrap_ev3_read_int, -1);
   rb_define_module_function(mEv3, "ev3_read_dword", _wrap_ev3_read_dword, -1);
+  rb_define_module_function(mEv3, "ev3_read_byte", _wrap_ev3_read_byte, -1);
   rb_define_module_function(mEv3, "ev3_read_float", _wrap_ev3_read_float, -1);
   rb_define_module_function(mEv3, "ev3_listdir", _wrap_ev3_listdir, -1);
   rb_define_module_function(mEv3, "ev3_poweroff", _wrap_ev3_poweroff, -1);
@@ -6859,6 +8128,7 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "TRIGGER_PHY0RADIO", SWIG_From_int((int)(TRIGGER_PHY0RADIO)));
   rb_define_const(mEv3, "TRIGGER_PHY0TPT", SWIG_From_int((int)(TRIGGER_PHY0TPT)));
   rb_define_const(mEv3, "TRIGGER__COUNT_", SWIG_From_int((int)(TRIGGER__COUNT_)));
+  rb_define_const(mEv3, "LED_ATTR__COUNT_", SWIG_From_int((int)(4)));
   rb_define_module_function(mEv3, "get_led_brightness", _wrap_get_led_brightness, -1);
   rb_define_module_function(mEv3, "set_led_brightness", _wrap_set_led_brightness, -1);
   rb_define_module_function(mEv3, "get_led_delay_off", _wrap_get_led_delay_off, -1);
@@ -6869,6 +8139,7 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "set_led_trigger", _wrap_set_led_trigger, -1);
   rb_define_module_function(mEv3, "get_led_trigger_inx", _wrap_get_led_trigger_inx, -1);
   rb_define_module_function(mEv3, "set_led_trigger_inx", _wrap_set_led_trigger_inx, -1);
+  rb_define_module_function(mEv3, "ev3_led_trigger", _wrap_ev3_led_trigger, -1);
   rb_define_const(mEv3, "LIT_LEFT", SWIG_From_int((int)(LIT_LEFT)));
   rb_define_const(mEv3, "LIT_RIGHT", SWIG_From_int((int)(LIT_RIGHT)));
   rb_define_const(mEv3, "LIT__LOC__", SWIG_From_int((int)(LIT__LOC__)));
@@ -6877,53 +8148,137 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "LIT_RED", SWIG_From_int((int)(LIT_RED)));
   rb_define_const(mEv3, "LIT_AMBER", SWIG_From_int((int)(LIT_AMBER)));
   rb_define_const(mEv3, "LIT__COL__", SWIG_From_int((int)(LIT__COL__)));
+  rb_define_singleton_method(mEv3, "LIT_COLOR", _wrap_LIT_COLOR_get, 0);
   rb_define_module_function(mEv3, "set_light", _wrap_set_light, -1);
   rb_define_module_function(mEv3, "get_light", _wrap_get_light, -1);
   rb_define_module_function(mEv3, "set_light_trigger", _wrap_set_light_trigger, -1);
   rb_define_module_function(mEv3, "get_light_trigger", _wrap_get_light_trigger, -1);
   rb_define_module_function(mEv3, "set_light_blink", _wrap_set_light_blink, -1);
   rb_define_module_function(mEv3, "get_light_blink", _wrap_get_light_blink, -1);
+  rb_define_const(mEv3, "OUTPUT__BASE_", SWIG_From_int((int)(128)));
+  rb_define_const(mEv3, "OUTPUT_A", SWIG_From_int((int)(OUTPUT_A)));
+  rb_define_const(mEv3, "OUTPUT_B", SWIG_From_int((int)(OUTPUT_B)));
+  rb_define_const(mEv3, "OUTPUT_C", SWIG_From_int((int)(OUTPUT_C)));
+  rb_define_const(mEv3, "OUTPUT_D", SWIG_From_int((int)(OUTPUT_D)));
+  rb_define_const(mEv3, "OUTPUT__COUNT_", SWIG_From_int((int)(4)));
+  rb_define_const(mEv3, "OUTPUT_AUTO", SWIG_From_int((int)(OUTPUT_AUTO)));
+  rb_define_const(mEv3, "OUTPUT_EV3_TACHO_MOTOR", SWIG_From_int((int)(OUTPUT_EV3_TACHO_MOTOR)));
+  rb_define_const(mEv3, "OUTPUT_RCX_MOTOR", SWIG_From_int((int)(OUTPUT_RCX_MOTOR)));
+  rb_define_const(mEv3, "OUTPUT_RCX_LED", SWIG_From_int((int)(OUTPUT_RCX_LED)));
+  rb_define_const(mEv3, "OUTPUT_RAW", SWIG_From_int((int)(OUTPUT_RAW)));
+  rb_define_const(mEv3, "OUTPUT_MODE__COUNT_", SWIG_From_int((int)(OUTPUT_MODE__COUNT_)));
+  rb_define_module_function(mEv3, "get_output_mode", _wrap_get_output_mode, -1);
+  rb_define_module_function(mEv3, "set_output_mode", _wrap_set_output_mode, -1);
+  rb_define_module_function(mEv3, "get_output_modes", _wrap_get_output_modes, -1);
+  rb_define_module_function(mEv3, "get_output_pin5_mv", _wrap_get_output_pin5_mv, -1);
+  rb_define_module_function(mEv3, "get_output_state", _wrap_get_output_state, -1);
+  rb_define_module_function(mEv3, "ev3_output_mode", _wrap_ev3_output_mode, -1);
+  rb_define_module_function(mEv3, "get_output_mode_inx", _wrap_get_output_mode_inx, -1);
+  rb_define_module_function(mEv3, "set_output_mode_inx", _wrap_set_output_mode_inx, -1);
+  rb_define_module_function(mEv3, "ev3_output_inx", _wrap_ev3_output_inx, -1);
+  rb_define_module_function(mEv3, "ev3_output_name", _wrap_ev3_output_name, -1);
+  rb_define_const(mEv3, "INPUT__BASE_", SWIG_From_int((int)(1)));
   rb_define_const(mEv3, "INPUT_1", SWIG_From_int((int)(INPUT_1)));
   rb_define_const(mEv3, "INPUT_2", SWIG_From_int((int)(INPUT_2)));
   rb_define_const(mEv3, "INPUT_3", SWIG_From_int((int)(INPUT_3)));
   rb_define_const(mEv3, "INPUT_4", SWIG_From_int((int)(INPUT_4)));
-  rb_define_const(mEv3, "INPUT__COUNT_", SWIG_From_int((int)(INPUT__COUNT_)));
+  rb_define_const(mEv3, "INPUT__COUNT_", SWIG_From_int((int)(4)));
+  rb_define_const(mEv3, "INPUT_AUTO", SWIG_From_int((int)(INPUT_AUTO)));
+  rb_define_const(mEv3, "INPUT_EV3_ANALOG", SWIG_From_int((int)(INPUT_EV3_ANALOG)));
+  rb_define_const(mEv3, "INPUT_EV3_UART", SWIG_From_int((int)(INPUT_EV3_UART)));
+  rb_define_const(mEv3, "INPUT_NXT_ANALOG", SWIG_From_int((int)(INPUT_NXT_ANALOG)));
+  rb_define_const(mEv3, "INPUT_NXT_COLOR", SWIG_From_int((int)(INPUT_NXT_COLOR)));
+  rb_define_const(mEv3, "INPUT_NXT_I2C", SWIG_From_int((int)(INPUT_NXT_I2C)));
+  rb_define_const(mEv3, "INPUT_OTHER_UART", SWIG_From_int((int)(INPUT_OTHER_UART)));
+  rb_define_const(mEv3, "INPUT_RAW", SWIG_From_int((int)(INPUT_RAW)));
+  rb_define_const(mEv3, "INPUT_MODE__COUNT_", SWIG_From_int((int)(INPUT_MODE__COUNT_)));
+  rb_define_module_function(mEv3, "get_input_mode", _wrap_get_input_mode, -1);
+  rb_define_module_function(mEv3, "set_input_mode", _wrap_set_input_mode, -1);
+  rb_define_module_function(mEv3, "get_input_modes", _wrap_get_input_modes, -1);
+  rb_define_module_function(mEv3, "get_input_pin1_mv", _wrap_get_input_pin1_mv, -1);
+  rb_define_module_function(mEv3, "get_input_pin6_mv", _wrap_get_input_pin6_mv, -1);
+  rb_define_module_function(mEv3, "get_input_state", _wrap_get_input_state, -1);
+  rb_define_module_function(mEv3, "ev3_input_mode", _wrap_ev3_input_mode, -1);
+  rb_define_module_function(mEv3, "get_input_mode_inx", _wrap_get_input_mode_inx, -1);
+  rb_define_module_function(mEv3, "set_input_mode_inx", _wrap_set_input_mode_inx, -1);
+  rb_define_module_function(mEv3, "ev3_input_inx", _wrap_ev3_input_inx, -1);
+  rb_define_module_function(mEv3, "ev3_input_name", _wrap_ev3_input_name, -1);
+  rb_define_const(mEv3, "EV3_PORT__NONE_", SWIG_From_int((int)(0)));
+  rb_define_module_function(mEv3, "ev3_port_inx", _wrap_ev3_port_inx, -1);
+  rb_define_module_function(mEv3, "ev3_port_name", _wrap_ev3_port_name, -1);
   
   SwigClassEV3_SENSOR.klass = rb_define_class_under(mEv3, "EV3_SENSOR", rb_cObject);
   SWIG_TypeClientData(SWIGTYPE_p_EV3_SENSOR, (void *) &SwigClassEV3_SENSOR);
   rb_define_alloc_func(SwigClassEV3_SENSOR.klass, _wrap_EV3_SENSOR_allocate);
   rb_define_method(SwigClassEV3_SENSOR.klass, "initialize", _wrap_new_EV3_SENSOR, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "connected=", _wrap_EV3_SENSOR_connected_set, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "connected", _wrap_EV3_SENSOR_connected_get, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "id=", _wrap_EV3_SENSOR_id_set, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "id", _wrap_EV3_SENSOR_id_get, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "type_id=", _wrap_EV3_SENSOR_type_id_set, -1);
-  rb_define_method(SwigClassEV3_SENSOR.klass, "type_id", _wrap_EV3_SENSOR_type_id_get, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "type_inx=", _wrap_EV3_SENSOR_type_inx_set, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "type_inx", _wrap_EV3_SENSOR_type_inx_get, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "port=", _wrap_EV3_SENSOR_port_set, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "port", _wrap_EV3_SENSOR_port_get, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "extport=", _wrap_EV3_SENSOR_extport_set, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "extport", _wrap_EV3_SENSOR_extport_get, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "addr=", _wrap_EV3_SENSOR_addr_set, -1);
+  rb_define_method(SwigClassEV3_SENSOR.klass, "addr", _wrap_EV3_SENSOR_addr_get, -1);
   SwigClassEV3_SENSOR.mark = 0;
   SwigClassEV3_SENSOR.destroy = (void (*)(void *)) free_EV3_SENSOR;
   SwigClassEV3_SENSOR.trackObjects = 0;
+  rb_define_const(mEv3, "SENSOR_DESC__LIMIT_", SWIG_From_int((int)(64)));
+  rb_define_const(mEv3, "SENSOR__NONE_", SWIG_From_int((int)(64)));
   rb_define_singleton_method(mEv3, "ev3_sensor", _wrap_ev3_sensor_get, 0);
   rb_define_singleton_method(mEv3, "ev3_sensor=", _wrap_ev3_sensor_set, 1);
-  rb_define_const(mEv3, "EV3_TOUCH", SWIG_From_int((int)(EV3_TOUCH)));
-  rb_define_const(mEv3, "EV3_COLOR", SWIG_From_int((int)(EV3_COLOR)));
-  rb_define_const(mEv3, "EV3_ULTRASONIC", SWIG_From_int((int)(EV3_ULTRASONIC)));
-  rb_define_const(mEv3, "EV3_GYRO", SWIG_From_int((int)(EV3_GYRO)));
-  rb_define_const(mEv3, "EV3_INFRARED", SWIG_From_int((int)(EV3_INFRARED)));
+  rb_define_const(mEv3, "SENSOR_TYPE__NONE_", SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
+  rb_define_const(mEv3, "EV3_ANALOG_XX", SWIG_From_int((int)(EV3_ANALOG_XX)));
+  rb_define_const(mEv3, "NXT_ANALOG", SWIG_From_int((int)(NXT_ANALOG)));
+  rb_define_const(mEv3, "NXT_I2C", SWIG_From_int((int)(NXT_I2C)));
+  rb_define_const(mEv3, "HT_NXT_COLOR", SWIG_From_int((int)(HT_NXT_COLOR)));
+  rb_define_const(mEv3, "HT_NXT_ANGLE", SWIG_From_int((int)(HT_NXT_ANGLE)));
+  rb_define_const(mEv3, "HT_NXT_ACCEL", SWIG_From_int((int)(HT_NXT_ACCEL)));
+  rb_define_const(mEv3, "HT_NXT_BAROMETRIC", SWIG_From_int((int)(HT_NXT_BAROMETRIC)));
+  rb_define_const(mEv3, "HT_NXT_COLOR_V2", SWIG_From_int((int)(HT_NXT_COLOR_V2)));
+  rb_define_const(mEv3, "HT_NXT_EOPD", SWIG_From_int((int)(HT_NXT_EOPD)));
+  rb_define_const(mEv3, "HT_NXT_FORCE", SWIG_From_int((int)(HT_NXT_FORCE)));
+  rb_define_const(mEv3, "HT_NXT_GYRO", SWIG_From_int((int)(HT_NXT_GYRO)));
+  rb_define_const(mEv3, "HT_NXT_IR_LINK", SWIG_From_int((int)(HT_NXT_IR_LINK)));
+  rb_define_const(mEv3, "HT_NXT_IR_RECEIVER", SWIG_From_int((int)(HT_NXT_IR_RECEIVER)));
+  rb_define_const(mEv3, "HT_NXT_PIR", SWIG_From_int((int)(HT_NXT_PIR)));
+  rb_define_const(mEv3, "HT_NXT_COMPASS", SWIG_From_int((int)(HT_NXT_COMPASS)));
+  rb_define_const(mEv3, "HT_NXT_MAG", SWIG_From_int((int)(HT_NXT_MAG)));
+  rb_define_const(mEv3, "HT_NXT_IR_SEEKER_V2", SWIG_From_int((int)(HT_NXT_IR_SEEKER_V2)));
+  rb_define_const(mEv3, "HT_NXT_SMUX", SWIG_From_int((int)(HT_NXT_SMUX)));
+  rb_define_const(mEv3, "HT_SUPER_PRO", SWIG_From_int((int)(HT_SUPER_PRO)));
+  rb_define_const(mEv3, "EV3_UART_30", SWIG_From_int((int)(EV3_UART_30)));
+  rb_define_const(mEv3, "EV3_UART_32", SWIG_From_int((int)(EV3_UART_32)));
+  rb_define_const(mEv3, "EV3_UART_29", SWIG_From_int((int)(EV3_UART_29)));
+  rb_define_const(mEv3, "LEGO_EV3_TOUCH", SWIG_From_int((int)(LEGO_EV3_TOUCH)));
+  rb_define_const(mEv3, "EV3_UART_33", SWIG_From_int((int)(EV3_UART_33)));
+  rb_define_const(mEv3, "LEGO_POWER_STORAGE", SWIG_From_int((int)(LEGO_POWER_STORAGE)));
+  rb_define_const(mEv3, "TMP275", SWIG_From_int((int)(TMP275)));
+  rb_define_const(mEv3, "LEGO_NXT_TOUCH", SWIG_From_int((int)(LEGO_NXT_TOUCH)));
+  rb_define_const(mEv3, "LEGO_NXT_LIGHT", SWIG_From_int((int)(LEGO_NXT_LIGHT)));
+  rb_define_const(mEv3, "LEGO_NXT_SOUND", SWIG_From_int((int)(LEGO_NXT_SOUND)));
+  rb_define_const(mEv3, "LEGO_NXT_ULTRASONIC", SWIG_From_int((int)(LEGO_NXT_ULTRASONIC)));
+  rb_define_const(mEv3, "MS_LIGHT_ARRAY", SWIG_From_int((int)(MS_LIGHT_ARRAY)));
+  rb_define_const(mEv3, "MS_8CH_SERVO", SWIG_From_int((int)(MS_8CH_SERVO)));
+  rb_define_const(mEv3, "PCF8574", SWIG_From_int((int)(PCF8574)));
+  rb_define_const(mEv3, "PCF8591", SWIG_From_int((int)(PCF8591)));
+  rb_define_const(mEv3, "DS1307", SWIG_From_int((int)(DS1307)));
+  rb_define_const(mEv3, "MS_NXT_TOUCH_MUX", SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));
+  rb_define_const(mEv3, "SENSOR_TYPE__COUNT_", SWIG_From_int((int)(SENSOR_TYPE__COUNT_)));
   rb_define_module_function(mEv3, "get_sensor_bin_data", _wrap_get_sensor_bin_data, -1);
   rb_define_module_function(mEv3, "set_sensor_bin_data", _wrap_set_sensor_bin_data, -1);
   rb_define_module_function(mEv3, "get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format, -1);
   rb_define_module_function(mEv3, "get_sensor_dp", _wrap_get_sensor_dp, -1);
   rb_define_module_function(mEv3, "get_sensor_fw_version", _wrap_get_sensor_fw_version, -1);
-  rb_define_module_function(mEv3, "get_sensor_i2c_addr", _wrap_get_sensor_i2c_addr, -1);
+  rb_define_module_function(mEv3, "get_sensor_address", _wrap_get_sensor_address, -1);
   rb_define_module_function(mEv3, "get_sensor_mode", _wrap_get_sensor_mode, -1);
   rb_define_module_function(mEv3, "set_sensor_mode", _wrap_set_sensor_mode, -1);
   rb_define_module_function(mEv3, "get_sensor_modes", _wrap_get_sensor_modes, -1);
+  rb_define_module_function(mEv3, "get_sensor_name", _wrap_get_sensor_name, -1);
   rb_define_module_function(mEv3, "get_sensor_num_values", _wrap_get_sensor_num_values, -1);
   rb_define_module_function(mEv3, "get_sensor_poll_ms", _wrap_get_sensor_poll_ms, -1);
   rb_define_module_function(mEv3, "set_sensor_poll_ms", _wrap_set_sensor_poll_ms, -1);
   rb_define_module_function(mEv3, "get_sensor_port_name", _wrap_get_sensor_port_name, -1);
   rb_define_module_function(mEv3, "get_sensor_units", _wrap_get_sensor_units, -1);
-  rb_define_module_function(mEv3, "get_sensor_type_id", _wrap_get_sensor_type_id, -1);
   rb_define_module_function(mEv3, "get_sensor_value0", _wrap_get_sensor_value0, -1);
   rb_define_module_function(mEv3, "get_sensor_value1", _wrap_get_sensor_value1, -1);
   rb_define_module_function(mEv3, "get_sensor_value2", _wrap_get_sensor_value2, -1);
@@ -6934,35 +8289,38 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "get_sensor_value7", _wrap_get_sensor_value7, -1);
   rb_define_module_function(mEv3, "get_sensor_value", _wrap_get_sensor_value, -1);
   rb_define_module_function(mEv3, "ev3_sensor_type", _wrap_ev3_sensor_type, -1);
-  rb_define_module_function(mEv3, "ev3_sensor_port", _wrap_ev3_sensor_port, -1);
-  rb_define_module_function(mEv3, "ev3_get_sensor", _wrap_ev3_get_sensor, -1);
-  rb_define_module_function(mEv3, "ev3_get_sensor_connected", _wrap_ev3_get_sensor_connected, -1);
-  rb_define_module_function(mEv3, "ev3_get_sensor_id", _wrap_ev3_get_sensor_id, -1);
-  rb_define_module_function(mEv3, "ev3_get_sensor_type_id", _wrap_ev3_get_sensor_type_id, -1);
+  rb_define_module_function(mEv3, "get_sensor_type_inx", _wrap_get_sensor_type_inx, -1);
+  rb_define_module_function(mEv3, "get_sensor_port_inx", _wrap_get_sensor_port_inx, -1);
+  rb_define_module_function(mEv3, "ev3_sensor_desc", _wrap_ev3_sensor_desc, -1);
+  rb_define_module_function(mEv3, "ev3_sensor_desc_type_inx", _wrap_ev3_sensor_desc_type_inx, -1);
+  rb_define_module_function(mEv3, "ev3_sensor_desc_port", _wrap_ev3_sensor_desc_port, -1);
+  rb_define_module_function(mEv3, "ev3_sensor_desc_extport", _wrap_ev3_sensor_desc_extport, -1);
+  rb_define_module_function(mEv3, "ev3_sensor_desc_addr", _wrap_ev3_sensor_desc_addr, -1);
+  rb_define_module_function(mEv3, "ev3_search_sensor", _wrap_ev3_search_sensor, -1);
+  rb_define_module_function(mEv3, "ev3_search_sensor_plugged_in", _wrap_ev3_search_sensor_plugged_in, -1);
   rb_define_module_function(mEv3, "ev3_sensor_init", _wrap_ev3_sensor_init, -1);
-  rb_define_const(mEv3, "OUTPUT_A", SWIG_From_int((int)(OUTPUT_A)));
-  rb_define_const(mEv3, "OUTPUT_B", SWIG_From_int((int)(OUTPUT_B)));
-  rb_define_const(mEv3, "OUTPUT_C", SWIG_From_int((int)(OUTPUT_C)));
-  rb_define_const(mEv3, "OUTPUT_D", SWIG_From_int((int)(OUTPUT_D)));
-  rb_define_const(mEv3, "OUTPUT__COUNT_", SWIG_From_int((int)(OUTPUT__COUNT_)));
   
   SwigClassEV3_TACHO.klass = rb_define_class_under(mEv3, "EV3_TACHO", rb_cObject);
   SWIG_TypeClientData(SWIGTYPE_p_EV3_TACHO, (void *) &SwigClassEV3_TACHO);
   rb_define_alloc_func(SwigClassEV3_TACHO.klass, _wrap_EV3_TACHO_allocate);
   rb_define_method(SwigClassEV3_TACHO.klass, "initialize", _wrap_new_EV3_TACHO, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "connected=", _wrap_EV3_TACHO_connected_set, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "connected", _wrap_EV3_TACHO_connected_get, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "id=", _wrap_EV3_TACHO_id_set, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "id", _wrap_EV3_TACHO_id_get, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "type_id=", _wrap_EV3_TACHO_type_id_set, -1);
-  rb_define_method(SwigClassEV3_TACHO.klass, "type_id", _wrap_EV3_TACHO_type_id_get, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "type_inx=", _wrap_EV3_TACHO_type_inx_set, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "type_inx", _wrap_EV3_TACHO_type_inx_get, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "port=", _wrap_EV3_TACHO_port_set, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "port", _wrap_EV3_TACHO_port_get, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "extport=", _wrap_EV3_TACHO_extport_set, -1);
+  rb_define_method(SwigClassEV3_TACHO.klass, "extport", _wrap_EV3_TACHO_extport_get, -1);
   SwigClassEV3_TACHO.mark = 0;
   SwigClassEV3_TACHO.destroy = (void (*)(void *)) free_EV3_TACHO;
   SwigClassEV3_TACHO.trackObjects = 0;
+  rb_define_const(mEv3, "TACHO_DESC__LIMIT_", SWIG_From_int((int)(64)));
+  rb_define_const(mEv3, "TACHO__NONE_", SWIG_From_int((int)(64)));
   rb_define_singleton_method(mEv3, "ev3_tacho", _wrap_ev3_tacho_get, 0);
   rb_define_singleton_method(mEv3, "ev3_tacho=", _wrap_ev3_tacho_set, 1);
+  rb_define_const(mEv3, "TACHO_TYPE__NONE_", SWIG_From_int((int)(TACHO_TYPE__NONE_)));
   rb_define_const(mEv3, "TACHO", SWIG_From_int((int)(TACHO)));
   rb_define_const(mEv3, "MINITACHO", SWIG_From_int((int)(MINITACHO)));
+  rb_define_const(mEv3, "TACHO_TYPE__COUNT_", SWIG_From_int((int)(TACHO_TYPE__COUNT_)));
   rb_define_module_function(mEv3, "get_tacho_duty_cycle", _wrap_get_tacho_duty_cycle, -1);
   rb_define_module_function(mEv3, "get_tacho_duty_cycle_sp", _wrap_get_tacho_duty_cycle_sp, -1);
   rb_define_module_function(mEv3, "set_tacho_duty_cycle_sp", _wrap_set_tacho_duty_cycle_sp, -1);
@@ -7004,11 +8362,14 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "set_tacho_time_sp", _wrap_set_tacho_time_sp, -1);
   rb_define_module_function(mEv3, "get_tacho_type", _wrap_get_tacho_type, -1);
   rb_define_module_function(mEv3, "ev3_tacho_type", _wrap_ev3_tacho_type, -1);
-  rb_define_module_function(mEv3, "ev3_tacho_port", _wrap_ev3_tacho_port, -1);
-  rb_define_module_function(mEv3, "ev3_get_tacho", _wrap_ev3_get_tacho, -1);
-  rb_define_module_function(mEv3, "ev3_get_tacho_connected", _wrap_ev3_get_tacho_connected, -1);
-  rb_define_module_function(mEv3, "ev3_get_tacho_id", _wrap_ev3_get_tacho_id, -1);
-  rb_define_module_function(mEv3, "ev3_get_tacho_type_id", _wrap_ev3_get_tacho_type_id, -1);
+  rb_define_module_function(mEv3, "get_tacho_type_inx", _wrap_get_tacho_type_inx, -1);
+  rb_define_module_function(mEv3, "get_tacho_port_inx", _wrap_get_tacho_port_inx, -1);
+  rb_define_module_function(mEv3, "ev3_tacho_desc", _wrap_ev3_tacho_desc, -1);
+  rb_define_module_function(mEv3, "ev3_tacho_desc_type_inx", _wrap_ev3_tacho_desc_type_inx, -1);
+  rb_define_module_function(mEv3, "ev3_tacho_desc_port", _wrap_ev3_tacho_desc_port, -1);
+  rb_define_module_function(mEv3, "ev3_tacho_desc_extport", _wrap_ev3_tacho_desc_extport, -1);
+  rb_define_module_function(mEv3, "ev3_search_tacho", _wrap_ev3_search_tacho, -1);
+  rb_define_module_function(mEv3, "ev3_search_tacho_plugged_in", _wrap_ev3_search_tacho_plugged_in, -1);
   rb_define_module_function(mEv3, "ev3_tacho_init", _wrap_ev3_tacho_init, -1);
 }
 

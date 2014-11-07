@@ -26,8 +26,8 @@
 
 static const uint8_t __LED_GREEN[ LIT__LOC__ ] = { EV3_GREEN_LEFT, EV3_GREEN_RIGHT };
 static const uint8_t __LED_RED[ LIT__LOC__ ] = { EV3_RED_LEFT, EV3_RED_RIGHT };
-static const uint8_t __LED_GREEN_STATE  [ LIT__COL__ ] = { 0, 1, 0, 1 };
-static const uint8_t __LED_RED_STATE    [ LIT__COL__ ] = { 0, 0, 1, 1 };
+static const uint8_t __LED_GREEN_STATE  [ LIT__COL__ ] = { 0, 255, 0, 255 };
+static const uint8_t __LED_RED_STATE    [ LIT__COL__ ] = { 0, 0, 255, 255 };
 static const uint8_t __LED_GREEN_TRIGGER[ LIT__COL__ ] = { 1, 1, 0, 1 };
 static const uint8_t __LED_RED_TRIGGER  [ LIT__COL__ ] = { 1, 0, 1, 1 };
 
@@ -42,7 +42,7 @@ void set_light( uint8_t loc, uint8_t col )
 
 uint8_t get_light( uint8_t loc )
 {
-	int val;
+	uint8_t val;
 	uint8_t green, red;
 
 	if ( loc >= LIT__LOC__ ) return ( LIT__COL__ );

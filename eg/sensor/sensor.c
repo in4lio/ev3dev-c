@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "ev3.h"
+#include "ev3_port.h"
 #include "ev3_sensor.h"
 
 // WIN32 /////////////////////////////////////////
@@ -80,22 +81,22 @@ static void getch_uninit( void )
 const char const *color[] = { "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE", "BROWN" };
 #define COLOR_COUNT  (( int )( sizeof( color ) / sizeof( color[ 0 ])))
 
-static bool __pressed( int port )
+static bool __pressed( uint8_t sn )
 {
 	int val;
 
-	if ( port == EV3_NONE ) return ( __getch() == CHAR_ENTER );
+	if ( sn == SENSOR__NONE_ ) return ( __getch() == CHAR_ENTER );
 
-	return ( get_sensor_value( 0, ev3_sensor[ port ].id, &val ) && ( val != 0 ));
+	return ( get_sensor_value( 0, sn, &val ) && ( val != 0 ));
 }
 
 int main( void )
 {
 	char s[ 256 ];
-	char *pch;
-	int p_color, p_touch;
 	int val;
 	uint32_t n, i, ii;
+	uint8_t sn_touch;
+	uint8_t sn_color;
 
 	printf( "Waiting the EV3 brick online...\n" );
 	if ( ev3_init() < 1 ) return ( 1 );
@@ -105,57 +106,46 @@ int main( void )
 	getch_init();
 
 	printf( "Found sensors:\n" );
-	for ( i = 0; i < INPUT__COUNT_; i++ ) {
-		if ( ev3_sensor[ i ].connected ) {
-			uint8_t id = ev3_sensor[ i ].id;
-
-			printf( "  port = in%d\n", i + 1 );
-			pch = ev3_sensor_type( ev3_sensor[ i ].type_id );
-			if ( pch ) {
-				printf( "  type = %s\n", pch );
-			} else {
-				printf( "  type_id = %d\n", ev3_sensor[ i ].type_id );
-			}
-			if ( get_sensor_mode( id, s, sizeof( s ))) {
+	for ( i = 0; i < SENSOR_DESC__LIMIT_; i++ ) {
+		if ( ev3_sensor[ i ].type_inx != SENSOR_TYPE__NONE_ ) {
+			printf( "  type = %s\n", ev3_sensor_type( ev3_sensor[ i ].type_inx ));
+			printf( "  port = %s\n", ev3_port_name( ev3_sensor[ i ].port, ev3_sensor[ i ].extport ));
+			if ( get_sensor_mode( i, s, sizeof( s ))) {
 				printf( "  mode = %s\n", s );
 			}
-			if ( get_sensor_num_values( id, &n )) {
+			if ( get_sensor_num_values( i, &n )) {
 				for ( ii = 0; ii < n; ii++ ) {
-					if ( get_sensor_value( ii, id, &val )) {
+					if ( get_sensor_value( ii, i, &val )) {
 						printf( "  value%d = %d\n", ii, val );
 					}
 				}
 			}
 		}
 	}
-	p_touch = ev3_sensor_port( EV3_TOUCH );
-	if ( p_touch != EV3_NONE ) {
-		printf( "EV3_TOUCH is found, press BUTTON for EXIT...\n" );
+	if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn_touch, 0 )) {
+		printf( "TOUCH sensor is found, press BUTTON for EXIT...\n" );
 	} else {
-		printf( "EV3_TOUCH is not found, press ENTER for EXIT...\n" );
+		printf( "TOUCH sensor is NOT found, press ENTER for EXIT...\n" );
 	}
-	p_color = ev3_sensor_port( EV3_COLOR );
-	if ( p_color != EV3_NONE ) {
-		uint8_t id = ev3_sensor[ p_color ].id;
-
-		printf( "EV3_COLOR is found, reading COLOR...\n" );
-		set_sensor_mode( id, "COL-COLOR" );
+	if ( ev3_search_sensor( EV3_UART_29, &sn_color, 0 )) {
+		printf( "COLOR sensor is found, reading COLOR...\n" );
+		set_sensor_mode( sn_color, "COL-COLOR" );
 		for ( ; ; ) {
-			if ( !get_sensor_value( 0, id, &val ) || ( val < 0 ) || ( val >= COLOR_COUNT )) {
+			if ( !get_sensor_value( 0, sn_color, &val ) || ( val < 0 ) || ( val >= COLOR_COUNT )) {
 				val = 0;
 			}
 			printf( "\r(%s)", color[ val ]);
 			fflush( stdout );
-			if ( __pressed( p_touch )) break;
+			if ( __pressed( sn_touch )) break;
 			Sleep( 200 );
 			printf( "\r        " );
 			fflush( stdout );
-			if ( __pressed( p_touch )) break;
+			if ( __pressed( sn_touch )) break;
 			Sleep( 200 );
 		}
 	} else {
-		printf( "EV3_COLOR is not found\n" );
-		while ( !__pressed( p_touch )) Sleep( 100 );
+		printf( "COLOR sensor is NOT found\n" );
+		while ( !__pressed( sn_touch )) Sleep( 100 );
 	}
 	getch_uninit();
 	ev3_uninit();
