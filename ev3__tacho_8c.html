@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;modp_numtoa.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ev3_8h_source.html">ev3.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ev3__port_8h_source.html">ev3_port.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ev3__tacho_8h_source.html">ev3_tacho.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -96,226 +97,235 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_TACHO_IMPLEMENT</b></td></tr>
 <tr class="separator:a38911552eb3ec3e5abc4ac53447aa960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7ccdb8dc369c7004bd40d92df9288749"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7ccdb8dc369c7004bd40d92df9288749"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PREF_LEN</b>&#160;&#160;&#160;34</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PREF_LEN</b>&#160;&#160;&#160;28</td></tr>
 <tr class="separator:ga7ccdb8dc369c7004bd40d92df9288749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga848cb0b2b6269eb401f83bde0378b4b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga848cb0b2b6269eb401f83bde0378b4b3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_ID_SPOT</b>&#160;&#160;&#160;&quot;///&quot;</td></tr>
 <tr class="separator:ga848cb0b2b6269eb401f83bde0378b4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52f3c215ec2a1226744716dcf1d76e3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga52f3c215ec2a1226744716dcf1d76e3a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;duty_cycle&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;duty_cycle&quot;</td></tr>
 <tr class="separator:ga52f3c215ec2a1226744716dcf1d76e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga43b1bda4cafe07fb79819c74f6f0ba34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga43b1bda4cafe07fb79819c74f6f0ba34"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;duty_cycle_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;duty_cycle_sp&quot;</td></tr>
 <tr class="separator:ga43b1bda4cafe07fb79819c74f6f0ba34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1daa67acd4b6be9dba397e61cf8eb356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1daa67acd4b6be9dba397e61cf8eb356"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POLARITY_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;polarity_mode&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POLARITY_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;polarity_mode&quot;</td></tr>
 <tr class="separator:ga1daa67acd4b6be9dba397e61cf8eb356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf724db73bd69d2c575a56079a9cc1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf724db73bd69d2c575a56079a9cc1b8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PORT_NAME</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;port_name&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PORT_NAME</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;port_name&quot;</td></tr>
 <tr class="separator:gadf724db73bd69d2c575a56079a9cc1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4a240b088afed4f1e73f4426efc9c91a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4a240b088afed4f1e73f4426efc9c91a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;position&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;position&quot;</td></tr>
 <tr class="separator:ga4a240b088afed4f1e73f4426efc9c91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5185a2285d0d9eaf05618b07b49a4318"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5185a2285d0d9eaf05618b07b49a4318"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;position_mode&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;position_mode&quot;</td></tr>
 <tr class="separator:ga5185a2285d0d9eaf05618b07b49a4318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga872c235e6bd4dadcefbb9f723c111515"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga872c235e6bd4dadcefbb9f723c111515"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;position_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_POSITION_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;position_sp&quot;</td></tr>
 <tr class="separator:ga872c235e6bd4dadcefbb9f723c111515"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac57b4104cbc25a837094f9c13c7b4211"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac57b4104cbc25a837094f9c13c7b4211"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PULSES_PER_SECOND</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;pulses_per_second&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PULSES_PER_SECOND</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;pulses_per_second&quot;</td></tr>
 <tr class="separator:gac57b4104cbc25a837094f9c13c7b4211"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaccbe7f7b487b82949a739aab046b5060"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaccbe7f7b487b82949a739aab046b5060"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PULSES_PER_SECOND_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;pulses_per_second_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PULSES_PER_SECOND_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;pulses_per_second_sp&quot;</td></tr>
 <tr class="separator:gaccbe7f7b487b82949a739aab046b5060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1ba53eb798390ff284cb7b5bb6057098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ba53eb798390ff284cb7b5bb6057098"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_DOWN_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;ramp_down_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_DOWN_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;ramp_down_sp&quot;</td></tr>
 <tr class="separator:ga1ba53eb798390ff284cb7b5bb6057098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac5fed543d7237698a803beb98817ef42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac5fed543d7237698a803beb98817ef42"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_UP_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;ramp_up_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_UP_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;ramp_up_sp&quot;</td></tr>
 <tr class="separator:gac5fed543d7237698a803beb98817ef42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf1cacf4ebe2948c7bb3e38b2f59bc8d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf1cacf4ebe2948c7bb3e38b2f59bc8d6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_REGULATION_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;regulation_mode&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_REGULATION_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;regulation_mode&quot;</td></tr>
 <tr class="separator:gaf1cacf4ebe2948c7bb3e38b2f59bc8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga964ef1fc60315c97b8fb188bf6d410a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga964ef1fc60315c97b8fb188bf6d410a8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RESET</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;reset&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RESET</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;reset&quot;</td></tr>
 <tr class="separator:ga964ef1fc60315c97b8fb188bf6d410a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga127764df98be4513d001a617abd4250c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga127764df98be4513d001a617abd4250c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RUN</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;run&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RUN</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;run&quot;</td></tr>
 <tr class="separator:ga127764df98be4513d001a617abd4250c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d1bf63f2ad9b1100e24495df71443ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2d1bf63f2ad9b1100e24495df71443ec"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RUN_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;run_mode&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RUN_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;run_mode&quot;</td></tr>
 <tr class="separator:ga2d1bf63f2ad9b1100e24495df71443ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83288803d972b41b00cedfa4c1b86c09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga83288803d972b41b00cedfa4c1b86c09"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_D</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;speed_regulation_D&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_D</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;speed_regulation_D&quot;</td></tr>
 <tr class="separator:ga83288803d972b41b00cedfa4c1b86c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga33f236ea9c1c56fa90119fcbf459aaae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33f236ea9c1c56fa90119fcbf459aaae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_I</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;speed_regulation_I&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_I</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;speed_regulation_I&quot;</td></tr>
 <tr class="separator:ga33f236ea9c1c56fa90119fcbf459aaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacb93548c17fba76ce57c343682896283"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacb93548c17fba76ce57c343682896283"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_K</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;speed_regulation_K&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_K</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;speed_regulation_K&quot;</td></tr>
 <tr class="separator:gacb93548c17fba76ce57c343682896283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga43ebe886b7457ca0c6510dc28fe46b9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga43ebe886b7457ca0c6510dc28fe46b9e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_P</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;speed_regulation_P&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SPEED_REGULATION_P</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;speed_regulation_P&quot;</td></tr>
 <tr class="separator:ga43ebe886b7457ca0c6510dc28fe46b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga01df50d6e84f0752af9d0a87e1ab3f76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01df50d6e84f0752af9d0a87e1ab3f76"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STATE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;state&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STATE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;state&quot;</td></tr>
 <tr class="separator:ga01df50d6e84f0752af9d0a87e1ab3f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d51c082fa0752e60f94e2444a4be8c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4d51c082fa0752e60f94e2444a4be8c4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;stop_mode&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_MODE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;stop_mode&quot;</td></tr>
 <tr class="separator:ga4d51c082fa0752e60f94e2444a4be8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga28d41d05f50afabeeb5ab9d277f36ff8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga28d41d05f50afabeeb5ab9d277f36ff8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_MODES</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;stop_modes&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_MODES</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;stop_modes&quot;</td></tr>
 <tr class="separator:ga28d41d05f50afabeeb5ab9d277f36ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9b17b08f89504d5ea04a167ed089ec55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b17b08f89504d5ea04a167ed089ec55"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_TIME_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;time_sp&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_TIME_SP</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;time_sp&quot;</td></tr>
 <tr class="separator:ga9b17b08f89504d5ea04a167ed089ec55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3bd07ed15f911c868acdcaf107b8c638"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3bd07ed15f911c868acdcaf107b8c638"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_TYPE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/tacho-motor&quot; _ID_SPOT &quot;type&quot;</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_TYPE</b>&#160;&#160;&#160;&quot;/sys/class/tacho-motor/motor&quot; _ID_SPOT &quot;type&quot;</td></tr>
 <tr class="separator:ga3bd07ed15f911c868acdcaf107b8c638"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad2b44ffaaa393c4f3168e0d7bce64a35"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad2b44ffaaa393c4f3168e0d7bce64a35">get_tacho_duty_cycle</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:gad2b44ffaaa393c4f3168e0d7bce64a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle" attribute of the tacho.  <a href="group__ev3__tacho.html#gad2b44ffaaa393c4f3168e0d7bce64a35">More...</a><br /></td></tr>
-<tr class="separator:gad2b44ffaaa393c4f3168e0d7bce64a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5939a161b4c7cac3d3fc713e01a10454"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga5939a161b4c7cac3d3fc713e01a10454">get_tacho_duty_cycle_sp</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga5939a161b4c7cac3d3fc713e01a10454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga5939a161b4c7cac3d3fc713e01a10454">More...</a><br /></td></tr>
-<tr class="separator:ga5939a161b4c7cac3d3fc713e01a10454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18e589671fe635eab77d969213b3ae72"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga18e589671fe635eab77d969213b3ae72">set_tacho_duty_cycle_sp</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga18e589671fe635eab77d969213b3ae72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga18e589671fe635eab77d969213b3ae72">More...</a><br /></td></tr>
-<tr class="separator:ga18e589671fe635eab77d969213b3ae72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2da822aa0d346a56e656f40dc44fb7d4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga2da822aa0d346a56e656f40dc44fb7d4">get_tacho_polarity_mode</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga2da822aa0d346a56e656f40dc44fb7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga2da822aa0d346a56e656f40dc44fb7d4">More...</a><br /></td></tr>
-<tr class="separator:ga2da822aa0d346a56e656f40dc44fb7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga922020159478fb0026aca8ad854f5c45"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga922020159478fb0026aca8ad854f5c45">get_tacho_port_name</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga922020159478fb0026aca8ad854f5c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the tacho.  <a href="group__ev3__tacho.html#ga922020159478fb0026aca8ad854f5c45">More...</a><br /></td></tr>
-<tr class="separator:ga922020159478fb0026aca8ad854f5c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga083bf90e13316598a18de52409952c4b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga083bf90e13316598a18de52409952c4b">get_tacho_position</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga083bf90e13316598a18de52409952c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position" attribute of the tacho.  <a href="group__ev3__tacho.html#ga083bf90e13316598a18de52409952c4b">More...</a><br /></td></tr>
-<tr class="separator:ga083bf90e13316598a18de52409952c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f36c4f2257895387c4eb20329008377"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8f36c4f2257895387c4eb20329008377">set_tacho_position</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga8f36c4f2257895387c4eb20329008377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8f36c4f2257895387c4eb20329008377">More...</a><br /></td></tr>
-<tr class="separator:ga8f36c4f2257895387c4eb20329008377"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga57cb6bb4f5e4b2ab214ef633763d0408"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga57cb6bb4f5e4b2ab214ef633763d0408">get_tacho_position_mode</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga57cb6bb4f5e4b2ab214ef633763d0408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga57cb6bb4f5e4b2ab214ef633763d0408">More...</a><br /></td></tr>
-<tr class="separator:ga57cb6bb4f5e4b2ab214ef633763d0408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga095373a84ce9430b4f74678835b8bf8f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga095373a84ce9430b4f74678835b8bf8f">set_tacho_position_mode</a> (uint8_t id, char *value)</td></tr>
-<tr class="memdesc:ga095373a84ce9430b4f74678835b8bf8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga095373a84ce9430b4f74678835b8bf8f">More...</a><br /></td></tr>
-<tr class="separator:ga095373a84ce9430b4f74678835b8bf8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga252b24cb72550937b044eafc09c39470"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga252b24cb72550937b044eafc09c39470">get_tacho_position_sp</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga252b24cb72550937b044eafc09c39470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga252b24cb72550937b044eafc09c39470">More...</a><br /></td></tr>
-<tr class="separator:ga252b24cb72550937b044eafc09c39470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a7a03a305a749eb6d1be807f3f9f9df"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga2a7a03a305a749eb6d1be807f3f9f9df">set_tacho_position_sp</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga2a7a03a305a749eb6d1be807f3f9f9df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga2a7a03a305a749eb6d1be807f3f9f9df">More...</a><br /></td></tr>
-<tr class="separator:ga2a7a03a305a749eb6d1be807f3f9f9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22cd395914a48a24de4d151350750ed3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga22cd395914a48a24de4d151350750ed3">get_tacho_pulses_per_second</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga22cd395914a48a24de4d151350750ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pulses_per_second" attribute of the tacho.  <a href="group__ev3__tacho.html#ga22cd395914a48a24de4d151350750ed3">More...</a><br /></td></tr>
-<tr class="separator:ga22cd395914a48a24de4d151350750ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9558c218d1fe02bb450b3deef5d0cf89"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9558c218d1fe02bb450b3deef5d0cf89">get_tacho_pulses_per_second_sp</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga9558c218d1fe02bb450b3deef5d0cf89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pulses_per_second_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga9558c218d1fe02bb450b3deef5d0cf89">More...</a><br /></td></tr>
-<tr class="separator:ga9558c218d1fe02bb450b3deef5d0cf89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga424f658020f25e4abaa8dcb1b504cb0f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga424f658020f25e4abaa8dcb1b504cb0f">set_tacho_pulses_per_second_sp</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga424f658020f25e4abaa8dcb1b504cb0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "pulses_per_second_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga424f658020f25e4abaa8dcb1b504cb0f">More...</a><br /></td></tr>
-<tr class="separator:ga424f658020f25e4abaa8dcb1b504cb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b0dc2aabe1c4c5f6722754e3d5cfe9b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8b0dc2aabe1c4c5f6722754e3d5cfe9b">get_tacho_ramp_down_sp</a> (uint8_t id, dword *buf)</td></tr>
-<tr class="memdesc:ga8b0dc2aabe1c4c5f6722754e3d5cfe9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_down_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8b0dc2aabe1c4c5f6722754e3d5cfe9b">More...</a><br /></td></tr>
-<tr class="separator:ga8b0dc2aabe1c4c5f6722754e3d5cfe9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga51735a8ab67aed34c02f54b66159eae8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga51735a8ab67aed34c02f54b66159eae8">set_tacho_ramp_down_sp</a> (uint8_t id, dword value)</td></tr>
-<tr class="memdesc:ga51735a8ab67aed34c02f54b66159eae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_down_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga51735a8ab67aed34c02f54b66159eae8">More...</a><br /></td></tr>
-<tr class="separator:ga51735a8ab67aed34c02f54b66159eae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace22f9e7f99c048b3edb03b089a83916"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gace22f9e7f99c048b3edb03b089a83916">get_tacho_ramp_up_sp</a> (uint8_t id, dword *buf)</td></tr>
-<tr class="memdesc:gace22f9e7f99c048b3edb03b089a83916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_up_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#gace22f9e7f99c048b3edb03b089a83916">More...</a><br /></td></tr>
-<tr class="separator:gace22f9e7f99c048b3edb03b089a83916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga13021aa68eb93544e995ae874ab6f8b5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga13021aa68eb93544e995ae874ab6f8b5">set_tacho_ramp_up_sp</a> (uint8_t id, dword value)</td></tr>
-<tr class="memdesc:ga13021aa68eb93544e995ae874ab6f8b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_up_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga13021aa68eb93544e995ae874ab6f8b5">More...</a><br /></td></tr>
-<tr class="separator:ga13021aa68eb93544e995ae874ab6f8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9e6259ae7776a1075dcc8b6a70309ac5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9e6259ae7776a1075dcc8b6a70309ac5">get_tacho_regulation_mode</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga9e6259ae7776a1075dcc8b6a70309ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "regulation_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga9e6259ae7776a1075dcc8b6a70309ac5">More...</a><br /></td></tr>
-<tr class="separator:ga9e6259ae7776a1075dcc8b6a70309ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86cda3a6873ca09232b00a645e82bed2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">set_tacho_regulation_mode</a> (uint8_t id, char *value)</td></tr>
-<tr class="memdesc:ga86cda3a6873ca09232b00a645e82bed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "regulation_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga86cda3a6873ca09232b00a645e82bed2">More...</a><br /></td></tr>
-<tr class="separator:ga86cda3a6873ca09232b00a645e82bed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5f513358fd69dbcf33058702acf395c2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga5f513358fd69dbcf33058702acf395c2">set_tacho_reset</a> (uint8_t id, bool value)</td></tr>
-<tr class="memdesc:ga5f513358fd69dbcf33058702acf395c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "reset" attribute of the tacho.  <a href="group__ev3__tacho.html#ga5f513358fd69dbcf33058702acf395c2">More...</a><br /></td></tr>
-<tr class="separator:ga5f513358fd69dbcf33058702acf395c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga72a855b92dfb6f941eca623d817de91f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga72a855b92dfb6f941eca623d817de91f">get_tacho_run</a> (uint8_t id, bool *buf)</td></tr>
-<tr class="memdesc:ga72a855b92dfb6f941eca623d817de91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "run" attribute of the tacho.  <a href="group__ev3__tacho.html#ga72a855b92dfb6f941eca623d817de91f">More...</a><br /></td></tr>
-<tr class="separator:ga72a855b92dfb6f941eca623d817de91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab0b729201d692161541d0fd29b007f1e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gab0b729201d692161541d0fd29b007f1e">set_tacho_run</a> (uint8_t id, bool value)</td></tr>
-<tr class="memdesc:gab0b729201d692161541d0fd29b007f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "run" attribute of the tacho.  <a href="group__ev3__tacho.html#gab0b729201d692161541d0fd29b007f1e">More...</a><br /></td></tr>
-<tr class="separator:gab0b729201d692161541d0fd29b007f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc2abd9d567e2f07828aee4c3c961aec"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gabc2abd9d567e2f07828aee4c3c961aec">get_tacho_run_mode</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gabc2abd9d567e2f07828aee4c3c961aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "run_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#gabc2abd9d567e2f07828aee4c3c961aec">More...</a><br /></td></tr>
-<tr class="separator:gabc2abd9d567e2f07828aee4c3c961aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21e3fc1479dbd87a0d4072a62c060e0a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga21e3fc1479dbd87a0d4072a62c060e0a">set_tacho_run_mode</a> (uint8_t id, char *value)</td></tr>
-<tr class="memdesc:ga21e3fc1479dbd87a0d4072a62c060e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "run_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga21e3fc1479dbd87a0d4072a62c060e0a">More...</a><br /></td></tr>
-<tr class="separator:ga21e3fc1479dbd87a0d4072a62c060e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf63a3dcdb24d2a43dfee1d3d2729a5cb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf63a3dcdb24d2a43dfee1d3d2729a5cb">get_tacho_speed_regulation_D</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:gaf63a3dcdb24d2a43dfee1d3d2729a5cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_D" attribute of the tacho.  <a href="group__ev3__tacho.html#gaf63a3dcdb24d2a43dfee1d3d2729a5cb">More...</a><br /></td></tr>
-<tr class="separator:gaf63a3dcdb24d2a43dfee1d3d2729a5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6bfb9423ce6c9d5a5ed1449e70c77e12"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6bfb9423ce6c9d5a5ed1449e70c77e12">set_tacho_speed_regulation_D</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga6bfb9423ce6c9d5a5ed1449e70c77e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_D" attribute of the tacho.  <a href="group__ev3__tacho.html#ga6bfb9423ce6c9d5a5ed1449e70c77e12">More...</a><br /></td></tr>
-<tr class="separator:ga6bfb9423ce6c9d5a5ed1449e70c77e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf99227ceccc4185d9cb94dcc87a3457"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gacf99227ceccc4185d9cb94dcc87a3457">get_tacho_speed_regulation_I</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:gacf99227ceccc4185d9cb94dcc87a3457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_I" attribute of the tacho.  <a href="group__ev3__tacho.html#gacf99227ceccc4185d9cb94dcc87a3457">More...</a><br /></td></tr>
-<tr class="separator:gacf99227ceccc4185d9cb94dcc87a3457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7b0340a5517aa6ec4231a9c729868549"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga7b0340a5517aa6ec4231a9c729868549">set_tacho_speed_regulation_I</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga7b0340a5517aa6ec4231a9c729868549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_I" attribute of the tacho.  <a href="group__ev3__tacho.html#ga7b0340a5517aa6ec4231a9c729868549">More...</a><br /></td></tr>
-<tr class="separator:ga7b0340a5517aa6ec4231a9c729868549"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga941e68e49a728f55120c2a2c47764b89"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga941e68e49a728f55120c2a2c47764b89">get_tacho_speed_regulation_K</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga941e68e49a728f55120c2a2c47764b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_K" attribute of the tacho.  <a href="group__ev3__tacho.html#ga941e68e49a728f55120c2a2c47764b89">More...</a><br /></td></tr>
-<tr class="separator:ga941e68e49a728f55120c2a2c47764b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9ba1d774c15c6605dd5f7abe2cd309c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaa9ba1d774c15c6605dd5f7abe2cd309c">set_tacho_speed_regulation_K</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:gaa9ba1d774c15c6605dd5f7abe2cd309c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_K" attribute of the tacho.  <a href="group__ev3__tacho.html#gaa9ba1d774c15c6605dd5f7abe2cd309c">More...</a><br /></td></tr>
-<tr class="separator:gaa9ba1d774c15c6605dd5f7abe2cd309c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga35b8d4b360f7c68571d26401b11b0aef"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga35b8d4b360f7c68571d26401b11b0aef">get_tacho_speed_regulation_P</a> (uint8_t id, int *buf)</td></tr>
-<tr class="memdesc:ga35b8d4b360f7c68571d26401b11b0aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_P" attribute of the tacho.  <a href="group__ev3__tacho.html#ga35b8d4b360f7c68571d26401b11b0aef">More...</a><br /></td></tr>
-<tr class="separator:ga35b8d4b360f7c68571d26401b11b0aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga881ed808be3e94c6f094580e4482e74b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga881ed808be3e94c6f094580e4482e74b">set_tacho_speed_regulation_P</a> (uint8_t id, int value)</td></tr>
-<tr class="memdesc:ga881ed808be3e94c6f094580e4482e74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_P" attribute of the tacho.  <a href="group__ev3__tacho.html#ga881ed808be3e94c6f094580e4482e74b">More...</a><br /></td></tr>
-<tr class="separator:ga881ed808be3e94c6f094580e4482e74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a0c4bc6c650949dcbc1e9bfba71930a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga1a0c4bc6c650949dcbc1e9bfba71930a">get_tacho_state</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga1a0c4bc6c650949dcbc1e9bfba71930a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the tacho.  <a href="group__ev3__tacho.html#ga1a0c4bc6c650949dcbc1e9bfba71930a">More...</a><br /></td></tr>
-<tr class="separator:ga1a0c4bc6c650949dcbc1e9bfba71930a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2fc20739ce3c1059f3c98228da4bb7ce"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga2fc20739ce3c1059f3c98228da4bb7ce">get_tacho_stop_mode</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga2fc20739ce3c1059f3c98228da4bb7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "stop_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga2fc20739ce3c1059f3c98228da4bb7ce">More...</a><br /></td></tr>
-<tr class="separator:ga2fc20739ce3c1059f3c98228da4bb7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga29908b3da0a7642fe8aa63f128ffc5a9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga29908b3da0a7642fe8aa63f128ffc5a9">set_tacho_stop_mode</a> (uint8_t id, char *value)</td></tr>
-<tr class="memdesc:ga29908b3da0a7642fe8aa63f128ffc5a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "stop_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga29908b3da0a7642fe8aa63f128ffc5a9">More...</a><br /></td></tr>
-<tr class="separator:ga29908b3da0a7642fe8aa63f128ffc5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39f81054e323d127d7e35261ecaa15ed"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga39f81054e323d127d7e35261ecaa15ed">get_tacho_stop_modes</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga39f81054e323d127d7e35261ecaa15ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "stop_modes" attribute of the tacho.  <a href="group__ev3__tacho.html#ga39f81054e323d127d7e35261ecaa15ed">More...</a><br /></td></tr>
-<tr class="separator:ga39f81054e323d127d7e35261ecaa15ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04b12a9110fed9ec6ae4d853510fe2c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga04b12a9110fed9ec6ae4d853510fe2c4">get_tacho_time_sp</a> (uint8_t id, dword *buf)</td></tr>
-<tr class="memdesc:ga04b12a9110fed9ec6ae4d853510fe2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "time_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga04b12a9110fed9ec6ae4d853510fe2c4">More...</a><br /></td></tr>
-<tr class="separator:ga04b12a9110fed9ec6ae4d853510fe2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeba97d5fad26f7bff1bdbde1b48ecdbe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaeba97d5fad26f7bff1bdbde1b48ecdbe">set_tacho_time_sp</a> (uint8_t id, dword value)</td></tr>
-<tr class="memdesc:gaeba97d5fad26f7bff1bdbde1b48ecdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "time_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#gaeba97d5fad26f7bff1bdbde1b48ecdbe">More...</a><br /></td></tr>
-<tr class="separator:gaeba97d5fad26f7bff1bdbde1b48ecdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4da0afe31144f0fda2356bb4ea7f89b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gac4da0afe31144f0fda2356bb4ea7f89b">get_tacho_type</a> (uint8_t id, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gac4da0afe31144f0fda2356bb4ea7f89b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "type" attribute of the tacho.  <a href="group__ev3__tacho.html#gac4da0afe31144f0fda2356bb4ea7f89b">More...</a><br /></td></tr>
-<tr class="separator:gac4da0afe31144f0fda2356bb4ea7f89b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0b09487315a7a2433d9809400fc4341"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gac0b09487315a7a2433d9809400fc4341">ev3_tacho_type</a> (uint8_t type_id)</td></tr>
-<tr class="memdesc:gac0b09487315a7a2433d9809400fc4341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the specified tacho type.  <a href="group__ev3__tacho.html#gac0b09487315a7a2433d9809400fc4341">More...</a><br /></td></tr>
-<tr class="separator:gac0b09487315a7a2433d9809400fc4341"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8c21129314701631648df3a36226683"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaa8c21129314701631648df3a36226683">ev3_tacho_port</a> (uint8_t type_id)</td></tr>
-<tr class="memdesc:gaa8c21129314701631648df3a36226683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search the port of the specified tacho type.  <a href="group__ev3__tacho.html#gaa8c21129314701631648df3a36226683">More...</a><br /></td></tr>
-<tr class="separator:gaa8c21129314701631648df3a36226683"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab11e1b2aa21554e4d7e69834b0418918"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">ev3_get_tacho</a> (uint8_t port)</td></tr>
-<tr class="memdesc:gab11e1b2aa21554e4d7e69834b0418918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the descriptor of a tacho connected to the specified port.  <a href="group__ev3__tacho.html#gab11e1b2aa21554e4d7e69834b0418918">More...</a><br /></td></tr>
-<tr class="separator:gab11e1b2aa21554e4d7e69834b0418918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga32fdf5e839ed930f09e1250a42ea5bab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga32fdf5e839ed930f09e1250a42ea5bab">ev3_get_tacho_connected</a> (uint8_t port)</td></tr>
-<tr class="memdesc:ga32fdf5e839ed930f09e1250a42ea5bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the flag that the tacho is connected to the specified port.  <a href="group__ev3__tacho.html#ga32fdf5e839ed930f09e1250a42ea5bab">More...</a><br /></td></tr>
-<tr class="separator:ga32fdf5e839ed930f09e1250a42ea5bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga969401261602562382cb8ab8e9e969a1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga969401261602562382cb8ab8e9e969a1">ev3_get_tacho_id</a> (uint8_t port)</td></tr>
-<tr class="memdesc:ga969401261602562382cb8ab8e9e969a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the identifier of the tacho connected to the specified port.  <a href="group__ev3__tacho.html#ga969401261602562382cb8ab8e9e969a1">More...</a><br /></td></tr>
-<tr class="separator:ga969401261602562382cb8ab8e9e969a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5d0bccf6021c94ccf031f371cb11e209"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga5d0bccf6021c94ccf031f371cb11e209">ev3_get_tacho_type_id</a> (uint8_t port)</td></tr>
-<tr class="memdesc:ga5d0bccf6021c94ccf031f371cb11e209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the tacho connected to the specified port.  <a href="group__ev3__tacho.html#ga5d0bccf6021c94ccf031f371cb11e209">More...</a><br /></td></tr>
-<tr class="separator:ga5d0bccf6021c94ccf031f371cb11e209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8af8cf4fe2661648ee6e31d67e0e6c64"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8af8cf4fe2661648ee6e31d67e0e6c64">get_tacho_duty_cycle</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga8af8cf4fe2661648ee6e31d67e0e6c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8af8cf4fe2661648ee6e31d67e0e6c64">More...</a><br /></td></tr>
+<tr class="separator:ga8af8cf4fe2661648ee6e31d67e0e6c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c78e887fc868cfdb75d308873db4c41"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6c78e887fc868cfdb75d308873db4c41">get_tacho_duty_cycle_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga6c78e887fc868cfdb75d308873db4c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga6c78e887fc868cfdb75d308873db4c41">More...</a><br /></td></tr>
+<tr class="separator:ga6c78e887fc868cfdb75d308873db4c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga494a7e6192186100195d60124600c9c8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga494a7e6192186100195d60124600c9c8">set_tacho_duty_cycle_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga494a7e6192186100195d60124600c9c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga494a7e6192186100195d60124600c9c8">More...</a><br /></td></tr>
+<tr class="separator:ga494a7e6192186100195d60124600c9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf238b15cb6fd1634ab33f3e61b836419"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf238b15cb6fd1634ab33f3e61b836419">get_tacho_polarity_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaf238b15cb6fd1634ab33f3e61b836419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#gaf238b15cb6fd1634ab33f3e61b836419">More...</a><br /></td></tr>
+<tr class="separator:gaf238b15cb6fd1634ab33f3e61b836419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1872b5abff11eb67330283f95003692"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaa1872b5abff11eb67330283f95003692">get_tacho_port_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaa1872b5abff11eb67330283f95003692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the tacho.  <a href="group__ev3__tacho.html#gaa1872b5abff11eb67330283f95003692">More...</a><br /></td></tr>
+<tr class="separator:gaa1872b5abff11eb67330283f95003692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87da0b2d147b47e6b188250bdaa8ba94"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga87da0b2d147b47e6b188250bdaa8ba94">get_tacho_position</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga87da0b2d147b47e6b188250bdaa8ba94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position" attribute of the tacho.  <a href="group__ev3__tacho.html#ga87da0b2d147b47e6b188250bdaa8ba94">More...</a><br /></td></tr>
+<tr class="separator:ga87da0b2d147b47e6b188250bdaa8ba94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf32950a9bbfd50de813c6653872ee0a9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf32950a9bbfd50de813c6653872ee0a9">set_tacho_position</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:gaf32950a9bbfd50de813c6653872ee0a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position" attribute of the tacho.  <a href="group__ev3__tacho.html#gaf32950a9bbfd50de813c6653872ee0a9">More...</a><br /></td></tr>
+<tr class="separator:gaf32950a9bbfd50de813c6653872ee0a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85decdeda742d67f91ba82df9630a427"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga85decdeda742d67f91ba82df9630a427">get_tacho_position_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga85decdeda742d67f91ba82df9630a427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga85decdeda742d67f91ba82df9630a427">More...</a><br /></td></tr>
+<tr class="separator:ga85decdeda742d67f91ba82df9630a427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga3d3582fb5d81d63da4183dd88be87a8d">set_tacho_position_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga3d3582fb5d81d63da4183dd88be87a8d">More...</a><br /></td></tr>
+<tr class="separator:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6801ce2c05cf9706c92c11ad1d3d049e">get_tacho_position_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga6801ce2c05cf9706c92c11ad1d3d049e">More...</a><br /></td></tr>
+<tr class="separator:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e3be902f3665a28732c16ae1cdfb73a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga2e3be902f3665a28732c16ae1cdfb73a">set_tacho_position_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga2e3be902f3665a28732c16ae1cdfb73a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga2e3be902f3665a28732c16ae1cdfb73a">More...</a><br /></td></tr>
+<tr class="separator:ga2e3be902f3665a28732c16ae1cdfb73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8aa8a2bad90375e2d123dbd21789baf1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8aa8a2bad90375e2d123dbd21789baf1">get_tacho_pulses_per_second</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga8aa8a2bad90375e2d123dbd21789baf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pulses_per_second" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8aa8a2bad90375e2d123dbd21789baf1">More...</a><br /></td></tr>
+<tr class="separator:ga8aa8a2bad90375e2d123dbd21789baf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7036d30d67d3d9b2d6e82f79fce40f1f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga7036d30d67d3d9b2d6e82f79fce40f1f">get_tacho_pulses_per_second_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga7036d30d67d3d9b2d6e82f79fce40f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pulses_per_second_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga7036d30d67d3d9b2d6e82f79fce40f1f">More...</a><br /></td></tr>
+<tr class="separator:ga7036d30d67d3d9b2d6e82f79fce40f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa3617f9c0414e9cd879cba2e730a791c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaa3617f9c0414e9cd879cba2e730a791c">set_tacho_pulses_per_second_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:gaa3617f9c0414e9cd879cba2e730a791c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "pulses_per_second_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#gaa3617f9c0414e9cd879cba2e730a791c">More...</a><br /></td></tr>
+<tr class="separator:gaa3617f9c0414e9cd879cba2e730a791c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga905004bba5b4803daa4b65f2bd133e14"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga905004bba5b4803daa4b65f2bd133e14">get_tacho_ramp_down_sp</a> (uint8_t sn, dword *buf)</td></tr>
+<tr class="memdesc:ga905004bba5b4803daa4b65f2bd133e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_down_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga905004bba5b4803daa4b65f2bd133e14">More...</a><br /></td></tr>
+<tr class="separator:ga905004bba5b4803daa4b65f2bd133e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga94c68cbabf7f90e4cd73e62b659999d1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga94c68cbabf7f90e4cd73e62b659999d1">set_tacho_ramp_down_sp</a> (uint8_t sn, dword value)</td></tr>
+<tr class="memdesc:ga94c68cbabf7f90e4cd73e62b659999d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_down_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga94c68cbabf7f90e4cd73e62b659999d1">More...</a><br /></td></tr>
+<tr class="separator:ga94c68cbabf7f90e4cd73e62b659999d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc56608a17ff7d111884e6f7411098cf"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gacc56608a17ff7d111884e6f7411098cf">get_tacho_ramp_up_sp</a> (uint8_t sn, dword *buf)</td></tr>
+<tr class="memdesc:gacc56608a17ff7d111884e6f7411098cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_up_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#gacc56608a17ff7d111884e6f7411098cf">More...</a><br /></td></tr>
+<tr class="separator:gacc56608a17ff7d111884e6f7411098cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6c30315070533eeffe6e310e7849c80"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gae6c30315070533eeffe6e310e7849c80">set_tacho_ramp_up_sp</a> (uint8_t sn, dword value)</td></tr>
+<tr class="memdesc:gae6c30315070533eeffe6e310e7849c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_up_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#gae6c30315070533eeffe6e310e7849c80">More...</a><br /></td></tr>
+<tr class="separator:gae6c30315070533eeffe6e310e7849c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf1bc9bcb68a13c4f218a7ba39872e5f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gacf1bc9bcb68a13c4f218a7ba39872e5f">get_tacho_regulation_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gacf1bc9bcb68a13c4f218a7ba39872e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "regulation_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#gacf1bc9bcb68a13c4f218a7ba39872e5f">More...</a><br /></td></tr>
+<tr class="separator:gacf1bc9bcb68a13c4f218a7ba39872e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga235f40cd484b7ef37437dc4afbfc2485"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga235f40cd484b7ef37437dc4afbfc2485">set_tacho_regulation_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga235f40cd484b7ef37437dc4afbfc2485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "regulation_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga235f40cd484b7ef37437dc4afbfc2485">More...</a><br /></td></tr>
+<tr class="separator:ga235f40cd484b7ef37437dc4afbfc2485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9723299c905b4aeeaaa45392a3450803"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9723299c905b4aeeaaa45392a3450803">set_tacho_reset</a> (uint8_t sn, bool value)</td></tr>
+<tr class="memdesc:ga9723299c905b4aeeaaa45392a3450803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "reset" attribute of the tacho.  <a href="group__ev3__tacho.html#ga9723299c905b4aeeaaa45392a3450803">More...</a><br /></td></tr>
+<tr class="separator:ga9723299c905b4aeeaaa45392a3450803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga36eb2a3c4f142103455eb5159bcb72fa"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga36eb2a3c4f142103455eb5159bcb72fa">get_tacho_run</a> (uint8_t sn, bool *buf)</td></tr>
+<tr class="memdesc:ga36eb2a3c4f142103455eb5159bcb72fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "run" attribute of the tacho.  <a href="group__ev3__tacho.html#ga36eb2a3c4f142103455eb5159bcb72fa">More...</a><br /></td></tr>
+<tr class="separator:ga36eb2a3c4f142103455eb5159bcb72fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5897e2ddf408e3f2841d178500dfe535"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga5897e2ddf408e3f2841d178500dfe535">set_tacho_run</a> (uint8_t sn, bool value)</td></tr>
+<tr class="memdesc:ga5897e2ddf408e3f2841d178500dfe535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "run" attribute of the tacho.  <a href="group__ev3__tacho.html#ga5897e2ddf408e3f2841d178500dfe535">More...</a><br /></td></tr>
+<tr class="separator:ga5897e2ddf408e3f2841d178500dfe535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6114ef7a98b617824fef19935187f178"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6114ef7a98b617824fef19935187f178">get_tacho_run_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga6114ef7a98b617824fef19935187f178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "run_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga6114ef7a98b617824fef19935187f178">More...</a><br /></td></tr>
+<tr class="separator:ga6114ef7a98b617824fef19935187f178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8cbb818a1b25891cc107fa72648ac83c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8cbb818a1b25891cc107fa72648ac83c">set_tacho_run_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga8cbb818a1b25891cc107fa72648ac83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "run_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8cbb818a1b25891cc107fa72648ac83c">More...</a><br /></td></tr>
+<tr class="separator:ga8cbb818a1b25891cc107fa72648ac83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0732da8967361efb12379aea59e13067"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga0732da8967361efb12379aea59e13067">get_tacho_speed_regulation_D</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga0732da8967361efb12379aea59e13067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_D" attribute of the tacho.  <a href="group__ev3__tacho.html#ga0732da8967361efb12379aea59e13067">More...</a><br /></td></tr>
+<tr class="separator:ga0732da8967361efb12379aea59e13067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac48250efcfaa8a5a494db5fe56ba5dff"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gac48250efcfaa8a5a494db5fe56ba5dff">set_tacho_speed_regulation_D</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:gac48250efcfaa8a5a494db5fe56ba5dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_D" attribute of the tacho.  <a href="group__ev3__tacho.html#gac48250efcfaa8a5a494db5fe56ba5dff">More...</a><br /></td></tr>
+<tr class="separator:gac48250efcfaa8a5a494db5fe56ba5dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc4523556ea17459455c09cd932be715"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gacc4523556ea17459455c09cd932be715">get_tacho_speed_regulation_I</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:gacc4523556ea17459455c09cd932be715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_I" attribute of the tacho.  <a href="group__ev3__tacho.html#gacc4523556ea17459455c09cd932be715">More...</a><br /></td></tr>
+<tr class="separator:gacc4523556ea17459455c09cd932be715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad70319e4fd9f0e786d1e81ed03e9c4d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad70319e4fd9f0e786d1e81ed03e9c4d2">set_tacho_speed_regulation_I</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:gad70319e4fd9f0e786d1e81ed03e9c4d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_I" attribute of the tacho.  <a href="group__ev3__tacho.html#gad70319e4fd9f0e786d1e81ed03e9c4d2">More...</a><br /></td></tr>
+<tr class="separator:gad70319e4fd9f0e786d1e81ed03e9c4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f2f2b23e279b5779d822628ca4bb0f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8f2f2b23e279b5779d822628ca4bb0f0">get_tacho_speed_regulation_K</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga8f2f2b23e279b5779d822628ca4bb0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_K" attribute of the tacho.  <a href="group__ev3__tacho.html#ga8f2f2b23e279b5779d822628ca4bb0f0">More...</a><br /></td></tr>
+<tr class="separator:ga8f2f2b23e279b5779d822628ca4bb0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61646fe309e9530ae5fa99ddfa11c885"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga61646fe309e9530ae5fa99ddfa11c885">set_tacho_speed_regulation_K</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga61646fe309e9530ae5fa99ddfa11c885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_K" attribute of the tacho.  <a href="group__ev3__tacho.html#ga61646fe309e9530ae5fa99ddfa11c885">More...</a><br /></td></tr>
+<tr class="separator:ga61646fe309e9530ae5fa99ddfa11c885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0426e3e6e0dc35d13c8c271f0c1af3ca"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga0426e3e6e0dc35d13c8c271f0c1af3ca">get_tacho_speed_regulation_P</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga0426e3e6e0dc35d13c8c271f0c1af3ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_P" attribute of the tacho.  <a href="group__ev3__tacho.html#ga0426e3e6e0dc35d13c8c271f0c1af3ca">More...</a><br /></td></tr>
+<tr class="separator:ga0426e3e6e0dc35d13c8c271f0c1af3ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga690a5c0f6561056c54b63669e654cd1b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga690a5c0f6561056c54b63669e654cd1b">set_tacho_speed_regulation_P</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga690a5c0f6561056c54b63669e654cd1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "speed_regulation_P" attribute of the tacho.  <a href="group__ev3__tacho.html#ga690a5c0f6561056c54b63669e654cd1b">More...</a><br /></td></tr>
+<tr class="separator:ga690a5c0f6561056c54b63669e654cd1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4824d7dd8032b7fe247d6b4811a7a556"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga4824d7dd8032b7fe247d6b4811a7a556">get_tacho_state</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga4824d7dd8032b7fe247d6b4811a7a556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the tacho.  <a href="group__ev3__tacho.html#ga4824d7dd8032b7fe247d6b4811a7a556">More...</a><br /></td></tr>
+<tr class="separator:ga4824d7dd8032b7fe247d6b4811a7a556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab202303f55b1e25ece6acea5d379431c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gab202303f55b1e25ece6acea5d379431c">get_tacho_stop_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gab202303f55b1e25ece6acea5d379431c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "stop_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#gab202303f55b1e25ece6acea5d379431c">More...</a><br /></td></tr>
+<tr class="separator:gab202303f55b1e25ece6acea5d379431c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga60d012c737ef489ddc57cb350e392fbd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga60d012c737ef489ddc57cb350e392fbd">set_tacho_stop_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga60d012c737ef489ddc57cb350e392fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "stop_mode" attribute of the tacho.  <a href="group__ev3__tacho.html#ga60d012c737ef489ddc57cb350e392fbd">More...</a><br /></td></tr>
+<tr class="separator:ga60d012c737ef489ddc57cb350e392fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga523a6ac13f4fb8bc1a8903184d4ffca8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga523a6ac13f4fb8bc1a8903184d4ffca8">get_tacho_stop_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga523a6ac13f4fb8bc1a8903184d4ffca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "stop_modes" attribute of the tacho.  <a href="group__ev3__tacho.html#ga523a6ac13f4fb8bc1a8903184d4ffca8">More...</a><br /></td></tr>
+<tr class="separator:ga523a6ac13f4fb8bc1a8903184d4ffca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga045716fe9ce0e6e4d1080bd20e0a30a2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga045716fe9ce0e6e4d1080bd20e0a30a2">get_tacho_time_sp</a> (uint8_t sn, dword *buf)</td></tr>
+<tr class="memdesc:ga045716fe9ce0e6e4d1080bd20e0a30a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "time_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga045716fe9ce0e6e4d1080bd20e0a30a2">More...</a><br /></td></tr>
+<tr class="separator:ga045716fe9ce0e6e4d1080bd20e0a30a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga24695b6974634f9667e64d15c08c0d2d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga24695b6974634f9667e64d15c08c0d2d">set_tacho_time_sp</a> (uint8_t sn, dword value)</td></tr>
+<tr class="memdesc:ga24695b6974634f9667e64d15c08c0d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "time_sp" attribute of the tacho.  <a href="group__ev3__tacho.html#ga24695b6974634f9667e64d15c08c0d2d">More...</a><br /></td></tr>
+<tr class="separator:ga24695b6974634f9667e64d15c08c0d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3dfc651c95ac9d31da8592dd4181e4b8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga3dfc651c95ac9d31da8592dd4181e4b8">get_tacho_type</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga3dfc651c95ac9d31da8592dd4181e4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "type" attribute of the tacho.  <a href="group__ev3__tacho.html#ga3dfc651c95ac9d31da8592dd4181e4b8">More...</a><br /></td></tr>
+<tr class="separator:ga3dfc651c95ac9d31da8592dd4181e4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f5d034d838070d61468aedab4a70b2e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga3f5d034d838070d61468aedab4a70b2e">ev3_tacho_type</a> (uint8_t type_inx)</td></tr>
+<tr class="memdesc:ga3f5d034d838070d61468aedab4a70b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified tacho type.  <a href="group__ev3__tacho.html#ga3f5d034d838070d61468aedab4a70b2e">More...</a><br /></td></tr>
+<tr class="separator:ga3f5d034d838070d61468aedab4a70b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf22539970bc22a2227b240a82d3e7b4f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf22539970bc22a2227b240a82d3e7b4f">get_tacho_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gaf22539970bc22a2227b240a82d3e7b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the tacho type.  <a href="group__ev3__tacho.html#gaf22539970bc22a2227b240a82d3e7b4f">More...</a><br /></td></tr>
+<tr class="separator:gaf22539970bc22a2227b240a82d3e7b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaae0c99b3bfa11c88b71ec374bdabdc2f">get_tacho_port_inx</a> (uint8_t sn, uint8_t *extport)</td></tr>
+<tr class="memdesc:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the tacho.  <a href="group__ev3__tacho.html#gaae0c99b3bfa11c88b71ec374bdabdc2f">More...</a><br /></td></tr>
+<tr class="separator:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef8442dff69f33422314e3f0e9d6f613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaef8442dff69f33422314e3f0e9d6f613">ev3_tacho_desc</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gaef8442dff69f33422314e3f0e9d6f613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the tacho.  <a href="group__ev3__tacho.html#gaef8442dff69f33422314e3f0e9d6f613">More...</a><br /></td></tr>
+<tr class="separator:gaef8442dff69f33422314e3f0e9d6f613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e67fdebf6eea6019ad8be5de1d4563a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga2e67fdebf6eea6019ad8be5de1d4563a">ev3_tacho_desc_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga2e67fdebf6eea6019ad8be5de1d4563a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type from the tacho descriptor.  <a href="group__ev3__tacho.html#ga2e67fdebf6eea6019ad8be5de1d4563a">More...</a><br /></td></tr>
+<tr class="separator:ga2e67fdebf6eea6019ad8be5de1d4563a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac41c4f05232e863931ea3fe7520bab23"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gac41c4f05232e863931ea3fe7520bab23">ev3_tacho_desc_port</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gac41c4f05232e863931ea3fe7520bab23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get EV3 port from the tacho descriptor.  <a href="group__ev3__tacho.html#gac41c4f05232e863931ea3fe7520bab23">More...</a><br /></td></tr>
+<tr class="separator:gac41c4f05232e863931ea3fe7520bab23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacba6f1e015c213a39c9b1af570807761"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gacba6f1e015c213a39c9b1af570807761">ev3_tacho_desc_extport</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gacba6f1e015c213a39c9b1af570807761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get extended port from the tacho descriptor.  <a href="group__ev3__tacho.html#gacba6f1e015c213a39c9b1af570807761">More...</a><br /></td></tr>
+<tr class="separator:gacba6f1e015c213a39c9b1af570807761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2360924cee69629c1052ff31b27a322"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad2360924cee69629c1052ff31b27a322">ev3_search_tacho</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gad2360924cee69629c1052ff31b27a322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the specified tacho type.  <a href="group__ev3__tacho.html#gad2360924cee69629c1052ff31b27a322">More...</a><br /></td></tr>
+<tr class="separator:gad2360924cee69629c1052ff31b27a322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada5365699a1a857a7ce1088cb319d621"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gada5365699a1a857a7ce1088cb319d621">ev3_search_tacho_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gada5365699a1a857a7ce1088cb319d621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the tacho by plug-in attributes.  <a href="group__ev3__tacho.html#gada5365699a1a857a7ce1088cb319d621">More...</a><br /></td></tr>
+<tr class="separator:gada5365699a1a857a7ce1088cb319d621"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a> (void)</td></tr>
-<tr class="memdesc:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auto-detection of connected tacho-motors.  <a href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">More...</a><br /></td></tr>
+<tr class="memdesc:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected tachos.  <a href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">More...</a><br /></td></tr>
 <tr class="separator:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -325,7 +335,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 13:37:59 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 7 2014 18:11:08 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

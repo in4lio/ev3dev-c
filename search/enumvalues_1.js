@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_5f_5fcount_5f',['INPUT__COUNT_',['../group__ev3__sensor.html#ggadc29c2ff13d900c2f185ee95427fb06ca5187dcd232b9334898ddf4f2d79fe6cc',1,'ev3_sensor.h']]]
+  ['input_5fmode_5f_5fcount_5f',['INPUT_MODE__COUNT_',['../group__ev3__port.html#ggadf764cbdea00d65edcd07bb9953ad2b7afbcb2d693bf4079576dde63c763d127c',1,'ev3_input.h']]]
 ];

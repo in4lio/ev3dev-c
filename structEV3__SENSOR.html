@@ -83,52 +83,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ab36823025f12a809217f7771125658c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#ab36823025f12a809217f7771125658c2">connected</a></td></tr>
-<tr class="separator:ab36823025f12a809217f7771125658c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaabdc509cdaba7df9f56c6c76f3ae19"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#abaabdc509cdaba7df9f56c6c76f3ae19">id</a></td></tr>
-<tr class="separator:abaabdc509cdaba7df9f56c6c76f3ae19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8545e80e4c421e6283a2f848fc2ca3e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#ab8545e80e4c421e6283a2f848fc2ca3e">type_id</a></td></tr>
-<tr class="separator:ab8545e80e4c421e6283a2f848fc2ca3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa342c03e2f0762b97f235535ad676a05"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#aa342c03e2f0762b97f235535ad676a05">type_inx</a></td></tr>
+<tr class="separator:aa342c03e2f0762b97f235535ad676a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa54f9024782843172506fadbee2ac8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#a2fa54f9024782843172506fadbee2ac8">port</a></td></tr>
+<tr class="separator:a2fa54f9024782843172506fadbee2ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0d048fdb3473082c2dc6e9a4ec61968"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#ae0d048fdb3473082c2dc6e9a4ec61968">extport</a></td></tr>
+<tr class="separator:ae0d048fdb3473082c2dc6e9a4ec61968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5105c72a61e60d3b44670de20e0c3fb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__SENSOR.html#af5105c72a61e60d3b44670de20e0c3fb">addr</a></td></tr>
+<tr class="separator:af5105c72a61e60d3b44670de20e0c3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure of a sensor descriptor. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="ab36823025f12a809217f7771125658c2"></a>
+<a class="anchor" id="af5105c72a61e60d3b44670de20e0c3fb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool connected</td>
+          <td class="memname">uint8_t addr</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flag - the sensor is connected. </p>
+<p>Sensor address. </p>
 
 </div>
 </div>
-<a class="anchor" id="abaabdc509cdaba7df9f56c6c76f3ae19"></a>
+<a class="anchor" id="ae0d048fdb3473082c2dc6e9a4ec61968"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t id</td>
+          <td class="memname">uint8_t extport</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Identifier of the sensor. </p>
+<p>Sensor extended port. </p>
 
 </div>
 </div>
-<a class="anchor" id="ab8545e80e4c421e6283a2f848fc2ca3e"></a>
+<a class="anchor" id="a2fa54f9024782843172506fadbee2ac8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t type_id</td>
+          <td class="memname">uint8_t port</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The sensor type. </p>
+<p>Sensor EV3 port. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa342c03e2f0762b97f235535ad676a05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t type_inx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sensor type. </p>
 
 </div>
 </div>
@@ -138,7 +153,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 13:38:00 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 7 2014 18:11:08 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

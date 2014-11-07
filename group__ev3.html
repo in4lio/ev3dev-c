@@ -86,10 +86,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ga6488c8e1b3a9dbc390c54c4a7a1169fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6488c8e1b3a9dbc390c54c4a7a1169fa"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BRICK_WAIT_TRIES</b>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:ga6488c8e1b3a9dbc390c54c4a7a1169fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga862146c096657ab26f391a77cccc72a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga862146c096657ab26f391a77cccc72a8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga862146c096657ab26f391a77cccc72a8">EV3_NONE</a>&#160;&#160;&#160;-1</td></tr>
-<tr class="memdesc:ga862146c096657ab26f391a77cccc72a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negative result of operation. <br /></td></tr>
-<tr class="separator:ga862146c096657ab26f391a77cccc72a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55f4e5f634a1b1e20fd4a8bdc55f39d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga55f4e5f634a1b1e20fd4a8bdc55f39d1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STR_unknown_</b>&#160;&#160;&#160;&quot;&lt;unknown&gt;&quot;</td></tr>
+<tr class="separator:ga55f4e5f634a1b1e20fd4a8bdc55f39d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -133,6 +132,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a">ev3_write_bool</a> (const char *fn, bool value)</td></tr>
 <tr class="memdesc:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a boolean value into the specified file.  <a href="#ga2f4127ccb9188172eaa15e7e81cd137a">More...</a><br /></td></tr>
 <tr class="separator:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga549d5bb24bca7dcc6b9f3af044e73243">ev3_write_byte</a> (const char *fn, uint8_t value)</td></tr>
+<tr class="memdesc:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a byte value into the specified file.  <a href="#ga549d5bb24bca7dcc6b9f3af044e73243">More...</a><br /></td></tr>
+<tr class="separator:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7de3add68eb55de04b84c04507aa42dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7de3add68eb55de04b84c04507aa42dd"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_char_array</b> (const char *fn, char *value)</td></tr>
 <tr class="separator:ga7de3add68eb55de04b84c04507aa42dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +156,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_byte_arra
 <tr class="memitem:ga496393569c4d644c426367c8c1af73d0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga496393569c4d644c426367c8c1af73d0">ev3_read_bool</a> (const char *fn, bool *buf)</td></tr>
 <tr class="memdesc:ga496393569c4d644c426367c8c1af73d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a boolean value from the specified file.  <a href="#ga496393569c4d644c426367c8c1af73d0">More...</a><br /></td></tr>
 <tr class="separator:ga496393569c4d644c426367c8c1af73d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8b3e75fc9c408dbf89f634e33068745"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gad8b3e75fc9c408dbf89f634e33068745">ev3_read_byte</a> (const char *fn, uint8_t *buf)</td></tr>
+<tr class="memdesc:gad8b3e75fc9c408dbf89f634e33068745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a byte value from the specified file.  <a href="#gad8b3e75fc9c408dbf89f634e33068745">More...</a><br /></td></tr>
+<tr class="separator:gad8b3e75fc9c408dbf89f634e33068745"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0d49bb2d7fad390b0760de66301ca19f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0d49bb2d7fad390b0760de66301ca19f"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_char_array</b> (const char *fn, char *buf, size_t sz)</td></tr>
 <tr class="separator:ga0d49bb2d7fad390b0760de66301ca19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,6 +168,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 <tr class="memitem:ga31ba00d5503095c825a99295c5d16dd0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a> (const char *fn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga31ba00d5503095c825a99295c5d16dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">List files in the specified directory of the EV3 brick.  <a href="#ga31ba00d5503095c825a99295c5d16dd0">More...</a><br /></td></tr>
 <tr class="separator:ga31ba00d5503095c825a99295c5d16dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9a74db327d49a3b6528f33fba868d1d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga9a74db327d49a3b6528f33fba868d1d5">ev3_string_suffix</a> (const char *prefix, char **s, uint32_t *buf)</td></tr>
+<tr class="memdesc:ga9a74db327d49a3b6528f33fba868d1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a numerical suffix of the string.  <a href="#ga9a74db327d49a3b6528f33fba868d1d5">More...</a><br /></td></tr>
+<tr class="separator:ga9a74db327d49a3b6528f33fba868d1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga377bcee0066eadc1b584c39492a92887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga377bcee0066eadc1b584c39492a92887"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga377bcee0066eadc1b584c39492a92887">EV3_EXT_INIT</a> (char *ev3_brick_addr, NULL)</td></tr>
 <tr class="memdesc:ga377bcee0066eadc1b584c39492a92887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predefined IP address of the EV3 brick. <br /></td></tr>
@@ -191,7 +199,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><div class="memdoc">
 
 <p>Initialize the remote access and detect the EV3 brick. This function do nothing in the case of the local access. To disable the brick detection just specify IP address before the call of this function. </p>
-<dl class="section return"><dt>Returns</dt><dd>1 - the local access, 0 - the brick detection is disabled, EV3_NONE - an error has occurred, or the number of found bricks. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 - the brick is NOT found or auto-detection is disabled; 1 - the brick is found; -1 - an error has occurred. </dd></dl>
 
 </div>
 </div>
@@ -253,7 +261,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><div class="memdoc">
 
 <p>Power-off the EV3 brick. </p>
-<dl class="section return"><dt>Returns</dt><dd>false - no reply, true - OK. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>false - no reply; true - OK. </dd></dl>
 
 </div>
 </div>
@@ -379,6 +387,42 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
+<a class="anchor" id="gad8b3e75fc9c408dbf89f634e33068745"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_EXT size_t ev3_read_byte </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a byte value from the specified file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">fn</td><td>Filename. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for a value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga2d84f6178cbce31f53f14dcdbdfa875a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -487,6 +531,48 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
+<a class="anchor" id="ga9a74db327d49a3b6528f33fba868d1d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_EXT int ev3_string_suffix </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a numerical suffix of the string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">s</td><td>in - pointer to the string (char *); out - pointer to the next character after the suffix. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for a numerical suffix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 - suffix is not found; 1 - suffix is found at the string end; 2 - suffix is found but the string is not over. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga4fa0d81a67bb2ffa3ad2c9979218582e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -591,6 +677,42 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><div class="memdoc">
 
 <p>Write a boolean value into the specified file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fn</td><td>Filename. </td></tr>
+    <tr><td class="paramname">value</td><td>Value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga549d5bb24bca7dcc6b9f3af044e73243"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_EXT size_t ev3_write_byte </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a byte value into the specified file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fn</td><td>Filename. </td></tr>
@@ -713,7 +835,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 2 2014 13:37:59 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 7 2014 18:11:08 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
