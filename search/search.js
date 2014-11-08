@@ -13,7 +13,7 @@ var indexSectionsWithContent =
   3: "egsu",
   4: "adefipt",
   5: "eilot",
-  6: "flprst",
+  6: "dflprst",
   7: "elt"
 };
 

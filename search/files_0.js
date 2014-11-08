@@ -2,6 +2,8 @@ var searchData=
 [
   ['ev3_2ec',['ev3.c',['../ev3_8c.html',1,'']]],
   ['ev3_2eh',['ev3.h',['../ev3_8h.html',1,'']]],
+  ['ev3_5fdc_2ec',['ev3_dc.c',['../ev3__dc_8c.html',1,'']]],
+  ['ev3_5fdc_2eh',['ev3_dc.h',['../ev3__dc_8h.html',1,'']]],
   ['ev3_5finput_2ec',['ev3_input.c',['../ev3__input_8c.html',1,'']]],
   ['ev3_5finput_2eh',['ev3_input.h',['../ev3__input_8h.html',1,'']]],
   ['ev3_5fled_2ec',['ev3_led.c',['../ev3__led_8c.html',1,'']]],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_20operations',['File operations',['../group__ev3.html',1,'']]]
+  ['dc_20motors',['DC Motors',['../group__ev3__dc.html',1,'']]]
 ];
