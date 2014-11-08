@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 ports.)
+($TITLE,,EV3 Ports.)
 
 ($import stdlib)
 ($import h)
@@ -19,11 +19,6 @@
 #include "ev3_output.h"
 #include "ev3_input.h"
 #include "ev3_port.h"
-
-/**
- *  \addtogroup ev3_port
- *  \{
- */
 
 uint8_t ev3_port_inx( const char *name, uint8_t *extport )
 {
@@ -42,5 +37,3 @@ const char *ev3_port_name( uint8_t inx, uint8_t extport )
 
 	return STR_unknown_;
 }
-
-/** \} */

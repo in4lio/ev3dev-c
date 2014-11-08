@@ -5,7 +5,7 @@
                                                ((())))
  *//**
  *  \file  tacho.c
- *  \brief  ev3dev-c tacho-motors example.
+ *  \brief  ev3dev-c Tacho Motors example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
@@ -36,7 +36,7 @@ int main( void )
 
 #ifndef __ARM_ARCH_4T__
 	/* Disable auto-detection of the brick (you have to set the correct address below) */
-	ev3_brick_addr = "192.168.0.244";
+	ev3_brick_addr = "192.168.1.244";
 
 #endif
 	if ( ev3_init() == -1 ) return ( 1 );
@@ -49,7 +49,7 @@ int main( void )
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
-	printf( "Found tacho-motors:\n" );
+	printf( "Found tacho motors:\n" );
 	for ( i = 0; i < TACHO_DESC__LIMIT_; i++ ) {
 		if ( ev3_tacho[ i ].type_inx != TACHO_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_tacho_type( ev3_tacho[ i ].type_inx ));
@@ -67,7 +67,7 @@ int main( void )
 		set_tacho_ramp_down_sp( sn, 2000 );
 		set_tacho_run( sn, true );
 	} else {
-		printf( "MINITACHO motor is not found\n" );
+		printf( "MINITACHO motor is NOT found\n" );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     print '*** ( EV3 ) Hello! ***'
 
-    print 'Found tacho-motors:'
+    print 'Found tacho motors:'
     for i in range( TACHO_DESC__LIMIT_ ):
         type_inx = ev3_tacho_desc_type_inx( i )
         if type_inx != TACHO_TYPE__NONE_:

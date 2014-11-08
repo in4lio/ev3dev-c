@@ -55,7 +55,7 @@ const char *ev3_($PORT_PREF_ID)_mode( uint8_t mode_inx )
 
 uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t inx )
 {
-	char buf[ 32 ];
+	char buf[ 64 ];
 
 	if ( !get_($PORT_PREF_ID)_mode( inx, buf, sizeof( buf ))) return ( ($upper PORT_PREF_ID)_MODE__COUNT_ );
 

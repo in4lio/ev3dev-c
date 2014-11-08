@@ -146,21 +146,27 @@ EV3_GREEN_LEFT = _ev3.EV3_GREEN_LEFT
 EV3_GREEN_RIGHT = _ev3.EV3_GREEN_RIGHT
 EV3_RED_LEFT = _ev3.EV3_RED_LEFT
 EV3_RED_RIGHT = _ev3.EV3_RED_RIGHT
+EV3_LED_OUTA = _ev3.EV3_LED_OUTA
+EV3_LED_OUTB = _ev3.EV3_LED_OUTB
+EV3_LED_OUTC = _ev3.EV3_LED_OUTC
+EV3_LED_OUTD = _ev3.EV3_LED_OUTD
 LED__COUNT_ = _ev3.LED__COUNT_
 TRIGGER_NONE = _ev3.TRIGGER_NONE
 TRIGGER_MMC0 = _ev3.TRIGGER_MMC0
 TRIGGER_TIMER = _ev3.TRIGGER_TIMER
 TRIGGER_HEARTBEAT = _ev3.TRIGGER_HEARTBEAT
 TRIGGER_DEFAULT_ON = _ev3.TRIGGER_DEFAULT_ON
+TRIGGER_TRANSIENT = _ev3.TRIGGER_TRANSIENT
 TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL = _ev3.TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL
 TRIGGER_LEGOEV3_BATTERY_CHARGING = _ev3.TRIGGER_LEGOEV3_BATTERY_CHARGING
 TRIGGER_LEGOEV3_BATTERY_FULL = _ev3.TRIGGER_LEGOEV3_BATTERY_FULL
 TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID = _ev3.TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID
+TRIGGER_RFKILL0 = _ev3.TRIGGER_RFKILL0
 TRIGGER_PHY0RX = _ev3.TRIGGER_PHY0RX
 TRIGGER_PHY0TX = _ev3.TRIGGER_PHY0TX
 TRIGGER_PHY0ASSOC = _ev3.TRIGGER_PHY0ASSOC
 TRIGGER_PHY0RADIO = _ev3.TRIGGER_PHY0RADIO
-TRIGGER_PHY0TPT = _ev3.TRIGGER_PHY0TPT
+TRIGGER_RFKILL1 = _ev3.TRIGGER_RFKILL1
 TRIGGER__COUNT_ = _ev3.TRIGGER__COUNT_
 LED_ATTR__COUNT_ = _ev3.LED_ATTR__COUNT_
 
@@ -187,6 +193,10 @@ get_led_delay_on = _ev3.get_led_delay_on
 def set_led_delay_on(*args):
   return _ev3.set_led_delay_on(*args)
 set_led_delay_on = _ev3.set_led_delay_on
+
+def get_led_max_brightness(*args):
+  return _ev3.get_led_max_brightness(*args)
+get_led_max_brightness = _ev3.get_led_max_brightness
 
 def get_led_trigger(*args):
   return _ev3.get_led_trigger(*args)
@@ -798,6 +808,127 @@ ev3_search_tacho_plugged_in = _ev3.ev3_search_tacho_plugged_in
 def ev3_tacho_init():
   return _ev3.ev3_tacho_init()
 ev3_tacho_init = _ev3.ev3_tacho_init
+class EV3_DC(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_DC, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, EV3_DC, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["type_inx"] = _ev3.EV3_DC_type_inx_set
+    __swig_getmethods__["type_inx"] = _ev3.EV3_DC_type_inx_get
+    if _newclass:type_inx = _swig_property(_ev3.EV3_DC_type_inx_get, _ev3.EV3_DC_type_inx_set)
+    __swig_setmethods__["port"] = _ev3.EV3_DC_port_set
+    __swig_getmethods__["port"] = _ev3.EV3_DC_port_get
+    if _newclass:port = _swig_property(_ev3.EV3_DC_port_get, _ev3.EV3_DC_port_set)
+    __swig_setmethods__["extport"] = _ev3.EV3_DC_extport_set
+    __swig_getmethods__["extport"] = _ev3.EV3_DC_extport_get
+    if _newclass:extport = _swig_property(_ev3.EV3_DC_extport_get, _ev3.EV3_DC_extport_set)
+    def __init__(self): 
+        this = _ev3.new_EV3_DC()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _ev3.delete_EV3_DC
+    __del__ = lambda self : None;
+EV3_DC_swigregister = _ev3.EV3_DC_swigregister
+EV3_DC_swigregister(EV3_DC)
+
+DC_DESC__LIMIT_ = _ev3.DC_DESC__LIMIT_
+DC__NONE_ = _ev3.DC__NONE_
+DC_TYPE__NONE_ = _ev3.DC_TYPE__NONE_
+RCX_MOTOR = _ev3.RCX_MOTOR
+DC_TYPE__COUNT_ = _ev3.DC_TYPE__COUNT_
+
+def get_dc_command(*args):
+  return _ev3.get_dc_command(*args)
+get_dc_command = _ev3.get_dc_command
+
+def set_dc_command(*args):
+  return _ev3.set_dc_command(*args)
+set_dc_command = _ev3.set_dc_command
+
+def get_dc_commands(*args):
+  return _ev3.get_dc_commands(*args)
+get_dc_commands = _ev3.get_dc_commands
+
+def get_dc_duty_cycle(*args):
+  return _ev3.get_dc_duty_cycle(*args)
+get_dc_duty_cycle = _ev3.get_dc_duty_cycle
+
+def set_dc_duty_cycle(*args):
+  return _ev3.set_dc_duty_cycle(*args)
+set_dc_duty_cycle = _ev3.set_dc_duty_cycle
+
+def get_dc_name(*args):
+  return _ev3.get_dc_name(*args)
+get_dc_name = _ev3.get_dc_name
+
+def get_dc_polarity(*args):
+  return _ev3.get_dc_polarity(*args)
+get_dc_polarity = _ev3.get_dc_polarity
+
+def set_dc_polarity(*args):
+  return _ev3.set_dc_polarity(*args)
+set_dc_polarity = _ev3.set_dc_polarity
+
+def get_dc_port_name(*args):
+  return _ev3.get_dc_port_name(*args)
+get_dc_port_name = _ev3.get_dc_port_name
+
+def get_dc_ramp_down_ms(*args):
+  return _ev3.get_dc_ramp_down_ms(*args)
+get_dc_ramp_down_ms = _ev3.get_dc_ramp_down_ms
+
+def set_dc_ramp_down_ms(*args):
+  return _ev3.set_dc_ramp_down_ms(*args)
+set_dc_ramp_down_ms = _ev3.set_dc_ramp_down_ms
+
+def get_dc_ramp_up_ms(*args):
+  return _ev3.get_dc_ramp_up_ms(*args)
+get_dc_ramp_up_ms = _ev3.get_dc_ramp_up_ms
+
+def set_dc_ramp_up_ms(*args):
+  return _ev3.set_dc_ramp_up_ms(*args)
+set_dc_ramp_up_ms = _ev3.set_dc_ramp_up_ms
+
+def ev3_dc_type(*args):
+  return _ev3.ev3_dc_type(*args)
+ev3_dc_type = _ev3.ev3_dc_type
+
+def get_dc_type_inx(*args):
+  return _ev3.get_dc_type_inx(*args)
+get_dc_type_inx = _ev3.get_dc_type_inx
+
+def get_dc_port_inx(*args):
+  return _ev3.get_dc_port_inx(*args)
+get_dc_port_inx = _ev3.get_dc_port_inx
+
+def ev3_dc_desc(*args):
+  return _ev3.ev3_dc_desc(*args)
+ev3_dc_desc = _ev3.ev3_dc_desc
+
+def ev3_dc_desc_type_inx(*args):
+  return _ev3.ev3_dc_desc_type_inx(*args)
+ev3_dc_desc_type_inx = _ev3.ev3_dc_desc_type_inx
+
+def ev3_dc_desc_port(*args):
+  return _ev3.ev3_dc_desc_port(*args)
+ev3_dc_desc_port = _ev3.ev3_dc_desc_port
+
+def ev3_dc_desc_extport(*args):
+  return _ev3.ev3_dc_desc_extport(*args)
+ev3_dc_desc_extport = _ev3.ev3_dc_desc_extport
+
+def ev3_search_dc(*args):
+  return _ev3.ev3_search_dc(*args)
+ev3_search_dc = _ev3.ev3_search_dc
+
+def ev3_search_dc_plugged_in(*args):
+  return _ev3.ev3_search_dc_plugged_in(*args)
+ev3_search_dc_plugged_in = _ev3.ev3_search_dc_plugged_in
+
+def ev3_dc_init():
+  return _ev3.ev3_dc_init()
+ev3_dc_init = _ev3.ev3_dc_init
 # This file is compatible with both classic and new-style classes.
 
 

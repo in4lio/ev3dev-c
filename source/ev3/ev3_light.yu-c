@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 lights (green and red LEDs at once).)
+($TITLE,,EV3 Lights (GREEN and RED LEDs at once).)
 
 ($import stdlib)
 ($import h)
@@ -16,11 +16,6 @@
 #include "ev3.h"
 #include "ev3_led.h"
 #include "ev3_light.h"
-
-/**
- *  \addtogroup ev3_light
- *  \{
- */
 
 #define LIT_DELAY_DEFAULT  500
 
@@ -101,5 +96,3 @@ bool get_light_blink( uint8_t loc, uint8_t col )
 {
 	return ( get_light_trigger( loc, col ) == TRIGGER_TIMER );
 }
-
-/** \} */

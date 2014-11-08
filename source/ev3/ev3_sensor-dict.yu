@@ -7,16 +7,7 @@
 ($set CLASS_PATH "/sys/class/msensor")
 ($set CLASS_FOLDER_PREF "sensor")
 ($set CLASS_ID ($unq CLASS_FOLDER_PREF))
-
-($dict CLASS_DESC
-	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
-	(`
-	(  type_inx       uint8_t          "type"              )
-	(  port           uint8_t          "EV3 port"          )
-	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "address"           )
-	)
-)
+($set CLASS_TITLE "sensor")
 
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME        CLASS_TYPE_MODES )
@@ -99,6 +90,16 @@
 
 ($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "name")
 ($set CLASS_ADDR_INX ($index CLASS_ATTR_NAME "address"))
+
+($dict CLASS_DESC
+	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
+	(`
+	(  type_inx       uint8_t          "type"              )
+	(  port           uint8_t          "EV3 port"          )
+	(  extport        uint8_t          "extended port"     )
+	(  addr           uint8_t          "address"           ) ? ($ne ($CLASS_ADDR_INX) -1)
+	)
+)
 
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
 ($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))

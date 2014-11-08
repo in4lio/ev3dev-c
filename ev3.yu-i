@@ -125,23 +125,27 @@ enum {
 ($define,,LED_ATTR__COUNT_,,($len LED_ATTR_ID))
 
 ($each-LED_ATTR \i.]
+	($if ($le ($i LED_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Get ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \param inx Index of the LED.
+		 *  \param[out] buf Buffer for result.
+		 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
+		 *  \return Count of read bytes.
+		 */
+		($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
 
-	/**
-	 *  \brief Get ($i LED_ATTR_NAME) attribute of the LED.
-	 *  \param inx Index of the LED.
-	 *  \param[out] buf Buffer for result.
-	 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
-	 *  \return Count of read bytes.
-	 */
-	($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
+	[ )
+	($if ($ge ($i LED_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Set ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \param inx Index of the LED.
+		 *  \param value Attribute value.
+		 *  \return Count of written bytes.
+		 */
+		($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
 
-	/**
-	 *  \brief Set ($i LED_ATTR_NAME) attribute of the LED.
-	 *  \param inx Index of the LED.
-	 *  \param value Attribute value.
-	 *  \return Count of written bytes.
-	 */
-	($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
+	[ )
 
 [ )
 
@@ -336,3 +340,10 @@ enum {
 
 ($import "../source/ev3/ev3_tacho-dict.yu")
 ($import "../source/ev3/ev3_class-h.yu")
+
+/*
+ *  ev3_dc
+ */
+
+($import "ev3_dc-dict.yu")
+($import "ev3_class-h.yu")

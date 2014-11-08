@@ -1484,23 +1484,24 @@ SWIG_Perl_SetModule(swig_module_info *module) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_EV3_SENSOR swig_types[0]
-#define SWIGTYPE_p_EV3_TACHO swig_types[1]
-#define SWIGTYPE_p_byte swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_dword swig_types[4]
-#define SWIGTYPE_p_float swig_types[5]
-#define SWIGTYPE_p_int swig_types[6]
-#define SWIGTYPE_p_long_long swig_types[7]
-#define SWIGTYPE_p_p_char swig_types[8]
-#define SWIGTYPE_p_short swig_types[9]
-#define SWIGTYPE_p_signed_char swig_types[10]
-#define SWIGTYPE_p_unsigned_char swig_types[11]
-#define SWIGTYPE_p_unsigned_int swig_types[12]
-#define SWIGTYPE_p_unsigned_long_long swig_types[13]
-#define SWIGTYPE_p_unsigned_short swig_types[14]
-static swig_type_info *swig_types[16];
-static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
+#define SWIGTYPE_p_EV3_DC swig_types[0]
+#define SWIGTYPE_p_EV3_SENSOR swig_types[1]
+#define SWIGTYPE_p_EV3_TACHO swig_types[2]
+#define SWIGTYPE_p_byte swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_dword swig_types[5]
+#define SWIGTYPE_p_float swig_types[6]
+#define SWIGTYPE_p_int swig_types[7]
+#define SWIGTYPE_p_long_long swig_types[8]
+#define SWIGTYPE_p_p_char swig_types[9]
+#define SWIGTYPE_p_short swig_types[10]
+#define SWIGTYPE_p_signed_char swig_types[11]
+#define SWIGTYPE_p_unsigned_char swig_types[12]
+#define SWIGTYPE_p_unsigned_int swig_types[13]
+#define SWIGTYPE_p_unsigned_long_long swig_types[14]
+#define SWIGTYPE_p_unsigned_short swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2098,6 +2099,32 @@ fail:
 SWIGCLASS_STATIC int _wrap_ev3_tacho_get(pTHX_ SV *sv, MAGIC *SWIGUNUSEDPARM(mg)) {
   MAGIC_PPERL
   sv_setiv(SvRV(sv),PTR2IV(ev3_tacho));
+  return 1;
+}
+
+
+SWIGCLASS_STATIC int _wrap_ev3_dc_set(pTHX_ SV* sv, MAGIC * SWIGUNUSEDPARM(mg)) {
+  MAGIC_PPERL
+  {
+    EV3_DC *inp = 0;
+    int res = SWIG_ConvertPtr(sv, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_EV3_DC,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ev3_dc""' of type '""EV3_DC [64]""'");
+    } else if (inp) {
+      size_t ii = 0;
+      for (; ii < (size_t)64; ++ii) *(EV3_DC *)&ev3_dc[ii] = *((EV3_DC *)inp + ii);
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ev3_dc""' of type '""EV3_DC [64]""'");
+    }
+  }
+fail:
+  return 1;
+}
+
+
+SWIGCLASS_STATIC int _wrap_ev3_dc_get(pTHX_ SV *sv, MAGIC *SWIGUNUSEDPARM(mg)) {
+  MAGIC_PPERL
+  sv_setiv(SvRV(sv),PTR2IV(ev3_dc));
   return 1;
 }
 
@@ -3012,6 +3039,46 @@ XS(_wrap_set_led_delay_on) {
     arg2 = (int)(val2);
     result = set_led_delay_on(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_led_max_brightness) {
+  {
+    uint8_t arg1 ;
+    byte *arg2 = (byte *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    byte temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_led_max_brightness(inx);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_led_max_brightness" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = get_led_max_brightness(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_byte, new_flags); argvi++  ;
+    }
     
     
     XSRETURN(argvi);
@@ -8227,9 +8294,1133 @@ XS(_wrap_ev3_tacho_init) {
 }
 
 
+XS(_wrap_EV3_DC_type_inx_set) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    uint8_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: EV3_DC_type_inx_set(self,type_inx);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_type_inx_set" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_DC_type_inx_set" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (arg1) (arg1)->type_inx = arg2;
+    ST(argvi) = sv_newmortal();
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_EV3_DC_type_inx_get) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: EV3_DC_type_inx_get(self);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_type_inx_get" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    result = (uint8_t) ((arg1)->type_inx);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_EV3_DC_port_set) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    uint8_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: EV3_DC_port_set(self,port);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_port_set" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_DC_port_set" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (arg1) (arg1)->port = arg2;
+    ST(argvi) = sv_newmortal();
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_EV3_DC_port_get) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: EV3_DC_port_get(self);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_port_get" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    result = (uint8_t) ((arg1)->port);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_EV3_DC_extport_set) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    uint8_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: EV3_DC_extport_set(self,extport);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_extport_set" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_DC_extport_set" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (arg1) (arg1)->extport = arg2;
+    ST(argvi) = sv_newmortal();
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_EV3_DC_extport_get) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: EV3_DC_extport_get(self);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EV3_DC_extport_get" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    result = (uint8_t) ((arg1)->extport);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_new_EV3_DC) {
+  {
+    int argvi = 0;
+    EV3_DC *result = 0 ;
+    dXSARGS;
+    
+    if ((items < 0) || (items > 0)) {
+      SWIG_croak("Usage: new_EV3_DC();");
+    }
+    result = (EV3_DC *)calloc(1, sizeof(EV3_DC));
+    ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_DC, SWIG_OWNER | SWIG_SHADOW); argvi++ ;
+    XSRETURN(argvi);
+  fail:
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_delete_EV3_DC) {
+  {
+    EV3_DC *arg1 = (EV3_DC *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int argvi = 0;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: delete_EV3_DC(self);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_EV3_DC, SWIG_POINTER_DISOWN |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EV3_DC" "', argument " "1"" of type '" "EV3_DC *""'"); 
+    }
+    arg1 = (EV3_DC *)(argp1);
+    free((char *) arg1);
+    ST(argvi) = sv_newmortal();
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_command) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_dc_command(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_command" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_command" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_dc_command(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_command) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    char *buf2 = 0 ;
+    int alloc2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_dc_command(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_command" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsCharPtrAndSize(ST(1), &buf2, NULL, &alloc2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_dc_command" "', argument " "2"" of type '" "char *""'");
+    }
+    arg2 = (char *)(buf2);
+    result = set_dc_command(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_commands) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_dc_commands(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_commands" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_commands" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_dc_commands(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_duty_cycle) {
+  {
+    uint8_t arg1 ;
+    int *arg2 = (int *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_duty_cycle(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_duty_cycle" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = get_dc_duty_cycle(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags); argvi++  ;
+    }
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_duty_cycle) {
+  {
+    uint8_t arg1 ;
+    int arg2 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_dc_duty_cycle(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_duty_cycle" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    ecode2 = SWIG_AsVal_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_duty_cycle" "', argument " "2"" of type '" "int""'");
+    } 
+    arg2 = (int)(val2);
+    result = set_dc_duty_cycle(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_name) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_dc_name(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_name" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_name" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_dc_name(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_polarity) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_dc_polarity(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_polarity" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_polarity" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_dc_polarity(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_polarity) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    char *buf2 = 0 ;
+    int alloc2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_dc_polarity(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_polarity" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsCharPtrAndSize(ST(1), &buf2, NULL, &alloc2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_dc_polarity" "', argument " "2"" of type '" "char *""'");
+    }
+    arg2 = (char *)(buf2);
+    result = set_dc_polarity(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_port_name) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_dc_port_name(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_port_name" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_port_name" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_dc_port_name(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_ramp_down_ms) {
+  {
+    uint8_t arg1 ;
+    dword *arg2 = (dword *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    dword temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_ramp_down_ms(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_ramp_down_ms" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = get_dc_ramp_down_ms(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_int  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_dword, new_flags); argvi++  ;
+    }
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_ramp_down_ms) {
+  {
+    uint8_t arg1 ;
+    dword arg2 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_dc_ramp_down_ms(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_ramp_down_ms" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_ramp_down_ms" "', argument " "2"" of type '" "dword""'");
+    } 
+    arg2 = (dword)(val2);
+    result = set_dc_ramp_down_ms(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_ramp_up_ms) {
+  {
+    uint8_t arg1 ;
+    dword *arg2 = (dword *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    dword temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_ramp_up_ms(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_ramp_up_ms" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = get_dc_ramp_up_ms(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_int  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_dword, new_flags); argvi++  ;
+    }
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_ramp_up_ms) {
+  {
+    uint8_t arg1 ;
+    dword arg2 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_dc_ramp_up_ms(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_ramp_up_ms" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_ramp_up_ms" "', argument " "2"" of type '" "dword""'");
+    } 
+    arg2 = (dword)(val2);
+    result = set_dc_ramp_up_ms(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_type) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    char *result = 0 ;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: ev3_dc_type(type_inx);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_type" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (char *)ev3_dc_type(arg1);
+    ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_type_inx) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_type_inx(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_type_inx" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (uint8_t)get_dc_type_inx(arg1);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_dc_port_inx) {
+  {
+    uint8_t arg1 ;
+    uint8_t *arg2 = (uint8_t *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    uint8_t temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_port_inx(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_port_inx" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (uint8_t)get_dc_port_inx(arg1,arg2);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags); argvi++  ;
+    }
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_desc) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    EV3_DC *result = 0 ;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: ev3_dc_desc(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_desc" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (EV3_DC *)ev3_dc_desc(arg1);
+    ST(argvi) = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EV3_DC, 0 | SWIG_SHADOW); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_desc_type_inx) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: ev3_dc_desc_type_inx(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_desc_type_inx" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (uint8_t)ev3_dc_desc_type_inx(arg1);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_desc_port) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: ev3_dc_desc_port(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_desc_port" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (uint8_t)ev3_dc_desc_port(arg1);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_desc_extport) {
+  {
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int argvi = 0;
+    uint8_t result;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: ev3_dc_desc_extport(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_desc_extport" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = (uint8_t)ev3_dc_desc_extport(arg1);
+    ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_search_dc) {
+  {
+    uint8_t arg1 ;
+    uint8_t *arg2 = (uint8_t *) 0 ;
+    uint8_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    uint8_t temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    unsigned char val3 ;
+    int ecode3 = 0 ;
+    int argvi = 0;
+    int result;
+    dXSARGS;
+    
+    {
+      arg3 = 0; 
+    }
+    arg2 = &temp2;
+    if ((items < 1) || (items > 2)) {
+      SWIG_croak("Usage: ev3_search_dc(type_inx,from);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_dc" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    if (items > 1) {
+      ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
+      if (!SWIG_IsOK(ecode3)) {
+        SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ev3_search_dc" "', argument " "3"" of type '" "uint8_t""'");
+      } 
+      arg3 = (uint8_t)(val3);
+    }
+    result = (int)ev3_search_dc(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_unsigned_char, new_flags); argvi++  ;
+    }
+    
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_search_dc_plugged_in) {
+  {
+    uint8_t arg1 ;
+    uint8_t arg2 ;
+    uint8_t *arg3 = (uint8_t *) 0 ;
+    uint8_t arg4 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    uint8_t temp3 ;
+    int res3 = SWIG_TMPOBJ ;
+    unsigned char val4 ;
+    int ecode4 = 0 ;
+    int argvi = 0;
+    int result;
+    dXSARGS;
+    
+    {
+      arg4 = 0; 
+    }
+    arg3 = &temp3;
+    if ((items < 2) || (items > 3)) {
+      SWIG_croak("Usage: ev3_search_dc_plugged_in(port,extport,from);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_dc_plugged_in" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ev3_search_dc_plugged_in" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (items > 2) {
+      ecode4 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(2), &val4);
+      if (!SWIG_IsOK(ecode4)) {
+        SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ev3_search_dc_plugged_in" "', argument " "4"" of type '" "uint8_t""'");
+      } 
+      arg4 = (uint8_t)(val4);
+    }
+    result = (int)ev3_search_dc_plugged_in(arg1,arg2,arg3,arg4);
+    ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res3)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg3)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res3) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg3), SWIGTYPE_p_unsigned_char, new_flags); argvi++  ;
+    }
+    
+    
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_ev3_dc_init) {
+  {
+    int argvi = 0;
+    int result;
+    dXSARGS;
+    
+    if ((items < 0) || (items > 0)) {
+      SWIG_croak("Usage: ev3_dc_init();");
+    }
+    result = (int)ev3_dc_init();
+    ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(result)); argvi++ ;
+    XSRETURN(argvi);
+  fail:
+    SWIG_croak_null();
+  }
+}
+
+
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_EV3_DC = {"_p_EV3_DC", "EV3_DC *", 0, 0, (void*)"ev3::EV3_DC", 0};
 static swig_type_info _swigt__p_EV3_SENSOR = {"_p_EV3_SENSOR", "EV3_SENSOR *", 0, 0, (void*)"ev3::EV3_SENSOR", 0};
 static swig_type_info _swigt__p_EV3_TACHO = {"_p_EV3_TACHO", "EV3_TACHO *", 0, 0, (void*)"ev3::EV3_TACHO", 0};
 static swig_type_info _swigt__p_byte = {"_p_byte", "byte *", 0, 0, (void*)0, 0};
@@ -8247,6 +9438,7 @@ static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_EV3_DC,
   &_swigt__p_EV3_SENSOR,
   &_swigt__p_EV3_TACHO,
   &_swigt__p_byte,
@@ -8264,6 +9456,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_short,
 };
 
+static swig_cast_info _swigc__p_EV3_DC[] = {  {&_swigt__p_EV3_DC, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_EV3_SENSOR[] = {  {&_swigt__p_EV3_SENSOR, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_EV3_TACHO[] = {  {&_swigt__p_EV3_TACHO, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_byte[] = {  {&_swigt__p_byte, 0, 0, 0},{0, 0, 0, 0}};
@@ -8281,6 +9474,7 @@ static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_l
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_EV3_DC,
   _swigc__p_EV3_SENSOR,
   _swigc__p_EV3_TACHO,
   _swigc__p_byte,
@@ -8313,6 +9507,7 @@ static swig_variable_info swig_variables[] = {
     { "ev3c::LIT_COLOR", MAGIC_CLASS swig_magic_readonly, MAGIC_CLASS _wrap_LIT_COLOR_get,&SWIGTYPE_p_p_char },
     { "ev3c::ev3_sensor", MAGIC_CLASS _wrap_ev3_sensor_set, MAGIC_CLASS _wrap_ev3_sensor_get,&SWIGTYPE_p_EV3_SENSOR },
     { "ev3c::ev3_tacho", MAGIC_CLASS _wrap_ev3_tacho_set, MAGIC_CLASS _wrap_ev3_tacho_get,&SWIGTYPE_p_EV3_TACHO },
+    { "ev3c::ev3_dc", MAGIC_CLASS _wrap_ev3_dc_set, MAGIC_CLASS _wrap_ev3_dc_get,&SWIGTYPE_p_EV3_DC },
 {0,0,0,0}
 };
 static swig_command_info swig_commands[] = {
@@ -8340,6 +9535,7 @@ static swig_command_info swig_commands[] = {
 {"ev3c::set_led_delay_off", _wrap_set_led_delay_off},
 {"ev3c::get_led_delay_on", _wrap_get_led_delay_on},
 {"ev3c::set_led_delay_on", _wrap_set_led_delay_on},
+{"ev3c::get_led_max_brightness", _wrap_get_led_max_brightness},
 {"ev3c::get_led_trigger", _wrap_get_led_trigger},
 {"ev3c::set_led_trigger", _wrap_set_led_trigger},
 {"ev3c::get_led_trigger_inx", _wrap_get_led_trigger_inx},
@@ -8477,6 +9673,37 @@ static swig_command_info swig_commands[] = {
 {"ev3c::ev3_search_tacho", _wrap_ev3_search_tacho},
 {"ev3c::ev3_search_tacho_plugged_in", _wrap_ev3_search_tacho_plugged_in},
 {"ev3c::ev3_tacho_init", _wrap_ev3_tacho_init},
+{"ev3c::EV3_DC_type_inx_set", _wrap_EV3_DC_type_inx_set},
+{"ev3c::EV3_DC_type_inx_get", _wrap_EV3_DC_type_inx_get},
+{"ev3c::EV3_DC_port_set", _wrap_EV3_DC_port_set},
+{"ev3c::EV3_DC_port_get", _wrap_EV3_DC_port_get},
+{"ev3c::EV3_DC_extport_set", _wrap_EV3_DC_extport_set},
+{"ev3c::EV3_DC_extport_get", _wrap_EV3_DC_extport_get},
+{"ev3c::new_EV3_DC", _wrap_new_EV3_DC},
+{"ev3c::delete_EV3_DC", _wrap_delete_EV3_DC},
+{"ev3c::get_dc_command", _wrap_get_dc_command},
+{"ev3c::set_dc_command", _wrap_set_dc_command},
+{"ev3c::get_dc_commands", _wrap_get_dc_commands},
+{"ev3c::get_dc_duty_cycle", _wrap_get_dc_duty_cycle},
+{"ev3c::set_dc_duty_cycle", _wrap_set_dc_duty_cycle},
+{"ev3c::get_dc_name", _wrap_get_dc_name},
+{"ev3c::get_dc_polarity", _wrap_get_dc_polarity},
+{"ev3c::set_dc_polarity", _wrap_set_dc_polarity},
+{"ev3c::get_dc_port_name", _wrap_get_dc_port_name},
+{"ev3c::get_dc_ramp_down_ms", _wrap_get_dc_ramp_down_ms},
+{"ev3c::set_dc_ramp_down_ms", _wrap_set_dc_ramp_down_ms},
+{"ev3c::get_dc_ramp_up_ms", _wrap_get_dc_ramp_up_ms},
+{"ev3c::set_dc_ramp_up_ms", _wrap_set_dc_ramp_up_ms},
+{"ev3c::ev3_dc_type", _wrap_ev3_dc_type},
+{"ev3c::get_dc_type_inx", _wrap_get_dc_type_inx},
+{"ev3c::get_dc_port_inx", _wrap_get_dc_port_inx},
+{"ev3c::ev3_dc_desc", _wrap_ev3_dc_desc},
+{"ev3c::ev3_dc_desc_type_inx", _wrap_ev3_dc_desc_type_inx},
+{"ev3c::ev3_dc_desc_port", _wrap_ev3_dc_desc_port},
+{"ev3c::ev3_dc_desc_extport", _wrap_ev3_dc_desc_extport},
+{"ev3c::ev3_search_dc", _wrap_ev3_search_dc},
+{"ev3c::ev3_search_dc_plugged_in", _wrap_ev3_search_dc_plugged_in},
+{"ev3c::ev3_dc_init", _wrap_ev3_dc_init},
 {0,0}
 };
 /* -----------------------------------------------------------------------------
@@ -8774,526 +10001,582 @@ XS(SWIG_init) {
     SvREADONLY_on(sv);
   }
   
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_BRICK", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_GREEN_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_GREEN_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_GREEN_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_GREEN_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_RED_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_RED_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_RED_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_RED_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTA", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTA)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTB", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTB)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTC", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTC)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTD", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTD)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LED__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LED__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_NONE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_NONE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_MMC0", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_MMC0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_TIMER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_TIMER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_HEARTBEAT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_HEARTBEAT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_DEFAULT_ON", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_DEFAULT_ON)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_TRANSIENT", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_TRANSIENT)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_FULL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_FULL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_RFKILL0", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_RFKILL0)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0RX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0RX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0TX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0TX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0ASSOC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0ASSOC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0RADIO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0RADIO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
-    SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0TPT", TRUE | 0x2 | GV_ADDMULTI);
-    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0TPT)));
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_RFKILL1", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_RFKILL1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LED_ATTR__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
-    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(4)));
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(5)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT__LOC__", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT__LOC__)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_OFF", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_OFF)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_GREEN", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_GREEN)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_RED", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_RED)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_AMBER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_AMBER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT__COL__", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT__COL__)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT__BASE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(128)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_A", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_A)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_B", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_B)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_D", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_D)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_AUTO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_AUTO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_EV3_TACHO_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_EV3_TACHO_MOTOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RCX_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RCX_MOTOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RCX_LED", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RCX_LED)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RAW", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RAW)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_MODE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_MODE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT__BASE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_1", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_3", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_3)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_4", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_AUTO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_AUTO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_EV3_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_EV3_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_EV3_UART", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_EV3_UART)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_COLOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_COLOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_I2C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_I2C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_OTHER_UART", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_OTHER_UART)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_RAW", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_RAW)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_MODE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_MODE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_PORT__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   SWIG_TypeClientData(SWIGTYPE_p_EV3_SENSOR, (void*) "ev3::EV3_SENSOR");
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(SENSOR_TYPE__NONE_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_ANALOG_XX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_ANALOG_XX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "NXT_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(NXT_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "NXT_I2C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(NXT_I2C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COLOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COLOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_ANGLE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_ANGLE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_ACCEL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_ACCEL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_BAROMETRIC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_BAROMETRIC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COLOR_V2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COLOR_V2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_EOPD", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_EOPD)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_FORCE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_FORCE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_GYRO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_GYRO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_LINK", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_LINK)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_RECEIVER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_RECEIVER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_PIR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_PIR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COMPASS", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COMPASS)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_MAG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_MAG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_SEEKER_V2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_SEEKER_V2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_SMUX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_SMUX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_SUPER_PRO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_SUPER_PRO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_30", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_30)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_32", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_32)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_29", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_29)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_EV3_TOUCH", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_EV3_TOUCH)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_33", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_33)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_POWER_STORAGE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_POWER_STORAGE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TMP275", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TMP275)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_TOUCH", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_TOUCH)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_LIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_LIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_SOUND", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_SOUND)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_ULTRASONIC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_ULTRASONIC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_LIGHT_ARRAY", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_LIGHT_ARRAY)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_8CH_SERVO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_8CH_SERVO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "PCF8574", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(PCF8574)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "PCF8591", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(PCF8591)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DS1307", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DS1307)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_NXT_TOUCH_MUX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_NXT_TOUCH_MUX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(SENSOR_TYPE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   SWIG_TypeClientData(SWIGTYPE_p_EV3_TACHO, (void*) "ev3::EV3_TACHO");
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO_TYPE__NONE_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MINITACHO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MINITACHO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO_TYPE__COUNT_)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  SWIG_TypeClientData(SWIGTYPE_p_EV3_DC, (void*) "ev3::EV3_DC");
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "DC_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "DC__NONE_", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "DC_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DC_TYPE__NONE_)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "RCX_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(RCX_MOTOR)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "DC_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DC_TYPE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   ST(0) = &PL_sv_yes;

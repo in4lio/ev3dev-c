@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 tacho-motors.)
+($TITLE,,EV3 Tacho Motors.)
 
 ($import stdlib)
 ($import h)
@@ -19,8 +19,8 @@
 ($extern-c-begin)
 
 /**
- *  \defgroup ev3_tacho Tacho-motors
- *  \brief Access to EV3 tacho-motors.
+ *  \defgroup ev3_tacho Tacho Motors
+ *  \brief Access to EV3 Tacho Motors.
  *  \see http://www.ev3dev.org/docs/drivers/tacho-motor-class/
  *  \{
  */

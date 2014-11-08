@@ -28,7 +28,7 @@ case "$1" in
     killall ev3_link
     ;;
   *)
-    echo "Usage: $SCRIPTNAME {start|stop}" >&2
+    echo "Usage: $SCRIPTNAME {start|stop}"
     exit 3
     ;;
 esac

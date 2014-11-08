@@ -23,7 +23,7 @@ if __FILE__ == $0
 
   puts '*** ( EV3 ) Hello! ***'
 
-  puts 'Found tacho-motors:'
+  puts 'Found tacho motors:'
   TACHO_DESC__LIMIT_.times do |i|
     type_inx = ev3_tacho_desc_type_inx( i )
     if type_inx != TACHO_TYPE__NONE_

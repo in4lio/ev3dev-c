@@ -4,7 +4,7 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
  *//**
- *  \file  led.c
+ *  \file  light.c
  *  \brief  ev3dev-c LEDs example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.

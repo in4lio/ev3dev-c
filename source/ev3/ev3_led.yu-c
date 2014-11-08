@@ -17,11 +17,6 @@
 #include "ev3.h"
 #include "ev3_led.h"
 
-/**
- *  \addtogroup ev3_led
- *  \{
- */
-
 ($import "ev3_led-dict.yu")
 
 ($each-LED_ATTR \i.]
@@ -37,19 +32,23 @@
 
 ($each-LED_ATTR \i.]
 
-	size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
-	{
-		if ( inx >= LED__COUNT_ ) return ( 0 );
+	($if ($le ($i LED_ATTR_WRITE) RW) ]
+		size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
+		{
+			if ( inx >= LED__COUNT_ ) return ( 0 );
 
-		return ev3_read_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], buf($[, sz] ? ($i LED_ATTR_ARRAY)) );
-	}
+			return ev3_read_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], buf($[, sz] ? ($i LED_ATTR_ARRAY)) );
+		}
+	[ )
 
-	size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
-	{
-		if ( inx >= LED__COUNT_ ) return ( 0 );
+	($if ($ge ($i LED_ATTR_WRITE) RW) ]
+		size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
+		{
+			if ( inx >= LED__COUNT_ ) return ( 0 );
 
-		return ev3_write_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], value );
-	}
+			return ev3_write_($i LED_ATTR_TYPE)($[_array] ? ($i LED_ATTR_ARRAY))( led_attr_($i LED_ATTR_ID)[ inx ], value );
+		}
+	[ )
 
 [ )
 
@@ -86,4 +85,3 @@ size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx )
 {
 	return set_led_trigger( inx, ( char* ) ev3_led_trigger( trigger_inx ));
 }
-/** \} */

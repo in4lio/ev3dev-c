@@ -73,6 +73,7 @@ package ev3;
 *set_led_delay_off = *ev3c::set_led_delay_off;
 *get_led_delay_on = *ev3c::get_led_delay_on;
 *set_led_delay_on = *ev3c::set_led_delay_on;
+*get_led_max_brightness = *ev3c::get_led_max_brightness;
 *get_led_trigger = *ev3c::get_led_trigger;
 *set_led_trigger = *ev3c::set_led_trigger;
 *get_led_trigger_inx = *ev3c::get_led_trigger_inx;
@@ -192,6 +193,29 @@ package ev3;
 *ev3_search_tacho = *ev3c::ev3_search_tacho;
 *ev3_search_tacho_plugged_in = *ev3c::ev3_search_tacho_plugged_in;
 *ev3_tacho_init = *ev3c::ev3_tacho_init;
+*get_dc_command = *ev3c::get_dc_command;
+*set_dc_command = *ev3c::set_dc_command;
+*get_dc_commands = *ev3c::get_dc_commands;
+*get_dc_duty_cycle = *ev3c::get_dc_duty_cycle;
+*set_dc_duty_cycle = *ev3c::set_dc_duty_cycle;
+*get_dc_name = *ev3c::get_dc_name;
+*get_dc_polarity = *ev3c::get_dc_polarity;
+*set_dc_polarity = *ev3c::set_dc_polarity;
+*get_dc_port_name = *ev3c::get_dc_port_name;
+*get_dc_ramp_down_ms = *ev3c::get_dc_ramp_down_ms;
+*set_dc_ramp_down_ms = *ev3c::set_dc_ramp_down_ms;
+*get_dc_ramp_up_ms = *ev3c::get_dc_ramp_up_ms;
+*set_dc_ramp_up_ms = *ev3c::set_dc_ramp_up_ms;
+*ev3_dc_type = *ev3c::ev3_dc_type;
+*get_dc_type_inx = *ev3c::get_dc_type_inx;
+*get_dc_port_inx = *ev3c::get_dc_port_inx;
+*ev3_dc_desc = *ev3c::ev3_dc_desc;
+*ev3_dc_desc_type_inx = *ev3c::ev3_dc_desc_type_inx;
+*ev3_dc_desc_port = *ev3c::ev3_dc_desc_port;
+*ev3_dc_desc_extport = *ev3c::ev3_dc_desc_extport;
+*ev3_search_dc = *ev3c::ev3_search_dc;
+*ev3_search_dc_plugged_in = *ev3c::ev3_search_dc_plugged_in;
+*ev3_dc_init = *ev3c::ev3_dc_init;
 
 ############# Class : ev3::EV3_SENSOR ##############
 
@@ -281,6 +305,49 @@ sub ACQUIRE {
 }
 
 
+############# Class : ev3::EV3_DC ##############
+
+package ev3::EV3_DC;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( ev3 );
+%OWNER = ();
+%ITERATORS = ();
+*swig_type_inx_get = *ev3c::EV3_DC_type_inx_get;
+*swig_type_inx_set = *ev3c::EV3_DC_type_inx_set;
+*swig_port_get = *ev3c::EV3_DC_port_get;
+*swig_port_set = *ev3c::EV3_DC_port_set;
+*swig_extport_get = *ev3c::EV3_DC_extport_get;
+*swig_extport_set = *ev3c::EV3_DC_extport_set;
+sub new {
+    my $pkg = shift;
+    my $self = ev3c::new_EV3_DC(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        ev3c::delete_EV3_DC($self);
+        delete $OWNER{$self};
+    }
+}
+
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
 # ------- VARIABLE STUBS --------
 
 package ev3;
@@ -292,21 +359,27 @@ package ev3;
 *EV3_GREEN_RIGHT = *ev3c::EV3_GREEN_RIGHT;
 *EV3_RED_LEFT = *ev3c::EV3_RED_LEFT;
 *EV3_RED_RIGHT = *ev3c::EV3_RED_RIGHT;
+*EV3_LED_OUTA = *ev3c::EV3_LED_OUTA;
+*EV3_LED_OUTB = *ev3c::EV3_LED_OUTB;
+*EV3_LED_OUTC = *ev3c::EV3_LED_OUTC;
+*EV3_LED_OUTD = *ev3c::EV3_LED_OUTD;
 *LED__COUNT_ = *ev3c::LED__COUNT_;
 *TRIGGER_NONE = *ev3c::TRIGGER_NONE;
 *TRIGGER_MMC0 = *ev3c::TRIGGER_MMC0;
 *TRIGGER_TIMER = *ev3c::TRIGGER_TIMER;
 *TRIGGER_HEARTBEAT = *ev3c::TRIGGER_HEARTBEAT;
 *TRIGGER_DEFAULT_ON = *ev3c::TRIGGER_DEFAULT_ON;
+*TRIGGER_TRANSIENT = *ev3c::TRIGGER_TRANSIENT;
 *TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL = *ev3c::TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL;
 *TRIGGER_LEGOEV3_BATTERY_CHARGING = *ev3c::TRIGGER_LEGOEV3_BATTERY_CHARGING;
 *TRIGGER_LEGOEV3_BATTERY_FULL = *ev3c::TRIGGER_LEGOEV3_BATTERY_FULL;
 *TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID = *ev3c::TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID;
+*TRIGGER_RFKILL0 = *ev3c::TRIGGER_RFKILL0;
 *TRIGGER_PHY0RX = *ev3c::TRIGGER_PHY0RX;
 *TRIGGER_PHY0TX = *ev3c::TRIGGER_PHY0TX;
 *TRIGGER_PHY0ASSOC = *ev3c::TRIGGER_PHY0ASSOC;
 *TRIGGER_PHY0RADIO = *ev3c::TRIGGER_PHY0RADIO;
-*TRIGGER_PHY0TPT = *ev3c::TRIGGER_PHY0TPT;
+*TRIGGER_RFKILL1 = *ev3c::TRIGGER_RFKILL1;
 *TRIGGER__COUNT_ = *ev3c::TRIGGER__COUNT_;
 *LED_ATTR__COUNT_ = *ev3c::LED_ATTR__COUNT_;
 *LIT_LEFT = *ev3c::LIT_LEFT;
@@ -402,4 +475,14 @@ bless $ev3_tacho, ev3::EV3_TACHO;
 *TACHO = *ev3c::TACHO;
 *MINITACHO = *ev3c::MINITACHO;
 *TACHO_TYPE__COUNT_ = *ev3c::TACHO_TYPE__COUNT_;
+*DC_DESC__LIMIT_ = *ev3c::DC_DESC__LIMIT_;
+*DC__NONE_ = *ev3c::DC__NONE_;
+
+my %__ev3_dc_hash;
+tie %__ev3_dc_hash,"ev3::EV3_DC", $ev3c::ev3_dc;
+$ev3_dc= \%__ev3_dc_hash;
+bless $ev3_dc, ev3::EV3_DC;
+*DC_TYPE__NONE_ = *ev3c::DC_TYPE__NONE_;
+*RCX_MOTOR = *ev3c::RCX_MOTOR;
+*DC_TYPE__COUNT_ = *ev3c::DC_TYPE__COUNT_;
 1;

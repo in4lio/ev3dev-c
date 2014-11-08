@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 tacho-motors.)
+($TITLE,,EV3 Tacho Motors.)
 
 ($import stdlib)
 ($import h)
@@ -20,12 +20,5 @@
 #include "ev3_port.h"
 #include "ev3_tacho.h"
 
-/**
- *  \addtogroup ev3_tacho
- *  \{
- */
-
 ($import "ev3_tacho-dict.yu")
 ($import "ev3_class.yu")
-
-/** \} */

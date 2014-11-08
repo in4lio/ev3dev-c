@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 sensors.)
+($TITLE,,EV3 Sensors.)
 
 ($import stdlib)
 ($import h)
@@ -20,7 +20,7 @@
 
 /**
  *  \defgroup ev3_sensor Sensors
- *  \brief Access to EV3 sensors.
+ *  \brief Access to EV3 Sensors.
  *  \see http://www.ev3dev.org/docs/drivers/msensor-class/
  *  \{
  */

@@ -1,0 +1,58 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($set CLASS_PATH "/sys/class/dc-motor")
+($set CLASS_FOLDER_PREF "motor")
+($set CLASS_ID dc)
+($set CLASS_TITLE "DC motor")
+
+($dict CLASS_TYPE
+	(` CLASS_TYPE_NAME  )
+	(`
+	(  "rcx-motor"      )
+	)
+)
+
+($set R  0)
+($set RW 1)
+($set W  2)
+
+($dict CLASS_ATTR
+	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
+	(`
+	(  "command"               char             1                 RW                )
+	(  "commands"              char             1                 R                 )
+	(  "duty_cycle"            int              0                 RW                )
+	(  "name"                  char             1                 R                 )
+	(  "polarity"              char             1                 RW                )
+	(  "port_name"             char             1                 R                 )
+	(  "ramp_down_ms"          dword            0                 RW                )
+	(  "ramp_up_ms"            dword            0                 RW                )
+	)
+)
+
+($dict CLASS_AVEC
+	(` CLASS_AVEC_NAME  CLASS_AVEC_SIZE  CLASS_AVEC_TYPE  CLASS_AVEC_ARRAY  CLASS_AVEC_WRITE  )
+	(`
+	)
+)
+
+($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "name")
+($set CLASS_ADDR_INX ($index CLASS_ATTR_NAME "address"))
+
+($dict CLASS_DESC
+	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
+	(`
+	(  type_inx       uint8_t          "type"              )
+	(  port           uint8_t          "EV3 port"          )
+	(  extport        uint8_t          "extended port"     )
+	(  addr           uint8_t          "address"           ) ? ($ne ($CLASS_ADDR_INX) -1)
+	)
+)
+
+($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
+($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
+($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

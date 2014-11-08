@@ -19,11 +19,6 @@
 #include "ev3_port.h"
 #include "ev3_input.h"
 
-/**
- *  \addtogroup ev3_port
- *  \{
- */
-
 ($import "ev3_input-dict.yu")
 ($import "ev3_port.yu")
 
@@ -69,5 +64,3 @@ const char *ev3_input_name( uint8_t inx, uint8_t extport )
 	}
 	return STR_unknown_;
 }
-
-/** \} */

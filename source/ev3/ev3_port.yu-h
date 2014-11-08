@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 ports.)
+($TITLE,,EV3 Ports.)
 
 ($import stdlib)
 ($import h)
@@ -20,7 +20,7 @@
 
 /**
  *  \defgroup ev3_port Ports
- *  \brief Access to EV3 ports.
+ *  \brief Access to EV3 Ports.
  *  \see http://www.ev3dev.org/docs/drivers/ev3-output-port/
  *  \see http://www.ev3dev.org/docs/drivers/ev3-input-port/
  *  \{
