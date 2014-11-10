@@ -52,6 +52,10 @@ int main( void )
 	Sleep( 5000 );
 	set_led_trigger_inx( EV3_LED_OUTC, TRIGGER_NONE );
 
+	printf( "Reset mode of the EV3 output port...\n" );
+	set_output_mode_inx( OUTPUT_C, OUTPUT_AUTO );
+	if ( get_output_state( OUTPUT_C, s, sizeof( s ))) printf( "%s: %s\n", ev3_output_name( OUTPUT_C ), s );
+
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
 

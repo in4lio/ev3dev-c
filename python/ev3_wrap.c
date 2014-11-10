@@ -2971,6 +2971,7 @@ static swig_module_info swig_module = {swig_types, 17, 0, 0, 0, 0};
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
 #include "../source/ev3/ev3_tacho.h"
+#include "../source/ev3/ev3_dc.h"
 
 
 SWIGINTERNINLINE PyObject*

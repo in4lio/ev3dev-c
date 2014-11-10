@@ -202,6 +202,8 @@ EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
 \include light.c
 \include tacho.c
 \include sensor.c
+\include dc.c
+\include led.c
 \include io.c
 \include poweroff.c
  */

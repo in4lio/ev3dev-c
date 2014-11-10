@@ -21,6 +21,7 @@
 /**
  *  \defgroup ev3_sensor Sensors
  *  \brief Access to EV3 Sensors.
+ *  \see http://www.ev3dev.org/docs/sensors/
  *  \see http://www.ev3dev.org/docs/drivers/msensor-class/
  *  \{
  */

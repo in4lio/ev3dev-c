@@ -17,6 +17,7 @@
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
 #include "../source/ev3/ev3_tacho.h"
+#include "../source/ev3/ev3_dc.h"
 %}
 
 /* Unfortunately incompatible with %typemap( default ) size_t sz { $1 = DEFAULT_BUF_SIZE; } */
@@ -345,5 +346,5 @@ enum {
  *  ev3_dc
  */
 
-($import "ev3_dc-dict.yu")
-($import "ev3_class-h.yu")
+($import "../source/ev3/ev3_dc-dict.yu")
+($import "../source/ev3/ev3_class-h.yu")

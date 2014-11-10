@@ -1545,6 +1545,7 @@ SWIGEXPORT void SWIG_init (CV *cv, CPerlObj *);
 #include "../source/ev3/ev3_light.h"
 #include "../source/ev3/ev3_sensor.h"
 #include "../source/ev3/ev3_tacho.h"
+#include "../source/ev3/ev3_dc.h"
 
 
 SWIGINTERNINLINE SV *
@@ -10001,580 +10002,580 @@ XS(SWIG_init) {
     SvREADONLY_on(sv);
   }
   
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_BRICK", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_GREEN_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_GREEN_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_GREEN_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_GREEN_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_RED_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_RED_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_RED_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_RED_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTA", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTA)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTB", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTB)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_LED_OUTD", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_LED_OUTD)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LED__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LED__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_NONE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_NONE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_MMC0", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_MMC0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_TIMER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_TIMER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_HEARTBEAT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_HEARTBEAT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_DEFAULT_ON", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_DEFAULT_ON)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_TRANSIENT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_TRANSIENT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING_OR_FULL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_FULL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_FULL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_LEGOEV3_BATTERY_CHARGING_BLINK_FULL_SOLID)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_RFKILL0", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_RFKILL0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0RX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0RX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0TX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0TX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0ASSOC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0ASSOC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_PHY0RADIO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_PHY0RADIO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER_RFKILL1", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER_RFKILL1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TRIGGER__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TRIGGER__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LED_ATTR__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(5)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_LEFT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_LEFT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_RIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_RIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT__LOC__", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT__LOC__)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_OFF", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_OFF)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_GREEN", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_GREEN)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_RED", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_RED)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT_AMBER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT_AMBER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LIT__COL__", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LIT__COL__)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT__BASE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(128)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_A", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_A)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_B", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_B)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_D", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_D)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_AUTO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_AUTO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_EV3_TACHO_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_EV3_TACHO_MOTOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RCX_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RCX_MOTOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RCX_LED", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RCX_LED)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_RAW", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_RAW)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "OUTPUT_MODE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(OUTPUT_MODE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT__BASE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_1", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_1)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_3", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_3)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_4", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(4)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_AUTO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_AUTO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_EV3_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_EV3_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_EV3_UART", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_EV3_UART)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_COLOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_COLOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_NXT_I2C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_NXT_I2C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_OTHER_UART", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_OTHER_UART)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_RAW", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_RAW)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "INPUT_MODE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(INPUT_MODE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_PORT__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(0)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   SWIG_TypeClientData(SWIGTYPE_p_EV3_SENSOR, (void*) "ev3::EV3_SENSOR");
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(SENSOR_TYPE__NONE_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_ANALOG_XX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_ANALOG_XX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "NXT_ANALOG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(NXT_ANALOG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "NXT_I2C", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(NXT_I2C)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COLOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COLOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_ANGLE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_ANGLE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_ACCEL", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_ACCEL)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_BAROMETRIC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_BAROMETRIC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COLOR_V2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COLOR_V2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_EOPD", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_EOPD)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_FORCE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_FORCE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_GYRO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_GYRO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_LINK", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_LINK)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_RECEIVER", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_RECEIVER)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_PIR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_PIR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COMPASS", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COMPASS)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_MAG", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_MAG)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_IR_SEEKER_V2", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_IR_SEEKER_V2)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_SMUX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_SMUX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_SUPER_PRO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_SUPER_PRO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_30", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_30)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_32", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_32)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_29", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_29)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_EV3_TOUCH", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_EV3_TOUCH)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "EV3_UART_33", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(EV3_UART_33)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_POWER_STORAGE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_POWER_STORAGE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TMP275", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TMP275)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_TOUCH", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_TOUCH)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_LIGHT", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_LIGHT)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_SOUND", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_SOUND)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_ULTRASONIC", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_ULTRASONIC)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_LIGHT_ARRAY", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_LIGHT_ARRAY)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_8CH_SERVO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_8CH_SERVO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "PCF8574", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(PCF8574)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "PCF8591", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(PCF8591)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DS1307", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DS1307)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MS_NXT_TOUCH_MUX", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_NXT_TOUCH_MUX)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "SENSOR_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(SENSOR_TYPE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   SWIG_TypeClientData(SWIGTYPE_p_EV3_TACHO, (void*) "ev3::EV3_TACHO");
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO_TYPE__NONE_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "MINITACHO", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MINITACHO)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "TACHO_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(TACHO_TYPE__COUNT_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   SWIG_TypeClientData(SWIGTYPE_p_EV3_DC, (void*) "ev3::EV3_DC");
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DC_DESC__LIMIT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DC__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(64)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DC_TYPE__NONE_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DC_TYPE__NONE_)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "RCX_MOTOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(RCX_MOTOR)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
-  /*@SWIG:c:\dev\swig\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "DC_TYPE__COUNT_", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(DC_TYPE__COUNT_)));
     SvREADONLY_on(sv);

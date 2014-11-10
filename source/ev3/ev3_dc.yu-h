@@ -21,6 +21,7 @@
 /**
  *  \defgroup ev3_dc DC Motors
  *  \brief Access to EV3 DC Motors.
+ *  \see http://www.ev3dev.org/docs/motors/
  *  \see http://www.ev3dev.org/docs/drivers/dc-motor-class/
  *  \{
  */

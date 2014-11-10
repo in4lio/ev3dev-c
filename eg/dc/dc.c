@@ -67,6 +67,11 @@ int main( void )
 	} else {
 		printf( "DC motor is NOT found\n" );
 	}
+
+	printf( "Reset mode of the EV3 output port...\n" );
+	set_output_mode_inx( port, OUTPUT_AUTO );
+	if ( get_output_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_output_name( port ), s );
+
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
 

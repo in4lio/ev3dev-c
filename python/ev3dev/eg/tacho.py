@@ -38,7 +38,7 @@ if __name__ == '__main__':
         set_tacho_ramp_down_sp( sn, 2000 )
         set_tacho_run( sn, True )
     else:
-        print 'MINITACHO motor is not found'
+        print 'MINITACHO motor is NOT found'
 
     ev3_uninit()
     print '*** ( EV3 ) Bye! ***'
