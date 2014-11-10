@@ -402,6 +402,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    } <span class="keywordflow">else</span> {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;DC motor is NOT found\n&quot;</span> );</div>
 <div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 output port...\n&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( port, OUTPUT_AUTO );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( port ), s );</div>
+<div class="line"></div>
 <div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
 <div class="line"></div>
@@ -453,6 +458,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__led.html#gaa8ff0a0d6cb0f672a80355791a91889d">get_led_trigger</a>( EV3_LED_OUTC, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;trigger: %s\n&quot;</span>, s );</div>
 <div class="line">    Sleep( 5000 );</div>
 <div class="line">    <a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( EV3_LED_OUTC, TRIGGER_NONE );</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 output port...\n&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( OUTPUT_C, OUTPUT_AUTO );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( OUTPUT_C, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( OUTPUT_C ), s );</div>
 <div class="line"></div>
 <div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
@@ -545,7 +554,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 02:07:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 10 2014 14:13:12 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
