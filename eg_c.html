@@ -171,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">for</span> ( i = 0; i &lt; <a class="code" href="group__ev3__tacho.html#ga2d079a45ec7b0ee2c33f4c944df400b7">TACHO_DESC__LIMIT_</a>; i++ ) {</div>
 <div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].type_inx != TACHO_TYPE__NONE_ ) {</div>
 <div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a class="code" href="group__ev3__tacho.html#ga03f69a214ee152cdcb95ebb584ea129d">ev3_tacho_type</a>( <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].type_inx ));</div>
-<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga6d159883b1a571f2ccb4d43c6d3b8543">ev3_port_name</a>( <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].port, <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].extport ));</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].port, <a class="code" href="group__ev3__tacho.html#ga451af5e43ec8077040f6c556e7b5c9c9">ev3_tacho</a>[ i ].extport ));</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__tacho.html#gad2360924cee69629c1052ff31b27a322">ev3_search_tacho</a>( MINITACHO, &amp;sn, 0 )) {</div>
@@ -296,7 +296,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">for</span> ( i = 0; i &lt; <a class="code" href="group__ev3__sensor.html#ga95060d2f6ebd3bfd0c043c48d3f7e358">SENSOR_DESC__LIMIT_</a>; i++ ) {</div>
 <div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].type_inx != SENSOR_TYPE__NONE_ ) {</div>
 <div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a class="code" href="group__ev3__sensor.html#ga0df11bd674302ba3b85687ec258b443c">ev3_sensor_type</a>( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].type_inx ));</div>
-<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga6d159883b1a571f2ccb4d43c6d3b8543">ev3_port_name</a>( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].port, <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].extport ));</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].port, <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].extport ));</div>
 <div class="line">            <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__sensor.html#ga4bad50f0f8f6f9456af9f5fcc87796c7">get_sensor_mode</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">                printf( <span class="stringliteral">&quot;  mode = %s\n&quot;</span>, s );</div>
 <div class="line">            }</div>
@@ -350,6 +350,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3_8h.html">ev3.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__port_8h.html">ev3_port.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__output_8h.html">ev3_output.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="nxt__input__mux_8h.html">nxt_input_mux.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__dc_8h.html">ev3_dc.h</a>&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// WIN32 /////////////////////////////////////////</span></div>
@@ -378,19 +379,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Hello! ***\n&quot;</span> );</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Set mode of the EV3 output port...\n&quot;</span> );</div>
-<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( port, OUTPUT_RCX_MOTOR );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( port ), s );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( port, OUTPUT_RCX_MOTOR );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( port ), s );</div>
 <div class="line"></div>
+<div class="line">    Sleep( 200 );</div>
 <div class="line">    <a class="code" href="group__ev3__dc.html#gacebc5f11a2aead34564f37d9791e23a1">ev3_dc_init</a>();</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Found DC motors:\n&quot;</span> );</div>
 <div class="line">    <span class="keywordflow">for</span> ( i = 0; i &lt; <a class="code" href="group__ev3__dc.html#gafd02f6fea3d1643401117a54e595f3e0">DC_DESC__LIMIT_</a>; i++ ) {</div>
 <div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].type_inx != DC_TYPE__NONE_ ) {</div>
 <div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a class="code" href="group__ev3__dc.html#ga1a8414ac8a867d797794e297c53118df">ev3_dc_type</a>( <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].type_inx ));</div>
-<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga6d159883b1a571f2ccb4d43c6d3b8543">ev3_port_name</a>( <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].port, <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].extport ));</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].port, <a class="code" href="group__ev3__dc.html#ga8738d3fb2051f6ee0afa66e9f5026131">ev3_dc</a>[ i ].extport ));</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#gaef0af1aa06e09a3c5723260239b636ff">ev3_search_dc</a>( RCX_MOTOR, &amp;sn, 0 )) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga4f0b72633cff18f6b85f0f8d53a3df2d">ev3_search_dc_plugged_in</a>( port, INPUT_MUX__NONE_, &amp;sn, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;DC motor is found, run for 5 sec...\n&quot;</span> );</div>
 <div class="line">        <a class="code" href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">set_dc_ramp_up_ms</a>( sn, 2000 );</div>
 <div class="line">        <a class="code" href="group__ev3__dc.html#gaf2715f11c3904c79352f8a4a313fe0c9">set_dc_duty_cycle</a>( sn, 100 );</div>
@@ -404,8 +406,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 output port...\n&quot;</span> );</div>
-<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( port, OUTPUT_AUTO );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( port ), s );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( port, OUTPUT_AUTO );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( port ), s );</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
+<div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> ( 0 );</div>
+<div class="line">}</div>
+</div><!-- fragment --> <div class="fragment"><div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment">     ____ __     ____   ___    ____ __         (((((()</span></div>
+<div class="line"><span class="comment">    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /</span></div>
+<div class="line"><span class="comment">    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \</span></div>
+<div class="line"><span class="comment">                                               ((())))</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3_8h.html">ev3.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__port_8h.html">ev3_port.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__input_8h.html">ev3_input.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="nxt__input__mux_8h.html">nxt_input_mux.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__sensor_8h.html">ev3_sensor.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="nxt__analog__host_8h.html">nxt_analog_host.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ev3__servo_8h.html">ev3_servo.h</a>&quot;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// WIN32 /////////////////////////////////////////</span></div>
+<div class="line"><span class="preprocessor">#ifdef __WIN32__</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// UNIX //////////////////////////////////////////</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#define Sleep( msec ) usleep(( msec ) * 1000 )</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> )</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> s[ 256 ];</div>
+<div class="line">    <span class="keywordtype">int</span> pos;</div>
+<div class="line">    <span class="keywordtype">int</span> i;</div>
+<div class="line">    uint8_t sn;</div>
+<div class="line">    uint8_t port = INPUT_2;</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Waiting the EV3 brick online...\n&quot;</span> );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>() &lt; 1 ) <span class="keywordflow">return</span> ( 1 );</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Hello! ***\n&quot;</span> );</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Set mode of the EV3 input port...\n&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#gae6d8d65a02bec9f5920fea0cd0f2792b">set_input_mode_inx</a>( port, INPUT_NXT_ANALOG );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a>( port ), s );</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Set MS_8CH_SERVO mode of the nxt-analog-host...\n&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__host.html#ga22b7d6f1c3abe807a014a37382ed038c">set_nxt_analog_host_set_sensor</a>( port, INPUT_MUX__NONE_, ( <span class="keywordtype">char</span>* ) <a class="code" href="group__ev3__sensor.html#ga0df11bd674302ba3b85687ec258b443c">ev3_sensor_type</a>( MS_8CH_SERVO ));</div>
+<div class="line"></div>
+<div class="line">    Sleep( 200 );</div>
+<div class="line">    <a class="code" href="group__ev3__servo.html#ga3e65fb7a98d65801e160941aeed90b14">ev3_servo_init</a>();</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Found servo motors:\n&quot;</span> );</div>
+<div class="line">    <span class="keywordflow">for</span> ( i = 0; i &lt; <a class="code" href="group__ev3__servo.html#ga19eda35d2e854c03bb2afaf38f57e6f2">SERVO_DESC__LIMIT_</a>; i++ ) {</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gadd5aebfc5b3b05b034744cc0548b6654">ev3_servo</a>[ i ].type_inx != SERVO_TYPE__NONE_ ) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a class="code" href="group__ev3__servo.html#ga66756ebcc64d023b0c3c97cb9a0d4f7e">ev3_servo_type</a>( <a class="code" href="group__ev3__servo.html#gadd5aebfc5b3b05b034744cc0548b6654">ev3_servo</a>[ i ].type_inx ));</div>
+<div class="line">            <a class="code" href="group__ev3__servo.html#ga6d2ca0dbc625caef961704b8da1c44af">ev3_servo_port_name</a>( <a class="code" href="group__ev3__servo.html#gadd5aebfc5b3b05b034744cc0548b6654">ev3_servo</a>[ i ].port, <a class="code" href="group__ev3__servo.html#gadd5aebfc5b3b05b034744cc0548b6654">ev3_servo</a>[ i ].extport, <a class="code" href="group__ev3__servo.html#gadd5aebfc5b3b05b034744cc0548b6654">ev3_servo</a>[ i ].addr, s, <span class="keyword">sizeof</span>( s ));</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, s );</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaac02ef401427103c14d94d36d4bfd843">ev3_search_servo_plugged_in</a>( port, INPUT_MUX__NONE_, 1, &amp;sn, 0 )) {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;Servo motor is found, setting position...\n&quot;</span> );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a>( sn, <span class="stringliteral">&quot;run&quot;</span> );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#gaf6949860d6be274fbc5465e6b4e64848">set_servo_position</a>( sn, 100 );</div>
+<div class="line">        Sleep( 2000 );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaef67ec99a8b4546ebe2ae0e6d976f42c">get_servo_position</a>( sn, &amp;pos )) printf( <span class="stringliteral">&quot;position: %d\n&quot;</span>, pos );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#gaf6949860d6be274fbc5465e6b4e64848">set_servo_position</a>( sn, -100 );</div>
+<div class="line">        Sleep( 2000 );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaef67ec99a8b4546ebe2ae0e6d976f42c">get_servo_position</a>( sn, &amp;pos )) printf( <span class="stringliteral">&quot;position: %d\n&quot;</span>, pos );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a>( sn, <span class="stringliteral">&quot;float&quot;</span> );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;Servo motor is NOT found\n&quot;</span> );</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 input port...\n&quot;</span> );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#gae6d8d65a02bec9f5920fea0cd0f2792b">set_input_mode_inx</a>( port, INPUT_AUTO );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a>( port, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a>( port ), s );</div>
 <div class="line"></div>
 <div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
@@ -448,8 +532,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Hello! ***\n&quot;</span> );</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Set mode of the EV3 output port...\n&quot;</span> );</div>
-<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( OUTPUT_C, OUTPUT_RCX_LED );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( OUTPUT_C, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( OUTPUT_C ), s );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( OUTPUT_C, OUTPUT_RCX_LED );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( OUTPUT_C, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( OUTPUT_C ), s );</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__led.html#ga69866a7f129b83604c2de06c8a440f72">get_led_max_brightness</a>( EV3_LED_OUTC, &amp;val )) printf( <span class="stringliteral">&quot;max_brightness: %d\n&quot;</span>, val );</div>
 <div class="line">    <a class="code" href="group__ev3__led.html#ga8a210d7f333ee45cdb5516bb6462cd84">set_led_brightness</a>( EV3_LED_OUTC, val );</div>
@@ -460,8 +544,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( EV3_LED_OUTC, TRIGGER_NONE );</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 output port...\n&quot;</span> );</div>
-<div class="line">    <a class="code" href="group__ev3__port.html#ga657efd46c0129be9ad0eade2f3e91653">set_output_mode_inx</a>( OUTPUT_C, OUTPUT_AUTO );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( OUTPUT_C, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( OUTPUT_C ), s );</div>
+<div class="line">    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( OUTPUT_C, OUTPUT_AUTO );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( OUTPUT_C, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( OUTPUT_C ), s );</div>
 <div class="line"></div>
 <div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
@@ -501,13 +585,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        printf( <span class="stringliteral">&quot;tacho-motors: %s\n&quot;</span>, s );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">for</span> ( i = <a class="code" href="group__ev3__port.html#gac0527e4af271be1ecac97ee02189ab75">OUTPUT__BASE_</a>; i &lt; <a class="code" href="group__ev3__port.html#gac0527e4af271be1ecac97ee02189ab75">OUTPUT__BASE_</a> + <a class="code" href="group__ev3__port.html#ga5f4aae8004616e7e8098ebe97389a026">OUTPUT__COUNT_</a>; i++ ) {</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga900cd4a9552b5dd39c0b093732a6c23d">get_output_state</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
-<div class="line">            printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#ga76bb0bad0488eb0ef309e6eb290534ea">ev3_output_name</a>( i ), s );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( i ), s );</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">for</span> ( i = <a class="code" href="group__ev3__port.html#gad43faa03632b5296fcefdabf0c962b6c">INPUT__BASE_</a>; i &lt; <a class="code" href="group__ev3__port.html#gad43faa03632b5296fcefdabf0c962b6c">INPUT__BASE_</a> + <a class="code" href="group__ev3__port.html#ga2e00ecc1cb643edd5905fcf030a00e5f">INPUT__COUNT_</a>; i++ ) {</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#gad27c704f04b06b3f34916501b5e70e2e">get_input_state</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
-<div class="line">            printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gaabbc6630343c815e3756ff20269172e5">ev3_input_name</a>( i, <a class="code" href="group__ev3__port.html#ga923e41c9b7d4922420b101458f2c20d8">EV3_PORT__NONE_</a> ), s );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a>( i, <a class="code" href="group__ev3__port.html#ga923e41c9b7d4922420b101458f2c20d8">EV3_PORT__NONE_</a> ), s );</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
@@ -554,7 +638,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 10 2014 14:13:12 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 14 2014 18:42:00 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

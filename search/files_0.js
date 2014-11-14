@@ -18,6 +18,8 @@ var searchData=
   ['ev3_5fport_2eh',['ev3_port.h',['../ev3__port_8h.html',1,'']]],
   ['ev3_5fsensor_2ec',['ev3_sensor.c',['../ev3__sensor_8c.html',1,'']]],
   ['ev3_5fsensor_2eh',['ev3_sensor.h',['../ev3__sensor_8h.html',1,'']]],
+  ['ev3_5fservo_2ec',['ev3_servo.c',['../ev3__servo_8c.html',1,'']]],
+  ['ev3_5fservo_2eh',['ev3_servo.h',['../ev3__servo_8h.html',1,'']]],
   ['ev3_5ftacho_2ec',['ev3_tacho.c',['../ev3__tacho_8c.html',1,'']]],
   ['ev3_5ftacho_2eh',['ev3_tacho.h',['../ev3__tacho_8h.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensors',['Sensors',['../group__ev3__sensor.html',1,'']]]
+  ['remote_20access',['Remote access',['../group__ev3__link.html',1,'']]]
 ];

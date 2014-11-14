@@ -75,14 +75,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">ev3_input.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>EV3 input ports.  
+<p>EV3 Input Ports.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -93,157 +92,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaba7d8deab68fb399ad11567295f6afda"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaba7d8deab68fb399ad11567295f6afda">get_input_mode</a> (uint8_t inx, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gaba7d8deab68fb399ad11567295f6afda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the input port.  <a href="group__ev3__port.html#gaba7d8deab68fb399ad11567295f6afda">More...</a><br /></td></tr>
-<tr class="separator:gaba7d8deab68fb399ad11567295f6afda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae146f7d69603d28cd0be70ad6507658e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gae146f7d69603d28cd0be70ad6507658e">set_input_mode</a> (uint8_t inx, char *value)</td></tr>
-<tr class="memdesc:gae146f7d69603d28cd0be70ad6507658e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the input port.  <a href="group__ev3__port.html#gae146f7d69603d28cd0be70ad6507658e">More...</a><br /></td></tr>
-<tr class="separator:gae146f7d69603d28cd0be70ad6507658e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8aa086e39dd9e2c72bfd3a9d7b26cd4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaa8aa086e39dd9e2c72bfd3a9d7b26cd4">get_input_modes</a> (uint8_t inx, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gaa8aa086e39dd9e2c72bfd3a9d7b26cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the input port.  <a href="group__ev3__port.html#gaa8aa086e39dd9e2c72bfd3a9d7b26cd4">More...</a><br /></td></tr>
-<tr class="separator:gaa8aa086e39dd9e2c72bfd3a9d7b26cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad91d8e9cd2a536c0af81e618e441848c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad91d8e9cd2a536c0af81e618e441848c">get_input_pin1_mv</a> (uint8_t inx, int *buf)</td></tr>
-<tr class="memdesc:gad91d8e9cd2a536c0af81e618e441848c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin1_mv" attribute of the input port.  <a href="group__ev3__port.html#gad91d8e9cd2a536c0af81e618e441848c">More...</a><br /></td></tr>
-<tr class="separator:gad91d8e9cd2a536c0af81e618e441848c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga91723ab83c35f7a03882a90d4e3bb41a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga91723ab83c35f7a03882a90d4e3bb41a">get_input_pin6_mv</a> (uint8_t inx, int *buf)</td></tr>
-<tr class="memdesc:ga91723ab83c35f7a03882a90d4e3bb41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin6_mv" attribute of the input port.  <a href="group__ev3__port.html#ga91723ab83c35f7a03882a90d4e3bb41a">More...</a><br /></td></tr>
-<tr class="separator:ga91723ab83c35f7a03882a90d4e3bb41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad27c704f04b06b3f34916501b5e70e2e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad27c704f04b06b3f34916501b5e70e2e">get_input_state</a> (uint8_t inx, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gad27c704f04b06b3f34916501b5e70e2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the input port.  <a href="group__ev3__port.html#gad27c704f04b06b3f34916501b5e70e2e">More...</a><br /></td></tr>
-<tr class="separator:gad27c704f04b06b3f34916501b5e70e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9aea75d5ce8b283e4aa7f3a8721cfe75">ev3_input_inx</a> (const char *name)</td></tr>
+<tr class="memdesc:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 input port from the port name.  <a href="group__ev3__port.html#ga9aea75d5ce8b283e4aa7f3a8721cfe75">More...</a><br /></td></tr>
+<tr class="separator:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gace829bf02aae64f3af322a28e565e0a1"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a> (uint8_t port)</td></tr>
+<tr class="memdesc:gace829bf02aae64f3af322a28e565e0a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 input port.  <a href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">More...</a><br /></td></tr>
+<tr class="separator:gace829bf02aae64f3af322a28e565e0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafacca13a6616508649593ecbee850193"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gafacca13a6616508649593ecbee850193">get_input_mode</a> (uint8_t port, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gafacca13a6616508649593ecbee850193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the input port.  <a href="group__ev3__port.html#gafacca13a6616508649593ecbee850193">More...</a><br /></td></tr>
+<tr class="separator:gafacca13a6616508649593ecbee850193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6900e2e203d002cc7344a26ac2ce3e53">set_input_mode</a> (uint8_t port, char *value)</td></tr>
+<tr class="memdesc:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the input port.  <a href="group__ev3__port.html#ga6900e2e203d002cc7344a26ac2ce3e53">More...</a><br /></td></tr>
+<tr class="separator:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9001462b1fed337eac20d7cff66e842f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9001462b1fed337eac20d7cff66e842f">get_input_modes</a> (uint8_t port, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga9001462b1fed337eac20d7cff66e842f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the input port.  <a href="group__ev3__port.html#ga9001462b1fed337eac20d7cff66e842f">More...</a><br /></td></tr>
+<tr class="separator:ga9001462b1fed337eac20d7cff66e842f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga3a9cac1f7ae0276ddf3054ccdc91eeea">get_input_pin1_mv</a> (uint8_t port, int *buf)</td></tr>
+<tr class="memdesc:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin1_mv" attribute of the input port.  <a href="group__ev3__port.html#ga3a9cac1f7ae0276ddf3054ccdc91eeea">More...</a><br /></td></tr>
+<tr class="separator:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0e01c6bd99fa35f8cf5a6aabf00feb7b">get_input_pin6_mv</a> (uint8_t port, int *buf)</td></tr>
+<tr class="memdesc:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin6_mv" attribute of the input port.  <a href="group__ev3__port.html#ga0e01c6bd99fa35f8cf5a6aabf00feb7b">More...</a><br /></td></tr>
+<tr class="separator:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a> (uint8_t port, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the input port.  <a href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">More...</a><br /></td></tr>
+<tr class="separator:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga256019e854a149f65599abc75af0f860"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga256019e854a149f65599abc75af0f860">ev3_input_mode</a> (uint8_t mode_inx)</td></tr>
 <tr class="memdesc:ga256019e854a149f65599abc75af0f860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified input mode.  <a href="group__ev3__port.html#ga256019e854a149f65599abc75af0f860">More...</a><br /></td></tr>
 <tr class="separator:ga256019e854a149f65599abc75af0f860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga84cf1e73e13e51db75d6c134b14aad42"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga84cf1e73e13e51db75d6c134b14aad42">get_input_mode_inx</a> (uint8_t inx)</td></tr>
-<tr class="memdesc:ga84cf1e73e13e51db75d6c134b14aad42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode index of the input port.  <a href="group__ev3__port.html#ga84cf1e73e13e51db75d6c134b14aad42">More...</a><br /></td></tr>
-<tr class="separator:ga84cf1e73e13e51db75d6c134b14aad42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga300e6a55b93074a5be526f48fcde05ca"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga300e6a55b93074a5be526f48fcde05ca">set_input_mode_inx</a> (uint8_t inx, uint8_t mode_inx)</td></tr>
-<tr class="memdesc:ga300e6a55b93074a5be526f48fcde05ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode of the input by index.  <a href="group__ev3__port.html#ga300e6a55b93074a5be526f48fcde05ca">More...</a><br /></td></tr>
-<tr class="separator:ga300e6a55b93074a5be526f48fcde05ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga03d907a3842b4430af092656f3bcb69f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga03d907a3842b4430af092656f3bcb69f">ev3_input_inx</a> (const char *name, uint8_t *extport)</td></tr>
-<tr class="memdesc:ga03d907a3842b4430af092656f3bcb69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 input port and the extended port from the port name.  <a href="group__ev3__port.html#ga03d907a3842b4430af092656f3bcb69f">More...</a><br /></td></tr>
-<tr class="separator:ga03d907a3842b4430af092656f3bcb69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaabbc6630343c815e3756ff20269172e5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaabbc6630343c815e3756ff20269172e5">ev3_input_name</a> (uint8_t inx, uint8_t extport)</td></tr>
-<tr class="memdesc:gaabbc6630343c815e3756ff20269172e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 input port.  <a href="group__ev3__port.html#gaabbc6630343c815e3756ff20269172e5">More...</a><br /></td></tr>
-<tr class="separator:gaabbc6630343c815e3756ff20269172e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ac23f53dfb5755dbcafa5184c79a1f901"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>input_attr_mode</b> []</td></tr>
-<tr class="separator:ac23f53dfb5755dbcafa5184c79a1f901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdab2e1aa321134f0ff43760a731ac1"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>input_attr_modes</b> []</td></tr>
-<tr class="separator:adfdab2e1aa321134f0ff43760a731ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52aa4a0debc96a15442b1e3f7ab8c44b"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>input_attr_pin1_mv</b> []</td></tr>
-<tr class="separator:a52aa4a0debc96a15442b1e3f7ab8c44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a797b4874b69ead3c05281123de862cbb"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>input_attr_pin6_mv</b> []</td></tr>
-<tr class="separator:a797b4874b69ead3c05281123de862cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8811caffd4af452b1fda63dd6410bcd7"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>input_attr_state</b> []</td></tr>
-<tr class="separator:a8811caffd4af452b1fda63dd6410bcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gacb0bf23ecfba09a9960660f0b9f78d96">get_input_mode_inx</a> (uint8_t port)</td></tr>
+<tr class="memdesc:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode index of the input port.  <a href="group__ev3__port.html#gacb0bf23ecfba09a9960660f0b9f78d96">More...</a><br /></td></tr>
+<tr class="separator:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gae6d8d65a02bec9f5920fea0cd0f2792b">set_input_mode_inx</a> (uint8_t port, uint8_t mode_inx)</td></tr>
+<tr class="memdesc:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode of the input by index.  <a href="group__ev3__port.html#gae6d8d65a02bec9f5920fea0cd0f2792b">More...</a><br /></td></tr>
+<tr class="separator:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>EV3 input ports. </p>
+<div class="textblock"><p>EV3 Input Ports. </p>
 <p>(ev3_input.yu-c) </p><dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>See the LICENSE file. </dd></dl>
-</div><h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="ac23f53dfb5755dbcafa5184c79a1f901"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const input_attr_mode[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;1&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;mode&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;2&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;mode&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;3&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;mode&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;4&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;mode&quot;</span>,</div>
-<div class="line"></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="adfdab2e1aa321134f0ff43760a731ac1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const input_attr_modes[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;1&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;modes&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;2&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;modes&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;3&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;modes&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;4&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;modes&quot;</span>,</div>
-<div class="line"></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a52aa4a0debc96a15442b1e3f7ab8c44b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const input_attr_pin1_mv[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;1&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin1_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;2&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin1_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;3&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin1_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;4&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin1_mv&quot;</span>,</div>
-<div class="line"></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a797b4874b69ead3c05281123de862cbb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const input_attr_pin6_mv[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;1&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin6_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;2&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin6_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;3&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin6_mv&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;4&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;pin6_mv&quot;</span>,</div>
-<div class="line"></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a8811caffd4af452b1fda63dd6410bcd7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* const input_attr_state[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;1&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;state&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;2&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;state&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;3&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;state&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;/sys/bus/legoev3/devices&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;in&quot;</span> <span class="stringliteral">&quot;4&quot;</span> <span class="stringliteral">&quot;/&quot;</span> <span class="stringliteral">&quot;state&quot;</span>,</div>
-<div class="line"></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 10 2014 14:13:12 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 14 2014 18:42:00 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
