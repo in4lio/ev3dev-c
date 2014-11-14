@@ -15,7 +15,7 @@ COPYRIGHT   = 'Copyright (c) 2011, 13, 14'
 AUTHORS     = 'Vitaly Kravtsov (in4lio@gmail.com)'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.7b6'
+VERSION     = '0.7b7'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -266,12 +266,12 @@ def _loc( input_file, pos, pointer = True ):
     result = ''
     decl, sou = yushell.source[ input_file ]
     if input_file.isdigit():
-#       -- location is into a macro
-        call = yushell.macro[ int( input_file )]
+#       -- location is into macro or eval import
+        call = yushell.inclusion[ int( input_file )]
         if call:
-#           -- location of call
+#           -- call location
             result += _loc( call.input_file, call.pos, False )
-#       -- location of macro
+#       -- macro or eval result location
         result += _loc( decl.input_file, decl.pos, False )
         fmt = LOC_MACRO
     else:
@@ -748,6 +748,7 @@ DIRECTORY = []
 
 import re
 from ast import literal_eval
+import imp
 
 #   ---------------------------------------------------------------------------
 def ps_term( _ ):
@@ -852,7 +853,7 @@ def _import_source( lib, once ):
 #   -- prevent libraries re-import
     if once and lib in yushell.source:
 #       -- library has already been imported
-        return '<null>'
+        return SOURCE_EMPTY
 
     lpath = lib
     if not os.path.isfile( lpath ):
@@ -865,10 +866,46 @@ def _import_source( lib, once ):
             sou = f.read().replace( '\r\n', EOL )
     except:
         e_type, e, tb = sys.exc_info()
-        raise e_type, 'ps_import: %s' % ( e ), tb
+        raise e_type, 'ps_import: %s' % ( e ) + lib.loc(), tb
 
     yushell.source[ lib ] = ( lpath, sou )
     return lib
+
+#   ---------------------------------------------------------------------------
+def _import_python( name, script ):
+#   -- prevent scripts re-import
+    if script in yushell.script:
+#       -- script has already been imported
+        return
+
+    lpath = script
+    if not os.path.isfile( lpath ):
+        for d in yushell.directory:
+            lpath = os.path.join( d, script )
+            if os.path.isfile( lpath ):
+                break
+    try:
+        mod = imp.load_source( name, lpath )
+        builtin.update( vars( mod ))
+    except:
+        e_type, e, tb = sys.exc_info()
+        raise e_type, 'ps_import_python: %s' % ( e ) + script.loc(), tb
+
+    yushell.script.append( script )
+
+#   ---------------------------------------------------------------------------
+def _import_eval( infix ):
+    try:
+        code = STR( ''.join( str( x ) for x in infix.ast.ast ), infix.input_file, infix.pos )
+        sou = eval( code, dict( globals(), **builtin ))                                                                #pylint: disable=W0142
+    except:
+        e_type, e, tb = sys.exc_info()
+        raise e_type, 'ps_import_eval: %s' % ( e ) + infix.loc(), tb
+
+    yushell.inclusion.append( None )
+    _import = str( len( yushell.inclusion ) - 1 )
+    yushell.source[ _import ] = ( code, sou )
+    return _import
 
 #   ---------------------------------------------------------------------------
 def trace__ps_( name, sou, depth ):
@@ -1047,7 +1084,7 @@ def ps_set( sou, depth = 0 ):
 @echo__ps_
 def ps_import( sou, depth = 0 ):
     """
-    import ::=  '($import' ( quote | atom ) { '\\import' } ')';
+    import ::= '($import' ( atom | quote | infix ) { '\\import' } ')';
     """
 #   ---------------
 #   ---- ($import
@@ -1058,15 +1095,29 @@ def ps_import( sou, depth = 0 ):
     ( sou, _ ) = ps_gap( sou[ l_IMPORT: ], depth + 1 )
 #   ---- atom
     ( sou, leg ) = ps_atom( sou, depth + 1 )
-    if leg is None:
+    if leg is not None:
+#       -- import library
+        leg = yuparse( _import_source( STR( "%s.yu" % ( leg ), leg.input_file, leg.pos ), True ))
+    else:
 #   ---- quote
         ( sou, leg ) = ps_quote( sou, depth + 1 )
-        if leg is None:
-            raise SyntaxError( '%s: name of imported file expected' % ( callee()) + sou.loc())
-        once = False
-    else:
-        leg = "%s.yu" % ( leg )
-        once = True
+        if leg is not None:
+            leg = STR( _unq( leg ), leg.input_file, leg.pos )
+            ( fn, e ) = os.path.splitext( os.path.basename( leg ))
+            if e.lower() == '.py':
+#               -- import python script
+                _import_python( fn, leg )
+                leg = TEXT([])
+            else:
+#               -- include source code
+                leg = yuparse( _import_source( leg, False ))
+        else:
+#   ---- infix
+            ( sou, leg ) = ps_infix( sou, depth + 1 )
+            if leg is None:
+                raise SyntaxError( '%s: name of imported file expected' % ( callee()) + sou.loc())
+
+            leg = yuparse( _import_eval( leg ))
 #   ---- gap
     ( sou, _ ) = ps_gap( sou, depth + 1 )
 #   ---- \import
@@ -1076,7 +1127,7 @@ def ps_import( sou, depth = 0 ):
     if sou[ :1 ] != ')':
         raise SyntaxError( '%s: ")" expected' % ( callee()) + sou.loc())
 
-    return ( sou[ 1: ], yuparse( _import_source( _unq( leg ), once )))
+    return ( sou[ 1: ], leg )
 
 #   ---------------------------------------------------------------------------
 @echo__ps_
@@ -1756,21 +1807,8 @@ def ps_list( sou, depth = 0 ):
 def ps_infix( sou, depth = 0 ):
     """
     infix ::=
-          '{' exp { op_logic_or exp } '}'
-        | '(${}' exp { op_logic_or exp } ')' & ($eq depth_pth 0);
-
-    exp ::= subexp { op_logic_and subexp };
-    subexp ::= simple { op_relation simple };
-    simple ::= { '+' | '-' } ( term { ( op_like_add | op_like_or ) term }0... );
-    term ::= multiplier { ( op_like_mult | op_like_and ) multiplier }0...;
-    multiplier ::= { '!' } ( variable | value | application | '(' exp ')' );
-    op_logic_or ::= '||';
-    op_logic_and ::= '&&';
-    op_relation ::= '==' | '!=' | '<=' | '<' | '>=' | '>';
-    op_like_add ::= '+' | '-';
-    op_like_or ::= '|' | '^';
-    op_like_mult ::= '*' | '/' | '\\';
-    op_like_and ::= '&' | '<<' | '>>';
+          '{' text '}'
+        | '(${}' text ')' & ($eq depth_pth 0);
     """
 #   ---------------
 #   -- infix has been released as a python expression
@@ -2295,12 +2333,15 @@ class SKIP( BASE_MARK ):
 
 import string, operator, math, datetime                                                                                #pylint: disable=W0402
 
+SOURCE_EMPTY = '<null>'
+
 #   ---------------------------------------------------------------------------
 def yushell( text, _input = None, _output = None ):
     yushell.input_file = os.path.basename( _input ) if _input else '<stdin>'
     yushell.output_file = os.path.basename( _output ) if _output else '<stdout>'
-    yushell.source = { '<null>': ( '', '' ), yushell.input_file: ( _input, text.replace( '\r\n', EOL ))}
-    yushell.macro = []
+    yushell.source = { SOURCE_EMPTY: ( '', '' ), yushell.input_file: ( _input, text.replace( '\r\n', EOL ))}
+    yushell.script = []
+    yushell.inclusion = []
     yushell.module = os.path.splitext( yushell.input_file )[ 0 ].replace( '-', '_' ).upper() if _input else 'UNTITLED'
     yushell.directory = []
 #   -- input file directory
@@ -2931,8 +2972,8 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
                     if not node.ast.startswith( '($' ):
                         node.ast = '($' + node.ast + ')'
 
-                yushell.macro.append( node.call )
-                _macro = str( len( yushell.macro ) - 1 )
+                yushell.inclusion.append( node.call )
+                _macro = str( len( yushell.inclusion ) - 1 )
                 yushell.source[ _macro ] = ( node.decl, node.ast )
                 node = yuparse( _macro )
                 if not node.ast:
@@ -3123,6 +3164,8 @@ def _ast_readable( node ):
 #   *                                 *
 #   * * * * * * * * * * * * * * * * * *
 
+from argparse import ArgumentParser
+
 TITLE = r""" __    __    _____ _____
 /\ \  /\ \  /\  _  \  _  \  %(description)s
 \ \ \_\/  \_\/  \_\ \ \_\ \  %(app)s %(version)s
@@ -3166,8 +3209,6 @@ SYSTEM_EXIT_HELP = 'Also, arguments can be passed through the response file e.g.
 
 #   ---------------------------------------------------------------------------
 def shell_argparse():
-    from argparse import ArgumentParser
-
     argp = ArgumentParser(
       description = 'yupp, %(description)s' % { 'description': DESCRIPTION }
     , version = '%(app)s %(version)s' % { 'app': APP, 'version': VERSION }

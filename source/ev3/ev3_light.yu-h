@@ -24,6 +24,8 @@
  *  \{
  */
 
+#define LED_DIR  ($LED_PATH)  /**< Directory of LEDs. */
+
 /**
  *  \brief Identifiers of light locations.
  */

@@ -85,6 +85,8 @@ package ev3;
 *get_light_trigger = *ev3c::get_light_trigger;
 *set_light_blink = *ev3c::set_light_blink;
 *get_light_blink = *ev3c::get_light_blink;
+*ev3_output_inx = *ev3c::ev3_output_inx;
+*ev3_output_name = *ev3c::ev3_output_name;
 *get_output_mode = *ev3c::get_output_mode;
 *set_output_mode = *ev3c::set_output_mode;
 *get_output_modes = *ev3c::get_output_modes;
@@ -93,8 +95,8 @@ package ev3;
 *ev3_output_mode = *ev3c::ev3_output_mode;
 *get_output_mode_inx = *ev3c::get_output_mode_inx;
 *set_output_mode_inx = *ev3c::set_output_mode_inx;
-*ev3_output_inx = *ev3c::ev3_output_inx;
-*ev3_output_name = *ev3c::ev3_output_name;
+*ev3_input_inx = *ev3c::ev3_input_inx;
+*ev3_input_name = *ev3c::ev3_input_name;
 *get_input_mode = *ev3c::get_input_mode;
 *set_input_mode = *ev3c::set_input_mode;
 *get_input_modes = *ev3c::get_input_modes;
@@ -104,8 +106,14 @@ package ev3;
 *ev3_input_mode = *ev3c::ev3_input_mode;
 *get_input_mode_inx = *ev3c::get_input_mode_inx;
 *set_input_mode_inx = *ev3c::set_input_mode_inx;
-*ev3_input_inx = *ev3c::ev3_input_inx;
-*ev3_input_name = *ev3c::ev3_input_name;
+*nxt_input_mux_inx = *ev3c::nxt_input_mux_inx;
+*nxt_input_mux_name = *ev3c::nxt_input_mux_name;
+*get_input_mux_mode = *ev3c::get_input_mux_mode;
+*set_input_mux_mode = *ev3c::set_input_mux_mode;
+*get_input_mux_modes = *ev3c::get_input_mux_modes;
+*nxt_input_mux_mode = *ev3c::nxt_input_mux_mode;
+*get_input_mux_mode_inx = *ev3c::get_input_mux_mode_inx;
+*set_input_mux_mode_inx = *ev3c::set_input_mux_mode_inx;
 *ev3_port_inx = *ev3c::ev3_port_inx;
 *ev3_port_name = *ev3c::ev3_port_name;
 *get_sensor_bin_data = *ev3c::get_sensor_bin_data;
@@ -216,6 +224,38 @@ package ev3;
 *ev3_search_dc = *ev3c::ev3_search_dc;
 *ev3_search_dc_plugged_in = *ev3c::ev3_search_dc_plugged_in;
 *ev3_dc_init = *ev3c::ev3_dc_init;
+*get_servo_command = *ev3c::get_servo_command;
+*set_servo_command = *ev3c::set_servo_command;
+*get_servo_max_pulse_ms = *ev3c::get_servo_max_pulse_ms;
+*set_servo_max_pulse_ms = *ev3c::set_servo_max_pulse_ms;
+*get_servo_mid_pulse_ms = *ev3c::get_servo_mid_pulse_ms;
+*set_servo_mid_pulse_ms = *ev3c::set_servo_mid_pulse_ms;
+*get_servo_min_pulse_ms = *ev3c::get_servo_min_pulse_ms;
+*set_servo_min_pulse_ms = *ev3c::set_servo_min_pulse_ms;
+*get_servo_name = *ev3c::get_servo_name;
+*get_servo_polarity = *ev3c::get_servo_polarity;
+*set_servo_polarity = *ev3c::set_servo_polarity;
+*get_servo_port_name = *ev3c::get_servo_port_name;
+*get_servo_position = *ev3c::get_servo_position;
+*set_servo_position = *ev3c::set_servo_position;
+*get_servo_rate = *ev3c::get_servo_rate;
+*set_servo_rate = *ev3c::set_servo_rate;
+*ev3_servo_type = *ev3c::ev3_servo_type;
+*get_servo_type_inx = *ev3c::get_servo_type_inx;
+*get_servo_port_inx = *ev3c::get_servo_port_inx;
+*ev3_servo_desc = *ev3c::ev3_servo_desc;
+*ev3_servo_desc_type_inx = *ev3c::ev3_servo_desc_type_inx;
+*ev3_servo_desc_port = *ev3c::ev3_servo_desc_port;
+*ev3_servo_desc_extport = *ev3c::ev3_servo_desc_extport;
+*ev3_servo_desc_addr = *ev3c::ev3_servo_desc_addr;
+*ev3_search_servo = *ev3c::ev3_search_servo;
+*ev3_search_servo_plugged_in = *ev3c::ev3_search_servo_plugged_in;
+*ev3_servo_init = *ev3c::ev3_servo_init;
+*get_servo_address = *ev3c::get_servo_address;
+*ev3_servo_port_name = *ev3c::ev3_servo_port_name;
+*get_nxt_analog_host_device_type = *ev3c::get_nxt_analog_host_device_type;
+*get_nxt_analog_host_port_name = *ev3c::get_nxt_analog_host_port_name;
+*set_nxt_analog_host_set_sensor = *ev3c::set_nxt_analog_host_set_sensor;
 
 ############# Class : ev3::EV3_SENSOR ##############
 
@@ -348,6 +388,51 @@ sub ACQUIRE {
 }
 
 
+############# Class : ev3::EV3_SERVO ##############
+
+package ev3::EV3_SERVO;
+use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
+@ISA = qw( ev3 );
+%OWNER = ();
+%ITERATORS = ();
+*swig_type_inx_get = *ev3c::EV3_SERVO_type_inx_get;
+*swig_type_inx_set = *ev3c::EV3_SERVO_type_inx_set;
+*swig_port_get = *ev3c::EV3_SERVO_port_get;
+*swig_port_set = *ev3c::EV3_SERVO_port_set;
+*swig_extport_get = *ev3c::EV3_SERVO_extport_get;
+*swig_extport_set = *ev3c::EV3_SERVO_extport_set;
+*swig_addr_get = *ev3c::EV3_SERVO_addr_get;
+*swig_addr_set = *ev3c::EV3_SERVO_addr_set;
+sub new {
+    my $pkg = shift;
+    my $self = ev3c::new_EV3_SERVO(@_);
+    bless $self, $pkg if defined($self);
+}
+
+sub DESTROY {
+    return unless $_[0]->isa('HASH');
+    my $self = tied(%{$_[0]});
+    return unless defined $self;
+    delete $ITERATORS{$self};
+    if (exists $OWNER{$self}) {
+        ev3c::delete_EV3_SERVO($self);
+        delete $OWNER{$self};
+    }
+}
+
+sub DISOWN {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    delete $OWNER{$ptr};
+}
+
+sub ACQUIRE {
+    my $self = shift;
+    my $ptr = tied(%$self);
+    $OWNER{$ptr} = 1;
+}
+
+
 # ------- VARIABLE STUBS --------
 
 package ev3;
@@ -382,6 +467,7 @@ package ev3;
 *TRIGGER_RFKILL1 = *ev3c::TRIGGER_RFKILL1;
 *TRIGGER__COUNT_ = *ev3c::TRIGGER__COUNT_;
 *LED_ATTR__COUNT_ = *ev3c::LED_ATTR__COUNT_;
+*LED_DIR = *ev3c::LED_DIR;
 *LIT_LEFT = *ev3c::LIT_LEFT;
 *LIT_RIGHT = *ev3c::LIT_RIGHT;
 *LIT__LOC__ = *ev3c::LIT__LOC__;
@@ -391,6 +477,7 @@ package ev3;
 *LIT_AMBER = *ev3c::LIT_AMBER;
 *LIT__COL__ = *ev3c::LIT__COL__;
 *LIT_COLOR = *ev3c::LIT_COLOR;
+*OUTPUT_DIR = *ev3c::OUTPUT_DIR;
 *OUTPUT__BASE_ = *ev3c::OUTPUT__BASE_;
 *OUTPUT_A = *ev3c::OUTPUT_A;
 *OUTPUT_B = *ev3c::OUTPUT_B;
@@ -403,6 +490,7 @@ package ev3;
 *OUTPUT_RCX_LED = *ev3c::OUTPUT_RCX_LED;
 *OUTPUT_RAW = *ev3c::OUTPUT_RAW;
 *OUTPUT_MODE__COUNT_ = *ev3c::OUTPUT_MODE__COUNT_;
+*INPUT_DIR = *ev3c::INPUT_DIR;
 *INPUT__BASE_ = *ev3c::INPUT__BASE_;
 *INPUT_1 = *ev3c::INPUT_1;
 *INPUT_2 = *ev3c::INPUT_2;
@@ -418,7 +506,18 @@ package ev3;
 *INPUT_OTHER_UART = *ev3c::INPUT_OTHER_UART;
 *INPUT_RAW = *ev3c::INPUT_RAW;
 *INPUT_MODE__COUNT_ = *ev3c::INPUT_MODE__COUNT_;
+*INPUT_MUX__NONE_ = *ev3c::INPUT_MUX__NONE_;
+*INPUT_MUX_1 = *ev3c::INPUT_MUX_1;
+*INPUT_MUX_2 = *ev3c::INPUT_MUX_2;
+*INPUT_MUX_3 = *ev3c::INPUT_MUX_3;
+*INPUT_MUX_4 = *ev3c::INPUT_MUX_4;
+*INPUT_MUX__BASE_ = *ev3c::INPUT_MUX__BASE_;
+*INPUT_MUX__COUNT_ = *ev3c::INPUT_MUX__COUNT_;
+*INPUT_MUX_ANALOG = *ev3c::INPUT_MUX_ANALOG;
+*INPUT_MUX_I2C = *ev3c::INPUT_MUX_I2C;
+*INPUT_MUX_MODE__COUNT_ = *ev3c::INPUT_MUX_MODE__COUNT_;
 *EV3_PORT__NONE_ = *ev3c::EV3_PORT__NONE_;
+*SENSOR_DIR = *ev3c::SENSOR_DIR;
 *SENSOR_DESC__LIMIT_ = *ev3c::SENSOR_DESC__LIMIT_;
 *SENSOR__NONE_ = *ev3c::SENSOR__NONE_;
 
@@ -452,18 +551,15 @@ bless $ev3_sensor, ev3::EV3_SENSOR;
 *LEGO_EV3_TOUCH = *ev3c::LEGO_EV3_TOUCH;
 *EV3_UART_33 = *ev3c::EV3_UART_33;
 *LEGO_POWER_STORAGE = *ev3c::LEGO_POWER_STORAGE;
-*TMP275 = *ev3c::TMP275;
 *LEGO_NXT_TOUCH = *ev3c::LEGO_NXT_TOUCH;
 *LEGO_NXT_LIGHT = *ev3c::LEGO_NXT_LIGHT;
 *LEGO_NXT_SOUND = *ev3c::LEGO_NXT_SOUND;
 *LEGO_NXT_ULTRASONIC = *ev3c::LEGO_NXT_ULTRASONIC;
 *MS_LIGHT_ARRAY = *ev3c::MS_LIGHT_ARRAY;
 *MS_8CH_SERVO = *ev3c::MS_8CH_SERVO;
-*PCF8574 = *ev3c::PCF8574;
-*PCF8591 = *ev3c::PCF8591;
-*DS1307 = *ev3c::DS1307;
 *MS_NXT_TOUCH_MUX = *ev3c::MS_NXT_TOUCH_MUX;
 *SENSOR_TYPE__COUNT_ = *ev3c::SENSOR_TYPE__COUNT_;
+*TACHO_DIR = *ev3c::TACHO_DIR;
 *TACHO_DESC__LIMIT_ = *ev3c::TACHO_DESC__LIMIT_;
 *TACHO__NONE_ = *ev3c::TACHO__NONE_;
 
@@ -475,6 +571,7 @@ bless $ev3_tacho, ev3::EV3_TACHO;
 *TACHO = *ev3c::TACHO;
 *MINITACHO = *ev3c::MINITACHO;
 *TACHO_TYPE__COUNT_ = *ev3c::TACHO_TYPE__COUNT_;
+*DC_DIR = *ev3c::DC_DIR;
 *DC_DESC__LIMIT_ = *ev3c::DC_DESC__LIMIT_;
 *DC__NONE_ = *ev3c::DC__NONE_;
 
@@ -485,4 +582,16 @@ bless $ev3_dc, ev3::EV3_DC;
 *DC_TYPE__NONE_ = *ev3c::DC_TYPE__NONE_;
 *RCX_MOTOR = *ev3c::RCX_MOTOR;
 *DC_TYPE__COUNT_ = *ev3c::DC_TYPE__COUNT_;
+*SERVO_DIR = *ev3c::SERVO_DIR;
+*SERVO_DESC__LIMIT_ = *ev3c::SERVO_DESC__LIMIT_;
+*SERVO__NONE_ = *ev3c::SERVO__NONE_;
+
+my %__ev3_servo_hash;
+tie %__ev3_servo_hash,"ev3::EV3_SERVO", $ev3c::ev3_servo;
+$ev3_servo= \%__ev3_servo_hash;
+bless $ev3_servo, ev3::EV3_SERVO;
+*SERVO_TYPE__NONE_ = *ev3c::SERVO_TYPE__NONE_;
+*SERVO_MOTOR = *ev3c::SERVO_MOTOR;
+*SERVO_TYPE__COUNT_ = *ev3c::SERVO_TYPE__COUNT_;
+*NXT_ANALOG_HOST_DIR = *ev3c::NXT_ANALOG_HOST_DIR;
 1;

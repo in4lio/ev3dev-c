@@ -4,7 +4,7 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($set PATH_PREF ($join (($unq CLASS_PATH) ($unq CLASS_FOLDER_PREF)) [/]))
+($set PATH_PREF,,($unq CLASS_PATH)/($unq CLASS_FOLDER_PREF))
 #define PATH_PREF_LEN  ($len PATH_PREF)
 #define _ID_SPOT  "///"
 
@@ -78,8 +78,8 @@ uint8_t get_($CLASS_ID)_type_inx( uint8_t sn )
 	if ( !get_($CLASS_ID)_($unq CLASS_TYPE_ATTR)( sn, buf, sizeof( buf ))) return ( ($upper CLASS_ID)_TYPE__NONE_ );
 
 	/* If type name contains ':' it starts with port e.g. "outB:rcx-motor" */
-	t = strchr( buf, ':' );
-	t = ( t == NULL ) ? buf : t + 1;
+	t = strrchr( buf, ':' );
+	t = ( t ) ? t + 1 : buf;
 
 	($each-CLASS_TYPE \i.]
 		if ( strcmp( t, ($i CLASS_TYPE_NAME) ) == 0 ) return ($upper ($i CLASS_TYPE_ID));
@@ -127,13 +127,13 @@ bool ev3_search_($CLASS_ID)( uint8_t type_inx, uint8_t *sn, uint8_t from )
 	return ( false );
 }
 
-bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($ne ($CLASS_ADDR_INX) -1))uint8_t *sn, uint8_t from )
+bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($CLASS_DESC_ADDR))uint8_t *sn, uint8_t from )
 {
 	uint8_t _sn = from;
 
 	while ( _sn < ($upper CLASS_ID)_DESC__LIMIT_) {
 		if ( ev3_($CLASS_ID)[ _sn ].port == port ) {
-			($if ($ne ($CLASS_ADDR_INX) -1) ]
+			($if ($CLASS_DESC_ADDR) ]
 				if ( addr ) {
 					if ( ev3_($CLASS_ID)[ _sn ].addr == addr ) {
 						*sn = _sn;
@@ -173,7 +173,7 @@ int ev3_($CLASS_ID)_init( void )
 	p = strtok( list, " " );
 	while ( p ) {
 		if (( ev3_string_suffix( ($CLASS_FOLDER_PREF), &p, &sn ) == 1 ) && ( sn < ($upper CLASS_ID)_DESC__LIMIT_)) {
-			($if ($ne ($CLASS_ADDR_INX) -1) ]
+			($if ($CLASS_DESC_ADDR) ]
 				get_($CLASS_ID)_address( sn, &ev3_($CLASS_ID)[ sn ].addr );
 			[ )
 			ev3_($CLASS_ID)[ sn ].type_inx = get_($CLASS_ID)_type_inx( sn );

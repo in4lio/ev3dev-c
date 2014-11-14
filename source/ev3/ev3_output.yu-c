@@ -21,24 +21,3 @@
 
 ($import "ev3_output-dict.yu")
 ($import "ev3_port.yu")
-
-uint8_t ev3_output_inx( const char *name )
-{
-	($PORT \i.]
-		if ( strcmp( name, ($q,,($unq PORT_PREF)($i)) ) == 0 ) return ($upper PORT_PREF_ID)_($i);
-
-	[ )
-	return ( EV3_PORT__NONE_ );
-}
-
-const char *ev3_output_name( uint8_t inx )
-{
-	switch ( inx ) {
-	($PORT \i.]
-	case ($upper PORT_PREF_ID)_($i):
-		return ($q,,($unq PORT_PREF)($i));
-
-	[ )
-	}
-	return STR_unknown_;
-}

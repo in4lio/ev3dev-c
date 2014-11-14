@@ -23,7 +23,7 @@
 
 	static const char * const led_attr_($i LED_ATTR_ID)[] = {
 		($each-LED \ii.]
-			($LED_PATH) "/" ($ii LED_NAME) "/" ($i LED_ATTR_NAME),
+			($q,,($unq LED_PATH)/($unq ($ii LED_NAME))/($unq ($i LED_ATTR_NAME))),
 
 		[ )
 	};

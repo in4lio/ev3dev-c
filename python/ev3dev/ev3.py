@@ -217,6 +217,7 @@ set_led_trigger_inx = _ev3.set_led_trigger_inx
 def ev3_led_trigger(*args):
   return _ev3.ev3_led_trigger(*args)
 ev3_led_trigger = _ev3.ev3_led_trigger
+LED_DIR = _ev3.LED_DIR
 LIT_LEFT = _ev3.LIT_LEFT
 LIT_RIGHT = _ev3.LIT_RIGHT
 LIT__LOC__ = _ev3.LIT__LOC__
@@ -249,6 +250,7 @@ set_light_blink = _ev3.set_light_blink
 def get_light_blink(*args):
   return _ev3.get_light_blink(*args)
 get_light_blink = _ev3.get_light_blink
+OUTPUT_DIR = _ev3.OUTPUT_DIR
 OUTPUT__BASE_ = _ev3.OUTPUT__BASE_
 OUTPUT_A = _ev3.OUTPUT_A
 OUTPUT_B = _ev3.OUTPUT_B
@@ -261,6 +263,14 @@ OUTPUT_RCX_MOTOR = _ev3.OUTPUT_RCX_MOTOR
 OUTPUT_RCX_LED = _ev3.OUTPUT_RCX_LED
 OUTPUT_RAW = _ev3.OUTPUT_RAW
 OUTPUT_MODE__COUNT_ = _ev3.OUTPUT_MODE__COUNT_
+
+def ev3_output_inx(*args):
+  return _ev3.ev3_output_inx(*args)
+ev3_output_inx = _ev3.ev3_output_inx
+
+def ev3_output_name(*args):
+  return _ev3.ev3_output_name(*args)
+ev3_output_name = _ev3.ev3_output_name
 
 def get_output_mode(*args):
   return _ev3.get_output_mode(*args)
@@ -293,14 +303,7 @@ get_output_mode_inx = _ev3.get_output_mode_inx
 def set_output_mode_inx(*args):
   return _ev3.set_output_mode_inx(*args)
 set_output_mode_inx = _ev3.set_output_mode_inx
-
-def ev3_output_inx(*args):
-  return _ev3.ev3_output_inx(*args)
-ev3_output_inx = _ev3.ev3_output_inx
-
-def ev3_output_name(*args):
-  return _ev3.ev3_output_name(*args)
-ev3_output_name = _ev3.ev3_output_name
+INPUT_DIR = _ev3.INPUT_DIR
 INPUT__BASE_ = _ev3.INPUT__BASE_
 INPUT_1 = _ev3.INPUT_1
 INPUT_2 = _ev3.INPUT_2
@@ -316,6 +319,14 @@ INPUT_NXT_I2C = _ev3.INPUT_NXT_I2C
 INPUT_OTHER_UART = _ev3.INPUT_OTHER_UART
 INPUT_RAW = _ev3.INPUT_RAW
 INPUT_MODE__COUNT_ = _ev3.INPUT_MODE__COUNT_
+
+def ev3_input_inx(*args):
+  return _ev3.ev3_input_inx(*args)
+ev3_input_inx = _ev3.ev3_input_inx
+
+def ev3_input_name(*args):
+  return _ev3.ev3_input_name(*args)
+ev3_input_name = _ev3.ev3_input_name
 
 def get_input_mode(*args):
   return _ev3.get_input_mode(*args)
@@ -352,14 +363,48 @@ get_input_mode_inx = _ev3.get_input_mode_inx
 def set_input_mode_inx(*args):
   return _ev3.set_input_mode_inx(*args)
 set_input_mode_inx = _ev3.set_input_mode_inx
+INPUT_MUX__NONE_ = _ev3.INPUT_MUX__NONE_
+INPUT_MUX_1 = _ev3.INPUT_MUX_1
+INPUT_MUX_2 = _ev3.INPUT_MUX_2
+INPUT_MUX_3 = _ev3.INPUT_MUX_3
+INPUT_MUX_4 = _ev3.INPUT_MUX_4
+INPUT_MUX__BASE_ = _ev3.INPUT_MUX__BASE_
+INPUT_MUX__COUNT_ = _ev3.INPUT_MUX__COUNT_
+INPUT_MUX_ANALOG = _ev3.INPUT_MUX_ANALOG
+INPUT_MUX_I2C = _ev3.INPUT_MUX_I2C
+INPUT_MUX_MODE__COUNT_ = _ev3.INPUT_MUX_MODE__COUNT_
 
-def ev3_input_inx(*args):
-  return _ev3.ev3_input_inx(*args)
-ev3_input_inx = _ev3.ev3_input_inx
+def nxt_input_mux_inx(*args):
+  return _ev3.nxt_input_mux_inx(*args)
+nxt_input_mux_inx = _ev3.nxt_input_mux_inx
 
-def ev3_input_name(*args):
-  return _ev3.ev3_input_name(*args)
-ev3_input_name = _ev3.ev3_input_name
+def nxt_input_mux_name(*args):
+  return _ev3.nxt_input_mux_name(*args)
+nxt_input_mux_name = _ev3.nxt_input_mux_name
+
+def get_input_mux_mode(*args):
+  return _ev3.get_input_mux_mode(*args)
+get_input_mux_mode = _ev3.get_input_mux_mode
+
+def set_input_mux_mode(*args):
+  return _ev3.set_input_mux_mode(*args)
+set_input_mux_mode = _ev3.set_input_mux_mode
+
+def get_input_mux_modes(*args):
+  return _ev3.get_input_mux_modes(*args)
+get_input_mux_modes = _ev3.get_input_mux_modes
+
+def nxt_input_mux_mode(*args):
+  return _ev3.nxt_input_mux_mode(*args)
+nxt_input_mux_mode = _ev3.nxt_input_mux_mode
+
+def get_input_mux_mode_inx(*args):
+  return _ev3.get_input_mux_mode_inx(*args)
+get_input_mux_mode_inx = _ev3.get_input_mux_mode_inx
+
+def set_input_mux_mode_inx(*args):
+  return _ev3.set_input_mux_mode_inx(*args)
+set_input_mux_mode_inx = _ev3.set_input_mux_mode_inx
 EV3_PORT__NONE_ = _ev3.EV3_PORT__NONE_
 
 def ev3_port_inx(*args):
@@ -369,6 +414,7 @@ ev3_port_inx = _ev3.ev3_port_inx
 def ev3_port_name(*args):
   return _ev3.ev3_port_name(*args)
 ev3_port_name = _ev3.ev3_port_name
+SENSOR_DIR = _ev3.SENSOR_DIR
 class EV3_SENSOR(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_SENSOR, name, value)
@@ -426,16 +472,12 @@ EV3_UART_29 = _ev3.EV3_UART_29
 LEGO_EV3_TOUCH = _ev3.LEGO_EV3_TOUCH
 EV3_UART_33 = _ev3.EV3_UART_33
 LEGO_POWER_STORAGE = _ev3.LEGO_POWER_STORAGE
-TMP275 = _ev3.TMP275
 LEGO_NXT_TOUCH = _ev3.LEGO_NXT_TOUCH
 LEGO_NXT_LIGHT = _ev3.LEGO_NXT_LIGHT
 LEGO_NXT_SOUND = _ev3.LEGO_NXT_SOUND
 LEGO_NXT_ULTRASONIC = _ev3.LEGO_NXT_ULTRASONIC
 MS_LIGHT_ARRAY = _ev3.MS_LIGHT_ARRAY
 MS_8CH_SERVO = _ev3.MS_8CH_SERVO
-PCF8574 = _ev3.PCF8574
-PCF8591 = _ev3.PCF8591
-DS1307 = _ev3.DS1307
 MS_NXT_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX
 SENSOR_TYPE__COUNT_ = _ev3.SENSOR_TYPE__COUNT_
 
@@ -578,6 +620,7 @@ ev3_search_sensor_plugged_in = _ev3.ev3_search_sensor_plugged_in
 def ev3_sensor_init():
   return _ev3.ev3_sensor_init()
 ev3_sensor_init = _ev3.ev3_sensor_init
+TACHO_DIR = _ev3.TACHO_DIR
 class EV3_TACHO(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_TACHO, name, value)
@@ -808,6 +851,7 @@ ev3_search_tacho_plugged_in = _ev3.ev3_search_tacho_plugged_in
 def ev3_tacho_init():
   return _ev3.ev3_tacho_init()
 ev3_tacho_init = _ev3.ev3_tacho_init
+DC_DIR = _ev3.DC_DIR
 class EV3_DC(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_DC, name, value)
@@ -929,6 +973,168 @@ ev3_search_dc_plugged_in = _ev3.ev3_search_dc_plugged_in
 def ev3_dc_init():
   return _ev3.ev3_dc_init()
 ev3_dc_init = _ev3.ev3_dc_init
+SERVO_DIR = _ev3.SERVO_DIR
+class EV3_SERVO(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_SERVO, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, EV3_SERVO, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["type_inx"] = _ev3.EV3_SERVO_type_inx_set
+    __swig_getmethods__["type_inx"] = _ev3.EV3_SERVO_type_inx_get
+    if _newclass:type_inx = _swig_property(_ev3.EV3_SERVO_type_inx_get, _ev3.EV3_SERVO_type_inx_set)
+    __swig_setmethods__["port"] = _ev3.EV3_SERVO_port_set
+    __swig_getmethods__["port"] = _ev3.EV3_SERVO_port_get
+    if _newclass:port = _swig_property(_ev3.EV3_SERVO_port_get, _ev3.EV3_SERVO_port_set)
+    __swig_setmethods__["extport"] = _ev3.EV3_SERVO_extport_set
+    __swig_getmethods__["extport"] = _ev3.EV3_SERVO_extport_get
+    if _newclass:extport = _swig_property(_ev3.EV3_SERVO_extport_get, _ev3.EV3_SERVO_extport_set)
+    __swig_setmethods__["addr"] = _ev3.EV3_SERVO_addr_set
+    __swig_getmethods__["addr"] = _ev3.EV3_SERVO_addr_get
+    if _newclass:addr = _swig_property(_ev3.EV3_SERVO_addr_get, _ev3.EV3_SERVO_addr_set)
+    def __init__(self): 
+        this = _ev3.new_EV3_SERVO()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _ev3.delete_EV3_SERVO
+    __del__ = lambda self : None;
+EV3_SERVO_swigregister = _ev3.EV3_SERVO_swigregister
+EV3_SERVO_swigregister(EV3_SERVO)
+
+SERVO_DESC__LIMIT_ = _ev3.SERVO_DESC__LIMIT_
+SERVO__NONE_ = _ev3.SERVO__NONE_
+SERVO_TYPE__NONE_ = _ev3.SERVO_TYPE__NONE_
+SERVO_MOTOR = _ev3.SERVO_MOTOR
+SERVO_TYPE__COUNT_ = _ev3.SERVO_TYPE__COUNT_
+
+def get_servo_command(*args):
+  return _ev3.get_servo_command(*args)
+get_servo_command = _ev3.get_servo_command
+
+def set_servo_command(*args):
+  return _ev3.set_servo_command(*args)
+set_servo_command = _ev3.set_servo_command
+
+def get_servo_max_pulse_ms(*args):
+  return _ev3.get_servo_max_pulse_ms(*args)
+get_servo_max_pulse_ms = _ev3.get_servo_max_pulse_ms
+
+def set_servo_max_pulse_ms(*args):
+  return _ev3.set_servo_max_pulse_ms(*args)
+set_servo_max_pulse_ms = _ev3.set_servo_max_pulse_ms
+
+def get_servo_mid_pulse_ms(*args):
+  return _ev3.get_servo_mid_pulse_ms(*args)
+get_servo_mid_pulse_ms = _ev3.get_servo_mid_pulse_ms
+
+def set_servo_mid_pulse_ms(*args):
+  return _ev3.set_servo_mid_pulse_ms(*args)
+set_servo_mid_pulse_ms = _ev3.set_servo_mid_pulse_ms
+
+def get_servo_min_pulse_ms(*args):
+  return _ev3.get_servo_min_pulse_ms(*args)
+get_servo_min_pulse_ms = _ev3.get_servo_min_pulse_ms
+
+def set_servo_min_pulse_ms(*args):
+  return _ev3.set_servo_min_pulse_ms(*args)
+set_servo_min_pulse_ms = _ev3.set_servo_min_pulse_ms
+
+def get_servo_name(*args):
+  return _ev3.get_servo_name(*args)
+get_servo_name = _ev3.get_servo_name
+
+def get_servo_polarity(*args):
+  return _ev3.get_servo_polarity(*args)
+get_servo_polarity = _ev3.get_servo_polarity
+
+def set_servo_polarity(*args):
+  return _ev3.set_servo_polarity(*args)
+set_servo_polarity = _ev3.set_servo_polarity
+
+def get_servo_port_name(*args):
+  return _ev3.get_servo_port_name(*args)
+get_servo_port_name = _ev3.get_servo_port_name
+
+def get_servo_position(*args):
+  return _ev3.get_servo_position(*args)
+get_servo_position = _ev3.get_servo_position
+
+def set_servo_position(*args):
+  return _ev3.set_servo_position(*args)
+set_servo_position = _ev3.set_servo_position
+
+def get_servo_rate(*args):
+  return _ev3.get_servo_rate(*args)
+get_servo_rate = _ev3.get_servo_rate
+
+def set_servo_rate(*args):
+  return _ev3.set_servo_rate(*args)
+set_servo_rate = _ev3.set_servo_rate
+
+def ev3_servo_type(*args):
+  return _ev3.ev3_servo_type(*args)
+ev3_servo_type = _ev3.ev3_servo_type
+
+def get_servo_type_inx(*args):
+  return _ev3.get_servo_type_inx(*args)
+get_servo_type_inx = _ev3.get_servo_type_inx
+
+def get_servo_port_inx(*args):
+  return _ev3.get_servo_port_inx(*args)
+get_servo_port_inx = _ev3.get_servo_port_inx
+
+def ev3_servo_desc(*args):
+  return _ev3.ev3_servo_desc(*args)
+ev3_servo_desc = _ev3.ev3_servo_desc
+
+def ev3_servo_desc_type_inx(*args):
+  return _ev3.ev3_servo_desc_type_inx(*args)
+ev3_servo_desc_type_inx = _ev3.ev3_servo_desc_type_inx
+
+def ev3_servo_desc_port(*args):
+  return _ev3.ev3_servo_desc_port(*args)
+ev3_servo_desc_port = _ev3.ev3_servo_desc_port
+
+def ev3_servo_desc_extport(*args):
+  return _ev3.ev3_servo_desc_extport(*args)
+ev3_servo_desc_extport = _ev3.ev3_servo_desc_extport
+
+def ev3_servo_desc_addr(*args):
+  return _ev3.ev3_servo_desc_addr(*args)
+ev3_servo_desc_addr = _ev3.ev3_servo_desc_addr
+
+def ev3_search_servo(*args):
+  return _ev3.ev3_search_servo(*args)
+ev3_search_servo = _ev3.ev3_search_servo
+
+def ev3_search_servo_plugged_in(*args):
+  return _ev3.ev3_search_servo_plugged_in(*args)
+ev3_search_servo_plugged_in = _ev3.ev3_search_servo_plugged_in
+
+def ev3_servo_init():
+  return _ev3.ev3_servo_init()
+ev3_servo_init = _ev3.ev3_servo_init
+
+def get_servo_address(*args):
+  return _ev3.get_servo_address(*args)
+get_servo_address = _ev3.get_servo_address
+
+def ev3_servo_port_name(*args):
+  return _ev3.ev3_servo_port_name(*args)
+ev3_servo_port_name = _ev3.ev3_servo_port_name
+NXT_ANALOG_HOST_DIR = _ev3.NXT_ANALOG_HOST_DIR
+
+def get_nxt_analog_host_device_type(*args):
+  return _ev3.get_nxt_analog_host_device_type(*args)
+get_nxt_analog_host_device_type = _ev3.get_nxt_analog_host_device_type
+
+def get_nxt_analog_host_port_name(*args):
+  return _ev3.get_nxt_analog_host_port_name(*args)
+get_nxt_analog_host_port_name = _ev3.get_nxt_analog_host_port_name
+
+def set_nxt_analog_host_set_sensor(*args):
+  return _ev3.set_nxt_analog_host_set_sensor(*args)
+set_nxt_analog_host_set_sensor = _ev3.set_nxt_analog_host_set_sensor
 # This file is compatible with both classic and new-style classes.
 
 

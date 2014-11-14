@@ -18,10 +18,10 @@
 
 <H3>I LEVEL</H3>
 
-This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
+<P>This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
 access to the file system of the EV3 brick. The following code will write
 the value in the file (on the brick) or will send these data in an UDP message
-to the brick (on the remote computer).
+to the brick (on the remote computer).</P>
 \code {.c}
 ev3_init();
 
@@ -29,13 +29,13 @@ ev3_write( "/sys/class/leds/ev3:red:right/trigger", "heartbeat" );
 
 ev3_uninit();
 \endcode
-For more information about a remote access to the EV3 brick go to
-<A HREF="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</A>.
+<P>For more information about a remote access to the EV3 brick go to
+<A HREF="https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link">"source/ev3/ev3_link/README"</A>.</P>
 
 <H3>II LEVEL</H3>
 
-Basic \ref ev3_led "functions" to read and write attributes of LEDs, see
-<A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</A>.
+<P>Basic functions to read and write attributes of \ref ev3_led "LEDs", see
+<A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</A>.</P>
 \code {.c}
 int ok;
 uint8_t val;
@@ -48,12 +48,11 @@ if ( ok ) {
 }
 ev3_uninit();
 \endcode
-Basic \ref ev3_port "functions" to read and write attributes of EV3 Ports, see
+<P>Basic functions to read and write attributes of \ref ev3_port "EV3 Ports", see
 <A HREF="http://www.ev3dev.org/docs/drivers/ev3-output-port/">"EV3 Output Port Driver"</A>
-and <A HREF="http://www.ev3dev.org/docs/drivers/ev3-input-port/">"EV3 Input Port Driver"</A>.
+and <A HREF="http://www.ev3dev.org/docs/drivers/ev3-input-port/">"EV3 Input Port Driver"</A>.</P>
 \code {.c}
 char s[ 256 ];
-uint8_t i;
 
 ev3_init();
 
@@ -62,14 +61,13 @@ if ( get_output_state( OUTPUT_A, s, sizeof( s ))) {
 }
 ev3_uninit();
 \endcode
-Basic \ref ev3_sensor "functions" to read and write attributes of Mindstorms Sensors, see
-<A HREF="http://www.ev3dev.org/docs/drivers/msensor-class/">"MINDSTORMS Sensor Class"</A>.
+<P>Basic functions to read and write attributes of \ref ev3_sensor "Mindstorms Sensors", see
+<A HREF="http://www.ev3dev.org/docs/drivers/msensor-class/">"MINDSTORMS Sensor Class"</A>.</P>
 \code {.c}
 uint8_t sn;
 int val;
 
 ev3_init();
-ev3_sensor_init();
 
 if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn, 0 )) {
 	if ( get_sensor_value( 0, sn, &val )) {
@@ -78,8 +76,8 @@ if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
-Basic \ref ev3_tacho "functions" to read and write attributes of Tacho Motors, see
-<A HREF="http://www.ev3dev.org/docs/drivers/tacho-motor-class/">"Tacho Motor Class"</A>.
+<P>Basic functions to read and write attributes of \ref ev3_tacho "Tacho Motors", see
+<A HREF="http://www.ev3dev.org/docs/drivers/tacho-motor-class/">"Tacho Motor Class"</A>.</P>
 \code {.c}
 uint8_t sn;
 
@@ -98,8 +96,8 @@ if ( ev3_search_tacho( TACHO, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
-Basic \ref ev3_dc "functions" to read and write attributes of DC Motors, see
-<A HREF="http://www.ev3dev.org/docs/drivers/dc-motor-class/">"DC Motor Class"</A>.
+<P>Basic functions to read and write attributes of \ref ev3_dc "DC Motors", see
+<A HREF="http://www.ev3dev.org/docs/drivers/dc-motor-class/">"DC Motor Class"</A>.</P>
 \code {.c}
 uint8_t sn;
 
@@ -107,7 +105,7 @@ ev3_init();
 set_output_mode_inx( OUTPUT_D, OUTPUT_RCX_MOTOR );
 ev3_dc_init();
 
-if ( ev3_search_dc( RCX_MOTOR, &sn, 0 )) {
+if ( ev3_search_dc_plugged_in( OUTPUT_D, INPUT_MUX__NONE_, &sn, 0 )) {
 	set_dc_duty_cycle( sn, 100 );
 	set_dc_command( sn, "run" );
 	Sleep( 5000 );
@@ -115,11 +113,48 @@ if ( ev3_search_dc( RCX_MOTOR, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
+<P>Basic functions to read and write attributes of \ref ev3_host "NXT Analog Host", see
+<A HREF="http://www.ev3dev.org/docs/drivers/nxt-analog-host/">"NXT Analog Host Driver"</A>.</P>
+<P>Basic functions to read and write attributes of \ref ev3_port "Multiplexer Input Ports", see
+<A HREF="http://www.ev3dev.org/docs/drivers/ht-smux-input-port/">"Multiplexer Input Port Driver"</A>.</P>
+\code {.c}
+uint8_t sn;
+int val;
+
+ev3_init();
+set_input_mux_mode_inx( INPUT_1, INPUT_MUX_ANALOG );
+set_nxt_analog_host_set_sensor( INPUT_1, INPUT_MUX_1, ( char* ) ev3_sensor_type( LEGO_NXT_TOUCH ));
+
+ev3_sensor_init();
+
+if ( ev3_search_sensor_plugged_in( INPUT_1, INPUT_MUX_1, &sn, 0 )) {
+	if ( get_sensor_value( 0, sn, &val )) {
+		printf( "TOUCH sensor value = %d\n", val );
+	}
+}
+ev3_uninit();
+\endcode
+<P>Basic functions to read and write attributes of \ref ev3_servo "Servo Motors", see
+<A HREF="http://www.ev3dev.org/docs/drivers/servo-motor-class/">"Servo Motor Class"</A>.</P>
+\code {.c}
+uint8_t sn;
+
+ev3_init();
+set_input_mode_inx( INPUT_1, INPUT_NXT_ANALOG );
+set_nxt_analog_host_set_sensor( INPUT_1, INPUT_MUX__NONE_, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+ev3_servo_init();
+
+if ( ev3_search_servo_plugged_in( INPUT_1, INPUT_MUX__NONE_, 1, &sn, 0 )) {
+	set_servo_command( sn, "run" );
+	set_servo_position( sn, 100 );
+}
+ev3_uninit();
+\endcode
 
 <H3>III	LEVEL</H3>
 
-Task-focused user-friendly functions. Only \ref ev3_light "light" module in
-this category at the moment.
+<P>Task-focused user-friendly functions. Only \ref ev3_light "light" module in
+this category at the moment.</P>
 \code {.c}
 	ev3_init();
 
@@ -191,11 +226,11 @@ if ( $ok ) {
 }
 ev3::ev3_uninit();
 \endcode
-Similarly, you can use SWIG to wrap the library in a number of other languages.
+<P>Similarly, you can use SWIG to wrap the library in a number of other languages.</P>
 
 <BR><HR>
 <H2>TODO</H2>
-EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
+<P>EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...</P>
  */
 
 /** \page eg_c Examples in C
@@ -203,6 +238,7 @@ EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
 \include tacho.c
 \include sensor.c
 \include dc.c
+\include servo.c
 \include led.c
 \include io.c
 \include poweroff.c
@@ -212,6 +248,7 @@ EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...
 \include light.py
 \include tacho.py
 \include sensor.py
+\include dc.py
 \include led.py
 \include io.py
 \include poweroff.py

@@ -6,21 +6,42 @@
 
 ($each-PORT_ATTR \i.]
 
-	const char * const ($PORT_PREF_ID)_attr_($i PORT_ATTR_ID)[] = {
+	static const char * const ($PORT_PREF_ID)_attr_($i PORT_ATTR_ID)[] = {
 		($PORT \ii.]
-			($PORT_PATH) "/" ($PORT_PREF) ($q ii) "/" ($i PORT_ATTR_NAME),
+			($q,,($unq PORT_PATH)/($unq PORT_PREF)($ii)/($unq ($i PORT_ATTR_NAME))),
 
 		[ )
 	};
 
 [ )
 
+uint8_t ev3_($PORT_PREF_ID)_inx( const char *name )
+{
+	($PORT \i.]
+		if ( strncmp( name, ($q,,($unq PORT_PREF)($i)), ($len,,($unq PORT_PREF)($i)) ) == 0 ) return ($upper PORT_PREF_ID)_($i);
+
+	[ )
+	return ( EV3_PORT__NONE_ );
+}
+
+const char *ev3_($PORT_PREF_ID)_name( uint8_t port )
+{
+	switch ( port ) {
+	($PORT \i.]
+	case ($upper PORT_PREF_ID)_($i):
+		return ($q,,($unq PORT_PREF)($i));
+
+	[ )
+	}
+	return STR_unknown_;
+}
+
 ($each-PORT_ATTR \i.]
 
 	($if ($le ($i PORT_ATTR_WRITE) RW) ]
-		size_t get_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t inx, ($i PORT_ATTR_TYPE) *buf($[, size_t sz] ? ($i PORT_ATTR_ARRAY)) )
+		size_t get_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t port, ($i PORT_ATTR_TYPE) *buf($[, size_t sz] ? ($i PORT_ATTR_ARRAY)) )
 		{
-			uint8_t n = inx - ($upper PORT_PREF_ID)__BASE_;
+			uint8_t n = port - ($upper PORT_PREF_ID)__BASE_;
 
 			if ( n >= ($upper PORT_PREF_ID)__COUNT_ ) return ( 0 );
 
@@ -29,9 +50,9 @@
 	[ )
 
 	($if ($ge ($i PORT_ATTR_WRITE) RW) ]
-		size_t set_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t inx, ($i PORT_ATTR_TYPE) ($[*] ? ($i PORT_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i PORT_ATTR_ARRAY) 2)) )
+		size_t set_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t port, ($i PORT_ATTR_TYPE) ($[*] ? ($i PORT_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i PORT_ATTR_ARRAY) 2)) )
 		{
-			uint8_t n = inx - ($upper PORT_PREF_ID)__BASE_;
+			uint8_t n = port - ($upper PORT_PREF_ID)__BASE_;
 
 			if ( n >= ($upper PORT_PREF_ID)__COUNT_ ) return ( 0 );
 
@@ -53,11 +74,11 @@ const char *ev3_($PORT_PREF_ID)_mode( uint8_t mode_inx )
 	return STR_unknown_;
 }
 
-uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t inx )
+uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t port )
 {
 	char buf[ 64 ];
 
-	if ( !get_($PORT_PREF_ID)_mode( inx, buf, sizeof( buf ))) return ( ($upper PORT_PREF_ID)_MODE__COUNT_ );
+	if ( !get_($PORT_PREF_ID)_mode( port, buf, sizeof( buf ))) return ( ($upper PORT_PREF_ID)_MODE__COUNT_ );
 
 	($each-PORT_MODE \i.]
 		if ( strcmp( buf, ($i PORT_MODE_NAME) ) == 0 ) return ($upper PORT_PREF_ID)_($upper ($i PORT_MODE_ID));
@@ -66,7 +87,7 @@ uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t inx )
 	return ( ($upper PORT_PREF_ID)_MODE__COUNT_ );
 }
 
-size_t set_($PORT_PREF_ID)_mode_inx( uint8_t inx, uint8_t mode_inx )
+size_t set_($PORT_PREF_ID)_mode_inx( uint8_t port, uint8_t mode_inx )
 {
-	return set_($PORT_PREF_ID)_mode( inx, ( char* ) ev3_($PORT_PREF_ID)_mode( mode_inx ));
+	return set_($PORT_PREF_ID)_mode( port, ( char* ) ev3_($PORT_PREF_ID)_mode( mode_inx ));
 }

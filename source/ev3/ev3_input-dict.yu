@@ -9,7 +9,6 @@
 ($set PORT_PREF_ID input)
 ($set PORT (1 2 3 4))
 ($set PORT_OFFSET 0x01)
-($set PORT_EXT_PREF "mux")
 
 ($set R  0)
 ($set RW 1)

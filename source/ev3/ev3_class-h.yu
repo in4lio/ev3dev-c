@@ -7,6 +7,8 @@
 ($set _CLASS ($unq CLASS_TITLE))
 ($set _CLASS_1 _CLASS ? { _CLASS[ 0 ].isupper() } | ($capitalize _CLASS))
 
+#define ($upper CLASS_ID)_DIR  ($CLASS_PATH)  /**< Directory of ($_CLASS)s. */
+
 /**
  *  \brief Structure of a ($_CLASS) descriptor.
  */
@@ -130,12 +132,12 @@ enum {
  *  \brief Search of the ($_CLASS) by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
- ($[*  \param addr Address.] ? ($ne ($CLASS_ADDR_INX) -1))
+ ($[*  \param addr Address.] ? ($CLASS_DESC_ADDR))
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($ne ($CLASS_ADDR_INX) -1))uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($CLASS_DESC_ADDR))uint8_t *sn, uint8_t from );
 
 /**
  *  \brief Detect connected ($_CLASS)s.

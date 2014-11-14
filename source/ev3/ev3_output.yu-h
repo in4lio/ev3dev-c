@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 output ports.)
+($TITLE,,EV3 Output Ports.)
 
 ($import stdlib)
 ($import h)
@@ -25,20 +25,6 @@
 
 ($import "ev3_output-dict.yu")
 ($import "ev3_port-h.yu")
-
-/**
- *  \brief Get index of the EV3 output port from the port name.
- *  \param name Port name.
- *  \return EV3 output port index.
- */
-($h-extern) uint8_t ev3_output_inx( const char *name );
-
-/**
- *  \brief Get name of the specified EV3 output port.
- *  \param inx Port index.
- *  \return Requested value.
- */
-($h-extern) const char *ev3_output_name( uint8_t inx );
 
 /** \} */
 

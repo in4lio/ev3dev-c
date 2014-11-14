@@ -4,6 +4,7 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
+#define ($upper PORT_PREF_ID)_DIR  ($PORT_PATH)  /**< Directory of ($PORT_PREF_ID) ports. */
 #define ($upper PORT_PREF_ID)__BASE_  ($PORT_OFFSET)  /**< Base index of EV3 ($PORT_PREF_ID) ports. */
 
 /**
@@ -29,28 +30,42 @@ enum {
 	($upper PORT_PREF_ID)_MODE__COUNT_  /**< Count of ($PORT_PREF_ID) port modes. */
 };
 
+/**
+ *  \brief Get index of the EV3 ($PORT_PREF_ID) port from the port name.
+ *  \param name Port name.
+ *  \return EV3 ($PORT_PREF_ID) port index.
+ */
+($h-extern) uint8_t ev3_($PORT_PREF_ID)_inx( const char *name );
+
+/**
+ *  \brief Get name of the specified EV3 ($PORT_PREF_ID) port.
+ *  \param port Port index.
+ *  \return Requested value.
+ */
+($h-extern) const char *ev3_($PORT_PREF_ID)_name( uint8_t port );
+
 ($each-PORT_ATTR \i.]
 
 	($if ($le ($i PORT_ATTR_WRITE) RW) ]
 		/**
 		 *  \brief Get ($i PORT_ATTR_NAME) attribute of the ($PORT_PREF_ID) port.
-		 *  \param inx Index of the ($PORT_PREF_ID) port.
+		 *  \param port Port index.
 		 *  \param[out] buf Buffer for result.
 		 ($[*  \param sz Buffer size.] ? ($i PORT_ATTR_ARRAY))
 		 *  \return Count of read bytes.
 		 */
-		($h-extern) size_t get_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t inx, ($i PORT_ATTR_TYPE) *buf($[, size_t sz] ? ($i PORT_ATTR_ARRAY)) );
+		($h-extern) size_t get_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t port, ($i PORT_ATTR_TYPE) *buf($[, size_t sz] ? ($i PORT_ATTR_ARRAY)) );
 	[ )
 
 	($if ($ge ($i PORT_ATTR_WRITE) RW) ]
 		/**
 		 *  \brief Set ($i PORT_ATTR_NAME) attribute of the ($PORT_PREF_ID) port.
-		 *  \param inx Index of the ($PORT_PREF_ID) port.
+		 *  \param port Port index.
 		 *  \param value Attribute value.
 		 ($[*  \param sz Size of attribute value.] ? ($eq ($i PORT_ATTR_ARRAY) 2))
 		 *  \return Count of written bytes.
 		 */
-		($h-extern) size_t set_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t inx, ($i PORT_ATTR_TYPE) ($[*] ? ($i PORT_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i PORT_ATTR_ARRAY) 2)) );
+		($h-extern) size_t set_($PORT_PREF_ID)_($i PORT_ATTR_ID)( uint8_t port, ($i PORT_ATTR_TYPE) ($[*] ? ($i PORT_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i PORT_ATTR_ARRAY) 2)) );
 	[ )
 
 [ )
@@ -64,15 +79,15 @@ enum {
 
 /**
  *  \brief Get the mode index of the ($PORT_PREF_ID) port.
- *  \param inx Index of the ($PORT_PREF_ID) port.
+ *  \param port Port index.
  *  \return Index of the mode or ($upper PORT_PREF_ID)_MODE__COUNT_ - error has occurred.
  */
-($h-extern) uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t inx );
+($h-extern) uint8_t get_($PORT_PREF_ID)_mode_inx( uint8_t port );
 
 /**
  *  \brief Set the mode of the ($PORT_PREF_ID) by index.
- *  \param inx Index of the ($PORT_PREF_ID) port.
+ *  \param port Port index.
  *  \param mode_inx Index of the mode.
  *  \return Count of written bytes.
  */
-($h-extern) size_t set_($PORT_PREF_ID)_mode_inx( uint8_t inx, uint8_t mode_inx );
+($h-extern) size_t set_($PORT_PREF_ID)_mode_inx( uint8_t port, uint8_t mode_inx );

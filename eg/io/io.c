@@ -43,7 +43,7 @@ int main( void )
 	}
 	for ( i = INPUT__BASE_; i < INPUT__BASE_ + INPUT__COUNT_; i++ ) {
 		if ( get_input_state( i, s, sizeof( s ))) {
-			printf( "%s: %s\n", ev3_input_name( i, EV3_PORT__NONE_ ), s );
+			printf( "%s: %s\n", ev3_input_name( i ), s );
 		}
 	}
 	ev3_uninit();

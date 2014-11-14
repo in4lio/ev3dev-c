@@ -16,24 +16,38 @@
 #include <string.h>
 #include <stdio.h>
 #include "ev3.h"
+#include "ev3_port.h"
 #include "ev3_output.h"
 #include "ev3_input.h"
-#include "ev3_port.h"
+#include "nxt_input_mux.h"
 
 uint8_t ev3_port_inx( const char *name, uint8_t *extport )
 {
-	uint8_t inx = ev3_output_inx( name );
-	if ( inx != EV3_PORT__NONE_) {
-		*extport = EV3_PORT__NONE_;
-		return ( inx );
+	uint8_t port;
+
+	port = ev3_output_inx( name );
+	if ( port != EV3_PORT__NONE_) {
+		*extport = INPUT_MUX__NONE_;
+		return ( port );
 	}
-	return ( ev3_input_inx( name, extport ));
+	port = nxt_input_mux_inx( name, extport );
+	if ( port != EV3_PORT__NONE_)  {
+		return ( port );
+	}
+	port = ev3_input_inx( name );
+	if ( port != EV3_PORT__NONE_)  {
+		*extport = INPUT_MUX__NONE_;
+		return ( port );
+	}
+	return ( EV3_PORT__NONE_ );
 }
 
-const char *ev3_port_name( uint8_t inx, uint8_t extport )
+const char *ev3_port_name( uint8_t port, uint8_t extport )
 {
-	if (( inx >= OUTPUT__BASE_) && ( inx < OUTPUT__BASE_ + OUTPUT__COUNT_ )) return ev3_output_name( inx );
-	if (( inx >=  INPUT__BASE_) && ( inx <  INPUT__BASE_ +  INPUT__COUNT_ )) return ev3_input_name( inx, extport );
-
+	if (( port >= OUTPUT__BASE_) && ( port < OUTPUT__BASE_ + OUTPUT__COUNT_ )) return ev3_output_name( port );
+	if (( port >=  INPUT__BASE_) && ( port <  INPUT__BASE_ +  INPUT__COUNT_ )) {
+		if ( extport == INPUT_MUX__NONE_ ) return ev3_input_name( port );
+		return nxt_input_mux_name( port, extport );
+	}
 	return STR_unknown_;
 }

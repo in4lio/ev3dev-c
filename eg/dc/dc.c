@@ -14,6 +14,7 @@
 #include "ev3.h"
 #include "ev3_port.h"
 #include "ev3_output.h"
+#include "nxt_input_mux.h"
 #include "ev3_dc.h"
 
 // WIN32 /////////////////////////////////////////
@@ -46,6 +47,7 @@ int main( void )
 	set_output_mode_inx( port, OUTPUT_RCX_MOTOR );
 	if ( get_output_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_output_name( port ), s );
 
+	Sleep( 200 );
 	ev3_dc_init();
 
 	printf( "Found DC motors:\n" );
@@ -55,7 +57,7 @@ int main( void )
 			printf( "  port = %s\n", ev3_port_name( ev3_dc[ i ].port, ev3_dc[ i ].extport ));
 		}
 	}
-	if ( ev3_search_dc( RCX_MOTOR, &sn, 0 )) {
+	if ( ev3_search_dc_plugged_in( port, INPUT_MUX__NONE_, &sn, 0 )) {
 		printf( "DC motor is found, run for 5 sec...\n" );
 		set_dc_ramp_up_ms( sn, 2000 );
 		set_dc_duty_cycle( sn, 100 );
