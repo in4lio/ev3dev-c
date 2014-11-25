@@ -115,9 +115,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3387864da953236b87df197a53a3211e"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga3387864da953236b87df197a53a3211e">get_dc_duty_cycle</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga3387864da953236b87df197a53a3211e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle" attribute of the DC motor.  <a href="#ga3387864da953236b87df197a53a3211e">More...</a><br /></td></tr>
 <tr class="separator:ga3387864da953236b87df197a53a3211e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaf2715f11c3904c79352f8a4a313fe0c9">set_dc_duty_cycle</a> (uint8_t sn, int value)</td></tr>
-<tr class="memdesc:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle" attribute of the DC motor.  <a href="#gaf2715f11c3904c79352f8a4a313fe0c9">More...</a><br /></td></tr>
-<tr class="separator:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad05d981f7e3495a4be250cfa753b517a"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gad05d981f7e3495a4be250cfa753b517a">get_dc_duty_cycle_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:gad05d981f7e3495a4be250cfa753b517a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle_sp" attribute of the DC motor.  <a href="#gad05d981f7e3495a4be250cfa753b517a">More...</a><br /></td></tr>
+<tr class="separator:gad05d981f7e3495a4be250cfa753b517a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e081398e534613c47a73050172ed1d1"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga8e081398e534613c47a73050172ed1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the DC motor.  <a href="#ga8e081398e534613c47a73050172ed1d1">More...</a><br /></td></tr>
+<tr class="separator:ga8e081398e534613c47a73050172ed1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga075e9e03fdf81e06572e7199d72675d7"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga075e9e03fdf81e06572e7199d72675d7">get_dc_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga075e9e03fdf81e06572e7199d72675d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "name" attribute of the DC motor.  <a href="#ga075e9e03fdf81e06572e7199d72675d7">More...</a><br /></td></tr>
 <tr class="separator:ga075e9e03fdf81e06572e7199d72675d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -585,6 +588,42 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
+<a class="anchor" id="gad05d981f7e3495a4be250cfa753b517a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_DC_EXT size_t get_dc_duty_cycle_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "duty_cycle_sp" attribute of the DC motor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga075e9e03fdf81e06572e7199d72675d7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -883,12 +922,12 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
-<a class="anchor" id="gaf2715f11c3904c79352f8a4a313fe0c9"></a>
+<a class="anchor" id="ga8e081398e534613c47a73050172ed1d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_DC_EXT size_t set_dc_duty_cycle </td>
+          <td class="memname">EV3_DC_EXT size_t set_dc_duty_cycle_sp </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
@@ -907,7 +946,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
       </table>
 </div><div class="memdoc">
 
-<p>Set "duty_cycle" attribute of the DC motor. </p>
+<p>Set "duty_cycle_sp" attribute of the DC motor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -1030,7 +1069,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 23:44:04 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

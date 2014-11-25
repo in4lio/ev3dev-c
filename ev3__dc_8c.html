@@ -111,6 +111,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a52f3c215ec2a1226744716dcf1d76e3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52f3c215ec2a1226744716dcf1d76e3a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;duty_cycle&quot;</td></tr>
 <tr class="separator:a52f3c215ec2a1226744716dcf1d76e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b1bda4cafe07fb79819c74f6f0ba34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43b1bda4cafe07fb79819c74f6f0ba34"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DUTY_CYCLE_SP</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;duty_cycle_sp&quot;</td></tr>
+<tr class="separator:a43b1bda4cafe07fb79819c74f6f0ba34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46741ea324872c5c6490ccc8e562d556"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46741ea324872c5c6490ccc8e562d556"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_NAME</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;name&quot;</td></tr>
 <tr class="separator:a46741ea324872c5c6490ccc8e562d556"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,9 +144,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3387864da953236b87df197a53a3211e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga3387864da953236b87df197a53a3211e">get_dc_duty_cycle</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga3387864da953236b87df197a53a3211e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle" attribute of the DC motor.  <a href="group__ev3__dc.html#ga3387864da953236b87df197a53a3211e">More...</a><br /></td></tr>
 <tr class="separator:ga3387864da953236b87df197a53a3211e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaf2715f11c3904c79352f8a4a313fe0c9">set_dc_duty_cycle</a> (uint8_t sn, int value)</td></tr>
-<tr class="memdesc:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle" attribute of the DC motor.  <a href="group__ev3__dc.html#gaf2715f11c3904c79352f8a4a313fe0c9">More...</a><br /></td></tr>
-<tr class="separator:gaf2715f11c3904c79352f8a4a313fe0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad05d981f7e3495a4be250cfa753b517a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gad05d981f7e3495a4be250cfa753b517a">get_dc_duty_cycle_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:gad05d981f7e3495a4be250cfa753b517a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#gad05d981f7e3495a4be250cfa753b517a">More...</a><br /></td></tr>
+<tr class="separator:gad05d981f7e3495a4be250cfa753b517a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e081398e534613c47a73050172ed1d1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga8e081398e534613c47a73050172ed1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">More...</a><br /></td></tr>
+<tr class="separator:ga8e081398e534613c47a73050172ed1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga075e9e03fdf81e06572e7199d72675d7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga075e9e03fdf81e06572e7199d72675d7">get_dc_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga075e9e03fdf81e06572e7199d72675d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "name" attribute of the DC motor.  <a href="group__ev3__dc.html#ga075e9e03fdf81e06572e7199d72675d7">More...</a><br /></td></tr>
 <tr class="separator:ga075e9e03fdf81e06572e7199d72675d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,7 +212,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 23:44:03 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 16:27:39 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

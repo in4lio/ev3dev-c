@@ -122,40 +122,45 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>SENSOR_TYPE__NONE_</b> = 0, 
 <b>EV3_ANALOG_XX</b>, 
 <b>NXT_ANALOG</b>, 
-<b>NXT_I2C</b>, 
+<b>HT_NXT_COLOR</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_COLOR</b>, 
-<b>HT_NXT_ANGLE</b>, 
+&#160;&#160;<b>HT_NXT_ANGLE</b>, 
 <b>HT_NXT_ACCEL</b>, 
 <b>HT_NXT_BAROMETRIC</b>, 
+<b>HT_NXT_COLOR_V2</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_COLOR_V2</b>, 
-<b>HT_NXT_EOPD</b>, 
+&#160;&#160;<b>HT_NXT_EOPD</b>, 
 <b>HT_NXT_FORCE</b>, 
 <b>HT_NXT_GYRO</b>, 
+<b>HT_NXT_IR_LINK</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_IR_LINK</b>, 
-<b>HT_NXT_IR_RECEIVER</b>, 
+&#160;&#160;<b>HT_NXT_IR_RECEIVER</b>, 
 <b>HT_NXT_PIR</b>, 
 <b>HT_NXT_COMPASS</b>, 
+<b>HT_NXT_MAG</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_MAG</b>, 
-<b>HT_NXT_IR_SEEKER_V2</b>, 
+&#160;&#160;<b>HT_NXT_IR_SEEKER_V2</b>, 
 <b>HT_NXT_SMUX</b>, 
 <b>HT_SUPER_PRO</b>, 
+<b>EV3_UART_30</b>, 
 <br />
-&#160;&#160;<b>EV3_UART_30</b>, 
-<b>EV3_UART_32</b>, 
+&#160;&#160;<b>EV3_UART_32</b>, 
 <b>EV3_UART_29</b>, 
 <b>LEGO_EV3_TOUCH</b>, 
+<b>EV3_UART_33</b>, 
 <br />
-&#160;&#160;<b>EV3_UART_33</b>, 
+&#160;&#160;<b>WEDO_MOTION</b>, 
+<b>WEDO_TILT</b>, 
 <b>LEGO_POWER_STORAGE</b>, 
 <b>LEGO_NXT_TOUCH</b>, 
-<b>LEGO_NXT_LIGHT</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_SOUND</b>, 
-<b>LEGO_NXT_ULTRASONIC</b>, 
+&#160;&#160;<b>LEGO_NXT_LIGHT</b>, 
+<b>LEGO_NXT_SOUND</b>, 
+<b>LEGO_NXT_US</b>, 
+<b>MI_XG1300L</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU</b>, 
+<b>MS_ANGLE</b>, 
 <b>MS_LIGHT_ARRAY</b>, 
 <b>MS_8CH_SERVO</b>, 
 <br />
@@ -177,6 +182,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5190a5e611adc05092e0251926d8579c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga5190a5e611adc05092e0251926d8579c">get_sensor_bin_data_format</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga5190a5e611adc05092e0251926d8579c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "bin_data_format" attribute of the sensor.  <a href="group__ev3__sensor.html#ga5190a5e611adc05092e0251926d8579c">More...</a><br /></td></tr>
 <tr class="separator:ga5190a5e611adc05092e0251926d8579c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga690c333c9b664730416887b542922ae1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga690c333c9b664730416887b542922ae1">set_sensor_command</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga690c333c9b664730416887b542922ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "command" attribute of the sensor.  <a href="group__ev3__sensor.html#ga690c333c9b664730416887b542922ae1">More...</a><br /></td></tr>
+<tr class="separator:ga690c333c9b664730416887b542922ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">get_sensor_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "commands" attribute of the sensor.  <a href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">More...</a><br /></td></tr>
+<tr class="separator:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga83fe6617629ad29bff63705d7a69ba4c">get_sensor_dp</a> (uint8_t sn, dword *buf)</td></tr>
 <tr class="memdesc:ga83fe6617629ad29bff63705d7a69ba4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "dp" attribute of the sensor.  <a href="group__ev3__sensor.html#ga83fe6617629ad29bff63705d7a69ba4c">More...</a><br /></td></tr>
 <tr class="separator:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,7 +299,7 @@ Variables</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 23:44:03 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

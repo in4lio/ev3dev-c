@@ -108,6 +108,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a795e70f962979fd6ea987ec11b3ea089"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a795e70f962979fd6ea987ec11b3ea089"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_BIN_DATA_FORMAT</b>&#160;&#160;&#160;&quot;/sys/class/msensor/sensor&quot; _ID_SPOT &quot;bin_data_format&quot;</td></tr>
 <tr class="separator:a795e70f962979fd6ea987ec11b3ea089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27afc3094df96ba054be8ad150e9c3d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27afc3094df96ba054be8ad150e9c3d4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_COMMAND</b>&#160;&#160;&#160;&quot;/sys/class/msensor/sensor&quot; _ID_SPOT &quot;command&quot;</td></tr>
+<tr class="separator:a27afc3094df96ba054be8ad150e9c3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02cd677cf5245b07e95dc3d37d9a5b69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02cd677cf5245b07e95dc3d37d9a5b69"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_COMMANDS</b>&#160;&#160;&#160;&quot;/sys/class/msensor/sensor&quot; _ID_SPOT &quot;commands&quot;</td></tr>
+<tr class="separator:a02cd677cf5245b07e95dc3d37d9a5b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae59e05b5405fb7eefc96d2aa4c458d4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae59e05b5405fb7eefc96d2aa4c458d4b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DP</b>&#160;&#160;&#160;&quot;/sys/class/msensor/sensor&quot; _ID_SPOT &quot;dp&quot;</td></tr>
 <tr class="separator:ae59e05b5405fb7eefc96d2aa4c458d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +183,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5190a5e611adc05092e0251926d8579c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga5190a5e611adc05092e0251926d8579c">get_sensor_bin_data_format</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga5190a5e611adc05092e0251926d8579c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "bin_data_format" attribute of the sensor.  <a href="group__ev3__sensor.html#ga5190a5e611adc05092e0251926d8579c">More...</a><br /></td></tr>
 <tr class="separator:ga5190a5e611adc05092e0251926d8579c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga690c333c9b664730416887b542922ae1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga690c333c9b664730416887b542922ae1">set_sensor_command</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga690c333c9b664730416887b542922ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "command" attribute of the sensor.  <a href="group__ev3__sensor.html#ga690c333c9b664730416887b542922ae1">More...</a><br /></td></tr>
+<tr class="separator:ga690c333c9b664730416887b542922ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">get_sensor_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "commands" attribute of the sensor.  <a href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">More...</a><br /></td></tr>
+<tr class="separator:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga83fe6617629ad29bff63705d7a69ba4c">get_sensor_dp</a> (uint8_t sn, dword *buf)</td></tr>
 <tr class="memdesc:ga83fe6617629ad29bff63705d7a69ba4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "dp" attribute of the sensor.  <a href="group__ev3__sensor.html#ga83fe6617629ad29bff63705d7a69ba4c">More...</a><br /></td></tr>
 <tr class="separator:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -281,7 +293,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 23:44:03 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

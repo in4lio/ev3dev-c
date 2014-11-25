@@ -395,7 +395,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga4f0b72633cff18f6b85f0f8d53a3df2d">ev3_search_dc_plugged_in</a>( port, INPUT_MUX__NONE_, &amp;sn, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;DC motor is found, run for 5 sec...\n&quot;</span> );</div>
 <div class="line">        <a class="code" href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">set_dc_ramp_up_ms</a>( sn, 2000 );</div>
-<div class="line">        <a class="code" href="group__ev3__dc.html#gaf2715f11c3904c79352f8a4a313fe0c9">set_dc_duty_cycle</a>( sn, 100 );</div>
+<div class="line">        <a class="code" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a>( sn, 100 );</div>
 <div class="line">        <a class="code" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a>( sn, <span class="stringliteral">&quot;run&quot;</span> );</div>
 <div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a>( sn, s, <span class="keyword">sizeof</span>( s ))) printf( <span class="stringliteral">&quot;command: %s\n&quot;</span>, s );</div>
 <div class="line">        Sleep( 5000 );</div>
@@ -638,7 +638,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 23:44:03 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
