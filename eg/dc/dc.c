@@ -60,7 +60,7 @@ int main( void )
 	if ( ev3_search_dc_plugged_in( port, INPUT_MUX__NONE_, &sn, 0 )) {
 		printf( "DC motor is found, run for 5 sec...\n" );
 		set_dc_ramp_up_ms( sn, 2000 );
-		set_dc_duty_cycle( sn, 100 );
+		set_dc_duty_cycle_sp( sn, 100 );
 		set_dc_command( sn, "run" );
 		if ( get_dc_command( sn, s, sizeof( s ))) printf( "command: %s\n", s );
 		Sleep( 5000 );

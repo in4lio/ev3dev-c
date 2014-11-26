@@ -449,7 +449,6 @@ SENSOR__NONE_ = _ev3.SENSOR__NONE_
 SENSOR_TYPE__NONE_ = _ev3.SENSOR_TYPE__NONE_
 EV3_ANALOG_XX = _ev3.EV3_ANALOG_XX
 NXT_ANALOG = _ev3.NXT_ANALOG
-NXT_I2C = _ev3.NXT_I2C
 HT_NXT_COLOR = _ev3.HT_NXT_COLOR
 HT_NXT_ANGLE = _ev3.HT_NXT_ANGLE
 HT_NXT_ACCEL = _ev3.HT_NXT_ACCEL
@@ -471,11 +470,16 @@ EV3_UART_32 = _ev3.EV3_UART_32
 EV3_UART_29 = _ev3.EV3_UART_29
 LEGO_EV3_TOUCH = _ev3.LEGO_EV3_TOUCH
 EV3_UART_33 = _ev3.EV3_UART_33
+WEDO_MOTION = _ev3.WEDO_MOTION
+WEDO_TILT = _ev3.WEDO_TILT
 LEGO_POWER_STORAGE = _ev3.LEGO_POWER_STORAGE
 LEGO_NXT_TOUCH = _ev3.LEGO_NXT_TOUCH
 LEGO_NXT_LIGHT = _ev3.LEGO_NXT_LIGHT
 LEGO_NXT_SOUND = _ev3.LEGO_NXT_SOUND
-LEGO_NXT_ULTRASONIC = _ev3.LEGO_NXT_ULTRASONIC
+LEGO_NXT_US = _ev3.LEGO_NXT_US
+MI_XG1300L = _ev3.MI_XG1300L
+MS_ABSOLUTE_IMU = _ev3.MS_ABSOLUTE_IMU
+MS_ANGLE = _ev3.MS_ANGLE
 MS_LIGHT_ARRAY = _ev3.MS_LIGHT_ARRAY
 MS_8CH_SERVO = _ev3.MS_8CH_SERVO
 MS_NXT_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX
@@ -492,6 +496,14 @@ set_sensor_bin_data = _ev3.set_sensor_bin_data
 def get_sensor_bin_data_format(*args):
   return _ev3.get_sensor_bin_data_format(*args)
 get_sensor_bin_data_format = _ev3.get_sensor_bin_data_format
+
+def set_sensor_command(*args):
+  return _ev3.set_sensor_command(*args)
+set_sensor_command = _ev3.set_sensor_command
+
+def get_sensor_commands(*args):
+  return _ev3.get_sensor_commands(*args)
+get_sensor_commands = _ev3.get_sensor_commands
 
 def get_sensor_dp(*args):
   return _ev3.get_sensor_dp(*args)
@@ -898,9 +910,13 @@ def get_dc_duty_cycle(*args):
   return _ev3.get_dc_duty_cycle(*args)
 get_dc_duty_cycle = _ev3.get_dc_duty_cycle
 
-def set_dc_duty_cycle(*args):
-  return _ev3.set_dc_duty_cycle(*args)
-set_dc_duty_cycle = _ev3.set_dc_duty_cycle
+def get_dc_duty_cycle_sp(*args):
+  return _ev3.get_dc_duty_cycle_sp(*args)
+get_dc_duty_cycle_sp = _ev3.get_dc_duty_cycle_sp
+
+def set_dc_duty_cycle_sp(*args):
+  return _ev3.set_dc_duty_cycle_sp(*args)
+set_dc_duty_cycle_sp = _ev3.set_dc_duty_cycle_sp
 
 def get_dc_name(*args):
   return _ev3.get_dc_name(*args)

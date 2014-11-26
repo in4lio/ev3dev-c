@@ -6090,6 +6090,78 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_set_sensor_command(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_sensor_command",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_sensor_command" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_sensor_command" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = (char *)(buf2);
+  result = set_sensor_command(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_sensor_commands(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:get_sensor_commands",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_commands" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (obj1, &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_sensor_commands" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_sensor_commands(arg1,arg2,arg3);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return resultobj;
+fail:
+  if (buff2) free((char*)buff2);
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_get_sensor_dp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
@@ -9314,7 +9386,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_set_dc_duty_cycle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_dc_duty_cycle_sp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  PyObject * obj0 = 0 ;
+  size_t result;
+  
+  arg2 = &temp2;
+  if (!PyArg_ParseTuple(args,(char *)"O:get_dc_duty_cycle_sp",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_duty_cycle_sp" "', argument " "1"" of type '" "uint8_t""'");
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_dc_duty_cycle_sp(arg1,arg2);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_dc_duty_cycle_sp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
   int arg2 ;
@@ -9326,18 +9430,18 @@ SWIGINTERN PyObject *_wrap_set_dc_duty_cycle(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject * obj1 = 0 ;
   size_t result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:set_dc_duty_cycle",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:set_dc_duty_cycle_sp",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_char(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_duty_cycle" "', argument " "1"" of type '" "uint8_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_duty_cycle_sp" "', argument " "1"" of type '" "uint8_t""'");
   } 
   arg1 = (uint8_t)(val1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_duty_cycle" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_duty_cycle_sp" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = set_dc_duty_cycle(arg1,arg2);
+  result = set_dc_duty_cycle_sp(arg1,arg2);
   resultobj = SWIG_From_size_t((size_t)(result));
   return resultobj;
 fail:
@@ -11324,6 +11428,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"get_sensor_bin_data", _wrap_get_sensor_bin_data, METH_VARARGS, NULL},
 	 { (char *)"set_sensor_bin_data", _wrap_set_sensor_bin_data, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format, METH_VARARGS, NULL},
+	 { (char *)"set_sensor_command", _wrap_set_sensor_command, METH_VARARGS, NULL},
+	 { (char *)"get_sensor_commands", _wrap_get_sensor_commands, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_dp", _wrap_get_sensor_dp, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_fw_version", _wrap_get_sensor_fw_version, METH_VARARGS, NULL},
 	 { (char *)"get_sensor_address", _wrap_get_sensor_address, METH_VARARGS, NULL},
@@ -11428,7 +11534,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"set_dc_command", _wrap_set_dc_command, METH_VARARGS, NULL},
 	 { (char *)"get_dc_commands", _wrap_get_dc_commands, METH_VARARGS, NULL},
 	 { (char *)"get_dc_duty_cycle", _wrap_get_dc_duty_cycle, METH_VARARGS, NULL},
-	 { (char *)"set_dc_duty_cycle", _wrap_set_dc_duty_cycle, METH_VARARGS, NULL},
+	 { (char *)"get_dc_duty_cycle_sp", _wrap_get_dc_duty_cycle_sp, METH_VARARGS, NULL},
+	 { (char *)"set_dc_duty_cycle_sp", _wrap_set_dc_duty_cycle_sp, METH_VARARGS, NULL},
 	 { (char *)"get_dc_name", _wrap_get_dc_name, METH_VARARGS, NULL},
 	 { (char *)"get_dc_polarity", _wrap_get_dc_polarity, METH_VARARGS, NULL},
 	 { (char *)"set_dc_polarity", _wrap_set_dc_polarity, METH_VARARGS, NULL},
@@ -12346,7 +12453,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "SENSOR_TYPE__NONE_",SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
   SWIG_Python_SetConstant(d, "EV3_ANALOG_XX",SWIG_From_int((int)(EV3_ANALOG_XX)));
   SWIG_Python_SetConstant(d, "NXT_ANALOG",SWIG_From_int((int)(NXT_ANALOG)));
-  SWIG_Python_SetConstant(d, "NXT_I2C",SWIG_From_int((int)(NXT_I2C)));
   SWIG_Python_SetConstant(d, "HT_NXT_COLOR",SWIG_From_int((int)(HT_NXT_COLOR)));
   SWIG_Python_SetConstant(d, "HT_NXT_ANGLE",SWIG_From_int((int)(HT_NXT_ANGLE)));
   SWIG_Python_SetConstant(d, "HT_NXT_ACCEL",SWIG_From_int((int)(HT_NXT_ACCEL)));
@@ -12368,11 +12474,16 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "EV3_UART_29",SWIG_From_int((int)(EV3_UART_29)));
   SWIG_Python_SetConstant(d, "LEGO_EV3_TOUCH",SWIG_From_int((int)(LEGO_EV3_TOUCH)));
   SWIG_Python_SetConstant(d, "EV3_UART_33",SWIG_From_int((int)(EV3_UART_33)));
+  SWIG_Python_SetConstant(d, "WEDO_MOTION",SWIG_From_int((int)(WEDO_MOTION)));
+  SWIG_Python_SetConstant(d, "WEDO_TILT",SWIG_From_int((int)(WEDO_TILT)));
   SWIG_Python_SetConstant(d, "LEGO_POWER_STORAGE",SWIG_From_int((int)(LEGO_POWER_STORAGE)));
   SWIG_Python_SetConstant(d, "LEGO_NXT_TOUCH",SWIG_From_int((int)(LEGO_NXT_TOUCH)));
   SWIG_Python_SetConstant(d, "LEGO_NXT_LIGHT",SWIG_From_int((int)(LEGO_NXT_LIGHT)));
   SWIG_Python_SetConstant(d, "LEGO_NXT_SOUND",SWIG_From_int((int)(LEGO_NXT_SOUND)));
-  SWIG_Python_SetConstant(d, "LEGO_NXT_ULTRASONIC",SWIG_From_int((int)(LEGO_NXT_ULTRASONIC)));
+  SWIG_Python_SetConstant(d, "LEGO_NXT_US",SWIG_From_int((int)(LEGO_NXT_US)));
+  SWIG_Python_SetConstant(d, "MI_XG1300L",SWIG_From_int((int)(MI_XG1300L)));
+  SWIG_Python_SetConstant(d, "MS_ABSOLUTE_IMU",SWIG_From_int((int)(MS_ABSOLUTE_IMU)));
+  SWIG_Python_SetConstant(d, "MS_ANGLE",SWIG_From_int((int)(MS_ANGLE)));
   SWIG_Python_SetConstant(d, "MS_LIGHT_ARRAY",SWIG_From_int((int)(MS_LIGHT_ARRAY)));
   SWIG_Python_SetConstant(d, "MS_8CH_SERVO",SWIG_From_int((int)(MS_8CH_SERVO)));
   SWIG_Python_SetConstant(d, "MS_NXT_TOUCH_MUX",SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));

@@ -25,7 +25,8 @@
 	(`
 	(  "command"               char             1                 RW                )
 	(  "commands"              char             1                 R                 )
-	(  "duty_cycle"            int              0                 RW                )
+	(  "duty_cycle"            int              0                 R                 )
+	(  "duty_cycle_sp"         int              0                 RW                )
 	(  "name"                  char             1                 R                 )
 	(  "polarity"              char             1                 RW                )
 	(  "port_name"             char             1                 R                 )

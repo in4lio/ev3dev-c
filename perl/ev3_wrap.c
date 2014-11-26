@@ -5193,6 +5193,90 @@ XS(_wrap_get_sensor_bin_data_format) {
 }
 
 
+XS(_wrap_set_sensor_command) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    char *buf2 = 0 ;
+    int alloc2 = 0 ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: set_sensor_command(sn,value);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_sensor_command" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsCharPtrAndSize(ST(1), &buf2, NULL, &alloc2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_sensor_command" "', argument " "2"" of type '" "char *""'");
+    }
+    arg2 = (char *)(buf2);
+    result = set_sensor_command(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_get_sensor_commands) {
+  {
+    uint8_t arg1 ;
+    char *arg2 = (char *) 0 ;
+    size_t arg3 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int res2 ;
+    size_t size2 ;
+    char *buff2 = 0 ;
+    int argvi = 0;
+    SV * _saved[1] ;
+    size_t result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: get_sensor_commands(sn,buf,sz);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_sensor_commands" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    res2 = SWIG_AsVal_size_t SWIG_PERL_CALL_ARGS_2(ST(1), &size2);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_sensor_commands" "', argument " "2"" of type '" "(char *buf, size_t sz)""'");
+    }
+    buff2= (char *)malloc((size2+1)*sizeof(char));
+    arg3 = (size_t)(size2);
+    arg2 = (char *)(buff2);
+    _saved[0] = ST(1);
+    result = get_sensor_commands(arg1,arg2,arg3);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_FromCharPtr(arg2); argvi++  ;
+    
+    if (buff2) free((char*)buff2);
+    XSRETURN(argvi);
+  fail:
+    
+    if (buff2) free((char*)buff2);
+    SWIG_croak_null();
+  }
+}
+
+
 XS(_wrap_get_sensor_dp) {
   {
     uint8_t arg1 ;
@@ -9064,7 +9148,47 @@ XS(_wrap_get_dc_duty_cycle) {
 }
 
 
-XS(_wrap_set_dc_duty_cycle) {
+XS(_wrap_get_dc_duty_cycle_sp) {
+  {
+    uint8_t arg1 ;
+    int *arg2 = (int *) 0 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    int temp2 ;
+    int res2 = SWIG_TMPOBJ ;
+    int argvi = 0;
+    size_t result;
+    dXSARGS;
+    
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_duty_cycle_sp(sn);");
+    }
+    ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_duty_cycle_sp" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    result = get_dc_duty_cycle_sp(arg1,arg2);
+    ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags); argvi++  ;
+    }
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_set_dc_duty_cycle_sp) {
   {
     uint8_t arg1 ;
     int arg2 ;
@@ -9077,19 +9201,19 @@ XS(_wrap_set_dc_duty_cycle) {
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
-      SWIG_croak("Usage: set_dc_duty_cycle(sn,value);");
+      SWIG_croak("Usage: set_dc_duty_cycle_sp(sn,value);");
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_duty_cycle" "', argument " "1"" of type '" "uint8_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_dc_duty_cycle_sp" "', argument " "1"" of type '" "uint8_t""'");
     } 
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_duty_cycle" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_duty_cycle_sp" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = (int)(val2);
-    result = set_dc_duty_cycle(arg1,arg2);
+    result = set_dc_duty_cycle_sp(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
     
@@ -11557,6 +11681,8 @@ static swig_command_info swig_commands[] = {
 {"ev3c::get_sensor_bin_data", _wrap_get_sensor_bin_data},
 {"ev3c::set_sensor_bin_data", _wrap_set_sensor_bin_data},
 {"ev3c::get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format},
+{"ev3c::set_sensor_command", _wrap_set_sensor_command},
+{"ev3c::get_sensor_commands", _wrap_get_sensor_commands},
 {"ev3c::get_sensor_dp", _wrap_get_sensor_dp},
 {"ev3c::get_sensor_fw_version", _wrap_get_sensor_fw_version},
 {"ev3c::get_sensor_address", _wrap_get_sensor_address},
@@ -11659,7 +11785,8 @@ static swig_command_info swig_commands[] = {
 {"ev3c::set_dc_command", _wrap_set_dc_command},
 {"ev3c::get_dc_commands", _wrap_get_dc_commands},
 {"ev3c::get_dc_duty_cycle", _wrap_get_dc_duty_cycle},
-{"ev3c::set_dc_duty_cycle", _wrap_set_dc_duty_cycle},
+{"ev3c::get_dc_duty_cycle_sp", _wrap_get_dc_duty_cycle_sp},
+{"ev3c::set_dc_duty_cycle_sp", _wrap_set_dc_duty_cycle_sp},
 {"ev3c::get_dc_name", _wrap_get_dc_name},
 {"ev3c::get_dc_polarity", _wrap_get_dc_polarity},
 {"ev3c::set_dc_polarity", _wrap_set_dc_polarity},
@@ -12434,11 +12561,6 @@ XS(SWIG_init) {
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
-    SV *sv = get_sv((char*) SWIG_prefix "NXT_I2C", TRUE | 0x2 | GV_ADDMULTI);
-    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(NXT_I2C)));
-    SvREADONLY_on(sv);
-  } while(0) /*@SWIG@*/;
-  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "HT_NXT_COLOR", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(HT_NXT_COLOR)));
     SvREADONLY_on(sv);
@@ -12544,6 +12666,16 @@ XS(SWIG_init) {
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "WEDO_MOTION", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(WEDO_MOTION)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "WEDO_TILT", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(WEDO_TILT)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "LEGO_POWER_STORAGE", TRUE | 0x2 | GV_ADDMULTI);
     sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_POWER_STORAGE)));
     SvREADONLY_on(sv);
@@ -12564,8 +12696,23 @@ XS(SWIG_init) {
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
-    SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_ULTRASONIC", TRUE | 0x2 | GV_ADDMULTI);
-    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_ULTRASONIC)));
+    SV *sv = get_sv((char*) SWIG_prefix "LEGO_NXT_US", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(LEGO_NXT_US)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "MI_XG1300L", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MI_XG1300L)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "MS_ABSOLUTE_IMU", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_ABSOLUTE_IMU)));
+    SvREADONLY_on(sv);
+  } while(0) /*@SWIG@*/;
+  /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {
+    SV *sv = get_sv((char*) SWIG_prefix "MS_ANGLE", TRUE | 0x2 | GV_ADDMULTI);
+    sv_setsv(sv, SWIG_From_int  SWIG_PERL_CALL_ARGS_1((int)(MS_ANGLE)));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   /*@SWIG:d:\prog\swigwin\Lib\perl5\perltypemaps.swg,65,%set_constant@*/ do {

@@ -4983,6 +4983,84 @@ fail:
 
 
 SWIGINTERN VALUE
+_wrap_set_sensor_command(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_sensor_command", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsCharPtrAndSize(argv[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "char *","set_sensor_command", 2, argv[1] ));
+  }
+  arg2 = (char *)(buf2);
+  result = set_sensor_command(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return vresult;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_get_sensor_commands(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int res2 ;
+  size_t size2 ;
+  char *buff2 = 0 ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 2) || (argc > 2)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 2)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_sensor_commands", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  res2 = SWIG_AsVal_size_t (argv[1], &size2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "(char *buf, size_t sz)","get_sensor_commands", 2, argv[1] ));
+  }
+  buff2= (char *)malloc((size2+1)*sizeof(char));
+  arg3 = (size_t)(size2);
+  arg2 = (char *)(buff2);
+  result = get_sensor_commands(arg1,arg2,arg3);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_FromCharPtr(arg2));
+  if (buff2) free((char*)buff2);
+  return vresult;
+fail:
+  if (buff2) free((char*)buff2);
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
 _wrap_get_sensor_dp(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   dword *arg2 = (dword *) 0 ;
@@ -8472,7 +8550,43 @@ fail:
 
 
 SWIGINTERN VALUE
-_wrap_set_dc_duty_cycle(int argc, VALUE *argv, VALUE self) {
+_wrap_get_dc_duty_cycle_sp(int argc, VALUE *argv, VALUE self) {
+  uint8_t arg1 ;
+  int *arg2 = (int *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  int temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg2 = &temp2;
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","get_dc_duty_cycle_sp", 1, argv[0] ));
+  } 
+  arg1 = (uint8_t)(val1);
+  result = get_dc_duty_cycle_sp(arg1,arg2);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res2)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_int((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_int, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
+_wrap_set_dc_duty_cycle_sp(int argc, VALUE *argv, VALUE self) {
   uint8_t arg1 ;
   int arg2 ;
   unsigned char val1 ;
@@ -8487,15 +8601,15 @@ _wrap_set_dc_duty_cycle(int argc, VALUE *argv, VALUE self) {
   }
   ecode1 = SWIG_AsVal_unsigned_SS_char(argv[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_dc_duty_cycle", 1, argv[0] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode1), Ruby_Format_TypeError( "", "uint8_t","set_dc_duty_cycle_sp", 1, argv[0] ));
   } 
   arg1 = (uint8_t)(val1);
   ecode2 = SWIG_AsVal_int(argv[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "int","set_dc_duty_cycle", 2, argv[1] ));
+    SWIG_exception_fail(SWIG_ArgError(ecode2), Ruby_Format_TypeError( "", "int","set_dc_duty_cycle_sp", 2, argv[1] ));
   } 
   arg2 = (int)(val2);
-  result = set_dc_duty_cycle(arg1,arg2);
+  result = set_dc_duty_cycle_sp(arg1,arg2);
   {
     vresult = result ? Qtrue : Qfalse; 
   }
@@ -11048,7 +11162,6 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "SENSOR_TYPE__NONE_", SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
   rb_define_const(mEv3, "EV3_ANALOG_XX", SWIG_From_int((int)(EV3_ANALOG_XX)));
   rb_define_const(mEv3, "NXT_ANALOG", SWIG_From_int((int)(NXT_ANALOG)));
-  rb_define_const(mEv3, "NXT_I2C", SWIG_From_int((int)(NXT_I2C)));
   rb_define_const(mEv3, "HT_NXT_COLOR", SWIG_From_int((int)(HT_NXT_COLOR)));
   rb_define_const(mEv3, "HT_NXT_ANGLE", SWIG_From_int((int)(HT_NXT_ANGLE)));
   rb_define_const(mEv3, "HT_NXT_ACCEL", SWIG_From_int((int)(HT_NXT_ACCEL)));
@@ -11070,11 +11183,16 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "EV3_UART_29", SWIG_From_int((int)(EV3_UART_29)));
   rb_define_const(mEv3, "LEGO_EV3_TOUCH", SWIG_From_int((int)(LEGO_EV3_TOUCH)));
   rb_define_const(mEv3, "EV3_UART_33", SWIG_From_int((int)(EV3_UART_33)));
+  rb_define_const(mEv3, "WEDO_MOTION", SWIG_From_int((int)(WEDO_MOTION)));
+  rb_define_const(mEv3, "WEDO_TILT", SWIG_From_int((int)(WEDO_TILT)));
   rb_define_const(mEv3, "LEGO_POWER_STORAGE", SWIG_From_int((int)(LEGO_POWER_STORAGE)));
   rb_define_const(mEv3, "LEGO_NXT_TOUCH", SWIG_From_int((int)(LEGO_NXT_TOUCH)));
   rb_define_const(mEv3, "LEGO_NXT_LIGHT", SWIG_From_int((int)(LEGO_NXT_LIGHT)));
   rb_define_const(mEv3, "LEGO_NXT_SOUND", SWIG_From_int((int)(LEGO_NXT_SOUND)));
-  rb_define_const(mEv3, "LEGO_NXT_ULTRASONIC", SWIG_From_int((int)(LEGO_NXT_ULTRASONIC)));
+  rb_define_const(mEv3, "LEGO_NXT_US", SWIG_From_int((int)(LEGO_NXT_US)));
+  rb_define_const(mEv3, "MI_XG1300L", SWIG_From_int((int)(MI_XG1300L)));
+  rb_define_const(mEv3, "MS_ABSOLUTE_IMU", SWIG_From_int((int)(MS_ABSOLUTE_IMU)));
+  rb_define_const(mEv3, "MS_ANGLE", SWIG_From_int((int)(MS_ANGLE)));
   rb_define_const(mEv3, "MS_LIGHT_ARRAY", SWIG_From_int((int)(MS_LIGHT_ARRAY)));
   rb_define_const(mEv3, "MS_8CH_SERVO", SWIG_From_int((int)(MS_8CH_SERVO)));
   rb_define_const(mEv3, "MS_NXT_TOUCH_MUX", SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));
@@ -11082,6 +11200,8 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "get_sensor_bin_data", _wrap_get_sensor_bin_data, -1);
   rb_define_module_function(mEv3, "set_sensor_bin_data", _wrap_set_sensor_bin_data, -1);
   rb_define_module_function(mEv3, "get_sensor_bin_data_format", _wrap_get_sensor_bin_data_format, -1);
+  rb_define_module_function(mEv3, "set_sensor_command", _wrap_set_sensor_command, -1);
+  rb_define_module_function(mEv3, "get_sensor_commands", _wrap_get_sensor_commands, -1);
   rb_define_module_function(mEv3, "get_sensor_dp", _wrap_get_sensor_dp, -1);
   rb_define_module_function(mEv3, "get_sensor_fw_version", _wrap_get_sensor_fw_version, -1);
   rb_define_module_function(mEv3, "get_sensor_address", _wrap_get_sensor_address, -1);
@@ -11213,7 +11333,8 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "set_dc_command", _wrap_set_dc_command, -1);
   rb_define_module_function(mEv3, "get_dc_commands", _wrap_get_dc_commands, -1);
   rb_define_module_function(mEv3, "get_dc_duty_cycle", _wrap_get_dc_duty_cycle, -1);
-  rb_define_module_function(mEv3, "set_dc_duty_cycle", _wrap_set_dc_duty_cycle, -1);
+  rb_define_module_function(mEv3, "get_dc_duty_cycle_sp", _wrap_get_dc_duty_cycle_sp, -1);
+  rb_define_module_function(mEv3, "set_dc_duty_cycle_sp", _wrap_set_dc_duty_cycle_sp, -1);
   rb_define_module_function(mEv3, "get_dc_name", _wrap_get_dc_name, -1);
   rb_define_module_function(mEv3, "get_dc_polarity", _wrap_get_dc_polarity, -1);
   rb_define_module_function(mEv3, "set_dc_polarity", _wrap_set_dc_polarity, -1);

@@ -20,9 +20,10 @@
 
 /**
  *  \defgroup ev3_port Ports
- *  \brief Access to EV3 Ports.
+ *  \brief Access to EV3 Ports and Multiplexer Ports.
  *  \see http://www.ev3dev.org/docs/drivers/ev3-output-port/
  *  \see http://www.ev3dev.org/docs/drivers/ev3-input-port/
+ *  \see http://www.ev3dev.org/docs/drivers/ht-smux-input-port/
  *  \{
  */
 
