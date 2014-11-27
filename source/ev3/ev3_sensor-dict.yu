@@ -10,7 +10,8 @@
 ($set CLASS_TITLE "sensor")
 
 ($import "grab_sensors.py")
-($import { grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json' ) })
+($import { grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json',
+'../sensors.json' ) })
 
 ($set R  0)
 ($set RW 1)

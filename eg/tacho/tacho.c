@@ -36,13 +36,13 @@ int main( void )
 
 #ifndef __ARM_ARCH_4T__
 	/* Disable auto-detection of the brick (you have to set the correct address below) */
-	ev3_brick_addr = "192.168.1.244";
+	ev3_brick_addr = "192.168.0.224";
 
 #endif
 	if ( ev3_init() == -1 ) return ( 1 );
 
 #ifndef __ARM_ARCH_4T__
-	printf( "The EV3 brick auto-detection is DISABLED, waiting %s online...\n", ev3_brick_addr );
+	printf( "The EV3 brick auto-detection is DISABLED,\nwaiting %s online with plugged tacho...\n", ev3_brick_addr );
 
 #endif
 	while ( ev3_tacho_init() < 1 ) Sleep( 1000 );

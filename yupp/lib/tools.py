@@ -1,3 +1,16 @@
+# -*- coding: utf-8 -*-
+
+#      ____ __     ____   ___    ____ __         (((((()
+#     | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+#     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+#                                                ((())))
+
+__author__ = "Vitaly Kravtsov"
+__author_email__ = "in4lio@gmail.com"
+__copyright__ = "See the LICENSE file."
+
+#pylint: skip-file
+
 import os
 
 M_CUT = ' *  \\{\n'

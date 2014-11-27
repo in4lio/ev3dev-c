@@ -1,80 +1,83 @@
+# -*- coding: utf-8 -*-
+
+#      ____ __     ____   ___    ____ __         (((((()
+#     | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+#     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+#                                                ((())))
+
+__author__ = "Vitaly Kravtsov"
+__author_email__ = "in4lio@gmail.com"
+__copyright__ = "See the LICENSE file."
+
 #pylint: skip-file
 
 import urllib2
 import json
 import os
 
-F_SENSOR_JSON = '../sensors.json'
+F_SENSOR_JSON = 'sensors.json'
 
-BEGIN = """($dict CLASS_TYPE
-	(` {0: <{1}}  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS )
-	(`
-"""
-COL_1 = 'CLASS_TYPE_NAME'
-ROW = """	(  {0: <{1}}  (`{2})  (`{3}))
-"""
-END = """	)
-)
-"""
+D_BEGIN = '($dict CLASS_TYPE\n(`CLASS_TYPE_NAME CLASS_TYPE_MODES CLASS_TYPE_COMMANDS)\n(`\n'
+D_ROW   = '({0} (`{1}) (`{2}))\n'
+D_END   = ')\n)'
 
-"""
-Get sensor types, modes and commands from JSON file and make a dictionary with the following layout:
-($dict CLASS_TYPE
-    (` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS )
-    (`
-    (  "sensor-name"    (` "sensor-mode" ... )  (` "sensor-command" ... ))
-    ...
+def grab_sensors( url, cache = None ):
+    """
+    Get sensor types, modes and commands from JSON file and make a dictionary
+    with the following layout:
+
+    ($dict CLASS_TYPE
+        (` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS )
+        (`
+        (  "sensor-name"    (` "sensor-mode" ... )  (` "sensor-command" ... ))
+        ...
+        )
     )
-)
-"""
-def grab_sensors( url ):
-#   -- get the file from URL if it has not been read yet
-    if not os.path.isfile( F_SENSOR_JSON ):
-        j = urllib2.urlopen( url )
-        with open( F_SENSOR_JSON, 'wb' ) as f:
-            f.write( j.read())
+    """
+    if isinstance( cache, basestring ):
+        if not cache:
+            cache = F_SENSOR_JSON
+#       -- cache the file from URL if it doesn't exist
+        if not os.path.isfile( cache ):
+            j = urllib2.urlopen( url )
+            with open( cache, 'wb' ) as f:
+                f.write( j.read())
+#       -- read the cached file
+        with open( cache ) as f:
+            data = json.load( f )
+    else:
+#       -- read data directly
+        data = json.load( urllib2.urlopen( url ))
 
 #   -- parse file
-    with open( F_SENSOR_JSON ) as f:
-        data = json.load( f )
-
-    l_name = len( max([ x[ 'name' ] for x in data ], key = len )) + 2  # ""
-
-    result = BEGIN.format( COL_1, l_name )
+    result = D_BEGIN
 
     for sensor in data:
         name = '"%s"' % ( sensor[ 'name' ])
 
         modelist = ''
         try:
-            for mode in sensor[ 'ms_mode_info' ]:
-                modelist += '"%s" ' % ( mode[ 'name' ])
+            modelist = ' '.join( '"' + x[ 'name' ] + '"'  for x in sensor[ 'ms_mode_info' ])
         except KeyError:
             pass
-
-        if modelist:
-            modelist = ' ' + modelist
 
         cmdlist = ''
         try:
-            for cmd in sensor[ 'ms_cmd_info' ]:
-                cmdlist += '"%s" ' % ( cmd[ 'name' ])
+            cmdlist = ' '.join( '"' + x[ 'name' ] + '"'  for x in sensor[ 'ms_cmd_info' ])
         except KeyError:
             pass
-
-        if cmdlist:
-            cmdlist = ' ' + cmdlist
 
         if modelist or cmdlist:
 #           -- append the sensor only if it has any mode or command
             print sensor[ 'name' ]
-            result += ROW.format( name, l_name, modelist, cmdlist )
+            result += D_ROW.format( name, modelist, cmdlist )
         else:
-            print '{0: <{1}}(ignored)'.format( sensor[ 'name' ], l_name )
+            print '{0: <24}(ignored)'.format( sensor[ 'name' ])
 
-    result += END
+    result += D_END
     return result
 
 if __name__ == '__main__':
-    with open( './sensors.yu', 'w' ) as f:
-        f.write( grab_sensor_type_dict( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json' ))
+#   -- test
+    with open( 'sensors.yu', 'w' ) as f:
+        f.write( grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json' ))
