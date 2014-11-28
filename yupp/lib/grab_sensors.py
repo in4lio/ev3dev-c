@@ -18,7 +18,7 @@ import os
 F_SENSOR_JSON = 'sensors.json'
 
 D_BEGIN = '($dict CLASS_TYPE\n(`CLASS_TYPE_NAME CLASS_TYPE_MODES CLASS_TYPE_COMMANDS)\n(`\n'
-D_ROW   = '({0} (`{1}) (`{2}))\n'
+D_ROW   = '("{0}" (`{1}) (`{2}))\n'
 D_END   = ')\n)'
 
 def grab_sensors( url, cache = None ):
@@ -27,9 +27,9 @@ def grab_sensors( url, cache = None ):
     with the following layout:
 
     ($dict CLASS_TYPE
-        (` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS )
+        (` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS  )
         (`
-        (  "sensor-name"    (` "sensor-mode" ... )  (` "sensor-command" ... ))
+        (  "sensor-name"    (` "mode" ... )   (` "command" ... )   )
         ...
         )
     )
@@ -49,28 +49,25 @@ def grab_sensors( url, cache = None ):
 #       -- read data directly
         data = json.load( urllib2.urlopen( url ))
 
-#   -- parse file
+#   -- parse data
     result = D_BEGIN
 
     for sensor in data:
-        name = '"%s"' % ( sensor[ 'name' ])
 
-        modelist = ''
-        try:
-            modelist = ' '.join( '"' + x[ 'name' ] + '"'  for x in sensor[ 'ms_mode_info' ])
-        except KeyError:
-            pass
+        if 'ms_mode_info' in sensor:
+            modes = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'ms_mode_info' ]))
+        else:
+            modes = ''
 
-        cmdlist = ''
-        try:
-            cmdlist = ' '.join( '"' + x[ 'name' ] + '"'  for x in sensor[ 'ms_cmd_info' ])
-        except KeyError:
-            pass
+        if 'ms_cmd_info' in sensor:
+            cmds = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'ms_cmd_info' ]))
+        else:
+            cmds = ''
 
-        if modelist or cmdlist:
-#           -- append the sensor only if it has any mode or command
+#       -- append the sensor only if it has any mode or command
+        if modes or cmds:
+            result += D_ROW.format( sensor[ 'name' ], modes, cmds )
             print sensor[ 'name' ]
-            result += D_ROW.format( name, modelist, cmdlist )
         else:
             print '{0: <24}(ignored)'.format( sensor[ 'name' ])
 
