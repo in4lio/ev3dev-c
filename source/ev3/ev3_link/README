@@ -28,7 +28,8 @@
 
     * * *  How to set WLAN up on the EV3 brick?
 
-	https://github.com/ev3dev/ev3dev/wiki/Setting-Up-wifi-Networking
+    http://www.ev3dev.org/docs/getting-started/#step-4-setup-a-network-connection
+
 
     ___        ___________________________________
     ___ CLIENT ___________________________________
