@@ -8,14 +8,12 @@
 # -- binary name (without prefix and extension)
 BIN = ev3
 
-ifeq ($(OS),Windows_NT)
 # -- platform (core)
-# ARM Cortex-M3: __MDKARM__
-# DOS: __DJGPP__
-# WIN32: __MINGW__
-# UNIX: __UNIX__
+ifeq ($(OS),Windows_NT)
+# WIN32
 PLATFORM = __MINGW__
 else
+# UNIX
 PLATFORM = __UNIX__
 endif
 
@@ -28,13 +26,9 @@ SWIG = swig
 F_SWIG_YUI = $(TOP)/ev3.yu-i
 
 # -- compilers
-ifeq ($(PLATFORM),__DJGPP__)
-CC = $(DJGPP_HOME)/bin/gcc.exe
-CXX = $(DJGPP_HOME)/bin/gxx.exe
-else
 CC = gcc
 CXX = g++
-endif
+LINK = $(CC)
 
 # -- on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -60,20 +54,13 @@ PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- output subdirectory
-ifeq ($(PLATFORM),__DJGPP__)
-D_PLATFORM = djgpp
-else
-
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
 else
 D_PLATFORM =
 endif
 
-endif
-
 # -- perl directory
-#D_PERL = c:/dev/perl/perl
 D_PERL = d:/prog/perl-no64/perl/
 
 # -- yupp import directories
@@ -85,8 +72,6 @@ D_C = $(TOP)/source/ev3 $(TOP)/3d_party
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
 endif
-
-# D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
 
 D_CXX = $(D_C)
 D_ASM = $(TOP)/source
@@ -107,7 +92,7 @@ D_H = $(D_C) $(PERL_INCLUDE)
 
 # -- binary directory
 D_BIN = .
-#D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
+# D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
 D_OBJ = object
@@ -182,12 +167,6 @@ endif
 
 ASMFLAGS = -Wall
 
-# -- platform specific options
-ifeq ($(PLATFORM),__DJGPP__)
-BUFSIZE = 16k
-MINSTACK = 1024k
-endif
-
 # ---------------------------------
 #   files lists
 # ---------------------------------
@@ -216,7 +195,7 @@ O_WRAP = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(BIN)_wrap))
 #   commands
 # ---------------------------------
 
-# -- compiler wrapper
+# -- wrap compiler arguments
 ifeq ($(OS),Windows_NT)
 # -- too long command line workaround
 define wrap
@@ -231,14 +210,8 @@ endef
 endif
 
 # -- optional final tools
-ifeq ($(PLATFORM),__DJGPP__)
-define final
-	stubedit $1 minstack=$(MINSTACK) bufsize=$(BUFSIZE)
-endef
-else
 define final
 endef
-endif
 
 # -- removal list
 R = $(F_BIN) $(O) $(G_REST)
@@ -275,7 +248,7 @@ vpath %$(E_YUC) $(D_C)
 all: $(F_BIN)
 
 $(F_BIN): $(O) $(O_WRAP)
-	$(call wrap,$(CC),-shared $^ -o $@ $(LIBS) $(LFLAGS))
+	$(call wrap,$(LINK),-shared $^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 

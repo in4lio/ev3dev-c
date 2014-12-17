@@ -22,7 +22,7 @@ TOP = ../..
 # -- compilers
 CC = gcc
 CXX = g++
-AR = ar
+LINK = ar
 
 # -- on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -67,8 +67,6 @@ D_YU = $(TOP)/source/ev3
 # -- source directories
 D_C = . $(TOP)/3d_party
 
-# D_C := $(if $(D_PLATFORM), $(TOP)/source/$(D_PLATFORM) $(D_C), $(D_C))
-
 ifeq ($(EV3),0)
 D_C := $(D_C) ev3_link
 endif
@@ -111,8 +109,8 @@ endif
 # -- binary full name
 F_BIN = $(D_BIN)/lib$(BIN)$(E_BIN)
 
-# -- ar flags
-ARFLAGS = rcs
+# -- link options
+LFLAGS = rcs
 
 # -- preprocessor flags
 PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
@@ -159,7 +157,7 @@ O = $(O_CXX) $(O_C) $(O_ASM)
 #   commands
 # ---------------------------------
 
-# -- compiler wrapper
+# -- wrap compiler arguments
 ifeq ($(OS),Windows_NT)
 # -- too long command line workaround
 define wrap
@@ -213,7 +211,7 @@ vpath %$(E_YUC) $(D_C)
 all: $(F_BIN)
 
 $(F_BIN): $(O)
-	$(call wrap,$(AR),$(ARFLAGS) $@ $^)
+	$(call wrap,$(LINK),$(LFLAGS) $@ $^)
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
