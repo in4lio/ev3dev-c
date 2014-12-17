@@ -12,7 +12,8 @@ http://github.com/in4lio/yupp/
 yup.py -- yupp in python
 """
 COPYRIGHT   = 'Copyright (c) 2011, 13, 14'
-AUTHORS     = 'Vitaly Kravtsov (in4lio@gmail.com)'
+HOLDER      = 'Vitaly Kravtsov'
+EMAIL       = 'in4lio@gmail.com'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
 VERSION     = '0.7b7'
@@ -3171,8 +3172,9 @@ TITLE = r""" __    __    _____ _____
 \ \ \_\/  \_\/  \_\ \ \_\ \  %(app)s %(version)s
  \ \__  /\____/\  __/\  __/
   \/_/\_\/___/\ \_\/\ \_\/   %(copyright)s
-     \/_/      \/_/  \/_/    %(authors)s
-""" % { 'description' : DESCRIPTION, 'copyright': COPYRIGHT, 'authors': AUTHORS, 'app': APP, 'version': VERSION }
+     \/_/      \/_/  \/_/    %(holder)s (%(email)s)
+""" % { 'description' : DESCRIPTION, 'app': APP, 'version': VERSION
+      , 'copyright': COPYRIGHT, 'holder': HOLDER, 'email': EMAIL }
 
 PROMPT  = '[yupp]# '
 PP_I    = '<--'
