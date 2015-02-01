@@ -120,16 +120,16 @@ enum {
 [ )
 
 /**
- *  \brief Search of the specified ($_CLASS) type.
+ *  \brief Search of a sequence number of the specified ($_CLASS) type.
  *  \param type_inx The ($_CLASS) type.
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)( uint8_t type_inx, uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID port))( uint8_t type_inx, uint8_t *sn, uint8_t from );
 
 /**
- *  \brief Search of the ($_CLASS) by plug-in attributes.
+ *  \brief Search of a sequence number the ($_CLASS) by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
  ($[*  \param addr Address.] ? ($CLASS_DESC_ADDR))

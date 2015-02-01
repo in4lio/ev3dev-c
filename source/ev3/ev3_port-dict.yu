@@ -4,17 +4,19 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($set CLASS_PATH "/sys/class/servo-motor")
-($set CLASS_FOLDER_PREF "motor")
-($set CLASS_ID servo)
-($set CLASS_TITLE "servo motor")
-
-($set SERVO_CHANNEL_PREF "sv")
+($set CLASS_PATH "/sys/class/lego-port")
+($set CLASS_FOLDER_PREF "port")
+($set CLASS_ID port)
+($set CLASS_TITLE "EV3 port")
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME  )
+	(` CLASS_TYPE_NAME        CLASS_TYPE_ID_SHORT  )
 	(`
-	(  "servo-motor"    )
+	(  "ht-nxt-smux-port"              )
+	(  "legoev3-input-port"            )
+	(  "legoev3-output-port"           )
+	(  "ms-ev3-smux-port"              )
+	(  "wedo-port"                     )
 	)
 )
 
@@ -25,15 +27,13 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
-	(  "command"               char             1                 RW                )
 	(  "driver_name"           char             1                 R                 )
-	(  "max_pulse_ms"          dword            0                 RW                )
-	(  "mid_pulse_ms"          dword            0                 RW                )
-	(  "min_pulse_ms"          dword            0                 RW                )
-	(  "polarity"              char             1                 RW                )
+	(  "mode"                  char             1                 RW                )
+	(  "modes"                 char             1                 R                 )
 	(  "port_name"             char             1                 R                 )
-	(  "position"              int              0                 RW                )
-	(  "rate"                  dword            0                 RW                )
+	(  "set_device"            char             1                 W                 )
+	(  "status"                char             1                 R                 )
+
 	)
 )
 
@@ -51,7 +51,6 @@
 	(  type_inx       uint8_t          "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "channel"           )
 	)
 )
 
@@ -60,3 +59,14 @@
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
 ($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
 ($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))
+
+($dict PORT
+	(` PORT_PARENT           PORT_PREF  PORT_SUFS  PORT_ID_SHORT  )
+	(`
+	(  "legoev3-input-port"  "mux"      (1 2 3 4)  (`)            )
+	(  (`)                   "in"       (1 2 3 4)  input          )
+	(  (`)                   "out"      (A B C D)  output         )
+	(  "legoev3-input-port"  "mux"      (1 2 3 4)  (`)            )
+	(  "legoev3-input-port"  "wedo"     (1 2 3 4)  (`)            )
+	)
+)

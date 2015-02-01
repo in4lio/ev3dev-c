@@ -4,12 +4,16 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($set CLASS_PATH "/sys/class/msensor")
+($set CLASS_PATH "/sys/class/lego-sensor")
 ($set CLASS_FOLDER_PREF "sensor")
 ($set CLASS_ID ($unq CLASS_FOLDER_PREF))
 ($set CLASS_TITLE "sensor")
 
 ($import "grab_sensors.py")
+
+($!dict CLASS_TYPE
+	(` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS  )
+)
 ($import { grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json',
 '../sensors.json' ) })
 
@@ -20,16 +24,16 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME    CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
+	(  "address"          byte             0                 R                 )
 	(  "bin_data"         byte             2                 RW                )
 	(  "bin_data_format"  char             1                 R                 )
 	(  "command"          char             1                 W                 )
 	(  "commands"         char             1                 R                 )
-	(  "dp"               dword            0                 R                 )
+	(  "decimals"         dword            0                 R                 )
+	(  "driver_name"      char             1                 R                 )
 	(  "fw_version"       char             1                 R                 )
-	(  "address"          byte             0                 R                 )
 	(  "mode"             char             1                 RW                )
 	(  "modes"            char             1                 R                 )
-	(  "name"             char             1                 R                 )
 	(  "num_values"       dword            0                 R                 )
 	(  "poll_ms"          dword            0                 RW                )
 	(  "port_name"        char             1                 R                 )
@@ -52,7 +56,7 @@
 	)
 )
 
-($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "name")
+($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
 
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )

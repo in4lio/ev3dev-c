@@ -67,22 +67,17 @@ const char *ev3_($CLASS_ID)_type( uint8_t type_inx )
 
 	[ )
 	}
-	return STR_unknown_;
+	return ( STR_unknown_ );
 }
 
 uint8_t get_($CLASS_ID)_type_inx( uint8_t sn )
 {
 	char buf[ 64 ];
-	char *t;
 
 	if ( !get_($CLASS_ID)_($unq CLASS_TYPE_ATTR)( sn, buf, sizeof( buf ))) return ( ($upper CLASS_ID)_TYPE__NONE_ );
 
-	/* If type name contains ':' it starts with port e.g. "outB:rcx-motor" */
-	t = strrchr( buf, ':' );
-	t = ( t ) ? t + 1 : buf;
-
 	($each-CLASS_TYPE \i.]
-		if ( strcmp( t, ($i CLASS_TYPE_NAME) ) == 0 ) return ($upper ($i CLASS_TYPE_ID));
+		if ( strcmp( buf, ($i CLASS_TYPE_NAME) ) == 0 ) return ($upper ($i CLASS_TYPE_ID));
 
 	[ )
 	return ( ($upper CLASS_ID)_TYPE__COUNT_ );
@@ -112,7 +107,7 @@ EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn )
 
 [ )
 
-bool ev3_search_($CLASS_ID)( uint8_t type_inx, uint8_t *sn, uint8_t from )
+bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID port))( uint8_t type_inx, uint8_t *sn, uint8_t from )
 {
 	uint8_t _sn = from;
 

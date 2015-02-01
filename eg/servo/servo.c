@@ -5,7 +5,7 @@
                                                ((())))
  *//**
  *  \file  servo.c
- *  \brief  ev3dev-c SERVO Motors example.
+ *  \brief  ev3dev-c Servo Motors example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
@@ -13,10 +13,7 @@
 #include <stdio.h>
 #include "ev3.h"
 #include "ev3_port.h"
-#include "ev3_input.h"
-#include "nxt_input_mux.h"
 #include "ev3_sensor.h"
-#include "nxt_analog_host.h"
 #include "ev3_servo.h"
 
 // WIN32 /////////////////////////////////////////
@@ -45,13 +42,15 @@ int main( void )
 	if ( ev3_init() < 1 ) return ( 1 );
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
+	ev3_port_init();
 
 	printf( "Set mode of the EV3 input port...\n" );
-	set_input_mode_inx( port, INPUT_NXT_ANALOG );
-	if ( get_input_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_input_name( port ), s );
+	sn = ev3_search_port( port, EXT_PORT__NONE_ );
+	set_port_mode( sn, "nxt-analog" );  /* FIXME: set_port_mode_inx( sn, INPUT_NXT_ANALOG ) */
+	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	printf( "Set MS_8CH_SERVO mode of the nxt-analog-host...\n" );
-	set_nxt_analog_host_set_sensor( port, INPUT_MUX__NONE_, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+	set_port_set_device( sn, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
 
 	Sleep( 200 );
 	ev3_servo_init();
@@ -64,7 +63,7 @@ int main( void )
 			printf( "  port = %s\n", s );
 		}
 	}
-	if ( ev3_search_servo_plugged_in( port, INPUT_MUX__NONE_, 1, &sn, 0 )) {
+	if ( ev3_search_servo_plugged_in( port, EXT_PORT__NONE_, 1, &sn, 0 )) {
 		printf( "Servo motor is found, setting position...\n" );
 		set_servo_command( sn, "run" );
 		set_servo_position( sn, 100 );
@@ -79,8 +78,8 @@ int main( void )
 	}
 
 	printf( "Reset mode of the EV3 input port...\n" );
-	set_input_mode_inx( port, INPUT_AUTO );
-	if ( get_input_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_input_name( port ), s );
+	set_port_mode( sn, "auto" ); /* FIXME: set_port_mode_inx( sn, OUTPUT_AUTO ) */
+	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

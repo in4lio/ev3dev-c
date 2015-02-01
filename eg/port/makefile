@@ -6,7 +6,7 @@
 #   makefile ( yupp, gcc )
 
 # -- binary name (without extension)
-BIN = led
+BIN = port
 
 # -- creating MAP file
 MAP = 0

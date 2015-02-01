@@ -13,8 +13,6 @@
 #include <stdio.h>
 #include "ev3.h"
 #include "ev3_port.h"
-#include "ev3_output.h"
-#include "nxt_input_mux.h"
 #include "ev3_dc.h"
 
 // WIN32 /////////////////////////////////////////
@@ -42,10 +40,12 @@ int main( void )
 	if ( ev3_init() < 1 ) return ( 1 );
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
+	ev3_port_init();
 
 	printf( "Set mode of the EV3 output port...\n" );
-	set_output_mode_inx( port, OUTPUT_RCX_MOTOR );
-	if ( get_output_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_output_name( port ), s );
+	sn = ev3_search_port( port, EXT_PORT__NONE_ );
+	set_port_mode( sn, "rcx-motor" );  /* FIXME: set_port_mode_inx( sn, OUTPUT_RCX_MOTOR ) */
+	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	Sleep( 200 );
 	ev3_dc_init();
@@ -57,7 +57,7 @@ int main( void )
 			printf( "  port = %s\n", ev3_port_name( ev3_dc[ i ].port, ev3_dc[ i ].extport ));
 		}
 	}
-	if ( ev3_search_dc_plugged_in( port, INPUT_MUX__NONE_, &sn, 0 )) {
+	if ( ev3_search_dc_plugged_in( port, EXT_PORT__NONE_, &sn, 0 )) {
 		printf( "DC motor is found, run for 5 sec...\n" );
 		set_dc_ramp_up_ms( sn, 2000 );
 		set_dc_duty_cycle_sp( sn, 100 );
@@ -71,8 +71,8 @@ int main( void )
 	}
 
 	printf( "Reset mode of the EV3 output port...\n" );
-	set_output_mode_inx( port, OUTPUT_AUTO );
-	if ( get_output_state( port, s, sizeof( s ))) printf( "%s: %s\n", ev3_output_name( port ), s );
+	set_port_mode( sn, "auto" ); /* FIXME: set_port_mode_inx( sn, OUTPUT_AUTO ) */
+	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

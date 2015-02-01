@@ -61,7 +61,7 @@ const char *ev3_led_trigger( uint8_t trigger_inx )
 
 	[ )
 	}
-	return STR_unknown_;
+	return ( STR_unknown_ );
 }
 
 uint8_t get_led_trigger_inx( uint8_t inx )

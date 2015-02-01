@@ -14,7 +14,8 @@
 \endverbatim
 </CENTER>
 
-<H2>The <A HREF="https://github.com/in4lio/ev3dev-c/">library</A> hierarchic structure</H2>
+<H2>The <A HREF="https://github.com/in4lio/ev3dev-c/">library</A> hierarchic structure
+<BR>($LIBRARY) ($VERSION) (for kernel ($KERNEL))</H2>
 
 <H3>I LEVEL</H3>
 

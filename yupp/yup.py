@@ -2387,6 +2387,7 @@ builtin.update({
     'list': lambda *l : LIST( l ),
     'print': lambda *l : sys.stdout.write( ' '.join(( _unq( x ) if isinstance( x, STR ) else str( x )) for x in l )),
     'q': lambda val : '"%s"' % str( val ),
+    'qs': lambda val : "'%s'" % str( val ),
     'range': lambda *l : LIST( range( *l )),
     'reversed': lambda l : LIST( reversed( l )),
     're-split': lambda regex, val : LIST( filter( None, re.split( regex, val ))),                                      #pylint: disable=W0141

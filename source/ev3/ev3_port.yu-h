@@ -20,17 +20,59 @@
 
 /**
  *  \defgroup ev3_port Ports
- *  \brief Access to EV3 Ports and Multiplexer Ports.
- *  \see http://www.ev3dev.org/docs/drivers/ev3-output-port/
- *  \see http://www.ev3dev.org/docs/drivers/ev3-input-port/
- *  \see http://www.ev3dev.org/docs/drivers/ht-smux-input-port/
+ *  \brief Access to EV3 Ports and Extended Ports.
+ *  \see http://www.ev3dev.org/docs/ports/
+ *  \see http://www.ev3dev.org/docs/drivers/lego-port-class/
  *  \{
  */
 
+($import "ev3_port-dict.yu")
+($import "ev3_class-h.yu")
+
+
 /**
- *  \brief Undefined EV3 port.
+ *  \brief Identifiers of EV3 ports and extended ports.
  */
-#define EV3_PORT__NONE_  0
+enum {
+	EV3_PORT__NONE_ = 0,
+	EXT_PORT__NONE_ = EV3_PORT__NONE_,
+
+	($each-CLASS_TYPE \i.]
+		($upper ($i CLASS_TYPE_ID))__BASE_,
+		($($range ($len ($i PORT_SUFS))) \ii.]
+			($upper ($i CLASS_TYPE_ID))_($ii ($i PORT_SUFS)) = ($upper ($i CLASS_TYPE_ID))__BASE_ + ($ii),
+
+		[ )
+
+	[ )
+};
+
+($each-CLASS_TYPE \i.]
+	($($i PORT_SUFS) \ii.]
+		($if ($i PORT_ID_SHORT) ]
+			#define ($upper ($i PORT_ID_SHORT))_($ii)  ($upper ($i CLASS_TYPE_ID))_($ii)
+		[ )
+
+	[ )
+
+[ )
+
+($each-CLASS_TYPE \i.]
+
+	/**
+	 *  \brief Count of ($unq ($i CLASS_TYPE_NAME))s.
+	 */
+	#define ($upper ($i CLASS_TYPE_ID))__COUNT_  ($len ($i PORT_SUFS))
+
+[ )
+
+/**
+ *  \brief Search of a port sequence number by the EV3 port and the extended port.
+ *  \param port EV3 port.
+ *  \param extport Extended port.
+ *  \return Port sequence number.
+ */
+($h-extern) uint8_t ev3_search_port( uint8_t port, uint8_t extport );
 
 /**
  *  \brief Get indexes of the EV3 port and the extended port from the port name.
@@ -41,8 +83,8 @@
 ($h-extern) uint8_t ev3_port_inx( const char *name, uint8_t *extport );
 
 /**
- *  \brief Get name of the specified EV3 port or multiplexer port.
- *  \param port Port index.
+ *  \brief Get name of the specified port.
+ *  \param port EV3 port index.
  *  \param extport Extended port index.
  *  \return Requested value.
  */

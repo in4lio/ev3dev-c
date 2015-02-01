@@ -5,7 +5,7 @@
                                                ((())))
  *//**
  *  \file  sensor.c
- *  \brief  ev3dev-c sensors example.
+ *  \brief  ev3dev-c Sensors example.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */

@@ -15,8 +15,6 @@
 #include <stdio.h>
 #include "ev3.h"
 #include "ev3_port.h"
-#include "ev3_output.h"
-#include "ev3_input.h"
 
 /*  WARNING!
  *  Please build and install ev3dev-c static library before make this example.
@@ -26,25 +24,24 @@
 int main( void )
 {
 	char s[ 256 ];
-	uint8_t i;
+	int state;
 
 	if ( ev3_init() < 1 ) return ( 1 );
 
-	if ( ev3_listdir( "/sys/class/msensor", s, sizeof( s ))) {
-		printf( "sensors: %s\n", s );
+	if ( ev3_listdir( "/sys/class/leds", s, sizeof( s ))) {
+		printf( "leds folder: %s\n", s );
+	}
+	if ( ev3_read_int( "/sys/class/leds/ev3:red:left/brightness", &state )) {
+		ev3_write_int( "/sys/class/leds/ev3:red:left/brightness", ( state ) ? 0 : 255 );
+	}
+	if ( ev3_listdir( "/sys/class/lego-port", s, sizeof( s ))) {
+		printf( "lego-port folder: %s\n", s );
+	}
+	if ( ev3_listdir( "/sys/class/lego-sensor", s, sizeof( s ))) {
+		printf( "lego-sensor folder: %s\n", s );
 	}
 	if ( ev3_listdir( "/sys/class/tacho-motor", s, sizeof( s ))) {
-		printf( "tacho-motors: %s\n", s );
-	}
-	for ( i = OUTPUT__BASE_; i < OUTPUT__BASE_ + OUTPUT__COUNT_; i++ ) {
-		if ( get_output_state( i, s, sizeof( s ))) {
-			printf( "%s: %s\n", ev3_output_name( i ), s );
-		}
-	}
-	for ( i = INPUT__BASE_; i < INPUT__BASE_ + INPUT__COUNT_; i++ ) {
-		if ( get_input_state( i, s, sizeof( s ))) {
-			printf( "%s: %s\n", ev3_input_name( i ), s );
-		}
+		printf( "tacho-motor folder: %s\n", s );
 	}
 	ev3_uninit();
 

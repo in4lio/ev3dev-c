@@ -52,7 +52,7 @@
 #define UDP_CLIENT_RX_WAIT   10  /* ms */
 #define UDP_CLIENT_TX_TRIES  2
 
-#define UDP_SERVER_RX_DELAY  100  /* us */
+#define UDP_SERVER_RX_DELAY  1000  /* us */
 #define UDP_SERVER_TX_DELAY  2000000
 
 enum {

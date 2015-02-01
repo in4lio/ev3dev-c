@@ -25,9 +25,9 @@
 	(`
 	(  "command"               char             1                 RW                )
 	(  "commands"              char             1                 R                 )
+	(  "driver_name"           char             1                 R                 )
 	(  "duty_cycle"            int              0                 R                 )
 	(  "duty_cycle_sp"         int              0                 RW                )
-	(  "name"                  char             1                 R                 )
 	(  "polarity"              char             1                 RW                )
 	(  "port_name"             char             1                 R                 )
 	(  "ramp_down_ms"          dword            0                 RW                )
@@ -41,7 +41,7 @@
 	)
 )
 
-($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "name")
+($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
 
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )

@@ -18,7 +18,7 @@ import os
 F_SENSOR_JSON = 'sensors.json'
 
 D_BEGIN = '($dict CLASS_TYPE\n(`CLASS_TYPE_NAME CLASS_TYPE_MODES CLASS_TYPE_COMMANDS)\n(`\n'
-D_ROW   = '("{0}" (`{1}) (`{2}))\n'
+D_ROW   = '("{0}" ({1}) ({2}))\n'
 D_END   = ')\n)'
 
 def grab_sensors( url, cache = None ):
@@ -29,7 +29,7 @@ def grab_sensors( url, cache = None ):
     ($dict CLASS_TYPE
         (` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS  )
         (`
-        (  "sensor-name"    (` "mode" ... )   (` "command" ... )   )
+        (  "sensor-name"    ( "mode" ... )    ( "command" ... )    )
         ...
         )
     )
@@ -54,13 +54,13 @@ def grab_sensors( url, cache = None ):
 
     for sensor in data:
 
-        if 'ms_mode_info' in sensor:
-            modes = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'ms_mode_info' ]))
+        if 'mode_info' in sensor:
+            modes = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'mode_info' ]))
         else:
             modes = ''
 
-        if 'ms_cmd_info' in sensor:
-            cmds = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'ms_cmd_info' ]))
+        if 'cmd_info' in sensor:
+            cmds = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'cmd_info' ]))
         else:
             cmds = ''
 

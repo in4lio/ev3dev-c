@@ -15,39 +15,110 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_port.h"
-#include "ev3_output.h"
-#include "ev3_input.h"
-#include "nxt_input_mux.h"
+
+($import "ev3_port-dict.yu")
+($import "ev3_class.yu")
+
+uint8_t ev3_search_port( uint8_t port, uint8_t extport )
+{
+	uint8_t sn;
+
+	ev3_search_port_plugged_in( port, extport, &sn, 0 );
+	return ( sn );
+}
+
+($each-CLASS_TYPE \i.]
+
+	($set j ($index CLASS_TYPE_NAME ($i PORT_PARENT)) ? ($i PORT_PARENT) | i)  ($! parent index )
+
+	static const char * const ($i CLASS_TYPE_ID)_name[] = {
+		($($j PORT_SUFS) \jj.]
+			($if ($i PORT_PARENT) ]
+				($($i PORT_SUFS) \ii.]
+					($q,,($unq ($j PORT_PREF))($jj):($unq ($i PORT_PREF))($ii)),
+
+				[ )
+			[ \else ]
+				($q,,($unq ($j PORT_PREF))($jj)),
+			[ )
+
+		[ )
+	};
+
+	#define ($upper ($i CLASS_TYPE_ID))_PARENT_LEN  ($add ($len,,($unq ($j PORT_PREF))) 1)
+	#define ($upper ($i CLASS_TYPE_ID))_LEN  ($add ($len,,($unq ($i PORT_PREF))) 1)
+	($if ($i PORT_PARENT) ]
+		#define ($upper ($i CLASS_TYPE_ID))_FULL_LEN  ( ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + ($upper ($i CLASS_TYPE_ID))_LEN + 1 )
+	[ \else ]
+		#define ($upper ($i CLASS_TYPE_ID))_FULL_LEN  ($upper ($i CLASS_TYPE_ID))_LEN
+	[ )
+
+	static uint8_t ($i CLASS_TYPE_ID)_inx( const char *name )
+	{
+		if ( strncmp( name, ($i PORT_PREF), ($upper ($i CLASS_TYPE_ID))_LEN - 1 ) == 0 ) {
+			name += ($upper ($i CLASS_TYPE_ID))_LEN - 1;
+			switch ( *name ) {
+			($($i PORT_SUFS) \ii.]
+				case ($qs ii):
+					return ($upper ($i CLASS_TYPE_ID))_($ii);
+
+			[ )
+			}
+		}
+		return ( EV3_PORT__NONE_ );
+	}
+
+[ )
 
 uint8_t ev3_port_inx( const char *name, uint8_t *extport )
 {
-	uint8_t port;
+	/* FIXME: We need check a type of the port to distinguish ports with same prefixes.
+	 */
+	uint8_t port = EV3_PORT__NONE_;
 
-	port = ev3_output_inx( name );
-	if ( port != EV3_PORT__NONE_) {
-		*extport = INPUT_MUX__NONE_;
-		return ( port );
-	}
-	port = nxt_input_mux_inx( name, extport );
-	if ( port != EV3_PORT__NONE_)  {
-		return ( port );
-	}
-	port = ev3_input_inx( name );
-	if ( port != EV3_PORT__NONE_)  {
-		*extport = INPUT_MUX__NONE_;
-		return ( port );
-	}
-	return ( EV3_PORT__NONE_ );
+	*extport = EXT_PORT__NONE_;
+	($each-CLASS_TYPE \i.]
+
+		($set j  ($index CLASS_TYPE_NAME ($i PORT_PARENT)) ? ($i PORT_PARENT) | i)  ($! parent index )
+
+		if ( strlen( name ) == ($upper ($i CLASS_TYPE_ID))_FULL_LEN ) {
+			port = ($j CLASS_TYPE_ID)_inx( name );
+			if ( port != EV3_PORT__NONE_ ) {
+				($if ($i PORT_PARENT) ]
+					*extport = ($i CLASS_TYPE_ID)_inx( name + ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + 1 );
+					if ( *extport != EXT_PORT__NONE_ ) {
+						return ( port );
+					}
+				[ \else ]
+					return ( port );
+				[ )
+
+			}
+		}
+
+	[ )
+ 	return ( port );
 }
 
 const char *ev3_port_name( uint8_t port, uint8_t extport )
 {
-	if (( port >= OUTPUT__BASE_) && ( port < OUTPUT__BASE_ + OUTPUT__COUNT_ )) return ev3_output_name( port );
-	if (( port >=  INPUT__BASE_) && ( port <  INPUT__BASE_ +  INPUT__COUNT_ )) {
-		if ( extport == INPUT_MUX__NONE_ ) return ev3_input_name( port );
-		return nxt_input_mux_name( port, extport );
-	}
-	return STR_unknown_;
+	($each-CLASS_TYPE \i.]
+		($if ($i PORT_PARENT) ]
+			($set j ($index CLASS_TYPE_NAME ($i PORT_PARENT)))  ($! parent index )
+			if (( extport >= ($upper ($i CLASS_TYPE_ID))__BASE_ ) && ( extport < ($upper ($i CLASS_TYPE_ID))__BASE_ + ($upper ($i CLASS_TYPE_ID))__COUNT_ )
+			 && ( port >= ($upper ($j CLASS_TYPE_ID))__BASE_ ) && ( port < ($upper ($j CLASS_TYPE_ID))__BASE_ + ($upper ($j CLASS_TYPE_ID))__COUNT_ )) {
+				return ($i CLASS_TYPE_ID)_name[ ( port - ($upper ($j CLASS_TYPE_ID))__BASE_ ) * ($upper ($i CLASS_TYPE_ID))__COUNT_ + ( extport - ($upper ($i CLASS_TYPE_ID))__BASE_ ) ];
+			}
+		[ \else ]
+			if (( extport == EXT_PORT__NONE_ )
+			 && ( port >= ($upper ($i CLASS_TYPE_ID))__BASE_ ) && ( port < ($upper ($i CLASS_TYPE_ID))__BASE_ + ($upper ($i CLASS_TYPE_ID))__COUNT_ )) {
+				return ($i CLASS_TYPE_ID)_name[ port - ($upper ($i CLASS_TYPE_ID))__BASE_ ];
+			}
+		[ )
+
+	[ )
+	return ( STR_unknown_ );
 }
