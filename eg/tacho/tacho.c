@@ -36,7 +36,7 @@ int main( void )
 
 #ifndef __ARM_ARCH_4T__
 	/* Disable auto-detection of the brick (you have to set the correct address below) */
-	ev3_brick_addr = "192.168.1.204";
+	ev3_brick_addr = "192.168.0.204";
 
 #endif
 	if ( ev3_init() == -1 ) return ( 1 );

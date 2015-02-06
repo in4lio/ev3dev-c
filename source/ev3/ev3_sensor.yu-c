@@ -21,4 +21,5 @@
 #include "ev3_sensor.h"
 
 ($import "ev3_sensor-dict.yu")
+($import "ev3_class-dict.yu")
 ($import "ev3_class.yu")

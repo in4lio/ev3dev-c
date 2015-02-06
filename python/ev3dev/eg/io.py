@@ -6,15 +6,15 @@ from ev3dev import *
 
 if ev3_init() < 1: sys.exit( 1 )
 
-print 'LEDs directory:'
+print 'leds folder:'
 ok, ls = ev3_listdir( '/sys/class/leds', 256 )
 print ls if ok else 'ERROR: ev3_listdir'
 
 ok, state = ev3_read_int( '/sys/class/leds/ev3:red:left/brightness' )
 if ok:
-    ev3_write_bool( '/sys/class/leds/ev3:red:left/brightness', not state )
+    ev3_write_int( '/sys/class/leds/ev3:red:left/brightness', 0 if state else 255 )
 else:
-    print 'ERROR: ev3_write_bool'
+    print 'ERROR: ev3_read_int'
 
 print 'ev3:red:right trigger:'
 ok, trig = ev3_read( '/sys/class/leds/ev3:red:right/trigger', 256 )

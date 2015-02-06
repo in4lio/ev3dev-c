@@ -29,17 +29,39 @@ typedef struct {
 ($h-extern) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ];
 
 /**
- *  \brief Types of ($_CLASS)s.
+ *  \brief Identifiers of ($_CLASS) types.
  */
 enum {
-	($upper CLASS_ID)_TYPE__NONE_ = 0,
+	($upper CLASS_ID)_TYPE__NONE_ = 0,  /* XXX: memset( 0 ) is used */
 
 	($each-CLASS_TYPE \i.]
 		($upper ($i CLASS_TYPE_ID)),
 
 	[ )
-	($upper CLASS_ID)_TYPE__COUNT_
+	($upper CLASS_ID)_TYPE__COUNT_,  /**< Count of ($_CLASS) types. */
+	($upper CLASS_ID)_TYPE__UNKNOWN_ = ($upper CLASS_ID)_TYPE__COUNT_
 };
+
+($CLASS_ATTR_INDEX \attr.]
+
+	/**
+	 *  \brief Identifiers of ($_CLASS) ($attr)s.
+	 */
+	enum {
+		($upper CLASS_ID)_($upper attr)__NONE_ = 0,
+
+		($each-CLASS_TYPE \i.]
+			($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
+				($upper ($i CLASS_TYPE_ID))_($upper ($_VALUE_TO_ID ii)),
+
+			[ )
+
+		[ )
+		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($_CLASS) ($attr)s. */
+		($upper CLASS_ID)_($upper attr)__UNKNOWN_ = ($upper CLASS_ID)_($upper attr)__COUNT_
+	};
+
+[ )
 
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
@@ -82,7 +104,7 @@ enum {
 
 /**
  *  \brief Get name of the specified ($_CLASS) type.
- *  \param type_inx The ($_CLASS) type.
+ *  \param type_inx Index of the ($_CLASS) type.
  *  \return Requested value.
  */
 ($h-extern) const char *ev3_($CLASS_ID)_type( uint8_t type_inx );
@@ -97,10 +119,11 @@ enum {
 /**
  *  \brief Get indexes of the EV3 port and the extended port of the ($_CLASS).
  *  \param sn Sequence number.
+ *  \param port_type_inx Port type.
  *  \param extport Buffer for the extended port index.
  *  \return EV3 port index.
  */
-($h-extern) uint8_t get_($CLASS_ID)_port_inx( uint8_t sn, uint8_t *extport );
+($h-extern) uint8_t get_($CLASS_ID)_port_inx( uint8_t sn, uint8_t port_type_inx, uint8_t *extport );
 
 /**
  *  \brief Get descriptor of the ($_CLASS).
@@ -126,7 +149,7 @@ enum {
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID port))( uint8_t type_inx, uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( uint8_t type_inx, uint8_t *sn, uint8_t from );
 
 /**
  *  \brief Search of a sequence number the ($_CLASS) by plug-in attributes.
@@ -138,6 +161,35 @@ enum {
  *  \return Flag - the ($_CLASS) is found.
  */
 ($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($CLASS_DESC_ADDR))uint8_t *sn, uint8_t from );
+
+($CLASS_ATTR_INDEX \attr.]
+
+	/**
+	 *  \brief Get name of the specified ($_CLASS) ($attr).
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Requested value.
+	 */
+	($h-extern) const char *ev3_($CLASS_ID)_($attr)( uint8_t ($attr)_inx );
+
+	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Get index of the ($_CLASS) ($attr).
+		 *  \param sn Sequence number.
+		 *  \param type_inx Index of the ($_CLASS) type.
+		 *  \return Requested value.
+		 */
+		($h-extern) uint8_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t type_inx );
+
+	[ )
+	/**
+	 *  \brief Set ($attr) of the ($_CLASS) by index.
+	 *  \param sn Sequence number.
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Count of written bytes.
+	 */
+	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t ($attr)_inx );
+
+[ )
 
 /**
  *  \brief Detect connected ($_CLASS)s.

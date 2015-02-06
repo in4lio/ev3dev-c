@@ -21,6 +21,7 @@
 #include "ev3_servo.h"
 
 ($import "ev3_servo-dict.yu")
+($import "ev3_class-dict.yu")
 ($import "ev3_class.yu")
 
 size_t get_servo_address( uint8_t sn, uint8_t *buf )

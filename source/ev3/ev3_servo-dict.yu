@@ -6,15 +6,15 @@
 
 ($set CLASS_PATH "/sys/class/servo-motor")
 ($set CLASS_FOLDER_PREF "motor")
-($set CLASS_ID servo)
+($set CLASS_ID [servo])
 ($set CLASS_TITLE "servo motor")
 
 ($set SERVO_CHANNEL_PREF "sv")
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME  )
+	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  )
 	(`
-	(  "servo-motor"    )
+	(  "servo-motor"    ( "run" "float" ) )
 	)
 )
 
@@ -43,8 +43,6 @@
 	)
 )
 
-($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
-
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
@@ -54,9 +52,3 @@
 	(  addr           uint8_t          "channel"           )
 	)
 )
-
-($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
-
-($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
-($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
-($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

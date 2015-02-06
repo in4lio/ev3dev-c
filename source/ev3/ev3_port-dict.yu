@@ -6,17 +6,17 @@
 
 ($set CLASS_PATH "/sys/class/lego-port")
 ($set CLASS_FOLDER_PREF "port")
-($set CLASS_ID port)
+($set CLASS_ID ($unq CLASS_FOLDER_PREF))
 ($set CLASS_TITLE "EV3 port")
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME        CLASS_TYPE_ID_SHORT  )
+	(` CLASS_TYPE_NAME        PORT_ID_SHORT  PORT_PARENT           PORT_PREF  PORT_SUFS              CLASS_TYPE_MODES  )
 	(`
-	(  "ht-nxt-smux-port"              )
-	(  "legoev3-input-port"            )
-	(  "legoev3-output-port"           )
-	(  "ms-ev3-smux-port"              )
-	(  "wedo-port"                     )
+	(  "ht-nxt-smux-port"     (`)            "legoev3-input-port"  "mux"      (1 2 3 4)              ( "analog" "i2c" ) )
+	(  "legoev3-input-port"   input          (`)                   "in"       (1 2 3 4)              ( "auto" "nxt-analog" "nxt-color" "nxt-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw" ) )
+	(  "legoev3-output-port"  output         (`)                   "out"      ((`A) (`B) (`C) (`D))  ( "auto" "ev3-tacho-motor" "rcx-motor" "rcx-led" "raw" ) )
+	(  "ms-ev3-smux-port"     (`)            "legoev3-input-port"  "mux"      (1 2 3 4)              ( "uart" "analog"  ) )
+	(  "wedo-port"            (`)            "legoev3-input-port"  "wedo"     (1 2 3 4)              ( "auto" ) )
 	)
 )
 
@@ -33,7 +33,6 @@
 	(  "port_name"             char             1                 R                 )
 	(  "set_device"            char             1                 W                 )
 	(  "status"                char             1                 R                 )
-
 	)
 )
 
@@ -43,30 +42,11 @@
 	)
 )
 
-($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
-
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
 	(  type_inx       uint8_t          "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	)
-)
-
-($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
-
-($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
-($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
-($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))
-
-($dict PORT
-	(` PORT_PARENT           PORT_PREF  PORT_SUFS  PORT_ID_SHORT  )
-	(`
-	(  "legoev3-input-port"  "mux"      (1 2 3 4)  (`)            )
-	(  (`)                   "in"       (1 2 3 4)  input          )
-	(  (`)                   "out"      (A B C D)  output         )
-	(  "legoev3-input-port"  "mux"      (1 2 3 4)  (`)            )
-	(  "legoev3-input-port"  "wedo"     (1 2 3 4)  (`)            )
 	)
 )

@@ -27,14 +27,14 @@
  */
 
 ($import "ev3_port-dict.yu")
+($import "ev3_class-dict.yu")
 ($import "ev3_class-h.yu")
-
 
 /**
  *  \brief Identifiers of EV3 ports and extended ports.
  */
 enum {
-	EV3_PORT__NONE_ = 0,
+	EV3_PORT__NONE_ = 0,  /* XXX: memset( 0 ) is used */
 	EXT_PORT__NONE_ = EV3_PORT__NONE_,
 
 	($each-CLASS_TYPE \i.]
@@ -51,6 +51,20 @@ enum {
 	($($i PORT_SUFS) \ii.]
 		($if ($i PORT_ID_SHORT) ]
 			#define ($upper ($i PORT_ID_SHORT))_($ii)  ($upper ($i CLASS_TYPE_ID))_($ii)
+		[ )
+
+	[ )
+
+[ )
+
+($CLASS_ATTR_INDEX \attr.]
+
+	($each-CLASS_TYPE \i.]
+		($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
+			($if ($i PORT_ID_SHORT) ]
+				#define ($upper ($i PORT_ID_SHORT))_($upper ($_VALUE_TO_ID ii))  ($upper ($i CLASS_TYPE_ID))_($upper ($_VALUE_TO_ID ii))
+			[ )
+
 		[ )
 
 	[ )
@@ -77,10 +91,11 @@ enum {
 /**
  *  \brief Get indexes of the EV3 port and the extended port from the port name.
  *  \param name Port name.
+ *  \param type_inx Port type.
  *  \param extport Buffer for the extended port index.
  *  \return EV3 port index.
  */
-($h-extern) uint8_t ev3_port_inx( const char *name, uint8_t *extport );
+($h-extern) uint8_t ev3_port_inx( uint8_t type_inx, const char *name, uint8_t *extport );
 
 /**
  *  \brief Get name of the specified port.

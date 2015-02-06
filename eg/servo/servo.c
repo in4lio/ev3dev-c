@@ -44,9 +44,9 @@ int main( void )
 	printf( "*** ( EV3 ) Hello! ***\n" );
 	ev3_port_init();
 
-	printf( "Set mode of the EV3 input port...\n" );
+	printf( "Set mode of the EV3 input port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
 	sn = ev3_search_port( port, EXT_PORT__NONE_ );
-	set_port_mode( sn, "nxt-analog" );  /* FIXME: set_port_mode_inx( sn, INPUT_NXT_ANALOG ) */
+	set_port_mode_inx( sn, INPUT_NXT_ANALOG );
 	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	printf( "Set MS_8CH_SERVO mode of the nxt-analog-host...\n" );
@@ -78,7 +78,7 @@ int main( void )
 	}
 
 	printf( "Reset mode of the EV3 input port...\n" );
-	set_port_mode( sn, "auto" ); /* FIXME: set_port_mode_inx( sn, OUTPUT_AUTO ) */
+	set_port_mode_inx( sn, INPUT_AUTO );
 	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	ev3_uninit();

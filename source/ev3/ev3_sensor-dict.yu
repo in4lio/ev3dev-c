@@ -56,8 +56,6 @@
 	)
 )
 
-($set CLASS_TYPE_ATTR "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
-
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
@@ -67,9 +65,3 @@
 	(  addr           uint8_t          "address"           )
 	)
 )
-
-($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
-
-($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($replace,,($unq ($i CLASS_TYPE_NAME)),,-,,_)))
-($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
-($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))

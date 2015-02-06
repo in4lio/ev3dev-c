@@ -20,15 +20,8 @@
 #include "ev3_port.h"
 
 ($import "ev3_port-dict.yu")
+($import "ev3_class-dict.yu")
 ($import "ev3_class.yu")
-
-uint8_t ev3_search_port( uint8_t port, uint8_t extport )
-{
-	uint8_t sn;
-
-	ev3_search_port_plugged_in( port, extport, &sn, 0 );
-	return ( sn );
-}
 
 ($each-CLASS_TYPE \i.]
 
@@ -56,8 +49,10 @@ uint8_t ev3_search_port( uint8_t port, uint8_t extport )
 		#define ($upper ($i CLASS_TYPE_ID))_FULL_LEN  ($upper ($i CLASS_TYPE_ID))_LEN
 	[ )
 
-	static uint8_t ($i CLASS_TYPE_ID)_inx( const char *name )
+	static uint8_t ($i CLASS_TYPE_ID)_inx( uint8_t type_inx, const char *name )
 	{
+		if (( type_inx != ($upper ($i CLASS_TYPE_ID)) ) && ( type_inx != PORT_TYPE__NONE_ )) return ( EV3_PORT__NONE_ );
+
 		if ( strncmp( name, ($i PORT_PREF), ($upper ($i CLASS_TYPE_ID))_LEN - 1 ) == 0 ) {
 			name += ($upper ($i CLASS_TYPE_ID))_LEN - 1;
 			switch ( *name ) {
@@ -73,10 +68,21 @@ uint8_t ev3_search_port( uint8_t port, uint8_t extport )
 
 [ )
 
-uint8_t ev3_port_inx( const char *name, uint8_t *extport )
+static uint8_t __search_extport( uint8_t port )
 {
-	/* FIXME: We need check a type of the port to distinguish ports with same prefixes.
-	 */
+	uint8_t sn;
+
+	for ( sn = 0; sn < PORT_DESC__LIMIT_; sn++ ) {
+		if (( ev3_port[ sn ].port == port ) && ( ev3_port[ sn ].extport != EXT_PORT__NONE_ )) {
+			return ( ev3_port[ sn ].type_inx );
+		}
+		++sn;
+	}
+	return ( PORT_TYPE__NONE_ );
+}
+
+uint8_t ev3_port_inx( uint8_t type_inx, const char *name, uint8_t *extport )
+{
 	uint8_t port = EV3_PORT__NONE_;
 
 	*extport = EXT_PORT__NONE_;
@@ -85,17 +91,17 @@ uint8_t ev3_port_inx( const char *name, uint8_t *extport )
 		($set j  ($index CLASS_TYPE_NAME ($i PORT_PARENT)) ? ($i PORT_PARENT) | i)  ($! parent index )
 
 		if ( strlen( name ) == ($upper ($i CLASS_TYPE_ID))_FULL_LEN ) {
-			port = ($j CLASS_TYPE_ID)_inx( name );
+			if ( port == EV3_PORT__NONE_ ) port = ($j CLASS_TYPE_ID)_inx( type_inx, name );
 			if ( port != EV3_PORT__NONE_ ) {
 				($if ($i PORT_PARENT) ]
-					*extport = ($i CLASS_TYPE_ID)_inx( name + ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + 1 );
+					if ( type_inx == PORT_TYPE__NONE_ ) type_inx = __search_extport( port );
+					*extport = ($i CLASS_TYPE_ID)_inx( type_inx, name + ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + 1 );
 					if ( *extport != EXT_PORT__NONE_ ) {
 						return ( port );
 					}
 				[ \else ]
 					return ( port );
 				[ )
-
 			}
 		}
 
@@ -122,3 +128,12 @@ const char *ev3_port_name( uint8_t port, uint8_t extport )
 	[ )
 	return ( STR_unknown_ );
 }
+
+uint8_t ev3_search_port( uint8_t port, uint8_t extport )
+{
+	uint8_t sn;
+
+	ev3_search_port_plugged_in( port, extport, &sn, 0 );
+	return ( sn );
+}
+

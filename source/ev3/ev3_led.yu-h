@@ -85,14 +85,14 @@ enum {
 /**
  *  \brief Set the trigger of the LED by index.
  *  \param inx Index of the LED.
- *  \param trigger_inx Index of trigger.
+ *  \param trigger_inx Index of the trigger.
  *  \return Count of written bytes.
  */
 ($h-extern) size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx );
 
 /**
  *  \brief Get name of the specified LED trigger.
- *  \param trigger_inx Index of trigger.
+ *  \param trigger_inx Index of the trigger.
  *  \return Requested value.
  */
 ($h-extern) const char *ev3_led_trigger( uint8_t trigger_inx );

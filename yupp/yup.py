@@ -11,12 +11,12 @@ http://github.com/in4lio/yupp/
 
 yup.py -- yupp in python
 """
-COPYRIGHT   = 'Copyright (c) 2011, 13, 14'
+COPYRIGHT   = 'Copyright (c) 2011, 13, 14, 15'
 HOLDER      = 'Vitaly Kravtsov'
 EMAIL       = 'in4lio@gmail.com'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.7b7'
+VERSION     = '0.7b8'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -340,17 +340,13 @@ class BASE_STR( SOURCE ):
 
 #   -----------------------------------
     def __eq__( self, other ):
-        return isinstance( other, self.__class__ ) and str.__eq__( self, other )
+        return isinstance( other, str ) and str.__eq__( self, other )
 
 #   ---------------------------------------------------------------------------
 class ATOM( BASE_STR ):
     """
     AST: ATOM( identifier ) <-- id
     """
-#   ---------------
-    def __eq__( self, other ):
-        return isinstance( other, str ) and str.__eq__( self, other )
-
 #   -----------------------------------
     def is_valid_c_id( self ):
         return self.find( '-' ) == -1
@@ -2386,8 +2382,8 @@ builtin.update({
     'len': len,
     'list': lambda *l : LIST( l ),
     'print': lambda *l : sys.stdout.write( ' '.join(( _unq( x ) if isinstance( x, STR ) else str( x )) for x in l )),
-    'q': lambda val : '"%s"' % str( val ),
-    'qs': lambda val : "'%s'" % str( val ),
+    'q': lambda val : STR( '"%s"' % str( val )),
+    'qs': lambda val : STR( "'%s'" % str( val )),
     'range': lambda *l : LIST( range( *l )),
     'reversed': lambda l : LIST( reversed( l )),
     're-split': lambda regex, val : LIST( filter( None, re.split( regex, val ))),                                      #pylint: disable=W0141
@@ -2523,9 +2519,8 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
         return 'yueval'
 
 #   ---------------
-#   This is an experimental release of the eval-apply cycle, it's slightly theoretically incorrect and unstable,
+#   TODO: This is an experimental release of the eval-apply cycle, it's slightly theoretically incorrect and unstable,
 #   you may run into problems using a recursion or to face with a wrong scope of a name binding.
-#   TODO: fix what is described above
 #   TODO: region
                                                                                                                        #pylint: disable=E1103
     try:
@@ -2777,6 +2772,14 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
                     node.fn = node.fn.ast
                     # fall through -- yueval( node )
 
+#   ---- APPLY -- ATOM
+                elif isinstance( node.fn, ATOM ):
+                    if node.named or node.args:
+                        raise TypeError( '%s: no arguments of atom expected' % ( _callee())
+                        + node.fn.loc())
+                    log.warn( 'application of atom "%s"' + node.fn.loc(), node.fn )
+                    return node.fn
+
 #   ---- APPLY -- str
                 elif isinstance( node.fn, str ):
 #                   -- have no arguments
@@ -2815,7 +2818,8 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
                         for arg in node.args:
                             fn = copy.deepcopy( arg )
                             x = yueval( APPLY( fn, [ x ], []), env, depth + 1 )
-                        lst.append( x )
+                        if x is not None:
+                            lst.append( x )
                     return lst
 
 #   ---- APPLY -- SKIP
@@ -3002,7 +3006,8 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
             elif isinstance( node, COND_CLOSURE ):
                 node.cond = yueval( node.cond, env, depth + 1 )
                 if not _is_term( node.cond ):
-#                   -- !? potential problem of infinite recursion...
+#                   -- FIXME !? potential problem of infinite recursion...
+#                   -- also it makes impossible to perform operations with side effect such as raising an exception
                     node.leg_1 = yueval( node.leg_1, env, depth + 1 )
                     node.leg_0 = yueval( node.leg_0, env, depth + 1 )
 #                   -- unreducible
@@ -3507,9 +3512,9 @@ if __name__ == '__main__':
 #       -- input files preprocessing
         for path in shell.files:
             if not _pp_file( path ):
-                f_failed -= 1
+                f_failed += 1
 #       -- sys.exit() redefined in Web Console
-        sys.exit( f_failed )
+        sys.exit( f_failed << 2 )
 
     else:
 #       -- Read-Eval-Print Loop
