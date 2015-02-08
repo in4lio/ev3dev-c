@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Ports</title>
+<title>EV3 Ports and Extended Ports</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,312 +64,329 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Ports</div>  </div>
+<div class="title">EV3 Ports and Extended Ports</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Access to EV3 Ports and Multiplexer Ports.  
+<p>Access to EV3 Ports and Extended Ports.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__PORT.html">EV3_PORT</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure of a EV3 port descriptor.  <a href="structEV3__PORT.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gae518031d203bda6f2ae023d68116ba21"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gae518031d203bda6f2ae023d68116ba21">INPUT_DIR</a>&#160;&#160;&#160;&quot;/sys/bus/legoev3/devices&quot;</td></tr>
-<tr class="separator:gae518031d203bda6f2ae023d68116ba21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad43faa03632b5296fcefdabf0c962b6c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad43faa03632b5296fcefdabf0c962b6c">INPUT__BASE_</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:gad43faa03632b5296fcefdabf0c962b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e00ecc1cb643edd5905fcf030a00e5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga2e00ecc1cb643edd5905fcf030a00e5f">INPUT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:ga2e00ecc1cb643edd5905fcf030a00e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd836a505b86b88ac52e48d6bece5738"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gadd836a505b86b88ac52e48d6bece5738">OUTPUT_DIR</a>&#160;&#160;&#160;&quot;/sys/bus/legoev3/devices&quot;</td></tr>
-<tr class="separator:gadd836a505b86b88ac52e48d6bece5738"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0527e4af271be1ecac97ee02189ab75"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gac0527e4af271be1ecac97ee02189ab75">OUTPUT__BASE_</a>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:gac0527e4af271be1ecac97ee02189ab75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5f4aae8004616e7e8098ebe97389a026"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga5f4aae8004616e7e8098ebe97389a026">OUTPUT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:ga5f4aae8004616e7e8098ebe97389a026"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga923e41c9b7d4922420b101458f2c20d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga923e41c9b7d4922420b101458f2c20d8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga923e41c9b7d4922420b101458f2c20d8">EV3_PORT__NONE_</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga923e41c9b7d4922420b101458f2c20d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Undefined EV3 port. <br /></td></tr>
-<tr class="separator:ga923e41c9b7d4922420b101458f2c20d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62bf78fb77e522f1f42c17d9187af91a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga62bf78fb77e522f1f42c17d9187af91a">INPUT_MUX__BASE_</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ga62bf78fb77e522f1f42c17d9187af91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6dacaedaec1125523161723511b7d322"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6dacaedaec1125523161723511b7d322">INPUT_MUX__COUNT_</a>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:ga6dacaedaec1125523161723511b7d322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6035774ef51a86241d190f29e881368d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6035774ef51a86241d190f29e881368d">PORT_DIR</a>&#160;&#160;&#160;&quot;/sys/class/lego-port&quot;</td></tr>
+<tr class="separator:ga6035774ef51a86241d190f29e881368d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a7579e5304d01c7a8584d02551d0f73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:ga8a7579e5304d01c7a8584d02551d0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15247a83ed93a7ba92aafc24655fbe11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga15247a83ed93a7ba92aafc24655fbe11">PORT__NONE_</a>&#160;&#160;&#160;<a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a></td></tr>
+<tr class="separator:ga15247a83ed93a7ba92aafc24655fbe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9f15644e45ec56d75b765aa44808f89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab9f15644e45ec56d75b765aa44808f89"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_1</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_1</td></tr>
+<tr class="separator:gab9f15644e45ec56d75b765aa44808f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c90de4d332cd728a23c62978551af31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c90de4d332cd728a23c62978551af31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_2</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_2</td></tr>
+<tr class="separator:ga7c90de4d332cd728a23c62978551af31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71b110181356cd917ed4ed0edad922a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga71b110181356cd917ed4ed0edad922a6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_3</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_3</td></tr>
+<tr class="separator:ga71b110181356cd917ed4ed0edad922a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac56c3de439c7ae8076a7d1ea69f5981e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac56c3de439c7ae8076a7d1ea69f5981e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_4</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_4</td></tr>
+<tr class="separator:gac56c3de439c7ae8076a7d1ea69f5981e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45c855d1304b17160b8baa0d1ed3e202"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga45c855d1304b17160b8baa0d1ed3e202"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_A</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_A</td></tr>
+<tr class="separator:ga45c855d1304b17160b8baa0d1ed3e202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac72dd7db6c1fde9ea0e40744098d45ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac72dd7db6c1fde9ea0e40744098d45ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_B</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_B</td></tr>
+<tr class="separator:gac72dd7db6c1fde9ea0e40744098d45ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga184776449a5cafb07ae82e58af925f88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga184776449a5cafb07ae82e58af925f88"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_C</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_C</td></tr>
+<tr class="separator:ga184776449a5cafb07ae82e58af925f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85f9d8d0c78df93c5e93b1c303dfb032"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga85f9d8d0c78df93c5e93b1c303dfb032"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_D</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_D</td></tr>
+<tr class="separator:ga85f9d8d0c78df93c5e93b1c303dfb032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga744f1b95c5d7c571d227630a7115e337"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga744f1b95c5d7c571d227630a7115e337"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_AUTO</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_AUTO</td></tr>
+<tr class="separator:ga744f1b95c5d7c571d227630a7115e337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c0be5e2e6a2dca8a76df9010de7ef7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c0be5e2e6a2dca8a76df9010de7ef7b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_NXT_ANALOG</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_NXT_ANALOG</td></tr>
+<tr class="separator:ga7c0be5e2e6a2dca8a76df9010de7ef7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1326da1ee73ef890db669f0b269eef2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae1326da1ee73ef890db669f0b269eef2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_NXT_COLOR</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_NXT_COLOR</td></tr>
+<tr class="separator:gae1326da1ee73ef890db669f0b269eef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34d141eb274b9528cae0b9b3ba002144"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga34d141eb274b9528cae0b9b3ba002144"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_NXT_I2C</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_NXT_I2C</td></tr>
+<tr class="separator:ga34d141eb274b9528cae0b9b3ba002144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09f392d7cfdd79353bf536bc6a33730f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga09f392d7cfdd79353bf536bc6a33730f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_EV3_ANALOG</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_EV3_ANALOG</td></tr>
+<tr class="separator:ga09f392d7cfdd79353bf536bc6a33730f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfa2833592b097dbc771eb1c8e15bdb0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabfa2833592b097dbc771eb1c8e15bdb0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_EV3_UART</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_EV3_UART</td></tr>
+<tr class="separator:gabfa2833592b097dbc771eb1c8e15bdb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa0ac93a6652f875da0a81ca2a5e139d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafa0ac93a6652f875da0a81ca2a5e139d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_OTHER_UART</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_OTHER_UART</td></tr>
+<tr class="separator:gafa0ac93a6652f875da0a81ca2a5e139d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7b6480441992d127cd546f73139c034"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac7b6480441992d127cd546f73139c034"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INPUT_RAW</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_RAW</td></tr>
+<tr class="separator:gac7b6480441992d127cd546f73139c034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7741b37c39f8011d66a70a342a9e07cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7741b37c39f8011d66a70a342a9e07cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_AUTO</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_AUTO</td></tr>
+<tr class="separator:ga7741b37c39f8011d66a70a342a9e07cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9bc2aa00072471075b3ab064c1f3860"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab9bc2aa00072471075b3ab064c1f3860"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_EV3_TACHO_MOTOR</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR</td></tr>
+<tr class="separator:gab9bc2aa00072471075b3ab064c1f3860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81cb64a12fed9d6120d3acdf05b8b688"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga81cb64a12fed9d6120d3acdf05b8b688"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_RCX_MOTOR</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_RCX_MOTOR</td></tr>
+<tr class="separator:ga81cb64a12fed9d6120d3acdf05b8b688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c69caf3b679b1490d4b2d37cd82a3cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4c69caf3b679b1490d4b2d37cd82a3cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_RCX_LED</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_RCX_LED</td></tr>
+<tr class="separator:ga4c69caf3b679b1490d4b2d37cd82a3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f47017b54da140967dcbd440fae227c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4f47017b54da140967dcbd440fae227c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUTPUT_RAW</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_RAW</td></tr>
+<tr class="separator:ga4f47017b54da140967dcbd440fae227c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4f13e2d0b520619229779170631e850"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae4f13e2d0b520619229779170631e850"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gae4f13e2d0b520619229779170631e850">HT_NXT_SMUX_PORT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:gae4f13e2d0b520619229779170631e850"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of ht-nxt-smux-ports. <br /></td></tr>
+<tr class="separator:gae4f13e2d0b520619229779170631e850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4f30ef1f8b223cd4a87c3c61d16019f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad4f30ef1f8b223cd4a87c3c61d16019f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad4f30ef1f8b223cd4a87c3c61d16019f">LEGOEV3_INPUT_PORT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:gad4f30ef1f8b223cd4a87c3c61d16019f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of legoev3-input-ports. <br /></td></tr>
+<tr class="separator:gad4f30ef1f8b223cd4a87c3c61d16019f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga60b82248930ada5139876267a63d728a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga60b82248930ada5139876267a63d728a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga60b82248930ada5139876267a63d728a">LEGOEV3_OUTPUT_PORT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga60b82248930ada5139876267a63d728a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of legoev3-output-ports. <br /></td></tr>
+<tr class="separator:ga60b82248930ada5139876267a63d728a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6317b1fe198952495f74eaac26a77f5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6317b1fe198952495f74eaac26a77f5a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6317b1fe198952495f74eaac26a77f5a">MS_EV3_SMUX_PORT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga6317b1fe198952495f74eaac26a77f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of ms-ev3-smux-ports. <br /></td></tr>
+<tr class="separator:ga6317b1fe198952495f74eaac26a77f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98e9ca660a6094e306d436e4cb8d8707"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga98e9ca660a6094e306d436e4cb8d8707"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga98e9ca660a6094e306d436e4cb8d8707">WEDO_PORT__COUNT_</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga98e9ca660a6094e306d436e4cb8d8707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of wedo-ports. <br /></td></tr>
+<tr class="separator:ga98e9ca660a6094e306d436e4cb8d8707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf764cbdea00d65edcd07bb9953ad2b7"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>INPUT_1</b> = INPUT__BASE_ + 0, 
-<b>INPUT_2</b> = INPUT__BASE_ + 1, 
-<b>INPUT_3</b> = INPUT__BASE_ + 2, 
-<b>INPUT_4</b> = INPUT__BASE_ + 3
- }</td></tr>
-<tr class="memdesc:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 input ports. <br /></td></tr>
-<tr class="separator:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga99fb83031ce9923c84392b4e92f956b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<b>INPUT_AUTO</b>, 
-<b>INPUT_EV3_ANALOG</b>, 
-<b>INPUT_EV3_UART</b>, 
-<b>INPUT_NXT_ANALOG</b>, 
+<tr class="memitem:ga726ca809ffd3d67ab4b8476646f26635"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>PORT_TYPE__NONE_</b> = 0, 
+<b>HT_NXT_SMUX_PORT</b>, 
+<b>LEGOEV3_INPUT_PORT</b>, 
+<b>LEGOEV3_OUTPUT_PORT</b>, 
 <br />
-&#160;&#160;<b>INPUT_NXT_COLOR</b>, 
-<b>INPUT_NXT_I2C</b>, 
-<b>INPUT_OTHER_UART</b>, 
-<b>INPUT_RAW</b>, 
-<br />
-&#160;&#160;<a class="el" href="group__ev3__port.html#gga99fb83031ce9923c84392b4e92f956b5afbcb2d693bf4079576dde63c763d127c">INPUT_MODE__COUNT_</a>
+&#160;&#160;<b>MS_EV3_SMUX_PORT</b>, 
+<b>WEDO_PORT</b>, 
+<a class="el" href="group__ev3__port.html#gga726ca809ffd3d67ab4b8476646f26635a03ba6d319927fd5dfe5ff54239db9831">PORT_TYPE__COUNT_</a>, 
+<b>PORT_TYPE__UNKNOWN_</b> = PORT_TYPE__COUNT_
 <br />
  }</td></tr>
-<tr class="memdesc:ga99fb83031ce9923c84392b4e92f956b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of input port modes.  <a href="group__ev3__port.html#ga99fb83031ce9923c84392b4e92f956b5">More...</a><br /></td></tr>
-<tr class="separator:ga99fb83031ce9923c84392b4e92f956b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0411cd49bb5b71852cecd93bcbf0ca2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0411cd49bb5b71852cecd93bcbf0ca2d"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>OUTPUT_A</b> = OUTPUT__BASE_ + 0, 
-<b>OUTPUT_B</b> = OUTPUT__BASE_ + 1, 
-<b>OUTPUT_C</b> = OUTPUT__BASE_ + 2, 
-<b>OUTPUT_D</b> = OUTPUT__BASE_ + 3
+<tr class="memdesc:ga726ca809ffd3d67ab4b8476646f26635"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 port types.  <a href="group__ev3__port.html#ga726ca809ffd3d67ab4b8476646f26635">More...</a><br /></td></tr>
+<tr class="separator:ga726ca809ffd3d67ab4b8476646f26635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0411cd49bb5b71852cecd93bcbf0ca2d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>PORT_MODE__NONE_</b> = 0, 
+<b>HT_NXT_SMUX_PORT_ANALOG</b>, 
+<b>HT_NXT_SMUX_PORT_I2C</b>, 
+<b>LEGOEV3_INPUT_PORT_AUTO</b>, 
+<br />
+&#160;&#160;<b>LEGOEV3_INPUT_PORT_NXT_ANALOG</b>, 
+<b>LEGOEV3_INPUT_PORT_NXT_COLOR</b>, 
+<b>LEGOEV3_INPUT_PORT_NXT_I2C</b>, 
+<b>LEGOEV3_INPUT_PORT_EV3_ANALOG</b>, 
+<br />
+&#160;&#160;<b>LEGOEV3_INPUT_PORT_EV3_UART</b>, 
+<b>LEGOEV3_INPUT_PORT_OTHER_UART</b>, 
+<b>LEGOEV3_INPUT_PORT_RAW</b>, 
+<b>LEGOEV3_OUTPUT_PORT_AUTO</b>, 
+<br />
+&#160;&#160;<b>LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR</b>, 
+<b>LEGOEV3_OUTPUT_PORT_RCX_MOTOR</b>, 
+<b>LEGOEV3_OUTPUT_PORT_RCX_LED</b>, 
+<b>LEGOEV3_OUTPUT_PORT_RAW</b>, 
+<br />
+&#160;&#160;<b>MS_EV3_SMUX_PORT_UART</b>, 
+<b>MS_EV3_SMUX_PORT_ANALOG</b>, 
+<b>WEDO_PORT_AUTO</b>, 
+<a class="el" href="group__ev3__port.html#gga0411cd49bb5b71852cecd93bcbf0ca2da67d220ad3c45d800d7fed206d731b2f1">PORT_MODE__COUNT_</a>, 
+<br />
+&#160;&#160;<b>PORT_MODE__UNKNOWN_</b> = PORT_MODE__COUNT_
+<br />
  }</td></tr>
-<tr class="memdesc:ga0411cd49bb5b71852cecd93bcbf0ca2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 output ports. <br /></td></tr>
+<tr class="memdesc:ga0411cd49bb5b71852cecd93bcbf0ca2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 port modes.  <a href="group__ev3__port.html#ga0411cd49bb5b71852cecd93bcbf0ca2d">More...</a><br /></td></tr>
 <tr class="separator:ga0411cd49bb5b71852cecd93bcbf0ca2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabed82baf7f470b522273a3e37c24c600"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<b>OUTPUT_AUTO</b>, 
-<b>OUTPUT_EV3_TACHO_MOTOR</b>, 
-<b>OUTPUT_RCX_MOTOR</b>, 
-<b>OUTPUT_RCX_LED</b>, 
+<tr class="memitem:gabed82baf7f470b522273a3e37c24c600"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabed82baf7f470b522273a3e37c24c600"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>EV3_PORT__NONE_</b> = 0, 
+<b>EXT_PORT__NONE_</b> = EV3_PORT__NONE_, 
+<b>HT_NXT_SMUX_PORT__BASE_</b>, 
+<b>HT_NXT_SMUX_PORT_1</b> = HT_NXT_SMUX_PORT__BASE_ + 0, 
 <br />
-&#160;&#160;<b>OUTPUT_RAW</b>, 
-<a class="el" href="group__ev3__port.html#ggabed82baf7f470b522273a3e37c24c600a96eef796cec6f94d7447c03e6662713a">OUTPUT_MODE__COUNT_</a>
+&#160;&#160;<b>HT_NXT_SMUX_PORT_2</b> = HT_NXT_SMUX_PORT__BASE_ + 1, 
+<b>HT_NXT_SMUX_PORT_3</b> = HT_NXT_SMUX_PORT__BASE_ + 2, 
+<b>HT_NXT_SMUX_PORT_4</b> = HT_NXT_SMUX_PORT__BASE_ + 3, 
+<b>LEGOEV3_INPUT_PORT__BASE_</b>, 
+<br />
+&#160;&#160;<b>LEGOEV3_INPUT_PORT_1</b> = LEGOEV3_INPUT_PORT__BASE_ + 0, 
+<b>LEGOEV3_INPUT_PORT_2</b> = LEGOEV3_INPUT_PORT__BASE_ + 1, 
+<b>LEGOEV3_INPUT_PORT_3</b> = LEGOEV3_INPUT_PORT__BASE_ + 2, 
+<b>LEGOEV3_INPUT_PORT_4</b> = LEGOEV3_INPUT_PORT__BASE_ + 3, 
+<br />
+&#160;&#160;<b>LEGOEV3_OUTPUT_PORT__BASE_</b>, 
+<b>LEGOEV3_OUTPUT_PORT_A</b> = LEGOEV3_OUTPUT_PORT__BASE_ + 0, 
+<b>LEGOEV3_OUTPUT_PORT_B</b> = LEGOEV3_OUTPUT_PORT__BASE_ + 1, 
+<b>LEGOEV3_OUTPUT_PORT_C</b> = LEGOEV3_OUTPUT_PORT__BASE_ + 2, 
+<br />
+&#160;&#160;<b>LEGOEV3_OUTPUT_PORT_D</b> = LEGOEV3_OUTPUT_PORT__BASE_ + 3, 
+<b>MS_EV3_SMUX_PORT__BASE_</b>, 
+<b>MS_EV3_SMUX_PORT_1</b> = MS_EV3_SMUX_PORT__BASE_ + 0, 
+<b>MS_EV3_SMUX_PORT_2</b> = MS_EV3_SMUX_PORT__BASE_ + 1, 
+<br />
+&#160;&#160;<b>MS_EV3_SMUX_PORT_3</b> = MS_EV3_SMUX_PORT__BASE_ + 2, 
+<b>MS_EV3_SMUX_PORT_4</b> = MS_EV3_SMUX_PORT__BASE_ + 3, 
+<b>WEDO_PORT__BASE_</b>, 
+<b>WEDO_PORT_1</b> = WEDO_PORT__BASE_ + 0, 
+<br />
+&#160;&#160;<b>WEDO_PORT_2</b> = WEDO_PORT__BASE_ + 1, 
+<b>WEDO_PORT_3</b> = WEDO_PORT__BASE_ + 2, 
+<b>WEDO_PORT_4</b> = WEDO_PORT__BASE_ + 3
 <br />
  }</td></tr>
-<tr class="memdesc:gabed82baf7f470b522273a3e37c24c600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of output port modes.  <a href="group__ev3__port.html#gabed82baf7f470b522273a3e37c24c600">More...</a><br /></td></tr>
+<tr class="memdesc:gabed82baf7f470b522273a3e37c24c600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 ports and extended ports. <br /></td></tr>
 <tr class="separator:gabed82baf7f470b522273a3e37c24c600"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac36f475ca5b446f4fde4c9b90bec77c8"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<b>INPUT_MUX__NONE_</b>, 
-<b>INPUT_MUX_1</b>, 
-<b>INPUT_MUX_2</b>, 
-<b>INPUT_MUX_3</b>, 
-<br />
-&#160;&#160;<b>INPUT_MUX_4</b>
-<br />
- }</td></tr>
-<tr class="memdesc:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of multiplexer input ports. <br /></td></tr>
-<tr class="separator:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>INPUT_MUX_ANALOG</b>, 
-<b>INPUT_MUX_I2C</b>, 
-<a class="el" href="group__ev3__port.html#gga05589fbab0657f08285ebdfe93f5ec9eada18ad5368e171bc14721b2ef6ae4725">INPUT_MUX_MODE__COUNT_</a>
- }</td></tr>
-<tr class="memdesc:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of multiplexer port modes.  <a href="group__ev3__port.html#ga05589fbab0657f08285ebdfe93f5ec9e">More...</a><br /></td></tr>
-<tr class="separator:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9aea75d5ce8b283e4aa7f3a8721cfe75">ev3_input_inx</a> (const char *name)</td></tr>
-<tr class="memdesc:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 input port from the port name.  <a href="#ga9aea75d5ce8b283e4aa7f3a8721cfe75">More...</a><br /></td></tr>
-<tr class="separator:ga9aea75d5ce8b283e4aa7f3a8721cfe75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace829bf02aae64f3af322a28e565e0a1"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a> (uint8_t port)</td></tr>
-<tr class="memdesc:gace829bf02aae64f3af322a28e565e0a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 input port.  <a href="#gace829bf02aae64f3af322a28e565e0a1">More...</a><br /></td></tr>
-<tr class="separator:gace829bf02aae64f3af322a28e565e0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafacca13a6616508649593ecbee850193"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gafacca13a6616508649593ecbee850193">get_input_mode</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gafacca13a6616508649593ecbee850193"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the input port.  <a href="#gafacca13a6616508649593ecbee850193">More...</a><br /></td></tr>
-<tr class="separator:gafacca13a6616508649593ecbee850193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6900e2e203d002cc7344a26ac2ce3e53">set_input_mode</a> (uint8_t port, char *value)</td></tr>
-<tr class="memdesc:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the input port.  <a href="#ga6900e2e203d002cc7344a26ac2ce3e53">More...</a><br /></td></tr>
-<tr class="separator:ga6900e2e203d002cc7344a26ac2ce3e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9001462b1fed337eac20d7cff66e842f"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9001462b1fed337eac20d7cff66e842f">get_input_modes</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga9001462b1fed337eac20d7cff66e842f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the input port.  <a href="#ga9001462b1fed337eac20d7cff66e842f">More...</a><br /></td></tr>
-<tr class="separator:ga9001462b1fed337eac20d7cff66e842f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga3a9cac1f7ae0276ddf3054ccdc91eeea">get_input_pin1_mv</a> (uint8_t port, int *buf)</td></tr>
-<tr class="memdesc:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin1_mv" attribute of the input port.  <a href="#ga3a9cac1f7ae0276ddf3054ccdc91eeea">More...</a><br /></td></tr>
-<tr class="separator:ga3a9cac1f7ae0276ddf3054ccdc91eeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0e01c6bd99fa35f8cf5a6aabf00feb7b">get_input_pin6_mv</a> (uint8_t port, int *buf)</td></tr>
-<tr class="memdesc:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin6_mv" attribute of the input port.  <a href="#ga0e01c6bd99fa35f8cf5a6aabf00feb7b">More...</a><br /></td></tr>
-<tr class="separator:ga0e01c6bd99fa35f8cf5a6aabf00feb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the input port.  <a href="#ga69cae7eb7b85f3853f94ddb19ce28c66">More...</a><br /></td></tr>
-<tr class="separator:ga69cae7eb7b85f3853f94ddb19ce28c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga256019e854a149f65599abc75af0f860"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga256019e854a149f65599abc75af0f860">ev3_input_mode</a> (uint8_t mode_inx)</td></tr>
-<tr class="memdesc:ga256019e854a149f65599abc75af0f860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified input mode.  <a href="#ga256019e854a149f65599abc75af0f860">More...</a><br /></td></tr>
-<tr class="separator:ga256019e854a149f65599abc75af0f860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gacb0bf23ecfba09a9960660f0b9f78d96">get_input_mode_inx</a> (uint8_t port)</td></tr>
-<tr class="memdesc:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode index of the input port.  <a href="#gacb0bf23ecfba09a9960660f0b9f78d96">More...</a><br /></td></tr>
-<tr class="separator:gacb0bf23ecfba09a9960660f0b9f78d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="memItemLeft" align="right" valign="top">EV3_INPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gae6d8d65a02bec9f5920fea0cd0f2792b">set_input_mode_inx</a> (uint8_t port, uint8_t mode_inx)</td></tr>
-<tr class="memdesc:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode of the input by index.  <a href="#gae6d8d65a02bec9f5920fea0cd0f2792b">More...</a><br /></td></tr>
-<tr class="separator:gae6d8d65a02bec9f5920fea0cd0f2792b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0836e492598eee0ef46d86fb28a74db9"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0836e492598eee0ef46d86fb28a74db9">ev3_output_inx</a> (const char *name)</td></tr>
-<tr class="memdesc:ga0836e492598eee0ef46d86fb28a74db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 output port from the port name.  <a href="#ga0836e492598eee0ef46d86fb28a74db9">More...</a><br /></td></tr>
-<tr class="separator:ga0836e492598eee0ef46d86fb28a74db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee03e323e3046f37308a0062d038bab2"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a> (uint8_t port)</td></tr>
-<tr class="memdesc:gaee03e323e3046f37308a0062d038bab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 output port.  <a href="#gaee03e323e3046f37308a0062d038bab2">More...</a><br /></td></tr>
-<tr class="separator:gaee03e323e3046f37308a0062d038bab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac01801f2fa118ef299c082904fcfba8d"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gac01801f2fa118ef299c082904fcfba8d">get_output_mode</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gac01801f2fa118ef299c082904fcfba8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the output port.  <a href="#gac01801f2fa118ef299c082904fcfba8d">More...</a><br /></td></tr>
-<tr class="separator:gac01801f2fa118ef299c082904fcfba8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad32fda2b0e257318984e8248506f9f26"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad32fda2b0e257318984e8248506f9f26">set_output_mode</a> (uint8_t port, char *value)</td></tr>
-<tr class="memdesc:gad32fda2b0e257318984e8248506f9f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the output port.  <a href="#gad32fda2b0e257318984e8248506f9f26">More...</a><br /></td></tr>
-<tr class="separator:gad32fda2b0e257318984e8248506f9f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5d6f2c26af2dc14d12e41ca8da19c780"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga5d6f2c26af2dc14d12e41ca8da19c780">get_output_modes</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga5d6f2c26af2dc14d12e41ca8da19c780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the output port.  <a href="#ga5d6f2c26af2dc14d12e41ca8da19c780">More...</a><br /></td></tr>
-<tr class="separator:ga5d6f2c26af2dc14d12e41ca8da19c780"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab97ace347dceaa0a7ecdeb0ccb6c47a7"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab97ace347dceaa0a7ecdeb0ccb6c47a7">get_output_pin5_mv</a> (uint8_t port, int *buf)</td></tr>
-<tr class="memdesc:gab97ace347dceaa0a7ecdeb0ccb6c47a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "pin5_mv" attribute of the output port.  <a href="#gab97ace347dceaa0a7ecdeb0ccb6c47a7">More...</a><br /></td></tr>
-<tr class="separator:gab97ace347dceaa0a7ecdeb0ccb6c47a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga24aeaf4edf0112540e0e6a8b3b2c7285"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a> (uint8_t port, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga24aeaf4edf0112540e0e6a8b3b2c7285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the output port.  <a href="#ga24aeaf4edf0112540e0e6a8b3b2c7285">More...</a><br /></td></tr>
-<tr class="separator:ga24aeaf4edf0112540e0e6a8b3b2c7285"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4e652c881ae5efd6b5869fb09907a8ed"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga4e652c881ae5efd6b5869fb09907a8ed">ev3_output_mode</a> (uint8_t mode_inx)</td></tr>
-<tr class="memdesc:ga4e652c881ae5efd6b5869fb09907a8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified output mode.  <a href="#ga4e652c881ae5efd6b5869fb09907a8ed">More...</a><br /></td></tr>
-<tr class="separator:ga4e652c881ae5efd6b5869fb09907a8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4376adf4c58e1dc944336f9fbe033987"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga4376adf4c58e1dc944336f9fbe033987">get_output_mode_inx</a> (uint8_t port)</td></tr>
-<tr class="memdesc:ga4376adf4c58e1dc944336f9fbe033987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode index of the output port.  <a href="#ga4376adf4c58e1dc944336f9fbe033987">More...</a><br /></td></tr>
-<tr class="separator:ga4376adf4c58e1dc944336f9fbe033987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25285474fd399275c9903cc3441262f0"><td class="memItemLeft" align="right" valign="top">EV3_OUTPUT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a> (uint8_t port, uint8_t mode_inx)</td></tr>
-<tr class="memdesc:ga25285474fd399275c9903cc3441262f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode of the output by index.  <a href="#ga25285474fd399275c9903cc3441262f0">More...</a><br /></td></tr>
-<tr class="separator:ga25285474fd399275c9903cc3441262f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9b7af8e41940a7c9304b57aaa5227dbe">ev3_port_inx</a> (const char *name, uint8_t *extport)</td></tr>
-<tr class="memdesc:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port from the port name.  <a href="#ga9b7af8e41940a7c9304b57aaa5227dbe">More...</a><br /></td></tr>
-<tr class="separator:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga1d27d716c5d21011a48e5596e5abe8fe">get_port_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "driver_name" attribute of the EV3 port.  <a href="#ga1d27d716c5d21011a48e5596e5abe8fe">More...</a><br /></td></tr>
+<tr class="separator:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e0ccf5cab9a28007ef064731abc7827"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga1e0ccf5cab9a28007ef064731abc7827">get_port_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga1e0ccf5cab9a28007ef064731abc7827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the EV3 port.  <a href="#ga1e0ccf5cab9a28007ef064731abc7827">More...</a><br /></td></tr>
+<tr class="separator:ga1e0ccf5cab9a28007ef064731abc7827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad0572d5213806ce2aee4e17d689fb7f6">set_port_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:gad0572d5213806ce2aee4e17d689fb7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the EV3 port.  <a href="#gad0572d5213806ce2aee4e17d689fb7f6">More...</a><br /></td></tr>
+<tr class="separator:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaf1fab82449805df888b968c5c3b7cc6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the EV3 port.  <a href="#gaf1fab82449805df888b968c5c3b7cc6d">More...</a><br /></td></tr>
+<tr class="separator:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga65a46f9c46e39b2dbf3c9a4dcc048198">get_port_port_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the EV3 port.  <a href="#ga65a46f9c46e39b2dbf3c9a4dcc048198">More...</a><br /></td></tr>
+<tr class="separator:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga034ba1ff14b636611482c603ec03da2a"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga034ba1ff14b636611482c603ec03da2a">set_port_set_device</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga034ba1ff14b636611482c603ec03da2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "set_device" attribute of the EV3 port.  <a href="#ga034ba1ff14b636611482c603ec03da2a">More...</a><br /></td></tr>
+<tr class="separator:ga034ba1ff14b636611482c603ec03da2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2116e60295108e27931bf78b934bab23"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga2116e60295108e27931bf78b934bab23">get_port_status</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga2116e60295108e27931bf78b934bab23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "status" attribute of the EV3 port.  <a href="#ga2116e60295108e27931bf78b934bab23">More...</a><br /></td></tr>
+<tr class="separator:ga2116e60295108e27931bf78b934bab23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecedcf07315aeb15ca609b00a457d707"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaecedcf07315aeb15ca609b00a457d707">ev3_port_type</a> (uint8_t type_inx)</td></tr>
+<tr class="memdesc:gaecedcf07315aeb15ca609b00a457d707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port type.  <a href="#gaecedcf07315aeb15ca609b00a457d707">More...</a><br /></td></tr>
+<tr class="separator:gaecedcf07315aeb15ca609b00a457d707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gacbe4eeb0689e60cfba1655bef675f0c9">get_port_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 port type.  <a href="#gacbe4eeb0689e60cfba1655bef675f0c9">More...</a><br /></td></tr>
+<tr class="separator:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf2674f69d1c871c9df9f7d842e8bbd37">get_port_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the EV3 port.  <a href="#gaf2674f69d1c871c9df9f7d842e8bbd37">More...</a><br /></td></tr>
+<tr class="separator:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16ad0c289bc323439a0f7d205ce468d2"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga16ad0c289bc323439a0f7d205ce468d2">ev3_port_desc</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga16ad0c289bc323439a0f7d205ce468d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the EV3 port.  <a href="#ga16ad0c289bc323439a0f7d205ce468d2">More...</a><br /></td></tr>
+<tr class="separator:ga16ad0c289bc323439a0f7d205ce468d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0087c5d23fab7c7b5d6522786535f5d8">ev3_port_desc_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type from the EV3 port descriptor.  <a href="#ga0087c5d23fab7c7b5d6522786535f5d8">More...</a><br /></td></tr>
+<tr class="separator:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59c936b8de69b6deee5c4fd1857905e8"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga59c936b8de69b6deee5c4fd1857905e8">ev3_port_desc_port</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga59c936b8de69b6deee5c4fd1857905e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get EV3 port from the EV3 port descriptor.  <a href="#ga59c936b8de69b6deee5c4fd1857905e8">More...</a><br /></td></tr>
+<tr class="separator:ga59c936b8de69b6deee5c4fd1857905e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga5a83a67547a2d504ce42d0f504ffeaf2">ev3_port_desc_extport</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get extended port from the EV3 port descriptor.  <a href="#ga5a83a67547a2d504ce42d0f504ffeaf2">More...</a><br /></td></tr>
+<tr class="separator:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabcd9d5070c2843991176969884d8cf46"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gabcd9d5070c2843991176969884d8cf46">ev3_search_port_type</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gabcd9d5070c2843991176969884d8cf46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified EV3 port type.  <a href="#gabcd9d5070c2843991176969884d8cf46">More...</a><br /></td></tr>
+<tr class="separator:gabcd9d5070c2843991176969884d8cf46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab18484a18fae36bd4583d85e5315143c"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab18484a18fae36bd4583d85e5315143c">ev3_search_port_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gab18484a18fae36bd4583d85e5315143c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the EV3 port by plug-in attributes.  <a href="#gab18484a18fae36bd4583d85e5315143c">More...</a><br /></td></tr>
+<tr class="separator:gab18484a18fae36bd4583d85e5315143c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0dba86a6daaa58933bf62ae7a35e0ee6">ev3_port_mode</a> (uint8_t mode_inx)</td></tr>
+<tr class="memdesc:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port mode.  <a href="#ga0dba86a6daaa58933bf62ae7a35e0ee6">More...</a><br /></td></tr>
+<tr class="separator:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89f4e5f725fee04340fa803af74cc9cf"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga89f4e5f725fee04340fa803af74cc9cf">get_port_mode_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
+<tr class="memdesc:ga89f4e5f725fee04340fa803af74cc9cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 port mode.  <a href="#ga89f4e5f725fee04340fa803af74cc9cf">More...</a><br /></td></tr>
+<tr class="separator:ga89f4e5f725fee04340fa803af74cc9cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0362b629adfdfcde307f009f7e95f806"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0362b629adfdfcde307f009f7e95f806">set_port_mode_inx</a> (uint8_t sn, uint8_t mode_inx)</td></tr>
+<tr class="memdesc:ga0362b629adfdfcde307f009f7e95f806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set mode of the EV3 port by index.  <a href="#ga0362b629adfdfcde307f009f7e95f806">More...</a><br /></td></tr>
+<tr class="separator:ga0362b629adfdfcde307f009f7e95f806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab987b110b080b872b40d0a411c7a05f9"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab987b110b080b872b40d0a411c7a05f9">ev3_port_init</a> (void)</td></tr>
+<tr class="memdesc:gab987b110b080b872b40d0a411c7a05f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected EV3 ports.  <a href="#gab987b110b080b872b40d0a411c7a05f9">More...</a><br /></td></tr>
+<tr class="separator:gab987b110b080b872b40d0a411c7a05f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad91d9f824c3f88b9239d19d1d3f7eea2">ev3_search_port</a> (uint8_t port, uint8_t extport)</td></tr>
+<tr class="memdesc:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a port sequence number by the EV3 port and the extended port.  <a href="#gad91d9f824c3f88b9239d19d1d3f7eea2">More...</a><br /></td></tr>
+<tr class="separator:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga696a2548333b80baa70f022b66f38fef"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga696a2548333b80baa70f022b66f38fef">ev3_port_inx</a> (uint8_t type_inx, const char *name, uint8_t *extport)</td></tr>
+<tr class="memdesc:ga696a2548333b80baa70f022b66f38fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port from the port name.  <a href="#ga696a2548333b80baa70f022b66f38fef">More...</a><br /></td></tr>
+<tr class="separator:ga696a2548333b80baa70f022b66f38fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a> (uint8_t port, uint8_t extport)</td></tr>
-<tr class="memdesc:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port or multiplexer port.  <a href="#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">More...</a><br /></td></tr>
+<tr class="memdesc:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified port.  <a href="#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">More...</a><br /></td></tr>
 <tr class="separator:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6866f05da64379f9dff9a2356178299d"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6866f05da64379f9dff9a2356178299d">nxt_input_mux_inx</a> (const char *name, uint8_t *extport)</td></tr>
-<tr class="memdesc:ga6866f05da64379f9dff9a2356178299d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 input port and the extended port from the multiplexer port name.  <a href="#ga6866f05da64379f9dff9a2356178299d">More...</a><br /></td></tr>
-<tr class="separator:ga6866f05da64379f9dff9a2356178299d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0fe8bd8cfa24197bbd8631b5438b5e3"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad0fe8bd8cfa24197bbd8631b5438b5e3">nxt_input_mux_name</a> (uint8_t port, uint8_t extport)</td></tr>
-<tr class="memdesc:gad0fe8bd8cfa24197bbd8631b5438b5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified multiplexer port.  <a href="#gad0fe8bd8cfa24197bbd8631b5438b5e3">More...</a><br /></td></tr>
-<tr class="separator:gad0fe8bd8cfa24197bbd8631b5438b5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad247a608ab835f275a558968682d72c5"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad247a608ab835f275a558968682d72c5">get_input_mux_mode</a> (uint8_t port, uint8_t extport, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gad247a608ab835f275a558968682d72c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the multiplexer port.  <a href="#gad247a608ab835f275a558968682d72c5">More...</a><br /></td></tr>
-<tr class="separator:gad247a608ab835f275a558968682d72c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7355b17398636089931c8d3d7328ed42"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga7355b17398636089931c8d3d7328ed42">set_input_mux_mode</a> (uint8_t port, uint8_t extport, char *value)</td></tr>
-<tr class="memdesc:ga7355b17398636089931c8d3d7328ed42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the multiplexer port.  <a href="#ga7355b17398636089931c8d3d7328ed42">More...</a><br /></td></tr>
-<tr class="separator:ga7355b17398636089931c8d3d7328ed42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga55879c25b61779cde1c2895d7ccc1c71"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga55879c25b61779cde1c2895d7ccc1c71">get_input_mux_modes</a> (uint8_t port, uint8_t extport, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga55879c25b61779cde1c2895d7ccc1c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the multiplexer port.  <a href="#ga55879c25b61779cde1c2895d7ccc1c71">More...</a><br /></td></tr>
-<tr class="separator:ga55879c25b61779cde1c2895d7ccc1c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe5d5c92fc092478098b2a5eafe5ce39"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gafe5d5c92fc092478098b2a5eafe5ce39">nxt_input_mux_mode</a> (uint8_t mode_inx)</td></tr>
-<tr class="memdesc:gafe5d5c92fc092478098b2a5eafe5ce39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified multiplexer port mode.  <a href="#gafe5d5c92fc092478098b2a5eafe5ce39">More...</a><br /></td></tr>
-<tr class="separator:gafe5d5c92fc092478098b2a5eafe5ce39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga402b7613382fc5293b10e9ccd1c0cb8c"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga402b7613382fc5293b10e9ccd1c0cb8c">get_input_mux_mode_inx</a> (uint8_t port, uint8_t extport)</td></tr>
-<tr class="memdesc:ga402b7613382fc5293b10e9ccd1c0cb8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode index of the multiplexer port.  <a href="#ga402b7613382fc5293b10e9ccd1c0cb8c">More...</a><br /></td></tr>
-<tr class="separator:ga402b7613382fc5293b10e9ccd1c0cb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga777968325470cdb71404f7002550e6ce"><td class="memItemLeft" align="right" valign="top">NXT_INPUT_MUX_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga777968325470cdb71404f7002550e6ce">set_input_mux_mode_inx</a> (uint8_t port, uint8_t extport, uint8_t mode_inx)</td></tr>
-<tr class="memdesc:ga777968325470cdb71404f7002550e6ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode of the multiplexer port by index.  <a href="#ga777968325470cdb71404f7002550e6ce">More...</a><br /></td></tr>
-<tr class="separator:ga777968325470cdb71404f7002550e6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga9d3acc421accfc18f3e0986f13d4b2ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9d3acc421accfc18f3e0986f13d4b2ec"></a>
+EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9d3acc421accfc18f3e0986f13d4b2ec">ev3_port</a> [<a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a>]</td></tr>
+<tr class="memdesc:ga9d3acc421accfc18f3e0986f13d4b2ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of EV3 port descriptors (filled by <a class="el" href="group__ev3__port.html#gab987b110b080b872b40d0a411c7a05f9">ev3_port_init</a>). <br /></td></tr>
+<tr class="separator:ga9d3acc421accfc18f3e0986f13d4b2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Access to EV3 Ports and Multiplexer Ports. </p>
-<dl class="section see"><dt>See also</dt><dd><a href="http://www.ev3dev.org/docs/drivers/ev3-output-port/">http://www.ev3dev.org/docs/drivers/ev3-output-port/</a> </dd>
+<p>Access to EV3 Ports and Extended Ports. </p>
+<dl class="section see"><dt>See also</dt><dd><a href="http://www.ev3dev.org/docs/ports/">http://www.ev3dev.org/docs/ports/</a> </dd>
 <dd>
-<a href="http://www.ev3dev.org/docs/drivers/ev3-input-port/">http://www.ev3dev.org/docs/drivers/ev3-input-port/</a> </dd>
-<dd>
-<a href="http://www.ev3dev.org/docs/drivers/ht-smux-input-port/">http://www.ev3dev.org/docs/drivers/ht-smux-input-port/</a> </dd></dl>
+<a href="http://www.ev3dev.org/docs/drivers/lego-port-class/">http://www.ev3dev.org/docs/drivers/lego-port-class/</a> </dd></dl>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="gad43faa03632b5296fcefdabf0c962b6c"></a>
+<a class="anchor" id="ga15247a83ed93a7ba92aafc24655fbe11"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INPUT__BASE_&#160;&#160;&#160;1</td>
+          <td class="memname">#define PORT__NONE_&#160;&#160;&#160;<a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Base index of EV3 input ports. </p>
+<p>EV3 port is not found. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga2e00ecc1cb643edd5905fcf030a00e5f"></a>
+<a class="anchor" id="ga8a7579e5304d01c7a8584d02551d0f73"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INPUT__COUNT_&#160;&#160;&#160;4</td>
+          <td class="memname">#define PORT_DESC__LIMIT_&#160;&#160;&#160;64</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Count of EV3 input ports. </p>
+<p>Limit of EV3 port descriptors. </p>
 
 </div>
 </div>
-<a class="anchor" id="gae518031d203bda6f2ae023d68116ba21"></a>
+<a class="anchor" id="ga6035774ef51a86241d190f29e881368d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INPUT_DIR&#160;&#160;&#160;&quot;/sys/bus/legoev3/devices&quot;</td>
+          <td class="memname">#define PORT_DIR&#160;&#160;&#160;&quot;/sys/class/lego-port&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Directory of input ports. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga62bf78fb77e522f1f42c17d9187af91a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define INPUT_MUX__BASE_&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Base index of multiplexer ports. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga6dacaedaec1125523161723511b7d322"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define INPUT_MUX__COUNT_&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Count of multiplexer ports. </p>
-
-</div>
-</div>
-<a class="anchor" id="gac0527e4af271be1ecac97ee02189ab75"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OUTPUT__BASE_&#160;&#160;&#160;128</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Base index of EV3 output ports. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga5f4aae8004616e7e8098ebe97389a026"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OUTPUT__COUNT_&#160;&#160;&#160;4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Count of EV3 output ports. </p>
-
-</div>
-</div>
-<a class="anchor" id="gadd836a505b86b88ac52e48d6bece5738"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OUTPUT_DIR&#160;&#160;&#160;&quot;/sys/bus/legoev3/devices&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Directory of output ports. </p>
+<p>Directory of EV3 ports. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="ga05589fbab0657f08285ebdfe93f5ec9e"></a>
+<a class="anchor" id="ga726ca809ffd3d67ab4b8476646f26635"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -379,16 +396,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Identifiers of multiplexer port modes. </p>
+<p>Identifiers of EV3 port types. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga05589fbab0657f08285ebdfe93f5ec9eada18ad5368e171bc14721b2ef6ae4725"></a>INPUT_MUX_MODE__COUNT_&#160;</td><td class="fielddoc">
-<p>Count of multiplexer port modes. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga726ca809ffd3d67ab4b8476646f26635a03ba6d319927fd5dfe5ff54239db9831"></a>PORT_TYPE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of EV3 port types. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
-<a class="anchor" id="ga99fb83031ce9923c84392b4e92f956b5"></a>
+<a class="anchor" id="ga0411cd49bb5b71852cecd93bcbf0ca2d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -398,78 +415,59 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Identifiers of input port modes. </p>
+<p>Identifiers of EV3 port modes. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga99fb83031ce9923c84392b4e92f956b5afbcb2d693bf4079576dde63c763d127c"></a>INPUT_MODE__COUNT_&#160;</td><td class="fielddoc">
-<p>Count of input port modes. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a class="anchor" id="gabed82baf7f470b522273a3e37c24c600"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Identifiers of output port modes. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggabed82baf7f470b522273a3e37c24c600a96eef796cec6f94d7447c03e6662713a"></a>OUTPUT_MODE__COUNT_&#160;</td><td class="fielddoc">
-<p>Count of output port modes. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga0411cd49bb5b71852cecd93bcbf0ca2da67d220ad3c45d800d7fed206d731b2f1"></a>PORT_MODE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of EV3 port modes. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga9aea75d5ce8b283e4aa7f3a8721cfe75"></a>
+<a class="anchor" id="ga16ad0c289bc323439a0f7d205ce468d2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT uint8_t ev3_input_inx </td>
+          <td class="memname">EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>* ev3_port_desc </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get index of the EV3 input port from the port name. </p>
+<p>Get descriptor of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>Port name. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>EV3 input port index. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the EV3 port descriptor. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga256019e854a149f65599abc75af0f860"></a>
+<a class="anchor" id="ga5a83a67547a2d504ce42d0f504ffeaf2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT const char* ev3_input_mode </td>
+          <td class="memname">EV3_PORT_EXT uint8_t ev3_port_desc_extport </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode_inx</em></td><td>)</td>
+          <td class="paramname"><em>sn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified input mode. </p>
+<p>Get extended port from the EV3 port descriptor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode_inx</td><td>The input mode. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -477,24 +475,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gace829bf02aae64f3af322a28e565e0a1"></a>
+<a class="anchor" id="ga59c936b8de69b6deee5c4fd1857905e8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT const char* ev3_input_name </td>
+          <td class="memname">EV3_PORT_EXT uint8_t ev3_port_desc_port </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
+          <td class="paramname"><em>sn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified EV3 input port. </p>
+<p>Get EV3 port from the EV3 port descriptor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -502,49 +500,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0836e492598eee0ef46d86fb28a74db9"></a>
+<a class="anchor" id="ga0087c5d23fab7c7b5d6522786535f5d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT uint8_t ev3_output_inx </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get index of the EV3 output port from the port name. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>Port name. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>EV3 output port index. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga4e652c881ae5efd6b5869fb09907a8ed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_OUTPUT_EXT const char* ev3_output_mode </td>
+          <td class="memname">EV3_PORT_EXT uint8_t ev3_port_desc_type_inx </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode_inx</em></td><td>)</td>
+          <td class="paramname"><em>sn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified output mode. </p>
+<p>Get type from the EV3 port descriptor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode_inx</td><td>The output mode. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -552,38 +525,38 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaee03e323e3046f37308a0062d038bab2"></a>
+<a class="anchor" id="gab987b110b080b872b40d0a411c7a05f9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT const char* ev3_output_name </td>
+          <td class="memname">EV3_PORT_EXT int ev3_port_init </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified EV3 output port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
+<p>Detect connected EV3 ports. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of found EV3 ports or -1 in case of an error. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga9b7af8e41940a7c9304b57aaa5227dbe"></a>
+<a class="anchor" id="ga696a2548333b80baa70f022b66f38fef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">EV3_PORT_EXT uint8_t ev3_port_inx </td>
           <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type_inx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>name</em>, </td>
         </tr>
@@ -605,11 +578,37 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>Port name. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Port type. </td></tr>
     <tr><td class="paramname">extport</td><td>Buffer for the extended port index. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>EV3 port index. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0dba86a6daaa58933bf62ae7a35e0ee6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT const char* ev3_port_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mode_inx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get name of the specified EV3 port mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode_inx</td><td>Index of the EV3 port mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
 
 </div>
 </div>
@@ -637,10 +636,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified EV3 port or multiplexer port. </p>
+<p>Get name of the specified port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramname">port</td><td>EV3 port index. </td></tr>
     <tr><td class="paramname">extport</td><td>Extended port index. </td></tr>
   </table>
   </dd>
@@ -649,173 +648,37 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gafacca13a6616508649593ecbee850193"></a>
+<a class="anchor" id="gaecedcf07315aeb15ca609b00a457d707"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT size_t get_input_mode </td>
+          <td class="memname">EV3_PORT_EXT const char* ev3_port_type </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "mode" attribute of the input port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gacb0bf23ecfba09a9960660f0b9f78d96"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_INPUT_EXT uint8_t get_input_mode_inx </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
+          <td class="paramname"><em>type_inx</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the mode index of the input port. </p>
+<p>Get name of the specified EV3 port type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the EV3 port type. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Index of the mode or INPUT_MODE__COUNT_ - error has occurred. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga9001462b1fed337eac20d7cff66e842f"></a>
+<a class="anchor" id="gad91d9f824c3f88b9239d19d1d3f7eea2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT size_t get_input_modes </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "modes" attribute of the input port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gad247a608ab835f275a558968682d72c5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT size_t get_input_mux_mode </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>extport</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "mode" attribute of the multiplexer port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">extport</td><td>Extended port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga402b7613382fc5293b10e9ccd1c0cb8c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT uint8_t get_input_mux_mode_inx </td>
+          <td class="memname">EV3_PORT_EXT uint8_t ev3_search_port </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>port</em>, </td>
@@ -834,24 +697,24 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the mode index of the multiplexer port. </p>
+<p>Search of a port sequence number by the EV3 port and the extended port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">extport</td><td>Extended port index. </td></tr>
+    <tr><td class="paramname">port</td><td>EV3 port. </td></tr>
+    <tr><td class="paramname">extport</td><td>Extended port. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Index of the mode or INPUT_MUX_MODE__COUNT_ - error has occurred. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Port sequence number. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga55879c25b61779cde1c2895d7ccc1c71"></a>
+<a class="anchor" id="gab18484a18fae36bd4583d85e5315143c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT size_t get_input_mux_modes </td>
+          <td class="memname">EV3_PORT_EXT bool ev3_search_port_plugged_in </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>port</em>, </td>
@@ -865,14 +728,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>from</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -882,35 +745,41 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "modes" attribute of the multiplexer port. </p>
+<p>Search of a sequence number the EV3 port by plug-in attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">extport</td><td>Extended port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">port</td><td>EV3 port. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">extport</td><td>Extended port.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sn</td><td>Buffer for the sequence number. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">from</td><td>Search initial value. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Flag - the EV3 port is found. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga3a9cac1f7ae0276ddf3054ccdc91eeea"></a>
+<a class="anchor" id="gabcd9d5070c2843991176969884d8cf46"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT size_t get_input_pin1_mv </td>
+          <td class="memname">EV3_PORT_EXT bool ev3_search_port_type </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>type_inx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>buf</em>&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>from</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -920,63 +789,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "pin1_mv" attribute of the input port. </p>
+<p>Search of a sequence number of the specified EV3 port type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">type_inx</td><td>The EV3 port type. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">sn</td><td>Buffer for the sequence number. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">from</td><td>Search initial value. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Flag - the EV3 port is found. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga0e01c6bd99fa35f8cf5a6aabf00feb7b"></a>
+<a class="anchor" id="ga1d27d716c5d21011a48e5596e5abe8fe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT size_t get_input_pin6_mv </td>
+          <td class="memname">EV3_PORT_EXT size_t get_port_driver_name </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>buf</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "pin6_mv" attribute of the input port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga69cae7eb7b85f3853f94ddb19ce28c66"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_INPUT_EXT size_t get_input_state </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -998,10 +832,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "state" attribute of the input port. </p>
+<p>Get "driver_name" attribute of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
   </table>
@@ -1011,15 +845,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gac01801f2fa118ef299c082904fcfba8d"></a>
+<a class="anchor" id="ga1e0ccf5cab9a28007ef064731abc7827"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t get_output_mode </td>
+          <td class="memname">EV3_PORT_EXT size_t get_port_mode </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1041,10 +875,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "mode" attribute of the output port. </p>
+<p>Get "mode" attribute of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
   </table>
@@ -1054,40 +888,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga4376adf4c58e1dc944336f9fbe033987"></a>
+<a class="anchor" id="ga89f4e5f725fee04340fa803af74cc9cf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT uint8_t get_output_mode_inx </td>
+          <td class="memname">EV3_PORT_EXT uint8_t get_port_mode_inx </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the mode index of the output port. </p>
+<p>Get index of the EV3 port mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the EV3 port type. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Index of the mode or OUTPUT_MODE__COUNT_ - error has occurred. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga5d6f2c26af2dc14d12e41ca8da19c780"></a>
+<a class="anchor" id="gaf1fab82449805df888b968c5c3b7cc6d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t get_output_modes </td>
+          <td class="memname">EV3_PORT_EXT size_t get_port_modes </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1109,10 +954,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "modes" attribute of the output port. </p>
+<p>Get "modes" attribute of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
   </table>
@@ -1122,94 +967,21 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gab97ace347dceaa0a7ecdeb0ccb6c47a7"></a>
+<a class="anchor" id="gaf2674f69d1c871c9df9f7d842e8bbd37"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t get_output_pin5_mv </td>
+          <td class="memname">EV3_PORT_EXT uint8_t get_port_port_inx </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>buf</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "pin5_mv" attribute of the output port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga24aeaf4edf0112540e0e6a8b3b2c7285"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t get_output_state </td>
-          <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "state" attribute of the output port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga6866f05da64379f9dff9a2356178299d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT uint8_t nxt_input_mux_inx </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
+          <td class="paramname"><em>port_type_inx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1225,36 +997,123 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get indexes of the EV3 input port and the extended port from the multiplexer port name. </p>
+<p>Get indexes of the EV3 port and the extended port of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>Port name. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">port_type_inx</td><td>Port type. </td></tr>
     <tr><td class="paramname">extport</td><td>Buffer for the extended port index. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>EV3 input port index. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>EV3 port index. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gafe5d5c92fc092478098b2a5eafe5ce39"></a>
+<a class="anchor" id="ga65a46f9c46e39b2dbf3c9a4dcc048198"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT const char* nxt_input_mux_mode </td>
+          <td class="memname">EV3_PORT_EXT size_t get_port_port_name </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode_inx</em></td><td>)</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "port_name" attribute of the EV3 port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2116e60295108e27931bf78b934bab23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT size_t get_port_status </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "status" attribute of the EV3 port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacbe4eeb0689e60cfba1655bef675f0c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT uint8_t get_port_type_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get name of the specified multiplexer port mode. </p>
+<p>Get index of the EV3 port type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode_inx</td><td>Index of the multiplexer port mode. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1262,51 +1121,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad0fe8bd8cfa24197bbd8631b5438b5e3"></a>
+<a class="anchor" id="gad0572d5213806ce2aee4e17d689fb7f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT const char* nxt_input_mux_name </td>
+          <td class="memname">EV3_PORT_EXT size_t set_port_mode </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>extport</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get name of the specified multiplexer port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">extport</td><td>Extended port index. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga6900e2e203d002cc7344a26ac2ce3e53"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_INPUT_EXT size_t set_input_mode </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1322,10 +1145,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set "mode" attribute of the input port. </p>
+<p>Set "mode" attribute of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
   </table>
   </dd>
@@ -1334,15 +1157,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gae6d8d65a02bec9f5920fea0cd0f2792b"></a>
+<a class="anchor" id="ga0362b629adfdfcde307f009f7e95f806"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_INPUT_EXT size_t set_input_mode_inx </td>
+          <td class="memname">EV3_PORT_EXT size_t set_port_mode_inx </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1358,11 +1181,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the mode of the input by index. </p>
+<p>Set mode of the EV3 port by index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">mode_inx</td><td>Index of the mode. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">mode_inx</td><td>Index of the EV3 port mode. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1370,21 +1193,15 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga7355b17398636089931c8d3d7328ed42"></a>
+<a class="anchor" id="ga034ba1ff14b636611482c603ec03da2a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT size_t set_input_mux_mode </td>
+          <td class="memname">EV3_PORT_EXT size_t set_port_set_device </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>extport</em>, </td>
+          <td class="paramname"><em>sn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1400,127 +1217,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set "mode" attribute of the multiplexer port. </p>
+<p>Set "set_device" attribute of the EV3 port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">extport</td><td>Extended port index. </td></tr>
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga777968325470cdb71404f7002550e6ce"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">NXT_INPUT_MUX_EXT size_t set_input_mux_mode_inx </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>extport</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode_inx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the mode of the multiplexer port by index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">extport</td><td>Extended port index. </td></tr>
-    <tr><td class="paramname">mode_inx</td><td>Index of the mode. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gad32fda2b0e257318984e8248506f9f26"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t set_output_mode </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set "mode" attribute of the output port. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga25285474fd399275c9903cc3441262f0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_OUTPUT_EXT size_t set_output_mode_inx </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode_inx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the mode of the output by index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>Port index. </td></tr>
-    <tr><td class="paramname">mode_inx</td><td>Index of the mode. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1531,7 +1232,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

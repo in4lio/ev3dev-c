@@ -118,12 +118,24 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga385c44f6fb256e5716a2302a5b940388"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga385c44f6fb256e5716a2302a5b940388"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>SERVO_TYPE__NONE_</b> = 0, 
+<tr class="memitem:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>SERVO_TYPE__NONE_</b> = 0, 
 <b>SERVO_MOTOR</b>, 
-<b>SERVO_TYPE__COUNT_</b>
+<a class="el" href="group__ev3__servo.html#ggac36f475ca5b446f4fde4c9b90bec77c8a4bf71458097f7228749c9e8074e33222">SERVO_TYPE__COUNT_</a>, 
+<b>SERVO_TYPE__UNKNOWN_</b> = SERVO_TYPE__COUNT_
  }</td></tr>
-<tr class="memdesc:ga385c44f6fb256e5716a2302a5b940388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of servo motors. <br /></td></tr>
-<tr class="separator:ga385c44f6fb256e5716a2302a5b940388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of servo motor types.  <a href="group__ev3__servo.html#gac36f475ca5b446f4fde4c9b90bec77c8">More...</a><br /></td></tr>
+<tr class="separator:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>SERVO_COMMAND__NONE_</b> = 0, 
+<b>SERVO_MOTOR_RUN</b>, 
+<b>SERVO_MOTOR_FLOAT</b>, 
+<a class="el" href="group__ev3__servo.html#gga05589fbab0657f08285ebdfe93f5ec9ead7e0a152db1c52dcb2d30fef0cc16b58">SERVO_COMMAND__COUNT_</a>, 
+<br />
+&#160;&#160;<b>SERVO_COMMAND__UNKNOWN_</b> = SERVO_COMMAND__COUNT_
+<br />
+ }</td></tr>
+<tr class="memdesc:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of servo motor commands.  <a href="group__ev3__servo.html#ga05589fbab0657f08285ebdfe93f5ec9e">More...</a><br /></td></tr>
+<tr class="separator:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -133,6 +145,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf7d14de6e236370f7e77b4fb390175a9"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:gaf7d14de6e236370f7e77b4fb390175a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "command" attribute of the servo motor.  <a href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">More...</a><br /></td></tr>
 <tr class="separator:gaf7d14de6e236370f7e77b4fb390175a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e3d92f81699d159d0db6c2d1723f890"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3e3d92f81699d159d0db6c2d1723f890">get_servo_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga3e3d92f81699d159d0db6c2d1723f890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "driver_name" attribute of the servo motor.  <a href="group__ev3__servo.html#ga3e3d92f81699d159d0db6c2d1723f890">More...</a><br /></td></tr>
+<tr class="separator:ga3e3d92f81699d159d0db6c2d1723f890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8743168da4d01540683c6c6926c3e606"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga8743168da4d01540683c6c6926c3e606">get_servo_max_pulse_ms</a> (uint8_t sn, dword *buf)</td></tr>
 <tr class="memdesc:ga8743168da4d01540683c6c6926c3e606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "max_pulse_ms" attribute of the servo motor.  <a href="group__ev3__servo.html#ga8743168da4d01540683c6c6926c3e606">More...</a><br /></td></tr>
 <tr class="separator:ga8743168da4d01540683c6c6926c3e606"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,9 +166,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga804638081386edd619572742811e166a"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga804638081386edd619572742811e166a">set_servo_min_pulse_ms</a> (uint8_t sn, dword value)</td></tr>
 <tr class="memdesc:ga804638081386edd619572742811e166a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "min_pulse_ms" attribute of the servo motor.  <a href="group__ev3__servo.html#ga804638081386edd619572742811e166a">More...</a><br /></td></tr>
 <tr class="separator:ga804638081386edd619572742811e166a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaea9099c4dc7b9663e7d292c27fd82ab1"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaea9099c4dc7b9663e7d292c27fd82ab1">get_servo_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gaea9099c4dc7b9663e7d292c27fd82ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "name" attribute of the servo motor.  <a href="group__ev3__servo.html#gaea9099c4dc7b9663e7d292c27fd82ab1">More...</a><br /></td></tr>
-<tr class="separator:gaea9099c4dc7b9663e7d292c27fd82ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a80c09f15aba5673094de97019b4b81"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga9a80c09f15aba5673094de97019b4b81">get_servo_polarity</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga9a80c09f15aba5673094de97019b4b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity" attribute of the servo motor.  <a href="group__ev3__servo.html#ga9a80c09f15aba5673094de97019b4b81">More...</a><br /></td></tr>
 <tr class="separator:ga9a80c09f15aba5673094de97019b4b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,9 +193,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga60295aa405eee970dae9176285a88440"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga60295aa405eee970dae9176285a88440">get_servo_type_inx</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga60295aa405eee970dae9176285a88440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the servo motor type.  <a href="group__ev3__servo.html#ga60295aa405eee970dae9176285a88440">More...</a><br /></td></tr>
 <tr class="separator:ga60295aa405eee970dae9176285a88440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd2cec6b71491594de9fcccee44f2274"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gadd2cec6b71491594de9fcccee44f2274">get_servo_port_inx</a> (uint8_t sn, uint8_t *extport)</td></tr>
-<tr class="memdesc:gadd2cec6b71491594de9fcccee44f2274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the servo motor.  <a href="group__ev3__servo.html#gadd2cec6b71491594de9fcccee44f2274">More...</a><br /></td></tr>
-<tr class="separator:gadd2cec6b71491594de9fcccee44f2274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87a0909a01fd8bb6a0c5c68589ba0000"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga87a0909a01fd8bb6a0c5c68589ba0000">get_servo_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:ga87a0909a01fd8bb6a0c5c68589ba0000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the servo motor.  <a href="group__ev3__servo.html#ga87a0909a01fd8bb6a0c5c68589ba0000">More...</a><br /></td></tr>
+<tr class="separator:ga87a0909a01fd8bb6a0c5c68589ba0000"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6f85047ffcfc35b4ab8a4b710cc30565"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT <a class="el" href="structEV3__SERVO.html">EV3_SERVO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga6f85047ffcfc35b4ab8a4b710cc30565">ev3_servo_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga6f85047ffcfc35b4ab8a4b710cc30565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the servo motor.  <a href="group__ev3__servo.html#ga6f85047ffcfc35b4ab8a4b710cc30565">More...</a><br /></td></tr>
 <tr class="separator:ga6f85047ffcfc35b4ab8a4b710cc30565"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,11 +212,20 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7fd9cb396550396656a26a707fc876f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get channel from the servo motor descriptor.  <a href="group__ev3__servo.html#ga7fd9cb396550396656a26a707fc876f4">More...</a><br /></td></tr>
 <tr class="separator:ga7fd9cb396550396656a26a707fc876f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa7e8c3999ae75a93cb6fbd12ee92bf3c"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaa7e8c3999ae75a93cb6fbd12ee92bf3c">ev3_search_servo</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:gaa7e8c3999ae75a93cb6fbd12ee92bf3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the specified servo motor type.  <a href="group__ev3__servo.html#gaa7e8c3999ae75a93cb6fbd12ee92bf3c">More...</a><br /></td></tr>
+<tr class="memdesc:gaa7e8c3999ae75a93cb6fbd12ee92bf3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified servo motor type.  <a href="group__ev3__servo.html#gaa7e8c3999ae75a93cb6fbd12ee92bf3c">More...</a><br /></td></tr>
 <tr class="separator:gaa7e8c3999ae75a93cb6fbd12ee92bf3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaac02ef401427103c14d94d36d4bfd843"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaac02ef401427103c14d94d36d4bfd843">ev3_search_servo_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t addr, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:gaac02ef401427103c14d94d36d4bfd843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the servo motor by plug-in attributes.  <a href="group__ev3__servo.html#gaac02ef401427103c14d94d36d4bfd843">More...</a><br /></td></tr>
+<tr class="memdesc:gaac02ef401427103c14d94d36d4bfd843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the servo motor by plug-in attributes.  <a href="group__ev3__servo.html#gaac02ef401427103c14d94d36d4bfd843">More...</a><br /></td></tr>
 <tr class="separator:gaac02ef401427103c14d94d36d4bfd843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88b107f839f672be7100bd334328ffde"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga88b107f839f672be7100bd334328ffde">ev3_servo_command</a> (uint8_t command_inx)</td></tr>
+<tr class="memdesc:ga88b107f839f672be7100bd334328ffde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified servo motor command.  <a href="group__ev3__servo.html#ga88b107f839f672be7100bd334328ffde">More...</a><br /></td></tr>
+<tr class="separator:ga88b107f839f672be7100bd334328ffde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc81c0b3f2fa191ab1c23afcbd313c0d"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gabc81c0b3f2fa191ab1c23afcbd313c0d">get_servo_command_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
+<tr class="memdesc:gabc81c0b3f2fa191ab1c23afcbd313c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the servo motor command.  <a href="group__ev3__servo.html#gabc81c0b3f2fa191ab1c23afcbd313c0d">More...</a><br /></td></tr>
+<tr class="separator:gabc81c0b3f2fa191ab1c23afcbd313c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fc6dedf0b44f34df6ce8144eeb3edbd"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga1fc6dedf0b44f34df6ce8144eeb3edbd">set_servo_command_inx</a> (uint8_t sn, uint8_t command_inx)</td></tr>
+<tr class="memdesc:ga1fc6dedf0b44f34df6ce8144eeb3edbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set command of the servo motor by index.  <a href="group__ev3__servo.html#ga1fc6dedf0b44f34df6ce8144eeb3edbd">More...</a><br /></td></tr>
+<tr class="separator:ga1fc6dedf0b44f34df6ce8144eeb3edbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e65fb7a98d65801e160941aeed90b14"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3e65fb7a98d65801e160941aeed90b14">ev3_servo_init</a> (void)</td></tr>
 <tr class="memdesc:ga3e65fb7a98d65801e160941aeed90b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected servo motors.  <a href="group__ev3__servo.html#ga3e65fb7a98d65801e160941aeed90b14">More...</a><br /></td></tr>
 <tr class="separator:ga3e65fb7a98d65801e160941aeed90b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,7 +250,7 @@ EV3_SERVO_EXT <a class="el" href="structEV3__SERVO.html">EV3_SERVO</a>&#160;</td
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

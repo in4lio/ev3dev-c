@@ -94,13 +94,17 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabc5c98fcc1211af2b80116dd6e0a035d"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>TACHO_TYPE__NONE_</b> = 0, 
+<tr class="memitem:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>TACHO_TYPE__NONE_</b> = 0, 
 <b>TACHO</b>, 
 <b>MINITACHO</b>, 
-<b>TACHO_TYPE__COUNT_</b>
+<a class="el" href="group__ev3__tacho.html#gga16af7b253440dadd46a80a4b9fddba4daf02a9025c2741ffb95495bdd9251abe4">TACHO_TYPE__COUNT_</a>, 
+<br />
+&#160;&#160;<b>TACHO_TYPE__UNKNOWN_</b> = TACHO_TYPE__COUNT_
+<br />
  }</td></tr>
-<tr class="memdesc:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of tachos. <br /></td></tr>
-<tr class="separator:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga16af7b253440dadd46a80a4b9fddba4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of tacho types.  <a href="group__ev3__tacho.html#ga16af7b253440dadd46a80a4b9fddba4d">More...</a><br /></td></tr>
+<tr class="separator:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -113,9 +117,33 @@ Functions</h2></td></tr>
 <tr class="memitem:ga494a7e6192186100195d60124600c9c8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga494a7e6192186100195d60124600c9c8">set_tacho_duty_cycle_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:ga494a7e6192186100195d60124600c9c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the tacho.  <a href="#ga494a7e6192186100195d60124600c9c8">More...</a><br /></td></tr>
 <tr class="separator:ga494a7e6192186100195d60124600c9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05374fc4a7dd8b781ab497bd44dbe785"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga05374fc4a7dd8b781ab497bd44dbe785">get_tacho_encoder_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga05374fc4a7dd8b781ab497bd44dbe785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "encoder_mode" attribute of the tacho.  <a href="#ga05374fc4a7dd8b781ab497bd44dbe785">More...</a><br /></td></tr>
+<tr class="separator:ga05374fc4a7dd8b781ab497bd44dbe785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e57552996a46008ebc71c88e56e1087"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga7e57552996a46008ebc71c88e56e1087">set_tacho_encoder_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga7e57552996a46008ebc71c88e56e1087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "encoder_mode" attribute of the tacho.  <a href="#ga7e57552996a46008ebc71c88e56e1087">More...</a><br /></td></tr>
+<tr class="separator:ga7e57552996a46008ebc71c88e56e1087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5427fb1f8d3a8beba21e04a426acd8f4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga5427fb1f8d3a8beba21e04a426acd8f4">get_tacho_encoder_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga5427fb1f8d3a8beba21e04a426acd8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "encoder_modes" attribute of the tacho.  <a href="#ga5427fb1f8d3a8beba21e04a426acd8f4">More...</a><br /></td></tr>
+<tr class="separator:ga5427fb1f8d3a8beba21e04a426acd8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91297977dc537eccc717477ad323f227"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga91297977dc537eccc717477ad323f227">get_tacho_estop</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga91297977dc537eccc717477ad323f227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "estop" attribute of the tacho.  <a href="#ga91297977dc537eccc717477ad323f227">More...</a><br /></td></tr>
+<tr class="separator:ga91297977dc537eccc717477ad323f227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga461da102474bdf64bd4d337ec7d7ca2a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga461da102474bdf64bd4d337ec7d7ca2a">set_tacho_estop</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga461da102474bdf64bd4d337ec7d7ca2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "estop" attribute of the tacho.  <a href="#ga461da102474bdf64bd4d337ec7d7ca2a">More...</a><br /></td></tr>
+<tr class="separator:ga461da102474bdf64bd4d337ec7d7ca2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3418f58782ea80f0c095a3dab809a5f8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga3418f58782ea80f0c095a3dab809a5f8">get_tacho_log</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga3418f58782ea80f0c095a3dab809a5f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "log" attribute of the tacho.  <a href="#ga3418f58782ea80f0c095a3dab809a5f8">More...</a><br /></td></tr>
+<tr class="separator:ga3418f58782ea80f0c095a3dab809a5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf238b15cb6fd1634ab33f3e61b836419"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf238b15cb6fd1634ab33f3e61b836419">get_tacho_polarity_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaf238b15cb6fd1634ab33f3e61b836419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity_mode" attribute of the tacho.  <a href="#gaf238b15cb6fd1634ab33f3e61b836419">More...</a><br /></td></tr>
 <tr class="separator:gaf238b15cb6fd1634ab33f3e61b836419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5825f5cbf1ef11fc1d1a2481474358e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gae5825f5cbf1ef11fc1d1a2481474358e">set_tacho_polarity_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:gae5825f5cbf1ef11fc1d1a2481474358e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "polarity_mode" attribute of the tacho.  <a href="#gae5825f5cbf1ef11fc1d1a2481474358e">More...</a><br /></td></tr>
+<tr class="separator:gae5825f5cbf1ef11fc1d1a2481474358e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31b65a6c78b23e9f2a44233e3eb27ca4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga31b65a6c78b23e9f2a44233e3eb27ca4">get_tacho_polarity_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga31b65a6c78b23e9f2a44233e3eb27ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity_modes" attribute of the tacho.  <a href="#ga31b65a6c78b23e9f2a44233e3eb27ca4">More...</a><br /></td></tr>
+<tr class="separator:ga31b65a6c78b23e9f2a44233e3eb27ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1872b5abff11eb67330283f95003692"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaa1872b5abff11eb67330283f95003692">get_tacho_port_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaa1872b5abff11eb67330283f95003692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the tacho.  <a href="#gaa1872b5abff11eb67330283f95003692">More...</a><br /></td></tr>
 <tr class="separator:gaa1872b5abff11eb67330283f95003692"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +159,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga3d3582fb5d81d63da4183dd88be87a8d">set_tacho_position_mode</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "position_mode" attribute of the tacho.  <a href="#ga3d3582fb5d81d63da4183dd88be87a8d">More...</a><br /></td></tr>
 <tr class="separator:ga3d3582fb5d81d63da4183dd88be87a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9478285a824cc4f23522d2ca5a72fa57"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9478285a824cc4f23522d2ca5a72fa57">get_tacho_position_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga9478285a824cc4f23522d2ca5a72fa57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_modes" attribute of the tacho.  <a href="#ga9478285a824cc4f23522d2ca5a72fa57">More...</a><br /></td></tr>
+<tr class="separator:ga9478285a824cc4f23522d2ca5a72fa57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6801ce2c05cf9706c92c11ad1d3d049e">get_tacho_position_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "position_sp" attribute of the tacho.  <a href="#ga6801ce2c05cf9706c92c11ad1d3d049e">More...</a><br /></td></tr>
 <tr class="separator:ga6801ce2c05cf9706c92c11ad1d3d049e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,6 +195,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga235f40cd484b7ef37437dc4afbfc2485"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga235f40cd484b7ef37437dc4afbfc2485">set_tacho_regulation_mode</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:ga235f40cd484b7ef37437dc4afbfc2485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "regulation_mode" attribute of the tacho.  <a href="#ga235f40cd484b7ef37437dc4afbfc2485">More...</a><br /></td></tr>
 <tr class="separator:ga235f40cd484b7ef37437dc4afbfc2485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9643aa42abe76d2d233acdeabe670997"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9643aa42abe76d2d233acdeabe670997">get_tacho_regulation_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga9643aa42abe76d2d233acdeabe670997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "regulation_modes" attribute of the tacho.  <a href="#ga9643aa42abe76d2d233acdeabe670997">More...</a><br /></td></tr>
+<tr class="separator:ga9643aa42abe76d2d233acdeabe670997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ae12421d9592bfd35c43165078d6e0d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga4ae12421d9592bfd35c43165078d6e0d">set_tacho_regulation_modes</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga4ae12421d9592bfd35c43165078d6e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "regulation_modes" attribute of the tacho.  <a href="#ga4ae12421d9592bfd35c43165078d6e0d">More...</a><br /></td></tr>
+<tr class="separator:ga4ae12421d9592bfd35c43165078d6e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9723299c905b4aeeaaa45392a3450803"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga9723299c905b4aeeaaa45392a3450803">set_tacho_reset</a> (uint8_t sn, bool value)</td></tr>
 <tr class="memdesc:ga9723299c905b4aeeaaa45392a3450803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "reset" attribute of the tacho.  <a href="#ga9723299c905b4aeeaaa45392a3450803">More...</a><br /></td></tr>
 <tr class="separator:ga9723299c905b4aeeaaa45392a3450803"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +216,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8cbb818a1b25891cc107fa72648ac83c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga8cbb818a1b25891cc107fa72648ac83c">set_tacho_run_mode</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:ga8cbb818a1b25891cc107fa72648ac83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "run_mode" attribute of the tacho.  <a href="#ga8cbb818a1b25891cc107fa72648ac83c">More...</a><br /></td></tr>
 <tr class="separator:ga8cbb818a1b25891cc107fa72648ac83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad13b368969d5b534bbe9e06a72221791"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad13b368969d5b534bbe9e06a72221791">get_tacho_run_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gad13b368969d5b534bbe9e06a72221791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "run_modes" attribute of the tacho.  <a href="#gad13b368969d5b534bbe9e06a72221791">More...</a><br /></td></tr>
+<tr class="separator:gad13b368969d5b534bbe9e06a72221791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0732da8967361efb12379aea59e13067"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga0732da8967361efb12379aea59e13067">get_tacho_speed_regulation_D</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga0732da8967361efb12379aea59e13067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "speed_regulation_D" attribute of the tacho.  <a href="#ga0732da8967361efb12379aea59e13067">More...</a><br /></td></tr>
 <tr class="separator:ga0732da8967361efb12379aea59e13067"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,9 +270,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf22539970bc22a2227b240a82d3e7b4f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaf22539970bc22a2227b240a82d3e7b4f">get_tacho_type_inx</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:gaf22539970bc22a2227b240a82d3e7b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the tacho type.  <a href="#gaf22539970bc22a2227b240a82d3e7b4f">More...</a><br /></td></tr>
 <tr class="separator:gaf22539970bc22a2227b240a82d3e7b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gaae0c99b3bfa11c88b71ec374bdabdc2f">get_tacho_port_inx</a> (uint8_t sn, uint8_t *extport)</td></tr>
-<tr class="memdesc:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the tacho.  <a href="#gaae0c99b3bfa11c88b71ec374bdabdc2f">More...</a><br /></td></tr>
-<tr class="separator:gaae0c99b3bfa11c88b71ec374bdabdc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad95db2f335c8280d6be6717f84a95c39"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad95db2f335c8280d6be6717f84a95c39">get_tacho_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:gad95db2f335c8280d6be6717f84a95c39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the tacho.  <a href="#gad95db2f335c8280d6be6717f84a95c39">More...</a><br /></td></tr>
+<tr class="separator:gad95db2f335c8280d6be6717f84a95c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6589e146960af5f32501ec190a8441ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__TACHO.html">EV3_TACHO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6589e146960af5f32501ec190a8441ef">ev3_tacho_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga6589e146960af5f32501ec190a8441ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the tacho.  <a href="#ga6589e146960af5f32501ec190a8441ef">More...</a><br /></td></tr>
 <tr class="separator:ga6589e146960af5f32501ec190a8441ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,10 +286,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:gacba6f1e015c213a39c9b1af570807761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get extended port from the tacho descriptor.  <a href="#gacba6f1e015c213a39c9b1af570807761">More...</a><br /></td></tr>
 <tr class="separator:gacba6f1e015c213a39c9b1af570807761"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad2360924cee69629c1052ff31b27a322"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gad2360924cee69629c1052ff31b27a322">ev3_search_tacho</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:gad2360924cee69629c1052ff31b27a322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the specified tacho type.  <a href="#gad2360924cee69629c1052ff31b27a322">More...</a><br /></td></tr>
+<tr class="memdesc:gad2360924cee69629c1052ff31b27a322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified tacho type.  <a href="#gad2360924cee69629c1052ff31b27a322">More...</a><br /></td></tr>
 <tr class="separator:gad2360924cee69629c1052ff31b27a322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gada5365699a1a857a7ce1088cb319d621"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#gada5365699a1a857a7ce1088cb319d621">ev3_search_tacho_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:gada5365699a1a857a7ce1088cb319d621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the tacho by plug-in attributes.  <a href="#gada5365699a1a857a7ce1088cb319d621">More...</a><br /></td></tr>
+<tr class="memdesc:gada5365699a1a857a7ce1088cb319d621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the tacho by plug-in attributes.  <a href="#gada5365699a1a857a7ce1088cb319d621">More...</a><br /></td></tr>
 <tr class="separator:gada5365699a1a857a7ce1088cb319d621"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__tacho.html#ga6912f96d1f2dfab0cbd80939120f96cb">ev3_tacho_init</a> (void)</td></tr>
 <tr class="memdesc:ga6912f96d1f2dfab0cbd80939120f96cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected tachos.  <a href="#ga6912f96d1f2dfab0cbd80939120f96cb">More...</a><br /></td></tr>
@@ -307,6 +347,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ga16af7b253440dadd46a80a4b9fddba4d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of tacho types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga16af7b253440dadd46a80a4b9fddba4daf02a9025c2741ffb95495bdd9251abe4"></a>TACHO_TYPE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of tacho types. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="gad2360924cee69629c1052ff31b27a322"></a>
 <div class="memitem">
@@ -338,7 +398,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Search of the specified tacho type. </p>
+<p>Search of a sequence number of the specified tacho type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">type_inx</td><td>The tacho type. </td></tr>
@@ -387,7 +447,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Search of the tacho by plug-in attributes. </p>
+<p>Search of a sequence number the tacho by plug-in attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">port</td><td>EV3 port. </td></tr>
@@ -537,7 +597,7 @@ Variables</h2></td></tr>
 <p>Get name of the specified tacho type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type_inx</td><td>The tacho type. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the tacho type. </td></tr>
   </table>
   </dd>
 </dl>
@@ -617,6 +677,171 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga05374fc4a7dd8b781ab497bd44dbe785"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_encoder_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "encoder_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5427fb1f8d3a8beba21e04a426acd8f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_encoder_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "encoder_modes" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga91297977dc537eccc717477ad323f227"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_estop </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "estop" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3418f58782ea80f0c095a3dab809a5f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_log </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "log" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gaf238b15cb6fd1634ab33f3e61b836419"></a>
 <div class="memitem">
 <div class="memproto">
@@ -660,7 +885,50 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaae0c99b3bfa11c88b71ec374bdabdc2f"></a>
+<a class="anchor" id="ga31b65a6c78b23e9f2a44233e3eb27ca4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_polarity_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "polarity_modes" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad95db2f335c8280d6be6717f84a95c39"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -669,6 +937,12 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port_type_inx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -688,6 +962,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">port_type_inx</td><td>Port type. </td></tr>
     <tr><td class="paramname">extport</td><td>Buffer for the extended port index. </td></tr>
   </table>
   </dd>
@@ -806,6 +1081,49 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get "position_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9478285a824cc4f23522d2ca5a72fa57"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_position_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "position_modes" attribute of the tacho. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -1041,6 +1359,49 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga9643aa42abe76d2d233acdeabe670997"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_regulation_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "regulation_modes" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga36eb2a3c4f142103455eb5159bcb72fa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1108,6 +1469,49 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get "run_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad13b368969d5b534bbe9e06a72221791"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_tacho_run_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "run_modes" attribute of the tacho. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -1533,6 +1937,114 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga7e57552996a46008ebc71c88e56e1087"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_tacho_encoder_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set "encoder_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga461da102474bdf64bd4d337ec7d7ca2a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_tacho_estop </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set "estop" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae5825f5cbf1ef11fc1d1a2481474358e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_tacho_polarity_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set "polarity_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gaf32950a9bbfd50de813c6653872ee0a9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1774,6 +2286,42 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set "regulation_mode" attribute of the tacho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4ae12421d9592bfd35c43165078d6e0d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_tacho_regulation_modes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set "regulation_modes" attribute of the tacho. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -2112,7 +2660,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:38 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

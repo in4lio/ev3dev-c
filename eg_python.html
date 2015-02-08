@@ -230,10 +230,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    port = OUTPUT_B</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Set mode of the EV3 output port...&#39;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( port, OUTPUT_RCX_MOTOR )</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    ok, state = <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( port, 256 )</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    set_output_mode_inx( port, OUTPUT_RCX_MOTOR )</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    ok, state = get_output_state( port, 256 )</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;%s: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( port ), state )</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;%s: %s&#39;</span> % ( ev3_output_name( port ), state )</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="group__ev3__dc.html#gacebc5f11a2aead34564f37d9791e23a1">ev3_dc_init</a>()</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
@@ -262,10 +262,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;DC motor is NOT found&#39;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Reset mode of the EV3 output port...&#39;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="group__ev3__port.html#ga25285474fd399275c9903cc3441262f0">set_output_mode_inx</a>( port, OUTPUT_AUTO )</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    ok, state = <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( port, 256 )</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    set_output_mode_inx( port, OUTPUT_AUTO )</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    ok, state = get_output_state( port, 256 )</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;%s: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( port ), state )</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;%s: %s&#39;</span> % ( ev3_output_name( port ), state )</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>()</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;*** ( EV3 ) Bye! ***&#39;</span></div>
@@ -301,15 +301,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordflow">if</span> <a class="code" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a>() &lt; 1: sys.exit( 1 )</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordflow">print</span> <span class="stringliteral">&#39;LEDs directory:&#39;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordflow">print</span> <span class="stringliteral">&#39;leds folder:&#39;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;ok, ls = <a class="code" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a>( <span class="stringliteral">&#39;/sys/class/leds&#39;</span>, 256 )</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordflow">print</span> ls <span class="keywordflow">if</span> ok <span class="keywordflow">else</span> <span class="stringliteral">&#39;ERROR: ev3_listdir&#39;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;ok, state = <a class="code" href="group__ev3.html#ga24436e6a324b9b0dffd264e6f325042f">ev3_read_int</a>( <span class="stringliteral">&#39;/sys/class/leds/ev3:red:left/brightness&#39;</span> )</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a">ev3_write_bool</a>( <span class="stringliteral">&#39;/sys/class/leds/ev3:red:left/brightness&#39;</span>, <span class="keywordflow">not</span> state )</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">ev3_write_int</a>( <span class="stringliteral">&#39;/sys/class/leds/ev3:red:left/brightness&#39;</span>, 0 <span class="keywordflow">if</span> state <span class="keywordflow">else</span> 255 )</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;ERROR: ev3_write_bool&#39;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;ERROR: ev3_read_int&#39;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordflow">print</span> <span class="stringliteral">&#39;ev3:red:right trigger:&#39;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;ok, trig = <a class="code" href="group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8">ev3_read</a>( <span class="stringliteral">&#39;/sys/class/leds/ev3:red:right/trigger&#39;</span>, 256 )</div>
@@ -319,16 +319,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordflow">print</span> <span class="stringliteral">&#39;EV3 ports state:&#39;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordflow">for</span> i <span class="keywordflow">in</span> range( OUTPUT__BASE_, OUTPUT__BASE_ + OUTPUT__COUNT_ ):</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ok, state = <a class="code" href="group__ev3__port.html#ga24aeaf4edf0112540e0e6a8b3b2c7285">get_output_state</a>( i, 256 )</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ok, state = get_output_state( i, 256 )</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  %s: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gaee03e323e3046f37308a0062d038bab2">ev3_output_name</a>( i ), state )</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  %s: %s&#39;</span> % ( ev3_output_name( i ), state )</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">else</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;ERROR: get_output_state&#39;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordflow">for</span> i <span class="keywordflow">in</span> range( INPUT__BASE_, INPUT__BASE_ + INPUT__COUNT_ ):</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ok, state = <a class="code" href="group__ev3__port.html#ga69cae7eb7b85f3853f94ddb19ce28c66">get_input_state</a>( i, 256 )</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ok, state = get_input_state( i, 256 )</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  %s: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gace829bf02aae64f3af322a28e565e0a1">ev3_input_name</a>( i, EV3_PORT__NONE_ ), state )</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  %s: %s&#39;</span> % ( ev3_input_name( i, EV3_PORT__NONE_ ), state )</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">else</span>:</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;ERROR: get_input_state&#39;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
@@ -351,7 +351,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

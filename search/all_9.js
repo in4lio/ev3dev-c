@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['nxt_5fanalog_5fhost_2ec',['nxt_analog_host.c',['../nxt__analog__host_8c.html',1,'']]],
-  ['nxt_5fanalog_5fhost_2eh',['nxt_analog_host.h',['../nxt__analog__host_8h.html',1,'']]],
-  ['nxt_5fanalog_5fhost_5fdir',['NXT_ANALOG_HOST_DIR',['../group__ev3__host.html#ga29cad5b8126949ebae410d2f040f6918',1,'nxt_analog_host.h']]],
-  ['nxt_5finput_5fmux_2ec',['nxt_input_mux.c',['../nxt__input__mux_8c.html',1,'']]],
-  ['nxt_5finput_5fmux_2eh',['nxt_input_mux.h',['../nxt__input__mux_8h.html',1,'']]],
-  ['nxt_5finput_5fmux_5finx',['nxt_input_mux_inx',['../group__ev3__port.html#ga6866f05da64379f9dff9a2356178299d',1,'nxt_input_mux_inx(const char *name, uint8_t *extport):&#160;nxt_input_mux.c'],['../group__ev3__port.html#ga6866f05da64379f9dff9a2356178299d',1,'nxt_input_mux_inx(const char *name, uint8_t *extport):&#160;nxt_input_mux.c']]],
-  ['nxt_5finput_5fmux_5fmode',['nxt_input_mux_mode',['../group__ev3__port.html#gafe5d5c92fc092478098b2a5eafe5ce39',1,'nxt_input_mux_mode(uint8_t mode_inx):&#160;nxt_input_mux.c'],['../group__ev3__port.html#gafe5d5c92fc092478098b2a5eafe5ce39',1,'nxt_input_mux_mode(uint8_t mode_inx):&#160;nxt_input_mux.c']]],
-  ['nxt_5finput_5fmux_5fname',['nxt_input_mux_name',['../group__ev3__port.html#gad0fe8bd8cfa24197bbd8631b5438b5e3',1,'nxt_input_mux_name(uint8_t port, uint8_t extport):&#160;nxt_input_mux.c'],['../group__ev3__port.html#gad0fe8bd8cfa24197bbd8631b5438b5e3',1,'nxt_input_mux_name(uint8_t port, uint8_t extport):&#160;nxt_input_mux.c']]]
+  ['port',['port',['../structEV3__DC.html#a2fa54f9024782843172506fadbee2ac8',1,'EV3_DC::port()'],['../structEV3__PORT.html#a2fa54f9024782843172506fadbee2ac8',1,'EV3_PORT::port()'],['../structEV3__SENSOR.html#a2fa54f9024782843172506fadbee2ac8',1,'EV3_SENSOR::port()'],['../structEV3__SERVO.html#a2fa54f9024782843172506fadbee2ac8',1,'EV3_SERVO::port()'],['../structEV3__TACHO.html#a2fa54f9024782843172506fadbee2ac8',1,'EV3_TACHO::port()']]],
+  ['port_5f_5fnone_5f',['PORT__NONE_',['../group__ev3__port.html#ga15247a83ed93a7ba92aafc24655fbe11',1,'ev3_port.h']]],
+  ['port_5fdesc_5f_5flimit_5f',['PORT_DESC__LIMIT_',['../group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73',1,'ev3_port.h']]],
+  ['port_5fdir',['PORT_DIR',['../group__ev3__port.html#ga6035774ef51a86241d190f29e881368d',1,'ev3_port.h']]],
+  ['port_5fmode_5f_5fcount_5f',['PORT_MODE__COUNT_',['../group__ev3__port.html#gga0411cd49bb5b71852cecd93bcbf0ca2da67d220ad3c45d800d7fed206d731b2f1',1,'ev3_port.h']]],
+  ['port_5ftype_5f_5fcount_5f',['PORT_TYPE__COUNT_',['../group__ev3__port.html#gga726ca809ffd3d67ab4b8476646f26635a03ba6d319927fd5dfe5ff54239db9831',1,'ev3_port.h']]]
 ];

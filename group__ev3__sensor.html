@@ -85,7 +85,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga3f610a5c9ffa80f882ff41d65e9e6726"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga3f610a5c9ffa80f882ff41d65e9e6726">SENSOR_DIR</a>&#160;&#160;&#160;&quot;/sys/class/msensor&quot;</td></tr>
+<tr class="memitem:ga3f610a5c9ffa80f882ff41d65e9e6726"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga3f610a5c9ffa80f882ff41d65e9e6726">SENSOR_DIR</a>&#160;&#160;&#160;&quot;/sys/class/lego-sensor&quot;</td></tr>
 <tr class="separator:ga3f610a5c9ffa80f882ff41d65e9e6726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga95060d2f6ebd3bfd0c043c48d3f7e358"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga95060d2f6ebd3bfd0c043c48d3f7e358">SENSOR_DESC__LIMIT_</a>&#160;&#160;&#160;64</td></tr>
 <tr class="separator:ga95060d2f6ebd3bfd0c043c48d3f7e358"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,7 +94,7 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gab04a0655cd1e3bcac5e8f48c18df1a57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab04a0655cd1e3bcac5e8f48c18df1a57"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:gab04a0655cd1e3bcac5e8f48c18df1a57"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>SENSOR_TYPE__NONE_</b> = 0, 
 <b>EV3_ANALOG_XX</b>, 
 <b>NXT_ANALOG</b>, 
@@ -125,30 +125,249 @@ Enumerations</h2></td></tr>
 <b>LEGO_EV3_TOUCH</b>, 
 <b>EV3_UART_33</b>, 
 <br />
-&#160;&#160;<b>WEDO_MOTION</b>, 
+&#160;&#160;<b>WEDO_HUB</b>, 
+<b>WEDO_MOTION</b>, 
 <b>WEDO_TILT</b>, 
 <b>LEGO_POWER_STORAGE</b>, 
-<b>LEGO_NXT_TOUCH</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_LIGHT</b>, 
+&#160;&#160;<b>LEGO_NXT_TOUCH</b>, 
+<b>LEGO_NXT_LIGHT</b>, 
 <b>LEGO_NXT_SOUND</b>, 
 <b>LEGO_NXT_US</b>, 
-<b>MI_XG1300L</b>, 
 <br />
-&#160;&#160;<b>MS_ABSOLUTE_IMU</b>, 
+&#160;&#160;<b>MI_XG1300L</b>, 
+<b>MS_ABSOLUTE_IMU</b>, 
 <b>MS_ANGLE</b>, 
-<b>MS_LIGHT_ARRAY</b>, 
-<b>MS_8CH_SERVO</b>, 
+<b>MS_EV3_SMUX</b>, 
 <br />
-&#160;&#160;<b>MS_NXT_TOUCH_MUX</b>, 
-<b>SENSOR_TYPE__COUNT_</b>
+&#160;&#160;<b>MS_LIGHT_ARRAY</b>, 
+<b>MS_LINE_LEADER</b>, 
+<b>MS_8CH_SERVO</b>, 
+<b>MS_NXT_TOUCH_MUX</b>, 
+<br />
+&#160;&#160;<a class="el" href="group__ev3__sensor.html#ggab04a0655cd1e3bcac5e8f48c18df1a57abb3539bdc22cabd1b8f5142ac8f507bc">SENSOR_TYPE__COUNT_</a>, 
+<b>SENSOR_TYPE__UNKNOWN_</b> = SENSOR_TYPE__COUNT_
 <br />
  }</td></tr>
-<tr class="memdesc:gab04a0655cd1e3bcac5e8f48c18df1a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of sensors. <br /></td></tr>
+<tr class="memdesc:gab04a0655cd1e3bcac5e8f48c18df1a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor types.  <a href="group__ev3__sensor.html#gab04a0655cd1e3bcac5e8f48c18df1a57">More...</a><br /></td></tr>
 <tr class="separator:gab04a0655cd1e3bcac5e8f48c18df1a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga385c44f6fb256e5716a2302a5b940388"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>SENSOR_MODE__NONE_</b> = 0, 
+<b>EV3_ANALOG_XX_ANALOG</b>, 
+<b>NXT_ANALOG_ANALOG_0</b>, 
+<b>NXT_ANALOG_ANALOG_1</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_COLOR_COLOR</b>, 
+<b>HT_NXT_COLOR_RED</b>, 
+<b>HT_NXT_COLOR_GREEN</b>, 
+<b>HT_NXT_COLOR_BLUE</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_COLOR_RAW</b>, 
+<b>HT_NXT_COLOR_NORM</b>, 
+<b>HT_NXT_COLOR_ALL</b>, 
+<b>HT_NXT_ANGLE_ANGLE</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_ANGLE_ACCEL</b>, 
+<b>HT_NXT_ANGLE_SPEED</b>, 
+<b>HT_NXT_ACCEL_ACCEL</b>, 
+<b>HT_NXT_ACCEL_ALL</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_BAROMETRIC_PRESS</b>, 
+<b>HT_NXT_BAROMETRIC_TEMP</b>, 
+<b>HT_NXT_COLOR_V2_COLOR</b>, 
+<b>HT_NXT_COLOR_V2_RED</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_COLOR_V2_GREEN</b>, 
+<b>HT_NXT_COLOR_V2_BLUE</b>, 
+<b>HT_NXT_COLOR_V2_WHITE</b>, 
+<b>HT_NXT_COLOR_V2_NORM</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_COLOR_V2_ALL</b>, 
+<b>HT_NXT_COLOR_V2_RAW</b>, 
+<b>HT_NXT_EOPD_LONG</b>, 
+<b>HT_NXT_EOPD_SHORT</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_FORCE_FORCE</b>, 
+<b>HT_NXT_GYRO_GYRO</b>, 
+<b>HT_NXT_IR_LINK_IRLINK</b>, 
+<b>HT_NXT_IR_RECEIVER_1_MOTOR</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_IR_RECEIVER_8_MOTOR</b>, 
+<b>HT_NXT_PIR_PROX</b>, 
+<b>HT_NXT_COMPASS_COMAPASS</b>, 
+<b>HT_NXT_MAG_MAG</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_IR_SEEKER_V2_DC</b>, 
+<b>HT_NXT_IR_SEEKER_V2_AC</b>, 
+<b>HT_NXT_IR_SEEKER_V2_DC_ALL</b>, 
+<b>HT_NXT_IR_SEEKER_V2_AC_ALL</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_SMUX_MUX</b>, 
+<b>HT_SUPER_PRO_AIN</b>, 
+<b>HT_SUPER_PRO_DIN</b>, 
+<b>HT_SUPER_PRO_DOUT</b>, 
+<br />
+&#160;&#160;<b>HT_SUPER_PRO_DCTRL</b>, 
+<b>HT_SUPER_PRO_STROBE</b>, 
+<b>HT_SUPER_PRO_LED</b>, 
+<b>HT_SUPER_PRO_AOUT_0</b>, 
+<br />
+&#160;&#160;<b>HT_SUPER_PRO_AOUT_1</b>, 
+<b>EV3_UART_30_US_DIST_CM</b>, 
+<b>EV3_UART_30_US_DIST_IN</b>, 
+<b>EV3_UART_30_US_LISTEN</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_30_US_SI_CM</b>, 
+<b>EV3_UART_30_US_SI_IN</b>, 
+<b>EV3_UART_30_US_DC_CM</b>, 
+<b>EV3_UART_30_US_DC_IN</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_32_GYRO_ANG</b>, 
+<b>EV3_UART_32_GYRO_RATE</b>, 
+<b>EV3_UART_32_GYRO_FAS</b>, 
+<b>EV3_UART_32_GYRO_G_AND_A</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_32_GYRO_CAL</b>, 
+<b>EV3_UART_29_COL_REFLECT</b>, 
+<b>EV3_UART_29_COL_AMBIENT</b>, 
+<b>EV3_UART_29_COL_COLOR</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_29_REF_RAW</b>, 
+<b>EV3_UART_29_RGB_RAW</b>, 
+<b>EV3_UART_29_COL_CAL</b>, 
+<b>LEGO_EV3_TOUCH_TOUCH</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_33_IR_PROX</b>, 
+<b>EV3_UART_33_IR_SEEK</b>, 
+<b>EV3_UART_33_IR_REMOTE</b>, 
+<b>EV3_UART_33_IR_REM_A</b>, 
+<br />
+&#160;&#160;<b>EV3_UART_33_IR_S_ALT</b>, 
+<b>EV3_UART_33_IR_CAL</b>, 
+<b>WEDO_HUB_HUB</b>, 
+<b>WEDO_MOTION_PROX</b>, 
+<br />
+&#160;&#160;<b>WEDO_MOTION_RAW</b>, 
+<b>WEDO_TILT_TILT</b>, 
+<b>WEDO_TILT_TILT_AXIS</b>, 
+<b>WEDO_TILT_RAW</b>, 
+<br />
+&#160;&#160;<b>LEGO_POWER_STORAGE_IN_VOLT</b>, 
+<b>LEGO_POWER_STORAGE_IN_AMP</b>, 
+<b>LEGO_POWER_STORAGE_OUT_VOLT</b>, 
+<b>LEGO_POWER_STORAGE_OUT_AMP</b>, 
+<br />
+&#160;&#160;<b>LEGO_POWER_STORAGE_JOULE</b>, 
+<b>LEGO_POWER_STORAGE_IN_WATT</b>, 
+<b>LEGO_POWER_STORAGE_OUT_WATT</b>, 
+<b>LEGO_POWER_STORAGE_ALL</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_TOUCH_TOUCH</b>, 
+<b>LEGO_NXT_LIGHT_REFLECT</b>, 
+<b>LEGO_NXT_LIGHT_AMBIENT</b>, 
+<b>LEGO_NXT_SOUND_DB</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_SOUND_DBA</b>, 
+<b>LEGO_NXT_US_US_DIST_CM</b>, 
+<b>LEGO_NXT_US_US_DIST_IN</b>, 
+<b>LEGO_NXT_US_US_SI_CM</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_US_US_SI_IN</b>, 
+<b>LEGO_NXT_US_US_LISTEN</b>, 
+<b>MI_XG1300L_ANGLE</b>, 
+<b>MI_XG1300L_SPEED</b>, 
+<br />
+&#160;&#160;<b>MI_XG1300L_ACCEL</b>, 
+<b>MI_XG1300L_ALL</b>, 
+<b>MS_ABSOLUTE_IMU_TILT</b>, 
+<b>MS_ABSOLUTE_IMU_ACCEL</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU_COMPASS</b>, 
+<b>MS_ABSOLUTE_IMU_MAG</b>, 
+<b>MS_ABSOLUTE_IMU_GYRO</b>, 
+<b>MS_ABSOLUTE_IMU_ALL</b>, 
+<br />
+&#160;&#160;<b>MS_ANGLE_ANGLE</b>, 
+<b>MS_ANGLE_ANGLE2</b>, 
+<b>MS_ANGLE_SPEED</b>, 
+<b>MS_ANGLE_ALL</b>, 
+<br />
+&#160;&#160;<b>MS_EV3_SMUX_MUX</b>, 
+<b>MS_LIGHT_ARRAY_CAL</b>, 
+<b>MS_LIGHT_ARRAY_RAW</b>, 
+<b>MS_LINE_LEADER_PID</b>, 
+<br />
+&#160;&#160;<b>MS_LINE_LEADER_PID_ALL</b>, 
+<b>MS_LINE_LEADER_CAL</b>, 
+<b>MS_LINE_LEADER_RAW</b>, 
+<b>MS_8CH_SERVO_V3</b>, 
+<br />
+&#160;&#160;<b>MS_8CH_SERVO_OLD</b>, 
+<b>MS_NXT_TOUCH_MUX_TOUCH_MUX</b>, 
+<a class="el" href="group__ev3__sensor.html#gga385c44f6fb256e5716a2302a5b940388aea368fbe2fa5f8b47bbe1d8b564f5441">SENSOR_MODE__COUNT_</a>, 
+<b>SENSOR_MODE__UNKNOWN_</b> = SENSOR_MODE__COUNT_
+<br />
+ }</td></tr>
+<tr class="memdesc:ga385c44f6fb256e5716a2302a5b940388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor modes.  <a href="group__ev3__sensor.html#ga385c44f6fb256e5716a2302a5b940388">More...</a><br /></td></tr>
+<tr class="separator:ga385c44f6fb256e5716a2302a5b940388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>SENSOR_COMMAND__NONE_</b> = 0, 
+<b>HT_NXT_ANGLE_RESET</b>, 
+<b>HT_NXT_SMUX_HALT</b>, 
+<b>HT_NXT_SMUX_DETECT</b>, 
+<br />
+&#160;&#160;<b>HT_NXT_SMUX_RUN</b>, 
+<b>WEDO_HUB_OUT_OFF</b>, 
+<b>WEDO_HUB_OUT_ON</b>, 
+<b>WEDO_HUB_CLEAR_ERR</b>, 
+<br />
+&#160;&#160;<b>MI_XG1300L_RESET</b>, 
+<b>MI_XG1300L_ACCEL_2G</b>, 
+<b>MI_XG1300L_ACCEL_4G</b>, 
+<b>MI_XG1300L_ACCEL_8G</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU_BEGIN_COMP_CAL</b>, 
+<b>MS_ABSOLUTE_IMU_END_COMP_CAL</b>, 
+<b>MS_ABSOLUTE_IMU_ACCEL_2G</b>, 
+<b>MS_ABSOLUTE_IMU_ACCEL_4G</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU_ACCEL_8G</b>, 
+<b>MS_ABSOLUTE_IMU_ACCEL_16G</b>, 
+<b>MS_ANGLE_RESET</b>, 
+<b>MS_LIGHT_ARRAY_CAL_WHITE</b>, 
+<br />
+&#160;&#160;<b>MS_LIGHT_ARRAY_CAL_BLACK</b>, 
+<b>MS_LIGHT_ARRAY_SLEEP</b>, 
+<b>MS_LIGHT_ARRAY_WAKE</b>, 
+<b>MS_LIGHT_ARRAY_60HZ</b>, 
+<br />
+&#160;&#160;<b>MS_LIGHT_ARRAY_50HZ</b>, 
+<b>MS_LIGHT_ARRAY_UNIVERSAL</b>, 
+<b>MS_LINE_LEADER_CAL_WHITE</b>, 
+<b>MS_LINE_LEADER_CAL_BLACK</b>, 
+<br />
+&#160;&#160;<b>MS_LINE_LEADER_SLEEP</b>, 
+<b>MS_LINE_LEADER_WAKE</b>, 
+<b>MS_LINE_LEADER_INV_COL</b>, 
+<b>MS_LINE_LEADER_RST_COL</b>, 
+<br />
+&#160;&#160;<b>MS_LINE_LEADER_SNAP</b>, 
+<b>MS_LINE_LEADER_60HZ</b>, 
+<b>MS_LINE_LEADER_50HZ</b>, 
+<b>MS_LINE_LEADER_UNIVERSAL</b>, 
+<br />
+&#160;&#160;<a class="el" href="group__ev3__sensor.html#ggabc5c98fcc1211af2b80116dd6e0a035dabd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
+<b>SENSOR_COMMAND__UNKNOWN_</b> = SENSOR_COMMAND__COUNT_
+<br />
+ }</td></tr>
+<tr class="memdesc:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor commands.  <a href="group__ev3__sensor.html#gabc5c98fcc1211af2b80116dd6e0a035d">More...</a><br /></td></tr>
+<tr class="separator:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga2a39546a9ba1a1b6d6c2c7b7906e2dd8">get_sensor_address</a> (uint8_t sn, byte *buf)</td></tr>
+<tr class="memdesc:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "address" attribute of the sensor.  <a href="#ga2a39546a9ba1a1b6d6c2c7b7906e2dd8">More...</a><br /></td></tr>
+<tr class="separator:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa10b72ebcd81b5d5c4731cea9bca4903"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaa10b72ebcd81b5d5c4731cea9bca4903">get_sensor_bin_data</a> (uint8_t sn, byte *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaa10b72ebcd81b5d5c4731cea9bca4903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "bin_data" attribute of the sensor.  <a href="#gaa10b72ebcd81b5d5c4731cea9bca4903">More...</a><br /></td></tr>
 <tr class="separator:gaa10b72ebcd81b5d5c4731cea9bca4903"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,15 +383,15 @@ Functions</h2></td></tr>
 <tr class="memitem:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">get_sensor_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "commands" attribute of the sensor.  <a href="#gaed77e9a59f24afa2613d7d82c14eb5eb">More...</a><br /></td></tr>
 <tr class="separator:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga83fe6617629ad29bff63705d7a69ba4c">get_sensor_dp</a> (uint8_t sn, dword *buf)</td></tr>
-<tr class="memdesc:ga83fe6617629ad29bff63705d7a69ba4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "dp" attribute of the sensor.  <a href="#ga83fe6617629ad29bff63705d7a69ba4c">More...</a><br /></td></tr>
-<tr class="separator:ga83fe6617629ad29bff63705d7a69ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88ba951c647bb889a37b5508f4fc4d52"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga88ba951c647bb889a37b5508f4fc4d52">get_sensor_decimals</a> (uint8_t sn, dword *buf)</td></tr>
+<tr class="memdesc:ga88ba951c647bb889a37b5508f4fc4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "decimals" attribute of the sensor.  <a href="#ga88ba951c647bb889a37b5508f4fc4d52">More...</a><br /></td></tr>
+<tr class="separator:ga88ba951c647bb889a37b5508f4fc4d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad5ef7b82b09ece04cd45e0d573af6890"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gad5ef7b82b09ece04cd45e0d573af6890">get_sensor_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gad5ef7b82b09ece04cd45e0d573af6890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "driver_name" attribute of the sensor.  <a href="#gad5ef7b82b09ece04cd45e0d573af6890">More...</a><br /></td></tr>
+<tr class="separator:gad5ef7b82b09ece04cd45e0d573af6890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga292719cc47e6447f453a4b344e1c07c3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga292719cc47e6447f453a4b344e1c07c3">get_sensor_fw_version</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga292719cc47e6447f453a4b344e1c07c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "fw_version" attribute of the sensor.  <a href="#ga292719cc47e6447f453a4b344e1c07c3">More...</a><br /></td></tr>
 <tr class="separator:ga292719cc47e6447f453a4b344e1c07c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga2a39546a9ba1a1b6d6c2c7b7906e2dd8">get_sensor_address</a> (uint8_t sn, byte *buf)</td></tr>
-<tr class="memdesc:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "address" attribute of the sensor.  <a href="#ga2a39546a9ba1a1b6d6c2c7b7906e2dd8">More...</a><br /></td></tr>
-<tr class="separator:ga2a39546a9ba1a1b6d6c2c7b7906e2dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4bad50f0f8f6f9456af9f5fcc87796c7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga4bad50f0f8f6f9456af9f5fcc87796c7">get_sensor_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga4bad50f0f8f6f9456af9f5fcc87796c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the sensor.  <a href="#ga4bad50f0f8f6f9456af9f5fcc87796c7">More...</a><br /></td></tr>
 <tr class="separator:ga4bad50f0f8f6f9456af9f5fcc87796c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,9 +401,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gada6df6f55841d03c4afb219b3a53ab90"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gada6df6f55841d03c4afb219b3a53ab90">get_sensor_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gada6df6f55841d03c4afb219b3a53ab90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the sensor.  <a href="#gada6df6f55841d03c4afb219b3a53ab90">More...</a><br /></td></tr>
 <tr class="separator:gada6df6f55841d03c4afb219b3a53ab90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2384805705474fd285ac67d1b0c4cb36"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga2384805705474fd285ac67d1b0c4cb36">get_sensor_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga2384805705474fd285ac67d1b0c4cb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "name" attribute of the sensor.  <a href="#ga2384805705474fd285ac67d1b0c4cb36">More...</a><br /></td></tr>
-<tr class="separator:ga2384805705474fd285ac67d1b0c4cb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaac326b76b198d28673050a37f3fac842"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaac326b76b198d28673050a37f3fac842">get_sensor_num_values</a> (uint8_t sn, dword *buf)</td></tr>
 <tr class="memdesc:gaac326b76b198d28673050a37f3fac842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "num_values" attribute of the sensor.  <a href="#gaac326b76b198d28673050a37f3fac842">More...</a><br /></td></tr>
 <tr class="separator:gaac326b76b198d28673050a37f3fac842"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,9 +449,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gae89d1286309350d85ad6903b6a3e229c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gae89d1286309350d85ad6903b6a3e229c">get_sensor_type_inx</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:gae89d1286309350d85ad6903b6a3e229c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the sensor type.  <a href="#gae89d1286309350d85ad6903b6a3e229c">More...</a><br /></td></tr>
 <tr class="separator:gae89d1286309350d85ad6903b6a3e229c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab3da629ae103cdd199c6e2052e62c745"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gab3da629ae103cdd199c6e2052e62c745">get_sensor_port_inx</a> (uint8_t sn, uint8_t *extport)</td></tr>
-<tr class="memdesc:gab3da629ae103cdd199c6e2052e62c745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the sensor.  <a href="#gab3da629ae103cdd199c6e2052e62c745">More...</a><br /></td></tr>
-<tr class="separator:gab3da629ae103cdd199c6e2052e62c745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9df4a0cd5e5ee5fcfe99f9d047fa216d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga9df4a0cd5e5ee5fcfe99f9d047fa216d">get_sensor_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:ga9df4a0cd5e5ee5fcfe99f9d047fa216d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the sensor.  <a href="#ga9df4a0cd5e5ee5fcfe99f9d047fa216d">More...</a><br /></td></tr>
+<tr class="separator:ga9df4a0cd5e5ee5fcfe99f9d047fa216d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga930e5c5dcd3d84d071e016759a7ee1c0">ev3_sensor_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the sensor.  <a href="#ga930e5c5dcd3d84d071e016759a7ee1c0">More...</a><br /></td></tr>
 <tr class="separator:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,11 +468,26 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga6ced5f7c3cd1f09ea5680417883aa424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get address from the sensor descriptor.  <a href="#ga6ced5f7c3cd1f09ea5680417883aa424">More...</a><br /></td></tr>
 <tr class="separator:ga6ced5f7c3cd1f09ea5680417883aa424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga652df851e26822483f63b15c615f3e65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga652df851e26822483f63b15c615f3e65">ev3_search_sensor</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:ga652df851e26822483f63b15c615f3e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the specified sensor type.  <a href="#ga652df851e26822483f63b15c615f3e65">More...</a><br /></td></tr>
+<tr class="memdesc:ga652df851e26822483f63b15c615f3e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified sensor type.  <a href="#ga652df851e26822483f63b15c615f3e65">More...</a><br /></td></tr>
 <tr class="separator:ga652df851e26822483f63b15c615f3e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga00c6711bfce11e9ebd334c810f94f87f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga00c6711bfce11e9ebd334c810f94f87f">ev3_search_sensor_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t addr, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:ga00c6711bfce11e9ebd334c810f94f87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the sensor by plug-in attributes.  <a href="#ga00c6711bfce11e9ebd334c810f94f87f">More...</a><br /></td></tr>
+<tr class="memdesc:ga00c6711bfce11e9ebd334c810f94f87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the sensor by plug-in attributes.  <a href="#ga00c6711bfce11e9ebd334c810f94f87f">More...</a><br /></td></tr>
 <tr class="separator:ga00c6711bfce11e9ebd334c810f94f87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa687173d3cbc8c34eb1bef89c3b96528"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaa687173d3cbc8c34eb1bef89c3b96528">ev3_sensor_mode</a> (uint8_t mode_inx)</td></tr>
+<tr class="memdesc:gaa687173d3cbc8c34eb1bef89c3b96528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified sensor mode.  <a href="#gaa687173d3cbc8c34eb1bef89c3b96528">More...</a><br /></td></tr>
+<tr class="separator:gaa687173d3cbc8c34eb1bef89c3b96528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87f59b7849bddc3dce204784a08d4b69"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga87f59b7849bddc3dce204784a08d4b69">get_sensor_mode_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
+<tr class="memdesc:ga87f59b7849bddc3dce204784a08d4b69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the sensor mode.  <a href="#ga87f59b7849bddc3dce204784a08d4b69">More...</a><br /></td></tr>
+<tr class="separator:ga87f59b7849bddc3dce204784a08d4b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f2dd43d49216fe228df766216187494"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga4f2dd43d49216fe228df766216187494">set_sensor_mode_inx</a> (uint8_t sn, uint8_t mode_inx)</td></tr>
+<tr class="memdesc:ga4f2dd43d49216fe228df766216187494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set mode of the sensor by index.  <a href="#ga4f2dd43d49216fe228df766216187494">More...</a><br /></td></tr>
+<tr class="separator:ga4f2dd43d49216fe228df766216187494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae280e588ba53522de4c26e3d407483d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaae280e588ba53522de4c26e3d407483d">ev3_sensor_command</a> (uint8_t command_inx)</td></tr>
+<tr class="memdesc:gaae280e588ba53522de4c26e3d407483d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified sensor command.  <a href="#gaae280e588ba53522de4c26e3d407483d">More...</a><br /></td></tr>
+<tr class="separator:gaae280e588ba53522de4c26e3d407483d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5d964d6ca84a4111719f848036e0752"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaf5d964d6ca84a4111719f848036e0752">set_sensor_command_inx</a> (uint8_t sn, uint8_t command_inx)</td></tr>
+<tr class="memdesc:gaf5d964d6ca84a4111719f848036e0752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set command of the sensor by index.  <a href="#gaf5d964d6ca84a4111719f848036e0752">More...</a><br /></td></tr>
+<tr class="separator:gaf5d964d6ca84a4111719f848036e0752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08e26f670c96ed449419b2ac62aec842"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga08e26f670c96ed449419b2ac62aec842">ev3_sensor_init</a> (void)</td></tr>
 <tr class="memdesc:ga08e26f670c96ed449419b2ac62aec842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected sensors.  <a href="#ga08e26f670c96ed449419b2ac62aec842">More...</a><br /></td></tr>
 <tr class="separator:ga08e26f670c96ed449419b2ac62aec842"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,7 +503,7 @@ Variables</h2></td></tr>
 <p>Access to EV3 Sensors. </p>
 <dl class="section see"><dt>See also</dt><dd><a href="http://www.ev3dev.org/docs/sensors/">http://www.ev3dev.org/docs/sensors/</a> </dd>
 <dd>
-<a href="http://www.ev3dev.org/docs/drivers/msensor-class/">http://www.ev3dev.org/docs/drivers/msensor-class/</a> </dd></dl>
+<a href="http://www.ev3dev.org/docs/drivers/lego-sensor-class/">http://www.ev3dev.org/docs/drivers/lego-sensor-class/</a> </dd></dl>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga695302109f5b0a4a821902bede4e4e47"></a>
 <div class="memitem">
@@ -305,11 +536,69 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SENSOR_DIR&#160;&#160;&#160;&quot;/sys/class/msensor&quot;</td>
+          <td class="memname">#define SENSOR_DIR&#160;&#160;&#160;&quot;/sys/class/lego-sensor&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Directory of sensors. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ga385c44f6fb256e5716a2302a5b940388"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of sensor modes. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga385c44f6fb256e5716a2302a5b940388aea368fbe2fa5f8b47bbe1d8b564f5441"></a>SENSOR_MODE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of sensor modes. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="gabc5c98fcc1211af2b80116dd6e0a035d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of sensor commands. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggabc5c98fcc1211af2b80116dd6e0a035dabd408f7065b39a7111c9b2b479af3b89"></a>SENSOR_COMMAND__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of sensor commands. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="gab04a0655cd1e3bcac5e8f48c18df1a57"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of sensor types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggab04a0655cd1e3bcac5e8f48c18df1a57abb3539bdc22cabd1b8f5142ac8f507bc"></a>SENSOR_TYPE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of sensor types. </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -344,7 +633,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Search of the specified sensor type. </p>
+<p>Search of a sequence number of the specified sensor type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">type_inx</td><td>The sensor type. </td></tr>
@@ -399,7 +688,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Search of the sensor by plug-in attributes. </p>
+<p>Search of a sequence number the sensor by plug-in attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">port</td><td>EV3 port. </td></tr>
@@ -411,6 +700,31 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Flag - the sensor is found. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaae280e588ba53522de4c26e3d407483d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ev3_sensor_command </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>command_inx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get name of the specified sensor command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command_inx</td><td>Index of the sensor command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
 
 </div>
 </div>
@@ -558,6 +872,31 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gaa687173d3cbc8c34eb1bef89c3b96528"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ev3_sensor_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mode_inx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get name of the specified sensor mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode_inx</td><td>Index of the sensor mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga0df11bd674302ba3b85687ec258b443c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -575,7 +914,7 @@ Variables</h2></td></tr>
 <p>Get name of the specified sensor type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type_inx</td><td>The sensor type. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the sensor type. </td></tr>
   </table>
   </dd>
 </dl>
@@ -748,12 +1087,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga83fe6617629ad29bff63705d7a69ba4c"></a>
+<a class="anchor" id="ga88ba951c647bb889a37b5508f4fc4d52"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t get_sensor_dp </td>
+          <td class="memname">size_t get_sensor_decimals </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
@@ -772,11 +1111,54 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get "dp" attribute of the sensor. </p>
+<p>Get "decimals" attribute of the sensor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad5ef7b82b09ece04cd45e0d573af6890"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_sensor_driver_name </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "driver_name" attribute of the sensor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
   </table>
   </dd>
 </dl>
@@ -870,6 +1252,42 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga87f59b7849bddc3dce204784a08d4b69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t get_sensor_mode_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get index of the sensor mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the sensor type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gada6df6f55841d03c4afb219b3a53ab90"></a>
 <div class="memitem">
 <div class="memproto">
@@ -901,49 +1319,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get "modes" attribute of the sensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga2384805705474fd285ac67d1b0c4cb36"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t get_sensor_name </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "name" attribute of the sensor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -1028,7 +1403,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gab3da629ae103cdd199c6e2052e62c745"></a>
+<a class="anchor" id="ga9df4a0cd5e5ee5fcfe99f9d047fa216d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1037,6 +1412,12 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port_type_inx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1056,6 +1437,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">port_type_inx</td><td>Port type. </td></tr>
     <tr><td class="paramname">extport</td><td>Buffer for the extended port index. </td></tr>
   </table>
   </dd>
@@ -1585,6 +1967,42 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gaf5d964d6ca84a4111719f848036e0752"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_sensor_command_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>command_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set command of the sensor by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">command_inx</td><td>Index of the sensor command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga505efc957d61797672e2a1944edc94fd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1614,6 +2032,42 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
     <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4f2dd43d49216fe228df766216187494"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t set_sensor_mode_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mode_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set mode of the sensor by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">mode_inx</td><td>Index of the sensor mode. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1660,7 +2114,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:38 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

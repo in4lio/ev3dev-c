@@ -94,12 +94,25 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga06fc87d81c62e9abb8790b6e5713c55b"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>DC_TYPE__NONE_</b> = 0, 
+<tr class="memitem:ga06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>DC_TYPE__NONE_</b> = 0, 
 <b>RCX_MOTOR</b>, 
-<b>DC_TYPE__COUNT_</b>
+<a class="el" href="group__ev3__dc.html#gga06fc87d81c62e9abb8790b6e5713c55ba51598a809a8339ee0267fb6314782995">DC_TYPE__COUNT_</a>, 
+<b>DC_TYPE__UNKNOWN_</b> = DC_TYPE__COUNT_
  }</td></tr>
-<tr class="memdesc:ga06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of DC motors. <br /></td></tr>
+<tr class="memdesc:ga06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of DC motor types.  <a href="group__ev3__dc.html#ga06fc87d81c62e9abb8790b6e5713c55b">More...</a><br /></td></tr>
 <tr class="separator:ga06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>DC_COMMAND__NONE_</b> = 0, 
+<b>RCX_MOTOR_RUN</b>, 
+<b>RCX_MOTOR_BRAKE</b>, 
+<b>RCX_MOTOR_COAST</b>, 
+<br />
+&#160;&#160;<a class="el" href="group__ev3__dc.html#ggadf764cbdea00d65edcd07bb9953ad2b7a7bc75c5a6ac5eff55c6d3eb89b4007f9">DC_COMMAND__COUNT_</a>, 
+<b>DC_COMMAND__UNKNOWN_</b> = DC_COMMAND__COUNT_
+<br />
+ }</td></tr>
+<tr class="memdesc:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of DC motor commands.  <a href="group__ev3__dc.html#gadf764cbdea00d65edcd07bb9953ad2b7">More...</a><br /></td></tr>
+<tr class="separator:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -112,6 +125,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga56407d1056349880d2a76b5a1b84af5d"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga56407d1056349880d2a76b5a1b84af5d">get_dc_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga56407d1056349880d2a76b5a1b84af5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "commands" attribute of the DC motor.  <a href="#ga56407d1056349880d2a76b5a1b84af5d">More...</a><br /></td></tr>
 <tr class="separator:ga56407d1056349880d2a76b5a1b84af5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6638db7f1e627da57070959094bdc9f"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaa6638db7f1e627da57070959094bdc9f">get_dc_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaa6638db7f1e627da57070959094bdc9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "driver_name" attribute of the DC motor.  <a href="#gaa6638db7f1e627da57070959094bdc9f">More...</a><br /></td></tr>
+<tr class="separator:gaa6638db7f1e627da57070959094bdc9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3387864da953236b87df197a53a3211e"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga3387864da953236b87df197a53a3211e">get_dc_duty_cycle</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga3387864da953236b87df197a53a3211e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "duty_cycle" attribute of the DC motor.  <a href="#ga3387864da953236b87df197a53a3211e">More...</a><br /></td></tr>
 <tr class="separator:ga3387864da953236b87df197a53a3211e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,9 +137,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8e081398e534613c47a73050172ed1d1"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:ga8e081398e534613c47a73050172ed1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "duty_cycle_sp" attribute of the DC motor.  <a href="#ga8e081398e534613c47a73050172ed1d1">More...</a><br /></td></tr>
 <tr class="separator:ga8e081398e534613c47a73050172ed1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga075e9e03fdf81e06572e7199d72675d7"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga075e9e03fdf81e06572e7199d72675d7">get_dc_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga075e9e03fdf81e06572e7199d72675d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "name" attribute of the DC motor.  <a href="#ga075e9e03fdf81e06572e7199d72675d7">More...</a><br /></td></tr>
-<tr class="separator:ga075e9e03fdf81e06572e7199d72675d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga566217dcc5c3314db135da1a80638192"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga566217dcc5c3314db135da1a80638192">get_dc_polarity</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga566217dcc5c3314db135da1a80638192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "polarity" attribute of the DC motor.  <a href="#ga566217dcc5c3314db135da1a80638192">More...</a><br /></td></tr>
 <tr class="separator:ga566217dcc5c3314db135da1a80638192"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,9 +164,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga99cc90b671a9d7a0d18d44c0a27d4804"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga99cc90b671a9d7a0d18d44c0a27d4804">get_dc_type_inx</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga99cc90b671a9d7a0d18d44c0a27d4804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the DC motor type.  <a href="#ga99cc90b671a9d7a0d18d44c0a27d4804">More...</a><br /></td></tr>
 <tr class="separator:ga99cc90b671a9d7a0d18d44c0a27d4804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadfd5262cf262a2795bdb1efe1b689815"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gadfd5262cf262a2795bdb1efe1b689815">get_dc_port_inx</a> (uint8_t sn, uint8_t *extport)</td></tr>
-<tr class="memdesc:gadfd5262cf262a2795bdb1efe1b689815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the DC motor.  <a href="#gadfd5262cf262a2795bdb1efe1b689815">More...</a><br /></td></tr>
-<tr class="separator:gadfd5262cf262a2795bdb1efe1b689815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd3363bfae34e72106537c85a85bae3b"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gadd3363bfae34e72106537c85a85bae3b">get_dc_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:gadd3363bfae34e72106537c85a85bae3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the DC motor.  <a href="#gadd3363bfae34e72106537c85a85bae3b">More...</a><br /></td></tr>
+<tr class="separator:gadd3363bfae34e72106537c85a85bae3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4e25eb7f875f38ae5e77f2388c2e66d8"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4e25eb7f875f38ae5e77f2388c2e66d8">ev3_dc_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga4e25eb7f875f38ae5e77f2388c2e66d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the DC motor.  <a href="#ga4e25eb7f875f38ae5e77f2388c2e66d8">More...</a><br /></td></tr>
 <tr class="separator:ga4e25eb7f875f38ae5e77f2388c2e66d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,11 +180,20 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga76997e16addf99de1003817286e75c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get extended port from the DC motor descriptor.  <a href="#ga76997e16addf99de1003817286e75c3f">More...</a><br /></td></tr>
 <tr class="separator:ga76997e16addf99de1003817286e75c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaef0af1aa06e09a3c5723260239b636ff"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaef0af1aa06e09a3c5723260239b636ff">ev3_search_dc</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:gaef0af1aa06e09a3c5723260239b636ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the specified DC motor type.  <a href="#gaef0af1aa06e09a3c5723260239b636ff">More...</a><br /></td></tr>
+<tr class="memdesc:gaef0af1aa06e09a3c5723260239b636ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified DC motor type.  <a href="#gaef0af1aa06e09a3c5723260239b636ff">More...</a><br /></td></tr>
 <tr class="separator:gaef0af1aa06e09a3c5723260239b636ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f0b72633cff18f6b85f0f8d53a3df2d"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4f0b72633cff18f6b85f0f8d53a3df2d">ev3_search_dc_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
-<tr class="memdesc:ga4f0b72633cff18f6b85f0f8d53a3df2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of the DC motor by plug-in attributes.  <a href="#ga4f0b72633cff18f6b85f0f8d53a3df2d">More...</a><br /></td></tr>
+<tr class="memdesc:ga4f0b72633cff18f6b85f0f8d53a3df2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the DC motor by plug-in attributes.  <a href="#ga4f0b72633cff18f6b85f0f8d53a3df2d">More...</a><br /></td></tr>
 <tr class="separator:ga4f0b72633cff18f6b85f0f8d53a3df2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c947cb11c33df7626bae98004ac8725"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4c947cb11c33df7626bae98004ac8725">ev3_dc_command</a> (uint8_t command_inx)</td></tr>
+<tr class="memdesc:ga4c947cb11c33df7626bae98004ac8725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor command.  <a href="#ga4c947cb11c33df7626bae98004ac8725">More...</a><br /></td></tr>
+<tr class="separator:ga4c947cb11c33df7626bae98004ac8725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd40bd83bf1189925ce57edb637214a4"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gacd40bd83bf1189925ce57edb637214a4">get_dc_command_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
+<tr class="memdesc:gacd40bd83bf1189925ce57edb637214a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the DC motor command.  <a href="#gacd40bd83bf1189925ce57edb637214a4">More...</a><br /></td></tr>
+<tr class="separator:gacd40bd83bf1189925ce57edb637214a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac78d05bb1d96852d7ae25559741a2058"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gac78d05bb1d96852d7ae25559741a2058">set_dc_command_inx</a> (uint8_t sn, uint8_t command_inx)</td></tr>
+<tr class="memdesc:gac78d05bb1d96852d7ae25559741a2058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set command of the DC motor by index.  <a href="#gac78d05bb1d96852d7ae25559741a2058">More...</a><br /></td></tr>
+<tr class="separator:gac78d05bb1d96852d7ae25559741a2058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacebc5f11a2aead34564f37d9791e23a1"><td class="memItemLeft" align="right" valign="top">EV3_DC_EXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gacebc5f11a2aead34564f37d9791e23a1">ev3_dc_init</a> (void)</td></tr>
 <tr class="memdesc:gacebc5f11a2aead34564f37d9791e23a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected DC motors.  <a href="#gacebc5f11a2aead34564f37d9791e23a1">More...</a><br /></td></tr>
 <tr class="separator:gacebc5f11a2aead34564f37d9791e23a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,7 +250,71 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ga06fc87d81c62e9abb8790b6e5713c55b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of DC motor types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba51598a809a8339ee0267fb6314782995"></a>DC_TYPE__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of DC motor types. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="gadf764cbdea00d65edcd07bb9953ad2b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiers of DC motor commands. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ggadf764cbdea00d65edcd07bb9953ad2b7a7bc75c5a6ac5eff55c6d3eb89b4007f9"></a>DC_COMMAND__COUNT_&#160;</td><td class="fielddoc">
+<p>Count of DC motor commands. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga4c947cb11c33df7626bae98004ac8725"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_DC_EXT const char* ev3_dc_command </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>command_inx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get name of the specified DC motor command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command_inx</td><td>Index of the DC motor command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga4e25eb7f875f38ae5e77f2388c2e66d8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -365,7 +451,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 <p>Get name of the specified DC motor type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type_inx</td><td>The DC motor type. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the DC motor type. </td></tr>
   </table>
   </dd>
 </dl>
@@ -403,7 +489,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
       </table>
 </div><div class="memdoc">
 
-<p>Search of the specified DC motor type. </p>
+<p>Search of a sequence number of the specified DC motor type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">type_inx</td><td>The DC motor type. </td></tr>
@@ -452,7 +538,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
       </table>
 </div><div class="memdoc">
 
-<p>Search of the DC motor by plug-in attributes. </p>
+<p>Search of a sequence number the DC motor by plug-in attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">port</td><td>EV3 port. </td></tr>
@@ -509,6 +595,42 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
+<a class="anchor" id="gacd40bd83bf1189925ce57edb637214a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_DC_EXT uint8_t get_dc_command_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get index of the DC motor command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">type_inx</td><td>Index of the DC motor type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested value. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga56407d1056349880d2a76b5a1b84af5d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -540,6 +662,49 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 </div><div class="memdoc">
 
 <p>Get "commands" attribute of the DC motor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa6638db7f1e627da57070959094bdc9f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_DC_EXT size_t get_dc_driver_name </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get "driver_name" attribute of the DC motor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
@@ -624,49 +789,6 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
-<a class="anchor" id="ga075e9e03fdf81e06572e7199d72675d7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EV3_DC_EXT size_t get_dc_name </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>sz</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get "name" attribute of the DC motor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">sn</td><td>Sequence number. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for result. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">sz</td><td>Buffer size. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ga566217dcc5c3314db135da1a80638192"></a>
 <div class="memitem">
 <div class="memproto">
@@ -710,7 +832,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
-<a class="anchor" id="gadfd5262cf262a2795bdb1efe1b689815"></a>
+<a class="anchor" id="gadd3363bfae34e72106537c85a85bae3b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -719,6 +841,12 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port_type_inx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -738,6 +866,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">port_type_inx</td><td>Port type. </td></tr>
     <tr><td class="paramname">extport</td><td>Buffer for the extended port index. </td></tr>
   </table>
   </dd>
@@ -922,6 +1051,42 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 
 </div>
 </div>
+<a class="anchor" id="gac78d05bb1d96852d7ae25559741a2058"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_DC_EXT size_t set_dc_command_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>command_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set command of the DC motor by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Sequence number. </td></tr>
+    <tr><td class="paramname">command_inx</td><td>Index of the DC motor command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga8e081398e534613c47a73050172ed1d1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1069,7 +1234,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

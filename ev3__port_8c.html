@@ -86,20 +86,156 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;modp_numtoa.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="ev3_8h_source.html">ev3.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ev3__port_8h_source.html">ev3_port.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ev3__output_8h_source.html">ev3_output.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ev3__input_8h_source.html">ev3_input.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="nxt__input__mux_8h_source.html">nxt_input_mux.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a681ce002325a89ac0423d3ffb2f10708"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a681ce002325a89ac0423d3ffb2f10708"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_PORT_IMPLEMENT</b></td></tr>
+<tr class="separator:a681ce002325a89ac0423d3ffb2f10708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ccdb8dc369c7004bd40d92df9288749"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ccdb8dc369c7004bd40d92df9288749"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PREF_LEN</b>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a7ccdb8dc369c7004bd40d92df9288749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848cb0b2b6269eb401f83bde0378b4b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a848cb0b2b6269eb401f83bde0378b4b3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_ID_SPOT</b>&#160;&#160;&#160;&quot;///&quot;</td></tr>
+<tr class="separator:a848cb0b2b6269eb401f83bde0378b4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d8670c244f5dee2823cb03256543aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04d8670c244f5dee2823cb03256543aa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DRIVER_NAME</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;driver_name&quot;</td></tr>
+<tr class="separator:a04d8670c244f5dee2823cb03256543aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a1efab7786079621a0c4c8f5466704"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08a1efab7786079621a0c4c8f5466704"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_MODE</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;mode&quot;</td></tr>
+<tr class="separator:a08a1efab7786079621a0c4c8f5466704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37f6802de4fd63b47df9f13bcfa093d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab37f6802de4fd63b47df9f13bcfa093d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_MODES</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;modes&quot;</td></tr>
+<tr class="separator:ab37f6802de4fd63b47df9f13bcfa093d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf724db73bd69d2c575a56079a9cc1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf724db73bd69d2c575a56079a9cc1b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PORT_NAME</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;port_name&quot;</td></tr>
+<tr class="separator:adf724db73bd69d2c575a56079a9cc1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b9e631561a833cee430f7ef576ea69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52b9e631561a833cee430f7ef576ea69"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_SET_DEVICE</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;set_device&quot;</td></tr>
+<tr class="separator:a52b9e631561a833cee430f7ef576ea69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b305e911fa02a77eb4f76e00d438f6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b305e911fa02a77eb4f76e00d438f6d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STATUS</b>&#160;&#160;&#160;&quot;/sys/class/lego-port/port&quot; _ID_SPOT &quot;status&quot;</td></tr>
+<tr class="separator:a8b305e911fa02a77eb4f76e00d438f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f45349ea69330c623b930491095971"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76f45349ea69330c623b930491095971"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HT_NXT_SMUX_PORT_PARENT_LEN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a76f45349ea69330c623b930491095971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4005387e4d459362d88cef737fd26773"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4005387e4d459362d88cef737fd26773"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HT_NXT_SMUX_PORT_LEN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a4005387e4d459362d88cef737fd26773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0bdd17cb3647e7da571bda15132fd52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0bdd17cb3647e7da571bda15132fd52"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HT_NXT_SMUX_PORT_FULL_LEN</b>&#160;&#160;&#160;( HT_NXT_SMUX_PORT_PARENT_LEN + HT_NXT_SMUX_PORT_LEN + 1 )</td></tr>
+<tr class="separator:ad0bdd17cb3647e7da571bda15132fd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a333e1638df40ebe79aa168e4589be474"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a333e1638df40ebe79aa168e4589be474"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_INPUT_PORT_PARENT_LEN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a333e1638df40ebe79aa168e4589be474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1aa1508e05b1ed4baf9172236057d73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1aa1508e05b1ed4baf9172236057d73"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_INPUT_PORT_LEN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:ab1aa1508e05b1ed4baf9172236057d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb16a2ca99726b38c6d44006ed69cc9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adeb16a2ca99726b38c6d44006ed69cc9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_INPUT_PORT_FULL_LEN</b>&#160;&#160;&#160;LEGOEV3_INPUT_PORT_LEN</td></tr>
+<tr class="separator:adeb16a2ca99726b38c6d44006ed69cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e0d06fd1d9f6f1b0a3b228a0bcf49b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7e0d06fd1d9f6f1b0a3b228a0bcf49b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_OUTPUT_PORT_PARENT_LEN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ab7e0d06fd1d9f6f1b0a3b228a0bcf49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd8fa605151e29654c162533f2dfdb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fd8fa605151e29654c162533f2dfdb7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_OUTPUT_PORT_LEN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a6fd8fa605151e29654c162533f2dfdb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae629b94c7e6f421120d5e6814e46aa28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae629b94c7e6f421120d5e6814e46aa28"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEGOEV3_OUTPUT_PORT_FULL_LEN</b>&#160;&#160;&#160;LEGOEV3_OUTPUT_PORT_LEN</td></tr>
+<tr class="separator:ae629b94c7e6f421120d5e6814e46aa28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee115d0ea083af8612a3529bcba53149"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee115d0ea083af8612a3529bcba53149"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MS_EV3_SMUX_PORT_PARENT_LEN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:aee115d0ea083af8612a3529bcba53149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e588f7338b9fd49d114fb6692fba09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97e588f7338b9fd49d114fb6692fba09"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MS_EV3_SMUX_PORT_LEN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a97e588f7338b9fd49d114fb6692fba09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12d33824d71455b3bbc2fadd99ba65f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12d33824d71455b3bbc2fadd99ba65f7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MS_EV3_SMUX_PORT_FULL_LEN</b>&#160;&#160;&#160;( MS_EV3_SMUX_PORT_PARENT_LEN + MS_EV3_SMUX_PORT_LEN + 1 )</td></tr>
+<tr class="separator:a12d33824d71455b3bbc2fadd99ba65f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f20eb7f7f052a57ac5dda73a10908fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f20eb7f7f052a57ac5dda73a10908fd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WEDO_PORT_PARENT_LEN</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a6f20eb7f7f052a57ac5dda73a10908fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e536cd53e50024c6b81763165bc9a16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e536cd53e50024c6b81763165bc9a16"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WEDO_PORT_LEN</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a4e536cd53e50024c6b81763165bc9a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e1cfd1c0f30220c1d6ef55ba7792bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97e1cfd1c0f30220c1d6ef55ba7792bb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WEDO_PORT_FULL_LEN</b>&#160;&#160;&#160;( WEDO_PORT_PARENT_LEN + WEDO_PORT_LEN + 1 )</td></tr>
+<tr class="separator:a97e1cfd1c0f30220c1d6ef55ba7792bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga9b7af8e41940a7c9304b57aaa5227dbe">ev3_port_inx</a> (const char *name, uint8_t *extport)</td></tr>
-<tr class="memdesc:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port from the port name.  <a href="group__ev3__port.html#ga9b7af8e41940a7c9304b57aaa5227dbe">More...</a><br /></td></tr>
-<tr class="separator:ga9b7af8e41940a7c9304b57aaa5227dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga1d27d716c5d21011a48e5596e5abe8fe">get_port_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "driver_name" attribute of the EV3 port.  <a href="group__ev3__port.html#ga1d27d716c5d21011a48e5596e5abe8fe">More...</a><br /></td></tr>
+<tr class="separator:ga1d27d716c5d21011a48e5596e5abe8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e0ccf5cab9a28007ef064731abc7827"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga1e0ccf5cab9a28007ef064731abc7827">get_port_mode</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga1e0ccf5cab9a28007ef064731abc7827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "mode" attribute of the EV3 port.  <a href="group__ev3__port.html#ga1e0ccf5cab9a28007ef064731abc7827">More...</a><br /></td></tr>
+<tr class="separator:ga1e0ccf5cab9a28007ef064731abc7827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad0572d5213806ce2aee4e17d689fb7f6">set_port_mode</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:gad0572d5213806ce2aee4e17d689fb7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "mode" attribute of the EV3 port.  <a href="group__ev3__port.html#gad0572d5213806ce2aee4e17d689fb7f6">More...</a><br /></td></tr>
+<tr class="separator:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaf1fab82449805df888b968c5c3b7cc6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "modes" attribute of the EV3 port.  <a href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">More...</a><br /></td></tr>
+<tr class="separator:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga65a46f9c46e39b2dbf3c9a4dcc048198">get_port_port_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the EV3 port.  <a href="group__ev3__port.html#ga65a46f9c46e39b2dbf3c9a4dcc048198">More...</a><br /></td></tr>
+<tr class="separator:ga65a46f9c46e39b2dbf3c9a4dcc048198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga034ba1ff14b636611482c603ec03da2a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga034ba1ff14b636611482c603ec03da2a">set_port_set_device</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga034ba1ff14b636611482c603ec03da2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "set_device" attribute of the EV3 port.  <a href="group__ev3__port.html#ga034ba1ff14b636611482c603ec03da2a">More...</a><br /></td></tr>
+<tr class="separator:ga034ba1ff14b636611482c603ec03da2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2116e60295108e27931bf78b934bab23"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga2116e60295108e27931bf78b934bab23">get_port_status</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga2116e60295108e27931bf78b934bab23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "status" attribute of the EV3 port.  <a href="group__ev3__port.html#ga2116e60295108e27931bf78b934bab23">More...</a><br /></td></tr>
+<tr class="separator:ga2116e60295108e27931bf78b934bab23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecedcf07315aeb15ca609b00a457d707"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaecedcf07315aeb15ca609b00a457d707">ev3_port_type</a> (uint8_t type_inx)</td></tr>
+<tr class="memdesc:gaecedcf07315aeb15ca609b00a457d707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port type.  <a href="group__ev3__port.html#gaecedcf07315aeb15ca609b00a457d707">More...</a><br /></td></tr>
+<tr class="separator:gaecedcf07315aeb15ca609b00a457d707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gacbe4eeb0689e60cfba1655bef675f0c9">get_port_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 port type.  <a href="group__ev3__port.html#gacbe4eeb0689e60cfba1655bef675f0c9">More...</a><br /></td></tr>
+<tr class="separator:gacbe4eeb0689e60cfba1655bef675f0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf2674f69d1c871c9df9f7d842e8bbd37">get_port_port_inx</a> (uint8_t sn, uint8_t port_type_inx, uint8_t *extport)</td></tr>
+<tr class="memdesc:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port of the EV3 port.  <a href="group__ev3__port.html#gaf2674f69d1c871c9df9f7d842e8bbd37">More...</a><br /></td></tr>
+<tr class="separator:gaf2674f69d1c871c9df9f7d842e8bbd37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16ad0c289bc323439a0f7d205ce468d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__PORT.html">EV3_PORT</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga16ad0c289bc323439a0f7d205ce468d2">ev3_port_desc</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga16ad0c289bc323439a0f7d205ce468d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the EV3 port.  <a href="group__ev3__port.html#ga16ad0c289bc323439a0f7d205ce468d2">More...</a><br /></td></tr>
+<tr class="separator:ga16ad0c289bc323439a0f7d205ce468d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0087c5d23fab7c7b5d6522786535f5d8">ev3_port_desc_type_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type from the EV3 port descriptor.  <a href="group__ev3__port.html#ga0087c5d23fab7c7b5d6522786535f5d8">More...</a><br /></td></tr>
+<tr class="separator:ga0087c5d23fab7c7b5d6522786535f5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59c936b8de69b6deee5c4fd1857905e8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga59c936b8de69b6deee5c4fd1857905e8">ev3_port_desc_port</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga59c936b8de69b6deee5c4fd1857905e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get EV3 port from the EV3 port descriptor.  <a href="group__ev3__port.html#ga59c936b8de69b6deee5c4fd1857905e8">More...</a><br /></td></tr>
+<tr class="separator:ga59c936b8de69b6deee5c4fd1857905e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga5a83a67547a2d504ce42d0f504ffeaf2">ev3_port_desc_extport</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get extended port from the EV3 port descriptor.  <a href="group__ev3__port.html#ga5a83a67547a2d504ce42d0f504ffeaf2">More...</a><br /></td></tr>
+<tr class="separator:ga5a83a67547a2d504ce42d0f504ffeaf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabcd9d5070c2843991176969884d8cf46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gabcd9d5070c2843991176969884d8cf46">ev3_search_port_type</a> (uint8_t type_inx, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gabcd9d5070c2843991176969884d8cf46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number of the specified EV3 port type.  <a href="group__ev3__port.html#gabcd9d5070c2843991176969884d8cf46">More...</a><br /></td></tr>
+<tr class="separator:gabcd9d5070c2843991176969884d8cf46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab18484a18fae36bd4583d85e5315143c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab18484a18fae36bd4583d85e5315143c">ev3_search_port_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
+<tr class="memdesc:gab18484a18fae36bd4583d85e5315143c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the EV3 port by plug-in attributes.  <a href="group__ev3__port.html#gab18484a18fae36bd4583d85e5315143c">More...</a><br /></td></tr>
+<tr class="separator:gab18484a18fae36bd4583d85e5315143c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0dba86a6daaa58933bf62ae7a35e0ee6">ev3_port_mode</a> (uint8_t mode_inx)</td></tr>
+<tr class="memdesc:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port mode.  <a href="group__ev3__port.html#ga0dba86a6daaa58933bf62ae7a35e0ee6">More...</a><br /></td></tr>
+<tr class="separator:ga0dba86a6daaa58933bf62ae7a35e0ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89f4e5f725fee04340fa803af74cc9cf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga89f4e5f725fee04340fa803af74cc9cf">get_port_mode_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
+<tr class="memdesc:ga89f4e5f725fee04340fa803af74cc9cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the EV3 port mode.  <a href="group__ev3__port.html#ga89f4e5f725fee04340fa803af74cc9cf">More...</a><br /></td></tr>
+<tr class="separator:ga89f4e5f725fee04340fa803af74cc9cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0362b629adfdfcde307f009f7e95f806"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga0362b629adfdfcde307f009f7e95f806">set_port_mode_inx</a> (uint8_t sn, uint8_t mode_inx)</td></tr>
+<tr class="memdesc:ga0362b629adfdfcde307f009f7e95f806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set mode of the EV3 port by index.  <a href="group__ev3__port.html#ga0362b629adfdfcde307f009f7e95f806">More...</a><br /></td></tr>
+<tr class="separator:ga0362b629adfdfcde307f009f7e95f806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab987b110b080b872b40d0a411c7a05f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab987b110b080b872b40d0a411c7a05f9">ev3_port_init</a> (void)</td></tr>
+<tr class="memdesc:gab987b110b080b872b40d0a411c7a05f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected EV3 ports.  <a href="group__ev3__port.html#gab987b110b080b872b40d0a411c7a05f9">More...</a><br /></td></tr>
+<tr class="separator:gab987b110b080b872b40d0a411c7a05f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga696a2548333b80baa70f022b66f38fef"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga696a2548333b80baa70f022b66f38fef">ev3_port_inx</a> (uint8_t type_inx, const char *name, uint8_t *extport)</td></tr>
+<tr class="memdesc:ga696a2548333b80baa70f022b66f38fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get indexes of the EV3 port and the extended port from the port name.  <a href="group__ev3__port.html#ga696a2548333b80baa70f022b66f38fef">More...</a><br /></td></tr>
+<tr class="separator:ga696a2548333b80baa70f022b66f38fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a> (uint8_t port, uint8_t extport)</td></tr>
-<tr class="memdesc:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified EV3 port or multiplexer port.  <a href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">More...</a><br /></td></tr>
+<tr class="memdesc:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified port.  <a href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">More...</a><br /></td></tr>
 <tr class="separator:gafb9f46a58b1b1e9f4bc30ba20b72b4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad91d9f824c3f88b9239d19d1d3f7eea2">ev3_search_port</a> (uint8_t port, uint8_t extport)</td></tr>
+<tr class="memdesc:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a port sequence number by the EV3 port and the extended port.  <a href="group__ev3__port.html#gad91d9f824c3f88b9239d19d1d3f7eea2">More...</a><br /></td></tr>
+<tr class="separator:gad91d9f824c3f88b9239d19d1d3f7eea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>EV3 Ports. </p>
@@ -108,7 +244,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 16:27:40 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 8 2015 14:03:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
