@@ -21,8 +21,8 @@
 
 <P>This level contains functions for a \ref ev3 "local" and \ref ev3_link "remote"
 access to the file system of the EV3 brick. The following code will write
-the value in the file (on the brick) or will send these data in an UDP message
-to the brick (on the remote computer).</P>
+the specified value to the specified file (if running on the brick) or
+will send the arguments to the brick using UDP message (on the remote computer).</P>
 \code {.c}
 ev3_init();
 
@@ -35,7 +35,7 @@ ev3_uninit();
 
 <H3>II LEVEL</H3>
 
-<P>Basic functions to read and write attributes of \ref ev3_led "LEDs", see
+<P>Basic functions to access the attributes of \ref ev3_led "LEDs", see
 <A HREF="https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs">"Using LEDs"</A>.</P>
 \code {.c}
 int ok;
@@ -49,21 +49,48 @@ if ( ok ) {
 }
 ev3_uninit();
 \endcode
-<P>Basic functions to read and write attributes of \ref ev3_port "EV3 Ports", see
-<A HREF="http://www.ev3dev.org/docs/drivers/ev3-output-port/">"EV3 Output Port Driver"</A>
-and <A HREF="http://www.ev3dev.org/docs/drivers/ev3-input-port/">"EV3 Input Port Driver"</A>.</P>
+<P>Basic functions to access the attributes of \ref ev3_port "EV3 Ports and Extended Ports", see
+<A HREF="http://www.ev3dev.org/docs/ports/">"Input and Output Ports"</A>.</P>
 \code {.c}
+uint8_t sn;
 char s[ 256 ];
 
 ev3_init();
+ev3_port_init();
 
-if ( get_output_state( OUTPUT_A, s, sizeof( s ))) {
-	printf( "OUTPUT_A state = %s\n", s );
+sn = ev3_search_port( INPUT_2, EXT_PORT__NONE_ );
+if ( get_port_mode( sn, s, sizeof( s ))) {
+	printf( "INPUT_2 mode = %s\n", s );
 }
 ev3_uninit();
 \endcode
-<P>Basic functions to read and write attributes of \ref ev3_sensor "Mindstorms Sensors", see
-<A HREF="http://www.ev3dev.org/docs/drivers/msensor-class/">"MINDSTORMS Sensor Class"</A>.</P>
+<P><A HREF="http://www.ev3dev.org/docs/ports/ht-nxt-smux-port/">"HiTechnic NXT Sensor Multiplexer Input Port"</A>
+<BR><A HREF="http://www.ev3dev.org/docs/ports/ms-ev3-smux-port/">"mindsensors.com EV3 Sensor Multiplexer Input Port"</A>
+<BR><A HREF="http://www.ev3dev.org/docs/ports/wedo-port/">"LEGO WeDo Port"</A>
+</P>
+\code {.c}
+uint8_t sn, sn_port;
+int val;
+
+ev3_init();
+ev3_port_init();
+
+sn_port = ev3_search_port( INPUT_1, HT_NXT_SMUX_PORT_2 );
+set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
+set_port_set_device( sn_port, ( char* ) ev3_sensor_type( LEGO_NXT_TOUCH ));
+
+ev3_sensor_init();
+
+if ( ev3_search_sensor_plugged_in( INPUT_1, HT_NXT_SMUX_PORT_2, &sn, 0 )) {
+	if ( get_sensor_value( 0, sn, &val )) {
+		printf( "TOUCH sensor value = %d\n", val );
+	}
+}
+set_port_mode_inx( sn_port, INPUT_AUTO );
+ev3_uninit();
+\endcode
+<P>Basic functions to access the attributes of \ref ev3_sensor "LEGO Sensors", see
+<A HREF="http://www.ev3dev.org/docs/drivers/lego-sensor-class/">"LEGO Sensor Class"</A>.</P>
 \code {.c}
 uint8_t sn;
 int val;
@@ -77,7 +104,7 @@ if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
-<P>Basic functions to read and write attributes of \ref ev3_tacho "Tacho Motors", see
+<P>Basic functions to access the attributes of \ref ev3_tacho "Tacho Motors", see
 <A HREF="http://www.ev3dev.org/docs/drivers/tacho-motor-class/">"Tacho Motor Class"</A>.</P>
 \code {.c}
 uint8_t sn;
@@ -97,58 +124,45 @@ if ( ev3_search_tacho( TACHO, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
-<P>Basic functions to read and write attributes of \ref ev3_dc "DC Motors", see
+<P>Basic functions to access the attributes of \ref ev3_dc "DC Motors", see
 <A HREF="http://www.ev3dev.org/docs/drivers/dc-motor-class/">"DC Motor Class"</A>.</P>
 \code {.c}
-uint8_t sn;
+uint8_t sn, sn_port;
 
 ev3_init();
-set_output_mode_inx( OUTPUT_D, OUTPUT_RCX_MOTOR );
+ev3_port_init();
+sn_port = ev3_search_port( OUTPUT_D, EXT_PORT__NONE_ );
+set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
 ev3_dc_init();
 
-if ( ev3_search_dc_plugged_in( OUTPUT_D, INPUT_MUX__NONE_, &sn, 0 )) {
+if ( ev3_search_dc_plugged_in( OUTPUT_D, EXT_PORT__NONE_, &sn, 0 )) {
 	set_dc_duty_cycle( sn, 100 );
 	set_dc_command( sn, "run" );
 	Sleep( 5000 );
 	set_dc_command( sn, "brake" );
 }
+set_port_mode_inx( sn_port, OUTPUT_AUTO );
 ev3_uninit();
 \endcode
-<P>Basic functions to read and write attributes of \ref ev3_host "NXT Analog Host", see
-<A HREF="http://www.ev3dev.org/docs/drivers/nxt-analog-host/">"NXT Analog Host Driver"</A>.</P>
-<P>Basic functions to read and write attributes of \ref ev3_port "Multiplexer Input Ports", see
-<A HREF="http://www.ev3dev.org/docs/drivers/ht-smux-input-port/">"Multiplexer Input Port Driver"</A>.</P>
-\code {.c}
-uint8_t sn;
-int val;
-
-ev3_init();
-set_input_mux_mode_inx( INPUT_1, INPUT_MUX_ANALOG );
-set_nxt_analog_host_set_sensor( INPUT_1, INPUT_MUX_1, ( char* ) ev3_sensor_type( LEGO_NXT_TOUCH ));
-
-ev3_sensor_init();
-
-if ( ev3_search_sensor_plugged_in( INPUT_1, INPUT_MUX_1, &sn, 0 )) {
-	if ( get_sensor_value( 0, sn, &val )) {
-		printf( "TOUCH sensor value = %d\n", val );
-	}
-}
-ev3_uninit();
-\endcode
-<P>Basic functions to read and write attributes of \ref ev3_servo "Servo Motors", see
+<P>Basic functions to access the attributes of \ref ev3_servo "Servo Motors", see
 <A HREF="http://www.ev3dev.org/docs/drivers/servo-motor-class/">"Servo Motor Class"</A>.</P>
 \code {.c}
-uint8_t sn;
+uint8_t sn, sn_port;
 
 ev3_init();
-set_input_mode_inx( INPUT_1, INPUT_NXT_ANALOG );
-set_nxt_analog_host_set_sensor( INPUT_1, INPUT_MUX__NONE_, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+ev3_port_init();
+
+sn_port = ev3_search_port( INPUT_1, EXT_PORT__NONE_ );
+set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
+set_port_set_device( sn_port, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+
 ev3_servo_init();
 
-if ( ev3_search_servo_plugged_in( INPUT_1, INPUT_MUX__NONE_, 1, &sn, 0 )) {
+if ( ev3_search_servo_plugged_in( INPUT_1, EXT_PORT__NONE_, 1, &sn, 0 )) {
 	set_servo_command( sn, "run" );
 	set_servo_position( sn, 100 );
 }
+set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();
 \endcode
 
@@ -167,14 +181,16 @@ this category at the moment.</P>
 <BR><HR>
 <H2>Python, Ruby, Perl and other languages</H2>
 
-<A HREF="https://pypi.python.org/pypi/ev3dev-c/">Libraries</A> on Python and Ruby
+The <A HREF="https://pypi.python.org/pypi/ev3dev-c/">libraries</A> for Python, Ruby and Perl
 have been generated using <A HREF="http://www.swig.org/">SWIG</A>.
 The SWIG interface file called "ev3.i", its source is
 <A HREF="https://github.com/in4lio/ev3dev-c/blob/master/ev3.yu-i">"ev3.yu-i"</A>.
 <P>Features of Python library:
-1. Functions return a value as the second element of the result tuple;
-2. Access to descriptors of detected devices only through \ref ev3_sensor_desc, \ref ev3_tacho_desc and ev3_<class>_desc_<field> functions;
-3. Access to other global variables through "ev3" namespace.</P>
+
+1. The functions return the requested value as the second element of the result tuple;
+2. Access to the descriptors of detected devices only through ev3_<class>_desc or
+ev3_<class>_desc_<field> functions (e.g. \ref ev3_sensor_desc, \ref ev3_port_desc);
+3. Access to the global variables through "ev3" namespace.</P>
 \code {.py}
 color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]
 
@@ -194,8 +210,10 @@ if ok:
 ev3_uninit()
 \endcode
 <P>Features of Ruby library:
-1. Functions return a value as the second element of the result tuple, the first element has a boolean type;
-2. Access to descriptors of detected devices only through \ref ev3_sensor_desc, \ref ev3_tacho_desc and ev3_<class>_desc_<field> functions.</P>
+1. The functions return the requested value as the second element of the result tuple,
+the first element has a boolean type;
+2. Access to the descriptors of detected devices only through ev3_<class>_desc or
+ev3_<class>_desc_<field> functions (e.g. \ref ev3_dc_desc, \ref ev3_dc_desc_port);
 \code {.py}
 include Ev3
 ev3_init()
@@ -209,8 +227,9 @@ end
 ev3_uninit()
 \endcode
 <P>Features of Perl library:
-1. Functions return a value as the second element of the result tuple;
-2. Access to descriptors of detected devices only through ev3_<class>_desc_<field> functions.</P>
+1. The functions return the requested value as the second element of the result tuple;
+2. Access to the descriptors of detected devices only through ev3_<class>_desc_<field> functions
+(e.g. \ref ev3_tacho_desc_type_inx, \ref ev3_tacho_desc_port).</P>
 \code {.c}
 use ev3;
 
@@ -238,9 +257,10 @@ ev3::ev3_uninit();
 \include light.c
 \include tacho.c
 \include sensor.c
+\include port.c
 \include dc.c
 \include servo.c
-\include led.c
+\include rcx_led.c
 \include io.c
 \include poweroff.c
  */

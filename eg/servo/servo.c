@@ -35,7 +35,7 @@ int main( void )
 	char s[ 256 ];
 	int pos;
 	int i;
-	uint8_t sn;
+	uint8_t sn, sn_port;
 	uint8_t port = INPUT_2;
 
 	printf( "Waiting the EV3 brick online...\n" );
@@ -45,12 +45,12 @@ int main( void )
 	ev3_port_init();
 
 	printf( "Set mode of the EV3 input port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
-	sn = ev3_search_port( port, EXT_PORT__NONE_ );
-	set_port_mode_inx( sn, INPUT_NXT_ANALOG );
-	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
+	set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	printf( "Set MS_8CH_SERVO mode of the nxt-analog-host...\n" );
-	set_port_set_device( sn, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+	set_port_set_device( sn_port, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
 
 	Sleep( 200 );
 	ev3_servo_init();
@@ -78,8 +78,8 @@ int main( void )
 	}
 
 	printf( "Reset mode of the EV3 input port...\n" );
-	set_port_mode_inx( sn, INPUT_AUTO );
-	if ( get_port_mode( sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	set_port_mode_inx( sn_port, INPUT_AUTO );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

@@ -33,7 +33,7 @@ int main( void )
 {
 	char s[ 256 ];
 	int i;
-	uint8_t sn, port_sn;
+	uint8_t sn, sn_port;
 	uint8_t port = OUTPUT_B;
 
 	printf( "Waiting the EV3 brick online...\n" );
@@ -43,9 +43,9 @@ int main( void )
 	ev3_port_init();
 
 	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
-	port_sn = ev3_search_port( port, EXT_PORT__NONE_ );
-	set_port_mode_inx( port_sn, OUTPUT_RCX_MOTOR );
-	if ( get_port_mode( port_sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
+	set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	Sleep( 200 );
 	ev3_dc_init();
@@ -71,8 +71,8 @@ int main( void )
 	}
 	Sleep( 200 );
 	printf( "Reset mode of the EV3 output port...\n" );
-	set_port_mode_inx( port_sn, OUTPUT_AUTO );
-	if ( get_port_mode( port_sn, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	set_port_mode_inx( sn_port, OUTPUT_AUTO );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
 
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
