@@ -199,7 +199,7 @@ if not EV3_BRICK:
 ev3_init()
 ev3_sensor_init()
 
-ok, sn = ev3_search_sensor( EV3_UART_29 )
+ok, sn = ev3_search_sensor( LEGO_EV3_UART_29 )
 if ok:
     set_sensor_mode( sn, 'COL-COLOR' )
 
@@ -213,7 +213,7 @@ ev3_uninit()
 1. The functions return the requested value as the second element of the result tuple,
 the first element has a boolean type;
 2. Access to the descriptors of detected devices only through ev3_<class>_desc or
-ev3_<class>_desc_<field> functions (e.g. \ref ev3_dc_desc, \ref ev3_dc_desc_port);
+ev3_<class>_desc_<field> functions (e.g. \ref ev3_dc_desc, \ref ev3_dc_desc_port).</P>
 \code {.py}
 include Ev3
 ev3_init()
