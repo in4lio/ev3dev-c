@@ -35,7 +35,7 @@
 ($!
 	($do,,foo(); bar(); )
 )
-($macro do(body)do {
+($macro do (body)do {
 ($body)
 } while ( 0 ))
 
@@ -57,6 +57,12 @@
 )
 ($macro undef (name)($set ($name) 0)
 #undef  ($name))
+
+($!
+	($def-if LINK_MODULE)
+)
+($macro def-if (cond name)($set ($name) 1 ? ($cond) | 0)
+($if ($name) [#define ($name)]))
 
 ($!
 	($skip-if-not LINK_MODULE)

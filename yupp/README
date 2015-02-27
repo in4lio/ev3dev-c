@@ -10,8 +10,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    yup.py      0.7b7
-                2014-11-13
+    yup.py      0.8b1
+                2015-02-22
     python      2.7.8
 
     ___             ______________________________
@@ -27,8 +27,8 @@
     ___        ___________________________________
     ___ SYNTAX ___________________________________
 
-    Basic syntactic forms of the language is a list, an application and
-    a lambda expression.
+    Basic syntactic forms of the macro language is a list, an application
+    and a lambda expression.
 
     list ::= '(' { form }0... ')'
 
@@ -49,7 +49,7 @@
     standard library can be used in preprocessor expressions
     (https://github.com/in4lio/yupp/wiki/Builtin-Functions).
 
-    Following examples show basic syntactic constructs of the language.
+    Following examples show basic syntactic constructs of the macro language.
     yupp Web Console is at your service (http://yup-py.appspot.com/).
 
     ($! this is a comment (won't be saved))
@@ -181,7 +181,7 @@
     25
 
     ($! the iterator (modifier) - experimental!
-        NOT applicable in a loop )
+        NOT applicable into a loop or a conditional expression )
 
         ($set i 0)
         ($emit i inc) ($emit i inc) ($emit i dec) ($emit i)

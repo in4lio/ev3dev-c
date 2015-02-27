@@ -113,7 +113,7 @@ F_BIN = $(D_BIN)/lib$(BIN)$(E_BIN)
 LFLAGS = rcs
 
 # -- preprocessor flags
-PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
+PPFLAGS = --pp-browse -q $(addprefix -d, $(D_YU))
 
 # -- compiler flags
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -W -Wall -Wno-comment -std=gnu99

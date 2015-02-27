@@ -44,7 +44,7 @@
 #define ($upper ($name))_IMPLEMENT
 )
 
-($macro implement-named () ($implement ($__MODULE_NAME__)))
+($macro implement-named ()($implement ($__MODULE_NAME__)))
 
 ($macro extern-c-begin ()
 #ifdef __cplusplus
@@ -58,5 +58,5 @@ extern "C" {
 #endif
 )
 
-($macro h-extern () ($h-name)_EXT)
-($macro h-extern-init ( dec init ) ($h-name)_EXT_INIT( ($dec), ($replace [($init)] [,] [ COMMA ]) );)
+($macro h-extern ()($h-name)_EXT)
+($macro h-extern-init ( dec init )($h-name)_EXT_INIT( ($dec), ($replace [($init)] [,] [ COMMA ]) );)
