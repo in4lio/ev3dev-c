@@ -185,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">my ( $ok, $sn_touch ) = ev3::ev3_search_sensor( $ev3::LEGO_EV3_TOUCH );</div>
 <div class="line">if ( $ok ) {</div>
 <div class="line">    print &quot;TOUCH sensor is found, press BUTTON for EXIT...\n&quot;;</div>
-<div class="line">    my ( $ok, $sn_color ) = ev3::ev3_search_sensor( $ev3::EV3_UART_29 );</div>
+<div class="line">    my ( $ok, $sn_color ) = ev3::ev3_search_sensor( $ev3::LEGO_EV3_UART_29 );</div>
 <div class="line">    if ( $ok ) {</div>
 <div class="line">        print &quot;COLOR sensor is found, reading COLOR...\n&quot;;</div>
 <div class="line">        ev3::set_sensor_mode( $sn_color, &quot;COL-COLOR&quot; );</div>
@@ -307,7 +307,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Feb 8 2015 14:18:45 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 27 2015 16:47:00 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
