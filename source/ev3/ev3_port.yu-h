@@ -40,22 +40,16 @@ enum {
 	($each-CLASS_TYPE \i.]
 		($upper ($i CLASS_TYPE_ID))__BASE_,
 		($($range ($len ($i PORT_SUFS))) \ii.]
-			($upper ($i CLASS_TYPE_ID))_($ii ($i PORT_SUFS)) = ($upper ($i CLASS_TYPE_ID))__BASE_ + ($ii),
+			($set suf ($ii ($i PORT_SUFS)))
+			($upper ($i CLASS_TYPE_ID))_($suf) = ($upper ($i CLASS_TYPE_ID))__BASE_ + ($ii),
+			($if ($i PORT_ID_SHORT) ]
+				($upper ($i PORT_ID_SHORT))_($suf) = ($upper ($i CLASS_TYPE_ID))_($suf),
+			[ )
 
 		[ )
 
 	[ )
 };
-
-($each-CLASS_TYPE \i.]
-	($($i PORT_SUFS) \ii.]
-		($if ($i PORT_ID_SHORT) ]
-			#define ($upper ($i PORT_ID_SHORT))_($ii)  ($upper ($i CLASS_TYPE_ID))_($ii)
-		[ )
-
-	[ )
-
-[ )
 
 ($CLASS_ATTR_INDEX \attr.]
 

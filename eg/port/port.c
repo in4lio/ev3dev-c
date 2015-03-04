@@ -46,7 +46,9 @@ int main( void )
 		if ( ev3_port[ i ].type_inx != PORT_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_port_type( ev3_port[ i ].type_inx ));
 			printf( "  port = %s\n", ev3_port_name( ev3_port[ i ].port, ev3_port[ i ].extport ));
-			if ( get_port_mode( i, s, sizeof( s ))) printf( "  mode = %s\n", s );
+			if ( get_port_mode( i, s, sizeof( s ))) {
+				printf( "  mode = %s\n", s );
+			}
 		}
 	}
 	sn = ev3_search_port( INPUT_2, EXT_PORT__NONE_ );

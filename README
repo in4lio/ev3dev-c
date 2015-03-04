@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.6a3
-                2015-02-27
+    ev3dev-c    0.6a4
+                2015-03-04
 
     kernel      3.16.7-ckt6-ev3dev1
     ___             ______________________________
@@ -52,8 +52,9 @@
     "light"    - LEDs blinking example;
     "sensor"   - TOUCH and COLOR sensors example;
     "tacho"    - MINITACHO motor running for 5 sec;
-    "dc"       - Using DC motor example;
-    "rcx_led"  - Using RCX LED example;
+    "port"     - Using EV3 ports;
+    "dc"       - Using DC motor;
+    "rcx_led"  - Using RCX LED;
     "servo"    - SERVO motor example.
 
     > cd eg/light/

@@ -16,7 +16,7 @@ HOLDER      = 'Vitaly Kravtsov'
 EMAIL       = 'in4lio@gmail.com'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.8b1'
+VERSION     = '0.8b2'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -243,12 +243,15 @@ def _ast_pretty( st ):
     return result
 
 #   ---------------------------------------------------------------------------
-def trim_tailing_whitespace( text, _reduce_emptiness = False ):
+def reduce_emptiness( text ):
     """
-    Trim tailing white space from each line and
-    reduce number of successive empty lines up to one (depends on argument).
+    Reduce number of successive empty lines up to one
+    and trim tailing white space (depends on options).
     """
 #   ---------------
+    if not PP_REDUCE_EMPTINESS:
+        return text
+
     if isinstance( text, RESULT ):
         lnlist = text.splitlines( True )
 
@@ -259,7 +262,7 @@ def trim_tailing_whitespace( text, _reduce_emptiness = False ):
             if rest == EOL:
                 empty.add( i )
 
-#       -- reduce number of empty lines, but don't trim tailing white space
+#       -- only reduce number of empty lines
         result = ''
         prev_empty = False
         for i, ln in enumerate( lnlist ):
@@ -274,14 +277,18 @@ def trim_tailing_whitespace( text, _reduce_emptiness = False ):
 #       -- calculate offsets
         offset = []
         total = 0
-        pos = 0
+        _pos = pos = 0
         prev_empty = False
         for i, ln in enumerate( lnlist ):
             if i in empty:
                 if prev_empty:
 #                   -- reduce number of empty lines
                     total += len( ln )
-                    offset.append(( pos, total ))
+                    if pos == _pos:
+                        offset[ -1 ] = ( pos, total )
+                    else:
+                        offset.append(( pos, total ))
+                        _pos = pos
                 else:
                     pos += len( ln )
                     prev_empty = True
@@ -295,16 +302,12 @@ def trim_tailing_whitespace( text, _reduce_emptiness = False ):
 
         return RESULT( result, text.browse, offset )
 
-    if _reduce_emptiness:
-        def _filter( ln ):
-            empty = _filter.empty
-            _filter.empty = not ln.strip()
-            return not empty or not _filter.empty
+    def _filter( ln ):
+        empty = _filter.empty
+        _filter.empty = not ln.strip()
+        return not empty or not _filter.empty
 
-        _filter.empty = False
-    else:
-        def _filter( _ ):
-            return True
+    _filter.empty = False
 
     return '\n'.join([ x.rstrip() for x in text.splitlines() if _filter( x )]) + '\n'
 
@@ -334,7 +337,7 @@ def _loc( input_file, pos, pointer = True ):
         if call:
 #           -- call location
             result += _loc( call.input_file, call.pos, False )
-#       -- macro or eval result location
+#       -- macro or eval import location
         result += _loc( decl.input_file, decl.pos, False )
         fmt = LOC_MACRO
     else:
@@ -447,10 +450,7 @@ class PLAIN( BASE_STR ):
     def get_trimmed( self ):
         st = str( self )
 
-        if not PP_TRIM_APP_INDENT:
-            return st
-
-        if self.trim:
+        if PP_TRIM_APP_INDENT and self.trim:
 #           -- delete spacing after SET or MACRO
             return st.lstrip()
 
@@ -464,8 +464,8 @@ class PLAIN( BASE_STR ):
                 ln.append( '' )
             return PLAIN( indent.join( ln )
             , ( indent + self.indent ) if isinstance( self.indent, str ) else self.indent, self.trim )
-        else:
-            return self
+
+        return self
 
 #   -----------------------------------
 #   Based on list AST notes
@@ -2654,14 +2654,13 @@ class RESULT( str ):
             if call:
 #               -- call location
                 result.extend( cls._loc( call.input_file, call.pos ))
-#           -- macro or eval result location
-            result.extend( cls._loc( decl.input_file, decl.pos ))
+#           -- macro or eval import location, negative position means - not to do relative shift
+            result.extend( cls._loc( decl.input_file, -decl.pos ))
             return result
 
         fn = str( decl if decl else input_file )
         if fn not in cls.files:
             cls.files[ fn ] = len( cls.files )
-
         return [( 0, cls.files[ fn ], pos )]
 
 #   -----------------------------------
@@ -2710,9 +2709,7 @@ def _plain_with_browse( node ):                                                 
 
 #   ---- SOURCE
     if isinstance( node, SOURCE ):
-        st = node.get_trimmed() if isinstance( node, PLAIN ) else str( node )
-        browse = RESULT._loc( node.input_file, node.pos ) if st and node.input_file else []
-        return RESULT( st, browse )
+        return RESULT( str( node ), RESULT._loc( node.input_file, node.pos ) if node and node.input_file else [])
 
 #   ---- str based | int | float | long
     return RESULT( str( node ))
@@ -3752,7 +3749,7 @@ def _pp():                                                                      
 
         result = isinstance( plain, str )
         if result:
-            plain = trim_tailing_whitespace( plain, PP_REDUCE_EMPTINESS )
+            plain = reduce_emptiness( plain )
         else:
             plain = _ast_readable( plain )
             log.error( 'unable to translate input text into plain text' )

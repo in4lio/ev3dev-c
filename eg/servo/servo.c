@@ -47,8 +47,9 @@ int main( void )
 	printf( "Set mode of the EV3 input port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
 	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
 	set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
-	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
-
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	}
 	printf( "Set MS_8CH_SERVO mode of the nxt-analog-host...\n" );
 	set_port_set_device( sn_port, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
 
@@ -68,10 +69,14 @@ int main( void )
 		set_servo_command( sn, "run" );
 		set_servo_position( sn, 100 );
 		Sleep( 2000 );
-		if ( get_servo_position( sn, &pos )) printf( "position: %d\n", pos );
+		if ( get_servo_position( sn, &pos )) {
+			printf( "position: %d\n", pos );
+		}
 		set_servo_position( sn, -100 );
 		Sleep( 2000 );
-		if ( get_servo_position( sn, &pos )) printf( "position: %d\n", pos );
+		if ( get_servo_position( sn, &pos )) {
+			printf( "position: %d\n", pos );
+		}
 		set_servo_command( sn, "float" );
 	} else {
 		printf( "Servo motor is NOT found\n" );
@@ -79,8 +84,9 @@ int main( void )
 
 	printf( "Reset mode of the EV3 input port...\n" );
 	set_port_mode_inx( sn_port, INPUT_AUTO );
-	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
-
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
 

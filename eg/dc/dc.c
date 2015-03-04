@@ -45,8 +45,9 @@ int main( void )
 	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
 	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
 	set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
-	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
-
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	}
 	Sleep( 200 );
 	ev3_dc_init();
 
@@ -62,18 +63,23 @@ int main( void )
 		set_dc_ramp_up_ms( sn, 2000 );
 		set_dc_duty_cycle_sp( sn, 100 );
 		set_dc_command( sn, "run" );
-		if ( get_dc_command( sn, s, sizeof( s ))) printf( "command: %s\n", s );
+		if ( get_dc_command( sn, s, sizeof( s ))) {
+			printf( "command: %s\n", s );
+		}
 		Sleep( 5000 );
 		set_dc_command( sn, "coast" );
-		if ( get_dc_command( sn, s, sizeof( s ))) printf( "command: %s\n", s );
+		if ( get_dc_command( sn, s, sizeof( s ))) {
+			printf( "command: %s\n", s );
+		}
 	} else {
 		printf( "DC motor is NOT found\n" );
 	}
 	Sleep( 200 );
 	printf( "Reset mode of the EV3 output port...\n" );
 	set_port_mode_inx( sn_port, OUTPUT_AUTO );
-	if ( get_port_mode( sn_port, s, sizeof( s ))) printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
-
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
 

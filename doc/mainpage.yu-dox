@@ -269,6 +269,7 @@ ev3::ev3_uninit();
 \include light.py
 \include tacho.py
 \include sensor.py
+\include port.py
 \include dc.py
 \include led.py
 \include io.py

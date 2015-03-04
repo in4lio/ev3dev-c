@@ -8,7 +8,7 @@
 ev3dev-c
 [ )
 ($set VERSION ]
-0.6a3
+0.6a4
 [ )
 ($set KERNEL ]
 3.16.7-ckt6-ev3dev1
