@@ -217,7 +217,6 @@ set_led_trigger_inx = _ev3.set_led_trigger_inx
 def ev3_led_trigger(*args):
   return _ev3.ev3_led_trigger(*args)
 ev3_led_trigger = _ev3.ev3_led_trigger
-LED_DIR = _ev3.LED_DIR
 LIT_LEFT = _ev3.LIT_LEFT
 LIT_RIGHT = _ev3.LIT_RIGHT
 LIT__LOC__ = _ev3.LIT__LOC__
@@ -250,162 +249,188 @@ set_light_blink = _ev3.set_light_blink
 def get_light_blink(*args):
   return _ev3.get_light_blink(*args)
 get_light_blink = _ev3.get_light_blink
-OUTPUT_DIR = _ev3.OUTPUT_DIR
-OUTPUT__BASE_ = _ev3.OUTPUT__BASE_
-OUTPUT_A = _ev3.OUTPUT_A
-OUTPUT_B = _ev3.OUTPUT_B
-OUTPUT_C = _ev3.OUTPUT_C
-OUTPUT_D = _ev3.OUTPUT_D
-OUTPUT__COUNT_ = _ev3.OUTPUT__COUNT_
-OUTPUT_AUTO = _ev3.OUTPUT_AUTO
-OUTPUT_EV3_TACHO_MOTOR = _ev3.OUTPUT_EV3_TACHO_MOTOR
-OUTPUT_RCX_MOTOR = _ev3.OUTPUT_RCX_MOTOR
-OUTPUT_RCX_LED = _ev3.OUTPUT_RCX_LED
-OUTPUT_RAW = _ev3.OUTPUT_RAW
-OUTPUT_MODE__COUNT_ = _ev3.OUTPUT_MODE__COUNT_
+PORT_DIR = _ev3.PORT_DIR
+class EV3_PORT(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EV3_PORT, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, EV3_PORT, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["type_inx"] = _ev3.EV3_PORT_type_inx_set
+    __swig_getmethods__["type_inx"] = _ev3.EV3_PORT_type_inx_get
+    if _newclass:type_inx = _swig_property(_ev3.EV3_PORT_type_inx_get, _ev3.EV3_PORT_type_inx_set)
+    __swig_setmethods__["port"] = _ev3.EV3_PORT_port_set
+    __swig_getmethods__["port"] = _ev3.EV3_PORT_port_get
+    if _newclass:port = _swig_property(_ev3.EV3_PORT_port_get, _ev3.EV3_PORT_port_set)
+    __swig_setmethods__["extport"] = _ev3.EV3_PORT_extport_set
+    __swig_getmethods__["extport"] = _ev3.EV3_PORT_extport_get
+    if _newclass:extport = _swig_property(_ev3.EV3_PORT_extport_get, _ev3.EV3_PORT_extport_set)
+    def __init__(self): 
+        this = _ev3.new_EV3_PORT()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _ev3.delete_EV3_PORT
+    __del__ = lambda self : None;
+EV3_PORT_swigregister = _ev3.EV3_PORT_swigregister
+EV3_PORT_swigregister(EV3_PORT)
+ev3 = _ev3.ev3
+LIT_COLOR = ev3.LIT_COLOR
 
-def ev3_output_inx(*args):
-  return _ev3.ev3_output_inx(*args)
-ev3_output_inx = _ev3.ev3_output_inx
+PORT_DESC__LIMIT_ = _ev3.PORT_DESC__LIMIT_
+PORT__NONE_ = _ev3.PORT__NONE_
+PORT_TYPE__NONE_ = _ev3.PORT_TYPE__NONE_
+HT_NXT_SMUX_PORT = _ev3.HT_NXT_SMUX_PORT
+LEGOEV3_INPUT_PORT = _ev3.LEGOEV3_INPUT_PORT
+LEGOEV3_OUTPUT_PORT = _ev3.LEGOEV3_OUTPUT_PORT
+MS_EV3_SMUX_PORT = _ev3.MS_EV3_SMUX_PORT
+WEDO_PORT = _ev3.WEDO_PORT
+PORT_TYPE__COUNT_ = _ev3.PORT_TYPE__COUNT_
+PORT_TYPE__UNKNOWN_ = _ev3.PORT_TYPE__UNKNOWN_
+PORT_MODE__NONE_ = _ev3.PORT_MODE__NONE_
+HT_NXT_SMUX_PORT_ANALOG = _ev3.HT_NXT_SMUX_PORT_ANALOG
+HT_NXT_SMUX_PORT_I2C = _ev3.HT_NXT_SMUX_PORT_I2C
+LEGOEV3_INPUT_PORT_AUTO = _ev3.LEGOEV3_INPUT_PORT_AUTO
+LEGOEV3_INPUT_PORT_NXT_ANALOG = _ev3.LEGOEV3_INPUT_PORT_NXT_ANALOG
+LEGOEV3_INPUT_PORT_NXT_COLOR = _ev3.LEGOEV3_INPUT_PORT_NXT_COLOR
+LEGOEV3_INPUT_PORT_NXT_I2C = _ev3.LEGOEV3_INPUT_PORT_NXT_I2C
+LEGOEV3_INPUT_PORT_EV3_ANALOG = _ev3.LEGOEV3_INPUT_PORT_EV3_ANALOG
+LEGOEV3_INPUT_PORT_EV3_UART = _ev3.LEGOEV3_INPUT_PORT_EV3_UART
+LEGOEV3_INPUT_PORT_OTHER_UART = _ev3.LEGOEV3_INPUT_PORT_OTHER_UART
+LEGOEV3_INPUT_PORT_RAW = _ev3.LEGOEV3_INPUT_PORT_RAW
+LEGOEV3_OUTPUT_PORT_AUTO = _ev3.LEGOEV3_OUTPUT_PORT_AUTO
+LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR = _ev3.LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR
+LEGOEV3_OUTPUT_PORT_RCX_MOTOR = _ev3.LEGOEV3_OUTPUT_PORT_RCX_MOTOR
+LEGOEV3_OUTPUT_PORT_RCX_LED = _ev3.LEGOEV3_OUTPUT_PORT_RCX_LED
+LEGOEV3_OUTPUT_PORT_RAW = _ev3.LEGOEV3_OUTPUT_PORT_RAW
+MS_EV3_SMUX_PORT_UART = _ev3.MS_EV3_SMUX_PORT_UART
+MS_EV3_SMUX_PORT_ANALOG = _ev3.MS_EV3_SMUX_PORT_ANALOG
+WEDO_PORT_AUTO = _ev3.WEDO_PORT_AUTO
+PORT_MODE__COUNT_ = _ev3.PORT_MODE__COUNT_
+PORT_MODE__UNKNOWN_ = _ev3.PORT_MODE__UNKNOWN_
 
-def ev3_output_name(*args):
-  return _ev3.ev3_output_name(*args)
-ev3_output_name = _ev3.ev3_output_name
+def get_port_driver_name(*args):
+  return _ev3.get_port_driver_name(*args)
+get_port_driver_name = _ev3.get_port_driver_name
 
-def get_output_mode(*args):
-  return _ev3.get_output_mode(*args)
-get_output_mode = _ev3.get_output_mode
+def get_port_mode(*args):
+  return _ev3.get_port_mode(*args)
+get_port_mode = _ev3.get_port_mode
 
-def set_output_mode(*args):
-  return _ev3.set_output_mode(*args)
-set_output_mode = _ev3.set_output_mode
+def set_port_mode(*args):
+  return _ev3.set_port_mode(*args)
+set_port_mode = _ev3.set_port_mode
 
-def get_output_modes(*args):
-  return _ev3.get_output_modes(*args)
-get_output_modes = _ev3.get_output_modes
+def get_port_modes(*args):
+  return _ev3.get_port_modes(*args)
+get_port_modes = _ev3.get_port_modes
 
-def get_output_pin5_mv(*args):
-  return _ev3.get_output_pin5_mv(*args)
-get_output_pin5_mv = _ev3.get_output_pin5_mv
+def get_port_port_name(*args):
+  return _ev3.get_port_port_name(*args)
+get_port_port_name = _ev3.get_port_port_name
 
-def get_output_state(*args):
-  return _ev3.get_output_state(*args)
-get_output_state = _ev3.get_output_state
+def set_port_set_device(*args):
+  return _ev3.set_port_set_device(*args)
+set_port_set_device = _ev3.set_port_set_device
 
-def ev3_output_mode(*args):
-  return _ev3.ev3_output_mode(*args)
-ev3_output_mode = _ev3.ev3_output_mode
+def get_port_status(*args):
+  return _ev3.get_port_status(*args)
+get_port_status = _ev3.get_port_status
 
-def get_output_mode_inx(*args):
-  return _ev3.get_output_mode_inx(*args)
-get_output_mode_inx = _ev3.get_output_mode_inx
+def ev3_port_type(*args):
+  return _ev3.ev3_port_type(*args)
+ev3_port_type = _ev3.ev3_port_type
 
-def set_output_mode_inx(*args):
-  return _ev3.set_output_mode_inx(*args)
-set_output_mode_inx = _ev3.set_output_mode_inx
-INPUT_DIR = _ev3.INPUT_DIR
-INPUT__BASE_ = _ev3.INPUT__BASE_
-INPUT_1 = _ev3.INPUT_1
-INPUT_2 = _ev3.INPUT_2
-INPUT_3 = _ev3.INPUT_3
-INPUT_4 = _ev3.INPUT_4
-INPUT__COUNT_ = _ev3.INPUT__COUNT_
-INPUT_AUTO = _ev3.INPUT_AUTO
-INPUT_EV3_ANALOG = _ev3.INPUT_EV3_ANALOG
-INPUT_EV3_UART = _ev3.INPUT_EV3_UART
-INPUT_NXT_ANALOG = _ev3.INPUT_NXT_ANALOG
-INPUT_NXT_COLOR = _ev3.INPUT_NXT_COLOR
-INPUT_NXT_I2C = _ev3.INPUT_NXT_I2C
-INPUT_OTHER_UART = _ev3.INPUT_OTHER_UART
-INPUT_RAW = _ev3.INPUT_RAW
-INPUT_MODE__COUNT_ = _ev3.INPUT_MODE__COUNT_
+def get_port_type_inx(*args):
+  return _ev3.get_port_type_inx(*args)
+get_port_type_inx = _ev3.get_port_type_inx
 
-def ev3_input_inx(*args):
-  return _ev3.ev3_input_inx(*args)
-ev3_input_inx = _ev3.ev3_input_inx
+def get_port_port_inx(*args):
+  return _ev3.get_port_port_inx(*args)
+get_port_port_inx = _ev3.get_port_port_inx
 
-def ev3_input_name(*args):
-  return _ev3.ev3_input_name(*args)
-ev3_input_name = _ev3.ev3_input_name
+def ev3_port_desc(*args):
+  return _ev3.ev3_port_desc(*args)
+ev3_port_desc = _ev3.ev3_port_desc
 
-def get_input_mode(*args):
-  return _ev3.get_input_mode(*args)
-get_input_mode = _ev3.get_input_mode
+def ev3_port_desc_type_inx(*args):
+  return _ev3.ev3_port_desc_type_inx(*args)
+ev3_port_desc_type_inx = _ev3.ev3_port_desc_type_inx
 
-def set_input_mode(*args):
-  return _ev3.set_input_mode(*args)
-set_input_mode = _ev3.set_input_mode
+def ev3_port_desc_port(*args):
+  return _ev3.ev3_port_desc_port(*args)
+ev3_port_desc_port = _ev3.ev3_port_desc_port
 
-def get_input_modes(*args):
-  return _ev3.get_input_modes(*args)
-get_input_modes = _ev3.get_input_modes
+def ev3_port_desc_extport(*args):
+  return _ev3.ev3_port_desc_extport(*args)
+ev3_port_desc_extport = _ev3.ev3_port_desc_extport
 
-def get_input_pin1_mv(*args):
-  return _ev3.get_input_pin1_mv(*args)
-get_input_pin1_mv = _ev3.get_input_pin1_mv
+def ev3_search_port_type(*args):
+  return _ev3.ev3_search_port_type(*args)
+ev3_search_port_type = _ev3.ev3_search_port_type
 
-def get_input_pin6_mv(*args):
-  return _ev3.get_input_pin6_mv(*args)
-get_input_pin6_mv = _ev3.get_input_pin6_mv
+def ev3_search_port_plugged_in(*args):
+  return _ev3.ev3_search_port_plugged_in(*args)
+ev3_search_port_plugged_in = _ev3.ev3_search_port_plugged_in
 
-def get_input_state(*args):
-  return _ev3.get_input_state(*args)
-get_input_state = _ev3.get_input_state
+def ev3_port_mode(*args):
+  return _ev3.ev3_port_mode(*args)
+ev3_port_mode = _ev3.ev3_port_mode
 
-def ev3_input_mode(*args):
-  return _ev3.ev3_input_mode(*args)
-ev3_input_mode = _ev3.ev3_input_mode
+def get_port_mode_inx(*args):
+  return _ev3.get_port_mode_inx(*args)
+get_port_mode_inx = _ev3.get_port_mode_inx
 
-def get_input_mode_inx(*args):
-  return _ev3.get_input_mode_inx(*args)
-get_input_mode_inx = _ev3.get_input_mode_inx
+def set_port_mode_inx(*args):
+  return _ev3.set_port_mode_inx(*args)
+set_port_mode_inx = _ev3.set_port_mode_inx
 
-def set_input_mode_inx(*args):
-  return _ev3.set_input_mode_inx(*args)
-set_input_mode_inx = _ev3.set_input_mode_inx
-INPUT_MUX__NONE_ = _ev3.INPUT_MUX__NONE_
-INPUT_MUX_1 = _ev3.INPUT_MUX_1
-INPUT_MUX_2 = _ev3.INPUT_MUX_2
-INPUT_MUX_3 = _ev3.INPUT_MUX_3
-INPUT_MUX_4 = _ev3.INPUT_MUX_4
-INPUT_MUX__BASE_ = _ev3.INPUT_MUX__BASE_
-INPUT_MUX__COUNT_ = _ev3.INPUT_MUX__COUNT_
-INPUT_MUX_ANALOG = _ev3.INPUT_MUX_ANALOG
-INPUT_MUX_I2C = _ev3.INPUT_MUX_I2C
-INPUT_MUX_MODE__COUNT_ = _ev3.INPUT_MUX_MODE__COUNT_
-
-def nxt_input_mux_inx(*args):
-  return _ev3.nxt_input_mux_inx(*args)
-nxt_input_mux_inx = _ev3.nxt_input_mux_inx
-
-def nxt_input_mux_name(*args):
-  return _ev3.nxt_input_mux_name(*args)
-nxt_input_mux_name = _ev3.nxt_input_mux_name
-
-def get_input_mux_mode(*args):
-  return _ev3.get_input_mux_mode(*args)
-get_input_mux_mode = _ev3.get_input_mux_mode
-
-def set_input_mux_mode(*args):
-  return _ev3.set_input_mux_mode(*args)
-set_input_mux_mode = _ev3.set_input_mux_mode
-
-def get_input_mux_modes(*args):
-  return _ev3.get_input_mux_modes(*args)
-get_input_mux_modes = _ev3.get_input_mux_modes
-
-def nxt_input_mux_mode(*args):
-  return _ev3.nxt_input_mux_mode(*args)
-nxt_input_mux_mode = _ev3.nxt_input_mux_mode
-
-def get_input_mux_mode_inx(*args):
-  return _ev3.get_input_mux_mode_inx(*args)
-get_input_mux_mode_inx = _ev3.get_input_mux_mode_inx
-
-def set_input_mux_mode_inx(*args):
-  return _ev3.set_input_mux_mode_inx(*args)
-set_input_mux_mode_inx = _ev3.set_input_mux_mode_inx
+def ev3_port_init():
+  return _ev3.ev3_port_init()
+ev3_port_init = _ev3.ev3_port_init
 EV3_PORT__NONE_ = _ev3.EV3_PORT__NONE_
+EXT_PORT__NONE_ = _ev3.EXT_PORT__NONE_
+HT_NXT_SMUX_PORT__BASE_ = _ev3.HT_NXT_SMUX_PORT__BASE_
+HT_NXT_SMUX_PORT_1 = _ev3.HT_NXT_SMUX_PORT_1
+HT_NXT_SMUX_PORT_2 = _ev3.HT_NXT_SMUX_PORT_2
+HT_NXT_SMUX_PORT_3 = _ev3.HT_NXT_SMUX_PORT_3
+HT_NXT_SMUX_PORT_4 = _ev3.HT_NXT_SMUX_PORT_4
+LEGOEV3_INPUT_PORT__BASE_ = _ev3.LEGOEV3_INPUT_PORT__BASE_
+LEGOEV3_INPUT_PORT_1 = _ev3.LEGOEV3_INPUT_PORT_1
+INPUT_1 = _ev3.INPUT_1
+LEGOEV3_INPUT_PORT_2 = _ev3.LEGOEV3_INPUT_PORT_2
+INPUT_2 = _ev3.INPUT_2
+LEGOEV3_INPUT_PORT_3 = _ev3.LEGOEV3_INPUT_PORT_3
+INPUT_3 = _ev3.INPUT_3
+LEGOEV3_INPUT_PORT_4 = _ev3.LEGOEV3_INPUT_PORT_4
+INPUT_4 = _ev3.INPUT_4
+LEGOEV3_OUTPUT_PORT__BASE_ = _ev3.LEGOEV3_OUTPUT_PORT__BASE_
+LEGOEV3_OUTPUT_PORT_A = _ev3.LEGOEV3_OUTPUT_PORT_A
+OUTPUT_A = _ev3.OUTPUT_A
+LEGOEV3_OUTPUT_PORT_B = _ev3.LEGOEV3_OUTPUT_PORT_B
+OUTPUT_B = _ev3.OUTPUT_B
+LEGOEV3_OUTPUT_PORT_C = _ev3.LEGOEV3_OUTPUT_PORT_C
+OUTPUT_C = _ev3.OUTPUT_C
+LEGOEV3_OUTPUT_PORT_D = _ev3.LEGOEV3_OUTPUT_PORT_D
+OUTPUT_D = _ev3.OUTPUT_D
+MS_EV3_SMUX_PORT__BASE_ = _ev3.MS_EV3_SMUX_PORT__BASE_
+MS_EV3_SMUX_PORT_1 = _ev3.MS_EV3_SMUX_PORT_1
+MS_EV3_SMUX_PORT_2 = _ev3.MS_EV3_SMUX_PORT_2
+MS_EV3_SMUX_PORT_3 = _ev3.MS_EV3_SMUX_PORT_3
+MS_EV3_SMUX_PORT_4 = _ev3.MS_EV3_SMUX_PORT_4
+WEDO_PORT__BASE_ = _ev3.WEDO_PORT__BASE_
+WEDO_PORT_1 = _ev3.WEDO_PORT_1
+WEDO_PORT_2 = _ev3.WEDO_PORT_2
+WEDO_PORT_3 = _ev3.WEDO_PORT_3
+WEDO_PORT_4 = _ev3.WEDO_PORT_4
+HT_NXT_SMUX_PORT__COUNT_ = _ev3.HT_NXT_SMUX_PORT__COUNT_
+LEGOEV3_INPUT_PORT__COUNT_ = _ev3.LEGOEV3_INPUT_PORT__COUNT_
+LEGOEV3_OUTPUT_PORT__COUNT_ = _ev3.LEGOEV3_OUTPUT_PORT__COUNT_
+MS_EV3_SMUX_PORT__COUNT_ = _ev3.MS_EV3_SMUX_PORT__COUNT_
+WEDO_PORT__COUNT_ = _ev3.WEDO_PORT__COUNT_
+
+def ev3_search_port(*args):
+  return _ev3.ev3_search_port(*args)
+ev3_search_port = _ev3.ev3_search_port
 
 def ev3_port_inx(*args):
   return _ev3.ev3_port_inx(*args)
@@ -441,8 +466,6 @@ class EV3_SENSOR(_object):
     __del__ = lambda self : None;
 EV3_SENSOR_swigregister = _ev3.EV3_SENSOR_swigregister
 EV3_SENSOR_swigregister(EV3_SENSOR)
-ev3 = _ev3.ev3
-LIT_COLOR = ev3.LIT_COLOR
 
 SENSOR_DESC__LIMIT_ = _ev3.SENSOR_DESC__LIMIT_
 SENSOR__NONE_ = _ev3.SENSOR__NONE_
@@ -462,14 +485,15 @@ HT_NXT_IR_RECEIVER = _ev3.HT_NXT_IR_RECEIVER
 HT_NXT_PIR = _ev3.HT_NXT_PIR
 HT_NXT_COMPASS = _ev3.HT_NXT_COMPASS
 HT_NXT_MAG = _ev3.HT_NXT_MAG
-HT_NXT_IR_SEEKER_V2 = _ev3.HT_NXT_IR_SEEKER_V2
+HT_NXT_IR_SEEK_V2 = _ev3.HT_NXT_IR_SEEK_V2
 HT_NXT_SMUX = _ev3.HT_NXT_SMUX
 HT_SUPER_PRO = _ev3.HT_SUPER_PRO
-EV3_UART_30 = _ev3.EV3_UART_30
-EV3_UART_32 = _ev3.EV3_UART_32
-EV3_UART_29 = _ev3.EV3_UART_29
+LEGO_EV3_UART_30 = _ev3.LEGO_EV3_UART_30
+LEGO_EV3_UART_32 = _ev3.LEGO_EV3_UART_32
+LEGO_EV3_UART_29 = _ev3.LEGO_EV3_UART_29
 LEGO_EV3_TOUCH = _ev3.LEGO_EV3_TOUCH
-EV3_UART_33 = _ev3.EV3_UART_33
+LEGO_EV3_UART_33 = _ev3.LEGO_EV3_UART_33
+WEDO_HUB = _ev3.WEDO_HUB
 WEDO_MOTION = _ev3.WEDO_MOTION
 WEDO_TILT = _ev3.WEDO_TILT
 LEGO_POWER_STORAGE = _ev3.LEGO_POWER_STORAGE
@@ -480,10 +504,179 @@ LEGO_NXT_US = _ev3.LEGO_NXT_US
 MI_XG1300L = _ev3.MI_XG1300L
 MS_ABSOLUTE_IMU = _ev3.MS_ABSOLUTE_IMU
 MS_ANGLE = _ev3.MS_ANGLE
+MS_EV3_SMUX = _ev3.MS_EV3_SMUX
 MS_LIGHT_ARRAY = _ev3.MS_LIGHT_ARRAY
+MS_LINE_LEADER = _ev3.MS_LINE_LEADER
 MS_8CH_SERVO = _ev3.MS_8CH_SERVO
 MS_NXT_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX
 SENSOR_TYPE__COUNT_ = _ev3.SENSOR_TYPE__COUNT_
+SENSOR_TYPE__UNKNOWN_ = _ev3.SENSOR_TYPE__UNKNOWN_
+SENSOR_MODE__NONE_ = _ev3.SENSOR_MODE__NONE_
+EV3_ANALOG_XX_ANALOG = _ev3.EV3_ANALOG_XX_ANALOG
+NXT_ANALOG_ANALOG_0 = _ev3.NXT_ANALOG_ANALOG_0
+NXT_ANALOG_ANALOG_1 = _ev3.NXT_ANALOG_ANALOG_1
+HT_NXT_COLOR_COLOR = _ev3.HT_NXT_COLOR_COLOR
+HT_NXT_COLOR_RED = _ev3.HT_NXT_COLOR_RED
+HT_NXT_COLOR_GREEN = _ev3.HT_NXT_COLOR_GREEN
+HT_NXT_COLOR_BLUE = _ev3.HT_NXT_COLOR_BLUE
+HT_NXT_COLOR_RAW = _ev3.HT_NXT_COLOR_RAW
+HT_NXT_COLOR_NORM = _ev3.HT_NXT_COLOR_NORM
+HT_NXT_COLOR_ALL = _ev3.HT_NXT_COLOR_ALL
+HT_NXT_ANGLE_ANGLE = _ev3.HT_NXT_ANGLE_ANGLE
+HT_NXT_ANGLE_ACCEL = _ev3.HT_NXT_ANGLE_ACCEL
+HT_NXT_ANGLE_SPEED = _ev3.HT_NXT_ANGLE_SPEED
+HT_NXT_ACCEL_ACCEL = _ev3.HT_NXT_ACCEL_ACCEL
+HT_NXT_ACCEL_ALL = _ev3.HT_NXT_ACCEL_ALL
+HT_NXT_BAROMETRIC_PRESS = _ev3.HT_NXT_BAROMETRIC_PRESS
+HT_NXT_BAROMETRIC_TEMP = _ev3.HT_NXT_BAROMETRIC_TEMP
+HT_NXT_COLOR_V2_COLOR = _ev3.HT_NXT_COLOR_V2_COLOR
+HT_NXT_COLOR_V2_RED = _ev3.HT_NXT_COLOR_V2_RED
+HT_NXT_COLOR_V2_GREEN = _ev3.HT_NXT_COLOR_V2_GREEN
+HT_NXT_COLOR_V2_BLUE = _ev3.HT_NXT_COLOR_V2_BLUE
+HT_NXT_COLOR_V2_WHITE = _ev3.HT_NXT_COLOR_V2_WHITE
+HT_NXT_COLOR_V2_NORM = _ev3.HT_NXT_COLOR_V2_NORM
+HT_NXT_COLOR_V2_ALL = _ev3.HT_NXT_COLOR_V2_ALL
+HT_NXT_COLOR_V2_RAW = _ev3.HT_NXT_COLOR_V2_RAW
+HT_NXT_EOPD_LONG = _ev3.HT_NXT_EOPD_LONG
+HT_NXT_EOPD_SHORT = _ev3.HT_NXT_EOPD_SHORT
+HT_NXT_FORCE_FORCE = _ev3.HT_NXT_FORCE_FORCE
+HT_NXT_GYRO_GYRO = _ev3.HT_NXT_GYRO_GYRO
+HT_NXT_IR_LINK_IRLINK = _ev3.HT_NXT_IR_LINK_IRLINK
+HT_NXT_IR_RECEIVER_1_MOTOR = _ev3.HT_NXT_IR_RECEIVER_1_MOTOR
+HT_NXT_IR_RECEIVER_8_MOTOR = _ev3.HT_NXT_IR_RECEIVER_8_MOTOR
+HT_NXT_PIR_PROX = _ev3.HT_NXT_PIR_PROX
+HT_NXT_COMPASS_COMPASS = _ev3.HT_NXT_COMPASS_COMPASS
+HT_NXT_MAG_MAG = _ev3.HT_NXT_MAG_MAG
+HT_NXT_IR_SEEK_V2_DC = _ev3.HT_NXT_IR_SEEK_V2_DC
+HT_NXT_IR_SEEK_V2_AC = _ev3.HT_NXT_IR_SEEK_V2_AC
+HT_NXT_IR_SEEK_V2_DC_ALL = _ev3.HT_NXT_IR_SEEK_V2_DC_ALL
+HT_NXT_IR_SEEK_V2_AC_ALL = _ev3.HT_NXT_IR_SEEK_V2_AC_ALL
+HT_NXT_SMUX_MUX = _ev3.HT_NXT_SMUX_MUX
+HT_SUPER_PRO_AIN = _ev3.HT_SUPER_PRO_AIN
+HT_SUPER_PRO_DIN = _ev3.HT_SUPER_PRO_DIN
+HT_SUPER_PRO_DOUT = _ev3.HT_SUPER_PRO_DOUT
+HT_SUPER_PRO_DCTRL = _ev3.HT_SUPER_PRO_DCTRL
+HT_SUPER_PRO_STROBE = _ev3.HT_SUPER_PRO_STROBE
+HT_SUPER_PRO_LED = _ev3.HT_SUPER_PRO_LED
+HT_SUPER_PRO_AOUT_0 = _ev3.HT_SUPER_PRO_AOUT_0
+HT_SUPER_PRO_AOUT_1 = _ev3.HT_SUPER_PRO_AOUT_1
+LEGO_EV3_UART_30_US_DIST_CM = _ev3.LEGO_EV3_UART_30_US_DIST_CM
+LEGO_EV3_UART_30_US_DIST_IN = _ev3.LEGO_EV3_UART_30_US_DIST_IN
+LEGO_EV3_UART_30_US_LISTEN = _ev3.LEGO_EV3_UART_30_US_LISTEN
+LEGO_EV3_UART_30_US_SI_CM = _ev3.LEGO_EV3_UART_30_US_SI_CM
+LEGO_EV3_UART_30_US_SI_IN = _ev3.LEGO_EV3_UART_30_US_SI_IN
+LEGO_EV3_UART_30_US_DC_CM = _ev3.LEGO_EV3_UART_30_US_DC_CM
+LEGO_EV3_UART_30_US_DC_IN = _ev3.LEGO_EV3_UART_30_US_DC_IN
+LEGO_EV3_UART_32_GYRO_ANG = _ev3.LEGO_EV3_UART_32_GYRO_ANG
+LEGO_EV3_UART_32_GYRO_RATE = _ev3.LEGO_EV3_UART_32_GYRO_RATE
+LEGO_EV3_UART_32_GYRO_FAS = _ev3.LEGO_EV3_UART_32_GYRO_FAS
+LEGO_EV3_UART_32_GYRO_G_AND_A = _ev3.LEGO_EV3_UART_32_GYRO_G_AND_A
+LEGO_EV3_UART_32_GYRO_CAL = _ev3.LEGO_EV3_UART_32_GYRO_CAL
+LEGO_EV3_UART_29_COL_REFLECT = _ev3.LEGO_EV3_UART_29_COL_REFLECT
+LEGO_EV3_UART_29_COL_AMBIENT = _ev3.LEGO_EV3_UART_29_COL_AMBIENT
+LEGO_EV3_UART_29_COL_COLOR = _ev3.LEGO_EV3_UART_29_COL_COLOR
+LEGO_EV3_UART_29_REF_RAW = _ev3.LEGO_EV3_UART_29_REF_RAW
+LEGO_EV3_UART_29_RGB_RAW = _ev3.LEGO_EV3_UART_29_RGB_RAW
+LEGO_EV3_UART_29_COL_CAL = _ev3.LEGO_EV3_UART_29_COL_CAL
+LEGO_EV3_TOUCH_TOUCH = _ev3.LEGO_EV3_TOUCH_TOUCH
+LEGO_EV3_UART_33_IR_PROX = _ev3.LEGO_EV3_UART_33_IR_PROX
+LEGO_EV3_UART_33_IR_SEEK = _ev3.LEGO_EV3_UART_33_IR_SEEK
+LEGO_EV3_UART_33_IR_REMOTE = _ev3.LEGO_EV3_UART_33_IR_REMOTE
+LEGO_EV3_UART_33_IR_REM_A = _ev3.LEGO_EV3_UART_33_IR_REM_A
+LEGO_EV3_UART_33_IR_S_ALT = _ev3.LEGO_EV3_UART_33_IR_S_ALT
+LEGO_EV3_UART_33_IR_CAL = _ev3.LEGO_EV3_UART_33_IR_CAL
+WEDO_HUB_HUB = _ev3.WEDO_HUB_HUB
+WEDO_MOTION_PROX = _ev3.WEDO_MOTION_PROX
+WEDO_MOTION_RAW = _ev3.WEDO_MOTION_RAW
+WEDO_TILT_TILT = _ev3.WEDO_TILT_TILT
+WEDO_TILT_TILT_AXIS = _ev3.WEDO_TILT_TILT_AXIS
+WEDO_TILT_RAW = _ev3.WEDO_TILT_RAW
+LEGO_POWER_STORAGE_IN_VOLT = _ev3.LEGO_POWER_STORAGE_IN_VOLT
+LEGO_POWER_STORAGE_IN_AMP = _ev3.LEGO_POWER_STORAGE_IN_AMP
+LEGO_POWER_STORAGE_OUT_VOLT = _ev3.LEGO_POWER_STORAGE_OUT_VOLT
+LEGO_POWER_STORAGE_OUT_AMP = _ev3.LEGO_POWER_STORAGE_OUT_AMP
+LEGO_POWER_STORAGE_JOULE = _ev3.LEGO_POWER_STORAGE_JOULE
+LEGO_POWER_STORAGE_IN_WATT = _ev3.LEGO_POWER_STORAGE_IN_WATT
+LEGO_POWER_STORAGE_OUT_WATT = _ev3.LEGO_POWER_STORAGE_OUT_WATT
+LEGO_POWER_STORAGE_ALL = _ev3.LEGO_POWER_STORAGE_ALL
+LEGO_NXT_TOUCH_TOUCH = _ev3.LEGO_NXT_TOUCH_TOUCH
+LEGO_NXT_LIGHT_REFLECT = _ev3.LEGO_NXT_LIGHT_REFLECT
+LEGO_NXT_LIGHT_AMBIENT = _ev3.LEGO_NXT_LIGHT_AMBIENT
+LEGO_NXT_SOUND_DB = _ev3.LEGO_NXT_SOUND_DB
+LEGO_NXT_SOUND_DBA = _ev3.LEGO_NXT_SOUND_DBA
+LEGO_NXT_US_US_DIST_CM = _ev3.LEGO_NXT_US_US_DIST_CM
+LEGO_NXT_US_US_DIST_IN = _ev3.LEGO_NXT_US_US_DIST_IN
+LEGO_NXT_US_US_SI_CM = _ev3.LEGO_NXT_US_US_SI_CM
+LEGO_NXT_US_US_SI_IN = _ev3.LEGO_NXT_US_US_SI_IN
+LEGO_NXT_US_US_LISTEN = _ev3.LEGO_NXT_US_US_LISTEN
+MI_XG1300L_ANGLE = _ev3.MI_XG1300L_ANGLE
+MI_XG1300L_SPEED = _ev3.MI_XG1300L_SPEED
+MI_XG1300L_ACCEL = _ev3.MI_XG1300L_ACCEL
+MI_XG1300L_ALL = _ev3.MI_XG1300L_ALL
+MS_ABSOLUTE_IMU_TILT = _ev3.MS_ABSOLUTE_IMU_TILT
+MS_ABSOLUTE_IMU_ACCEL = _ev3.MS_ABSOLUTE_IMU_ACCEL
+MS_ABSOLUTE_IMU_COMPASS = _ev3.MS_ABSOLUTE_IMU_COMPASS
+MS_ABSOLUTE_IMU_MAG = _ev3.MS_ABSOLUTE_IMU_MAG
+MS_ABSOLUTE_IMU_GYRO = _ev3.MS_ABSOLUTE_IMU_GYRO
+MS_ABSOLUTE_IMU_ALL = _ev3.MS_ABSOLUTE_IMU_ALL
+MS_ANGLE_ANGLE = _ev3.MS_ANGLE_ANGLE
+MS_ANGLE_ANGLE2 = _ev3.MS_ANGLE_ANGLE2
+MS_ANGLE_SPEED = _ev3.MS_ANGLE_SPEED
+MS_ANGLE_ALL = _ev3.MS_ANGLE_ALL
+MS_EV3_SMUX_MUX = _ev3.MS_EV3_SMUX_MUX
+MS_LIGHT_ARRAY_CAL = _ev3.MS_LIGHT_ARRAY_CAL
+MS_LIGHT_ARRAY_RAW = _ev3.MS_LIGHT_ARRAY_RAW
+MS_LINE_LEADER_PID = _ev3.MS_LINE_LEADER_PID
+MS_LINE_LEADER_PID_ALL = _ev3.MS_LINE_LEADER_PID_ALL
+MS_LINE_LEADER_CAL = _ev3.MS_LINE_LEADER_CAL
+MS_LINE_LEADER_RAW = _ev3.MS_LINE_LEADER_RAW
+MS_8CH_SERVO_V3 = _ev3.MS_8CH_SERVO_V3
+MS_8CH_SERVO_OLD = _ev3.MS_8CH_SERVO_OLD
+MS_NXT_TOUCH_MUX_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX_TOUCH_MUX
+SENSOR_MODE__COUNT_ = _ev3.SENSOR_MODE__COUNT_
+SENSOR_MODE__UNKNOWN_ = _ev3.SENSOR_MODE__UNKNOWN_
+SENSOR_COMMAND__NONE_ = _ev3.SENSOR_COMMAND__NONE_
+HT_NXT_ANGLE_RESET = _ev3.HT_NXT_ANGLE_RESET
+HT_NXT_SMUX_HALT = _ev3.HT_NXT_SMUX_HALT
+HT_NXT_SMUX_DETECT = _ev3.HT_NXT_SMUX_DETECT
+HT_NXT_SMUX_RUN = _ev3.HT_NXT_SMUX_RUN
+WEDO_HUB_OUT_OFF = _ev3.WEDO_HUB_OUT_OFF
+WEDO_HUB_OUT_ON = _ev3.WEDO_HUB_OUT_ON
+WEDO_HUB_CLEAR_ERR = _ev3.WEDO_HUB_CLEAR_ERR
+MI_XG1300L_RESET = _ev3.MI_XG1300L_RESET
+MI_XG1300L_ACCEL_2G = _ev3.MI_XG1300L_ACCEL_2G
+MI_XG1300L_ACCEL_4G = _ev3.MI_XG1300L_ACCEL_4G
+MI_XG1300L_ACCEL_8G = _ev3.MI_XG1300L_ACCEL_8G
+MS_ABSOLUTE_IMU_BEGIN_COMP_CAL = _ev3.MS_ABSOLUTE_IMU_BEGIN_COMP_CAL
+MS_ABSOLUTE_IMU_END_COMP_CAL = _ev3.MS_ABSOLUTE_IMU_END_COMP_CAL
+MS_ABSOLUTE_IMU_ACCEL_2G = _ev3.MS_ABSOLUTE_IMU_ACCEL_2G
+MS_ABSOLUTE_IMU_ACCEL_4G = _ev3.MS_ABSOLUTE_IMU_ACCEL_4G
+MS_ABSOLUTE_IMU_ACCEL_8G = _ev3.MS_ABSOLUTE_IMU_ACCEL_8G
+MS_ABSOLUTE_IMU_ACCEL_16G = _ev3.MS_ABSOLUTE_IMU_ACCEL_16G
+MS_ANGLE_RESET = _ev3.MS_ANGLE_RESET
+MS_LIGHT_ARRAY_CAL_WHITE = _ev3.MS_LIGHT_ARRAY_CAL_WHITE
+MS_LIGHT_ARRAY_CAL_BLACK = _ev3.MS_LIGHT_ARRAY_CAL_BLACK
+MS_LIGHT_ARRAY_SLEEP = _ev3.MS_LIGHT_ARRAY_SLEEP
+MS_LIGHT_ARRAY_WAKE = _ev3.MS_LIGHT_ARRAY_WAKE
+MS_LIGHT_ARRAY_60HZ = _ev3.MS_LIGHT_ARRAY_60HZ
+MS_LIGHT_ARRAY_50HZ = _ev3.MS_LIGHT_ARRAY_50HZ
+MS_LIGHT_ARRAY_UNIVERSAL = _ev3.MS_LIGHT_ARRAY_UNIVERSAL
+MS_LINE_LEADER_CAL_WHITE = _ev3.MS_LINE_LEADER_CAL_WHITE
+MS_LINE_LEADER_CAL_BLACK = _ev3.MS_LINE_LEADER_CAL_BLACK
+MS_LINE_LEADER_SLEEP = _ev3.MS_LINE_LEADER_SLEEP
+MS_LINE_LEADER_WAKE = _ev3.MS_LINE_LEADER_WAKE
+MS_LINE_LEADER_INV_COL = _ev3.MS_LINE_LEADER_INV_COL
+MS_LINE_LEADER_RST_COL = _ev3.MS_LINE_LEADER_RST_COL
+MS_LINE_LEADER_SNAP = _ev3.MS_LINE_LEADER_SNAP
+MS_LINE_LEADER_60HZ = _ev3.MS_LINE_LEADER_60HZ
+MS_LINE_LEADER_50HZ = _ev3.MS_LINE_LEADER_50HZ
+MS_LINE_LEADER_UNIVERSAL = _ev3.MS_LINE_LEADER_UNIVERSAL
+SENSOR_COMMAND__COUNT_ = _ev3.SENSOR_COMMAND__COUNT_
+SENSOR_COMMAND__UNKNOWN_ = _ev3.SENSOR_COMMAND__UNKNOWN_
+
+def get_sensor_address(*args):
+  return _ev3.get_sensor_address(*args)
+get_sensor_address = _ev3.get_sensor_address
 
 def get_sensor_bin_data(*args):
   return _ev3.get_sensor_bin_data(*args)
@@ -505,17 +698,17 @@ def get_sensor_commands(*args):
   return _ev3.get_sensor_commands(*args)
 get_sensor_commands = _ev3.get_sensor_commands
 
-def get_sensor_dp(*args):
-  return _ev3.get_sensor_dp(*args)
-get_sensor_dp = _ev3.get_sensor_dp
+def get_sensor_decimals(*args):
+  return _ev3.get_sensor_decimals(*args)
+get_sensor_decimals = _ev3.get_sensor_decimals
+
+def get_sensor_driver_name(*args):
+  return _ev3.get_sensor_driver_name(*args)
+get_sensor_driver_name = _ev3.get_sensor_driver_name
 
 def get_sensor_fw_version(*args):
   return _ev3.get_sensor_fw_version(*args)
 get_sensor_fw_version = _ev3.get_sensor_fw_version
-
-def get_sensor_address(*args):
-  return _ev3.get_sensor_address(*args)
-get_sensor_address = _ev3.get_sensor_address
 
 def get_sensor_mode(*args):
   return _ev3.get_sensor_mode(*args)
@@ -528,10 +721,6 @@ set_sensor_mode = _ev3.set_sensor_mode
 def get_sensor_modes(*args):
   return _ev3.get_sensor_modes(*args)
 get_sensor_modes = _ev3.get_sensor_modes
-
-def get_sensor_name(*args):
-  return _ev3.get_sensor_name(*args)
-get_sensor_name = _ev3.get_sensor_name
 
 def get_sensor_num_values(*args):
   return _ev3.get_sensor_num_values(*args)
@@ -629,6 +818,26 @@ def ev3_search_sensor_plugged_in(*args):
   return _ev3.ev3_search_sensor_plugged_in(*args)
 ev3_search_sensor_plugged_in = _ev3.ev3_search_sensor_plugged_in
 
+def ev3_sensor_mode(*args):
+  return _ev3.ev3_sensor_mode(*args)
+ev3_sensor_mode = _ev3.ev3_sensor_mode
+
+def get_sensor_mode_inx(*args):
+  return _ev3.get_sensor_mode_inx(*args)
+get_sensor_mode_inx = _ev3.get_sensor_mode_inx
+
+def set_sensor_mode_inx(*args):
+  return _ev3.set_sensor_mode_inx(*args)
+set_sensor_mode_inx = _ev3.set_sensor_mode_inx
+
+def ev3_sensor_command(*args):
+  return _ev3.ev3_sensor_command(*args)
+ev3_sensor_command = _ev3.ev3_sensor_command
+
+def set_sensor_command_inx(*args):
+  return _ev3.set_sensor_command_inx(*args)
+set_sensor_command_inx = _ev3.set_sensor_command_inx
+
 def ev3_sensor_init():
   return _ev3.ev3_sensor_init()
 ev3_sensor_init = _ev3.ev3_sensor_init
@@ -663,6 +872,7 @@ TACHO_TYPE__NONE_ = _ev3.TACHO_TYPE__NONE_
 TACHO = _ev3.TACHO
 MINITACHO = _ev3.MINITACHO
 TACHO_TYPE__COUNT_ = _ev3.TACHO_TYPE__COUNT_
+TACHO_TYPE__UNKNOWN_ = _ev3.TACHO_TYPE__UNKNOWN_
 
 def get_tacho_duty_cycle(*args):
   return _ev3.get_tacho_duty_cycle(*args)
@@ -676,9 +886,41 @@ def set_tacho_duty_cycle_sp(*args):
   return _ev3.set_tacho_duty_cycle_sp(*args)
 set_tacho_duty_cycle_sp = _ev3.set_tacho_duty_cycle_sp
 
+def get_tacho_encoder_mode(*args):
+  return _ev3.get_tacho_encoder_mode(*args)
+get_tacho_encoder_mode = _ev3.get_tacho_encoder_mode
+
+def set_tacho_encoder_mode(*args):
+  return _ev3.set_tacho_encoder_mode(*args)
+set_tacho_encoder_mode = _ev3.set_tacho_encoder_mode
+
+def get_tacho_encoder_modes(*args):
+  return _ev3.get_tacho_encoder_modes(*args)
+get_tacho_encoder_modes = _ev3.get_tacho_encoder_modes
+
+def get_tacho_estop(*args):
+  return _ev3.get_tacho_estop(*args)
+get_tacho_estop = _ev3.get_tacho_estop
+
+def set_tacho_estop(*args):
+  return _ev3.set_tacho_estop(*args)
+set_tacho_estop = _ev3.set_tacho_estop
+
+def get_tacho_log(*args):
+  return _ev3.get_tacho_log(*args)
+get_tacho_log = _ev3.get_tacho_log
+
 def get_tacho_polarity_mode(*args):
   return _ev3.get_tacho_polarity_mode(*args)
 get_tacho_polarity_mode = _ev3.get_tacho_polarity_mode
+
+def set_tacho_polarity_mode(*args):
+  return _ev3.set_tacho_polarity_mode(*args)
+set_tacho_polarity_mode = _ev3.set_tacho_polarity_mode
+
+def get_tacho_polarity_modes(*args):
+  return _ev3.get_tacho_polarity_modes(*args)
+get_tacho_polarity_modes = _ev3.get_tacho_polarity_modes
 
 def get_tacho_port_name(*args):
   return _ev3.get_tacho_port_name(*args)
@@ -699,6 +941,10 @@ get_tacho_position_mode = _ev3.get_tacho_position_mode
 def set_tacho_position_mode(*args):
   return _ev3.set_tacho_position_mode(*args)
 set_tacho_position_mode = _ev3.set_tacho_position_mode
+
+def get_tacho_position_modes(*args):
+  return _ev3.get_tacho_position_modes(*args)
+get_tacho_position_modes = _ev3.get_tacho_position_modes
 
 def get_tacho_position_sp(*args):
   return _ev3.get_tacho_position_sp(*args)
@@ -744,6 +990,14 @@ def set_tacho_regulation_mode(*args):
   return _ev3.set_tacho_regulation_mode(*args)
 set_tacho_regulation_mode = _ev3.set_tacho_regulation_mode
 
+def get_tacho_regulation_modes(*args):
+  return _ev3.get_tacho_regulation_modes(*args)
+get_tacho_regulation_modes = _ev3.get_tacho_regulation_modes
+
+def set_tacho_regulation_modes(*args):
+  return _ev3.set_tacho_regulation_modes(*args)
+set_tacho_regulation_modes = _ev3.set_tacho_regulation_modes
+
 def set_tacho_reset(*args):
   return _ev3.set_tacho_reset(*args)
 set_tacho_reset = _ev3.set_tacho_reset
@@ -763,6 +1017,10 @@ get_tacho_run_mode = _ev3.get_tacho_run_mode
 def set_tacho_run_mode(*args):
   return _ev3.set_tacho_run_mode(*args)
 set_tacho_run_mode = _ev3.set_tacho_run_mode
+
+def get_tacho_run_modes(*args):
+  return _ev3.get_tacho_run_modes(*args)
+get_tacho_run_modes = _ev3.get_tacho_run_modes
 
 def get_tacho_speed_regulation_D(*args):
   return _ev3.get_tacho_speed_regulation_D(*args)
@@ -893,6 +1151,13 @@ DC__NONE_ = _ev3.DC__NONE_
 DC_TYPE__NONE_ = _ev3.DC_TYPE__NONE_
 RCX_MOTOR = _ev3.RCX_MOTOR
 DC_TYPE__COUNT_ = _ev3.DC_TYPE__COUNT_
+DC_TYPE__UNKNOWN_ = _ev3.DC_TYPE__UNKNOWN_
+DC_COMMAND__NONE_ = _ev3.DC_COMMAND__NONE_
+RCX_MOTOR_RUN = _ev3.RCX_MOTOR_RUN
+RCX_MOTOR_BRAKE = _ev3.RCX_MOTOR_BRAKE
+RCX_MOTOR_COAST = _ev3.RCX_MOTOR_COAST
+DC_COMMAND__COUNT_ = _ev3.DC_COMMAND__COUNT_
+DC_COMMAND__UNKNOWN_ = _ev3.DC_COMMAND__UNKNOWN_
 
 def get_dc_command(*args):
   return _ev3.get_dc_command(*args)
@@ -906,6 +1171,10 @@ def get_dc_commands(*args):
   return _ev3.get_dc_commands(*args)
 get_dc_commands = _ev3.get_dc_commands
 
+def get_dc_driver_name(*args):
+  return _ev3.get_dc_driver_name(*args)
+get_dc_driver_name = _ev3.get_dc_driver_name
+
 def get_dc_duty_cycle(*args):
   return _ev3.get_dc_duty_cycle(*args)
 get_dc_duty_cycle = _ev3.get_dc_duty_cycle
@@ -917,10 +1186,6 @@ get_dc_duty_cycle_sp = _ev3.get_dc_duty_cycle_sp
 def set_dc_duty_cycle_sp(*args):
   return _ev3.set_dc_duty_cycle_sp(*args)
 set_dc_duty_cycle_sp = _ev3.set_dc_duty_cycle_sp
-
-def get_dc_name(*args):
-  return _ev3.get_dc_name(*args)
-get_dc_name = _ev3.get_dc_name
 
 def get_dc_polarity(*args):
   return _ev3.get_dc_polarity(*args)
@@ -986,6 +1251,18 @@ def ev3_search_dc_plugged_in(*args):
   return _ev3.ev3_search_dc_plugged_in(*args)
 ev3_search_dc_plugged_in = _ev3.ev3_search_dc_plugged_in
 
+def ev3_dc_command(*args):
+  return _ev3.ev3_dc_command(*args)
+ev3_dc_command = _ev3.ev3_dc_command
+
+def get_dc_command_inx(*args):
+  return _ev3.get_dc_command_inx(*args)
+get_dc_command_inx = _ev3.get_dc_command_inx
+
+def set_dc_command_inx(*args):
+  return _ev3.set_dc_command_inx(*args)
+set_dc_command_inx = _ev3.set_dc_command_inx
+
 def ev3_dc_init():
   return _ev3.ev3_dc_init()
 ev3_dc_init = _ev3.ev3_dc_init
@@ -1022,6 +1299,12 @@ SERVO__NONE_ = _ev3.SERVO__NONE_
 SERVO_TYPE__NONE_ = _ev3.SERVO_TYPE__NONE_
 SERVO_MOTOR = _ev3.SERVO_MOTOR
 SERVO_TYPE__COUNT_ = _ev3.SERVO_TYPE__COUNT_
+SERVO_TYPE__UNKNOWN_ = _ev3.SERVO_TYPE__UNKNOWN_
+SERVO_COMMAND__NONE_ = _ev3.SERVO_COMMAND__NONE_
+SERVO_MOTOR_RUN = _ev3.SERVO_MOTOR_RUN
+SERVO_MOTOR_FLOAT = _ev3.SERVO_MOTOR_FLOAT
+SERVO_COMMAND__COUNT_ = _ev3.SERVO_COMMAND__COUNT_
+SERVO_COMMAND__UNKNOWN_ = _ev3.SERVO_COMMAND__UNKNOWN_
 
 def get_servo_command(*args):
   return _ev3.get_servo_command(*args)
@@ -1030,6 +1313,10 @@ get_servo_command = _ev3.get_servo_command
 def set_servo_command(*args):
   return _ev3.set_servo_command(*args)
 set_servo_command = _ev3.set_servo_command
+
+def get_servo_driver_name(*args):
+  return _ev3.get_servo_driver_name(*args)
+get_servo_driver_name = _ev3.get_servo_driver_name
 
 def get_servo_max_pulse_ms(*args):
   return _ev3.get_servo_max_pulse_ms(*args)
@@ -1054,10 +1341,6 @@ get_servo_min_pulse_ms = _ev3.get_servo_min_pulse_ms
 def set_servo_min_pulse_ms(*args):
   return _ev3.set_servo_min_pulse_ms(*args)
 set_servo_min_pulse_ms = _ev3.set_servo_min_pulse_ms
-
-def get_servo_name(*args):
-  return _ev3.get_servo_name(*args)
-get_servo_name = _ev3.get_servo_name
 
 def get_servo_polarity(*args):
   return _ev3.get_servo_polarity(*args)
@@ -1127,6 +1410,18 @@ def ev3_search_servo_plugged_in(*args):
   return _ev3.ev3_search_servo_plugged_in(*args)
 ev3_search_servo_plugged_in = _ev3.ev3_search_servo_plugged_in
 
+def ev3_servo_command(*args):
+  return _ev3.ev3_servo_command(*args)
+ev3_servo_command = _ev3.ev3_servo_command
+
+def get_servo_command_inx(*args):
+  return _ev3.get_servo_command_inx(*args)
+get_servo_command_inx = _ev3.get_servo_command_inx
+
+def set_servo_command_inx(*args):
+  return _ev3.set_servo_command_inx(*args)
+set_servo_command_inx = _ev3.set_servo_command_inx
+
 def ev3_servo_init():
   return _ev3.ev3_servo_init()
 ev3_servo_init = _ev3.ev3_servo_init
@@ -1138,19 +1433,6 @@ get_servo_address = _ev3.get_servo_address
 def ev3_servo_port_name(*args):
   return _ev3.ev3_servo_port_name(*args)
 ev3_servo_port_name = _ev3.ev3_servo_port_name
-NXT_ANALOG_HOST_DIR = _ev3.NXT_ANALOG_HOST_DIR
-
-def get_nxt_analog_host_device_type(*args):
-  return _ev3.get_nxt_analog_host_device_type(*args)
-get_nxt_analog_host_device_type = _ev3.get_nxt_analog_host_device_type
-
-def get_nxt_analog_host_port_name(*args):
-  return _ev3.get_nxt_analog_host_port_name(*args)
-get_nxt_analog_host_port_name = _ev3.get_nxt_analog_host_port_name
-
-def set_nxt_analog_host_set_sensor(*args):
-  return _ev3.set_nxt_analog_host_set_sensor(*args)
-set_nxt_analog_host_set_sensor = _ev3.set_nxt_analog_host_set_sensor
 # This file is compatible with both classic and new-style classes.
 
 

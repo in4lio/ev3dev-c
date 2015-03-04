@@ -41,7 +41,7 @@ for ( $i = 0; $i < $ev3::SENSOR_DESC__LIMIT_; $i++ ) {
 my ( $ok, $sn_touch ) = ev3::ev3_search_sensor( $ev3::LEGO_EV3_TOUCH );
 if ( $ok ) {
     print "TOUCH sensor is found, press BUTTON for EXIT...\n";
-    my ( $ok, $sn_color ) = ev3::ev3_search_sensor( $ev3::EV3_UART_29 );
+    my ( $ok, $sn_color ) = ev3::ev3_search_sensor( $ev3::LEGO_EV3_UART_29 );
     if ( $ok ) {
         print "COLOR sensor is found, reading COLOR...\n";
         ev3::set_sensor_mode( $sn_color, "COL-COLOR" );
@@ -69,7 +69,7 @@ if ( $ok ) {
         print "COLOR sensor is NOT found\n";
         # Wait touch pressed
         while ( !_touch_pressed( $sn_touch )) {
-            Time::HiRes::sleep( 0.2 );
+            Time::HiRes::sleep( 0.1 );
         }
     }
 } else {

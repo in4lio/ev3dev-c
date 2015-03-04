@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#pylint: skip-file
 
 from time import sleep
 import sys
@@ -36,7 +35,7 @@ if __name__ == '__main__':
     ok, sn_touch = ev3_search_sensor( LEGO_EV3_TOUCH )
     if ok:
         print 'TOUCH sensor is found, press BUTTON for EXIT...'
-        ok, sn_color = ev3_search_sensor( EV3_UART_29 )
+        ok, sn_color = ev3_search_sensor( LEGO_EV3_UART_29 )
         if ok:
             print 'COLOR sensor is found, reading COLOR...'
             set_sensor_mode( sn_color, 'COL-COLOR' )
@@ -60,10 +59,9 @@ if __name__ == '__main__':
             print 'COLOR sensor is NOT found'
             # Wait touch pressed
             while not _touch_pressed( sn_touch ):
-                sleep( 0.2 )
+                sleep( 0.1 )
     else:
         print 'TOUCH sensor is NOT found'
-        sys.exit( 0 )
 
     ev3_uninit()
     print

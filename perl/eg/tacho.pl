@@ -3,12 +3,12 @@ use ev3;
 
 if ( !$ev3::EV3_BRICK ) {
     # Disable auto-detection of the brick (you have to set the correct address below)
-    $ev3::brick_addr = "192.168.0.244";
+    $ev3::brick_addr = "192.168.0.204";
 }
 ev3::ev3_init() != -1 || exit( 1 );
 
 if ( !$ev3::EV3_BRICK ) {
-    print "The EV3 brick auto-detection is DISABLED, waiting $ev3::brick_addr online...\n";
+    print "The EV3 brick auto-detection is DISABLED, waiting $ev3::brick_addr online with plugged tacho...\n";
 }
 while ( ev3::ev3_tacho_init() < 1 ) {
     sleep( 1 );

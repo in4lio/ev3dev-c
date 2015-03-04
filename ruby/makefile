@@ -154,7 +154,7 @@ endif
 LFLAGS =
 
 # -- preprocessor flags
-PPFLAGS = --pp-no-skip-c-comment -q $(addprefix -d, $(D_YU))
+PPFLAGS = -q --pp-browse $(addprefix -d, $(D_YU))
 
 # -- compiler flags
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment -Wno-unused-parameter
@@ -217,7 +217,8 @@ define final
 endef
 
 # -- removal list
-R = $(F_BIN) $(O) $(G_REST)
+R_BIN = $(F_BIN) $(O) $(G_REST)
+R = $(R_BIN)
 
 ifeq ($(SKIP_PP),0)
 R := $(R) $(G_H) $(G_C) $(G_CXX)
@@ -229,6 +230,8 @@ CLEAN = rm -rf $(R)
 else
 CLEAN = rm -rf $(R)
 endif
+
+CLEAN_BIN = rm -rf $(R_BIN)
 
 # -- install
 define install
@@ -289,6 +292,12 @@ $(O_ASM): $(D_OBJ)/%$(E_OBJ): %$(E_ASM)
 
 clean:
 	$(CLEAN)
+
+# -- remove binary files
+.PHONY: clean-binary
+
+clean-binary:
+	$(CLEAN_BIN)
 
 # -- install project
 .PHONY: install

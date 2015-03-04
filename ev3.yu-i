@@ -12,15 +12,11 @@
 #include "../source/ev3/ev3.h"
 #include "../source/ev3/ev3_led.h"
 #include "../source/ev3/ev3_light.h"
-#include "../source/ev3/ev3_output.h"
-#include "../source/ev3/ev3_input.h"
-#include "../source/ev3/nxt_input_mux.h"
 #include "../source/ev3/ev3_port.h"
 #include "../source/ev3/ev3_sensor.h"
 #include "../source/ev3/ev3_tacho.h"
 #include "../source/ev3/ev3_dc.h"
 #include "../source/ev3/ev3_servo.h"
-#include "../source/ev3/nxt_analog_host.h"
 %}
 
 /* Unfortunately incompatible with %typemap( default ) size_t sz { $1 = DEFAULT_BUF_SIZE; } */
@@ -102,12 +98,8 @@
 
 ($import { clip_h( "../source/ev3/ev3_led.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_light.yu-h" ) })
-($import { clip_h( "../source/ev3/ev3_output.yu-h" ) })
-($import { clip_h( "../source/ev3/ev3_input.yu-h" ) })
-($import { clip_h( "../source/ev3/nxt_input_mux.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_port.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_sensor.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_tacho.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_dc.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_servo.yu-h" ) })
-($import { clip_h( "../source/ev3/nxt_analog_host.yu-h" ) })

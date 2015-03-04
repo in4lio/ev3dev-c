@@ -5,6 +5,7 @@ $LOAD_PATH << if ENV[ 'OS' ] == 'Windows_NT' then '../mingw' else '..' end
 require 'ev3'
 include Ev3
 
+puts 'Waiting the EV3 brick online...'
 if ev3_init() < 1 then exit( 1 ) end
 
 puts '*** ( EV3 ) Hello! ***'

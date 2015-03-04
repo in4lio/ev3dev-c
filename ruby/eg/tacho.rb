@@ -10,12 +10,12 @@ if __FILE__ == $0
 
   if EV3_BRICK == 0
     # Disable auto-detection of the brick (you have to set the correct address below)
-    Ev3.brick_addr = '192.168.0.244'
+    Ev3.brick_addr = '192.168.0.204'
   end
   if ev3_init() == -1 then exit( 1 ) end
 
   if EV3_BRICK == 0
-    puts "The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online..."
+    puts "The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online with plugged tacho..."
     $stdout.flush
   end
 

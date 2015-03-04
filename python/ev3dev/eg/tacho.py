@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#pylint: skip-file
 
 from time import sleep
 import sys
@@ -8,12 +7,12 @@ from ev3dev import *
 if __name__ == '__main__':
     if not EV3_BRICK:
         # Disable auto-detection of the brick (you have to set the correct address below)
-        ev3.brick_addr = '192.168.0.244'
+        ev3.brick_addr = '192.168.0.204'
 
     if ev3_init() == -1: sys.exit( 1 )
 
     if not EV3_BRICK:
-        print 'The EV3 brick auto-detection is DISABLED, waiting %s online...' % ( ev3.brick_addr )
+        print 'The EV3 brick auto-detection is DISABLED, waiting %s online with plugged tacho...' % ( ev3.brick_addr )
 
     while ev3_tacho_init() < 1: sleep( 1.0 )
 

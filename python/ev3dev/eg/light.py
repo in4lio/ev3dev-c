@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#pylint: skip-file
 
 from time import sleep
 import sys

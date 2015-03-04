@@ -19,7 +19,7 @@
 		{
 			"name": "Make ev3dev-c library",
 			"working_dir": "${project_path}/../source/ev3",
-			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+			"file_regex": "(?:^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$)|(?:^[ ]*File \"(...*?)\", line ([0-9]*))",
 			"cmd": ["make"],
 			"shell": true,
 			"variants": [
@@ -27,6 +27,12 @@
 					"name": "Make ev3dev-c library - CLEAN",
 					"working_dir": "${project_path}/../source/ev3",
 					"cmd": ["make", "clean"],
+					"shell": true
+				},
+				{
+					"name": "Make ev3dev-c library - CLEAN BINARY",
+					"working_dir": "${project_path}/../source/ev3",
+					"cmd": ["make", "clean-binary"],
 					"shell": true
 				},
 				{

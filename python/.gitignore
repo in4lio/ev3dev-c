@@ -4,6 +4,7 @@ downloads/
 
 *.bat
 *.egg
+*.json
 
 .pypirc
 README

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#pylint: skip-file
 
 import sys
 from ev3dev import *

@@ -44,7 +44,7 @@ if __FILE__ == $0
   ok, sn_touch = ev3_search_sensor( LEGO_EV3_TOUCH )
   if ok
     puts 'TOUCH sensor is found, press BUTTON for EXIT...'
-    ok, sn_color = ev3_search_sensor( EV3_UART_29 )
+    ok, sn_color = ev3_search_sensor( LEGO_EV3_UART_29 )
     if ok
       puts 'COLOR sensor is found, reading COLOR...'
       set_sensor_mode( sn_color, 'COL-COLOR' )
@@ -68,7 +68,7 @@ if __FILE__ == $0
       puts 'COLOR sensor is NOT found'
       # Wait touch pressed
       while not _touch_pressed( sn_touch ) do
-        sleep( 0.2 )
+        sleep( 0.1 )
       end
     end
   else
