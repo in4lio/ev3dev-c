@@ -74,6 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">require &#39;ev3&#39;</div>
 <div class="line">include Ev3</div>
 <div class="line"></div>
+<div class="line">puts &#39;Waiting the EV3 brick online...&#39;</div>
 <div class="line">if ev3_init() &lt; 1 then exit( 1 ) end</div>
 <div class="line"></div>
 <div class="line">puts &#39;*** ( EV3 ) Hello! ***&#39;</div>
@@ -113,12 +114,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">  if EV3_BRICK == 0</div>
 <div class="line">    # Disable auto-detection of the brick (you have to set the correct address below)</div>
-<div class="line">    Ev3.brick_addr = &#39;192.168.0.244&#39;</div>
+<div class="line">    Ev3.brick_addr = &#39;192.168.0.204&#39;</div>
 <div class="line">  end</div>
 <div class="line">  if ev3_init() == -1 then exit( 1 ) end</div>
 <div class="line"></div>
 <div class="line">  if EV3_BRICK == 0</div>
-<div class="line">    puts &quot;The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online...&quot;</div>
+<div class="line">    puts &quot;The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online with plugged tacho...&quot;</div>
 <div class="line">    $stdout.flush</div>
 <div class="line">  end</div>
 <div class="line"></div>
@@ -223,7 +224,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">      puts &#39;COLOR sensor is NOT found&#39;</div>
 <div class="line">      # Wait touch pressed</div>
 <div class="line">      while not _touch_pressed( sn_touch ) do</div>
-<div class="line">        sleep( 0.2 )</div>
+<div class="line">        sleep( 0.1 )</div>
 <div class="line">      end</div>
 <div class="line">    end</div>
 <div class="line">  else</div>
@@ -241,6 +242,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">require &#39;ev3&#39;</div>
 <div class="line">include Ev3</div>
 <div class="line"></div>
+<div class="line">puts &#39;Waiting the EV3 brick online...&#39;</div>
 <div class="line">if ev3_init() &lt; 1 then exit( 1 ) end</div>
 <div class="line"></div>
 <div class="line">ok, state = get_led_brightness( EV3_RED_LEFT )</div>
@@ -257,7 +259,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">state = get_led_trigger_inx( EV3_RED_RIGHT )</div>
 <div class="line">puts &quot;get_led_trigger_inx( EV3_RED_RIGHT ) = #{state}&quot;</div>
 <div class="line"></div>
-<div class="line">if not set_led_trigger( EV3_RED_RIGHT, &#39;none&#39; )</div>
+<div class="line">if not set_led_trigger( EV3_RED_RIGHT, &#39;heartbeat&#39; )</div>
 <div class="line">  puts &#39;ERROR: set_led_trigger&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
@@ -271,50 +273,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">if ev3_init() &lt; 1 then exit( 1 ) end</div>
 <div class="line"></div>
-<div class="line">puts &#39;LEDs directory:&#39;</div>
 <div class="line">ok, ls = ev3_listdir( &#39;/sys/class/leds&#39;, 256 )</div>
 <div class="line">if ok</div>
-<div class="line">  puts ls</div>
+<div class="line">  puts &quot;leds folder: #{ls}&quot;</div>
 <div class="line">else</div>
 <div class="line">  puts &#39;ERROR: ev3_listdir&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
 <div class="line">ok, state = ev3_read_int( &#39;/sys/class/leds/ev3:red:left/brightness&#39; )</div>
 <div class="line">if ok</div>
-<div class="line">  ev3_write_bool( &#39;/sys/class/leds/ev3:red:left/brightness&#39;, state == 0 )</div>
+<div class="line">  ev3_write_int( &#39;/sys/class/leds/ev3:red:left/brightness&#39;, state ? 0 : 255 )</div>
 <div class="line">else</div>
-<div class="line">  puts &#39;ERROR: ev3_write_bool&#39;</div>
+<div class="line">  puts &#39;ERROR: ev3_read_int&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
-<div class="line">puts &#39;ev3:red:right trigger:&#39;</div>
-<div class="line">ok, trig = ev3_read( &#39;/sys/class/leds/ev3:red:right/trigger&#39;, 256 )</div>
+<div class="line">ok, ls = ev3_listdir( &#39;/sys/class/lego-port&#39;, 256 )</div>
 <div class="line">if ok</div>
-<div class="line">  puts trig</div>
+<div class="line">  puts &quot;lego-port folder: #{ls}&quot;</div>
 <div class="line">else</div>
-<div class="line">  puts &#39;ERROR: ev3_read_binary&#39;</div>
+<div class="line">  puts &#39;ERROR: ev3_listdir&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
-<div class="line">ev3_write( &#39;/sys/class/leds/ev3:red:right/trigger&#39;, &#39;heartbeat&#39; )</div>
-<div class="line"></div>
-<div class="line">puts &#39;EV3 ports state:&#39;</div>
-<div class="line">for i in OUTPUT__BASE_ .. OUTPUT__BASE_ + OUTPUT__COUNT_ - 1</div>
-<div class="line">  ok, state = get_output_state( i, 256 )</div>
-<div class="line">  if ok</div>
-<div class="line">    port = ev3_output_name( i )</div>
-<div class="line">    puts &quot;  #{port}: #{state}&quot;</div>
-<div class="line">  else</div>
-<div class="line">    puts &#39;ERROR: get_output_state&#39;</div>
-<div class="line">  end</div>
+<div class="line">ok, ls = ev3_listdir( &#39;/sys/class/lego-sensor&#39;, 256 )</div>
+<div class="line">if ok</div>
+<div class="line">  puts &quot;lego-sensor folder: #{ls}&quot;</div>
+<div class="line">else</div>
+<div class="line">  puts &#39;ERROR: ev3_listdir&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
-<div class="line">for i in INPUT__BASE_ .. INPUT__BASE_ + INPUT__COUNT_ - 1</div>
-<div class="line">  ok, state = get_input_state( i, 256 )</div>
-<div class="line">  if ok</div>
-<div class="line">    port = ev3_input_name( i, EV3_PORT__NONE_ )</div>
-<div class="line">    puts &quot;  #{port}: #{state}&quot;</div>
-<div class="line">  else</div>
-<div class="line">    puts &#39;ERROR: get_input_state&#39;</div>
-<div class="line">  end</div>
+<div class="line">ok, ls = ev3_listdir( &#39;/sys/class/tacho-motor&#39;, 256 )</div>
+<div class="line">if ok</div>
+<div class="line">  puts &quot;tacho-motor folder: #{ls}&quot;</div>
+<div class="line">else</div>
+<div class="line">  puts &#39;ERROR: ev3_listdir&#39;</div>
 <div class="line">end</div>
 <div class="line"></div>
 <div class="line">ev3_uninit()</div>
@@ -340,7 +331,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 27 2015 16:47:00 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 4 2015 14:27:30 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

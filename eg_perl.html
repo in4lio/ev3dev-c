@@ -104,12 +104,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">if ( !$ev3::EV3_BRICK ) {</div>
 <div class="line">    # Disable auto-detection of the brick (you have to set the correct address below)</div>
-<div class="line">    $ev3::brick_addr = &quot;192.168.0.244&quot;;</div>
+<div class="line">    $ev3::brick_addr = &quot;192.168.0.204&quot;;</div>
 <div class="line">}</div>
 <div class="line">ev3::ev3_init() != -1 || exit( 1 );</div>
 <div class="line"></div>
 <div class="line">if ( !$ev3::EV3_BRICK ) {</div>
-<div class="line">    print &quot;The EV3 brick auto-detection is DISABLED, waiting $ev3::brick_addr online...\n&quot;;</div>
+<div class="line">    print &quot;The EV3 brick auto-detection is DISABLED, waiting $ev3::brick_addr online with plugged tacho...\n&quot;;</div>
 <div class="line">}</div>
 <div class="line">while ( ev3::ev3_tacho_init() &lt; 1 ) {</div>
 <div class="line">    sleep( 1 );</div>
@@ -213,7 +213,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        print &quot;COLOR sensor is NOT found\n&quot;;</div>
 <div class="line">        # Wait touch pressed</div>
 <div class="line">        while ( !_touch_pressed( $sn_touch )) {</div>
-<div class="line">            Time::HiRes::sleep( 0.2 );</div>
+<div class="line">            Time::HiRes::sleep( 0.1 );</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">} else {</div>
@@ -238,7 +238,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">$state = ev3::get_led_trigger_inx( $ev3::EV3_RED_RIGHT );</div>
 <div class="line">print &quot;get_led_trigger_inx( EV3_RED_RIGHT ) = $state\n&quot;;</div>
 <div class="line"></div>
-<div class="line">if ( !ev3::set_led_trigger( $ev3::EV3_RED_RIGHT, &quot;none&quot; )) {</div>
+<div class="line">if ( !ev3::set_led_trigger( $ev3::EV3_RED_RIGHT, &quot;heartbeat&quot; )) {</div>
 <div class="line">    print &quot;ERROR: set_led_trigger\n&quot;;</div>
 <div class="line">}</div>
 <div class="line">ev3::ev3_uninit();</div>
@@ -247,47 +247,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">ev3::ev3_init() &gt; 0 || exit( 1 );</div>
 <div class="line"></div>
-<div class="line">print &quot;LEDs directory:\n&quot;;</div>
 <div class="line">my ( $ok, $ls ) = ev3::ev3_listdir( &quot;/sys/class/leds&quot;, 256 );</div>
 <div class="line">if ( $ok ) {</div>
-<div class="line">    print &quot;$ls\n&quot;;</div>
+<div class="line">    print &quot;leds folder: $ls\n&quot;;</div>
 <div class="line">} else {</div>
 <div class="line">    print &quot;ERROR: ev3_listdir\n&quot;;</div>
 <div class="line">}</div>
 <div class="line">my ( $ok, $state ) = ev3::ev3_read_int( &quot;/sys/class/leds/ev3:red:left/brightness&quot; );</div>
 <div class="line">if ( $ok ) {</div>
-<div class="line">    ev3::ev3_write_bool( &quot;/sys/class/leds/ev3:red:left/brightness&quot;, !$state );</div>
+<div class="line">    ev3::ev3_write_int( &quot;/sys/class/leds/ev3:red:left/brightness&quot;, ( $state ? 0 : 255 ));</div>
 <div class="line">} else {</div>
-<div class="line">    print &quot;ERROR: ev3_write_bool\n&quot;;</div>
+<div class="line">    print &quot;ERROR: ev3_read_int\n&quot;;</div>
 <div class="line">}</div>
-<div class="line">print &quot;ev3:red:right trigger:\n&quot;;</div>
-<div class="line">my ( $ok, $trig ) = ev3::ev3_read( &quot;/sys/class/leds/ev3:red:right/trigger&quot;, 256 );</div>
+<div class="line">my ( $ok, $ls ) = ev3::ev3_listdir( &quot;/sys/class/lego-port&quot;, 256 );</div>
 <div class="line">if ( $ok ) {</div>
-<div class="line">    print &quot;$trig\n&quot;;</div>
+<div class="line">    print &quot;lego-port folder: $ls\n&quot;;</div>
 <div class="line">} else {</div>
-<div class="line">    print &quot;ERROR: ev3_read_binary\n&quot;;</div>
+<div class="line">    print &quot;ERROR: ev3_listdir\n&quot;;</div>
 <div class="line">}</div>
-<div class="line">ev3::ev3_write( &quot;/sys/class/leds/ev3:red:right/trigger&quot;, &quot;heartbeat&quot; );</div>
+<div class="line">my ( $ok, $ls ) = ev3::ev3_listdir( &quot;/sys/class/lego-sensor&quot;, 256 );</div>
+<div class="line">if ( $ok ) {</div>
+<div class="line">    print &quot;lego-sensor folder: $ls\n&quot;;</div>
+<div class="line">} else {</div>
+<div class="line">    print &quot;ERROR: ev3_listdir\n&quot;;</div>
+<div class="line">}</div>
+<div class="line">my ( $ok, $ls ) = ev3::ev3_listdir( &quot;/sys/class/tacho-motor&quot;, 256 );</div>
+<div class="line">if ( $ok ) {</div>
+<div class="line">    print &quot;tacho-motor folder: $ls\n&quot;;</div>
+<div class="line">} else {</div>
+<div class="line">    print &quot;ERROR: ev3_listdir\n&quot;;</div>
+<div class="line">}</div>
 <div class="line"></div>
-<div class="line">print &quot;EV3 ports state:\n&quot;;</div>
-<div class="line">for ( $i = $ev3::OUTPUT__BASE_; $i &lt; $ev3::OUTPUT__BASE_ + $ev3::OUTPUT__COUNT_; $i++ ) {</div>
-<div class="line">    my ( $ok, $state ) = ev3::get_output_state( $i, 256 );</div>
-<div class="line">    if ( $ok ) {</div>
-<div class="line">        my $port = ev3::ev3_output_name( $i );</div>
-<div class="line">        print &quot;  $port: $state\n&quot;;</div>
-<div class="line">    } else {</div>
-<div class="line">        print &quot;ERROR: get_output_state\n&quot;;</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-<div class="line">for ( $i = $ev3::INPUT__BASE_; $i &lt; $ev3::INPUT__BASE_ + $ev3::INPUT__COUNT_; $i++ ) {</div>
-<div class="line">    my ( $ok, $state ) = ev3::get_input_state( $i, 256 );</div>
-<div class="line">    if ( $ok ) {</div>
-<div class="line">        my $port = ev3::ev3_input_name( $i, $ev3::EV3_PORT__NONE_ );</div>
-<div class="line">        print &quot;  $port: $state\n&quot;;</div>
-<div class="line">    } else {</div>
-<div class="line">        print &quot;ERROR: get_input_state\n&quot;;</div>
-<div class="line">    }</div>
-<div class="line">}</div>
 <div class="line">ev3::ev3_uninit();</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">use lib &quot;..&quot;;</div>
 <div class="line">use ev3;</div>
@@ -307,7 +297,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 27 2015 16:47:00 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 4 2015 14:27:30 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
