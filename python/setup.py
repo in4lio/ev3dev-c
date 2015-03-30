@@ -114,7 +114,7 @@ setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description=read("README"),
+    long_description='::\n%s' % ( read("README")),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="MIT",

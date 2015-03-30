@@ -46,15 +46,23 @@ int main( void )
 
 	set_light( LIT_LEFT, LIT_OFF );
 	set_light( LIT_RIGHT, LIT_OFF );
+	printf( "LEFT: %s\n", LIT_COLOR[ get_light( LIT_LEFT )]);
+	printf( "RIGHT: %s\n", LIT_COLOR[ get_light( LIT_RIGHT )]);
 	Sleep( 500 );
 	set_light( LIT_LEFT, LIT_RED );
 	set_light( LIT_RIGHT, LIT_RED );
+	printf( "LEFT: %s\n", LIT_COLOR[ get_light( LIT_LEFT )]);
+	printf( "RIGHT: %s\n", LIT_COLOR[ get_light( LIT_RIGHT )]);
 	Sleep( 500 );
 	set_light( LIT_LEFT, LIT_AMBER );
 	set_light( LIT_RIGHT, LIT_AMBER );
+	printf( "LEFT: %s\n", LIT_COLOR[ get_light( LIT_LEFT )]);
+	printf( "RIGHT: %s\n", LIT_COLOR[ get_light( LIT_RIGHT )]);
 	Sleep( 500 );
 	set_light( LIT_LEFT, LIT_GREEN );
 	set_light( LIT_RIGHT, LIT_GREEN );
+	printf( "LEFT: %s\n", LIT_COLOR[ get_light( LIT_LEFT )]);
+	printf( "RIGHT: %s\n", LIT_COLOR[ get_light( LIT_RIGHT )]);
 
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

@@ -43,9 +43,9 @@ uint8_t get_light( uint8_t loc )
 	if ( loc >= LIT__LOC__ ) return ( LIT__COL__ );
 
 	if ( get_led_brightness( __LED_GREEN[ loc ], &val ) == 0 ) return ( LIT__COL__ );
-	green = !!val;
+	green = ( val ) ? 255 : 0;
 	if ( get_led_brightness( __LED_RED[ loc ], &val ) == 0 ) return ( LIT__COL__ );
-	red = !!val;
+	red = ( val ) ? 255 : 0;
 	for ( val = 0; val < LIT__COL__; val++ ) {
 		if (( green == __LED_GREEN_STATE[ val ]) && ( red == __LED_RED_STATE[ val ])) return ( val );
 	}
