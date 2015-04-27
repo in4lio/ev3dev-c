@@ -24,7 +24,6 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME    CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
-	(  "address"          byte             0                 R                 )
 	(  "bin_data"         byte             2                 RW                )
 	(  "bin_data_format"  char             1                 R                 )
 	(  "command"          char             1                 W                 )
@@ -62,6 +61,5 @@
 	(  type_inx       uint8_t          "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "address"           )
 	)
 )

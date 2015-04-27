@@ -5,13 +5,13 @@
                                                ((())))
 
 ($! list of attributes accessible by index )
-($set ACCESS_BY_INDEX ( "mode" "command" ))
+($set ACCESS_BY_INDEX ( "mode" "command" "stop_command" ))
 
 ($set CLASS_ATTR_INDEX ($ACCESS_BY_INDEX \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
 ($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
 
 ($! name of type attribute of class )
-($set CLASS_TYPE_ATTR_NAME "type" ? ($ne ($index CLASS_ATTR_NAME "type") -1) | "driver_name")
+($set CLASS_TYPE_ATTR_NAME "driver_name")
 
 ($set _TYPE_TO_ID \val.($replace,,($unq val),,-,,_))
 
@@ -19,8 +19,8 @@
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($_TYPE_TO_ID ($i CLASS_TYPE_NAME))))
 
 ($! identifiers of class attributes )
-($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($unq ($i CLASS_ATTR_NAME))))
-($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($unq ($i CLASS_AVEC_NAME))))
+($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($replace,,($unq ($i CLASS_ATTR_NAME)),,/,,_)))
+($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($replace,,($unq ($i CLASS_AVEC_NAME)),,/,,_)))
 
 ($! flag - class descriptor contains 'addr' attribute )
 ($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))

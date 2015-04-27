@@ -56,18 +56,16 @@ int main( void )
 			printf( "  port = %s\n", ev3_port_name( ev3_tacho[ i ].port, ev3_tacho[ i ].extport ));
 		}
 	}
-	if ( ev3_search_tacho( MINITACHO, &sn, 0 )) {
-		printf( "MINITACHO motor is found, run for 5 sec...\n" );
-		set_tacho_regulation_mode( sn, "off" );
-		set_tacho_run_mode( sn, "time" );
-		set_tacho_stop_mode( sn, "brake" );
+	if ( ev3_search_tacho( LEGO_EV3_M_MOTOR, &sn, 0 )) {
+		printf( "LEGO_EV3_M_MOTOR motor is found, run for 5 sec...\n" );
+		set_tacho_stop_command_inx( sn, TACHO_BRAKE );
 		set_tacho_duty_cycle_sp( sn, 100 );
 		set_tacho_time_sp( sn, 5000 );
 		set_tacho_ramp_up_sp( sn, 2000 );
 		set_tacho_ramp_down_sp( sn, 2000 );
-		set_tacho_run( sn, true );
+		set_tacho_command_inx( sn, TACHO_RUN_TIMED );
 	} else {
-		printf( "MINITACHO motor is NOT found\n" );
+		printf( "LEGO_EV3_M_MOTOR motor is NOT found\n" );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
