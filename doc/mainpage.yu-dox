@@ -112,15 +112,13 @@ uint8_t sn;
 ev3_init();
 ev3_tacho_init();
 
-if ( ev3_search_tacho( TACHO, &sn, 0 )) {
-	set_tacho_regulation_mode( sn, "off" );
-	set_tacho_run_mode( sn, "time" );
-	set_tacho_stop_mode( sn, "brake" );
+if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
+	set_tacho_stop_command_inx( sn, TACHO_BRAKE );
 	set_tacho_duty_cycle_sp( sn, 100 );
 	set_tacho_time_sp( sn, 5000 );
 	set_tacho_ramp_up_sp( sn, 2000 );
 	set_tacho_ramp_down_sp( sn, 2000 );
-	set_tacho_run( sn, true );
+	set_tacho_command( sn, "run_timed" );
 }
 ev3_uninit();
 \endcode
@@ -236,13 +234,12 @@ use ev3;
 ev3::ev3_init();
 ev3::ev3_tacho_init();
 
-my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::MINITACHO );
+my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );
 if ( $ok ) {
-    ev3::set_tacho_regulation_mode( $sn, "off" );
     ev3::set_tacho_duty_cycle_sp( $sn, 50 );
-    ev3::set_tacho_run( $sn, 1 );
+    ev3::set_tacho_command_inx( $sn, $ev3::TACHO_RUN_FOREVER );
     sleep( 2 );
-    ev3::set_tacho_run( $sn, 0 );
+    ev3::set_tacho_command_inx( $sn, $ev3::TACHO_STOP );
 }
 ev3::ev3_uninit();
 \endcode

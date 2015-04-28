@@ -25,19 +25,18 @@ if __name__ == '__main__':
             print '  type =', ev3_tacho_type( type_inx )
             print '  port =', ev3_port_name( ev3_tacho_desc_port( i ), ev3_tacho_desc_extport( i ))
 
-    ok, sn = ev3_search_tacho( MINITACHO )
+    ok, sn = ev3_search_tacho( LEGO_EV3_M_MOTOR )
     if ok:
-        print 'MINITACHO motor is found, run for 5 sec...'
-        set_tacho_regulation_mode( sn, 'off' )
-        set_tacho_run_mode( sn, 'time' )
-        set_tacho_stop_mode( sn, 'brake' )
+        print 'LEGO_EV3_M_MOTOR is found, run for 5 sec...'
+
+        set_tacho_stop_command_inx( sn, TACHO_BRAKE )
         set_tacho_duty_cycle_sp( sn, 100 )
         set_tacho_time_sp( sn, 5000 )
         set_tacho_ramp_up_sp( sn, 2000 )
         set_tacho_ramp_down_sp( sn, 2000 )
-        set_tacho_run( sn, True )
+        set_tacho_command_inx( sn, TACHO_RUN_TIMED )
     else:
-        print 'MINITACHO motor is NOT found'
+        print 'LEGO_EV3_M_MOTOR is NOT found'
 
     ev3_uninit()
     print '*** ( EV3 ) Bye! ***'

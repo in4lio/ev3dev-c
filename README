@@ -51,7 +51,7 @@
     There are a few examples on C in "eg" folder:
     "light"    - LEDs blinking example;
     "sensor"   - TOUCH and COLOR sensors example;
-    "tacho"    - MINITACHO motor running for 5 sec;
+    "tacho"    - Tacho motor running for 5 sec;
     "port"     - Using EV3 ports;
     "dc"       - Using DC motor;
     "rcx_led"  - Using RCX LED;

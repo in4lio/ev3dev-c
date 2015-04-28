@@ -25,19 +25,17 @@ for ( $i = 0; $i < $ev3::TACHO_DESC__LIMIT_; $i++ ) {
         print "  port = $port_name\n";
     }
 }
-my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::MINITACHO );
+my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );
 if ( $ok ) {
-    print "MINITACHO motor is found, run for 5 sec...\n";
-    ev3::set_tacho_regulation_mode( $sn, "off" );
-    ev3::set_tacho_run_mode( $sn, "time" );
-    ev3::set_tacho_stop_mode( $sn, "brake" );
+    print "LEGO_EV3_M_MOTOR is found, run for 5 sec...\n";
+    ev3::set_tacho_stop_command_inx( $sn, $ev3::TACHO_BRAKE );
     ev3::set_tacho_duty_cycle_sp( $sn, 100 );
     ev3::set_tacho_time_sp( $sn, 5000 );
     ev3::set_tacho_ramp_up_sp( $sn, 2000 );
     ev3::set_tacho_ramp_down_sp( $sn, 2000 );
-    ev3::set_tacho_run( $sn, 1 );
+    ev3::set_tacho_command_inx( $sn, $ev3::TACHO_RUN_TIMED );
 } else {
-    print "MINITACHO motor is NOT found\n";
+    print "LEGO_EV3_M_MOTOR is NOT found\n";
 }
 ev3::ev3_uninit();
 print "*** ( EV3 ) Bye! ***\n";

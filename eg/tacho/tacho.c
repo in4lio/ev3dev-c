@@ -57,7 +57,7 @@ int main( void )
 		}
 	}
 	if ( ev3_search_tacho( LEGO_EV3_M_MOTOR, &sn, 0 )) {
-		printf( "LEGO_EV3_M_MOTOR motor is found, run for 5 sec...\n" );
+		printf( "LEGO_EV3_M_MOTOR is found, run for 5 sec...\n" );
 		set_tacho_stop_command_inx( sn, TACHO_BRAKE );
 		set_tacho_duty_cycle_sp( sn, 100 );
 		set_tacho_time_sp( sn, 5000 );
@@ -65,7 +65,7 @@ int main( void )
 		set_tacho_ramp_down_sp( sn, 2000 );
 		set_tacho_command_inx( sn, TACHO_RUN_TIMED );
 	} else {
-		printf( "LEGO_EV3_M_MOTOR motor is NOT found\n" );
+		printf( "LEGO_EV3_M_MOTOR is NOT found\n" );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

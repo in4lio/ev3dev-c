@@ -33,19 +33,17 @@ if __FILE__ == $0
       puts "  port = #{port_name}"
     end
   end
-  ok, sn = ev3_search_tacho( MINITACHO )
+  ok, sn = ev3_search_tacho( LEGO_EV3_M_MOTOR )
   if ok
-    puts 'MINITACHO motor is found, run for 5 sec...'
-    set_tacho_regulation_mode( sn, 'off' )
-    set_tacho_run_mode( sn, 'time' )
-    set_tacho_stop_mode( sn, 'brake' )
+    puts 'LEGO_EV3_M_MOTOR is found, run for 5 sec...'
+    set_tacho_stop_command_inx( sn, TACHO_BRAKE )
     set_tacho_duty_cycle_sp( sn, 100 )
     set_tacho_time_sp( sn, 5000 )
     set_tacho_ramp_up_sp( sn, 2000 )
     set_tacho_ramp_down_sp( sn, 2000 )
-    set_tacho_run( sn, true )
+    set_tacho_command_inx( sn, TACHO_RUN_TIMED )
   else
-    puts 'MINITACHO motor is NOT found'
+    puts 'LEGO_EV3_M_MOTOR is NOT found'
   end
   ev3_uninit()
   puts '*** ( EV3 ) Bye! ***'
