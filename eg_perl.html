@@ -127,19 +127,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        print &quot;  port = $port_name\n&quot;;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="line">my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::MINITACHO );</div>
+<div class="line">my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );</div>
 <div class="line">if ( $ok ) {</div>
-<div class="line">    print &quot;MINITACHO motor is found, run for 5 sec...\n&quot;;</div>
-<div class="line">    ev3::set_tacho_regulation_mode( $sn, &quot;off&quot; );</div>
-<div class="line">    ev3::set_tacho_run_mode( $sn, &quot;time&quot; );</div>
-<div class="line">    ev3::set_tacho_stop_mode( $sn, &quot;brake&quot; );</div>
+<div class="line">    print &quot;LEGO_EV3_M_MOTOR is found, run for 5 sec...\n&quot;;</div>
+<div class="line">    ev3::set_tacho_stop_command_inx( $sn, $ev3::TACHO_BRAKE );</div>
 <div class="line">    ev3::set_tacho_duty_cycle_sp( $sn, 100 );</div>
 <div class="line">    ev3::set_tacho_time_sp( $sn, 5000 );</div>
 <div class="line">    ev3::set_tacho_ramp_up_sp( $sn, 2000 );</div>
 <div class="line">    ev3::set_tacho_ramp_down_sp( $sn, 2000 );</div>
-<div class="line">    ev3::set_tacho_run( $sn, 1 );</div>
+<div class="line">    ev3::set_tacho_command_inx( $sn, $ev3::TACHO_RUN_TIMED );</div>
 <div class="line">} else {</div>
-<div class="line">    print &quot;MINITACHO motor is NOT found\n&quot;;</div>
+<div class="line">    print &quot;LEGO_EV3_M_MOTOR is NOT found\n&quot;;</div>
 <div class="line">}</div>
 <div class="line">ev3::ev3_uninit();</div>
 <div class="line">print &quot;*** ( EV3 ) Bye! ***\n&quot;;</div>
@@ -298,7 +296,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 17:43:41 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 28 2015 12:52:02 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
