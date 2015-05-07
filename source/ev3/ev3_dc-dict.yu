@@ -9,10 +9,13 @@
 ($set CLASS_ID [dc])
 ($set CLASS_TITLE "DC motor")
 
+($set TYPE_COMMANDS ( "run-forever" "run-timed" "stop" ))
+($set TYPE_STOP_COMMANDS ( "coast" "brake" ))
+
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  )
+	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  CLASS_TYPE_STOP_COMMANDS  )
 	(`
-	(  "rcx-motor"      ( "run" "brake" "coast" ) )
+	(  "rcx-motor"      TYPE_COMMANDS        TYPE_STOP_COMMANDS        )
 	)
 )
 
@@ -23,15 +26,19 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
-	(  "command"               char             1                 RW                )
+	(  "command"               char             1                 W                 )
 	(  "commands"              char             1                 R                 )
 	(  "driver_name"           char             1                 R                 )
 	(  "duty_cycle"            int              0                 R                 )
 	(  "duty_cycle_sp"         int              0                 RW                )
 	(  "polarity"              char             1                 RW                )
 	(  "port_name"             char             1                 R                 )
-	(  "ramp_down_ms"          dword            0                 RW                )
-	(  "ramp_up_ms"            dword            0                 RW                )
+	(  "state"                 char             1                 R                 )
+	(  "stop_command"          char             1                 W                 )
+	(  "stop_commands"         char             1                 R                 )
+	(  "ramp_down_sp"          int              0                 RW                )
+	(  "ramp_up_sp"            int              0                 RW                )
+	(  "time_sp"               int              0                 RW                )
 	)
 )
 

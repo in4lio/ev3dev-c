@@ -28,6 +28,7 @@
 	(  "bin_data_format"  char             1                 R                 )
 	(  "command"          char             1                 W                 )
 	(  "commands"         char             1                 R                 )
+	(  "direct"           char             1                 RW                )
 	(  "decimals"         dword            0                 R                 )
 	(  "driver_name"      char             1                 R                 )
 	(  "fw_version"       char             1                 R                 )

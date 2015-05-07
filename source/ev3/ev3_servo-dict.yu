@@ -11,10 +11,12 @@
 
 ($set SERVO_CHANNEL_PREF "sv")
 
+($set TYPE_COMMANDS ( "run" "float" ))
+
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  )
 	(`
-	(  "servo-motor"    ( "run" "float" ) )
+	(  "servo-motor"    TYPE_COMMANDS        )
 	)
 )
 
@@ -27,13 +29,14 @@
 	(`
 	(  "command"               char             1                 RW                )
 	(  "driver_name"           char             1                 R                 )
-	(  "max_pulse_ms"          dword            0                 RW                )
-	(  "mid_pulse_ms"          dword            0                 RW                )
-	(  "min_pulse_ms"          dword            0                 RW                )
+	(  "max_pulse_sp"          int              0                 RW                )
+	(  "mid_pulse_sp"          int              0                 RW                )
+	(  "min_pulse_sp"          int              0                 RW                )
 	(  "polarity"              char             1                 RW                )
 	(  "port_name"             char             1                 R                 )
-	(  "position"              int              0                 RW                )
-	(  "rate"                  dword            0                 RW                )
+	(  "position_sp"           int              0                 RW                )
+	(  "rate_sp"               int              0                 RW                )
+	(  "state"                 char             1                 R                 )
 	)
 )
 

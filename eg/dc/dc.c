@@ -60,16 +60,17 @@ int main( void )
 	}
 	if ( ev3_search_dc_plugged_in( port, EXT_PORT__NONE_, &sn, 0 )) {
 		printf( "DC motor is found, run for 5 sec...\n" );
-		set_dc_ramp_up_ms( sn, 2000 );
+		set_dc_ramp_up_sp( sn, 2000 );
 		set_dc_duty_cycle_sp( sn, 100 );
-		set_dc_command( sn, "run" );
-		if ( get_dc_command( sn, s, sizeof( s ))) {
-			printf( "command: %s\n", s );
+		set_dc_stop_command_inx( sn, DC_COAST );
+		set_dc_command_inx( sn, DC_RUN_FOREVER );
+		if ( get_dc_state( sn, s, sizeof( s ))) {
+			printf( "state: %s\n", s );
 		}
 		Sleep( 5000 );
-		set_dc_command( sn, "coast" );
-		if ( get_dc_command( sn, s, sizeof( s ))) {
-			printf( "command: %s\n", s );
+		set_dc_command_inx( sn, DC_STOP );
+		if ( get_dc_state( sn, s, sizeof( s ))) {
+			printf( "state: %s\n", s );
 		}
 	} else {
 		printf( "DC motor is NOT found\n" );

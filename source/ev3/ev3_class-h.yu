@@ -63,6 +63,34 @@ enum {
 
 [ )
 
+($if CLASS_COMMANDS ]
+	/**
+	 *  \brief Common identifiers of ($_CLASS) commands.
+	 */
+	enum {
+		($upper CLASS_ID)_COMMAND__NULL_ = 0,
+
+		($CLASS_COMMANDS \i.]
+			($upper CLASS_ID)_($upper ($_VALUE_TO_ID i)),
+
+		[ )
+	};
+[ )
+
+($if CLASS_STOP_COMMANDS ]
+	/**
+	 *  \brief Common identifiers of ($_CLASS) stop commands.
+	 */
+	enum {
+		($upper CLASS_ID)_STOP_COMMAND__NULL_ = 0,
+
+		($CLASS_STOP_COMMANDS \i.]
+			($upper CLASS_ID)_($upper ($_VALUE_TO_ID i)),
+
+		[ )
+	};
+[ )
+
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
 		/**

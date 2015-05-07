@@ -24,3 +24,9 @@
 
 ($! flag - class descriptor contains 'addr' attribute )
 ($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
+
+($! names of comman commands of class )
+($set CLASS_COMMANDS ($() ? ($isatom TYPE_COMMANDS) | TYPE_COMMANDS))
+
+($! names of comman stop commands of class )
+($set CLASS_STOP_COMMANDS ($() ? ($isatom TYPE_STOP_COMMANDS) | TYPE_STOP_COMMANDS))

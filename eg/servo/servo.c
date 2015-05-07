@@ -66,18 +66,18 @@ int main( void )
 	}
 	if ( ev3_search_servo_plugged_in( port, EXT_PORT__NONE_, 1, &sn, 0 )) {
 		printf( "Servo motor is found, setting position...\n" );
-		set_servo_command( sn, "run" );
-		set_servo_position( sn, 100 );
+		set_servo_command_inx( sn, SERVO_RUN );
+		set_servo_position_sp( sn, 100 );
 		Sleep( 2000 );
-		if ( get_servo_position( sn, &pos )) {
+		if ( get_servo_position_sp( sn, &pos )) {
 			printf( "position: %d\n", pos );
 		}
-		set_servo_position( sn, -100 );
+		set_servo_position_sp( sn, -100 );
 		Sleep( 2000 );
-		if ( get_servo_position( sn, &pos )) {
+		if ( get_servo_position_sp( sn, &pos )) {
 			printf( "position: %d\n", pos );
 		}
-		set_servo_command( sn, "float" );
+		set_servo_command_inx( sn, SERVO_FLOAT );
 	} else {
 		printf( "Servo motor is NOT found\n" );
 	}

@@ -30,30 +30,6 @@
 ($import "ev3_class-dict.yu")
 ($import "ev3_class-h.yu")
 
-/**
- *  \brief Common identifiers of tacho commands.
- */
-enum {
-	TACHO_COMMAND__NULL_ = 0,
-
-	($TYPE_COMMANDS \i.]
-		TACHO_($upper ($_VALUE_TO_ID i)),
-
-	[ )
-};
-
-/**
- *  \brief Common identifiers of tacho stop commands.
- */
-enum {
-	TACHO_STOP_COMMAND__NULL_ = 0,
-
-	($TYPE_STOP_COMMANDS \i.]
-		TACHO_($upper ($_VALUE_TO_ID i)),
-
-	[ )
-};
-
 /** \} */
 
 ($extern-c-end)

@@ -243,11 +243,7 @@ if ( $ok ) {
 }
 ev3::ev3_uninit();
 \endcode
-<P>Similarly, you can use SWIG to wrap the library in a number of other languages.</P>
-
-<BR><HR>
-<H2>TODO</H2>
-<P>EV3 buttons, sound, LCD, Bluetooth, files transfer, 3rd level modules etc...</P>
+<P><I>Similarly, you can use SWIG to wrap the library in a number of other languages.</I></P>
  */
 
 /** \page eg_c Examples in C
