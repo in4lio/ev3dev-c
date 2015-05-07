@@ -457,16 +457,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga4f0b72633cff18f6b85f0f8d53a3df2d">ev3_search_dc_plugged_in</a>( port, EXT_PORT__NONE_, &amp;sn, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;DC motor is found, run for 5 sec...\n&quot;</span> );</div>
-<div class="line">        <a class="code" href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">set_dc_ramp_up_ms</a>( sn, 2000 );</div>
+<div class="line">        <a class="code" href="group__ev3__dc.html#gaec5d375a7ccc47b426911c977df48ead">set_dc_ramp_up_sp</a>( sn, 2000 );</div>
 <div class="line">        <a class="code" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a>( sn, 100 );</div>
-<div class="line">        <a class="code" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a>( sn, <span class="stringliteral">&quot;run&quot;</span> );</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
-<div class="line">            printf( <span class="stringliteral">&quot;command: %s\n&quot;</span>, s );</div>
+<div class="line">        <a class="code" href="group__ev3__dc.html#ga125d0e9c0ee20881a6b627fdcdbc1e64">set_dc_stop_command_inx</a>( sn, DC_COAST );</div>
+<div class="line">        <a class="code" href="group__ev3__dc.html#gac78d05bb1d96852d7ae25559741a2058">set_dc_command_inx</a>( sn, DC_RUN_FOREVER );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">get_dc_state</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;state: %s\n&quot;</span>, s );</div>
 <div class="line">        }</div>
 <div class="line">        Sleep( 5000 );</div>
-<div class="line">        <a class="code" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a>( sn, <span class="stringliteral">&quot;coast&quot;</span> );</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
-<div class="line">            printf( <span class="stringliteral">&quot;command: %s\n&quot;</span>, s );</div>
+<div class="line">        <a class="code" href="group__ev3__dc.html#gac78d05bb1d96852d7ae25559741a2058">set_dc_command_inx</a>( sn, DC_STOP );</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">get_dc_state</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;state: %s\n&quot;</span>, s );</div>
 <div class="line">        }</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;DC motor is NOT found\n&quot;</span> );</div>
@@ -543,18 +544,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaac02ef401427103c14d94d36d4bfd843">ev3_search_servo_plugged_in</a>( port, EXT_PORT__NONE_, 1, &amp;sn, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;Servo motor is found, setting position...\n&quot;</span> );</div>
-<div class="line">        <a class="code" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a>( sn, <span class="stringliteral">&quot;run&quot;</span> );</div>
-<div class="line">        <a class="code" href="group__ev3__servo.html#gaf6949860d6be274fbc5465e6b4e64848">set_servo_position</a>( sn, 100 );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#ga1fc6dedf0b44f34df6ce8144eeb3edbd">set_servo_command_inx</a>( sn, SERVO_RUN );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#ga20eeafc627aefa95069bc9b422b576ce">set_servo_position_sp</a>( sn, 100 );</div>
 <div class="line">        Sleep( 2000 );</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaef67ec99a8b4546ebe2ae0e6d976f42c">get_servo_position</a>( sn, &amp;pos )) {</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#ga21dddcd859ffb0d11dba4003fdf5bab5">get_servo_position_sp</a>( sn, &amp;pos )) {</div>
 <div class="line">            printf( <span class="stringliteral">&quot;position: %d\n&quot;</span>, pos );</div>
 <div class="line">        }</div>
-<div class="line">        <a class="code" href="group__ev3__servo.html#gaf6949860d6be274fbc5465e6b4e64848">set_servo_position</a>( sn, -100 );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#ga20eeafc627aefa95069bc9b422b576ce">set_servo_position_sp</a>( sn, -100 );</div>
 <div class="line">        Sleep( 2000 );</div>
-<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#gaef67ec99a8b4546ebe2ae0e6d976f42c">get_servo_position</a>( sn, &amp;pos )) {</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__servo.html#ga21dddcd859ffb0d11dba4003fdf5bab5">get_servo_position_sp</a>( sn, &amp;pos )) {</div>
 <div class="line">            printf( <span class="stringliteral">&quot;position: %d\n&quot;</span>, pos );</div>
 <div class="line">        }</div>
-<div class="line">        <a class="code" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a>( sn, <span class="stringliteral">&quot;float&quot;</span> );</div>
+<div class="line">        <a class="code" href="group__ev3__servo.html#ga1fc6dedf0b44f34df6ce8144eeb3edbd">set_servo_command_inx</a>( sn, SERVO_FLOAT );</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;Servo motor is NOT found\n&quot;</span> );</div>
 <div class="line">    }</div>
@@ -716,7 +717,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 30 2015 19:52:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 7 2015 16:39:23 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

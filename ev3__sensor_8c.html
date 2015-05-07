@@ -115,6 +115,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a02cd677cf5245b07e95dc3d37d9a5b69"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02cd677cf5245b07e95dc3d37d9a5b69"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_COMMANDS</b>&#160;&#160;&#160;&quot;/sys/class/lego-sensor/sensor&quot; _ID_SPOT &quot;commands&quot;</td></tr>
 <tr class="separator:a02cd677cf5245b07e95dc3d37d9a5b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafb558a2f5ac99ce589d50be88f1881c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafb558a2f5ac99ce589d50be88f1881c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DIRECT</b>&#160;&#160;&#160;&quot;/sys/class/lego-sensor/sensor&quot; _ID_SPOT &quot;direct&quot;</td></tr>
+<tr class="separator:aafb558a2f5ac99ce589d50be88f1881c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eddbd1cc08260c68a7c038c91a12087"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2eddbd1cc08260c68a7c038c91a12087"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_DECIMALS</b>&#160;&#160;&#160;&quot;/sys/class/lego-sensor/sensor&quot; _ID_SPOT &quot;decimals&quot;</td></tr>
 <tr class="separator:a2eddbd1cc08260c68a7c038c91a12087"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +190,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">get_sensor_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "commands" attribute of the sensor.  <a href="group__ev3__sensor.html#gaed77e9a59f24afa2613d7d82c14eb5eb">More...</a><br /></td></tr>
 <tr class="separator:gaed77e9a59f24afa2613d7d82c14eb5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0cdf5bf27e74693d901c12348ee5a718"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga0cdf5bf27e74693d901c12348ee5a718">get_sensor_direct</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga0cdf5bf27e74693d901c12348ee5a718"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "direct" attribute of the sensor.  <a href="group__ev3__sensor.html#ga0cdf5bf27e74693d901c12348ee5a718">More...</a><br /></td></tr>
+<tr class="separator:ga0cdf5bf27e74693d901c12348ee5a718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b0866984893ffe7baeeab359c0df032"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga1b0866984893ffe7baeeab359c0df032">set_sensor_direct</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga1b0866984893ffe7baeeab359c0df032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "direct" attribute of the sensor.  <a href="group__ev3__sensor.html#ga1b0866984893ffe7baeeab359c0df032">More...</a><br /></td></tr>
+<tr class="separator:ga1b0866984893ffe7baeeab359c0df032"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga88ba951c647bb889a37b5508f4fc4d52"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga88ba951c647bb889a37b5508f4fc4d52">get_sensor_decimals</a> (uint8_t sn, dword *buf)</td></tr>
 <tr class="memdesc:ga88ba951c647bb889a37b5508f4fc4d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "decimals" attribute of the sensor.  <a href="group__ev3__sensor.html#ga88ba951c647bb889a37b5508f4fc4d52">More...</a><br /></td></tr>
 <tr class="separator:ga88ba951c647bb889a37b5508f4fc4d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -300,7 +309,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 30 2015 19:52:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 7 2015 16:39:23 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

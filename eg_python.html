@@ -274,15 +274,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ok, sn = <a class="code" href="group__ev3__dc.html#ga4f0b72633cff18f6b85f0f8d53a3df2d">ev3_search_dc_plugged_in</a>( port, EXT_PORT__NONE_ )</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;DC motor is found, run for 5 sec...&#39;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">set_dc_ramp_up_ms</a>( sn, 2000 )</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        set_dc_ramp_up_ms( sn, 2000 )</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="group__ev3__dc.html#ga8e081398e534613c47a73050172ed1d1">set_dc_duty_cycle_sp</a>( sn, 100 )</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a>( sn, <span class="stringliteral">&#39;run&#39;</span> )</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ok, cmd = <a class="code" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a>( sn, 256 )</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ok, cmd = get_dc_command( sn, 256 )</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;command:&#39;</span>, cmd</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        sleep( 5.0 )</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a>( sn, <span class="stringliteral">&#39;coast&#39;</span> )</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        ok, cmd = <a class="code" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a>( sn, 256 )</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        ok, cmd = get_dc_command( sn, 256 )</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;command:&#39;</span>, cmd</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">else</span>:</div>
@@ -376,7 +376,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 30 2015 19:52:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 7 2015 16:39:23 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

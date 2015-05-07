@@ -124,18 +124,27 @@ Macros</h2></td></tr>
 <tr class="memitem:adf724db73bd69d2c575a56079a9cc1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf724db73bd69d2c575a56079a9cc1b8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PORT_NAME</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;port_name&quot;</td></tr>
 <tr class="separator:adf724db73bd69d2c575a56079a9cc1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a938d21c8ae05ccb02308196a11a6fc71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a938d21c8ae05ccb02308196a11a6fc71"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_DOWN_MS</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;ramp_down_ms&quot;</td></tr>
-<tr class="separator:a938d21c8ae05ccb02308196a11a6fc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6475d94929c3db2faa94070e1a6a6500"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6475d94929c3db2faa94070e1a6a6500"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_UP_MS</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;ramp_up_ms&quot;</td></tr>
-<tr class="separator:a6475d94929c3db2faa94070e1a6a6500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01df50d6e84f0752af9d0a87e1ab3f76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01df50d6e84f0752af9d0a87e1ab3f76"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STATE</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;state&quot;</td></tr>
+<tr class="separator:a01df50d6e84f0752af9d0a87e1ab3f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb994ab85cbd1e53b4c620278b036fed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb994ab85cbd1e53b4c620278b036fed"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_COMMAND</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;stop_command&quot;</td></tr>
+<tr class="separator:acb994ab85cbd1e53b4c620278b036fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f94631c67ea52f2059a5efab85c2d48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f94631c67ea52f2059a5efab85c2d48"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_COMMANDS</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;stop_commands&quot;</td></tr>
+<tr class="separator:a1f94631c67ea52f2059a5efab85c2d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba53eb798390ff284cb7b5bb6057098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ba53eb798390ff284cb7b5bb6057098"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_DOWN_SP</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;ramp_down_sp&quot;</td></tr>
+<tr class="separator:a1ba53eb798390ff284cb7b5bb6057098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5fed543d7237698a803beb98817ef42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5fed543d7237698a803beb98817ef42"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_UP_SP</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;ramp_up_sp&quot;</td></tr>
+<tr class="separator:ac5fed543d7237698a803beb98817ef42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b17b08f89504d5ea04a167ed089ec55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b17b08f89504d5ea04a167ed089ec55"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_TIME_SP</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; _ID_SPOT &quot;time_sp&quot;</td></tr>
+<tr class="separator:a9b17b08f89504d5ea04a167ed089ec55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga16e5c0b8a34b649ac0e1dc96116d47d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">get_dc_command</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga16e5c0b8a34b649ac0e1dc96116d47d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "command" attribute of the DC motor.  <a href="group__ev3__dc.html#ga16e5c0b8a34b649ac0e1dc96116d47d2">More...</a><br /></td></tr>
-<tr class="separator:ga16e5c0b8a34b649ac0e1dc96116d47d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6f114152f650a4fa990ece7ea68ef04"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">set_dc_command</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:gaa6f114152f650a4fa990ece7ea68ef04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "command" attribute of the DC motor.  <a href="group__ev3__dc.html#gaa6f114152f650a4fa990ece7ea68ef04">More...</a><br /></td></tr>
 <tr class="separator:gaa6f114152f650a4fa990ece7ea68ef04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,18 +172,33 @@ Functions</h2></td></tr>
 <tr class="memitem:ga014ec1f94f2e403a6e7dfb82f6208745"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga014ec1f94f2e403a6e7dfb82f6208745">get_dc_port_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga014ec1f94f2e403a6e7dfb82f6208745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "port_name" attribute of the DC motor.  <a href="group__ev3__dc.html#ga014ec1f94f2e403a6e7dfb82f6208745">More...</a><br /></td></tr>
 <tr class="separator:ga014ec1f94f2e403a6e7dfb82f6208745"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3f658e7776771111b885353e5389a110"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga3f658e7776771111b885353e5389a110">get_dc_ramp_down_ms</a> (uint8_t sn, dword *buf)</td></tr>
-<tr class="memdesc:ga3f658e7776771111b885353e5389a110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_down_ms" attribute of the DC motor.  <a href="group__ev3__dc.html#ga3f658e7776771111b885353e5389a110">More...</a><br /></td></tr>
-<tr class="separator:ga3f658e7776771111b885353e5389a110"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7480283e8f469edad4a676c1c0220a32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga7480283e8f469edad4a676c1c0220a32">set_dc_ramp_down_ms</a> (uint8_t sn, dword value)</td></tr>
-<tr class="memdesc:ga7480283e8f469edad4a676c1c0220a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_down_ms" attribute of the DC motor.  <a href="group__ev3__dc.html#ga7480283e8f469edad4a676c1c0220a32">More...</a><br /></td></tr>
-<tr class="separator:ga7480283e8f469edad4a676c1c0220a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba75741c04417240de73e346a7a44af7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaba75741c04417240de73e346a7a44af7">get_dc_ramp_up_ms</a> (uint8_t sn, dword *buf)</td></tr>
-<tr class="memdesc:gaba75741c04417240de73e346a7a44af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_up_ms" attribute of the DC motor.  <a href="group__ev3__dc.html#gaba75741c04417240de73e346a7a44af7">More...</a><br /></td></tr>
-<tr class="separator:gaba75741c04417240de73e346a7a44af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga039aa75d73d0dc17e581fed1c0df1dac"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">set_dc_ramp_up_ms</a> (uint8_t sn, dword value)</td></tr>
-<tr class="memdesc:ga039aa75d73d0dc17e581fed1c0df1dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_up_ms" attribute of the DC motor.  <a href="group__ev3__dc.html#ga039aa75d73d0dc17e581fed1c0df1dac">More...</a><br /></td></tr>
-<tr class="separator:ga039aa75d73d0dc17e581fed1c0df1dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02a3244db0f27c1287a9621aecce09fe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">get_dc_state</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga02a3244db0f27c1287a9621aecce09fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "state" attribute of the DC motor.  <a href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">More...</a><br /></td></tr>
+<tr class="separator:ga02a3244db0f27c1287a9621aecce09fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f4271623071649a7dd65149c9536018"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4f4271623071649a7dd65149c9536018">set_dc_stop_command</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga4f4271623071649a7dd65149c9536018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "stop_command" attribute of the DC motor.  <a href="group__ev3__dc.html#ga4f4271623071649a7dd65149c9536018">More...</a><br /></td></tr>
+<tr class="separator:ga4f4271623071649a7dd65149c9536018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeaa87fcc7b0e042068b476cb867393ba"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaeaa87fcc7b0e042068b476cb867393ba">get_dc_stop_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gaeaa87fcc7b0e042068b476cb867393ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "stop_commands" attribute of the DC motor.  <a href="group__ev3__dc.html#gaeaa87fcc7b0e042068b476cb867393ba">More...</a><br /></td></tr>
+<tr class="separator:gaeaa87fcc7b0e042068b476cb867393ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga2d6fd4ffe07f96741bb2ddf841196275">get_dc_ramp_down_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_down_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga2d6fd4ffe07f96741bb2ddf841196275">More...</a><br /></td></tr>
+<tr class="separator:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga780b325ba19be65c26f64641f9b882a0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga780b325ba19be65c26f64641f9b882a0">set_dc_ramp_down_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga780b325ba19be65c26f64641f9b882a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_down_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga780b325ba19be65c26f64641f9b882a0">More...</a><br /></td></tr>
+<tr class="separator:ga780b325ba19be65c26f64641f9b882a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8dde76fac530bf1555b3a45d425db8c7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga8dde76fac530bf1555b3a45d425db8c7">get_dc_ramp_up_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:ga8dde76fac530bf1555b3a45d425db8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "ramp_up_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga8dde76fac530bf1555b3a45d425db8c7">More...</a><br /></td></tr>
+<tr class="separator:ga8dde76fac530bf1555b3a45d425db8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec5d375a7ccc47b426911c977df48ead"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaec5d375a7ccc47b426911c977df48ead">set_dc_ramp_up_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:gaec5d375a7ccc47b426911c977df48ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "ramp_up_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#gaec5d375a7ccc47b426911c977df48ead">More...</a><br /></td></tr>
+<tr class="separator:gaec5d375a7ccc47b426911c977df48ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf81ec817fc45b498a7f0b2a8fcd926d3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaf81ec817fc45b498a7f0b2a8fcd926d3">get_dc_time_sp</a> (uint8_t sn, int *buf)</td></tr>
+<tr class="memdesc:gaf81ec817fc45b498a7f0b2a8fcd926d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get "time_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#gaf81ec817fc45b498a7f0b2a8fcd926d3">More...</a><br /></td></tr>
+<tr class="separator:gaf81ec817fc45b498a7f0b2a8fcd926d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga48e7f94816466416b776c80ae6fc29ac"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga48e7f94816466416b776c80ae6fc29ac">set_dc_time_sp</a> (uint8_t sn, int value)</td></tr>
+<tr class="memdesc:ga48e7f94816466416b776c80ae6fc29ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set "time_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga48e7f94816466416b776c80ae6fc29ac">More...</a><br /></td></tr>
+<tr class="separator:ga48e7f94816466416b776c80ae6fc29ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1a8414ac8a867d797794e297c53118df"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga1a8414ac8a867d797794e297c53118df">ev3_dc_type</a> (uint8_t type_inx)</td></tr>
 <tr class="memdesc:ga1a8414ac8a867d797794e297c53118df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor type.  <a href="group__ev3__dc.html#ga1a8414ac8a867d797794e297c53118df">More...</a><br /></td></tr>
 <tr class="separator:ga1a8414ac8a867d797794e297c53118df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -205,12 +229,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4c947cb11c33df7626bae98004ac8725"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4c947cb11c33df7626bae98004ac8725">ev3_dc_command</a> (uint8_t command_inx)</td></tr>
 <tr class="memdesc:ga4c947cb11c33df7626bae98004ac8725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor command.  <a href="group__ev3__dc.html#ga4c947cb11c33df7626bae98004ac8725">More...</a><br /></td></tr>
 <tr class="separator:ga4c947cb11c33df7626bae98004ac8725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd40bd83bf1189925ce57edb637214a4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gacd40bd83bf1189925ce57edb637214a4">get_dc_command_inx</a> (uint8_t sn, uint8_t type_inx)</td></tr>
-<tr class="memdesc:gacd40bd83bf1189925ce57edb637214a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the DC motor command.  <a href="group__ev3__dc.html#gacd40bd83bf1189925ce57edb637214a4">More...</a><br /></td></tr>
-<tr class="separator:gacd40bd83bf1189925ce57edb637214a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac78d05bb1d96852d7ae25559741a2058"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gac78d05bb1d96852d7ae25559741a2058">set_dc_command_inx</a> (uint8_t sn, uint8_t command_inx)</td></tr>
 <tr class="memdesc:gac78d05bb1d96852d7ae25559741a2058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set command of the DC motor by index.  <a href="group__ev3__dc.html#gac78d05bb1d96852d7ae25559741a2058">More...</a><br /></td></tr>
 <tr class="separator:gac78d05bb1d96852d7ae25559741a2058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa6bea6f6da7ccf87705c6f2500b68a5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaaa6bea6f6da7ccf87705c6f2500b68a5">ev3_dc_stop_command</a> (uint8_t stop_command_inx)</td></tr>
+<tr class="memdesc:gaaa6bea6f6da7ccf87705c6f2500b68a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor stop_command.  <a href="group__ev3__dc.html#gaaa6bea6f6da7ccf87705c6f2500b68a5">More...</a><br /></td></tr>
+<tr class="separator:gaaa6bea6f6da7ccf87705c6f2500b68a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga125d0e9c0ee20881a6b627fdcdbc1e64"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga125d0e9c0ee20881a6b627fdcdbc1e64">set_dc_stop_command_inx</a> (uint8_t sn, uint8_t stop_command_inx)</td></tr>
+<tr class="memdesc:ga125d0e9c0ee20881a6b627fdcdbc1e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set stop_command of the DC motor by index.  <a href="group__ev3__dc.html#ga125d0e9c0ee20881a6b627fdcdbc1e64">More...</a><br /></td></tr>
+<tr class="separator:ga125d0e9c0ee20881a6b627fdcdbc1e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacebc5f11a2aead34564f37d9791e23a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gacebc5f11a2aead34564f37d9791e23a1">ev3_dc_init</a> (void)</td></tr>
 <tr class="memdesc:gacebc5f11a2aead34564f37d9791e23a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected DC motors.  <a href="group__ev3__dc.html#gacebc5f11a2aead34564f37d9791e23a1">More...</a><br /></td></tr>
 <tr class="separator:gacebc5f11a2aead34564f37d9791e23a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,7 +249,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 30 2015 19:52:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 7 2015 16:39:23 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
