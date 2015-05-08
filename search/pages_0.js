@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['examples_20in_20c',['Examples in C',['../eg_c.html',1,'']]],
-  ['examples_20in_20perl',['Examples in Perl',['../eg_perl.html',1,'']]],
-  ['examples_20in_20python',['Examples in Python',['../eg_python.html',1,'']]],
-  ['examples_20in_20ruby',['Examples in Ruby',['../eg_ruby.html',1,'']]]
+  ['lego_20mindstorms_20ev3_20debian_20c_20library_20_2b_20python_2c_20ruby_20and_20perl_20wrappers',['LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers',['../index.html',1,'']]]
 ];

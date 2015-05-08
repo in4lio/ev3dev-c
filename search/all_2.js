@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['examples_20in_20c',['Examples in C',['../eg_c.html',1,'']]],
-  ['examples_20in_20perl',['Examples in Perl',['../eg_perl.html',1,'']]],
-  ['examples_20in_20python',['Examples in Python',['../eg_python.html',1,'']]],
-  ['examples_20in_20ruby',['Examples in Ruby',['../eg_ruby.html',1,'']]],
   ['ev3_2ec',['ev3.c',['../ev3_8c.html',1,'']]],
   ['ev3_2eh',['ev3.h',['../ev3_8h.html',1,'']]],
   ['ev3_5fcompletion',['EV3_COMPLETION',['../group__ev3__link.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a3ec15adf60c4344dd19b1e90c32bfc2a',1,'ev3_link.c']]],
