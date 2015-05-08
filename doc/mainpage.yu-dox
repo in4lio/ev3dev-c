@@ -135,9 +135,9 @@ ev3_dc_init();
 
 if ( ev3_search_dc_plugged_in( OUTPUT_D, EXT_PORT__NONE_, &sn, 0 )) {
 	set_dc_duty_cycle( sn, 100 );
-	set_dc_command( sn, "run" );
+	set_dc_command_inx( sn, DC_RUN_FOREVER );
 	Sleep( 5000 );
-	set_dc_command( sn, "brake" );
+	set_dc_command_inx( sn, DC_STOP );
 }
 set_port_mode_inx( sn_port, OUTPUT_AUTO );
 ev3_uninit();
@@ -157,8 +157,8 @@ set_port_set_device( sn_port, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
 ev3_servo_init();
 
 if ( ev3_search_servo_plugged_in( INPUT_1, EXT_PORT__NONE_, 1, &sn, 0 )) {
-	set_servo_command( sn, "run" );
-	set_servo_position( sn, 100 );
+	set_servo_command_inx( sn, SERVO_RUN );
+	set_servo_position_sp( sn, 100 );
 }
 set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();

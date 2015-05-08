@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     print 'Set mode of the EV3 output port (%s)...' % ( ev3_port_name( port, EXT_PORT__NONE_ ))
     sn_port = ev3_search_port( port, EXT_PORT__NONE_ )
-    set_port_mode_inx( sn_port, LEGOEV3_OUTPUT_PORT_RCX_MOTOR )
+    set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR )
     ok, mode = get_port_mode( sn_port, 256 )
     if ok:
         print '%s: %s' % ( ev3_port_name( port, EXT_PORT__NONE_ ), mode )
@@ -32,23 +32,24 @@ if __name__ == '__main__':
     ok, sn = ev3_search_dc_plugged_in( port, EXT_PORT__NONE_ )
     if ok:
         print 'DC motor is found, run for 5 sec...'
-        set_dc_ramp_up_ms( sn, 2000 )
+        set_dc_ramp_up_sp( sn, 2000 )
         set_dc_duty_cycle_sp( sn, 100 )
-        set_dc_command( sn, 'run' )
-        ok, cmd = get_dc_command( sn, 256 )
+        set_dc_stop_command_inx( sn, DC_COAST )
+        set_dc_command_inx( sn, DC_RUN_FOREVER )
+        ok, state = get_dc_state( sn, 256 )
         if ok:
-            print 'command:', cmd
+            print 'state:', state
         sleep( 5.0 )
-        set_dc_command( sn, 'coast' )
-        ok, cmd = get_dc_command( sn, 256 )
+        set_dc_command_inx( sn, DC_STOP )
+        ok, state = get_dc_state( sn, 256 )
         if ok:
-            print 'command:', cmd
+            print 'state:', state
     else:
         print 'DC motor is NOT found'
 
     sleep( 0.2 )
     print 'Reset mode of the EV3 output port...'
-    set_port_mode_inx( sn_port, LEGOEV3_OUTPUT_PORT_AUTO )
+    set_port_mode_inx( sn_port, OUTPUT_AUTO )
     ok, mode = get_port_mode( sn_port, 256 )
     if ok:
         print '%s: %s' % ( ev3_port_name( port, EXT_PORT__NONE_ ), mode )
