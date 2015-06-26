@@ -47,17 +47,17 @@ int main( void )
 	if ( get_port_mode( sn, s, sizeof( s ))) {
 		printf( "%s: %s\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_ ), s );
 	}
-	if ( get_led_max_brightness( EV3_LED_OUTC, &val )) {
+	if ( get_led_max_brightness( LED_OUTC, &val )) {
 		printf( "max_brightness: %d\n", val );
 	}
-	set_led_brightness( EV3_LED_OUTC, val );
+	set_led_brightness( LED_OUTC, val );
 	Sleep( 2000 );
-	set_led_trigger_inx( EV3_LED_OUTC, TRIGGER_HEARTBEAT );
-	if ( get_led_trigger( EV3_LED_OUTC, s, sizeof( s ))) {
+	set_led_trigger_inx( LED_OUTC, TRIGGER_HEARTBEAT );
+	if ( get_led_trigger( LED_OUTC, s, sizeof( s ))) {
 		printf( "trigger: %s\n", s );
 	}
 	Sleep( 5000 );
-	set_led_trigger_inx( EV3_LED_OUTC, TRIGGER_NONE );
+	set_led_trigger_inx( LED_OUTC, TRIGGER_NONE );
 
 	printf( "Reset mode of the EV3 output port...\n" );
 	set_port_mode_inx( sn, OUTPUT_AUTO );

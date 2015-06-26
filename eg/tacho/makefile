@@ -78,12 +78,12 @@ D_BIN = bin
 D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
-D_OBJ = object
+D_OBJ = $(TOP)/object
 D_OBJ := $(if $(D_PLATFORM), $(D_OBJ)/$(D_PLATFORM), $(D_OBJ))
 
 # -- LIST and MAP directories
-D_MAP = object
-D_LIST = object
+D_MAP = $(TOP)/object
+D_LIST = $(TOP)/object
 
 # -- source code suffix
 E_YU = .yu
