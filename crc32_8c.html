@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Globals</title>
+<title>crc32.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -54,34 +54,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>Globals</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="globals.html"><span>All</span></a></li>
-      <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow4" class="tabs3">
-    <ul class="tablist">
-      <li><a href="globals.html#index_d"><span>d</span></a></li>
-      <li><a href="globals_e.html#index_e"><span>e</span></a></li>
-      <li><a href="globals_g.html#index_g"><span>g</span></a></li>
-      <li><a href="globals_h.html#index_h"><span>h</span></a></li>
-      <li><a href="globals_l.html#index_l"><span>l</span></a></li>
-      <li><a href="globals_m.html#index_m"><span>m</span></a></li>
-      <li><a href="globals_p.html#index_p"><span>p</span></a></li>
-      <li><a href="globals_s.html#index_s"><span>s</span></a></li>
-      <li><a href="globals_t.html#index_t"><span>t</span></a></li>
-      <li class="current"><a href="globals_u.html#index_u"><span>u</span></a></li>
-      <li><a href="globals_w.html#index_w"><span>w</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -96,33 +71,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_f81aa6984f612c32817dba3e623b02be.html">ev3</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">crc32.c File Reference</div>  </div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented functions, variables, defines, enums, and typedefs with links to the documentation:</div>
 
-<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
-<li>udp_ev3_catch_address()
-: <a class="el" href="group__ev3__link.html#gad73342ac8a3f9657d415a9bf6eeaf52b">ev3_link.c</a>
-</li>
-<li>udp_ev3_close()
-: <a class="el" href="group__ev3__link.html#ga177bca1e36e341cb35329f03275ebc6a">ev3_link.c</a>
-</li>
-<li>udp_ev3_listdir()
-: <a class="el" href="group__ev3__link.html#ga0133aa4621026c32f2dfd773ca2eecf3">ev3_link.c</a>
-</li>
-<li>udp_ev3_open()
-: <a class="el" href="group__ev3__link.html#ga3ae55babbf08af092fee670d4e593c62">ev3_link.c</a>
-</li>
-<li>udp_ev3_poweroff()
-: <a class="el" href="group__ev3__link.html#gaf1d0cb000f1636c7e0f71d9893b18c1f">ev3_link.c</a>
-</li>
-<li>udp_ev3_read()
-: <a class="el" href="group__ev3__link.html#gabe0891c5d35da4131cdb82012683261a">ev3_link.c</a>
-</li>
-<li>udp_ev3_write()
-: <a class="el" href="group__ev3__link.html#ga2f6dc70d733f48ae0be35b1aa93631f1">ev3_link.c</a>
-</li>
-</ul>
-</div><!-- contents -->
+<p>Compute the CRC-32.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="crc32_8h_source.html">crc32.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:abe4ec5cd4529cc281389e3481c955727"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe4ec5cd4529cc281389e3481c955727"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>crc32</b> (uint32_t crc, const char *buf, uint32_t len)</td></tr>
+<tr class="separator:abe4ec5cd4529cc281389e3481c955727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Compute the CRC-32. </p>
+<p>(crc32.yu-c) </p><dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>See the LICENSE file. </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Fri Jun 26 2015 19:15:15 by &#160;<a href="http://www.doxygen.org/index.html">

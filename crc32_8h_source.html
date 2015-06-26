@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Globals</title>
+<title>crc32.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -54,34 +54,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>Globals</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="globals.html"><span>All</span></a></li>
-      <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow4" class="tabs3">
-    <ul class="tablist">
-      <li><a href="globals.html#index_d"><span>d</span></a></li>
-      <li><a href="globals_e.html#index_e"><span>e</span></a></li>
-      <li><a href="globals_g.html#index_g"><span>g</span></a></li>
-      <li><a href="globals_h.html#index_h"><span>h</span></a></li>
-      <li><a href="globals_l.html#index_l"><span>l</span></a></li>
-      <li><a href="globals_m.html#index_m"><span>m</span></a></li>
-      <li><a href="globals_p.html#index_p"><span>p</span></a></li>
-      <li><a href="globals_s.html#index_s"><span>s</span></a></li>
-      <li><a href="globals_t.html#index_t"><span>t</span></a></li>
-      <li class="current"><a href="globals_u.html#index_u"><span>u</span></a></li>
-      <li><a href="globals_w.html#index_w"><span>w</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -96,33 +71,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_f81aa6984f612c32817dba3e623b02be.html">ev3</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">crc32.h</div>  </div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented functions, variables, defines, enums, and typedefs with links to the documentation:</div>
-
-<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
-<li>udp_ev3_catch_address()
-: <a class="el" href="group__ev3__link.html#gad73342ac8a3f9657d415a9bf6eeaf52b">ev3_link.c</a>
-</li>
-<li>udp_ev3_close()
-: <a class="el" href="group__ev3__link.html#ga177bca1e36e341cb35329f03275ebc6a">ev3_link.c</a>
-</li>
-<li>udp_ev3_listdir()
-: <a class="el" href="group__ev3__link.html#ga0133aa4621026c32f2dfd773ca2eecf3">ev3_link.c</a>
-</li>
-<li>udp_ev3_open()
-: <a class="el" href="group__ev3__link.html#ga3ae55babbf08af092fee670d4e593c62">ev3_link.c</a>
-</li>
-<li>udp_ev3_poweroff()
-: <a class="el" href="group__ev3__link.html#gaf1d0cb000f1636c7e0f71d9893b18c1f">ev3_link.c</a>
-</li>
-<li>udp_ev3_read()
-: <a class="el" href="group__ev3__link.html#gabe0891c5d35da4131cdb82012683261a">ev3_link.c</a>
-</li>
-<li>udp_ev3_write()
-: <a class="el" href="group__ev3__link.html#ga2f6dc70d733f48ae0be35b1aa93631f1">ev3_link.c</a>
-</li>
-</ul>
-</div><!-- contents -->
+<a href="crc32_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*                 _ _     _</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">     ___ ___ ___ _| |_|___| |_</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    |   |  _   _|   | |  _   _|</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    |  _|_| |___ ___|_|___  |</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    |_|                   |_|</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef CRC32_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define CRC32_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> uint32_t crc32( uint32_t crc, <span class="keyword">const</span> <span class="keywordtype">char</span> *buf, uint32_t len );</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CRC32_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Fri Jun 26 2015 19:15:15 by &#160;<a href="http://www.doxygen.org/index.html">

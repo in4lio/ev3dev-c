@@ -113,17 +113,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">if</span> ( <a name="a5"></a><a class="code" href="group__ev3__port.html#ga1e0ccf5cab9a28007ef064731abc7827">get_port_mode</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;%s: %s\n&quot;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( OUTPUT_C, EXT_PORT__NONE_ ), s );</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a name="a6"></a><a class="code" href="group__ev3__led.html#ga69866a7f129b83604c2de06c8a440f72">get_led_max_brightness</a>( EV3_LED_OUTC, &amp;val )) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a name="a6"></a><a class="code" href="group__ev3__led.html#ga69866a7f129b83604c2de06c8a440f72">get_led_max_brightness</a>( LED_OUTC, &amp;val )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;max_brightness: %d\n&quot;</span>, val );</div>
 <div class="line">    }</div>
-<div class="line">    <a name="a7"></a><a class="code" href="group__ev3__led.html#ga8a210d7f333ee45cdb5516bb6462cd84">set_led_brightness</a>( EV3_LED_OUTC, val );</div>
+<div class="line">    <a name="a7"></a><a class="code" href="group__ev3__led.html#ga8a210d7f333ee45cdb5516bb6462cd84">set_led_brightness</a>( LED_OUTC, val );</div>
 <div class="line">    Sleep( 2000 );</div>
-<div class="line">    <a name="a8"></a><a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( EV3_LED_OUTC, TRIGGER_HEARTBEAT );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a name="a9"></a><a class="code" href="group__ev3__led.html#gaa8ff0a0d6cb0f672a80355791a91889d">get_led_trigger</a>( EV3_LED_OUTC, s, <span class="keyword">sizeof</span>( s ))) {</div>
+<div class="line">    <a name="a8"></a><a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( LED_OUTC, TRIGGER_HEARTBEAT );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a name="a9"></a><a class="code" href="group__ev3__led.html#gaa8ff0a0d6cb0f672a80355791a91889d">get_led_trigger</a>( LED_OUTC, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;trigger: %s\n&quot;</span>, s );</div>
 <div class="line">    }</div>
 <div class="line">    Sleep( 5000 );</div>
-<div class="line">    <a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( EV3_LED_OUTC, TRIGGER_NONE );</div>
+<div class="line">    <a class="code" href="group__ev3__led.html#gac6ec10e8d6e03269ae4527a6b5faf53c">set_led_trigger_inx</a>( LED_OUTC, TRIGGER_NONE );</div>
 <div class="line"></div>
 <div class="line">    printf( <span class="stringliteral">&quot;Reset mode of the EV3 output port...\n&quot;</span> );</div>
 <div class="line">    <a class="code" href="group__ev3__port.html#ga0362b629adfdfcde307f009f7e95f806">set_port_mode_inx</a>( sn, OUTPUT_AUTO );</div>
@@ -138,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 8 2015 14:13:33 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 26 2015 19:15:14 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

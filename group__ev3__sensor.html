@@ -122,12 +122,12 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>HT_NXT_IR_SEEK_V2</b>, 
 <b>HT_NXT_SMUX</b>, 
 <b>HT_SUPER_PRO</b>, 
-<b>LEGO_EV3_UART_30</b>, 
+<b>LEGO_EV3_US</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_32</b>, 
-<b>LEGO_EV3_UART_29</b>, 
+&#160;&#160;<b>LEGO_EV3_GYRO</b>, 
+<b>LEGO_EV3_COLOR</b>, 
 <b>LEGO_EV3_TOUCH</b>, 
-<b>LEGO_EV3_UART_33</b>, 
+<b>LEGO_EV3_IR</b>, 
 <br />
 &#160;&#160;<b>WEDO_HUB</b>, 
 <b>WEDO_MOTION</b>, 
@@ -172,7 +172,7 @@ Enumerations</h2></td></tr>
 <b>HT_NXT_COLOR_ALL</b>, 
 <b>HT_NXT_ANGLE_ANGLE</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_ANGLE_ACCEL</b>, 
+&#160;&#160;<b>HT_NXT_ANGLE_ANGLE_ACC</b>, 
 <b>HT_NXT_ANGLE_SPEED</b>, 
 <b>HT_NXT_ACCEL_ACCEL</b>, 
 <b>HT_NXT_ACCEL_ALL</b>, 
@@ -218,37 +218,37 @@ Enumerations</h2></td></tr>
 <b>HT_SUPER_PRO_AOUT_0</b>, 
 <br />
 &#160;&#160;<b>HT_SUPER_PRO_AOUT_1</b>, 
-<b>LEGO_EV3_UART_30_US_DIST_CM</b>, 
-<b>LEGO_EV3_UART_30_US_DIST_IN</b>, 
-<b>LEGO_EV3_UART_30_US_LISTEN</b>, 
+<b>LEGO_EV3_US_US_DIST_CM</b>, 
+<b>LEGO_EV3_US_US_DIST_IN</b>, 
+<b>LEGO_EV3_US_US_LISTEN</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_30_US_SI_CM</b>, 
-<b>LEGO_EV3_UART_30_US_SI_IN</b>, 
-<b>LEGO_EV3_UART_30_US_DC_CM</b>, 
-<b>LEGO_EV3_UART_30_US_DC_IN</b>, 
+&#160;&#160;<b>LEGO_EV3_US_US_SI_CM</b>, 
+<b>LEGO_EV3_US_US_SI_IN</b>, 
+<b>LEGO_EV3_US_US_DC_CM</b>, 
+<b>LEGO_EV3_US_US_DC_IN</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_32_GYRO_ANG</b>, 
-<b>LEGO_EV3_UART_32_GYRO_RATE</b>, 
-<b>LEGO_EV3_UART_32_GYRO_FAS</b>, 
-<b>LEGO_EV3_UART_32_GYRO_G_AND_A</b>, 
+&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_ANG</b>, 
+<b>LEGO_EV3_GYRO_GYRO_RATE</b>, 
+<b>LEGO_EV3_GYRO_GYRO_FAS</b>, 
+<b>LEGO_EV3_GYRO_GYRO_G_AND_A</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_32_GYRO_CAL</b>, 
-<b>LEGO_EV3_UART_29_COL_REFLECT</b>, 
-<b>LEGO_EV3_UART_29_COL_AMBIENT</b>, 
-<b>LEGO_EV3_UART_29_COL_COLOR</b>, 
+&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_CAL</b>, 
+<b>LEGO_EV3_COLOR_COL_REFLECT</b>, 
+<b>LEGO_EV3_COLOR_COL_AMBIENT</b>, 
+<b>LEGO_EV3_COLOR_COL_COLOR</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_29_REF_RAW</b>, 
-<b>LEGO_EV3_UART_29_RGB_RAW</b>, 
-<b>LEGO_EV3_UART_29_COL_CAL</b>, 
+&#160;&#160;<b>LEGO_EV3_COLOR_REF_RAW</b>, 
+<b>LEGO_EV3_COLOR_RGB_RAW</b>, 
+<b>LEGO_EV3_COLOR_COL_CAL</b>, 
 <b>LEGO_EV3_TOUCH_TOUCH</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_33_IR_PROX</b>, 
-<b>LEGO_EV3_UART_33_IR_SEEK</b>, 
-<b>LEGO_EV3_UART_33_IR_REMOTE</b>, 
-<b>LEGO_EV3_UART_33_IR_REM_A</b>, 
+&#160;&#160;<b>LEGO_EV3_IR_IR_PROX</b>, 
+<b>LEGO_EV3_IR_IR_SEEK</b>, 
+<b>LEGO_EV3_IR_IR_REMOTE</b>, 
+<b>LEGO_EV3_IR_IR_REM_A</b>, 
 <br />
-&#160;&#160;<b>LEGO_EV3_UART_33_IR_S_ALT</b>, 
-<b>LEGO_EV3_UART_33_IR_CAL</b>, 
+&#160;&#160;<b>LEGO_EV3_IR_IR_S_ALT</b>, 
+<b>LEGO_EV3_IR_IR_CAL</b>, 
 <b>WEDO_HUB_HUB</b>, 
 <b>WEDO_MOTION_PROX</b>, 
 <br />
@@ -321,50 +321,51 @@ Enumerations</h2></td></tr>
 <tr class="memitem:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>SENSOR_COMMAND__NONE_</b> = 0, 
 <b>HT_NXT_ANGLE_RESET</b>, 
+<b>HT_NXT_ANGLE_CAL</b>, 
 <b>HT_NXT_SMUX_HALT</b>, 
-<b>HT_NXT_SMUX_DETECT</b>, 
 <br />
-&#160;&#160;<b>HT_NXT_SMUX_RUN</b>, 
+&#160;&#160;<b>HT_NXT_SMUX_DETECT</b>, 
+<b>HT_NXT_SMUX_RUN</b>, 
 <b>WEDO_HUB_OUT_OFF</b>, 
 <b>WEDO_HUB_OUT_ON</b>, 
-<b>WEDO_HUB_CLEAR_ERR</b>, 
 <br />
-&#160;&#160;<b>MI_XG1300L_RESET</b>, 
+&#160;&#160;<b>WEDO_HUB_CLEAR_ERR</b>, 
+<b>MI_XG1300L_RESET</b>, 
 <b>MI_XG1300L_ACCEL_2G</b>, 
 <b>MI_XG1300L_ACCEL_4G</b>, 
-<b>MI_XG1300L_ACCEL_8G</b>, 
 <br />
-&#160;&#160;<b>MS_ABSOLUTE_IMU_BEGIN_COMP_CAL</b>, 
+&#160;&#160;<b>MI_XG1300L_ACCEL_8G</b>, 
+<b>MS_ABSOLUTE_IMU_BEGIN_COMP_CAL</b>, 
 <b>MS_ABSOLUTE_IMU_END_COMP_CAL</b>, 
 <b>MS_ABSOLUTE_IMU_ACCEL_2G</b>, 
-<b>MS_ABSOLUTE_IMU_ACCEL_4G</b>, 
 <br />
-&#160;&#160;<b>MS_ABSOLUTE_IMU_ACCEL_8G</b>, 
+&#160;&#160;<b>MS_ABSOLUTE_IMU_ACCEL_4G</b>, 
+<b>MS_ABSOLUTE_IMU_ACCEL_8G</b>, 
 <b>MS_ABSOLUTE_IMU_ACCEL_16G</b>, 
 <b>MS_ANGLE_RESET</b>, 
-<b>MS_LIGHT_ARRAY_CAL_WHITE</b>, 
 <br />
-&#160;&#160;<b>MS_LIGHT_ARRAY_CAL_BLACK</b>, 
+&#160;&#160;<b>MS_LIGHT_ARRAY_CAL_WHITE</b>, 
+<b>MS_LIGHT_ARRAY_CAL_BLACK</b>, 
 <b>MS_LIGHT_ARRAY_SLEEP</b>, 
 <b>MS_LIGHT_ARRAY_WAKE</b>, 
-<b>MS_LIGHT_ARRAY_60HZ</b>, 
 <br />
-&#160;&#160;<b>MS_LIGHT_ARRAY_50HZ</b>, 
+&#160;&#160;<b>MS_LIGHT_ARRAY_60HZ</b>, 
+<b>MS_LIGHT_ARRAY_50HZ</b>, 
 <b>MS_LIGHT_ARRAY_UNIVERSAL</b>, 
 <b>MS_LINE_LEADER_CAL_WHITE</b>, 
-<b>MS_LINE_LEADER_CAL_BLACK</b>, 
 <br />
-&#160;&#160;<b>MS_LINE_LEADER_SLEEP</b>, 
+&#160;&#160;<b>MS_LINE_LEADER_CAL_BLACK</b>, 
+<b>MS_LINE_LEADER_SLEEP</b>, 
 <b>MS_LINE_LEADER_WAKE</b>, 
 <b>MS_LINE_LEADER_INV_COL</b>, 
-<b>MS_LINE_LEADER_RST_COL</b>, 
 <br />
-&#160;&#160;<b>MS_LINE_LEADER_SNAP</b>, 
+&#160;&#160;<b>MS_LINE_LEADER_RST_COL</b>, 
+<b>MS_LINE_LEADER_SNAP</b>, 
 <b>MS_LINE_LEADER_60HZ</b>, 
 <b>MS_LINE_LEADER_50HZ</b>, 
-<b>MS_LINE_LEADER_UNIVERSAL</b>, 
 <br />
-&#160;&#160;<a class="el" href="group__ev3__sensor.html#gga16af7b253440dadd46a80a4b9fddba4dabd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
+&#160;&#160;<b>MS_LINE_LEADER_UNIVERSAL</b>, 
+<a class="el" href="group__ev3__sensor.html#gga16af7b253440dadd46a80a4b9fddba4dabd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
 <b>SENSOR_COMMAND__UNKNOWN_</b> = SENSOR_COMMAND__COUNT_
 <br />
  }</td></tr>
@@ -2135,7 +2136,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 8 2015 14:13:34 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 26 2015 19:15:15 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
