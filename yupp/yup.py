@@ -16,7 +16,7 @@ HOLDER      = 'Vitaly Kravtsov'
 EMAIL       = 'in4lio@gmail.com'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.8b2'
+VERSION     = '0.8b3'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -2485,7 +2485,7 @@ class SKIP( BASE_MARK ):
 #   Built-in functions and consts
 #   -----------------------------------
 
-import string, operator, math, datetime                                                                                #pylint: disable=W0402
+import string, operator, math, datetime, zlib                                                                          #pylint: disable=W0402
 
 SOURCE_EMPTY = '<null>'
 
@@ -2530,6 +2530,7 @@ builtin.update({
     }),
     'car': lambda l : LIST( l[ :1 ]),
     'cdr': lambda l : LIST( l[ 1: ]),
+    'crc32': lambda val : ( zlib.crc32( str( val )) & 0xffffffff ),
     'dec': lambda val : ( val - 1 ),
     'getslice': lambda seq, *x : LIST( operator.getitem( seq, slice( *x ))),
     'hex': hex,

@@ -76,10 +76,21 @@ uint8_t get_($CLASS_ID)_type_inx( uint8_t sn )
 
 	if ( !get_($CLASS_ID)_($unq CLASS_TYPE_ATTR_NAME)( sn, buf, sizeof( buf ))) return ( ($upper CLASS_ID)_TYPE__NONE_ );
 
-	($each-CLASS_TYPE \i.]
-		if ( strcmp( buf, ($i CLASS_TYPE_NAME) ) == 0 ) return ($upper ($i CLASS_TYPE_ID));
+	($if ($ge ($len CLASS_TYPE_NAME) _USE_CRC32_FROM) ]
+		switch ( crc32( 0, buf, strlen( buf ))) {
+		($each-CLASS_TYPE \i.]
+		case ($hex ($crc32 ($unq ($i CLASS_TYPE_NAME)))):  /* ($i CLASS_TYPE_NAME) */
+			return ($upper ($i CLASS_TYPE_ID));
 
+		[ )
+		}
+	[ \else ]
+		($each-CLASS_TYPE \i.]
+			if ( strcmp( buf, ($i CLASS_TYPE_NAME) ) == 0 ) return ($upper ($i CLASS_TYPE_ID));
+
+		[ )
 	[ )
+
 	return ( ($upper CLASS_ID)_TYPE__UNKNOWN_ );
 }
 

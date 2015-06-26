@@ -30,3 +30,6 @@
 
 ($! names of comman stop commands of class )
 ($set CLASS_STOP_COMMANDS ($() ? ($isatom TYPE_STOP_COMMANDS) | TYPE_STOP_COMMANDS))
+
+($! use crc32() instead strcmp() if the number of strings equal to or greater than the specified )
+($set _USE_CRC32_FROM 7)

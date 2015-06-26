@@ -30,8 +30,8 @@
  *  \brief Identifiers of LEDs.
  */
 enum {
-	($LED_ID \i.]
-		($upper i),
+	($each-LED \i.]
+		($i LED_ID),
 
 	[ )
 	LED__COUNT_  /**< Count of EV3 LEDs. */

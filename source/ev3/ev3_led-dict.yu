@@ -7,16 +7,16 @@
 ($set LED_PATH "/sys/class/leds")
 
 ($dict LED
-	(` LED_NAME           )
+	(` LED_NAME                   LED_ID           )
 	(`
-	(  "ev3:green:left"   )
-	(  "ev3:green:right"  )
-	(  "ev3:red:left"     )
-	(  "ev3:red:right"    )
-	(  "ev3::outA"        )
-	(  "ev3::outB"        )
-	(  "ev3::outC"        )
-	(  "ev3::outD"        )
+	(  "ev3-left1:green:ev3dev"   EV3_LEFT_GREEN   )
+	(  "ev3-right1:green:ev3dev"  EV3_RIGHT_GREEN  )
+	(  "ev3-left0:red:ev3dev"     EV3_LEFT_RED     )
+	(  "ev3-right0:red:ev3dev"    EV3_RIGHT_RED    )
+	(  "outA::ev3dev"             LED_OUTA         )
+	(  "outB::ev3dev"             LED_OUTB         )
+	(  "outC::ev3dev"             LED_OUTC         )
+	(  "outD::ev3dev"             LED_OUTD         )
 	)
 )
 
@@ -57,7 +57,5 @@
 	)
 )
 
-($set LED_ID1 ($each-LED \i.($replace,,($unq ($i LED_NAME)),,::,,_LED_)))
-($set LED_ID ($each-LED \i.($replace,,($i LED_ID1),,:,,_)))
 ($set LED_ATTR_ID ($each-LED_ATTR \i.($unq ($i LED_ATTR_NAME))))
 ($set LED_TRIGGER_ID ($each-LED_TRIGGER \i.($replace,,($unq ($i LED_TRIGGER_NAME)),,-,,_)))
