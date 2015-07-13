@@ -24,6 +24,11 @@
 ($set if \cond.\then:[].\else:[].($ then ? cond | else))
 
 ($!
+	($unless cond [leg_F] [leg_T])
+)
+($set unless \cond.\then:[].\else:[].($ else ? cond | then))
+
+($!
 	($unfold N [val_0] [val_1] [...] \n.(val_($n)))
 )
 ($set unfold \count.\...]

@@ -45,15 +45,16 @@ int main( void )
 	for ( i = 0; i < PORT_DESC__LIMIT_; i++ ) {
 		if ( ev3_port[ i ].type_inx != PORT_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_port_type( ev3_port[ i ].type_inx ));
-			printf( "  port = %s\n", ev3_port_name( ev3_port[ i ].port, ev3_port[ i ].extport ));
+			printf( "  port = %s\n", ev3_port_port_name( i, s ));
 			if ( get_port_mode( i, s, sizeof( s ))) {
 				printf( "  mode = %s\n", s );
 			}
 		}
 	}
 	sn = ev3_search_port( INPUT_2, EXT_PORT__NONE_ );
+	printf( "Port '%s'\n", ev3_port_name( INPUT_2, EXT_PORT__NONE_, 0, s ));
 	if ( get_port_modes( sn, s, sizeof( s ))) {
-		printf( "Port '%s' modes: %s\n", ev3_port_name( INPUT_2, EXT_PORT__NONE_ ), s );
+		printf( "Modes: %s\n", s );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

@@ -109,7 +109,7 @@ int main( void )
 	for ( i = 0; i < SENSOR_DESC__LIMIT_; i++ ) {
 		if ( ev3_sensor[ i ].type_inx != SENSOR_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_sensor_type( ev3_sensor[ i ].type_inx ));
-			printf( "  port = %s\n", ev3_port_name( ev3_sensor[ i ].port, ev3_sensor[ i ].extport ));
+			printf( "  port = %s\n", ev3_sensor_port_name( i, s ));
 			if ( get_sensor_mode( i, s, sizeof( s ))) {
 				printf( "  mode = %s\n", s );
 			}

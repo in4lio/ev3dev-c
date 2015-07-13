@@ -33,71 +33,50 @@
 /**
  *  \brief Identifiers of EV3 ports and extended ports.
  */
-enum {
-	EV3_PORT__NONE_ = 0,  /* XXX: memset( 0 ) is used */
-	EXT_PORT__NONE_ = EV3_PORT__NONE_,
+#define EV3_PORT__NONE_  0  /* XXX: 0 is used */
+#define EXT_PORT__NONE_  EV3_PORT__NONE_
 
-	($each-CLASS_TYPE \i.]
-		($upper ($i CLASS_TYPE_ID))__BASE_,
-		($($range ($len ($i PORT_SUFS))) \ii.]
-			($set suf ($ii ($i PORT_SUFS)))
-			($upper ($i CLASS_TYPE_ID))_($suf) = ($upper ($i CLASS_TYPE_ID))__BASE_ + ($ii),
-			($if ($i PORT_ID_SHORT) ]
-				($upper ($i PORT_ID_SHORT))_($suf) = ($upper ($i CLASS_TYPE_ID))_($suf),
-			[ )
+($each-PORT_SLICE \i.]
+	($set _SLICE_ID ($upper ($i PORT_SLICE_ID)))
 
+	($if ($i PORT_SLICE_ID) ]
+		($set _SLICE_OFS ($sub ($ord ($unq ($i PORT_SLICE_FIRST))) ($ord ($unq ($0 ($i PORT_SLICE_RANGE))))))
+		($if _SLICE_OFS ]
+			#define ($_SLICE_ID)__OFFSET_  ($_SLICE_OFS)
 		[ )
-
-	[ )
-};
-
-($CLASS_ATTR_INDEX \attr.]
-
-	($each-CLASS_TYPE \i.]
-		($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
-			($if ($i PORT_ID_SHORT) ]
-				#define ($upper ($i PORT_ID_SHORT))_($upper ($_VALUE_TO_ID ii))  ($upper ($i CLASS_TYPE_ID))_($upper ($_VALUE_TO_ID ii))
-			[ )
-
+		($($range ($len ($i PORT_SLICE_RANGE))) \ii.]
+			($set _SLICE_SUF ($ii ($i PORT_SLICE_RANGE)))
+			#define ($_SLICE_ID)_($unq _SLICE_SUF)  ($qs ($chr ($add ($ord ($unq _SLICE_SUF)) _SLICE_OFS)))
 		[ )
-
 	[ )
-
-[ )
-
-($each-CLASS_TYPE \i.]
-
-	/**
-	 *  \brief Count of ($unq ($i CLASS_TYPE_NAME))s.
-	 */
-	#define ($upper ($i CLASS_TYPE_ID))__COUNT_  ($len ($i PORT_SUFS))
-
 [ )
 
 /**
  *  \brief Search of a port sequence number by the EV3 port and the extended port.
- *  \param port EV3 port.
- *  \param extport Extended port.
+ *  \param port EV3 port index.
+ *  \param extport Extended port index.
  *  \return Port sequence number.
  */
 ($h-extern) uint8_t ev3_search_port( uint8_t port, uint8_t extport );
 
 /**
- *  \brief Get indexes of the EV3 port and the extended port from the port name.
+ *  \brief Parse name of the EV3 port.
  *  \param name Port name.
- *  \param type_inx Port type.
+ *  \param port Buffer for the EV3 port index.
  *  \param extport Buffer for the extended port index.
- *  \return EV3 port index.
+ *  \param addr Buffer for the address.
  */
-($h-extern) uint8_t ev3_port_inx( uint8_t type_inx, const char *name, uint8_t *extport );
+($h-extern) void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr );
 
 /**
- *  \brief Get name of the specified port.
+ *  \brief Assemble name of the EV3 port.
  *  \param port EV3 port index.
  *  \param extport Extended port index.
+ *  \param addr Address.
+ *  \param[out] buf Buffer for result.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_port_name( uint8_t port, uint8_t extport );
+($h-extern) char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf );
 
 /** \} */
 

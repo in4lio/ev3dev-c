@@ -9,6 +9,7 @@
 ($set CLASS_ID [servo])
 ($set CLASS_TITLE "servo motor")
 
+//!!!
 ($set SERVO_CHANNEL_PREF "sv")
 
 ($set TYPE_COMMANDS ( "run" "float" ))
@@ -49,9 +50,9 @@
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
-	(  type_inx       uint8_t          "type"              )
+	(  type_inx       inx_t            "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "channel"           )
+	(  addr           uint8_t          "address"           )
 	)
 )

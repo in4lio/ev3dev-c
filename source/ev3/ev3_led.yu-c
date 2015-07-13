@@ -52,7 +52,7 @@
 
 [ )
 
-const char *ev3_led_trigger( uint8_t trigger_inx )
+const char *ev3_led_trigger( inx_t trigger_inx )
 {
 	switch ( trigger_inx ) {
 	($each-LED_TRIGGER \i.]
@@ -64,7 +64,7 @@ const char *ev3_led_trigger( uint8_t trigger_inx )
 	return ( STR_unknown_ );
 }
 
-uint8_t get_led_trigger_inx( uint8_t inx )
+inx_t get_led_trigger_inx( uint8_t inx )
 {
 	char buf[ 256 ];
 	char *p;
@@ -81,7 +81,7 @@ uint8_t get_led_trigger_inx( uint8_t inx )
 	return ( TRIGGER__COUNT_ );
 }
 
-size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx )
+size_t set_led_trigger_inx( uint8_t inx, inx_t trigger_inx )
 {
 	return set_led_trigger( inx, ( char* ) ev3_led_trigger( trigger_inx ));
 }

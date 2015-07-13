@@ -31,8 +31,8 @@
 
 int main( void )
 {
-	char s[ 256 ];
-	uint8_t sn;
+	char s[ 256 ], name_port[ 16 ];
+	uint8_t sn_port;
 	uint8_t val = 0;
 
 	printf( "Waiting the EV3 brick online...\n" );
@@ -41,11 +41,11 @@ int main( void )
 	printf( "*** ( EV3 ) Hello! ***\n" );
 	ev3_port_init();
 
-	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_ ));
-	sn = ev3_search_port( OUTPUT_C, EXT_PORT__NONE_ );
-	set_port_mode_inx( sn, OUTPUT_RCX_LED );
-	if ( get_port_mode( sn, s, sizeof( s ))) {
-		printf( "%s: %s\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_ ), s );
+	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_, 0, name_port ));
+	sn_port = ev3_search_port( OUTPUT_C, EXT_PORT__NONE_ );
+	set_port_mode_inx( sn_port, OUTPUT_RCX_LED );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", name_port, s );
 	}
 	if ( get_led_max_brightness( LED_OUTC, &val )) {
 		printf( "max_brightness: %d\n", val );
@@ -60,9 +60,9 @@ int main( void )
 	set_led_trigger_inx( LED_OUTC, TRIGGER_NONE );
 
 	printf( "Reset mode of the EV3 output port...\n" );
-	set_port_mode_inx( sn, OUTPUT_AUTO );
-	if ( get_port_mode( sn, s, sizeof( s ))) {
-		printf( "%s: %s\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_ ), s );
+	set_port_mode_inx( sn_port, OUTPUT_AUTO );
+	if ( get_port_mode( sn_port, s, sizeof( s ))) {
+		printf( "%s: %s\n", name_port, s );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

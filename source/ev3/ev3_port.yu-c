@@ -23,110 +23,66 @@
 ($import "ev3_class-dict.yu")
 ($import "ev3_class.yu")
 
-($each-CLASS_TYPE \i.]
+($set _SLICE_PREF ($each-PORT_SLICE \i.($upper ($unq ($i PORT_SLICE_PREF)))))
+($set _SLICE_ID   ($each-PORT_SLICE \i.($upper ($i PORT_SLICE_ID))))
+($set _SLICE_OFS  ($each-PORT_SLICE \i.($sub ($ord ($unq ($i PORT_SLICE_FIRST))) ($ord ($unq ($0 ($i PORT_SLICE_RANGE)))))))
 
-	($set j ($index CLASS_TYPE_NAME ($i PORT_PARENT)) ? ($i PORT_PARENT) | i)  ($! parent index )
-
-	static const char * const ($i CLASS_TYPE_ID)_name[] = {
-		($($j PORT_SUFS) \jj.]
-			($if ($i PORT_PARENT) ]
-				($($i PORT_SUFS) \ii.]
-					($q,,($unq ($j PORT_PREF))($jj):($unq ($i PORT_PREF))($ii)),
-
-				[ )
-			[ \else ]
-				($q,,($unq ($j PORT_PREF))($jj)),
-			[ )
-
-		[ )
-	};
-
-	#define ($upper ($i CLASS_TYPE_ID))_PARENT_LEN  ($add ($len,,($unq ($j PORT_PREF))) 1)
-	#define ($upper ($i CLASS_TYPE_ID))_LEN  ($add ($len,,($unq ($i PORT_PREF))) 1)
-	($if ($i PORT_PARENT) ]
-		#define ($upper ($i CLASS_TYPE_ID))_FULL_LEN  ( ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + ($upper ($i CLASS_TYPE_ID))_LEN + 1 )
-	[ \else ]
-		#define ($upper ($i CLASS_TYPE_ID))_FULL_LEN  ($upper ($i CLASS_TYPE_ID))_LEN
-	[ )
-
-	static uint8_t ($i CLASS_TYPE_ID)_inx( uint8_t type_inx, const char *name )
-	{
-		if (( type_inx != ($upper ($i CLASS_TYPE_ID)) ) && ( type_inx != PORT_TYPE__NONE_ )) return ( EV3_PORT__NONE_ );
-
-		if ( strncmp( name, ($i PORT_PREF), ($upper ($i CLASS_TYPE_ID))_LEN - 1 ) == 0 ) {
-			name += ($upper ($i CLASS_TYPE_ID))_LEN - 1;
-			switch ( *name ) {
-			($($i PORT_SUFS) \ii.]
-				case ($qs ii):
-					return ($upper ($i CLASS_TYPE_ID))_($ii);
-
-			[ )
-			}
-		}
-		return ( EV3_PORT__NONE_ );
-	}
+($each-PORT_SLICE \i.]
+	#define ($i _SLICE_PREF)_PREF_LEN  ($len ($i _SLICE_PREF))
 
 [ )
 
-static uint8_t __search_extport( uint8_t port )
+void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr )
 {
-	uint8_t sn;
-
-	for ( sn = 0; sn < PORT_DESC__LIMIT_; sn++ ) {
-		if (( ev3_port[ sn ].port == port ) && ( ev3_port[ sn ].extport != EXT_PORT__NONE_ )) {
-			return ( ev3_port[ sn ].type_inx );
-		}
-		++sn;
-	}
-	return ( PORT_TYPE__NONE_ );
-}
-
-uint8_t ev3_port_inx( uint8_t type_inx, const char *name, uint8_t *extport )
-{
-	uint8_t port = EV3_PORT__NONE_;
-
+	*port = EV3_PORT__NONE_;
 	*extport = EXT_PORT__NONE_;
-	($each-CLASS_TYPE \i.]
+	*addr = 0;
 
-		($set j  ($index CLASS_TYPE_NAME ($i PORT_PARENT)) ? ($i PORT_PARENT) | i)  ($! parent index )
-
-		if ( strlen( name ) == ($upper ($i CLASS_TYPE_ID))_FULL_LEN ) {
-			if ( port == EV3_PORT__NONE_ ) port = ($j CLASS_TYPE_ID)_inx( type_inx, name );
-			if ( port != EV3_PORT__NONE_ ) {
-				($if ($i PORT_PARENT) ]
-					if ( type_inx == PORT_TYPE__NONE_ ) type_inx = __search_extport( port );
-					*extport = ($i CLASS_TYPE_ID)_inx( type_inx, name + ($upper ($i CLASS_TYPE_ID))_PARENT_LEN + 1 );
-					if ( *extport != EXT_PORT__NONE_ ) {
-						return ( port );
-					}
-				[ \else ]
-					return ( port );
-				[ )
-			}
-		}
-
+	($set parse_slice \parent.\indent.($each-PORT_SLICE \i.]
+		($if ($eq parent ($i PORT_SLICE_PARENT)) ]
+			($set _ ($mul ($TAB) indent))
+			($_)if ( strncmp( name, ($i PORT_SLICE_PREF), ($i _SLICE_PREF)_PREF_LEN ) == 0 ) {
+			($_)	/* ($i PORT_SLICE_PREF) */
+			($_)	name += ($i _SLICE_PREF)_PREF_LEN;
+			($_)	*($i PORT_SLICE_DESC) = ($if ($isdigit ($0 ($i PORT_SLICE_RANGE)))
+			,,strtoul( name, &name, 0 ),,*name++)($if ($i _SLICE_OFS),,($SPACE)+ ($i _SLICE_ID)__OFFSET_);
+			($_)	if ( *name != ':' ) return;
+			($_)	++name;
+			($parse_slice ($i PORT_SLICE_PREF) ($inc indent))
+			($_)	return;
+			($_)}
+		[ )
 	[ )
- 	return ( port );
+	)
+
+	($parse_slice "" 0)
+	return;
 }
 
-const char *ev3_port_name( uint8_t port, uint8_t extport )
+char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 {
-	($each-CLASS_TYPE \i.]
-		($if ($i PORT_PARENT) ]
-			($set j ($index CLASS_TYPE_NAME ($i PORT_PARENT)))  ($! parent index )
-			if (( extport >= ($upper ($i CLASS_TYPE_ID))__BASE_ ) && ( extport < ($upper ($i CLASS_TYPE_ID))__BASE_ + ($upper ($i CLASS_TYPE_ID))__COUNT_ )
-			 && ( port >= ($upper ($j CLASS_TYPE_ID))__BASE_ ) && ( port < ($upper ($j CLASS_TYPE_ID))__BASE_ + ($upper ($j CLASS_TYPE_ID))__COUNT_ )) {
-				return ($i CLASS_TYPE_ID)_name[ ( port - ($upper ($j CLASS_TYPE_ID))__BASE_ ) * ($upper ($i CLASS_TYPE_ID))__COUNT_ + ( extport - ($upper ($i CLASS_TYPE_ID))__BASE_ ) ];
-			}
-		[ \else ]
-			if (( extport == EXT_PORT__NONE_ )
-			 && ( port >= ($upper ($i CLASS_TYPE_ID))__BASE_ ) && ( port < ($upper ($i CLASS_TYPE_ID))__BASE_ + ($upper ($i CLASS_TYPE_ID))__COUNT_ )) {
-				return ($i CLASS_TYPE_ID)_name[ port - ($upper ($i CLASS_TYPE_ID))__BASE_ ];
-			}
-		[ )
+	char *p = buf;
 
+	($set add_slice \parent.\indent.($each-PORT_SLICE \i.]
+		($if ($eq parent ($i PORT_SLICE_PARENT)) ]
+			($set _ ($mul ($TAB) indent))
+			($set l,,($i _SLICE_PREF)_PREF_LEN($if ($unq parent),,($SPACE)+ 1))
+			($set d,,($i PORT_SLICE_DESC)($if ($i _SLICE_OFS),,($SPACE)- ($i _SLICE_ID)__OFFSET_))
+			($_)if (( ($i PORT_SLICE_DESC) >= ($if ($i _SLICE_ID),,($i _SLICE_ID)_)($unq ($0 ($i PORT_SLICE_RANGE))) ) && ( ($i PORT_SLICE_DESC) <= ($if ($i _SLICE_ID),,($i _SLICE_ID)_)($unq ($-1 ($i PORT_SLICE_RANGE))) )) {
+			($_)	memcpy( p, ($if ($unq parent),,":")($i PORT_SLICE_PREF), ($l) );
+			($_)	p += ($l);
+			($_)	($if ($isdigit ($0 ($i PORT_SLICE_RANGE))),,p = modp_uitoa10( ($d), p ),,*p++ = ($d));
+			($add_slice ($i PORT_SLICE_PREF) ($inc indent))
+			($_)	*p = '\x00';
+			($_)	return ( buf );
+			($_)}
+		[ )
 	[ )
-	return ( STR_unknown_ );
+	)
+
+	($add_slice "" 0)
+	strcpy( buf, STR_unknown_ );
+	return ( buf );
 }
 
 uint8_t ev3_search_port( uint8_t port, uint8_t extport )
@@ -136,4 +92,3 @@ uint8_t ev3_search_port( uint8_t port, uint8_t extport )
 	ev3_search_port_plugged_in( port, extport, &sn, 0 );
 	return ( sn );
 }
-

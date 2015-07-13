@@ -10,13 +10,13 @@
 ($set CLASS_TITLE "EV3 port")
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME        PORT_ID_SHORT  PORT_PARENT           PORT_PREF  PORT_SUFS              CLASS_TYPE_MODES  )
+	(` CLASS_TYPE_NAME        CLASS_TYPE_ID_SHORT  CLASS_TYPE_MODES  )
 	(`
-	(  "ht-nxt-smux-port"     (`)            "legoev3-input-port"  "mux"      (1 2 3 4)              ( "analog" "i2c" ) )
-	(  "legoev3-input-port"   input          (`)                   "in"       (1 2 3 4)              ( "auto" "nxt-analog" "nxt-color" "nxt-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw" ) )
-	(  "legoev3-output-port"  output         (`)                   "out"      ((`A) (`B) (`C) (`D))  ( "auto" "ev3-tacho-motor" "rcx-motor" "rcx-led" "raw" ) )
-	(  "ms-ev3-smux-port"     (`)            "legoev3-input-port"  "mux"      (1 2 3 4)              ( "uart" "analog"  ) )
-	(  "wedo-port"            (`)            "legoev3-input-port"  "wedo"     (1 2 3 4)              ( "auto" ) )
+	(  "ht-nxt-smux-port"     ht_nxt_smux          ( "analog" "i2c" ) )
+	(  "legoev3-input-port"   input                ( "auto" "nxt-analog" "nxt-color" "nxt-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw" ) )
+	(  "legoev3-output-port"  output               ( "auto" "ev3-tacho-motor" "rcx-motor" "rcx-led" "raw" ) )
+	(  "ms-ev3-smux-port"     ms_ev3_smux          ( "uart" "analog" ) )
+	(  "wedo-port"            wedo                 ( "auto" ) )
 	)
 )
 
@@ -45,8 +45,21 @@
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
-	(  type_inx       uint8_t          "type"              )
+	(  type_inx       inx_t            "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
+	(  addr           uint8_t          "address"           )
+	)
+)
+
+($dict PORT_SLICE
+	(` PORT_SLICE_PREF  PORT_SLICE_RANGE                   PORT_SLICE_PARENT  PORT_SLICE_ID  PORT_SLICE_DESC  PORT_SLICE_FIRST  )
+	(`
+	(  "in"             ('1' '2' '3' '4')                  ""                 input          port             '1'               )
+	(  "out"            ('A' 'B' 'C' 'D')                  ""                 output         port             'A'               )
+	(  "i2c"            (1 254)                            "in"               (`)            addr             1                 )
+	(  "mux"            ('1' '2' '3' '4')                  "i2c"              mux            extport          '1'               )
+	(  "sv"             ('1' '2' '3' '4' '5' '6' '7' '8')  "i2c"              servo          extport          'A'               )
+	(  "wedo"           ('1' '2' '3' '4')                  "in"               wedo           extport          'a'               )
 	)
 )

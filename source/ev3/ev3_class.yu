@@ -58,7 +58,7 @@
 
 [ )
 
-const char *ev3_($CLASS_ID)_type( uint8_t type_inx )
+const char *ev3_($CLASS_ID)_type( inx_t type_inx )
 {
 	switch ( type_inx ) {
 	($each-CLASS_TYPE \i.]
@@ -70,7 +70,7 @@ const char *ev3_($CLASS_ID)_type( uint8_t type_inx )
 	return ( STR_unknown_ );
 }
 
-uint8_t get_($CLASS_ID)_type_inx( uint8_t sn )
+inx_t get_($CLASS_ID)_type_inx( uint8_t sn )
 {
 	char buf[ 64 ];
 
@@ -94,13 +94,22 @@ uint8_t get_($CLASS_ID)_type_inx( uint8_t sn )
 	return ( ($upper CLASS_ID)_TYPE__UNKNOWN_ );
 }
 
-uint8_t get_($CLASS_ID)_port_inx( uint8_t sn, uint8_t port_type_inx, uint8_t *extport )
+size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc )
 {
+	uint8_t addr;
 	char buf[ 32 ];
 
-	if ( !get_($CLASS_ID)_port_name( sn, buf, sizeof( buf ))) return ( EV3_PORT__NONE_ );
+	desc->type_inx = get_($CLASS_ID)_type_inx( sn );
+	if ( desc->type_inx == ($upper CLASS_ID)_TYPE__NONE_ ) return ( 0 );
 
-	return ( ev3_port_inx( port_type_inx, buf, extport ));
+	if ( !get_($CLASS_ID)_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+
+	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
+	($if CLASS_DESC_ADDR ]
+		desc->addr = addr;
+
+	[ )
+	return ( sizeof( EV3_($upper CLASS_ID) ));
 }
 
 EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn )
@@ -118,7 +127,12 @@ EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn )
 
 [ )
 
-bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( uint8_t type_inx, uint8_t *sn, uint8_t from )
+char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf )
+{
+	return ( ev3_port_name( ev3_($CLASS_ID)_desc( sn )->port, ev3_($CLASS_ID)_desc( sn )->extport, ($if CLASS_DESC_ADDR,,ev3_($CLASS_ID)_desc( sn )->addr,,0), buf ));
+}
+
+bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( inx_t type_inx, uint8_t *sn, uint8_t from )
 {
 	uint8_t _sn = from;
 
@@ -133,28 +147,18 @@ bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( uint8_t type_inx,
 	return ( false );
 }
 
-bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($CLASS_DESC_ADDR))uint8_t *sn, uint8_t from )
+bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from )
 {
 	uint8_t _sn = from;
 
 	while ( _sn < ($upper CLASS_ID)_DESC__LIMIT_) {
 		if ( ev3_($CLASS_ID)[ _sn ].port == port ) {
-			($if ($CLASS_DESC_ADDR) ]
-				if ( addr ) {
-					if ( ev3_($CLASS_ID)[ _sn ].addr == addr ) {
-						*sn = _sn;
-						return ( true );
-					}
-				}
-				else
-			[ )
 			if ( extport ) {
 				if ( ev3_($CLASS_ID)[ _sn ].extport == extport ) {
-						*sn = _sn;
-						return ( true );
-					}
-			}
-			else {
+					*sn = _sn;
+					return ( true );
+				}
+			} else {
 				*sn = _sn;
 				return ( true );
 			}
@@ -167,7 +171,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_
 
 ($CLASS_ATTR_INDEX \attr.]
 
-	const char *ev3_($CLASS_ID)_($attr)( uint8_t ($attr)_inx )
+	const char *ev3_($CLASS_ID)_($attr)( inx_t ($attr)_inx )
 	{
 		switch ( ($attr)_inx ) {
 		($each-CLASS_TYPE \i.]
@@ -183,7 +187,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_
 	}
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
-		uint8_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t type_inx )
+		inx_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t type_inx )
 		{
 			char buf[ 64 ];
 
@@ -205,7 +209,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_
 		}
 
 	[ )
-	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t ($attr)_inx )
+	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t ($attr)_inx )
 	{
 		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
@@ -217,7 +221,6 @@ int ev3_($CLASS_ID)_init( void )
 	char list[ 256 ];
 	char *p;
 	uint32_t sn;
-	uint8_t type_inx;
 	int cnt = 0;
 
 	memset( ev3_($CLASS_ID), 0, sizeof( ev3_($CLASS_ID) ));
@@ -227,12 +230,7 @@ int ev3_($CLASS_ID)_init( void )
 	p = strtok( list, " " );
 	while ( p ) {
 		if (( ev3_string_suffix( ($CLASS_FOLDER_PREF), &p, &sn ) == 1 ) && ( sn < ($upper CLASS_ID)_DESC__LIMIT_)) {
-			($if ($CLASS_DESC_ADDR) ]
-				get_($CLASS_ID)_address( sn, &ev3_($CLASS_ID)[ sn ].addr );
-			[ )
-			type_inx = get_($CLASS_ID)_type_inx( sn );
-			ev3_($CLASS_ID)[ sn ].type_inx = type_inx;
-			ev3_($CLASS_ID)[ sn ].port = get_($CLASS_ID)_port_inx( sn, ($[type_inx] ? ($eq CLASS_ID [port]) | [PORT_TYPE__NONE_]), &ev3_($CLASS_ID)[ sn ].extport );
+			get_($CLASS_ID)_desc( sn, ev3_($CLASS_ID) + sn );
 			++cnt;
 		}
 		p = strtok( NULL, " " );

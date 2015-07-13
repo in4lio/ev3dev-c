@@ -52,8 +52,10 @@ enum {
 
 		($each-CLASS_TYPE \i.]
 			($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
-				($upper ($i CLASS_TYPE_ID))_($upper ($_VALUE_TO_ID ii)),
-
+				($set suf ($upper ($_VALUE_TO_ID ii)))
+				($upper ($i CLASS_TYPE_ID))_($suf), ($if ($i CLASS_TYPE_ID_SYN) ]
+				($upper ($i CLASS_TYPE_ID_SYN))_($suf) = ($upper ($i CLASS_TYPE_ID))_($suf),
+				[ )
 			[ )
 
 		[ )
@@ -94,7 +96,7 @@ enum {
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
 		/**
-		 *  \brief Get ($i CLASS_ATTR_NAME) attribute of the ($_CLASS).
+		 *  \brief Read ($i CLASS_ATTR_NAME) attribute of the ($_CLASS).
 		 *  \param sn Sequence number.
 		 *  \param[out] buf Buffer for result.
 		 ($[*  \param sz Buffer size.] ? ($i CLASS_ATTR_ARRAY))
@@ -105,7 +107,7 @@ enum {
 	[ )
 	($if ($ge ($i CLASS_ATTR_WRITE) RW) ]
 		/**
-		 *  \brief Set ($i CLASS_ATTR_NAME) attribute of the ($_CLASS).
+		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of the ($_CLASS).
 		 *  \param sn Sequence number.
 		 *  \param value Attribute value.
 		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
@@ -118,8 +120,9 @@ enum {
 [ )
 
 ($each-CLASS_AVEC \i.]
+
 	/**
-	 *  \brief Get ($i CLASS_AVEC_NAME) attribute of the ($_CLASS).
+	 *  \brief Read ($i CLASS_AVEC_NAME) attribute of the ($_CLASS).
 	 *  \param inx Attribute index.
 	 *  \param sn Sequence number.
 	 *  \param[out] buf Buffer for result.
@@ -135,23 +138,22 @@ enum {
  *  \param type_inx Index of the ($_CLASS) type.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_($CLASS_ID)_type( uint8_t type_inx );
+($h-extern) const char *ev3_($CLASS_ID)_type( inx_t type_inx );
 
 /**
- *  \brief Get index of the ($_CLASS) type.
+ *  \brief Read ($CLASS_TYPE_ATTR_NAME) attribute and get index of the ($_CLASS) type.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
-($h-extern) uint8_t get_($CLASS_ID)_type_inx( uint8_t sn );
+($h-extern) inx_t get_($CLASS_ID)_type_inx( uint8_t sn );
 
 /**
- *  \brief Get indexes of the EV3 port and the extended port of the ($_CLASS).
+ *  \brief Read the ($_CLASS) attributes that are required for filling the descriptor.
  *  \param sn Sequence number.
- *  \param port_type_inx Port type.
- *  \param extport Buffer for the extended port index.
- *  \return EV3 port index.
+ *  \param desc Buffer for the descriptor.
+ *  \return Count of read bytes.
  */
-($h-extern) uint8_t get_($CLASS_ID)_port_inx( uint8_t sn, uint8_t port_type_inx, uint8_t *extport );
+($h-extern) size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc );
 
 /**
  *  \brief Get descriptor of the ($_CLASS).
@@ -161,6 +163,7 @@ enum {
 ($h-extern) EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn );
 
 ($each-CLASS_DESC \i.]
+
 	/**
 	 *  \brief Get ($unq ($i CLASS_DESC_COMMENT)) from the ($_CLASS) descriptor.
 	 *  \param sn Sequence number.
@@ -171,24 +174,31 @@ enum {
 [ )
 
 /**
+ *  \brief Assemble EV3 port name from the ($_CLASS) descriptor.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \return Requested value.
+ */
+($h-extern) char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf );
+
+/**
  *  \brief Search of a sequence number of the specified ($_CLASS) type.
  *  \param type_inx The ($_CLASS) type.
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( uint8_t type_inx, uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( inx_t type_inx, uint8_t *sn, uint8_t from );
 
 /**
  *  \brief Search of a sequence number the ($_CLASS) by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
- ($[*  \param addr Address.] ? ($CLASS_DESC_ADDR))
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, ($[uint8_t addr, ] ? ($CLASS_DESC_ADDR))uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from );
 
 ($CLASS_ATTR_INDEX \attr.]
 
@@ -201,21 +211,21 @@ enum {
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
-		 *  \brief Get index of the ($_CLASS) ($attr).
+		 *  \brief Read ($q attr) attribute of the ($_CLASS) and get the index.
 		 *  \param sn Sequence number.
 		 *  \param type_inx Index of the ($_CLASS) type.
 		 *  \return Requested value.
 		 */
-		($h-extern) uint8_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t type_inx );
+		($h-extern) inx_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t type_inx );
 
 	[ )
 	/**
-	 *  \brief Set ($attr) of the ($_CLASS) by index.
+	 *  \brief Write ($q attr) attribute of the ($_CLASS) by the index.
 	 *  \param sn Sequence number.
 	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, uint8_t ($attr)_inx );
+	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t ($attr)_inx );
 
 [ )
 

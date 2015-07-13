@@ -31,7 +31,7 @@
 
 int main( void )
 {
-	char s[ 256 ];
+	char s[ 256 ], name_port[ 16 ];
 	int i;
 	uint8_t sn, sn_port;
 	uint8_t port = OUTPUT_B;
@@ -42,11 +42,11 @@ int main( void )
 	printf( "*** ( EV3 ) Hello! ***\n" );
 	ev3_port_init();
 
-	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_ ));
+	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_, 0, name_port ));
 	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
 	set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
 	if ( get_port_mode( sn_port, s, sizeof( s ))) {
-		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+		printf( "%s: %s\n", name_port, s );
 	}
 	Sleep( 200 );
 	ev3_dc_init();
@@ -55,7 +55,7 @@ int main( void )
 	for ( i = 0; i < DC_DESC__LIMIT_; i++ ) {
 		if ( ev3_dc[ i ].type_inx != DC_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_dc_type( ev3_dc[ i ].type_inx ));
-			printf( "  port = %s\n", ev3_port_name( ev3_dc[ i ].port, ev3_dc[ i ].extport ));
+			printf( "  port = %s\n", ev3_dc_port_name( i, s ));
 		}
 	}
 	if ( ev3_search_dc_plugged_in( port, EXT_PORT__NONE_, &sn, 0 )) {
@@ -79,7 +79,7 @@ int main( void )
 	printf( "Reset mode of the EV3 output port...\n" );
 	set_port_mode_inx( sn_port, OUTPUT_AUTO );
 	if ( get_port_mode( sn_port, s, sizeof( s ))) {
-		printf( "%s: %s\n", ev3_port_name( port, EXT_PORT__NONE_ ), s );
+		printf( "%s: %s\n", name_port, s );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );

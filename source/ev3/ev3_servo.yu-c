@@ -23,28 +23,3 @@
 ($import "ev3_servo-dict.yu")
 ($import "ev3_class-dict.yu")
 ($import "ev3_class.yu")
-
-size_t get_servo_address( uint8_t sn, uint8_t *buf )
-{
-	char s[ 32 ];
-	char *p;
-	uint32_t ch;
-
-	if ( !get_servo_port_name( sn, s, sizeof( s ))) return ( 0 );
-
-	if (( p = strrchr( s, ':' )) == NULL ) return ( 0 );
-	++p;
-	if ( ev3_string_suffix( ($SERVO_CHANNEL_PREF), &p, &ch ) != 1 ) return ( 0 );
-
-	*buf = ( uint8_t ) ch;
-	return ( sizeof( uint8_t ));
-}
-
-void ev3_servo_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf, size_t sz )
-{
-	if ( sz ) {
-		strcpy( buf, ev3_port_name( port, extport ));
-		strcpy( buf + strlen( buf ), ":" ($SERVO_CHANNEL_PREF) );
-		modp_uitoa10( addr, buf + strlen( buf ));
-	}
-}

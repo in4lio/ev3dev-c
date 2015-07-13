@@ -33,6 +33,7 @@ int main( void )
 {
 	int i;
 	uint8_t sn;
+	char s[ 256 ];
 
 #ifndef __ARM_ARCH_4T__
 	/* Disable auto-detection of the brick (you have to set the correct address below) */
@@ -53,17 +54,32 @@ int main( void )
 	for ( i = 0; i < TACHO_DESC__LIMIT_; i++ ) {
 		if ( ev3_tacho[ i ].type_inx != TACHO_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_tacho_type( ev3_tacho[ i ].type_inx ));
-			printf( "  port = %s\n", ev3_port_name( ev3_tacho[ i ].port, ev3_tacho[ i ].extport ));
+			printf( "  port = %s\n", ev3_tacho_port_name( i, s ));
 		}
 	}
 	if ( ev3_search_tacho( LEGO_EV3_M_MOTOR, &sn, 0 )) {
 		printf( "LEGO_EV3_M_MOTOR is found, run for 5 sec...\n" );
-		set_tacho_stop_command_inx( sn, TACHO_BRAKE );
+		set_tacho_stop_command_inx( sn, TACHO_COAST );
 		set_tacho_duty_cycle_sp( sn, 100 );
 		set_tacho_time_sp( sn, 5000 );
 		set_tacho_ramp_up_sp( sn, 2000 );
 		set_tacho_ramp_down_sp( sn, 2000 );
 		set_tacho_command_inx( sn, TACHO_RUN_TIMED );
+
+		/* Wait tacho stop */
+		do {
+			Sleep( 100 );
+			get_tacho_state( sn, s, sizeof( s ));
+		} while ( *s );
+		printf( "run to relative position...\n" );
+		set_tacho_duty_cycle_sp( sn, 50 );
+		set_tacho_ramp_up_sp( sn, 0 );
+		set_tacho_ramp_down_sp( sn, 0 );
+		set_tacho_position_sp( sn, 90 );
+		for ( int i = 0; i < 8; i++ ) {
+			set_tacho_command_inx( sn, TACHO_RUN_TO_REL_POS );
+			Sleep( 500 );
+		}
 	} else {
 		printf( "LEGO_EV3_M_MOTOR is NOT found\n" );
 	}

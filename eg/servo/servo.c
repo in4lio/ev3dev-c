@@ -35,8 +35,7 @@ int main( void )
 	char s[ 256 ];
 	int pos;
 	int i;
-	uint8_t sn, sn_port;
-	uint8_t port = INPUT_2;
+	uint8_t sn;
 
 	printf( "Waiting the EV3 brick online...\n" );
 	if ( ev3_init() < 1 ) return ( 1 );
@@ -49,11 +48,10 @@ int main( void )
 	for ( i = 0; i < SERVO_DESC__LIMIT_; i++ ) {
 		if ( ev3_servo[ i ].type_inx != SERVO_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_servo_type( ev3_servo[ i ].type_inx ));
-			ev3_servo_port_name( ev3_servo[ i ].port, ev3_servo[ i ].extport, ev3_servo[ i ].addr, s, sizeof( s ));
-			printf( "  port = %s\n", s );
+			printf( "  port = %s\n", ev3_servo_port_name( i, s ));
 		}
 	}
-	if ( ev3_search_servo_plugged_in( port, EXT_PORT__NONE_, 1, &sn, 0 )) {
+	if ( ev3_search_servo_plugged_in( INPUT_2, SERVO_1, &sn, 0 )) {
 		printf( "Servo motor is found, setting position...\n" );
 		set_servo_command_inx( sn, SERVO_RUN );
 		set_servo_position_sp( sn, 100 );

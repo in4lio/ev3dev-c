@@ -53,7 +53,7 @@ enum {
 ($each-LED_ATTR \i.]
 	($if ($le ($i LED_ATTR_WRITE) RW) ]
 		/**
-		 *  \brief Get ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \brief Read ($i LED_ATTR_NAME) attribute of the LED.
 		 *  \param inx Index of the LED.
 		 *  \param[out] buf Buffer for result.
 		 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
@@ -64,7 +64,7 @@ enum {
 	[ )
 	($if ($ge ($i LED_ATTR_WRITE) RW) ]
 		/**
-		 *  \brief Set ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \brief Write ($i LED_ATTR_NAME) attribute of the LED.
 		 *  \param inx Index of the LED.
 		 *  \param value Attribute value.
 		 *  \return Count of written bytes.
@@ -76,26 +76,26 @@ enum {
 [ )
 
 /**
- *  \brief Get the trigger index of the LED.
+ *  \brief Read "trigger" attribute of the LED and get the index.
  *  \param inx Index of the LED.
  *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
  */
-($h-extern) uint8_t get_led_trigger_inx( uint8_t inx );
+($h-extern) inx_t get_led_trigger_inx( uint8_t inx );
 
 /**
- *  \brief Set the trigger of the LED by index.
+ *  \brief Write "trigger" attribute of the LED by the index.
  *  \param inx Index of the LED.
  *  \param trigger_inx Index of the trigger.
  *  \return Count of written bytes.
  */
-($h-extern) size_t set_led_trigger_inx( uint8_t inx, uint8_t trigger_inx );
+($h-extern) size_t set_led_trigger_inx( uint8_t inx, inx_t trigger_inx );
 
 /**
  *  \brief Get name of the specified LED trigger.
  *  \param trigger_inx Index of the trigger.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_led_trigger( uint8_t trigger_inx );
+($h-extern) const char *ev3_led_trigger( inx_t trigger_inx );
 
 /** \} */
 

@@ -17,6 +17,7 @@
 
 ($! identifiers of class instances )
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($_TYPE_TO_ID ($i CLASS_TYPE_NAME))))
+($set CLASS_TYPE_ID_SYN ($() ? ($isatom CLASS_TYPE_ID_SHORT) | CLASS_TYPE_ID_SHORT))
 
 ($! identifiers of class attributes )
 ($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($replace,,($unq ($i CLASS_ATTR_NAME)),,/,,_)))
