@@ -64,10 +64,6 @@ if ( get_port_mode( sn, s, sizeof( s ))) {
 }
 ev3_uninit();
 \endcode
-<P><A HREF="http://www.ev3dev.org/docs/ports/ht-nxt-smux-port/">"HiTechnic NXT Sensor Multiplexer Input Port"</A>
-<BR><A HREF="http://www.ev3dev.org/docs/ports/ms-ev3-smux-port/">"mindsensors.com EV3 Sensor Multiplexer Input Port"</A>
-<BR><A HREF="http://www.ev3dev.org/docs/ports/wedo-port/">"LEGO WeDo Port"</A>
-</P>
 \code {.c}
 uint8_t sn, sn_port;
 int val;
