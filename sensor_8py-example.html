@@ -91,10 +91,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Found sensors:&#39;</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range( SENSOR_DESC__LIMIT_ ):</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        type_inx = <a class="code" href="group__ev3__sensor.html#ga821eb805b657de9b6d3c435ffb0c460b">ev3_sensor_desc_type_inx</a>( i )</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        type_inx = <a class="code" href="group__ev3__sensor.html#gada3a4a502a69d2ffaedfe924b799221f">ev3_sensor_desc_type_inx</a>( i )</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> type_inx != SENSOR_TYPE__NONE_:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  type =&#39;</span>, <a class="code" href="group__ev3__sensor.html#ga0df11bd674302ba3b85687ec258b443c">ev3_sensor_type</a>( type_inx )</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  port =&#39;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( <a class="code" href="group__ev3__sensor.html#gaa80afb7da12d7002cf49862aadd26754">ev3_sensor_desc_port</a>( i ), <a class="code" href="group__ev3__sensor.html#ga42524127286749fb80472c916f988911">ev3_sensor_desc_extport</a>( i ))</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  type =&#39;</span>, <a class="code" href="group__ev3__sensor.html#gaffc1c4f5fb96c7480c46ea804da748c1">ev3_sensor_type</a>( type_inx )</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  port =&#39;</span>, <a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( <a class="code" href="group__ev3__sensor.html#gaa80afb7da12d7002cf49862aadd26754">ev3_sensor_desc_port</a>( i ), <a class="code" href="group__ev3__sensor.html#ga42524127286749fb80472c916f988911">ev3_sensor_desc_extport</a>( i ))</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            ok, mode = <a class="code" href="group__ev3__sensor.html#ga4bad50f0f8f6f9456af9f5fcc87796c7">get_sensor_mode</a>( i, 256 )</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordflow">print</span> <span class="stringliteral">&#39;  mode =&#39;</span>, mode</div>
@@ -105,10 +105,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        <span class="keywordflow">print</span> <span class="stringliteral">&#39;  value%d = %d&#39;</span> % ( ii, val )</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    ok, sn_touch = <a class="code" href="group__ev3__sensor.html#ga652df851e26822483f63b15c615f3e65">ev3_search_sensor</a>( LEGO_EV3_TOUCH )</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    ok, sn_touch = <a class="code" href="group__ev3__sensor.html#gad2a489507cd6f279eda068757658fec0">ev3_search_sensor</a>( LEGO_EV3_TOUCH )</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;TOUCH sensor is found, press BUTTON for EXIT...&#39;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ok, sn_color = <a class="code" href="group__ev3__sensor.html#ga652df851e26822483f63b15c615f3e65">ev3_search_sensor</a>( LEGO_EV3_UART_29 )</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ok, sn_color = <a class="code" href="group__ev3__sensor.html#gad2a489507cd6f279eda068757658fec0">ev3_search_sensor</a>( LEGO_EV3_UART_29 )</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;COLOR sensor is found, reading COLOR...&#39;</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <a class="code" href="group__ev3__sensor.html#ga505efc957d61797672e2a1944edc94fd">set_sensor_mode</a>( sn_color, <span class="stringliteral">&#39;COL-COLOR&#39;</span> )</div>
@@ -142,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 26 2015 19:15:14 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 13 2015 18:14:52 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -85,10 +85,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Found ports:&#39;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range( PORT_DESC__LIMIT_ ):</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        type_inx = <a class="code" href="group__ev3__port.html#ga0087c5d23fab7c7b5d6522786535f5d8">ev3_port_desc_type_inx</a>( i )</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        type_inx = <a class="code" href="group__ev3__port.html#ga1a66a283a9748e05373aeede71399524">ev3_port_desc_type_inx</a>( i )</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">if</span> type_inx != PORT_TYPE__NONE_:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  type =&#39;</span>, <a class="code" href="group__ev3__port.html#gaecedcf07315aeb15ca609b00a457d707">ev3_port_type</a>( type_inx )</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  port =&#39;</span>, <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( <a class="code" href="group__ev3__port.html#ga59c936b8de69b6deee5c4fd1857905e8">ev3_port_desc_port</a>( i ), <a class="code" href="group__ev3__port.html#ga5a83a67547a2d504ce42d0f504ffeaf2">ev3_port_desc_extport</a>( i ))</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  type =&#39;</span>, <a class="code" href="group__ev3__port.html#ga78f153b894e64d42cfd457bf58885de1">ev3_port_type</a>( type_inx )</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">print</span> <span class="stringliteral">&#39;  port =&#39;</span>, <a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( <a class="code" href="group__ev3__port.html#ga59c936b8de69b6deee5c4fd1857905e8">ev3_port_desc_port</a>( i ), <a class="code" href="group__ev3__port.html#ga5a83a67547a2d504ce42d0f504ffeaf2">ev3_port_desc_extport</a>( i ))</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            ok, mode = <a class="code" href="group__ev3__port.html#ga1e0ccf5cab9a28007ef064731abc7827">get_port_mode</a>( i, 256 )</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordflow">print</span> <span class="stringliteral">&#39;  mode =&#39;</span>, mode</div>
@@ -96,13 +96,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    sn = <a class="code" href="group__ev3__port.html#gad91d9f824c3f88b9239d19d1d3f7eea2">ev3_search_port</a>( INPUT_2, EXT_PORT__NONE_ )</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    ok, s = <a class="code" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a>( sn, 256 )</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> ok:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;Port %s modes: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gafb9f46a58b1b1e9f4bc30ba20b72b4a5">ev3_port_name</a>( INPUT_2, EXT_PORT__NONE_ ), s )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;Port %s modes: %s&#39;</span> % ( <a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( INPUT_2, EXT_PORT__NONE_ ), s )</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>()</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 26 2015 19:15:14 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 13 2015 18:14:52 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
