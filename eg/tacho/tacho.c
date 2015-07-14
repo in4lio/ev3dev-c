@@ -33,6 +33,7 @@ int main( void )
 {
 	int i;
 	uint8_t sn;
+	flags_t state;
 	char s[ 256 ];
 
 #ifndef __ARM_ARCH_4T__
@@ -65,12 +66,10 @@ int main( void )
 		set_tacho_ramp_up_sp( sn, 2000 );
 		set_tacho_ramp_down_sp( sn, 2000 );
 		set_tacho_command_inx( sn, TACHO_RUN_TIMED );
-
 		/* Wait tacho stop */
 		do {
-			Sleep( 100 );
-			get_tacho_state( sn, s, sizeof( s ));
-		} while ( *s );
+			get_tacho_state_flags( sn, &state );
+		} while ( state );
 		printf( "run to relative position...\n" );
 		set_tacho_duty_cycle_sp( sn, 50 );
 		set_tacho_ramp_up_sp( sn, 0 );

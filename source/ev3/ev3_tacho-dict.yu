@@ -11,6 +11,7 @@
 
 ($set TYPE_COMMANDS ( "run-forever" "run-to-abs-pos" "run-to-rel-pos" "run-timed" "run-direct" "stop" "reset" ))
 ($set TYPE_STOP_COMMANDS ( "coast" "brake" "hold" ))
+($set TYPE_STATES ( "running" "ramping" "holding" "stalled" ))
 
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME     CLASS_TYPE_COMMANDS  CLASS_TYPE_STOP_COMMANDS  )

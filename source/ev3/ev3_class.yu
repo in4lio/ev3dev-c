@@ -216,6 +216,28 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 
 [ )
 
+($CLASS_ATTR_FLAGS \attr.]
+
+	size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, flags_t *flags )
+	{
+		char buf[ 64 ];
+		size_t result;
+
+		result = get_($CLASS_ID)_($attr)( sn, buf, sizeof( buf ));
+		if ( result == 0 ) return ( 0 );
+
+		*flags = ($upper CLASS_ID)_($upper attr)__NONE_;
+		if ( result == 1 ) return ( 1 );
+
+		($CLASS_STATES \i.]
+			if ( strstr( buf, ($i) )) *flags |= ($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i)));
+
+		[ )
+		return ( result );
+	}
+
+[ )
+
 int ev3_($CLASS_ID)_init( void )
 {
 	char list[ 256 ];

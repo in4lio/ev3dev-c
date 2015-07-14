@@ -50,6 +50,7 @@ typedef unsigned int dword;
 #endif
 
 typedef unsigned char inx_t;
+typedef unsigned char flags_t;
 
 #define STR_unknown_  "<unknown>"
 

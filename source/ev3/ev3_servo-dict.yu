@@ -9,10 +9,8 @@
 ($set CLASS_ID [servo])
 ($set CLASS_TITLE "servo motor")
 
-//!!!
-($set SERVO_CHANNEL_PREF "sv")
-
 ($set TYPE_COMMANDS ( "run" "float" ))
+($set TYPE_STATES ( "running" ))
 
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  )

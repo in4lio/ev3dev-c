@@ -7,12 +7,16 @@
 ($! list of attributes accessible by index )
 ($set ACCESS_BY_INDEX ( "mode" "command" "stop_command" ))
 
-($set CLASS_ATTR_INDEX ($ACCESS_BY_INDEX \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
-($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
+($! list of attributes accessible by flags )
+($set ACCESS_BY_FLAGS ( "state" ))
 
 ($! name of type attribute of class )
 ($set CLASS_TYPE_ATTR_NAME "driver_name")
 
+($set CLASS_ATTR_INDEX ($ACCESS_BY_INDEX \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
+($set CLASS_ATTR_FLAGS ($ACCESS_BY_FLAGS \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
+
+($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
 ($set _TYPE_TO_ID \val.($replace,,($unq val),,-,,_))
 
 ($! identifiers of class instances )
@@ -31,6 +35,9 @@
 
 ($! names of comman stop commands of class )
 ($set CLASS_STOP_COMMANDS ($() ? ($isatom TYPE_STOP_COMMANDS) | TYPE_STOP_COMMANDS))
+
+($! names of comman states of class )
+($set CLASS_STATES ($() ? ($isatom TYPE_STATES) | TYPE_STATES))
 
 ($! use crc32() instead strcmp() if the number of strings equal to or greater than the specified )
 ($set _USE_CRC32_FROM 7)

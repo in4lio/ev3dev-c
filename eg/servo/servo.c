@@ -36,6 +36,7 @@ int main( void )
 	int pos;
 	int i;
 	uint8_t sn;
+	flags_t state;
 
 	printf( "Waiting the EV3 brick online...\n" );
 	if ( ev3_init() < 1 ) return ( 1 );
@@ -53,14 +54,18 @@ int main( void )
 	}
 	if ( ev3_search_servo_plugged_in( INPUT_2, SERVO_1, &sn, 0 )) {
 		printf( "Servo motor is found, setting position...\n" );
-		set_servo_command_inx( sn, SERVO_RUN );
 		set_servo_position_sp( sn, 100 );
-		Sleep( 2000 );
+		set_servo_command_inx( sn, SERVO_RUN );
+		do {
+			get_servo_state_flags( sn, &state );
+		} while ( state );
 		if ( get_servo_position_sp( sn, &pos )) {
 			printf( "position: %d\n", pos );
 		}
 		set_servo_position_sp( sn, -100 );
-		Sleep( 2000 );
+		do {
+			get_servo_state_flags( sn, &state );
+		} while ( state );
 		if ( get_servo_position_sp( sn, &pos )) {
 			printf( "position: %d\n", pos );
 		}

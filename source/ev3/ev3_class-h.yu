@@ -93,6 +93,20 @@ enum {
 	};
 [ )
 
+($if CLASS_STATES ]
+	/**
+	 *  \brief Common identifiers of ($_CLASS) states.
+	 */
+	enum {
+		($upper CLASS_ID)_STATE__NONE_ = 0,
+
+		($($range ($len CLASS_STATES)) \i.]
+			($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i CLASS_STATES))) = ($hex ($lshift 1 i)),
+
+		[ )
+	};
+[ )
+
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
 		/**
@@ -207,7 +221,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
 	 *  \return Requested value.
 	 */
-	($h-extern) const char *ev3_($CLASS_ID)_($attr)( uint8_t ($attr)_inx );
+	($h-extern) const char *ev3_($CLASS_ID)_($attr)( inx_t ($attr)_inx );
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
@@ -226,6 +240,18 @@ enum {
 	 *  \return Count of written bytes.
 	 */
 	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t ($attr)_inx );
+
+[ )
+
+($CLASS_ATTR_FLAGS \attr.]
+
+	/**
+	 *  \brief Read ($q attr) attribute of the ($_CLASS) and get the flags.
+	 *  \param sn Sequence number.
+	 *  \param desc Buffer for the flags.
+	 *  \return Count of read bytes.
+	 */
+	($h-extern) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, flags_t *flags );
 
 [ )
 
