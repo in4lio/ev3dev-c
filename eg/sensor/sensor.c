@@ -20,60 +20,12 @@
 #ifdef __WIN32__
 
 #include <windows.h>
-#include <conio.h>
-
-#define CHAR_ENTER  '\x0D'
-
-/* Non-blocking console input */
-static int __getch( void )
-{
-	return ( kbhit() ? _getch() : EOF );
-}
-
-static void getch_init( void )
-{
-}
-
-static void getch_uninit( void )
-{
-}
 
 // UNIX //////////////////////////////////////////
 #else
 
 #include <unistd.h>
-#include <termios.h>
-
 #define Sleep( msec ) usleep(( msec ) * 1000 )
-
-#define CHAR_ENTER  '\x0A'
-
-/* Non-blocking console input */
-static int __getch( void )
-{
-	return fgetc( stdin );
-}
-
-static struct termios getch_o_attr;
-
-static void getch_init( void )
-{
-	struct termios n_attr;
-
-	/* Set terminal to raw mode */
-	tcgetattr( fileno( stdin ), &getch_o_attr );
-	memcpy( &n_attr, &getch_o_attr, sizeof( struct termios ));
-	n_attr.c_lflag &= ~( ECHO | ICANON );
-	n_attr.c_cc[ VTIME ] = 0;
-	n_attr.c_cc[ VMIN  ] = 0;
-	tcsetattr( fileno( stdin ), TCSANOW, &n_attr );
-}
-
-static void getch_uninit( void )
-{
-	/* Restore original terminal attributes */
-	tcsetattr( fileno( stdin ), TCSANOW, &getch_o_attr );
-}
 
 //////////////////////////////////////////////////
 #endif
@@ -81,12 +33,13 @@ static void getch_uninit( void )
 const char const *color[] = { "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE", "BROWN" };
 #define COLOR_COUNT  (( int )( sizeof( color ) / sizeof( color[ 0 ])))
 
-static bool __pressed( uint8_t sn )
+static bool _check_pressed( uint8_t sn )
 {
 	int val;
 
-	if ( sn == SENSOR__NONE_ ) return ( __getch() == CHAR_ENTER );
-
+	if ( sn == SENSOR__NONE_ ) {
+		return ( ev3_read_keys(( uint8_t *) &val ) && ( val & EV3_KEY_UP ));
+	}
 	return ( get_sensor_value( 0, sn, &val ) && ( val != 0 ));
 }
 
@@ -103,7 +56,6 @@ int main( void )
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 	ev3_sensor_init();
-	getch_init();
 
 	printf( "Found sensors:\n" );
 	for ( i = 0; i < SENSOR_DESC__LIMIT_; i++ ) {
@@ -125,7 +77,7 @@ int main( void )
 	if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn_touch, 0 )) {
 		printf( "TOUCH sensor is found, press BUTTON for EXIT...\n" );
 	} else {
-		printf( "TOUCH sensor is NOT found, press ENTER for EXIT...\n" );
+		printf( "TOUCH sensor is NOT found, press UP on the EV3 brick for EXIT...\n" );
 	}
 	if ( ev3_search_sensor( LEGO_EV3_COLOR, &sn_color, 0 )) {
 		printf( "COLOR sensor is found, reading COLOR...\n" );
@@ -136,18 +88,17 @@ int main( void )
 			}
 			printf( "\r(%s)", color[ val ]);
 			fflush( stdout );
-			if ( __pressed( sn_touch )) break;
+			if ( _check_pressed( sn_touch )) break;
 			Sleep( 200 );
 			printf( "\r        " );
 			fflush( stdout );
-			if ( __pressed( sn_touch )) break;
+			if ( _check_pressed( sn_touch )) break;
 			Sleep( 200 );
 		}
 	} else {
 		printf( "COLOR sensor is NOT found\n" );
-		while ( !__pressed( sn_touch )) Sleep( 100 );
+		while ( !_check_pressed( sn_touch )) Sleep( 100 );
 	}
-	getch_uninit();
 	ev3_uninit();
 	printf( "\n*** ( EV3 ) Bye! ***\n" );
 

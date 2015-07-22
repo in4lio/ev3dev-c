@@ -159,6 +159,16 @@ if ( ev3_search_servo_plugged_in( INPUT_1, EXT_PORT__NONE_, 1, &sn, 0 )) {
 set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();
 \endcode
+<P>The \ref ev3_read_keys "function" to access the EV3 brick keys.</P>
+\code {.c}
+ev3_init();
+
+uint8_t val;
+
+do ev3_read_keys( &val ); while (( val & EV3_KEY_BACKSPACE ) == 0 );
+
+ev3_uninit();
+\endcode
 
 <H3>III	LEVEL</H3>
 
