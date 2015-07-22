@@ -101,8 +101,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_SERVO_IMPLEMENT</b></td></tr>
 <tr class="separator:ae575b0432d6192a28aca49425b120677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ccdb8dc369c7004bd40d92df9288749"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ccdb8dc369c7004bd40d92df9288749"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ev3__servo_8c.html#a7ccdb8dc369c7004bd40d92df9288749">PATH_PREF_LEN</a>&#160;&#160;&#160;28</td></tr>
-<tr class="memdesc:a7ccdb8dc369c7004bd40d92df9288749"><td class="mdescLeft">&#160;</td><td class="mdescRight">!! <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_PREF_LEN</b>&#160;&#160;&#160;28</td></tr>
 <tr class="separator:a7ccdb8dc369c7004bd40d92df9288749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a848cb0b2b6269eb401f83bde0378b4b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a848cb0b2b6269eb401f83bde0378b4b3"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_ID_SPOT</b>&#160;&#160;&#160;&quot;///&quot;</td></tr>
@@ -224,15 +223,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ga26f131af24fc0e160cf007e795105d05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga26f131af24fc0e160cf007e795105d05">ev3_search_servo_plugged_in</a> (uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from)</td></tr>
 <tr class="memdesc:ga26f131af24fc0e160cf007e795105d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search of a sequence number the servo motor by plug-in attributes.  <a href="group__ev3__servo.html#ga26f131af24fc0e160cf007e795105d05">More...</a><br /></td></tr>
 <tr class="separator:ga26f131af24fc0e160cf007e795105d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad496543449d149994e090f030960d32"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad496543449d149994e090f030960d32"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_servo_command</b> (inx_t command_inx)</td></tr>
-<tr class="separator:aad496543449d149994e090f030960d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7862e4aa91f082932d6458a7848b8612"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga7862e4aa91f082932d6458a7848b8612">ev3_servo_command</a> (inx_t command_inx)</td></tr>
+<tr class="memdesc:ga7862e4aa91f082932d6458a7848b8612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified servo motor command.  <a href="group__ev3__servo.html#ga7862e4aa91f082932d6458a7848b8612">More...</a><br /></td></tr>
+<tr class="separator:ga7862e4aa91f082932d6458a7848b8612"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab2ba7aa32cd327a0e74c950370c3acdb"><td class="memItemLeft" align="right" valign="top">inx_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gab2ba7aa32cd327a0e74c950370c3acdb">get_servo_command_inx</a> (uint8_t sn, inx_t type_inx)</td></tr>
 <tr class="memdesc:gab2ba7aa32cd327a0e74c950370c3acdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "command" attribute of the servo motor and get the index.  <a href="group__ev3__servo.html#gab2ba7aa32cd327a0e74c950370c3acdb">More...</a><br /></td></tr>
 <tr class="separator:gab2ba7aa32cd327a0e74c950370c3acdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad1e86fae3b5248218794e5648d61ea3b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gad1e86fae3b5248218794e5648d61ea3b">set_servo_command_inx</a> (uint8_t sn, inx_t command_inx)</td></tr>
 <tr class="memdesc:gad1e86fae3b5248218794e5648d61ea3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of the servo motor by the index.  <a href="group__ev3__servo.html#gad1e86fae3b5248218794e5648d61ea3b">More...</a><br /></td></tr>
 <tr class="separator:gad1e86fae3b5248218794e5648d61ea3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3378e8cdacd8daf392a4aa01c491852b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3378e8cdacd8daf392a4aa01c491852b">get_servo_state_flags</a> (uint8_t sn, flags_t *flags)</td></tr>
+<tr class="memdesc:ga3378e8cdacd8daf392a4aa01c491852b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "state" attribute of the servo motor and get the flags.  <a href="group__ev3__servo.html#ga3378e8cdacd8daf392a4aa01c491852b">More...</a><br /></td></tr>
+<tr class="separator:ga3378e8cdacd8daf392a4aa01c491852b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e65fb7a98d65801e160941aeed90b14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3e65fb7a98d65801e160941aeed90b14">ev3_servo_init</a> (void)</td></tr>
 <tr class="memdesc:ga3e65fb7a98d65801e160941aeed90b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected servo motors.  <a href="group__ev3__servo.html#ga3e65fb7a98d65801e160941aeed90b14">More...</a><br /></td></tr>
 <tr class="separator:ga3e65fb7a98d65801e160941aeed90b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,7 +246,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_servo_com
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 13 2015 18:14:52 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jul 22 2015 13:06:09 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
