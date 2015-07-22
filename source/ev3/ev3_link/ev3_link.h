@@ -167,6 +167,13 @@ extern int udp_ev3_write( char *fn, void *data, int sz );
 extern int udp_ev3_listdir( char *fn, void *buf, int sz );
 
 /**
+ *  \brief Read state of EV3 brick keys over UDP.
+ *  \param[out] buf Buffer for data.
+ *  \return Count of read bytes.
+ */
+extern int udp_ev3_read_keys( uint8_t *buf );
+
+/**
  *  \brief Power-off the EV3 brick.
  *  \return 0 - no reply, 1 - OK.
  */

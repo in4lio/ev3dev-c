@@ -30,6 +30,25 @@
 ($import "ev3_class-dict.yu")
 ($import "ev3_class-h.yu")
 
+/**
+ *  \brief Identifiers of LEGO_EV3_IR sensor values for IR_REMOTE mode.
+ */
+enum {
+	IR_REMOTE__NONE_   = 0,
+
+	RED_UP             = 1,
+	RED_DOWN           = 2,
+	BLUE_UP            = 3,
+	BLUE_DOWN          = 4,
+	RED_UP_BLUE_UP     = 5,
+	RED_UP_BLUE_DOWN   = 6,
+	RED_DOWN_BLUE_UP   = 7,
+	RED_DOWN_BLUE_DOWN = 8,
+	BEACON_MODE_ON     = 9,
+	RED_UP_RED_DOWN    = 10,
+	BLUE_UP_BLUE_DOWN  = 11,
+};
+
 /** \} */
 
 ($extern-c-end)

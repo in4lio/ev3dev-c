@@ -28,6 +28,9 @@
 
 #include <sys/types.h>
 #include <dirent.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <linux/input.h>
 
 int ev3_init( void )
 {
@@ -64,6 +67,30 @@ size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 	fclose( f );
 	return ( result );
 }
+
+#define _TEST_B( bit )  ( !( keyb[( bit ) >> 3 ] & ( 1 << (( bit ) & 7 ))))
+
+size_t ev3_read_keys( uint8_t *buf )
+{
+	int f;
+	uint8_t keyb[( KEY_MAX + 7 ) / 8 ];
+
+	f = open( "/dev/input/by-path/platform-gpio-keys.0-event", O_RDONLY );
+	if ( f < 0 ) return ( 0 );
+
+	ioctl( f, EVIOCGKEY( sizeof( keyb )), &keyb );
+
+	*buf = EV3_KEY_UP        * _TEST_B( KEY_UP )
+	     | EV3_KEY_DOWN      * _TEST_B( KEY_DOWN )
+	     | EV3_KEY_LEFT      * _TEST_B( KEY_LEFT )
+	     | EV3_KEY_RIGHT     * _TEST_B( KEY_RIGHT )
+	     | EV3_KEY_ENTER     * _TEST_B( KEY_ENTER )
+	     | EV3_KEY_BACKSPACE * _TEST_B( KEY_BACKSPACE );
+	close( f );
+	return ( sizeof( uint8_t ));
+}
+
+#undef _TEST_B
 
 static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 {
@@ -144,6 +171,11 @@ size_t ev3_write_binary( const char *fn, char *data, size_t sz )
 size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 {
 	return udp_ev3_read(( char* ) fn, buf, sz );
+}
+
+size_t ev3_read_keys( uint8_t *buf )
+{
+	return udp_ev3_read_keys( buf );
 }
 
 static size_t __ev3_listdir( char *fn, char *buf, size_t sz )

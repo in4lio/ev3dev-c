@@ -33,6 +33,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <arpa/inet.h>
+#include <linux/input.h>
 
 #define Sleep( msec ) usleep(( msec ) * 1000 )
 
@@ -40,6 +41,7 @@
 #endif
 
 #include "ev3_link.h"
+#include "ev3_keys.h"
 
 /**
  *  \addtogroup ev3_link
@@ -56,7 +58,7 @@
 #define UDP_SERVER_TX_DELAY  2000000
 
 enum {
-	EV3_IDLE,
+	EV3_IDLE         = 0,
 
 	EV3_WRITE_FILE   = 1,  /**< File write command. */
 	EV3_RESULT_WRITE = 2,  /**< Write result reply. */
@@ -71,6 +73,9 @@ enum {
 	EV3_COMPLETION   = 8,  /**< Completion of work reply. */
 
 	EV3_WELCOME      = 9,  /**< A broadcast beacon. */
+
+	EV3_READ_KEYS    = 10, /**< Keys read command. */
+	EV3_KEYS         = 11, /**< Keys reply. */
 };
 
 /**
@@ -128,6 +133,30 @@ static size_t __ev3_read_binary( char *fn, char *buf, size_t sz )
 	fclose( f );
 	return ( result );
 }
+
+#define _TEST_B( bit )  ( !( keyb[( bit ) >> 3 ] & ( 1 << (( bit ) & 7 ))))
+
+size_t __ev3_read_keys( uint8_t *buf )
+{
+	int f;
+	uint8_t keyb[( KEY_MAX + 7 ) / 8 ];
+
+	f = open( "/dev/input/by-path/platform-gpio-keys.0-event", O_RDONLY );
+	if ( f < 0 ) return ( 0 );
+
+	ioctl( f, EVIOCGKEY( sizeof( keyb )), &keyb );
+
+	*buf = EV3_KEY_UP        * _TEST_B( KEY_UP )
+	     | EV3_KEY_DOWN      * _TEST_B( KEY_DOWN )
+	     | EV3_KEY_LEFT      * _TEST_B( KEY_LEFT )
+	     | EV3_KEY_RIGHT     * _TEST_B( KEY_RIGHT )
+	     | EV3_KEY_ENTER     * _TEST_B( KEY_ENTER )
+	     | EV3_KEY_BACKSPACE * _TEST_B( KEY_BACKSPACE );
+	close( f );
+	return ( sizeof( uint8_t ));
+}
+
+#undef _TEST_B
 
 static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 {
@@ -326,6 +355,16 @@ static int __receive( void )
 			__transmit( t->data_size );
 			return ( h->type );
 
+		case EV3_READ_KEYS:
+
+			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
+			t->id = h->id;
+			t->fn_size = 0;
+			t->data_size = __ev3_read_keys(( uint8_t* ) __t_msg.body );
+			t->type = EV3_KEYS;
+			__transmit( t->data_size );
+			return ( h->type );
+
 		case EV3_POWEROFF:
 
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
@@ -494,6 +533,11 @@ static int __udp_ev3_read( int cmd, char *fn, void *buf, int sz )
 int udp_ev3_read( char *fn, void *buf, int sz )
 {
 	return __udp_ev3_read( EV3_READ_FILE, fn, buf, sz );
+}
+
+int udp_ev3_read_keys( uint8_t *buf )
+{
+	return __udp_ev3_read( EV3_READ_KEYS, "", buf, sizeof( uint8_t ));
 }
 
 int udp_ev3_listdir( char *fn, void *buf, int sz )
