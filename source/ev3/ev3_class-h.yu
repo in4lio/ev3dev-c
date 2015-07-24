@@ -248,7 +248,7 @@ enum {
 	/**
 	 *  \brief Read ($q attr) attribute of the ($_CLASS) and get the flags.
 	 *  \param sn Sequence number.
-	 *  \param desc Buffer for the flags.
+	 *  \param flags Buffer for the flags.
 	 *  \return Count of read bytes.
 	 */
 	($h-extern) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, flags_t *flags );

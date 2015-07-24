@@ -2,4 +2,5 @@ python -u ../yupp/yup.py --pp-no-skip-c-comment -q -d../source/ev3 mainpage.yu-d
 rm ../html/*
 rm -r ../html/search/
 cp README ../html/
+cp doxygen.log doxygen.log.bak
 doxygen

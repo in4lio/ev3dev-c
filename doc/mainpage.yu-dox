@@ -165,7 +165,7 @@ ev3_init();
 
 uint8_t val;
 
-do ev3_read_keys( &val ); while (( val & EV3_KEY_BACKSPACE ) == 0 );
+do ev3_read_keys( &val ); while (( val & EV3_KEY_BACK ) == 0 );
 
 ev3_uninit();
 \endcode
@@ -251,6 +251,7 @@ ev3::ev3_uninit();
 \endcode
 <P><I>Similarly, you can use SWIG to wrap the library in a number of other languages.</I></P>
 
+\example drive.c
 \example light.c
 \example tacho.c
 \example sensor.c
