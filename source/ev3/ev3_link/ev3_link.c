@@ -41,7 +41,7 @@
 #endif
 
 #include "ev3_link.h"
-#include "ev3_keys.h"
+#include "../ev3_keys.h"
 
 /**
  *  \addtogroup ev3_link
@@ -134,24 +134,21 @@ static size_t __ev3_read_binary( char *fn, char *buf, size_t sz )
 	return ( result );
 }
 
-#define _TEST_B( bit )  ( !( keyb[( bit ) >> 3 ] & ( 1 << (( bit ) & 7 ))))
+#define _TEST_KEY( K, R )  (( keyb[ KEY_##K >> 3 ] & ( 1 << ( KEY_##K & 7 ))) ? 0 : EV3_KEY_##R )
 
 size_t __ev3_read_keys( uint8_t *buf )
 {
 	int f;
 	uint8_t keyb[( KEY_MAX + 7 ) / 8 ];
 
-	f = open( "/dev/input/by-path/platform-gpio-keys.0-event", O_RDONLY );
+	f = open( GPIO_KEYS_PATH, O_RDONLY );
 	if ( f < 0 ) return ( 0 );
 
 	ioctl( f, EVIOCGKEY( sizeof( keyb )), &keyb );
 
-	*buf = EV3_KEY_UP        * _TEST_B( KEY_UP )
-	     | EV3_KEY_DOWN      * _TEST_B( KEY_DOWN )
-	     | EV3_KEY_LEFT      * _TEST_B( KEY_LEFT )
-	     | EV3_KEY_RIGHT     * _TEST_B( KEY_RIGHT )
-	     | EV3_KEY_ENTER     * _TEST_B( KEY_ENTER )
-	     | EV3_KEY_BACKSPACE * _TEST_B( KEY_BACKSPACE );
+	*buf = _TEST_KEY( UP, UP )        | _TEST_KEY( DOWN, DOWN )
+	     | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
+	     | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
 	close( f );
 	return ( sizeof( uint8_t ));
 }

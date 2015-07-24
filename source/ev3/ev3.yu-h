@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "ev3_link/ev3_keys.h"
+#include "ev3_keys.h"
 
 ($extern-c-begin)
 

@@ -61,6 +61,8 @@ else
 D_INSTALL = /usr/local
 endif
 
+D_INSTALL_H_FROM = .
+
 # -- yupp import directories
 D_YU = $(TOP)/source/ev3
 
@@ -146,6 +148,7 @@ G_H = $(addsuffix $(E_H), $(basename $(S_YUH)))
 S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
 S_ASM = $(wildcard $(addsuffix /*$(E_ASM), $(D_ASM)))
+S_INSTALL_H = $(wildcard $(addsuffix /*$(E_H), $(D_INSTALL_H_FROM)))
 
 O_CXX = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_CXX)))))
 O_C = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_C)))))
@@ -195,7 +198,7 @@ CLEAN_BIN = rm -rf $(R_BIN)
 # -- install
 define install
 	cp -f $(F_BIN) $(D_INSTALL)/lib
-	cp -f $(G_H) $(D_INSTALL)/include
+	cp -f $(S_INSTALL_H) $(D_INSTALL)/include
 endef
 
 # ---------------------------------
