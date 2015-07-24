@@ -351,7 +351,8 @@ CORO_DEFINE( drive )
 			break;
 
 		case TURN_ANGLE:
-			_run_to_rel_pos( RATE_CIRCULAR, DEGREE_TO_COUNT( -angle ), RATE_CIRCULAR, DEGREE_TO_COUNT( angle ));
+			_run_to_rel_pos( RATE_CIRCULAR, DEGREE_TO_COUNT( -angle )
+			, RATE_CIRCULAR, DEGREE_TO_COUNT( angle ));
 			_wait_stopped = 1;
 			break;
 
