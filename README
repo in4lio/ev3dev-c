@@ -48,7 +48,9 @@
 
     * * *  How can I see some examples?
 
-    There are a few examples on C in "eg" folder:
+    https://github.com/in4lio/ev3dev-c/blob/master/eg/drive/drive.c
+
+    There are a few more examples on C in "eg" folder:
     "light"    - LEDs blinking example;
     "sensor"   - TOUCH and COLOR sensors example;
     "tacho"    - Tacho motor running for 5 sec;
