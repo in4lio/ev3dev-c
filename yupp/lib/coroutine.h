@@ -27,7 +27,7 @@
  *
  *  CORO_DEFINE( B )
  *  {
- *      static int b;
+ *      CORO_LOCAL int b;
  *
  *      CORO_BEGIN();
  *      for ( ; ; ) {
@@ -46,7 +46,7 @@
  *      return 0;
  *  }
  *  \endcode
- *  Any local variables you need to be persistent across a coroutine switching
+ *  Any local variables that need to be persistent across a coroutine switching
  *  must be declared static.
  *  If you need two CORO_YIELD on the same source line or into the macros,
  *  you should use CORO_YIELD_NAMED.
@@ -89,7 +89,7 @@ enum {
 #define CORO_DEFINE( name )  int coro_##name( co_t *co_p )
 
 /**
- *  \brief Declare all local variables as static if they need to be preserved across a task switching.
+ *  \brief Declare the local variable that preserves a value across a coroutine switching.
  */
 #define CORO_LOCAL  static
 
@@ -98,9 +98,8 @@ enum {
  *  \param initial The initial operation, executed whenever enter in the coroutine.
  */
 #define CORO_BEGIN( initial ) \
-	{ \
-		initial; \
-		if ( *co_p ) goto **co_p;
+	initial; \
+	if ( *co_p ) goto **co_p;
 
 /**
  *  \brief The coroutine end.
@@ -108,11 +107,10 @@ enum {
  *  \hideinitializer
  */
 #define CORO_END( final ) \
-		*co_p = &&CORO_LABEL; \
+	*co_p = &&CORO_LABEL; \
 CORO_LABEL: \
-		final; \
-		return CO_END; \
-	}
+	final; \
+	return CO_END;
 
 /**
  *  \brief Switching to the next coroutine.
