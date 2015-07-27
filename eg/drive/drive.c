@@ -180,7 +180,7 @@ CORO_CONTEXT( drive );
 /* Coroutine of the TOUCH sensor handling */
 CORO_DEFINE( handle_touch )
 {
-	static int val;
+	CORO_LOCAL int val;
 
 	CORO_BEGIN();
 	for ( ; ; ) {
@@ -199,7 +199,7 @@ CORO_DEFINE( handle_touch )
 /* Coroutine of the EV3 brick keys handling */
 CORO_DEFINE( handle_brick_control )
 {
-	uint8_t keys;
+	CORO_LOCAL uint8_t keys;
 
 	CORO_BEGIN();
 	for ( ; ; ) {
@@ -224,7 +224,7 @@ CORO_DEFINE( handle_brick_control )
 /* Coroutine of IR remote control handling */
 CORO_DEFINE( handle_ir_control )
 {
-	static int val;
+	CORO_LOCAL int val;
 
 	CORO_BEGIN();
 	for ( ; ; ) {
@@ -272,7 +272,7 @@ CORO_DEFINE( handle_ir_control )
    based on Franz Detro drive_test.cpp */
 CORO_DEFINE( handle_ir_proximity )
 {
-	static int front, prox;
+	CORO_LOCAL int front, prox;
 
 	CORO_BEGIN();
 	for ( ; ; ) {
@@ -319,7 +319,7 @@ CORO_DEFINE( handle_ir_proximity )
 /* Coroutine of control the motors */
 CORO_DEFINE( drive )
 {
-	static int _wait_stopped;
+	CORO_LOCAL int _wait_stopped;
 
 	CORO_BEGIN();
 	for ( ; ; ) {

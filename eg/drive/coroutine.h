@@ -80,13 +80,18 @@ enum {
  */
 #define CORO_CONTEXT( name )  co_t co_##name
 
-#define CORO_CONTEXT_INIT( name ) co_##name = NULL
+#define CORO_CONTEXT_INIT( name )  co_##name = NULL
 
 /**
  *  \brief Define the coroutine.
  *  \param name Coroutine name.
  */
 #define CORO_DEFINE( name )  int coro_##name( co_t *co_p )
+
+/**
+ *  \brief Declare all local variables as static if they need to be preserved across a task switching.
+ */
+#define CORO_LOCAL  static
 
 /**
  *  \brief The coroutine beginning.
