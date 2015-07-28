@@ -14,7 +14,7 @@
 	($coro-define B ]
 		for ( ; ; ) {
 			/* ... */
-			($coro-wait);
+			($coro-wait cond);
 		}
 	[ \enter ]
 		($coro-local) int b;
