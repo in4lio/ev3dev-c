@@ -41,6 +41,7 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 	($set parse_slice \parent.\indent.($each-PORT_SLICE \i.]
 		($if ($eq parent ($i PORT_SLICE_PARENT)) ]
 			($set _ ($mul ($TAB) indent))
+			($_)
 			($_)if ( strncmp( name, ($i PORT_SLICE_PREF), ($i _SLICE_PREF)_PREF_LEN ) == 0 ) {
 			($_)	/* ($i PORT_SLICE_PREF) */
 			($_)	name += ($i _SLICE_PREF)_PREF_LEN;
@@ -68,6 +69,7 @@ char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 			($set _ ($mul ($TAB) indent))
 			($set l,,($i _SLICE_PREF)_PREF_LEN($if ($unq parent),,($SPACE)+ 1))
 			($set d,,($i PORT_SLICE_DESC)($if ($i _SLICE_OFS),,($SPACE)- ($i _SLICE_ID)__OFFSET_))
+			($_)
 			($_)if (( ($i PORT_SLICE_DESC) >= ($if ($i _SLICE_ID),,($i _SLICE_ID)_)($unq ($0 ($i PORT_SLICE_RANGE))) ) && ( ($i PORT_SLICE_DESC) <= ($if ($i _SLICE_ID),,($i _SLICE_ID)_)($unq ($-1 ($i PORT_SLICE_RANGE))) )) {
 			($_)	memcpy( p, ($if ($unq parent),,":")($i PORT_SLICE_PREF), ($l) );
 			($_)	p += ($l);

@@ -56,6 +56,7 @@ enum {
 				($upper ($i CLASS_TYPE_ID))_($suf), ($if ($i CLASS_TYPE_ID_SYN) ]
 				($upper ($i CLASS_TYPE_ID_SYN))_($suf) = ($upper ($i CLASS_TYPE_ID))_($suf),
 				[ )
+
 			[ )
 
 		[ )
