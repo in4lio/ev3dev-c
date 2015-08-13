@@ -15,8 +15,7 @@ import os
 
 M_CUT = ' *  \\{\n'
 M_CUT_END = '/** \\} */\n'
-M_IMPORT1 = '($import "%sev3_'
-M_IMPORT2 = '($import "%snxt_'
+M_IMPORT  = '($import "%sev3_'
 E1 = '* ERROR * File %s: label "%s" not found.'
 E2 = '* ERROR * File %s not found.'
 
@@ -41,7 +40,6 @@ def clip_h( fn ):
 
     a = ''.join( t[ b + 2 : e ])
     d = os.path.dirname( fn ) + '/'
-    a = a.replace( M_IMPORT1 % ( '' ), M_IMPORT1 % ( d ))
-    a = a.replace( M_IMPORT2 % ( '' ), M_IMPORT2 % ( d ))
+    a = a.replace( M_IMPORT % ( '' ), M_IMPORT % ( d ))
 
     return a

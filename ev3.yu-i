@@ -30,15 +30,15 @@
 
 #endif
 
+%apply uint8_t *OUTPUT { uint8_t *sn };
 %apply bool *OUTPUT { bool *buf };
 %apply int *OUTPUT { int *buf };
 %apply uint8_t *OUTPUT { uint8_t *buf };
 %apply uint8_t *OUTPUT { byte *buf };
-%apply uint8_t *OUTPUT { uint8_t *extport };
-%apply uint8_t *OUTPUT { uint8_t *sn };
 %apply uint32_t *OUTPUT { uint32_t *buf };
 %apply uint32_t *OUTPUT { dword *buf };
 %apply float *OUTPUT { float *buf };
+%apply char *OUTPUT { char *buf };
 
 %apply uint32_t { dword };
 %apply uint8_t { byte };
@@ -99,7 +99,11 @@
 ($import { clip_h( "../source/ev3/ev3_led.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_light.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_port.yu-h" ) })
+($import "../source/ev3/ev3_class_clean.yu")
 ($import { clip_h( "../source/ev3/ev3_sensor.yu-h" ) })
+($import "../source/ev3/ev3_class_clean.yu")
 ($import { clip_h( "../source/ev3/ev3_tacho.yu-h" ) })
+($import "../source/ev3/ev3_class_clean.yu")
 ($import { clip_h( "../source/ev3/ev3_dc.yu-h" ) })
+($import "../source/ev3/ev3_class_clean.yu")
 ($import { clip_h( "../source/ev3/ev3_servo.yu-h" ) })
