@@ -26,7 +26,7 @@
  */
 
 ($import "ev3_servo-dict.yu")
-($import "ev3_class-dict.yu")
+($import "ev3_class_decl.yu")
 ($import "ev3_class-h.yu")
 
 /** \} */
