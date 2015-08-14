@@ -30,18 +30,30 @@ int main( void )
 
 	if ( ev3_listdir( "/sys/class/leds", s, sizeof( s ))) {
 		printf( "leds folder: %s\n", s );
+	} else {
+		printf( "ERROR: ev3_listdir( leds )\n" );
 	}
-	if ( ev3_read_int( "/sys/class/leds/ev3:red:left/brightness", &state )) {
-		ev3_write_int( "/sys/class/leds/ev3:red:left/brightness", ( state ) ? 0 : 255 );
+	if ( ev3_read_int( "/sys/class/leds/ev3-left0:red:ev3dev/brightness", &state )) {
+		if ( !ev3_write_int( "/sys/class/leds/ev3-left0:red:ev3dev/brightness", ( state ) ? 0 : 255 )) {
+			printf( "ERROR: ev3_write_int( brightness )\n" );
+		}
+	} else {
+		printf( "ERROR: ev3_read_int( brightness )\n" );
 	}
 	if ( ev3_listdir( "/sys/class/lego-port", s, sizeof( s ))) {
 		printf( "lego-port folder: %s\n", s );
+	} else {
+		printf( "ERROR: ev3_listdir( lego-port )\n" );
 	}
 	if ( ev3_listdir( "/sys/class/lego-sensor", s, sizeof( s ))) {
 		printf( "lego-sensor folder: %s\n", s );
+	} else {
+		printf( "ERROR: ev3_listdir( lego-sensor )\n" );
 	}
 	if ( ev3_listdir( "/sys/class/tacho-motor", s, sizeof( s ))) {
 		printf( "tacho-motor folder: %s\n", s );
+	} else {
+		printf( "ERROR: ev3_listdir( tacho-motor )\n" );
 	}
 	ev3_uninit();
 

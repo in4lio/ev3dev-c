@@ -55,6 +55,8 @@ int main( void )
 	printf( "Port '%s'\n", ev3_port_name( INPUT_2, EXT_PORT__NONE_, 0, s ));
 	if ( get_port_modes( sn, s, sizeof( s ))) {
 		printf( "Modes: %s\n", s );
+	} else {
+		printf( "ERROR: get_port_modes()\n" );
 	}
 	ev3_uninit();
 	printf( "*** ( EV3 ) Bye! ***\n" );
