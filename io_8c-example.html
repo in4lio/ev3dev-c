@@ -97,18 +97,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> ( <a name="a1"></a><a class="code" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a>( <span class="stringliteral">&quot;/sys/class/leds&quot;</span>, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;leds folder: %s\n&quot;</span>, s );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: ev3_listdir( leds )\n&quot;</span> );</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a name="a2"></a><a class="code" href="group__ev3.html#ga24436e6a324b9b0dffd264e6f325042f">ev3_read_int</a>( <span class="stringliteral">&quot;/sys/class/leds/ev3:red:left/brightness&quot;</span>, &amp;state )) {</div>
-<div class="line">        <a name="a3"></a><a class="code" href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">ev3_write_int</a>( <span class="stringliteral">&quot;/sys/class/leds/ev3:red:left/brightness&quot;</span>, ( state ) ? 0 : 255 );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a name="a2"></a><a class="code" href="group__ev3.html#ga24436e6a324b9b0dffd264e6f325042f">ev3_read_int</a>( <span class="stringliteral">&quot;/sys/class/leds/ev3-left0:red:ev3dev/brightness&quot;</span>, &amp;state )) {</div>
+<div class="line">        <span class="keywordflow">if</span> ( !<a name="a3"></a><a class="code" href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">ev3_write_int</a>( <span class="stringliteral">&quot;/sys/class/leds/ev3-left0:red:ev3dev/brightness&quot;</span>, ( state ) ? 0 : 255 )) {</div>
+<div class="line">            printf( <span class="stringliteral">&quot;ERROR: ev3_write_int( brightness )\n&quot;</span> );</div>
+<div class="line">        }</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: ev3_read_int( brightness )\n&quot;</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a>( <span class="stringliteral">&quot;/sys/class/lego-port&quot;</span>, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;lego-port folder: %s\n&quot;</span>, s );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: ev3_listdir( lego-port )\n&quot;</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a>( <span class="stringliteral">&quot;/sys/class/lego-sensor&quot;</span>, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;lego-sensor folder: %s\n&quot;</span>, s );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: ev3_listdir( lego-sensor )\n&quot;</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a>( <span class="stringliteral">&quot;/sys/class/tacho-motor&quot;</span>, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;tacho-motor folder: %s\n&quot;</span>, s );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: ev3_listdir( tacho-motor )\n&quot;</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <a name="a4"></a><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line"></div>
@@ -117,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 24 2015 16:52:22 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 14 2015 20:25:56 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

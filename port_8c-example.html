@@ -121,6 +121,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    printf( <span class="stringliteral">&quot;Port &#39;%s&#39;\n&quot;</span>, <a name="a8"></a><a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( INPUT_2, EXT_PORT__NONE_, 0, s ));</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a name="a9"></a><a class="code" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a>( sn, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;Modes: %s\n&quot;</span>, s );</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        printf( <span class="stringliteral">&quot;ERROR: get_port_modes()\n&quot;</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <a name="a10"></a><a class="code" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a>();</div>
 <div class="line">    printf( <span class="stringliteral">&quot;*** ( EV3 ) Bye! ***\n&quot;</span> );</div>
@@ -130,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 24 2015 16:52:22 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 14 2015 20:25:56 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
