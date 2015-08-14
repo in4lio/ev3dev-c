@@ -26,6 +26,13 @@ static const uint8_t __LED_RED_STATE    [ LIT__COL__ ] = { 0, 0, 255, 255 };
 static const uint8_t __LED_GREEN_TRIGGER[ LIT__COL__ ] = { 1, 1, 0, 1 };
 static const uint8_t __LED_RED_TRIGGER  [ LIT__COL__ ] = { 1, 0, 1, 1 };
 
+const char *light_color( uint8_t col )
+{
+	if ( col >= LIT__COL__ ) return ( STR_unknown_ );
+
+	return ( LIT_COLOR[ col ]);
+}
+
 void set_light( uint8_t loc, uint8_t col )
 {
 	if (( loc >= LIT__LOC__ ) || ( col >= LIT__COL__ )) return;

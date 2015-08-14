@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     sn = ev3_search_port( INPUT_2, EXT_PORT__NONE_ )
 
-    print 'Port "%s"' % ( ev3_port_name( INPUT_2, EXT_PORT__NONE_ ))
+    print 'Port "%s"' % ( ev3_port_name( INPUT_2, EXT_PORT__NONE_, 0 ))
     ok, s = get_port_modes( sn, 256 )
     if ok:
         print 'Modes:', s

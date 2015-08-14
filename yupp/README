@@ -21,38 +21,44 @@
     Lisp-like Polish notation syntax in fully parenthesized form.
     yupp is intended to transform C programs before they are compiled.
     It can also be useful for more general purposes.
+
+    yupp allows to generate a readable, well-formatted text. The special
+    attention is paid to providing complete diagnostic information and
+    navigational capabilities.
+
     An embedding of macro constructions into the source code occurs by
     using an "application form" e.g. ($e).
 
     ___        ___________________________________
     ___ SYNTAX ___________________________________
 
-    Basic syntactic forms of the macro language is a list, an application
-    and a lambda expression.
+    The basic syntactic forms of the macro language are list, application
+    and lambda expression.
 
-    list ::= '(' { form }0... ')'
+    <list> ::= '(' { <form> } ')'
 
-    (0.2 "string" atom)
+    (0.5 "string" atom)
 
-    application ::= '($' function { argument }0... ')'
+    <application> ::= '($' <function> { <argument> } ')'
 
-    ($add 2 2)
+    ($add 2 3)
 
-    lambda ::= { '\' name { ':' default } '.' }1... form
+    <lambda> ::= <param> { <param> } <form>
+    <param>  ::= '\' <name> [ ':' <default> ] '.'
 
-    \p.($add p 1)
+    \p.($sub p 1)
 
-    Syntactic forms can be nested within each other but only an application
-    form can be embedded into the source code directly.
+    The syntactic forms can be nested within each other but, as mentioned
+    above, only an application can be embedded into the source code directly.
 
     Any functions from "string", "operator" and "math" modules of Python
     standard library can be used in preprocessor expressions
-    (https://github.com/in4lio/yupp/wiki/Builtin-Functions).
+    (https://github.com/in4lio/yupp/blob/master/doc/builtin.md).
 
-    Following examples show basic syntactic constructs of the macro language.
-    yupp Web Console is at your service (http://yup-py.appspot.com/).
+    The following examples show various syntactic constructs of the macro
+    language. Try them using yupp Web Console (http://yup-py.appspot.com/).
 
-    ($! this is a comment (won't be saved))
+    ($! this is a comment, won't be saved in the generated text )
 
     ($! the atom binding )
 
@@ -62,43 +68,43 @@
 
         ($set abc (a 'B' 'C' 'D' 'E'))
 
-    ($! the atom binding with the lambda (the function definition))
+    ($! a binding of the atom with the lambda is a function definition )
 
         ($set inc \val.($add val 1))
 
-    ($! the application of the number (the subscripting))
+    ($! an application of the number is a subscripting )
 
         ($2 miss miss HIT miss)
 
     HIT
 
-    ($! get specific item of the list )
+    ($! getting the specific element of the list )
 
         ($0 abc)
 
     'A'
 
-    ($! the application of the list ("for each" loop))
+    ($! an application of the list is "for each" loop )
 
         ($(0 1 2) \i.($inc i))
 
     123
 
-    ($! the embedding of one list into another - * list )
+    ($! the embedding of one list into another - *list )
 
         ($set mark (5 4 *(3 2) 1))
 
-    ($! the infix expression on Python - {} )
+    ($! infix expression on Python - {} )
 
         ($set four { 2 + 2 })
 
-    ($! the infix expression straight into the source code )
+    ($! infix expression straight into the source code )
 
         (${} sqrt(four))
 
     2.0
 
-    ($! the conditional expression - consequent ? condition | alternative )
+    ($! conditional expression - consequent ? condition | alternative )
 
         ($set fact \n.($ 1 ? { n == 0 } | { ($fact { n - 1 }) * n }))
         ($fact 10)
@@ -111,7 +117,7 @@
 
     putchar('A'); putchar('B'); putchar('C'); putchar('D'); putchar('E');
 
-    ($! the code enclosing with square brackets )
+    ($! the source code enclosing with square brackets )
 
         ($mark \i.[($i), ])
 
@@ -130,8 +136,8 @@
     ($! the macro definition )
 
         ($macro GRADE ( PAIRS )
-            ($set GRADE-name  ($ (($PAIRS)) \pair.($0 pair)))
-            ($set GRADE-value ($ (($PAIRS)) \pair.($1 pair)))
+            ($set GRADE-name  ($ (($PAIRS)) \p.($0 p)))
+            ($set GRADE-value ($ (($PAIRS)) \p.($1 p)))
             ($set each-GRADE  ($range ($len (($PAIRS)) )))
         )
 
@@ -151,8 +157,8 @@
         with reverse square brackets - ]<EOL> <EOL>[ )
 
     ($each-GRADE \i.]
-
         int ($i GRADE-name) = ($i GRADE-value);
+
     [ )
 
     int A = 5;
@@ -163,7 +169,7 @@
 
     ($! the source code enclosing with double comma - ,, )
 
-    ($import "stdlib.yu")
+    ($import stdlib)
     ($hex ($BB,,11000000,,11111111,,11101110))
 
     0xc0ffee
@@ -174,14 +180,14 @@
 
     "Give me 5."
 
-    ($! the string evaluation ($$) )
+    ($! the string evaluation - ($$) )
 
         ($ ($$'($($fn) ($0) ($1))' \fn (`mul) 5 5))
 
     25
 
     ($! the iterator (modifier) - experimental!
-        NOT applicable into a loop or a conditional expression )
+        NOT applicable into loop or conditional expression )
 
         ($set i 0)
         ($emit i inc) ($emit i inc) ($emit i dec) ($emit i)
@@ -214,301 +220,101 @@
 
     3.0 9 81.0
 
-    ($! take names of parameters from a list - \(list). )
+    ($! getting the parameter names from the list - \(list). )
 
-    ___           ________________________________
-    ___ EXAMPLE 1 ________________________________
+    ___         __________________________________
+    ___ EXAMPLE __________________________________
 
     >cd yupp
-    >more "./eg/dict.yu-c"
+    >more "./eg/hello.yu-c"
 
-        ($__TITLE__)
         ($set greeting "Hello world!\n")
 
-        ($set name    ( Pi      ch      Zu          ))
-        ($set type    ( double  char    float       ))
-        ($set default ( { pi }  '~'     { 355/113 } ))
-        ($set format  ( "%f"    "%c"    "%f"        ))
+        ($set name   (  Co       F              Zu           ))
+        ($set type   (  float    double         float        ))
+        ($set val    (  { pi }   (`acos( -1 ))  { 355/113 }  ))
+        ($set format (  "%.2f"   "%.10f"        "%.6f"       ))
 
-        ($set each ($range ($len name)))
+        ($set each-Pi ($range ($len name)))
 
+        #include <math.h>
         #include <stdio.h>
 
-        int main(void)
+        void main( void )
         {
-            /* declare dict */
-            ($each \i.]
-                ($i type) ($i name) = ($i default);
+            ($each-Pi \i.]
+                ($i type) ($i name) = ($i val);
 
             [ )
-            printf(($greeting));
+            printf( ($greeting) );
 
-            /* print dict */
-            ($each \i.]
-                printf(($i format), ($i name));
+            ($each-Pi \i.]
+                ($set n ($i name))
+                printf( ($"($0) = ($1)\n" ($n) ($unq ($i format))), ($n) );
 
             [ )
-            return 0;
         }
 
-    >python yup.py -q "./eg/dict.yu-c"
+    >python yup.py -q "./eg/hello.yu-c"
 
-    >more "./eg/dict.c"
+    >more "./eg/hello.c"
 
-        /*  dict.c was generated by yup.py (yupp) 0.5a1
-            out of dict.yu-c at 2013-09-29 09:29
-         */
+        #include <math.h>
         #include <stdio.h>
 
-        int main(void)
+        void main( void )
         {
-            /* declare dict */
-            double Pi = 3.14159265359;
-            char ch = '~';
+            float Co = 3.14159265359;
+            double F = acos( -1 );
             float Zu = 3.14159292035;
 
-            printf("Hello world!\n");
+            printf( "Hello world!\n" );
 
-            /* print dict */
-            printf("%f", Pi);
-            printf("%c", ch);
-            printf("%f", Zu);
+            printf( "Co = %.2f\n", Co );
+            printf( "F = %.10f\n", F );
+            printf( "Zu = %.6f\n", Zu );
 
-            return 0;
         }
 
-    ___                     ______________________
-    ___ EXAMPLE 2 ( MACRO ) ______________________
+    Some more examples can be found here:
 
-    >cd yupp
-    >more "./eg/macro_dict.yu-c"
-
-        ($__TITLE__)
-
-        ($macro dict (id cols body)
-            ($set cols-($id) ($range ($len (($cols)) )))
-            ($set each-($id) ($range ($len (($body)) )))
-            ($set (($cols))
-                ($cols-($id) \i.($ (($body)) \var.($i var)))
-            )
-        )
-
-        ($dict D
-            (` name     type             length  default  format   )
-            (`
-            (  app      char             5       "yupp"   "\n%s "  )
-            (  release  float            1       0.5      "%.1f"   )
-            (  pre      char             1       'a'      "%c"     )
-            (  number   (`unsigned int)  1       1        "%d"     )
-            )
-        )
-
-        #include <stdio.h>
-
-        int main(void)
-        {
-            /* declare dict */
-            ($each-D \i.]
-                ($set dim [[($i length)]] ? { ($i length) > 1 })
-                ($i type) ($i name)($dim) = ($i default);
-
-            [ )
-            printf(($__FILE__));
-
-            /* print dict */
-            ($each-D \i.]
-                printf(($i format), ($i name));
-
-            [ )
-            return 0;
-        }
-
-    >python yup.py -q "./eg/macro_dict.yu-c"
-
-    >more "./eg/macro_dict.c"
-
-        /*  macro_dict.c was generated by yup.py (yupp) 0.5a1
-            out of macro_dict.yu-c at 2013-09-29 09:29
-         */
-
-        #include <stdio.h>
-
-        int main(void)
-        {
-            /* declare dict */
-            char app[5] = "yupp";
-            float release = 0.5;
-            char pre = 'a';
-            unsigned int number = 1;
-
-            printf("macro_dict.yu-c");
-
-            /* print dict */
-            printf("\n%s ", app);
-            printf("%.1f", release);
-            printf("%c", pre);
-            printf("%d", number);
-
-            return 0;
-        }
-
-    ___                          _________________
-    ___ EXAMPLE 3 ( COROUTINES ) _________________
-
-    >cd yupp
-    >more "./lib/eg/ulam.yu-c"
-
-        ($__TITLE__)
-
-        ($import stdlib)
-        ($import coroutine)
-
-        #include <stdio.h>
-
-        ($coro-h)
-
-        #define SQ  19  /* odd, square side length */
-        static int spiral[ SQ * SQ ] = { 0 };
-
-        #define PR_NONE  0
-        #define PR_EOL  -1
-        #define PR_DOT  -2
-        static int number = PR_NONE;  /* current state or prime number */
-
-        void init_spiral( void )
-        {
-            const int dp[ 4 ] = { -SQ, -1, SQ, 1 };  /* step up, left, down
-                                                        and right */
-            int p = SQ * SQ / 2;  /* position in spiral */
-            int n = 2;  /* current number */
-            int lch = 3;  /* chain length */
-            int i, ii;
-
-            spiral[ p ] = 1;
-            spiral[ ++p ] = 2;
-            while ( n < SQ * SQ ) {
-                for ( i = 0; i < 4; i++ ) {  /* up-left-down-right cycle */
-                    for ( ii = 0; ii < lch >> 1; ii++ ) {  /* chain cycle */
-                        p += dp[ i ];
-                        spiral[ p ] = ++n;
-                    }
-                    ++lch; /* chain grows up every second turn */
-                }
-            }
-        }
-
-        int isprime( int n )
-        {
-            int i;
-
-            if ( n == 2 ) return 1;
-            if ( n == 1 || n % 2 == 0 ) return 0;
-            for ( i = 3; i * i <= n; i += 2 ) if (( n % i ) == 0 ) return 0;
-            return 1;
-        }
-
-        /* Define coroutines. */
-
-        ($coro-define U ]
-            for ( i = 0; i < SQ * SQ; i++ ) {
-                number = spiral[ i ];
-
-                if ( !isprime( number )) number = PR_DOT;
-                ($coro-yield);
-
-                /* check line breaking */
-                if (( i % SQ ) == ( SQ - 1 )) number = PR_EOL;
-                ($coro-yield);
-            }
-        [ \enter ]
-            ($coro-local) int i;
-        [ )
-
-        ($coro-define L ]
-            for ( ; ; ) {
-                ($coro-wait,, number > PR_NONE );
-                printf( "%03d ", number );
-                number = PR_NONE;
-            }
-        [ )
-
-        ($coro-define A ]
-            for ( ; ; ) {
-                ($coro-wait,, number == PR_DOT );
-                printf( " .  " );
-                number = PR_NONE;
-            }
-        [ )
-
-        ($coro-define M ]
-            for ( ; ; ) {
-                ($coro-wait,, number == PR_EOL );
-                printf( "\n" );
-                number = PR_NONE;
-            }
-        [ )
-
-        ($dict D
-            (` name )
-            (`
-            (  U    )
-            (  L    )
-            (  A    )
-            (  M    )
-            )
-        )
-
-        /* Print ULAM spiral. */
-
-        int main( void )
-        {
-            ($each-D \i.]
-                ($coro-context ($i name)) = NULL;
-
-            [ )
-            init_spiral();
-            while ( 1
-                ($each-D \i.]
-                    && ($coro-alive ($coro-call ($i name)))
-
-                [ )
-            );
-            return 0;
-        }
+        https://github.com/in4lio/yupp/tree/master/eg
 
     ___          _________________________________
     ___ GET HELP _________________________________
 
-    yupp is written in Python, the filename is "yup.py". Files for
-    preprocessing are passed to "yup.py" as command-line arguments.
+    yupp is written in Python, the filename is "yup.py". Source files
+    for preprocessing are passed to "yup.py" as command-line arguments.
     The files generated by the preprocessor are getting other extensions
     that could come from the original e.g. ".c" for ".yu-c".
-    An unsuccessful preprocessing ends with the error message.
     In failing to translate the preprocessor expressions into a plain
     text the evaluation result will be saved as ".ast" file.
 
-    Sorry, but at the moment there is no other manual except a brief
-    intro that can be found in yupp Blog (http://yup-py.blogspot.com/).
+    Some additional information can be found in yupp Blog:
 
-    For more information about the preprocessor parameters, please get
-    help on the command-line interface:
+        http://yup-py.blogspot.com/
+
+    To learn more about the preprocessor parameters, please get help on
+    the command-line interface:
 
         python yup.py -h
 
     ___         __________________________________
     ___ TESTKIT __________________________________
 
-    yupp is currently in a beta stage. The file called "test_yup.py"
+    yupp is currently in beta stage. The file called "test_yup.py"
     contains a number of smoke tests.
-    The program still needs testing and optimization (especially
-    the eval-apply cycle). Also you can face problems when using recursion
-    and experimental features.
+    The preprocessor still needs testing and optimization. Also you may
+    run into problems with completing of the eval-apply cycle when used
+    recursion or experimental features.
 
     ___              _____________________________
     ___ SUBLIME TEXT _____________________________
 
     The folder "sublime_text" contains configuration files for
-    comfortable use of the preprocessor in Sublime Text 2 editor.
+    comfortable usage of the preprocessor in Sublime Text 2 editor.
+    In addition there is a plug-in for quick navigation between
+    the generated text and its source.
 
     ___     ______________________________________
     ___ WEB ______________________________________
@@ -521,6 +327,15 @@
 
     o   yupp Web Console:
         http://yup-py.appspot.com/
+
+    ___          _________________________________
+    ___ PROJECTS _________________________________
+
+    o   LEGO Mindstorms EV3 Debian C library:
+        https://github.com/in4lio/ev3dev-c/
+
+    o   predict - an embedded application framework:
+        https://github.com/in4lio/predict/
 
     ___     ______________________________________
     ___ GIT ______________________________________

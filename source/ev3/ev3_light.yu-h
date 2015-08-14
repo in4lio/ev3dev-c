@@ -61,6 +61,13 @@ enum {
 ($h-extern-init,,const char * const LIT_COLOR[],,{ ($each-LIT_COLOR \i.[($i LIT_COLOR_NAME), ])STR_unknown_ })
 
 /**
+ *  \brief Get the light color name.
+ *  \param col Color.
+ *  \return Color name.
+ */
+($h-extern) const char *light_color( uint8_t col );
+
+/**
  *  \brief Set the light color.
  *  \param loc Location.
  *  \param col Color.

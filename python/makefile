@@ -19,12 +19,6 @@ endif
 
 TOP = ..
 
-# -- simplified wrapper and interface generator
-SWIG = swig
-
-# -- swig interface file source
-F_SWIG_YUI = $(TOP)/ev3.yu-i
-
 # -- compilers
 CC = gcc
 CXX = g++
@@ -53,6 +47,9 @@ else
 PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
+# -- simplified wrapper and interface generator
+SWIG = swig
+
 # -- output subdirectory
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
@@ -69,7 +66,7 @@ D_PYTHON = d:/prog/python27
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = $(TOP)/source/ev3 $(TOP)/3d_party
+D_C = $(D_YU) $(TOP)/3d_party
 
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
@@ -94,11 +91,17 @@ D_H = $(D_C) $(PYTHON_INCLUDE)
 
 # -- binary directory
 D_BIN = ev3dev
-# D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
+# D_BIN := $(if $(D_PLATFORM),$(D_BIN)/$(D_PLATFORM),$(D_BIN))
 
 # -- object directory
-D_OBJ = object
-D_OBJ := $(if $(D_PLATFORM), $(D_OBJ)/$(D_PLATFORM), $(D_OBJ))
+D_OBJ = $(TOP)/object
+D_OBJ := $(if $(D_PLATFORM),$(D_OBJ)/$(D_PLATFORM),$(D_OBJ))
+
+# -- swig interface file source
+F_SWIG_YUI = $(TOP)/ev3.yu-i
+
+# -- basename of swig wrap file
+F_WRAP_BASE = $(if $(D_PLATFORM),$(D_PLATFORM)/$(BIN),$(BIN))_wrap
 
 # -- source code suffix
 E_YU = .yu
@@ -122,7 +125,7 @@ E_BIN = .so
 endif
 
 # -- the rest of removal list
-G_REST = $(BIN)_wrap.c platform.h
+G_REST = $(F_WRAP_BASE).c platform.h
 
 ifeq ($(SKIP_PP),0)
 G_REST := $(BIN).i $(D_BIN)/__init__.py
@@ -150,7 +153,7 @@ LFLAGS =
 PPFLAGS = -q --pp-browse $(addprefix -d, $(D_YU))
 
 # -- compiler flags
-CFLAGS = $(addprefix -I, $(D_H)) -O2  -std=gnu99 -W -Wall -Wno-comment
+CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
 
 ifeq ($(PLATFORM),__UNIX__)
 CFLAGS := $(CFLAGS) -fPIC
@@ -177,7 +180,7 @@ G_CXX = $(addsuffix $(E_CXX), $(basename $(S_YUCXX)))
 G_C = $(addsuffix $(E_C), $(basename $(S_YUC)))
 G_H = $(addsuffix $(E_H), $(basename $(S_YUH)))
 
-S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C) $(BIN)_wrap.c)
+S_C = $(sort $(wildcard $(addsuffix /*$(E_C), $(D_C))) $(G_C))
 S_CXX = $(sort $(wildcard $(addsuffix /*$(E_CXX), $(D_CXX))) $(G_CXX))
 S_ASM = $(wildcard $(addsuffix /*$(E_ASM), $(D_ASM)))
 
@@ -246,16 +249,16 @@ vpath %$(E_YUC) $(D_C)
 
 all: $(F_BIN)
 
-$(F_BIN): $(O)
+$(F_BIN): $(O) $(F_WRAP_BASE).o
 	$(call wrap,$(LINK),-shared $^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
-$(BIN)_wrap.c: $(BIN).i $(D_BIN)/__init__.py
+$(F_WRAP_BASE).c: $(BIN).i $(D_BIN)/__init__.py
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
-	$(SWIG) -python -outdir ev3dev -globals ev3 $<
+	$(SWIG) -python -outdir ev3dev -o $(F_WRAP_BASE).c -globals ev3 $<
 
-$(BIN).i: $(F_SWIG_YUI)
+$(BIN).i: $(F_SWIG_YUI) $(S_YUH)
 	$(call wrap,$(PP),$(PPFLAGS) -o. $<)
 
 $(D_BIN)/__init__.py: $(D_YU)/app.yu

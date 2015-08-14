@@ -19,6 +19,15 @@
 #include "../source/ev3/ev3_servo.h"
 %}
 
+%define ALLOC_OUTPUT_BUFFER(TYPEMAP,MAX)
+%typemap(in,noblock=1,numinputs=0) TYPEMAP (char temp[MAX+1]) {
+  $1 = ($1_ltype) temp;
+}
+%enddef
+
+/* String buffer without size is passed only for getting a port name */
+ALLOC_OUTPUT_BUFFER( char *buf, 64 );
+
 /* Unfortunately incompatible with %typemap( default ) size_t sz { $1 = DEFAULT_BUF_SIZE; } */
 %cstring_output_maxsize( char *buf, size_t sz );
 
@@ -38,10 +47,11 @@
 %apply uint32_t *OUTPUT { uint32_t *buf };
 %apply uint32_t *OUTPUT { dword *buf };
 %apply float *OUTPUT { float *buf };
-%apply char *OUTPUT { char *buf };
 
 %apply uint32_t { dword };
 %apply uint8_t { byte };
+%apply uint8_t { inx_t };
+%apply uint8_t { flag_t };
 
 #ifdef SWIGRUBY
 %typemap( out ) size_t, bool { $result = $1 ? Qtrue : Qfalse; };
@@ -49,7 +59,7 @@
 
 #endif
 
-%typemap( default ) uint8_t from { $1 = 0; }
+%typemap( default ) uint8_t from { $1 = 0; };
 
 ($import stdlib)
 

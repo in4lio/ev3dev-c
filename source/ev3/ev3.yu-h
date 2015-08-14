@@ -45,13 +45,13 @@
 #endif
 
 #ifndef DEFINE_H
-typedef unsigned char byte;
-typedef unsigned int dword;
+typedef uint8_t byte;
+typedef uint32_t dword;
 
 #endif
 
-typedef unsigned char inx_t;
-typedef unsigned char flags_t;
+typedef uint8_t inx_t;
+typedef uint8_t flags_t;
 
 #define STR_unknown_  "<unknown>"
 
