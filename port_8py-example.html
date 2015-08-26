@@ -17,6 +17,7 @@
   $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="extra.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    sn = <a class="code" href="group__ev3__port.html#gad91d9f824c3f88b9239d19d1d3f7eea2">ev3_search_port</a>( INPUT_2, EXT_PORT__NONE_ )</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Port &quot;%s&quot;&#39;</span> % ( <a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( INPUT_2, EXT_PORT__NONE_ ))</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">print</span> <span class="stringliteral">&#39;Port &quot;%s&quot;&#39;</span> % ( <a class="code" href="group__ev3__port.html#gadda15169f6c94ab9773264f7f8b60b94">ev3_port_name</a>( INPUT_2, EXT_PORT__NONE_, 0 ))</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ok, s = <a class="code" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a>( sn, 256 )</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> ok:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">print</span> <span class="stringliteral">&#39;Modes:&#39;</span>, s</div>
@@ -106,7 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 14 2015 20:25:56 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 26 2015 13:26:39 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
