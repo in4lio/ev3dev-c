@@ -9,7 +9,7 @@
 ($set CLASS_ID [dc])
 ($set CLASS_TITLE "DC motor")
 
-($set TYPE_COMMANDS ( "run-forever" "run-timed" "stop" ))
+($set TYPE_COMMANDS ( "run-forever" "run-timed" "run-direct" "stop" ))
 ($set TYPE_STOP_COMMANDS ( "coast" "brake" ))
 ($set TYPE_STATES ( "running" "ramping" ))
 
