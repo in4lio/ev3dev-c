@@ -110,9 +110,10 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>DC_COMMAND__NONE_</b> = 0, 
 <b>RCX_MOTOR_RUN_FOREVER</b>, 
 <b>RCX_MOTOR_RUN_TIMED</b>, 
-<b>RCX_MOTOR_STOP</b>, 
+<b>RCX_MOTOR_RUN_DIRECT</b>, 
 <br />
-&#160;&#160;<a class="el" href="group__ev3__dc.html#ggadf764cbdea00d65edcd07bb9953ad2b7a7bc75c5a6ac5eff55c6d3eb89b4007f9">DC_COMMAND__COUNT_</a>, 
+&#160;&#160;<b>RCX_MOTOR_STOP</b>, 
+<a class="el" href="group__ev3__dc.html#ggadf764cbdea00d65edcd07bb9953ad2b7a7bc75c5a6ac5eff55c6d3eb89b4007f9">DC_COMMAND__COUNT_</a>, 
 <b>DC_COMMAND__UNKNOWN_</b> = DC_COMMAND__COUNT_
 <br />
  }</td></tr>
@@ -129,10 +130,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga99fb83031ce9923c84392b4e92f956b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of DC motor stop_commands.  <a href="group__ev3__dc.html#ga99fb83031ce9923c84392b4e92f956b5">More...</a><br /></td></tr>
 <tr class="separator:ga99fb83031ce9923c84392b4e92f956b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabc6126af1d45847bc59afa0aa3216b04"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>DC_COMMAND__NULL_</b> = 0, 
+<tr class="memitem:gabc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabc6126af1d45847bc59afa0aa3216b04"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>DC_COMMAND__NULL_</b> = 0, 
 <b>DC_RUN_FOREVER</b>, 
 <b>DC_RUN_TIMED</b>, 
-<b>DC_STOP</b>
+<b>DC_RUN_DIRECT</b>, 
+<br />
+&#160;&#160;<b>DC_STOP</b>
+<br />
  }</td></tr>
 <tr class="memdesc:gabc6126af1d45847bc59afa0aa3216b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common identifiers of DC motor commands. <br /></td></tr>
 <tr class="separator:gabc6126af1d45847bc59afa0aa3216b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1551,7 +1556,7 @@ EV3_DC_EXT <a class="el" href="structEV3__DC.html">EV3_DC</a>&#160;</td><td clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 26 2015 13:26:39 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 7 2015 15:15:39 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
