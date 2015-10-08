@@ -11,12 +11,14 @@ ok, ls = ev3_listdir( '/sys/class/leds', 256 )
 if ok
   puts "leds folder: #{ls}"
 else
-  puts 'ERROR: ev3_listdir'
+  puts 'ERROR: ev3_listdir( leds )'
 end
 
-ok, state = ev3_read_int( '/sys/class/leds/ev3:red:left/brightness' )
+ok, state = ev3_read_int( '/sys/class/leds/ev3-left0:red:ev3dev/brightness' )
 if ok
-  ev3_write_int( '/sys/class/leds/ev3:red:left/brightness', state ? 0 : 255 )
+  if not ev3_write_int( '/sys/class/leds/ev3-left0:red:ev3dev/brightness', state ? 0 : 255 )
+			puts 'ERROR: ev3_write_int( brightness )'
+  end
 else
   puts 'ERROR: ev3_read_int'
 end
@@ -25,21 +27,21 @@ ok, ls = ev3_listdir( '/sys/class/lego-port', 256 )
 if ok
   puts "lego-port folder: #{ls}"
 else
-  puts 'ERROR: ev3_listdir'
+  puts 'ERROR: ev3_listdir( lego-port )'
 end
 
 ok, ls = ev3_listdir( '/sys/class/lego-sensor', 256 )
 if ok
   puts "lego-sensor folder: #{ls}"
 else
-  puts 'ERROR: ev3_listdir'
+  puts 'ERROR: ev3_listdir( lego-sensor )'
 end
 
 ok, ls = ev3_listdir( '/sys/class/tacho-motor', 256 )
 if ok
   puts "tacho-motor folder: #{ls}"
 else
-  puts 'ERROR: ev3_listdir'
+  puts 'ERROR: ev3_listdir( tacho-motor )'
 end
 
 ev3_uninit()

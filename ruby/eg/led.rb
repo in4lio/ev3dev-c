@@ -8,22 +8,22 @@ include Ev3
 puts 'Waiting the EV3 brick online...'
 if ev3_init() < 1 then exit( 1 ) end
 
-ok, state = get_led_brightness( EV3_RED_LEFT )
+ok, state = get_led_brightness( EV3_LEFT_RED )
 if ok
-  puts "get_led_brightness( EV3_RED_LEFT ) = #{state}"
+  puts "get_led_brightness( EV3_LEFT_RED ) = #{state}"
 else
-  puts 'ERROR: get_led_brightness'
+  puts 'ERROR: get_led_brightness()'
 end
 
-if not set_led_brightness( EV3_RED_LEFT, 0 )
-  puts 'ERROR: set_led_brightness'
+if not set_led_brightness( EV3_LEFT_RED, 0 )
+  puts 'ERROR: set_led_brightness()'
 end
 
-state = get_led_trigger_inx( EV3_RED_RIGHT )
-puts "get_led_trigger_inx( EV3_RED_RIGHT ) = #{state}"
+state = get_led_trigger_inx( EV3_RIGHT_RED )
+puts "get_led_trigger_inx( EV3_RIGHT_RED ) = #{state}"
 
-if not set_led_trigger( EV3_RED_RIGHT, 'heartbeat' )
-  puts 'ERROR: set_led_trigger'
+if not set_led_trigger( EV3_RIGHT_RED, 'heartbeat' )
+  puts 'ERROR: set_led_trigger()'
 end
 
 ev3_uninit()

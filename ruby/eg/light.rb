@@ -21,15 +21,31 @@ sleep( 7.5 )
 
 set_light( LIT_LEFT, LIT_OFF )
 set_light( LIT_RIGHT, LIT_OFF )
+col = light_color( get_light( LIT_LEFT ))
+puts "LEFT : #{col}"
+col = light_color( get_light( LIT_RIGHT ))
+puts "RIGHT: #{col}"
 sleep( 0.5 )
 set_light( LIT_LEFT, LIT_RED )
 set_light( LIT_RIGHT, LIT_RED )
+col = light_color( get_light( LIT_LEFT ))
+puts "LEFT : #{col}"
+col = light_color( get_light( LIT_RIGHT ))
+puts "RIGHT: #{col}"
 sleep( 0.5 )
 set_light( LIT_LEFT, LIT_AMBER )
 set_light( LIT_RIGHT, LIT_AMBER )
+col = light_color( get_light( LIT_LEFT ))
+puts "LEFT : #{col}"
+col = light_color( get_light( LIT_RIGHT ))
+puts "RIGHT: #{col}"
 sleep( 0.5 )
 set_light( LIT_LEFT, LIT_GREEN )
 set_light( LIT_RIGHT, LIT_GREEN )
+col = light_color( get_light( LIT_LEFT ))
+puts "LEFT : #{col}"
+col = light_color( get_light( LIT_RIGHT ))
+puts "RIGHT: #{col}"
 
 ev3_uninit()
 puts '*** ( EV3 ) Bye! ***'
