@@ -19,12 +19,6 @@ endif
 
 TOP = ..
 
-# -- simplified wrapper and interface generator
-SWIG = swig
-
-# -- swig interface file source
-F_SWIG_YUI = $(TOP)/ev3.yu-i
-
 # -- compilers
 CC = gcc
 CXX = g++
@@ -53,6 +47,9 @@ else
 PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
+# -- simplified wrapper and interface generator
+SWIG = swig
+
 # -- output subdirectory
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
@@ -67,7 +64,7 @@ D_PERL = d:/prog/perl-no64/perl/
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
-D_C = $(TOP)/source/ev3 $(TOP)/3d_party
+D_C = $(D_YU) $(TOP)/3d_party
 
 ifeq ($(EV3),0)
 D_C := $(D_C) $(TOP)/source/ev3/ev3_link
@@ -82,7 +79,7 @@ PERL_INCLUDE = $(D_PERL)/lib/CORE
 else
 
 ifeq ($(PLATFORM),__UNIX__)
-PERL_INCLUDE = /usr/lib/arm-linux-gnueabi/perl/5.20.1/CORE
+PERL_INCLUDE = /usr/lib/arm-linux-gnueabi/perl/5.20/CORE
 endif
 
 endif
@@ -95,8 +92,14 @@ D_BIN = .
 # D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
-D_OBJ = object
-D_OBJ := $(if $(D_PLATFORM), $(D_OBJ)/$(D_PLATFORM), $(D_OBJ))
+D_OBJ = $(TOP)/object
+D_OBJ := $(if $(D_PLATFORM),$(D_OBJ)/$(D_PLATFORM),$(D_OBJ))
+
+# -- swig interface file source
+F_SWIG_YUI = $(TOP)/ev3.yu-i
+
+# -- basename of swig wrap file
+F_WRAP_BASE = $(if $(D_PLATFORM),$(D_PLATFORM)/$(BIN),$(BIN))_wrap
 
 # -- source code suffix
 E_YU = .yu
@@ -120,7 +123,7 @@ E_BIN = .so
 endif
 
 # -- the rest of removal list
-G_REST = $(BIN)_wrap.c platform.h
+G_REST = $(F_WRAP_BASE).c platform.h
 
 ifeq ($(SKIP_PP),0)
 G_REST := $(BIN).i
@@ -189,7 +192,6 @@ O_C = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_C))))
 O_ASM = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(basename $(notdir $(S_ASM)))))
 
 O = $(O_CXX) $(O_C) $(O_ASM)
-O_WRAP = $(addprefix $(D_OBJ)/, $(addsuffix $(E_OBJ), $(BIN)_wrap))
 
 # ---------------------------------
 #   commands
@@ -250,18 +252,19 @@ vpath %$(E_YUC) $(D_C)
 
 all: $(F_BIN)
 
-$(F_BIN): $(O) $(O_WRAP)
+$(F_BIN): $(O) $(F_WRAP_BASE).o
 	$(call wrap,$(LINK),-shared $^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
 
-$(BIN)_wrap.c: $(BIN).i
+$(F_WRAP_BASE).c: $(BIN).i
 	echo \#define EV3_BRICK $(EV3) > ./platform.h
-	$(SWIG) -perl $<
+	$(SWIG) -perl -outdir . -o $(F_WRAP_BASE).c $<
 
-$(O_WRAP): CFLAGS_EX = $(CFLAGS_WRAP)
+$(F_WRAP_BASE).o: $(F_WRAP_BASE).c
+	$(call wrap,$(CC),$(CFLAGS) $(CFLAGS_WRAP) -c $< -o $@)
 
-$(BIN).i: $(F_SWIG_YUI)
+$(BIN).i: $(F_SWIG_YUI) $(S_YUH)
 	$(call wrap,$(PP),$(PPFLAGS) -o. $<)
 
 $(G_C) $(G_CXX) $(G_H): $(S_YU)
@@ -277,8 +280,8 @@ $(G_H): %$(E_H): %$(E_YUH)
 
 $(S_C) $(S_CXX): $(G_H)
 
-$(O_C) $(O_WRAP): $(D_OBJ)/%$(E_OBJ): %$(E_C)
-	$(call wrap,$(CC),$(CFLAGS) $(CFLAGS_EX) -c $< -o $@)
+$(O_C): $(D_OBJ)/%$(E_OBJ): %$(E_C)
+	$(call wrap,$(CC),$(CFLAGS) -c $< -o $@)
 
 $(O_CXX): $(D_OBJ)/%$(E_OBJ): %$(E_CXX)
 	$(call wrap,$(CXX),$(CXXFLAGS) -c $< -o $@)
