@@ -12,12 +12,13 @@ if __name__ == '__main__':
     ev3_port_init()
     port = OUTPUT_B
 
-    print 'Set mode of the EV3 output port (%s)...' % ( ev3_port_name( port, EXT_PORT__NONE_ ))
+    name_port = ev3_port_name( port, EXT_PORT__NONE_, 0 )
+    print 'Set mode of the EV3 output port (%s)...' % ( name_port )
     sn_port = ev3_search_port( port, EXT_PORT__NONE_ )
     set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR )
     ok, mode = get_port_mode( sn_port, 256 )
     if ok:
-        print '%s: %s' % ( ev3_port_name( port, EXT_PORT__NONE_ ), mode )
+        print '%s: %s' % ( name_port, mode )
     sleep( 0.2 )
 
     ev3_dc_init()
@@ -27,7 +28,7 @@ if __name__ == '__main__':
         type_inx = ev3_dc_desc_type_inx( i )
         if type_inx != DC_TYPE__NONE_:
             print '  type =', ev3_dc_type( type_inx )
-            print '  port =', ev3_port_name( ev3_dc_desc_port( i ), ev3_dc_desc_extport( i ))
+            print '  port =', ev3_dc_port_name( i )
 
     ok, sn = ev3_search_dc_plugged_in( port, EXT_PORT__NONE_ )
     if ok:
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     set_port_mode_inx( sn_port, OUTPUT_AUTO )
     ok, mode = get_port_mode( sn_port, 256 )
     if ok:
-        print '%s: %s' % ( ev3_port_name( port, EXT_PORT__NONE_ ), mode )
+        print '%s: %s' % ( name_port, mode )
 
     ev3_uninit()
     print '*** ( EV3 ) Bye! ***'
