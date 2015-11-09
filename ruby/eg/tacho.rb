@@ -15,9 +15,12 @@ if __FILE__ == $0
   if ev3_init() == -1 then exit( 1 ) end
 
   if EV3_BRICK == 0
-    puts "The EV3 brick auto-detection is DISABLED, waiting #{Ev3.brick_addr} online with plugged tacho..."
-    $stdout.flush
+    puts 'The EV3 brick auto-detection is DISABLED,'
+    puts "waiting #{Ev3.brick_addr} online with plugged tacho..."
+  else
+    puts 'Waiting tacho is plugged...'
   end
+  $stdout.flush
 
   while ev3_tacho_init() < 1 do sleep( 1.0 ) end
 
@@ -29,19 +32,34 @@ if __FILE__ == $0
     if type_inx != TACHO_TYPE__NONE_
       _type = ev3_tacho_type( type_inx )
       puts "  type = #{_type}"
-      port_name = ev3_port_name( ev3_tacho_desc_port( i ), ev3_tacho_desc_extport( i ))
-      puts "  port = #{port_name}"
+      _name = ev3_tacho_port_name( i )
+      puts "  port = #{_name}"
     end
   end
   ok, sn = ev3_search_tacho( LEGO_EV3_M_MOTOR )
   if ok
     puts 'LEGO_EV3_M_MOTOR is found, run for 5 sec...'
-    set_tacho_stop_command_inx( sn, TACHO_BRAKE )
+    set_tacho_stop_command_inx( sn, TACHO_COAST )
     set_tacho_duty_cycle_sp( sn, 100 )
     set_tacho_time_sp( sn, 5000 )
     set_tacho_ramp_up_sp( sn, 2000 )
     set_tacho_ramp_down_sp( sn, 2000 )
     set_tacho_command_inx( sn, TACHO_RUN_TIMED )
+    # Wait tacho is stopped
+    sleep( 0.1 )
+    ok, flags = get_tacho_state_flags( sn )
+    while ok and flags != 0 do
+      ok, flags = get_tacho_state_flags( sn )
+    end
+    puts 'run to relative position...'
+    set_tacho_duty_cycle_sp( sn, 50 )
+    set_tacho_ramp_up_sp( sn, 0 )
+    set_tacho_ramp_down_sp( sn, 0 )
+    set_tacho_position_sp( sn, 90 )
+    8.times do |i|
+      set_tacho_command_inx( sn, TACHO_RUN_TO_REL_POS )
+      sleep( 0.5 )
+    end
   else
     puts 'LEGO_EV3_M_MOTOR is NOT found'
   end
