@@ -9,6 +9,6 @@ var searchData=
   ['tacho_5ftype_5f_5fcount_5f',['TACHO_TYPE__COUNT_',['../group__ev3__tacho.html#ggaae05225933a42f81e7c4a9fb286596f9af02a9025c2741ffb95495bdd9251abe4',1,'ev3_tacho.h']]],
   ['trigger_5f_5fcount_5f',['TRIGGER__COUNT_',['../group__ev3__led.html#ggabed82baf7f470b522273a3e37c24c600a436f7ba414638b5cbbd200245ebe947d',1,'ev3_led.h']]],
   ['type',['type',['../structEV3__MESSAGE__HEADER.html#acb5cfd209ba75c853d03f701e7f91679',1,'EV3_MESSAGE_HEADER']]],
-  ['type_5finx',['type_inx',['../structEV3__DC.html#a6c0185fe7d6a690eb66b9e9570b4d4c9',1,'EV3_DC::type_inx()'],['../structEV3__PORT.html#a6c0185fe7d6a690eb66b9e9570b4d4c9',1,'EV3_PORT::type_inx()'],['../structEV3__SENSOR.html#a6c0185fe7d6a690eb66b9e9570b4d4c9',1,'EV3_SENSOR::type_inx()'],['../structEV3__SERVO.html#a6c0185fe7d6a690eb66b9e9570b4d4c9',1,'EV3_SERVO::type_inx()'],['../structEV3__TACHO.html#a6c0185fe7d6a690eb66b9e9570b4d4c9',1,'EV3_TACHO::type_inx()']]],
+  ['type_5finx',['type_inx',['../structEV3__DC.html#a2e095c9cb566ef2d06f5b65172e3d167',1,'EV3_DC::type_inx()'],['../structEV3__PORT.html#a2e095c9cb566ef2d06f5b65172e3d167',1,'EV3_PORT::type_inx()'],['../structEV3__SENSOR.html#a2e095c9cb566ef2d06f5b65172e3d167',1,'EV3_SENSOR::type_inx()'],['../structEV3__SERVO.html#a2e095c9cb566ef2d06f5b65172e3d167',1,'EV3_SERVO::type_inx()'],['../structEV3__TACHO.html#a2e095c9cb566ef2d06f5b65172e3d167',1,'EV3_TACHO::type_inx()']]],
   ['the_20interchange_20protocol_20over_20udp',['The interchange protocol over UDP',['../udp.html',1,'']]]
 ];

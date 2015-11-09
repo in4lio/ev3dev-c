@@ -75,28 +75,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line">use lib &quot;..&quot;;</div>
 <div class="line">use ev3;</div>
 <div class="line"></div>
+<div class="line">print &quot;Waiting the EV3 brick online...\n&quot;;</div>
 <div class="line">ev3::ev3_init() &gt; 0 || exit( 1 );</div>
 <div class="line"></div>
-<div class="line">my ( $ok, $state ) = ev3::get_led_brightness( $ev3::EV3_RED_LEFT );</div>
+<div class="line">my ( $ok, $state ) = ev3::get_led_brightness( $ev3::EV3_LEFT_RED );</div>
 <div class="line">if ( $ok ) {</div>
-<div class="line">    print &quot;get_led_brightness( EV3_RED_LEFT ) = $state\n&quot;;</div>
+<div class="line">    print &quot;get_led_brightness( EV3_LEFT_RED ) = $state\n&quot;;</div>
 <div class="line">} else {</div>
-<div class="line">    print &quot;ERROR: get_led_brightness\n&quot;;</div>
+<div class="line">    print &quot;ERROR: get_led_brightness()\n&quot;;</div>
 <div class="line">}</div>
-<div class="line">if ( !ev3::set_led_brightness( $ev3::EV3_RED_LEFT, 0 )) {</div>
-<div class="line">    print &quot;ERROR: set_led_brightness\n&quot;;</div>
+<div class="line">if ( !ev3::set_led_brightness( $ev3::EV3_LEFT_RED, 0 )) {</div>
+<div class="line">    print &quot;ERROR: set_led_brightness()\n&quot;;</div>
 <div class="line">}</div>
-<div class="line">$state = ev3::get_led_trigger_inx( $ev3::EV3_RED_RIGHT );</div>
-<div class="line">print &quot;get_led_trigger_inx( EV3_RED_RIGHT ) = $state\n&quot;;</div>
+<div class="line">$state = ev3::get_led_trigger_inx( $ev3::EV3_RIGHT_RED );</div>
+<div class="line">print &quot;get_led_trigger_inx( EV3_RIGHT_RED ) = $state\n&quot;;</div>
 <div class="line"></div>
-<div class="line">if ( !ev3::set_led_trigger( $ev3::EV3_RED_RIGHT, &quot;heartbeat&quot; )) {</div>
-<div class="line">    print &quot;ERROR: set_led_trigger\n&quot;;</div>
+<div class="line">if ( !ev3::set_led_trigger( $ev3::EV3_RIGHT_RED, &quot;heartbeat&quot; )) {</div>
+<div class="line">    print &quot;ERROR: set_led_trigger()\n&quot;;</div>
 <div class="line">}</div>
 <div class="line">ev3::ev3_uninit();</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 7 2015 15:15:38 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 9 2015 19:32:17 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

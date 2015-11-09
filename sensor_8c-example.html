@@ -127,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    printf( <span class="stringliteral">&quot;Found sensors:\n&quot;</span> );</div>
 <div class="line">    <span class="keywordflow">for</span> ( i = 0; i &lt; <a name="a5"></a><a class="code" href="group__ev3__sensor.html#ga95060d2f6ebd3bfd0c043c48d3f7e358">SENSOR_DESC__LIMIT_</a>; i++ ) {</div>
 <div class="line">        <span class="keywordflow">if</span> ( <a name="a6"></a><a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].type_inx != SENSOR_TYPE__NONE_ ) {</div>
-<div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a name="a7"></a><a class="code" href="group__ev3__sensor.html#gaffc1c4f5fb96c7480c46ea804da748c1">ev3_sensor_type</a>( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].type_inx ));</div>
+<div class="line">            printf( <span class="stringliteral">&quot;  type = %s\n&quot;</span>, <a name="a7"></a><a class="code" href="group__ev3__sensor.html#gacc6c38ca31e68e90701634c3476772bc">ev3_sensor_type</a>( <a class="code" href="group__ev3__sensor.html#ga7ac5b6aa6d269c12a6d54ec399174642">ev3_sensor</a>[ i ].type_inx ));</div>
 <div class="line">            printf( <span class="stringliteral">&quot;  port = %s\n&quot;</span>, <a name="a8"></a><a class="code" href="group__ev3__sensor.html#gad7c55afc6df2d0ee95152a683dc2054f">ev3_sensor_port_name</a>( i, s ));</div>
 <div class="line">            <span class="keywordflow">if</span> ( <a name="a9"></a><a class="code" href="group__ev3__sensor.html#ga4bad50f0f8f6f9456af9f5fcc87796c7">get_sensor_mode</a>( i, s, <span class="keyword">sizeof</span>( s ))) {</div>
 <div class="line">                printf( <span class="stringliteral">&quot;  mode = %s\n&quot;</span>, s );</div>
@@ -141,12 +141,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a name="a11"></a><a class="code" href="group__ev3__sensor.html#gad2a489507cd6f279eda068757658fec0">ev3_search_sensor</a>( LEGO_EV3_TOUCH, &amp;sn_touch, 0 )) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a name="a11"></a><a class="code" href="group__ev3__sensor.html#gac04fa10cd219d8598760d2d89b654a00">ev3_search_sensor</a>( LEGO_EV3_TOUCH, &amp;sn_touch, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;TOUCH sensor is found, press BUTTON for EXIT...\n&quot;</span> );</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;TOUCH sensor is NOT found, press UP on the EV3 brick for EXIT...\n&quot;</span> );</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__sensor.html#gad2a489507cd6f279eda068757658fec0">ev3_search_sensor</a>( LEGO_EV3_COLOR, &amp;sn_color, 0 )) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code" href="group__ev3__sensor.html#gac04fa10cd219d8598760d2d89b654a00">ev3_search_sensor</a>( LEGO_EV3_COLOR, &amp;sn_color, 0 )) {</div>
 <div class="line">        printf( <span class="stringliteral">&quot;COLOR sensor is found, reading COLOR...\n&quot;</span> );</div>
 <div class="line">        <a name="a12"></a><a class="code" href="group__ev3__sensor.html#ga505efc957d61797672e2a1944edc94fd">set_sensor_mode</a>( sn_color, <span class="stringliteral">&quot;COL-COLOR&quot;</span> );</div>
 <div class="line">        <span class="keywordflow">for</span> ( ; ; ) {</div>
@@ -174,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 7 2015 15:15:39 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 9 2015 19:32:17 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
