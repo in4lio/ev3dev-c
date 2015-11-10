@@ -8,9 +8,11 @@ color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]
 
 def _check_pressed( sn ):
     if sn == SENSOR__NONE_:
-        return ( ev3_read_keys() & EV3_KEY_UP ) != 0
+        ok, val = ev3_read_keys()
+        return ( ok and (( val & EV3_KEY_UP ) != 0 ))
     else:
-        return get_sensor_value( 0, sn )[ 1 ] != 0
+        ok, val = get_sensor_value( 0, sn )
+        return ( ok and ( val != 0 ))
 
 if __name__ == '__main__':
     print 'Waiting the EV3 brick online...'
