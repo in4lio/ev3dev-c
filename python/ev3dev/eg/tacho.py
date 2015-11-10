@@ -39,12 +39,12 @@ if __name__ == '__main__':
         set_tacho_ramp_down_sp( sn, 2000 )
         set_tacho_command_inx( sn, TACHO_RUN_TIMED )
         # Wait tacho is stopped
+        sleep( 0.1 )
         ok, flags = get_tacho_state_flags( sn )
         while ok and flags:
-            sleep( 0.1 )
             ok, flags = get_tacho_state_flags( sn )
 
-        print 'run to relative position..'
+        print 'run to relative position...'
         set_tacho_duty_cycle_sp( sn, 50 )
         set_tacho_ramp_up_sp( sn, 0 )
         set_tacho_ramp_down_sp( sn, 0 )

@@ -1,7 +1,7 @@
 from ev3 import *
 
 __library__ = "ev3dev-c"
-__version__ = "0.7a9"
+__version__ = "0.8b1"
 __kernel__ = "3.16.7-ckt16-7-ev3dev-ev3"
 __description__ = "LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers"
 __author__ = "Vitaly Kravtsov"
