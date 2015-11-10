@@ -67,7 +67,7 @@
 ($dict CLASS_DESC
 	(` CLASS_DESC_ID  CLASS_DESC_TYPE  CLASS_DESC_COMMENT  )
 	(`
-	(  type_inx       inx_t            "type"              )
+	(  type_inx       INX_T            "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
 	)

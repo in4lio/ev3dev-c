@@ -110,7 +110,7 @@ static void _run_timed( int l_rate, int r_rate, int ms )
 
 static int _is_running( void )
 {
-	flags_t state = TACHO_STATE__NONE_;
+	FLAGS_T state = TACHO_STATE__NONE_;
 
 	get_tacho_state_flags( l_motor, &state );
 	if ( state != TACHO_STATE__NONE_ ) return ( 1 );

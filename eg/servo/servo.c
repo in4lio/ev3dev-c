@@ -36,7 +36,7 @@ int main( void )
 	int pos;
 	int i;
 	uint8_t sn;
-	flags_t state;
+	FLAGS_T state;
 
 	printf( "Waiting the EV3 brick online...\n" );
 	if ( ev3_init() < 1 ) return ( 1 );

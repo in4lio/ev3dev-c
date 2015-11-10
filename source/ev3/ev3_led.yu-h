@@ -80,7 +80,7 @@ enum {
  *  \param inx Index of the LED.
  *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
  */
-($h-extern) inx_t get_led_trigger_inx( uint8_t inx );
+($h-extern) INX_T get_led_trigger_inx( uint8_t inx );
 
 /**
  *  \brief Write "trigger" attribute of the LED by the index.
@@ -88,14 +88,14 @@ enum {
  *  \param trigger_inx Index of the trigger.
  *  \return Count of written bytes.
  */
-($h-extern) size_t set_led_trigger_inx( uint8_t inx, inx_t trigger_inx );
+($h-extern) size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx );
 
 /**
  *  \brief Get name of the specified LED trigger.
  *  \param trigger_inx Index of the trigger.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_led_trigger( inx_t trigger_inx );
+($h-extern) const char *ev3_led_trigger( INX_T trigger_inx );
 
 /** \} */
 

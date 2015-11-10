@@ -47,11 +47,12 @@ ALLOC_OUTPUT_BUFFER( char *buf, 64 );
 %apply uint32_t *OUTPUT { uint32_t *buf };
 %apply uint32_t *OUTPUT { dword *buf };
 %apply float *OUTPUT { float *buf };
+%apply uint8_t *OUTPUT { FLAGS_T *flags };
 
 %apply uint32_t { dword };
 %apply uint8_t { byte };
-%apply uint8_t { inx_t };
-%apply uint8_t { flag_t };
+%apply uint8_t { INX_T };
+%apply uint8_t { FLAGS_T };
 
 #ifdef SWIGRUBY
 %typemap( out ) size_t, bool { $result = $1 ? Qtrue : Qfalse; };

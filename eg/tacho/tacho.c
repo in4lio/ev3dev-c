@@ -33,7 +33,7 @@ int main( void )
 {
 	int i;
 	uint8_t sn;
-	flags_t state;
+	FLAGS_T state;
 	char s[ 256 ];
 
 #ifndef __ARM_ARCH_4T__
@@ -45,6 +45,9 @@ int main( void )
 
 #ifndef __ARM_ARCH_4T__
 	printf( "The EV3 brick auto-detection is DISABLED,\nwaiting %s online with plugged tacho...\n", ev3_brick_addr );
+
+#else
+	printf( "Waiting tacho is plugged...\n" );
 
 #endif
 	while ( ev3_tacho_init() < 1 ) Sleep( 1000 );
@@ -67,6 +70,7 @@ int main( void )
 		set_tacho_ramp_down_sp( sn, 2000 );
 		set_tacho_command_inx( sn, TACHO_RUN_TIMED );
 		/* Wait tacho stop */
+		Sleep( 100 );
 		do {
 			get_tacho_state_flags( sn, &state );
 		} while ( state );

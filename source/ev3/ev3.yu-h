@@ -50,8 +50,8 @@ typedef uint32_t dword;
 
 #endif
 
-typedef uint8_t inx_t;
-typedef uint8_t flags_t;
+typedef uint8_t INX_T;
+typedef uint8_t FLAGS_T;
 
 #define STR_unknown_  "<unknown>"
 

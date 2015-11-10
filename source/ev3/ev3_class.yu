@@ -58,7 +58,7 @@
 
 [ )
 
-const char *ev3_($CLASS_ID)_type( inx_t type_inx )
+const char *ev3_($CLASS_ID)_type( INX_T type_inx )
 {
 	switch ( type_inx ) {
 	($each-CLASS_TYPE \i.]
@@ -70,7 +70,7 @@ const char *ev3_($CLASS_ID)_type( inx_t type_inx )
 	return ( STR_unknown_ );
 }
 
-inx_t get_($CLASS_ID)_type_inx( uint8_t sn )
+INX_T get_($CLASS_ID)_type_inx( uint8_t sn )
 {
 	char buf[ 64 ];
 
@@ -132,7 +132,7 @@ char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf )
 	return ( ev3_port_name( ev3_($CLASS_ID)_desc( sn )->port, ev3_($CLASS_ID)_desc( sn )->extport, ($if CLASS_DESC_ADDR,,ev3_($CLASS_ID)_desc( sn )->addr,,0), buf ));
 }
 
-bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( inx_t type_inx, uint8_t *sn, uint8_t from )
+bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( INX_T type_inx, uint8_t *sn, uint8_t from )
 {
 	uint8_t _sn = from;
 
@@ -171,7 +171,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 
 ($CLASS_ATTR_INDEX \attr.]
 
-	const char *ev3_($CLASS_ID)_($attr)( inx_t ($attr)_inx )
+	const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx )
 	{
 		switch ( ($attr)_inx ) {
 		($each-CLASS_TYPE \i.]
@@ -187,7 +187,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 	}
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
-		inx_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t type_inx )
+		INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T type_inx )
 		{
 			char buf[ 64 ];
 
@@ -209,7 +209,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 		}
 
 	[ )
-	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t ($attr)_inx )
+	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	{
 		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
@@ -218,7 +218,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 
 ($CLASS_ATTR_FLAGS \attr.]
 
-	size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, flags_t *flags )
+	size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags )
 	{
 		char buf[ 64 ];
 		size_t result;

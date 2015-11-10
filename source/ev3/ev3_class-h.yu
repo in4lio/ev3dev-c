@@ -153,14 +153,14 @@ enum {
  *  \param type_inx Index of the ($_CLASS) type.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_($CLASS_ID)_type( inx_t type_inx );
+($h-extern) const char *ev3_($CLASS_ID)_type( INX_T type_inx );
 
 /**
  *  \brief Read ($CLASS_TYPE_ATTR_NAME) attribute and get index of the ($_CLASS) type.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
-($h-extern) inx_t get_($CLASS_ID)_type_inx( uint8_t sn );
+($h-extern) INX_T get_($CLASS_ID)_type_inx( uint8_t sn );
 
 /**
  *  \brief Read the ($_CLASS) attributes that are required for filling the descriptor.
@@ -203,7 +203,7 @@ enum {
  *  \param from Search initial value.
  *  \return Flag - the ($_CLASS) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( inx_t type_inx, uint8_t *sn, uint8_t from );
+($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( INX_T type_inx, uint8_t *sn, uint8_t from );
 
 /**
  *  \brief Search of a sequence number the ($_CLASS) by plug-in attributes.
@@ -222,7 +222,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
 	 *  \return Requested value.
 	 */
-	($h-extern) const char *ev3_($CLASS_ID)_($attr)( inx_t ($attr)_inx );
+	($h-extern) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
@@ -231,7 +231,7 @@ enum {
 		 *  \param type_inx Index of the ($_CLASS) type.
 		 *  \return Requested value.
 		 */
-		($h-extern) inx_t get_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t type_inx );
+		($h-extern) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T type_inx );
 
 	[ )
 	/**
@@ -240,7 +240,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, inx_t ($attr)_inx );
+	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
 
 [ )
 
@@ -252,7 +252,7 @@ enum {
 	 *  \param flags Buffer for the flags.
 	 *  \return Count of read bytes.
 	 */
-	($h-extern) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, flags_t *flags );
+	($h-extern) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags );
 
 [ )
 
