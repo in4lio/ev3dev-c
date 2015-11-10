@@ -7,8 +7,12 @@ include Ev3
 
 color = [ '?', 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE', 'BROWN' ]
 
-def _touch_pressed( sn )
-  get_sensor_value( 0, sn )[ 1 ] != 0
+def _check_pressed( sn )
+  if sn == SENSOR__NONE_
+    ( ev3_read_keys() & EV3_KEY_UP ) != 0
+  else
+    get_sensor_value( 0, sn )[ 1 ] != 0
+  end
 end
 
 if __FILE__ == $0
@@ -24,7 +28,7 @@ if __FILE__ == $0
     if type_inx != SENSOR_TYPE__NONE_
       _type = ev3_sensor_type( type_inx )
       puts "  type = #{_type}"
-      port_name = ev3_port_name( ev3_sensor_desc_port( i ), ev3_sensor_desc_extport( i ))
+      port_name = ev3_sensor_port_name( i )
       puts "  port = #{port_name}"
       ok, mode = get_sensor_mode( i, 256 )
       if ok
@@ -44,36 +48,32 @@ if __FILE__ == $0
   ok, sn_touch = ev3_search_sensor( LEGO_EV3_TOUCH )
   if ok
     puts 'TOUCH sensor is found, press BUTTON for EXIT...'
-    ok, sn_color = ev3_search_sensor( LEGO_EV3_UART_29 )
-    if ok
-      puts 'COLOR sensor is found, reading COLOR...'
-      set_sensor_mode( sn_color, 'COL-COLOR' )
-      loop do
-        # Read color sensor value
-        ok, val = get_sensor_value( 0, sn_color )
-        if not ok or ( val < 0 ) or ( val >= color.length )
-          val = 0
-        end
-        print "\r(#{color[ val ]})"
-        $stdout.flush
-        # Check touch pressed
-        if _touch_pressed( sn_touch ) then break end
-        sleep( 0.2 )
-        print "\r        \t"
-        $stdout.flush
-        if _touch_pressed( sn_touch ) then break end
-        sleep( 0.2 )
+  else
+    puts 'TOUCH sensor is NOT found, press UP on the EV3 brick for EXIT...'
+  end
+  ok, sn_color = ev3_search_sensor( LEGO_EV3_COLOR )
+  if ok
+    puts 'COLOR sensor is found, reading COLOR...'
+    set_sensor_mode( sn_color, 'COL-COLOR' )
+    loop do
+      ok, val = get_sensor_value( 0, sn_color )
+      if not ok or ( val < 0 ) or ( val >= color.length )
+        val = 0
       end
-    else
-      puts 'COLOR sensor is NOT found'
-      # Wait touch pressed
-      while not _touch_pressed( sn_touch ) do
-        sleep( 0.1 )
-      end
+      print "\r(#{color[ val ]})"
+      $stdout.flush
+      if _check_pressed( sn_touch ) then break end
+      sleep( 0.2 )
+      print "\r        \t"
+      $stdout.flush
+      if _check_pressed( sn_touch ) then break end
+      sleep( 0.2 )
     end
   else
-    puts 'TOUCH sensor is NOT found'
-    exit( 0 )
+    puts 'COLOR sensor is NOT found'
+    while not _check_pressed( sn_touch ) do
+      sleep( 0.1 )
+    end
   end
   ev3_uninit()
   puts
