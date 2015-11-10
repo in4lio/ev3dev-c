@@ -1484,10 +1484,10 @@ SWIG_Perl_SetModule(swig_module_info *module) {
 #define SWIGTYPE_p_EV3_SENSOR swig_types[2]
 #define SWIGTYPE_p_EV3_SERVO swig_types[3]
 #define SWIGTYPE_p_EV3_TACHO swig_types[4]
-#define SWIGTYPE_p_byte swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_dword swig_types[7]
-#define SWIGTYPE_p_flags_t swig_types[8]
+#define SWIGTYPE_p_FLAGS_T swig_types[5]
+#define SWIGTYPE_p_byte swig_types[6]
+#define SWIGTYPE_p_char swig_types[7]
+#define SWIGTYPE_p_dword swig_types[8]
 #define SWIGTYPE_p_float swig_types[9]
 #define SWIGTYPE_p_int swig_types[10]
 #define SWIGTYPE_p_long_long swig_types[11]
@@ -3158,7 +3158,7 @@ XS(_wrap_get_led_trigger_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -3183,7 +3183,7 @@ XS(_wrap_get_led_trigger_inx) {
 XS(_wrap_set_led_trigger_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -3202,9 +3202,9 @@ XS(_wrap_set_led_trigger_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_led_trigger_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_led_trigger_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_led_trigger_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -3220,7 +3220,7 @@ XS(_wrap_set_led_trigger_inx) {
 
 XS(_wrap_ev3_led_trigger) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -3232,9 +3232,9 @@ XS(_wrap_ev3_led_trigger) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_led_trigger" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_led_trigger" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_led_trigger(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -3522,7 +3522,7 @@ XS(_wrap_get_light_blink) {
 XS(_wrap_EV3_PORT_type_inx_set) {
   {
     EV3_PORT *arg1 = (EV3_PORT *) 0 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
     unsigned char val2 ;
@@ -3540,9 +3540,9 @@ XS(_wrap_EV3_PORT_type_inx_set) {
     arg1 = (EV3_PORT *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_PORT_type_inx_set" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_PORT_type_inx_set" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     if (arg1) (arg1)->type_inx = arg2;
     ST(argvi) = sv_newmortal();
     
@@ -3562,7 +3562,7 @@ XS(_wrap_EV3_PORT_type_inx_get) {
     void *argp1 = 0 ;
     int res1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -4129,7 +4129,7 @@ XS(_wrap_get_port_status) {
 
 XS(_wrap_ev3_port_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -4141,9 +4141,9 @@ XS(_wrap_ev3_port_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_port_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_port_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_port_type(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -4161,7 +4161,7 @@ XS(_wrap_get_port_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -4255,7 +4255,7 @@ XS(_wrap_ev3_port_desc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -4394,7 +4394,7 @@ XS(_wrap_ev3_port_port_name) {
 
 XS(_wrap_ev3_search_port_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     uint8_t *arg2 = (uint8_t *) 0 ;
     uint8_t arg3 ;
     unsigned char val1 ;
@@ -4416,9 +4416,9 @@ XS(_wrap_ev3_search_port_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_port_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_port_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     if (items > 1) {
       ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
       if (!SWIG_IsOK(ecode3)) {
@@ -4514,7 +4514,7 @@ XS(_wrap_ev3_search_port_plugged_in) {
 
 XS(_wrap_ev3_port_mode) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -4526,9 +4526,9 @@ XS(_wrap_ev3_port_mode) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_port_mode" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_port_mode" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_port_mode(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -4543,13 +4543,13 @@ XS(_wrap_ev3_port_mode) {
 XS(_wrap_get_port_mode_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
     int ecode2 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
@@ -4562,9 +4562,9 @@ XS(_wrap_get_port_mode_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_port_mode_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_port_mode_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = get_port_mode_inx(arg1,arg2);
     ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
     
@@ -4581,7 +4581,7 @@ XS(_wrap_get_port_mode_inx) {
 XS(_wrap_set_port_mode_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -4600,9 +4600,9 @@ XS(_wrap_set_port_mode_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_port_mode_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_port_mode_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_port_mode_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -4784,7 +4784,7 @@ XS(_wrap_ev3_port_name) {
 XS(_wrap_EV3_SENSOR_type_inx_set) {
   {
     EV3_SENSOR *arg1 = (EV3_SENSOR *) 0 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
     unsigned char val2 ;
@@ -4802,9 +4802,9 @@ XS(_wrap_EV3_SENSOR_type_inx_set) {
     arg1 = (EV3_SENSOR *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_type_inx_set" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SENSOR_type_inx_set" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     if (arg1) (arg1)->type_inx = arg2;
     ST(argvi) = sv_newmortal();
     
@@ -4824,7 +4824,7 @@ XS(_wrap_EV3_SENSOR_type_inx_get) {
     void *argp1 = 0 ;
     int res1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -6236,7 +6236,7 @@ XS(_wrap_get_sensor_value) {
 
 XS(_wrap_ev3_sensor_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -6248,9 +6248,9 @@ XS(_wrap_ev3_sensor_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_sensor_type(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -6268,7 +6268,7 @@ XS(_wrap_get_sensor_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -6362,7 +6362,7 @@ XS(_wrap_ev3_sensor_desc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -6501,7 +6501,7 @@ XS(_wrap_ev3_sensor_port_name) {
 
 XS(_wrap_ev3_search_sensor) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     uint8_t *arg2 = (uint8_t *) 0 ;
     uint8_t arg3 ;
     unsigned char val1 ;
@@ -6523,9 +6523,9 @@ XS(_wrap_ev3_search_sensor) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_sensor" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_sensor" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     if (items > 1) {
       ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
       if (!SWIG_IsOK(ecode3)) {
@@ -6621,7 +6621,7 @@ XS(_wrap_ev3_search_sensor_plugged_in) {
 
 XS(_wrap_ev3_sensor_mode) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -6633,9 +6633,9 @@ XS(_wrap_ev3_sensor_mode) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_mode" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_mode" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_sensor_mode(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -6650,13 +6650,13 @@ XS(_wrap_ev3_sensor_mode) {
 XS(_wrap_get_sensor_mode_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
     int ecode2 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
@@ -6669,9 +6669,9 @@ XS(_wrap_get_sensor_mode_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_sensor_mode_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_sensor_mode_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = get_sensor_mode_inx(arg1,arg2);
     ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
     
@@ -6688,7 +6688,7 @@ XS(_wrap_get_sensor_mode_inx) {
 XS(_wrap_set_sensor_mode_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -6707,9 +6707,9 @@ XS(_wrap_set_sensor_mode_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_sensor_mode_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_sensor_mode_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_sensor_mode_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -6725,7 +6725,7 @@ XS(_wrap_set_sensor_mode_inx) {
 
 XS(_wrap_ev3_sensor_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -6737,9 +6737,9 @@ XS(_wrap_ev3_sensor_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_sensor_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_sensor_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -6754,7 +6754,7 @@ XS(_wrap_ev3_sensor_command) {
 XS(_wrap_set_sensor_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -6773,9 +6773,9 @@ XS(_wrap_set_sensor_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_sensor_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_sensor_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_sensor_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -6810,7 +6810,7 @@ XS(_wrap_ev3_sensor_init) {
 XS(_wrap_EV3_TACHO_type_inx_set) {
   {
     EV3_TACHO *arg1 = (EV3_TACHO *) 0 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
     unsigned char val2 ;
@@ -6828,9 +6828,9 @@ XS(_wrap_EV3_TACHO_type_inx_set) {
     arg1 = (EV3_TACHO *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_type_inx_set" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_TACHO_type_inx_set" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     if (arg1) (arg1)->type_inx = arg2;
     ST(argvi) = sv_newmortal();
     
@@ -6850,7 +6850,7 @@ XS(_wrap_EV3_TACHO_type_inx_get) {
     void *argp1 = 0 ;
     int res1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -8783,7 +8783,7 @@ XS(_wrap_set_tacho_time_sp) {
 
 XS(_wrap_ev3_tacho_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -8795,9 +8795,9 @@ XS(_wrap_ev3_tacho_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_tacho_type(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -8815,7 +8815,7 @@ XS(_wrap_get_tacho_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -8909,7 +8909,7 @@ XS(_wrap_ev3_tacho_desc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -9020,7 +9020,7 @@ XS(_wrap_ev3_tacho_port_name) {
 
 XS(_wrap_ev3_search_tacho) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     uint8_t *arg2 = (uint8_t *) 0 ;
     uint8_t arg3 ;
     unsigned char val1 ;
@@ -9042,9 +9042,9 @@ XS(_wrap_ev3_search_tacho) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_tacho" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_tacho" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     if (items > 1) {
       ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
       if (!SWIG_IsOK(ecode3)) {
@@ -9140,7 +9140,7 @@ XS(_wrap_ev3_search_tacho_plugged_in) {
 
 XS(_wrap_ev3_tacho_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -9152,9 +9152,9 @@ XS(_wrap_ev3_tacho_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_tacho_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -9169,7 +9169,7 @@ XS(_wrap_ev3_tacho_command) {
 XS(_wrap_set_tacho_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -9188,9 +9188,9 @@ XS(_wrap_set_tacho_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_tacho_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_tacho_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_tacho_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -9206,7 +9206,7 @@ XS(_wrap_set_tacho_command_inx) {
 
 XS(_wrap_ev3_tacho_stop_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -9218,9 +9218,9 @@ XS(_wrap_ev3_tacho_stop_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_stop_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_tacho_stop_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_tacho_stop_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -9235,13 +9235,13 @@ XS(_wrap_ev3_tacho_stop_command) {
 XS(_wrap_get_tacho_stop_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
     int ecode2 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
@@ -9254,9 +9254,9 @@ XS(_wrap_get_tacho_stop_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_tacho_stop_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_tacho_stop_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = get_tacho_stop_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
     
@@ -9273,7 +9273,7 @@ XS(_wrap_get_tacho_stop_command_inx) {
 XS(_wrap_set_tacho_stop_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -9292,9 +9292,9 @@ XS(_wrap_set_tacho_stop_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_tacho_stop_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_tacho_stop_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_tacho_stop_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -9311,30 +9311,32 @@ XS(_wrap_set_tacho_stop_command_inx) {
 XS(_wrap_get_tacho_state_flags) {
   {
     uint8_t arg1 ;
-    flags_t *arg2 = (flags_t *) 0 ;
+    FLAGS_T *arg2 = (FLAGS_T *) 0 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
-    void *argp2 = 0 ;
-    int res2 = 0 ;
+    FLAGS_T temp2 ;
+    int res2 = SWIG_TMPOBJ ;
     int argvi = 0;
     size_t result;
     dXSARGS;
     
-    if ((items < 2) || (items > 2)) {
-      SWIG_croak("Usage: get_tacho_state_flags(sn,flags);");
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_tacho_state_flags(sn);");
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
       SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_tacho_state_flags" "', argument " "1"" of type '" "uint8_t""'");
     } 
     arg1 = (uint8_t)(val1);
-    res2 = SWIG_ConvertPtr(ST(1), &argp2,SWIGTYPE_p_flags_t, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_tacho_state_flags" "', argument " "2"" of type '" "flags_t *""'"); 
-    }
-    arg2 = (flags_t *)(argp2);
     result = get_tacho_state_flags(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_FLAGS_T, new_flags); argvi++  ;
+    }
     
     
     XSRETURN(argvi);
@@ -9367,7 +9369,7 @@ XS(_wrap_ev3_tacho_init) {
 XS(_wrap_EV3_DC_type_inx_set) {
   {
     EV3_DC *arg1 = (EV3_DC *) 0 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
     unsigned char val2 ;
@@ -9385,9 +9387,9 @@ XS(_wrap_EV3_DC_type_inx_set) {
     arg1 = (EV3_DC *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_DC_type_inx_set" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_DC_type_inx_set" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     if (arg1) (arg1)->type_inx = arg2;
     ST(argvi) = sv_newmortal();
     
@@ -9407,7 +9409,7 @@ XS(_wrap_EV3_DC_type_inx_get) {
     void *argp1 = 0 ;
     int res1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -10345,7 +10347,7 @@ XS(_wrap_set_dc_time_sp) {
 
 XS(_wrap_ev3_dc_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -10357,9 +10359,9 @@ XS(_wrap_ev3_dc_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_dc_type(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -10377,7 +10379,7 @@ XS(_wrap_get_dc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -10471,7 +10473,7 @@ XS(_wrap_ev3_dc_desc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -10582,7 +10584,7 @@ XS(_wrap_ev3_dc_port_name) {
 
 XS(_wrap_ev3_search_dc) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     uint8_t *arg2 = (uint8_t *) 0 ;
     uint8_t arg3 ;
     unsigned char val1 ;
@@ -10604,9 +10606,9 @@ XS(_wrap_ev3_search_dc) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_dc" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_dc" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     if (items > 1) {
       ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
       if (!SWIG_IsOK(ecode3)) {
@@ -10702,7 +10704,7 @@ XS(_wrap_ev3_search_dc_plugged_in) {
 
 XS(_wrap_ev3_dc_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -10714,9 +10716,9 @@ XS(_wrap_ev3_dc_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_dc_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -10731,7 +10733,7 @@ XS(_wrap_ev3_dc_command) {
 XS(_wrap_set_dc_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -10750,9 +10752,9 @@ XS(_wrap_set_dc_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_dc_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -10768,7 +10770,7 @@ XS(_wrap_set_dc_command_inx) {
 
 XS(_wrap_ev3_dc_stop_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -10780,9 +10782,9 @@ XS(_wrap_ev3_dc_stop_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_stop_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_dc_stop_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_dc_stop_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -10797,7 +10799,7 @@ XS(_wrap_ev3_dc_stop_command) {
 XS(_wrap_set_dc_stop_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -10816,9 +10818,9 @@ XS(_wrap_set_dc_stop_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_stop_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_dc_stop_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_dc_stop_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -10835,30 +10837,32 @@ XS(_wrap_set_dc_stop_command_inx) {
 XS(_wrap_get_dc_state_flags) {
   {
     uint8_t arg1 ;
-    flags_t *arg2 = (flags_t *) 0 ;
+    FLAGS_T *arg2 = (FLAGS_T *) 0 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
-    void *argp2 = 0 ;
-    int res2 = 0 ;
+    FLAGS_T temp2 ;
+    int res2 = SWIG_TMPOBJ ;
     int argvi = 0;
     size_t result;
     dXSARGS;
     
-    if ((items < 2) || (items > 2)) {
-      SWIG_croak("Usage: get_dc_state_flags(sn,flags);");
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_dc_state_flags(sn);");
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
       SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_dc_state_flags" "', argument " "1"" of type '" "uint8_t""'");
     } 
     arg1 = (uint8_t)(val1);
-    res2 = SWIG_ConvertPtr(ST(1), &argp2,SWIGTYPE_p_flags_t, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_dc_state_flags" "', argument " "2"" of type '" "flags_t *""'"); 
-    }
-    arg2 = (flags_t *)(argp2);
     result = get_dc_state_flags(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_FLAGS_T, new_flags); argvi++  ;
+    }
     
     
     XSRETURN(argvi);
@@ -10891,7 +10895,7 @@ XS(_wrap_ev3_dc_init) {
 XS(_wrap_EV3_SERVO_type_inx_set) {
   {
     EV3_SERVO *arg1 = (EV3_SERVO *) 0 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
     unsigned char val2 ;
@@ -10909,9 +10913,9 @@ XS(_wrap_EV3_SERVO_type_inx_set) {
     arg1 = (EV3_SERVO *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SERVO_type_inx_set" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EV3_SERVO_type_inx_set" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     if (arg1) (arg1)->type_inx = arg2;
     ST(argvi) = sv_newmortal();
     
@@ -10931,7 +10935,7 @@ XS(_wrap_EV3_SERVO_type_inx_get) {
     void *argp1 = 0 ;
     int res1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -11888,7 +11892,7 @@ XS(_wrap_get_servo_state) {
 
 XS(_wrap_ev3_servo_type) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -11900,9 +11904,9 @@ XS(_wrap_ev3_servo_type) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_servo_type" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_servo_type" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_servo_type(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -11920,7 +11924,7 @@ XS(_wrap_get_servo_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -12014,7 +12018,7 @@ XS(_wrap_ev3_servo_desc_type_inx) {
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
@@ -12153,7 +12157,7 @@ XS(_wrap_ev3_servo_port_name) {
 
 XS(_wrap_ev3_search_servo) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     uint8_t *arg2 = (uint8_t *) 0 ;
     uint8_t arg3 ;
     unsigned char val1 ;
@@ -12175,9 +12179,9 @@ XS(_wrap_ev3_search_servo) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_servo" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_search_servo" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     if (items > 1) {
       ecode3 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val3);
       if (!SWIG_IsOK(ecode3)) {
@@ -12273,7 +12277,7 @@ XS(_wrap_ev3_search_servo_plugged_in) {
 
 XS(_wrap_ev3_servo_command) {
   {
-    inx_t arg1 ;
+    INX_T arg1 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     int argvi = 0;
@@ -12285,9 +12289,9 @@ XS(_wrap_ev3_servo_command) {
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_servo_command" "', argument " "1"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ev3_servo_command" "', argument " "1"" of type '" "INX_T""'");
     } 
-    arg1 = (inx_t)(val1);
+    arg1 = (INX_T)(val1);
     result = (char *)ev3_servo_command(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     
@@ -12302,13 +12306,13 @@ XS(_wrap_ev3_servo_command) {
 XS(_wrap_get_servo_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
     int ecode2 = 0 ;
     int argvi = 0;
-    inx_t result;
+    INX_T result;
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
@@ -12321,9 +12325,9 @@ XS(_wrap_get_servo_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_servo_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_servo_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = get_servo_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((unsigned char)(result)); argvi++ ;
     
@@ -12340,7 +12344,7 @@ XS(_wrap_get_servo_command_inx) {
 XS(_wrap_set_servo_command_inx) {
   {
     uint8_t arg1 ;
-    inx_t arg2 ;
+    INX_T arg2 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
     unsigned char val2 ;
@@ -12359,9 +12363,9 @@ XS(_wrap_set_servo_command_inx) {
     arg1 = (uint8_t)(val1);
     ecode2 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_servo_command_inx" "', argument " "2"" of type '" "inx_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "set_servo_command_inx" "', argument " "2"" of type '" "INX_T""'");
     } 
-    arg2 = (inx_t)(val2);
+    arg2 = (INX_T)(val2);
     result = set_servo_command_inx(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
     
@@ -12378,30 +12382,32 @@ XS(_wrap_set_servo_command_inx) {
 XS(_wrap_get_servo_state_flags) {
   {
     uint8_t arg1 ;
-    flags_t *arg2 = (flags_t *) 0 ;
+    FLAGS_T *arg2 = (FLAGS_T *) 0 ;
     unsigned char val1 ;
     int ecode1 = 0 ;
-    void *argp2 = 0 ;
-    int res2 = 0 ;
+    FLAGS_T temp2 ;
+    int res2 = SWIG_TMPOBJ ;
     int argvi = 0;
     size_t result;
     dXSARGS;
     
-    if ((items < 2) || (items > 2)) {
-      SWIG_croak("Usage: get_servo_state_flags(sn,flags);");
+    arg2 = &temp2;
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: get_servo_state_flags(sn);");
     }
     ecode1 = SWIG_AsVal_unsigned_SS_char SWIG_PERL_CALL_ARGS_2(ST(0), &val1);
     if (!SWIG_IsOK(ecode1)) {
       SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_servo_state_flags" "', argument " "1"" of type '" "uint8_t""'");
     } 
     arg1 = (uint8_t)(val1);
-    res2 = SWIG_ConvertPtr(ST(1), &argp2,SWIGTYPE_p_flags_t, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_servo_state_flags" "', argument " "2"" of type '" "flags_t *""'"); 
-    }
-    arg2 = (flags_t *)(argp2);
     result = get_servo_state_flags(arg1,arg2);
     ST(argvi) = SWIG_From_size_t  SWIG_PERL_CALL_ARGS_1((size_t)(result)); argvi++ ;
+    if (SWIG_IsTmpObj(res2)) {
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_From_unsigned_SS_char  SWIG_PERL_CALL_ARGS_1((*arg2)); argvi++  ;
+    } else {
+      int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN | 0) : 0;
+      if (argvi >= items) EXTEND(sp,1);  ST(argvi) = SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_FLAGS_T, new_flags); argvi++  ;
+    }
     
     
     XSRETURN(argvi);
@@ -12439,10 +12445,10 @@ static swig_type_info _swigt__p_EV3_PORT = {"_p_EV3_PORT", "EV3_PORT *", 0, 0, (
 static swig_type_info _swigt__p_EV3_SENSOR = {"_p_EV3_SENSOR", "EV3_SENSOR *", 0, 0, (void*)"ev3::EV3_SENSOR", 0};
 static swig_type_info _swigt__p_EV3_SERVO = {"_p_EV3_SERVO", "EV3_SERVO *", 0, 0, (void*)"ev3::EV3_SERVO", 0};
 static swig_type_info _swigt__p_EV3_TACHO = {"_p_EV3_TACHO", "EV3_TACHO *", 0, 0, (void*)"ev3::EV3_TACHO", 0};
+static swig_type_info _swigt__p_FLAGS_T = {"_p_FLAGS_T", "FLAGS_T *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_byte = {"_p_byte", "byte *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_dword = {"_p_dword", "dword *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_flags_t = {"_p_flags_t", "flags_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
@@ -12460,10 +12466,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_EV3_SENSOR,
   &_swigt__p_EV3_SERVO,
   &_swigt__p_EV3_TACHO,
+  &_swigt__p_FLAGS_T,
   &_swigt__p_byte,
   &_swigt__p_char,
   &_swigt__p_dword,
-  &_swigt__p_flags_t,
   &_swigt__p_float,
   &_swigt__p_int,
   &_swigt__p_long_long,
@@ -12481,10 +12487,10 @@ static swig_cast_info _swigc__p_EV3_PORT[] = {  {&_swigt__p_EV3_PORT, 0, 0, 0},{
 static swig_cast_info _swigc__p_EV3_SENSOR[] = {  {&_swigt__p_EV3_SENSOR, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_EV3_SERVO[] = {  {&_swigt__p_EV3_SERVO, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_EV3_TACHO[] = {  {&_swigt__p_EV3_TACHO, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FLAGS_T[] = {  {&_swigt__p_FLAGS_T, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_byte[] = {  {&_swigt__p_byte, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_dword[] = {  {&_swigt__p_dword, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_flags_t[] = {  {&_swigt__p_flags_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
@@ -12502,10 +12508,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_EV3_SENSOR,
   _swigc__p_EV3_SERVO,
   _swigc__p_EV3_TACHO,
+  _swigc__p_FLAGS_T,
   _swigc__p_byte,
   _swigc__p_char,
   _swigc__p_dword,
-  _swigc__p_flags_t,
   _swigc__p_float,
   _swigc__p_int,
   _swigc__p_long_long,

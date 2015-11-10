@@ -38,8 +38,8 @@ if ( $ok ) {
     ev3::set_tacho_ramp_down_sp( $sn, 2000 );
     ev3::set_tacho_command_inx( $sn, $ev3::TACHO_RUN_TIMED );
     # Wait tacho is stopped
+    sleep( 0.1 );
     do {
-        sleep( 0.1 );
         ( $ok, $flags ) = ev3::get_tacho_state_flags( $sn );
     } while ( $ok && $flags );
 
