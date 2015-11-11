@@ -103,7 +103,19 @@ ALLOC_OUTPUT_BUFFER( char *buf, 64 );
 ($h-extern) size_t ev3_read_float( const char *fn, float *buf );
 
 ($h-extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
+($h-extern) size_t ev3_read_keys( uint8_t *buf );
 ($h-extern) bool ev3_poweroff( void );
+
+enum {
+	EV3_KEY__NONE_ = 0,
+
+	EV3_KEY_UP     = 0x01L,
+	EV3_KEY_DOWN   = 0x02L,
+	EV3_KEY_LEFT   = 0x04L,
+	EV3_KEY_RIGHT  = 0x08L,
+	EV3_KEY_CENTER = 0x10L,
+	EV3_KEY_BACK   = 0x20L,
+};
 
 ($import "tools.py")
 

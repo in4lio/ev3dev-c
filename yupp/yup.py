@@ -16,7 +16,7 @@ HOLDER      = 'Vitaly Kravtsov'
 EMAIL       = 'in4lio@gmail.com'
 DESCRIPTION = 'yet another C preprocessor'
 APP         = 'yup.py (yupp)'
-VERSION     = '0.8b8'
+VERSION     = '0.9b1'
 """
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -292,7 +292,7 @@ def _loc( input_file, pos, pointer = True ):
 #   ---------------------------------------------------------------------------
 class SOURCE( str ):
     """
-    Source code.
+    Source text.
     """
 #   -----------------------------------
     def __new__( cls, val, input_file = None, pos = 0 ):
@@ -318,14 +318,10 @@ class SOURCE( str ):
     def loc( self ):
         return _loc( self.input_file, self.pos ) if self.input_file else _loc_repr( self )
 
-#   -----------------------------------
-#   Based on string AST notes
-#   -----------------------------------
-
 #   ---------------------------------------------------------------------------
 class BASE_STR( SOURCE ):
     """
-    AST: (abstract node) for strings.
+    AST: abstract parent for nodes based on string type
     """
 #   -----------------------------------
     def __repr__( self ):
@@ -338,7 +334,7 @@ class BASE_STR( SOURCE ):
 #   ---------------------------------------------------------------------------
 class ATOM( BASE_STR ):
     """
-    AST: ATOM( identifier ) <-- id
+    AST: ATOM( str ) <-- atom
     """
 #   -----------------------------------
     def is_valid_c_id( self ):
@@ -347,7 +343,8 @@ class ATOM( BASE_STR ):
 #   ---------------------------------------------------------------------------
 class REMARK( BASE_STR ):
     """
-    AST: REMARK( remark ) <-- '/*' ... '*/' | '//' ...
+    AST: REMARK( str ) <-- /* ___ */
+                           // ___
     """
 #   ---------------
     pass
@@ -355,7 +352,8 @@ class REMARK( BASE_STR ):
 #   ---------------------------------------------------------------------------
 class STR( BASE_STR ):
     """
-    AST: STR( string ) <-- "'"..."'" | '"'...'"'
+    AST: STR( str ) <-- '___'
+                        "___"
     """
 #   ---------------
     pass
@@ -363,15 +361,15 @@ class STR( BASE_STR ):
 #   ---------------------------------------------------------------------------
 class PLAIN( BASE_STR ):
     """
-    AST: PLAIN( text ) <-- ...
+    AST: PLAIN( str ) <-- all not parsed
     """
 #   -----------------------------------
     def __new__( cls, val, indent = False, trim = False ):
         """
-        indent:
-            None  - plain text contains only TABs and SPACEs
-            str   - the indent at the end of text (before next node) e.g. '\t  ' for 'foo\n\t  '
-            False - no indent e.g. for 'foo  '
+        indent (before the next node):
+            None  - PLAIN consists of TABs and SPACEs
+            str   - indent at the end of PLAIN, e.g. indent equals to '\t  ' for 'foo\n\t  '
+            False - no indent, e.g. indent equals to False for 'foo  '
         """
         obj = BASE_STR.__new__( cls, val )
         obj.indent = indent
@@ -407,14 +405,10 @@ class PLAIN( BASE_STR ):
 
         return self
 
-#   -----------------------------------
-#   Based on list AST notes
-#   -----------------------------------
-
 #   ---------------------------------------------------------------------------
 class BASE_LIST( list ):
     """
-    AST: (abstract node) for lists.
+    AST: abstract parent for nodes based on list type
     """
 #   -----------------------------------
     def __repr__( self ):
@@ -427,14 +421,10 @@ class BASE_LIST( list ):
 #   ---------------------------------------------------------------------------
 class LIST( BASE_LIST ):
     """
-    AST: LIST([ form | EMBED( form )]) <-- '(' [ _ | *_ ] ')'
+    AST: LIST([ form | EMBED( form )]) <-- ( ___ )
     """
 #   ---------------
     pass
-
-#   -----------------------------------
-#   Any types based AST nodes
-#   -----------------------------------
 
 #   ---------------------------------------------------------------------------
 class FLOAT( float ):
@@ -465,7 +455,7 @@ class INT( long ):
 #   ---------------------------------------------------------------------------
 class BASE_OBJECT( object ):
     """
-    AST: (abstract node) for various objects
+    AST: abstract parent for compound nodes
     """
 #   -----------------------------------
     def loc( self ):
@@ -474,7 +464,7 @@ class BASE_OBJECT( object ):
 #   ---------------------------------------------------------------------------
 class BASE_OBJECT_LOCATED( object ):
     """
-    AST: (abstract node) for various objects with position
+    AST: abstract parent for locatable compound nodes
     """
 #   -----------------------------------
     def __init__( self, input_file, pos ):
@@ -485,14 +475,10 @@ class BASE_OBJECT_LOCATED( object ):
     def loc( self ):
         return _loc( self.input_file, self.pos ) if self.input_file else _loc_repr( self )
 
-#   -----------------------------------
-#   AST nodes without data
-#   -----------------------------------
-
 #   ---------------------------------------------------------------------------
 class BASE_MARK( BASE_OBJECT ):
     """
-    AST: (abstract node) for marks.
+    AST: abstract parent for markers
     """
 #   -----------------------------------
     def __repr__( self ):
@@ -505,7 +491,7 @@ class BASE_MARK( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class LATE_BOUNDED( BASE_MARK ):
     """
-    AST: LATE_BOUNDED <-- '&' id
+    AST: LATE_BOUNDED() <-- &atom
     """
 #   ---------------
     pass
@@ -513,19 +499,15 @@ class LATE_BOUNDED( BASE_MARK ):
 #   ---------------------------------------------------------------------------
 class COMMENT( BASE_MARK ):
     """
-    AST: COMMENT <-- '($!' ... ')'
+    AST: COMMENT() <-- ($! ___ )
     """
 #   ---------------
     pass
 
-#   -----------------------------------
-#   AST nodes with caption
-#   -----------------------------------
-
 #   ---------------------------------------------------------------------------
 class CAPTION( object ):
     """
-    AST: (abstract node) for captions.
+    AST: abstract parent for headers
     """
 #   -----------------------------------
     def __init__( self, ast ):
@@ -542,7 +524,7 @@ class CAPTION( object ):
 #   ---------------------------------------------------------------------------
 class EVAL( BASE_OBJECT, CAPTION ):
     """
-    AST: EVAL( APPLY ) <-- '($$' ... ')'
+    AST: EVAL( APPLY ) <-- ($$ ___ )
     """
 #   -----------------------------------
     def __init__( self, ast, decl = None, call = None ):
@@ -553,7 +535,7 @@ class EVAL( BASE_OBJECT, CAPTION ):
 #   ---------------------------------------------------------------------------
 class INFIX( BASE_OBJECT_LOCATED, CAPTION ):
     """
-    AST: INFIX( exp ) <-- '{' ... '}'
+    AST: INFIX( expr ) <-- { ___ }
     """
 #   -----------------------------------
     def __init__( self, ast, input_file = None, pos = 0 ):
@@ -563,19 +545,16 @@ class INFIX( BASE_OBJECT_LOCATED, CAPTION ):
 #   ---------------------------------------------------------------------------
 class EMBED( BASE_OBJECT, CAPTION ):
     """
-    AST: EMBED( form ) <-- '*' _
+    AST: EMBED( form ) <-- * ___
     """
 #   ---------------
     pass
 
-#   -----------------------------------
-#   Structural AST notes
-#   -----------------------------------
-
 #   ---------------------------------------------------------------------------
 class TEXT( BASE_OBJECT ):
     """
-    AST: TEXT([ SET | MACRO | APPLY | STR | REMARK | PLAIN ], number, number ) <-- ']' ... '['
+    AST: TEXT([ SET | MACRO | APPLY | STR | REMARK | PLAIN ]) <-- [ ___ ]
+                                                                  ]<EOL> ___ <EOL>[
     """
 #   -----------------------------------
     def __init__( self, ast, pth_sq = 0, pth = 0 ):
@@ -594,7 +573,9 @@ class TEXT( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class VAR( BASE_OBJECT ):
     """
-    AST: VAR( LATE_BOUNDED | [ ATOM ], ATOM ) <-- id '::' id | '&' id | id
+    AST: VAR( LATE_BOUNDED | [ ATOM ], ATOM ) <-- &atom
+                                                  atom
+                                                  atom::atom
     """
 #   -----------------------------------
     def __init__( self, reg, atom ):
@@ -612,7 +593,7 @@ class VAR( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class APPLY( BASE_OBJECT_LOCATED ):
     """
-    AST: APPLY( form, [ form ], [( ATOM, form )]) <-- '($' ... ')'
+    AST: APPLY( form, [ form ], [ ( ATOM, form ) ]) <-- ($ ___ )
     """
 #   -----------------------------------
     def __init__( self, fn, args, named, input_file = None, pos = 0 ):                                                 #pylint: disable=R0913
@@ -633,7 +614,7 @@ class APPLY( BASE_OBJECT_LOCATED ):
 #   ---------------------------------------------------------------------------
 class SET( BASE_OBJECT ):
     """
-    AST: SET( ATOM | [ ATOM ], form ) <-- '($set' ... ')'
+    AST: SET( ATOM | [ ATOM ], form ) <-- ($set ___ )
     """
 #   -----------------------------------
     def __init__( self, lval, ast ):
@@ -651,7 +632,7 @@ class SET( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class MACRO( BASE_OBJECT ):
     """
-    AST: MACRO( ATOM, [ ATOM ], str ) <-- '($macro' ... ')'
+    AST: MACRO( ATOM, [ ATOM ], str ) <-- ($macro ___ )
     """
 #   -----------------------------------
     def __init__( self, name, pars, text ):
@@ -671,7 +652,7 @@ class MACRO( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class EMIT( BASE_OBJECT ):
     """
-    AST: EMIT( ATOM, form ) <-- '($emit' ... ')'
+    AST: EMIT( ATOM, form ) <-- ($emit ___ )
     """
 #   -----------------------------------
     def __init__( self, var, ast ):
@@ -689,7 +670,7 @@ class EMIT( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class LAMBDA( BASE_OBJECT ):
     """
-    AST: LAMBDA([([ ATOM ], ATOM, form )], TEXT | APPLY | LIST | INFIX) <-- [ '\\' _ '..' ] '\\' _ ':' _ '.' '(' ... ')'
+    AST: LAMBDA([ ([ ATOM ], ATOM, form ) ], TEXT | APPLY | LIST | INFIX ) <-- \_:_.\_:_.___
     """
 #   -----------------------------------
     def __init__( self, bound, l_form ):
@@ -707,7 +688,7 @@ class LAMBDA( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class COND( BASE_OBJECT ):
     """
-    AST: COND( former, former, form ) <-- _ '?' _ '|' _
+    AST: COND( former, former, form ) <-- ___ ? ___ | ___
     """
 #   -----------------------------------
     def __init__( self, cond, leg_1, leg_0 ):
@@ -1100,7 +1081,7 @@ def ps_import( sou, depth = 0 ):
                 _import_python( fn, leg )
                 leg = TEXT([])
             else:
-#               -- include source code
+#               -- include source text
                 leg = yuparse( _import_source( leg, False ))
         else:
 #   ---- infix
@@ -1733,7 +1714,7 @@ def ps_code( sou, depth = 0 ):                                                  
 
 #   ---- ,,
     elif sou[ :l_DUALCOMMA ] == ps_DUALCOMMA:
-#       -- (syntactic sugar) e.g. ($f,,code,,code) equals to ($f [code] [code])
+#       -- (syntactic sugar) e.g. ($func,,text,,text) equals to ($func [text] [text])
         text = ps_text( sou[ l_DUALCOMMA: ], depth + 1 )
         while True:
 #   ---- text
@@ -1996,7 +1977,7 @@ from ast import parse
 #   ---------------------------------------------------------------------------
 class BOUND( BASE_MARK ):
     """
-    Mark of bounded and unassigned variable.
+    AST: marker of bounded unassigned variable
     """
 #   ---------------
     pass
@@ -2004,7 +1985,7 @@ class BOUND( BASE_MARK ):
 #   ---------------------------------------------------------------------------
 class LAMBDA_CLOSURE( BASE_OBJECT ):
     """
-    AST: (abstract node) for lambda and macro closures.
+    AST: abstract parent for lambda and macro closures
     """
 #   -----------------------------------
     def __init__( self, l_form, env, late = None, default = None ):
@@ -2028,7 +2009,8 @@ class LAMBDA_CLOSURE( BASE_OBJECT ):
 #   ---------------------------------------------------------------------------
 class L_CLOSURE( LAMBDA_CLOSURE ):
     """
-    AST: L_CLOSURE( form, ENV, { var: [( late: BOUND )]}, { var: form }) <-- LAMBDA | late
+    AST: L_CLOSURE( form, ENV, { var: [( late, BOUND )] }, { var: form }) <-- LAMBDA
+                                                                              late
     """
 #   ---------------
     pass
@@ -2282,7 +2264,7 @@ class NOT_FOUND( object ):
 class ENV( dict ):
     """
     Environment.
-    AST: ENV( ENV, [( var, value )])
+    AST: ENV( ENV, [ ( var, value ) ])
     """
 #   -----------------------------------
     def __init__( self, parent = None, local = None ):
@@ -2407,7 +2389,7 @@ class INFIX_VISITOR( NodeVisitor ):
 #   ---------------------------------------------------------------------------
 class LAZY( BASE_OBJECT, CAPTION ):
     """
-    AST: LAZY( form ) <-- '($lazy' ... ')'
+    AST: LAZY( form ) <-- ($lazy ___ )
     """
 #   ---------------
     pass
@@ -2439,7 +2421,7 @@ def yushell( text, _input = None, _output = None ):
     yushell.inclusion = []
     yushell.module = os.path.splitext( yushell.input_file )[ 0 ].replace( '-', '_' ).upper() if _input else 'UNTITLED'
     yushell.directory = []
-#   -- a list of built-in functions that can lead to a failed translation
+#   -- list of built-in functions that can lead to a failed translation
     yushell.hazard = []
 #   -- input file directory
     if _input:
@@ -2552,7 +2534,7 @@ def _is_term( node ):                                                           
 #   ---------------------------------------------------------------------------
 def _plain( node ):                                                                                                    #pylint: disable=R0911
     """
-    Represent term AST as plain text.
+    Represent terminal AST as plain text.
     """
 #   ---------------
     if node is None:
@@ -2637,7 +2619,7 @@ class RESULT( str ):
 #   ---------------------------------------------------------------------------
 def _plain_with_browse( node ):                                                                                        #pylint: disable=R0911
     """
-    Represent term AST as plain text and create reference list.
+    Represent terminal AST as plain text and create reference list.
     """
 #   ---------------
 
@@ -2706,7 +2688,7 @@ def _ast_readable( node ):
 #   ---------------------------------------------------------------------------
 def _list_to_bound( node ):
     """
-    Check and convert list of atoms to list of parameters.
+    Convert list of atoms to list of parameters.
     """
 #   ---------------
     if isinstance( node, list ):
@@ -2850,13 +2832,13 @@ def yueval( node, env = ENV(), depth = 0 ):                                     
 #   ---- T -- EMBED --> T
                     if isinstance( x, EMBED ):
                         if isinstance( x.ast, T ):
-#                           -- add the indent of an application to each line of the substituting text
+#                           -- add indent of application to each line of substituting text
                             if node.indent:
                                 for ii, xx in enumerate( x.ast ):
                                     if isinstance( xx, PLAIN ):
                                         x.ast[ ii ] = xx.add_indent( node.indent )
-#                           -- insert an embedded AST into the head of the list of the rest and evaluate them together
-#                           -- so complicated because ($macro) can contain ($set)
+#                           -- insert the embedded AST in the beginning of remaining nodes and evaluate them together
+#                           -- it's necessary because ($macro) can contain ($set)
                             del node[ :nx ]
                             node[ 0:0 ] = x.ast
                             tail = yueval( node, env, depth + 1 )
