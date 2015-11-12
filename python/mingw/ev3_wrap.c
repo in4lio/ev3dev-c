@@ -4099,6 +4099,29 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ev3_read_keys(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  uint8_t *arg1 = (uint8_t *) 0 ;
+  uint8_t temp1 ;
+  int res1 = SWIG_TMPOBJ ;
+  size_t result;
+  
+  arg1 = &temp1;
+  if (!PyArg_ParseTuple(args,(char *)":ev3_read_keys")) SWIG_fail;
+  result = ev3_read_keys(arg1);
+  resultobj = SWIG_From_size_t((size_t)(result));
+  if (SWIG_IsTmpObj(res1)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_unsigned_SS_char((*arg1)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res1) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg1), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ev3_poweroff(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   bool result;
@@ -12178,6 +12201,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ev3_read_byte", _wrap_ev3_read_byte, METH_VARARGS, NULL},
 	 { (char *)"ev3_read_float", _wrap_ev3_read_float, METH_VARARGS, NULL},
 	 { (char *)"ev3_listdir", _wrap_ev3_listdir, METH_VARARGS, NULL},
+	 { (char *)"ev3_read_keys", _wrap_ev3_read_keys, METH_VARARGS, NULL},
 	 { (char *)"ev3_poweroff", _wrap_ev3_poweroff, METH_VARARGS, NULL},
 	 { (char *)"get_led_brightness", _wrap_get_led_brightness, METH_VARARGS, NULL},
 	 { (char *)"set_led_brightness", _wrap_set_led_brightness, METH_VARARGS, NULL},
@@ -13225,6 +13249,13 @@ SWIG_init(void) {
   PyDict_SetItemString(md,(char*)"ev3", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"brick_addr",Swig_var_brick_addr_get, Swig_var_brick_addr_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"brick_port",Swig_var_brick_port_get, Swig_var_brick_port_set);
+  SWIG_Python_SetConstant(d, "EV3_KEY__NONE_",SWIG_From_int((int)(EV3_KEY__NONE_)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_UP",SWIG_From_int((int)(EV3_KEY_UP)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_DOWN",SWIG_From_int((int)(EV3_KEY_DOWN)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_LEFT",SWIG_From_int((int)(EV3_KEY_LEFT)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_RIGHT",SWIG_From_int((int)(EV3_KEY_RIGHT)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_CENTER",SWIG_From_int((int)(EV3_KEY_CENTER)));
+  SWIG_Python_SetConstant(d, "EV3_KEY_BACK",SWIG_From_int((int)(EV3_KEY_BACK)));
   SWIG_Python_SetConstant(d, "EV3_LEFT_GREEN",SWIG_From_int((int)(EV3_LEFT_GREEN)));
   SWIG_Python_SetConstant(d, "EV3_RIGHT_GREEN",SWIG_From_int((int)(EV3_RIGHT_GREEN)));
   SWIG_Python_SetConstant(d, "EV3_LEFT_RED",SWIG_From_int((int)(EV3_LEFT_RED)));
@@ -13270,6 +13301,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "LEGOEV3_INPUT_PORT",SWIG_From_int((int)(LEGOEV3_INPUT_PORT)));
   SWIG_Python_SetConstant(d, "LEGOEV3_OUTPUT_PORT",SWIG_From_int((int)(LEGOEV3_OUTPUT_PORT)));
   SWIG_Python_SetConstant(d, "MS_EV3_SMUX_PORT",SWIG_From_int((int)(MS_EV3_SMUX_PORT)));
+  SWIG_Python_SetConstant(d, "MS_NXTMMX_OUT_PORT",SWIG_From_int((int)(MS_NXTMMX_OUT_PORT)));
   SWIG_Python_SetConstant(d, "WEDO_PORT",SWIG_From_int((int)(WEDO_PORT)));
   SWIG_Python_SetConstant(d, "PORT_TYPE__COUNT_",SWIG_From_int((int)(PORT_TYPE__COUNT_)));
   SWIG_Python_SetConstant(d, "PORT_TYPE__UNKNOWN_",SWIG_From_int((int)(PORT_TYPE__UNKNOWN_)));
@@ -13308,6 +13340,8 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MS_EV3_SMUX_UART",SWIG_From_int((int)(MS_EV3_SMUX_UART)));
   SWIG_Python_SetConstant(d, "MS_EV3_SMUX_PORT_ANALOG",SWIG_From_int((int)(MS_EV3_SMUX_PORT_ANALOG)));
   SWIG_Python_SetConstant(d, "MS_EV3_SMUX_ANALOG",SWIG_From_int((int)(MS_EV3_SMUX_ANALOG)));
+  SWIG_Python_SetConstant(d, "MS_NXTMMX_OUT_PORT_TACHO_MOTOR",SWIG_From_int((int)(MS_NXTMMX_OUT_PORT_TACHO_MOTOR)));
+  SWIG_Python_SetConstant(d, "MS_NXTMMX_TACHO_MOTOR",SWIG_From_int((int)(MS_NXTMMX_TACHO_MOTOR)));
   SWIG_Python_SetConstant(d, "WEDO_PORT_AUTO",SWIG_From_int((int)(WEDO_PORT_AUTO)));
   SWIG_Python_SetConstant(d, "WEDO_AUTO",SWIG_From_int((int)(WEDO_AUTO)));
   SWIG_Python_SetConstant(d, "PORT_MODE__COUNT_",SWIG_From_int((int)(PORT_MODE__COUNT_)));
@@ -13335,6 +13369,9 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "SERVO_6",SWIG_From_int((int)(70)));
   SWIG_Python_SetConstant(d, "SERVO_7",SWIG_From_int((int)(71)));
   SWIG_Python_SetConstant(d, "SERVO_8",SWIG_From_int((int)(72)));
+  SWIG_Python_SetConstant(d, "NXTMMX__OFFSET_",SWIG_From_int((int)(28)));
+  SWIG_Python_SetConstant(d, "NXTMMX_1",SWIG_From_int((int)(77)));
+  SWIG_Python_SetConstant(d, "NXTMMX_2",SWIG_From_int((int)(78)));
   SWIG_Python_SetConstant(d, "WEDO__OFFSET_",SWIG_From_int((int)(48)));
   SWIG_Python_SetConstant(d, "WEDO_1",SWIG_From_int((int)(97)));
   SWIG_Python_SetConstant(d, "WEDO_2",SWIG_From_int((int)(98)));
@@ -13347,6 +13384,8 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "SENSOR_TYPE__NONE_",SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
   SWIG_Python_SetConstant(d, "EV3_ANALOG_XX",SWIG_From_int((int)(EV3_ANALOG_XX)));
   SWIG_Python_SetConstant(d, "NXT_ANALOG",SWIG_From_int((int)(NXT_ANALOG)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO",SWIG_From_int((int)(PIXY_LEGO)));
+  SWIG_Python_SetConstant(d, "DI_DFLEX",SWIG_From_int((int)(DI_DFLEX)));
   SWIG_Python_SetConstant(d, "HT_NXT_COLOR",SWIG_From_int((int)(HT_NXT_COLOR)));
   SWIG_Python_SetConstant(d, "HT_NXT_ANGLE",SWIG_From_int((int)(HT_NXT_ANGLE)));
   SWIG_Python_SetConstant(d, "HT_NXT_ACCEL",SWIG_From_int((int)(HT_NXT_ACCEL)));
@@ -13382,8 +13421,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MS_EV3_SMUX",SWIG_From_int((int)(MS_EV3_SMUX)));
   SWIG_Python_SetConstant(d, "MS_LIGHT_ARRAY",SWIG_From_int((int)(MS_LIGHT_ARRAY)));
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER",SWIG_From_int((int)(MS_LINE_LEADER)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM",SWIG_From_int((int)(MS_NXTCAM)));
   SWIG_Python_SetConstant(d, "MS_NXTMMX",SWIG_From_int((int)(MS_NXTMMX)));
   SWIG_Python_SetConstant(d, "MS_8CH_SERVO",SWIG_From_int((int)(MS_8CH_SERVO)));
+  SWIG_Python_SetConstant(d, "MS_PIXY_ADAPTER",SWIG_From_int((int)(MS_PIXY_ADAPTER)));
   SWIG_Python_SetConstant(d, "MS_NXT_TOUCH_MUX",SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));
   SWIG_Python_SetConstant(d, "SENSOR_TYPE__COUNT_",SWIG_From_int((int)(SENSOR_TYPE__COUNT_)));
   SWIG_Python_SetConstant(d, "SENSOR_TYPE__UNKNOWN_",SWIG_From_int((int)(SENSOR_TYPE__UNKNOWN_)));
@@ -13391,6 +13432,17 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "EV3_ANALOG_XX_ANALOG",SWIG_From_int((int)(EV3_ANALOG_XX_ANALOG)));
   SWIG_Python_SetConstant(d, "NXT_ANALOG_ANALOG_0",SWIG_From_int((int)(NXT_ANALOG_ANALOG_0)));
   SWIG_Python_SetConstant(d, "NXT_ANALOG_ANALOG_1",SWIG_From_int((int)(NXT_ANALOG_ANALOG_1)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_ALL",SWIG_From_int((int)(PIXY_LEGO_ALL)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG1",SWIG_From_int((int)(PIXY_LEGO_SIG1)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG2",SWIG_From_int((int)(PIXY_LEGO_SIG2)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG3",SWIG_From_int((int)(PIXY_LEGO_SIG3)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG4",SWIG_From_int((int)(PIXY_LEGO_SIG4)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG5",SWIG_From_int((int)(PIXY_LEGO_SIG5)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG6",SWIG_From_int((int)(PIXY_LEGO_SIG6)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_SIG7",SWIG_From_int((int)(PIXY_LEGO_SIG7)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_COL_CODE",SWIG_From_int((int)(PIXY_LEGO_COL_CODE)));
+  SWIG_Python_SetConstant(d, "PIXY_LEGO_ANGLE",SWIG_From_int((int)(PIXY_LEGO_ANGLE)));
+  SWIG_Python_SetConstant(d, "DI_DFLEX_FLEX",SWIG_From_int((int)(DI_DFLEX_FLEX)));
   SWIG_Python_SetConstant(d, "HT_NXT_COLOR_COLOR",SWIG_From_int((int)(HT_NXT_COLOR_COLOR)));
   SWIG_Python_SetConstant(d, "HT_NXT_COLOR_RED",SWIG_From_int((int)(HT_NXT_COLOR_RED)));
   SWIG_Python_SetConstant(d, "HT_NXT_COLOR_GREEN",SWIG_From_int((int)(HT_NXT_COLOR_GREEN)));
@@ -13506,10 +13558,12 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_PID_ALL",SWIG_From_int((int)(MS_LINE_LEADER_PID_ALL)));
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_CAL",SWIG_From_int((int)(MS_LINE_LEADER_CAL)));
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_RAW",SWIG_From_int((int)(MS_LINE_LEADER_RAW)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_TRACK",SWIG_From_int((int)(MS_NXTCAM_TRACK)));
   SWIG_Python_SetConstant(d, "MS_NXTMMX_STATUS",SWIG_From_int((int)(MS_NXTMMX_STATUS)));
   SWIG_Python_SetConstant(d, "MS_NXTMMX_STATUS_OLD",SWIG_From_int((int)(MS_NXTMMX_STATUS_OLD)));
   SWIG_Python_SetConstant(d, "MS_8CH_SERVO_V3",SWIG_From_int((int)(MS_8CH_SERVO_V3)));
   SWIG_Python_SetConstant(d, "MS_8CH_SERVO_OLD",SWIG_From_int((int)(MS_8CH_SERVO_OLD)));
+  SWIG_Python_SetConstant(d, "MS_PIXY_ADAPTER_TRACK",SWIG_From_int((int)(MS_PIXY_ADAPTER_TRACK)));
   SWIG_Python_SetConstant(d, "MS_NXT_TOUCH_MUX_TOUCH_MUX",SWIG_From_int((int)(MS_NXT_TOUCH_MUX_TOUCH_MUX)));
   SWIG_Python_SetConstant(d, "SENSOR_MODE__COUNT_",SWIG_From_int((int)(SENSOR_MODE__COUNT_)));
   SWIG_Python_SetConstant(d, "SENSOR_MODE__UNKNOWN_",SWIG_From_int((int)(SENSOR_MODE__UNKNOWN_)));
@@ -13550,6 +13604,14 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_60HZ",SWIG_From_int((int)(MS_LINE_LEADER_60HZ)));
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_50HZ",SWIG_From_int((int)(MS_LINE_LEADER_50HZ)));
   SWIG_Python_SetConstant(d, "MS_LINE_LEADER_UNIVERSAL",SWIG_From_int((int)(MS_LINE_LEADER_UNIVERSAL)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_TRACK_ON",SWIG_From_int((int)(MS_NXTCAM_TRACK_ON)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_TRACK_OFF",SWIG_From_int((int)(MS_NXTCAM_TRACK_OFF)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_TRACK_OBJ",SWIG_From_int((int)(MS_NXTCAM_TRACK_OBJ)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_TRACK_LINE",SWIG_From_int((int)(MS_NXTCAM_TRACK_LINE)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_SORT_SIZE",SWIG_From_int((int)(MS_NXTCAM_SORT_SIZE)));
+  SWIG_Python_SetConstant(d, "MS_NXTCAM_SORT_COL",SWIG_From_int((int)(MS_NXTCAM_SORT_COL)));
+  SWIG_Python_SetConstant(d, "MS_PIXY_ADAPTER_SORT_SIZE",SWIG_From_int((int)(MS_PIXY_ADAPTER_SORT_SIZE)));
+  SWIG_Python_SetConstant(d, "MS_PIXY_ADAPTER_SORT_COL",SWIG_From_int((int)(MS_PIXY_ADAPTER_SORT_COL)));
   SWIG_Python_SetConstant(d, "SENSOR_COMMAND__COUNT_",SWIG_From_int((int)(SENSOR_COMMAND__COUNT_)));
   SWIG_Python_SetConstant(d, "SENSOR_COMMAND__UNKNOWN_",SWIG_From_int((int)(SENSOR_COMMAND__UNKNOWN_)));
   SWIG_Python_SetConstant(d, "IR_REMOTE__NONE_",SWIG_From_int((int)(IR_REMOTE__NONE_)));
