@@ -2782,6 +2782,34 @@ fail:
 
 
 SWIGINTERN VALUE
+_wrap_ev3_read_keys(int argc, VALUE *argv, VALUE self) {
+  uint8_t *arg1 = (uint8_t *) 0 ;
+  uint8_t temp1 ;
+  int res1 = SWIG_TMPOBJ ;
+  size_t result;
+  VALUE vresult = Qnil;
+  
+  arg1 = &temp1;
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  result = ev3_read_keys(arg1);
+  {
+    vresult = result ? Qtrue : Qfalse; 
+  }
+  if (SWIG_IsTmpObj(res1)) {
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_From_unsigned_SS_char((*arg1)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res1) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    vresult = SWIG_Ruby_AppendOutput(vresult, SWIG_NewPointerObj((void*)(arg1), SWIGTYPE_p_unsigned_char, new_flags));
+  }
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
 _wrap_ev3_poweroff(int argc, VALUE *argv, VALUE self) {
   bool result;
   VALUE vresult = Qnil;
@@ -11816,7 +11844,15 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_module_function(mEv3, "ev3_read_byte", _wrap_ev3_read_byte, -1);
   rb_define_module_function(mEv3, "ev3_read_float", _wrap_ev3_read_float, -1);
   rb_define_module_function(mEv3, "ev3_listdir", _wrap_ev3_listdir, -1);
+  rb_define_module_function(mEv3, "ev3_read_keys", _wrap_ev3_read_keys, -1);
   rb_define_module_function(mEv3, "ev3_poweroff", _wrap_ev3_poweroff, -1);
+  rb_define_const(mEv3, "EV3_KEY__NONE_", SWIG_From_int((int)(EV3_KEY__NONE_)));
+  rb_define_const(mEv3, "EV3_KEY_UP", SWIG_From_int((int)(EV3_KEY_UP)));
+  rb_define_const(mEv3, "EV3_KEY_DOWN", SWIG_From_int((int)(EV3_KEY_DOWN)));
+  rb_define_const(mEv3, "EV3_KEY_LEFT", SWIG_From_int((int)(EV3_KEY_LEFT)));
+  rb_define_const(mEv3, "EV3_KEY_RIGHT", SWIG_From_int((int)(EV3_KEY_RIGHT)));
+  rb_define_const(mEv3, "EV3_KEY_CENTER", SWIG_From_int((int)(EV3_KEY_CENTER)));
+  rb_define_const(mEv3, "EV3_KEY_BACK", SWIG_From_int((int)(EV3_KEY_BACK)));
   rb_define_const(mEv3, "EV3_LEFT_GREEN", SWIG_From_int((int)(EV3_LEFT_GREEN)));
   rb_define_const(mEv3, "EV3_RIGHT_GREEN", SWIG_From_int((int)(EV3_RIGHT_GREEN)));
   rb_define_const(mEv3, "EV3_LEFT_RED", SWIG_From_int((int)(EV3_LEFT_RED)));
@@ -11898,6 +11934,7 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "LEGOEV3_INPUT_PORT", SWIG_From_int((int)(LEGOEV3_INPUT_PORT)));
   rb_define_const(mEv3, "LEGOEV3_OUTPUT_PORT", SWIG_From_int((int)(LEGOEV3_OUTPUT_PORT)));
   rb_define_const(mEv3, "MS_EV3_SMUX_PORT", SWIG_From_int((int)(MS_EV3_SMUX_PORT)));
+  rb_define_const(mEv3, "MS_NXTMMX_OUT_PORT", SWIG_From_int((int)(MS_NXTMMX_OUT_PORT)));
   rb_define_const(mEv3, "WEDO_PORT", SWIG_From_int((int)(WEDO_PORT)));
   rb_define_const(mEv3, "PORT_TYPE__COUNT_", SWIG_From_int((int)(PORT_TYPE__COUNT_)));
   rb_define_const(mEv3, "PORT_TYPE__UNKNOWN_", SWIG_From_int((int)(PORT_TYPE__UNKNOWN_)));
@@ -11936,6 +11973,8 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "MS_EV3_SMUX_UART", SWIG_From_int((int)(MS_EV3_SMUX_UART)));
   rb_define_const(mEv3, "MS_EV3_SMUX_PORT_ANALOG", SWIG_From_int((int)(MS_EV3_SMUX_PORT_ANALOG)));
   rb_define_const(mEv3, "MS_EV3_SMUX_ANALOG", SWIG_From_int((int)(MS_EV3_SMUX_ANALOG)));
+  rb_define_const(mEv3, "MS_NXTMMX_OUT_PORT_TACHO_MOTOR", SWIG_From_int((int)(MS_NXTMMX_OUT_PORT_TACHO_MOTOR)));
+  rb_define_const(mEv3, "MS_NXTMMX_TACHO_MOTOR", SWIG_From_int((int)(MS_NXTMMX_TACHO_MOTOR)));
   rb_define_const(mEv3, "WEDO_PORT_AUTO", SWIG_From_int((int)(WEDO_PORT_AUTO)));
   rb_define_const(mEv3, "WEDO_AUTO", SWIG_From_int((int)(WEDO_AUTO)));
   rb_define_const(mEv3, "PORT_MODE__COUNT_", SWIG_From_int((int)(PORT_MODE__COUNT_)));
@@ -11985,6 +12024,9 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "SERVO_6", SWIG_From_int((int)(70)));
   rb_define_const(mEv3, "SERVO_7", SWIG_From_int((int)(71)));
   rb_define_const(mEv3, "SERVO_8", SWIG_From_int((int)(72)));
+  rb_define_const(mEv3, "NXTMMX__OFFSET_", SWIG_From_int((int)(28)));
+  rb_define_const(mEv3, "NXTMMX_1", SWIG_From_int((int)(77)));
+  rb_define_const(mEv3, "NXTMMX_2", SWIG_From_int((int)(78)));
   rb_define_const(mEv3, "WEDO__OFFSET_", SWIG_From_int((int)(48)));
   rb_define_const(mEv3, "WEDO_1", SWIG_From_int((int)(97)));
   rb_define_const(mEv3, "WEDO_2", SWIG_From_int((int)(98)));
@@ -12017,6 +12059,8 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "SENSOR_TYPE__NONE_", SWIG_From_int((int)(SENSOR_TYPE__NONE_)));
   rb_define_const(mEv3, "EV3_ANALOG_XX", SWIG_From_int((int)(EV3_ANALOG_XX)));
   rb_define_const(mEv3, "NXT_ANALOG", SWIG_From_int((int)(NXT_ANALOG)));
+  rb_define_const(mEv3, "PIXY_LEGO", SWIG_From_int((int)(PIXY_LEGO)));
+  rb_define_const(mEv3, "DI_DFLEX", SWIG_From_int((int)(DI_DFLEX)));
   rb_define_const(mEv3, "HT_NXT_COLOR", SWIG_From_int((int)(HT_NXT_COLOR)));
   rb_define_const(mEv3, "HT_NXT_ANGLE", SWIG_From_int((int)(HT_NXT_ANGLE)));
   rb_define_const(mEv3, "HT_NXT_ACCEL", SWIG_From_int((int)(HT_NXT_ACCEL)));
@@ -12052,8 +12096,10 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "MS_EV3_SMUX", SWIG_From_int((int)(MS_EV3_SMUX)));
   rb_define_const(mEv3, "MS_LIGHT_ARRAY", SWIG_From_int((int)(MS_LIGHT_ARRAY)));
   rb_define_const(mEv3, "MS_LINE_LEADER", SWIG_From_int((int)(MS_LINE_LEADER)));
+  rb_define_const(mEv3, "MS_NXTCAM", SWIG_From_int((int)(MS_NXTCAM)));
   rb_define_const(mEv3, "MS_NXTMMX", SWIG_From_int((int)(MS_NXTMMX)));
   rb_define_const(mEv3, "MS_8CH_SERVO", SWIG_From_int((int)(MS_8CH_SERVO)));
+  rb_define_const(mEv3, "MS_PIXY_ADAPTER", SWIG_From_int((int)(MS_PIXY_ADAPTER)));
   rb_define_const(mEv3, "MS_NXT_TOUCH_MUX", SWIG_From_int((int)(MS_NXT_TOUCH_MUX)));
   rb_define_const(mEv3, "SENSOR_TYPE__COUNT_", SWIG_From_int((int)(SENSOR_TYPE__COUNT_)));
   rb_define_const(mEv3, "SENSOR_TYPE__UNKNOWN_", SWIG_From_int((int)(SENSOR_TYPE__UNKNOWN_)));
@@ -12061,6 +12107,17 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "EV3_ANALOG_XX_ANALOG", SWIG_From_int((int)(EV3_ANALOG_XX_ANALOG)));
   rb_define_const(mEv3, "NXT_ANALOG_ANALOG_0", SWIG_From_int((int)(NXT_ANALOG_ANALOG_0)));
   rb_define_const(mEv3, "NXT_ANALOG_ANALOG_1", SWIG_From_int((int)(NXT_ANALOG_ANALOG_1)));
+  rb_define_const(mEv3, "PIXY_LEGO_ALL", SWIG_From_int((int)(PIXY_LEGO_ALL)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG1", SWIG_From_int((int)(PIXY_LEGO_SIG1)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG2", SWIG_From_int((int)(PIXY_LEGO_SIG2)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG3", SWIG_From_int((int)(PIXY_LEGO_SIG3)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG4", SWIG_From_int((int)(PIXY_LEGO_SIG4)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG5", SWIG_From_int((int)(PIXY_LEGO_SIG5)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG6", SWIG_From_int((int)(PIXY_LEGO_SIG6)));
+  rb_define_const(mEv3, "PIXY_LEGO_SIG7", SWIG_From_int((int)(PIXY_LEGO_SIG7)));
+  rb_define_const(mEv3, "PIXY_LEGO_COL_CODE", SWIG_From_int((int)(PIXY_LEGO_COL_CODE)));
+  rb_define_const(mEv3, "PIXY_LEGO_ANGLE", SWIG_From_int((int)(PIXY_LEGO_ANGLE)));
+  rb_define_const(mEv3, "DI_DFLEX_FLEX", SWIG_From_int((int)(DI_DFLEX_FLEX)));
   rb_define_const(mEv3, "HT_NXT_COLOR_COLOR", SWIG_From_int((int)(HT_NXT_COLOR_COLOR)));
   rb_define_const(mEv3, "HT_NXT_COLOR_RED", SWIG_From_int((int)(HT_NXT_COLOR_RED)));
   rb_define_const(mEv3, "HT_NXT_COLOR_GREEN", SWIG_From_int((int)(HT_NXT_COLOR_GREEN)));
@@ -12176,10 +12233,12 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "MS_LINE_LEADER_PID_ALL", SWIG_From_int((int)(MS_LINE_LEADER_PID_ALL)));
   rb_define_const(mEv3, "MS_LINE_LEADER_CAL", SWIG_From_int((int)(MS_LINE_LEADER_CAL)));
   rb_define_const(mEv3, "MS_LINE_LEADER_RAW", SWIG_From_int((int)(MS_LINE_LEADER_RAW)));
+  rb_define_const(mEv3, "MS_NXTCAM_TRACK", SWIG_From_int((int)(MS_NXTCAM_TRACK)));
   rb_define_const(mEv3, "MS_NXTMMX_STATUS", SWIG_From_int((int)(MS_NXTMMX_STATUS)));
   rb_define_const(mEv3, "MS_NXTMMX_STATUS_OLD", SWIG_From_int((int)(MS_NXTMMX_STATUS_OLD)));
   rb_define_const(mEv3, "MS_8CH_SERVO_V3", SWIG_From_int((int)(MS_8CH_SERVO_V3)));
   rb_define_const(mEv3, "MS_8CH_SERVO_OLD", SWIG_From_int((int)(MS_8CH_SERVO_OLD)));
+  rb_define_const(mEv3, "MS_PIXY_ADAPTER_TRACK", SWIG_From_int((int)(MS_PIXY_ADAPTER_TRACK)));
   rb_define_const(mEv3, "MS_NXT_TOUCH_MUX_TOUCH_MUX", SWIG_From_int((int)(MS_NXT_TOUCH_MUX_TOUCH_MUX)));
   rb_define_const(mEv3, "SENSOR_MODE__COUNT_", SWIG_From_int((int)(SENSOR_MODE__COUNT_)));
   rb_define_const(mEv3, "SENSOR_MODE__UNKNOWN_", SWIG_From_int((int)(SENSOR_MODE__UNKNOWN_)));
@@ -12220,6 +12279,14 @@ SWIGEXPORT void Init_ev3(void) {
   rb_define_const(mEv3, "MS_LINE_LEADER_60HZ", SWIG_From_int((int)(MS_LINE_LEADER_60HZ)));
   rb_define_const(mEv3, "MS_LINE_LEADER_50HZ", SWIG_From_int((int)(MS_LINE_LEADER_50HZ)));
   rb_define_const(mEv3, "MS_LINE_LEADER_UNIVERSAL", SWIG_From_int((int)(MS_LINE_LEADER_UNIVERSAL)));
+  rb_define_const(mEv3, "MS_NXTCAM_TRACK_ON", SWIG_From_int((int)(MS_NXTCAM_TRACK_ON)));
+  rb_define_const(mEv3, "MS_NXTCAM_TRACK_OFF", SWIG_From_int((int)(MS_NXTCAM_TRACK_OFF)));
+  rb_define_const(mEv3, "MS_NXTCAM_TRACK_OBJ", SWIG_From_int((int)(MS_NXTCAM_TRACK_OBJ)));
+  rb_define_const(mEv3, "MS_NXTCAM_TRACK_LINE", SWIG_From_int((int)(MS_NXTCAM_TRACK_LINE)));
+  rb_define_const(mEv3, "MS_NXTCAM_SORT_SIZE", SWIG_From_int((int)(MS_NXTCAM_SORT_SIZE)));
+  rb_define_const(mEv3, "MS_NXTCAM_SORT_COL", SWIG_From_int((int)(MS_NXTCAM_SORT_COL)));
+  rb_define_const(mEv3, "MS_PIXY_ADAPTER_SORT_SIZE", SWIG_From_int((int)(MS_PIXY_ADAPTER_SORT_SIZE)));
+  rb_define_const(mEv3, "MS_PIXY_ADAPTER_SORT_COL", SWIG_From_int((int)(MS_PIXY_ADAPTER_SORT_COL)));
   rb_define_const(mEv3, "SENSOR_COMMAND__COUNT_", SWIG_From_int((int)(SENSOR_COMMAND__COUNT_)));
   rb_define_const(mEv3, "SENSOR_COMMAND__UNKNOWN_", SWIG_From_int((int)(SENSOR_COMMAND__UNKNOWN_)));
   rb_define_module_function(mEv3, "get_sensor_bin_data", _wrap_get_sensor_bin_data, -1);
