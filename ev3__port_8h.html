@@ -190,6 +190,15 @@ Macros</h2></td></tr>
 <tr class="memitem:gae1081a08babde5fce40b068b969f8acb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae1081a08babde5fce40b068b969f8acb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SERVO_8</b>&#160;&#160;&#160;72</td></tr>
 <tr class="separator:gae1081a08babde5fce40b068b969f8acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c7873f781de1dfd92a9ebae6cb2f56c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2c7873f781de1dfd92a9ebae6cb2f56c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NXTMMX__OFFSET_</b>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:ga2c7873f781de1dfd92a9ebae6cb2f56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae51aebbb8cdd5bc6c40652a0cebd99cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae51aebbb8cdd5bc6c40652a0cebd99cc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NXTMMX_1</b>&#160;&#160;&#160;77</td></tr>
+<tr class="separator:gae51aebbb8cdd5bc6c40652a0cebd99cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e1a932846ae42c02191d53bccbf9986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e1a932846ae42c02191d53bccbf9986"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NXTMMX_2</b>&#160;&#160;&#160;78</td></tr>
+<tr class="separator:ga7e1a932846ae42c02191d53bccbf9986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2044b1e53591ecdb2de0feb1404f8887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2044b1e53591ecdb2de0feb1404f8887"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>WEDO__OFFSET_</b>&#160;&#160;&#160;48</td></tr>
 <tr class="separator:ga2044b1e53591ecdb2de0feb1404f8887"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,9 +224,11 @@ Enumerations</h2></td></tr>
 <b>LEGOEV3_OUTPUT_PORT</b>, 
 <br />
 &#160;&#160;<b>MS_EV3_SMUX_PORT</b>, 
+<b>MS_NXTMMX_OUT_PORT</b>, 
 <b>WEDO_PORT</b>, 
 <a class="el" href="group__ev3__port.html#ggabc5c98fcc1211af2b80116dd6e0a035da03ba6d319927fd5dfe5ff54239db9831">PORT_TYPE__COUNT_</a>, 
-<b>PORT_TYPE__UNKNOWN_</b> = PORT_TYPE__COUNT_
+<br />
+&#160;&#160;<b>PORT_TYPE__UNKNOWN_</b> = PORT_TYPE__COUNT_
 <br />
  }</td></tr>
 <tr class="memdesc:gabc5c98fcc1211af2b80116dd6e0a035d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 port types.  <a href="group__ev3__port.html#gabc5c98fcc1211af2b80116dd6e0a035d">More...</a><br /></td></tr>
@@ -266,11 +277,14 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>MS_EV3_SMUX_UART</b> = MS_EV3_SMUX_PORT_UART, 
 <b>MS_EV3_SMUX_PORT_ANALOG</b>, 
 <b>MS_EV3_SMUX_ANALOG</b> = MS_EV3_SMUX_PORT_ANALOG, 
-<b>WEDO_PORT_AUTO</b>, 
+<b>MS_NXTMMX_OUT_PORT_TACHO_MOTOR</b>, 
 <br />
-&#160;&#160;<b>WEDO_AUTO</b> = WEDO_PORT_AUTO, 
+&#160;&#160;<b>MS_NXTMMX_TACHO_MOTOR</b> = MS_NXTMMX_OUT_PORT_TACHO_MOTOR, 
+<b>WEDO_PORT_AUTO</b>, 
+<b>WEDO_AUTO</b> = WEDO_PORT_AUTO, 
 <a class="el" href="group__ev3__port.html#ggac36f475ca5b446f4fde4c9b90bec77c8a67d220ad3c45d800d7fed206d731b2f1">PORT_MODE__COUNT_</a>, 
-<b>PORT_MODE__UNKNOWN_</b> = PORT_MODE__COUNT_
+<br />
+&#160;&#160;<b>PORT_MODE__UNKNOWN_</b> = PORT_MODE__COUNT_
 <br />
  }</td></tr>
 <tr class="memdesc:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 port modes.  <a href="group__ev3__port.html#gac36f475ca5b446f4fde4c9b90bec77c8">More...</a><br /></td></tr>
@@ -368,7 +382,7 @@ EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>&#160;</td><t
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 9 2015 19:32:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 13 2015 11:03:18 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

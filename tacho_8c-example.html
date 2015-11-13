@@ -137,6 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        <a name="a11"></a><a class="code" href="group__ev3__tacho.html#gaf3e6be9adfd7746dd9826f2fbe82d578">set_tacho_ramp_down_sp</a>( sn, 2000 );</div>
 <div class="line">        <a name="a12"></a><a class="code" href="group__ev3__tacho.html#gadf954834543d1ead71e2a222c9ce9beb">set_tacho_command_inx</a>( sn, TACHO_RUN_TIMED );</div>
 <div class="line">        <span class="comment">/* Wait tacho stop */</span></div>
+<div class="line">        Sleep( 100 );</div>
 <div class="line">        <span class="keywordflow">do</span> {</div>
 <div class="line">            <a name="a13"></a><a class="code" href="group__ev3__tacho.html#gac0f659a4868a6d917f7b936b0fd97ed7">get_tacho_state_flags</a>( sn, &amp;state );</div>
 <div class="line">        } <span class="keywordflow">while</span> ( state );</div>
@@ -160,7 +161,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 9 2015 19:32:17 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 13 2015 11:03:18 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
