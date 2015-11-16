@@ -6,10 +6,12 @@ my @color = ( "?", "BLACK", "BLUE", "GREEN", "YELLOW", "RED", "WHITE", "BROWN" )
 
 sub _check_pressed {
     my $sn = shift;
-    if ( $sn == $ev3::SENSOR__NONE_ } {
-        return ( ev3::ev3_read_keys() & $ev3::EV3_KEY_UP ) != 0;
+    if ( $sn == $ev3::SENSOR__NONE_ ) {
+        my ( $ok, $val ) = ev3::ev3_read_keys();
+        return ( $ok && ( $val & $ev3::EV3_KEY_UP ));
     } else {
-        return ev3::get_sensor_value( 0, $sn )[ 1 ] != 0;
+        my ( $ok, $val ) = ev3::get_sensor_value( 0, $sn );
+        return ( $ok && $val );
     }
 }
 

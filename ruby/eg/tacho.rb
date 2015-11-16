@@ -48,7 +48,7 @@ if __FILE__ == $0
     # Wait tacho is stopped
     sleep( 0.1 )
     ok, flags = get_tacho_state_flags( sn )
-    while ok and flags != 0 do
+    while ok and ( flags != 0 ) do
       ok, flags = get_tacho_state_flags( sn )
     end
     puts 'run to relative position...'
