@@ -122,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    # Wait tacho is stopped</div>
 <div class="line">    sleep( 0.1 )</div>
 <div class="line">    ok, flags = get_tacho_state_flags( sn )</div>
-<div class="line">    while ok and flags != 0 do</div>
+<div class="line">    while ok and ( flags != 0 ) do</div>
 <div class="line">      ok, flags = get_tacho_state_flags( sn )</div>
 <div class="line">    end</div>
 <div class="line">    puts &#39;run to relative position...&#39;</div>
@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 13 2015 11:03:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 17 2015 11:41:32 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -80,10 +80,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">sub _check_pressed {</div>
 <div class="line">    my $sn = shift;</div>
-<div class="line">    if ( $sn == $ev3::SENSOR__NONE_ } {</div>
-<div class="line">        return ( ev3::ev3_read_keys() &amp; $ev3::EV3_KEY_UP ) != 0;</div>
+<div class="line">    if ( $sn == $ev3::SENSOR__NONE_ ) {</div>
+<div class="line">        my ( $ok, $val ) = ev3::ev3_read_keys();</div>
+<div class="line">        return ( $ok &amp;&amp; ( $val &amp; $ev3::EV3_KEY_UP ));</div>
 <div class="line">    } else {</div>
-<div class="line">        return ev3::get_sensor_value( 0, $sn )[ 1 ] != 0;</div>
+<div class="line">        my ( $ok, $val ) = ev3::get_sensor_value( 0, $sn );</div>
+<div class="line">        return ( $ok &amp;&amp; $val );</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -155,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 13 2015 11:03:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 17 2015 11:41:32 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

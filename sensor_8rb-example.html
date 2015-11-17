@@ -83,9 +83,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">def _check_pressed( sn )</div>
 <div class="line">  if sn == SENSOR__NONE_</div>
-<div class="line">    ( ev3_read_keys() &amp; EV3_KEY_UP ) != 0</div>
+<div class="line">    ok, val = ev3_read_keys()</div>
+<div class="line">    ( ok and (( val &amp; EV3_KEY_UP ) != 0 ))</div>
 <div class="line">  else</div>
-<div class="line">    get_sensor_value( 0, sn )[ 1 ] != 0</div>
+<div class="line">    ok, val = get_sensor_value( 0, sn )</div>
+<div class="line">    ( ok and ( val != 0 ))</div>
 <div class="line">  end</div>
 <div class="line">end</div>
 <div class="line"></div>
@@ -156,7 +158,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 13 2015 11:03:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 17 2015 11:41:32 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
