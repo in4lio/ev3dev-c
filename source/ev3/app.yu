@@ -32,7 +32,7 @@ https://github.com/in4lio/ev3dev-c
 gcc
 [ )
 
-($macro TITLE (brief)($__TITLE__)/**
+($macro TITLE (brief)($__TITLE__ 0)/**
  *  \file  ($unq ($__OUTPUT_FILE__)) (($unq ($__FILE__)))
  *  \brief  ($brief)
  *  \author  ($AUTHOR) (($AUTHOR_EMAIL))
