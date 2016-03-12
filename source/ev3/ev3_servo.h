@@ -49,7 +49,7 @@ typedef struct {
 	INX_T type_inx;  /**< Servo motor type. */
 	uint8_t port;  /**< Servo motor EV3 port. */
 	uint8_t extport;  /**< Servo motor extended port. */
-	uint8_t addr;  /**< Servo motor address. */
+	uint8_t addr;  /**< Servo motor I2C address. */
 
 } EV3_SERVO;
 
@@ -107,6 +107,15 @@ enum {
 	SERVO_RUNNING = 0x1L,
 
 };
+
+/**
+ *  \brief Read "address" attribute of the servo motor.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_SERVO_EXT size_t get_servo_address( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Read "command" attribute of the servo motor.
@@ -208,15 +217,6 @@ EV3_SERVO_EXT size_t get_servo_polarity( uint8_t sn, char *buf, size_t sz );
 EV3_SERVO_EXT size_t set_servo_polarity( uint8_t sn, char *value );
 
 /**
- *  \brief Read "port_name" attribute of the servo motor.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-EV3_SERVO_EXT size_t get_servo_port_name( uint8_t sn, char *buf, size_t sz );
-
-/**
  *  \brief Read "position_sp" attribute of the servo motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -312,7 +312,7 @@ EV3_SERVO_EXT uint8_t ev3_servo_desc_port( uint8_t sn );
 EV3_SERVO_EXT uint8_t ev3_servo_desc_extport( uint8_t sn );
 
 /**
- *  \brief Get address from the servo motor descriptor.
+ *  \brief Get I2C address from the servo motor descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */

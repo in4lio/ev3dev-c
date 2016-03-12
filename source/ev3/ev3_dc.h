@@ -138,6 +138,15 @@ enum {
 };
 
 /**
+ *  \brief Read "address" attribute of the DC motor.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_DC_EXT size_t get_dc_address( uint8_t sn, char *buf, size_t sz );
+
+/**
  *  \brief Write "command" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -208,15 +217,6 @@ EV3_DC_EXT size_t get_dc_polarity( uint8_t sn, char *buf, size_t sz );
  *  \return Count of written bytes.
  */
 EV3_DC_EXT size_t set_dc_polarity( uint8_t sn, char *value );
-
-/**
- *  \brief Read "port_name" attribute of the DC motor.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-EV3_DC_EXT size_t get_dc_port_name( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Read "state" attribute of the DC motor.

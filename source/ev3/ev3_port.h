@@ -50,7 +50,7 @@ typedef struct {
 	INX_T type_inx;  /**< EV3 port type. */
 	uint8_t port;  /**< EV3 port EV3 port. */
 	uint8_t extport;  /**< EV3 port extended port. */
-	uint8_t addr;  /**< EV3 port address. */
+	uint8_t addr;  /**< EV3 port I2C address. */
 
 } EV3_PORT;
 
@@ -116,6 +116,15 @@ enum {
 };
 
 /**
+ *  \brief Read "address" attribute of the EV3 port.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_PORT_EXT size_t get_port_address( uint8_t sn, char *buf, size_t sz );
+
+/**
  *  \brief Read "driver_name" attribute of the EV3 port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -150,15 +159,6 @@ EV3_PORT_EXT size_t set_port_mode( uint8_t sn, char *value );
  *  \return Count of read bytes.
  */
 EV3_PORT_EXT size_t get_port_modes( uint8_t sn, char *buf, size_t sz );
-
-/**
- *  \brief Read "port_name" attribute of the EV3 port.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-EV3_PORT_EXT size_t get_port_port_name( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Write "set_device" attribute of the EV3 port.
@@ -229,7 +229,7 @@ EV3_PORT_EXT uint8_t ev3_port_desc_port( uint8_t sn );
 EV3_PORT_EXT uint8_t ev3_port_desc_extport( uint8_t sn );
 
 /**
- *  \brief Get address from the EV3 port descriptor.
+ *  \brief Get I2C address from the EV3 port descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */

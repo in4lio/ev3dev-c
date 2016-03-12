@@ -24,6 +24,7 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME    CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
+	(  "address"          char             1                 R                 )
 	(  "bin_data"         byte             2                 RW                )
 	(  "bin_data_format"  char             1                 R                 )
 	(  "command"          char             1                 W                 )
@@ -36,7 +37,6 @@
 	(  "modes"            char             1                 R                 )
 	(  "num_values"       dword            0                 R                 )
 	(  "poll_ms"          dword            0                 RW                )
-	(  "port_name"        char             1                 R                 )
 	(  "units"            char             1                 R                 )
 	(  "value0"           float            0                 R                 )
 	(  "value1"           float            0                 R                 )
@@ -46,6 +46,7 @@
 	(  "value5"           float            0                 R                 )
 	(  "value6"           float            0                 R                 )
 	(  "value7"           float            0                 R                 )
+	(  "text_value"       char             1                 R                 )
 	)
 )
 
@@ -62,6 +63,6 @@
 	(  type_inx       INX_T            "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "address"           )
+	(  addr           uint8_t          "I2C address"       )
 	)
 )

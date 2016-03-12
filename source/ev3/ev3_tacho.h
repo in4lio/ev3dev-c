@@ -174,6 +174,15 @@ enum {
 };
 
 /**
+ *  \brief Read "address" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_TACHO_EXT size_t get_tacho_address( uint8_t sn, char *buf, size_t sz );
+
+/**
  *  \brief Write "command" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -325,15 +334,6 @@ EV3_TACHO_EXT size_t get_tacho_polarity( uint8_t sn, char *buf, size_t sz );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_polarity( uint8_t sn, char *value );
-
-/**
- *  \brief Read "port_name" attribute of the tacho.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-EV3_TACHO_EXT size_t get_tacho_port_name( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Read "position" attribute of the tacho.

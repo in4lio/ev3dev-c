@@ -21,6 +21,7 @@
 #define PATH_PREF_LEN  28
 #define _ID_SPOT  "///"
 
+#define PATH_ADDRESS  "/sys/class/tacho-motor/motor" _ID_SPOT "address"
 #define PATH_COMMAND  "/sys/class/tacho-motor/motor" _ID_SPOT "command"
 #define PATH_COMMANDS  "/sys/class/tacho-motor/motor" _ID_SPOT "commands"
 #define PATH_COUNT_PER_ROT  "/sys/class/tacho-motor/motor" _ID_SPOT "count_per_rot"
@@ -32,7 +33,6 @@
 #define PATH_HOLD_PID_KI  "/sys/class/tacho-motor/motor" _ID_SPOT "hold_pid/Ki"
 #define PATH_HOLD_PID_KP  "/sys/class/tacho-motor/motor" _ID_SPOT "hold_pid/Kp"
 #define PATH_POLARITY  "/sys/class/tacho-motor/motor" _ID_SPOT "polarity"
-#define PATH_PORT_NAME  "/sys/class/tacho-motor/motor" _ID_SPOT "port_name"
 #define PATH_POSITION  "/sys/class/tacho-motor/motor" _ID_SPOT "position"
 #define PATH_POSITION_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "position_sp"
 #define PATH_RAMP_DOWN_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "ramp_down_sp"
@@ -47,6 +47,14 @@
 #define PATH_STOP_COMMAND  "/sys/class/tacho-motor/motor" _ID_SPOT "stop_command"
 #define PATH_STOP_COMMANDS  "/sys/class/tacho-motor/motor" _ID_SPOT "stop_commands"
 #define PATH_TIME_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "time_sp"
+
+size_t get_tacho_address( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_ADDRESS;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
+}
 
 size_t set_tacho_command( uint8_t sn, char *value )
 {
@@ -182,14 +190,6 @@ size_t set_tacho_polarity( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
-}
-
-size_t get_tacho_port_name( uint8_t sn, char *buf, size_t sz )
-{
-	char s[] = PATH_PORT_NAME;
-	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
-
-	return ev3_read_char_array( s, buf, sz );
 }
 
 size_t get_tacho_position( uint8_t sn, int *buf )
@@ -427,7 +427,7 @@ size_t get_tacho_desc( uint8_t sn, EV3_TACHO *desc )
 	desc->type_inx = get_tacho_type_inx( sn );
 	if ( desc->type_inx == TACHO_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_tacho_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_tacho_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	

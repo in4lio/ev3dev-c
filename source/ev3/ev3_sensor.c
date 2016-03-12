@@ -22,6 +22,7 @@
 #define PATH_PREF_LEN  29
 #define _ID_SPOT  "///"
 
+#define PATH_ADDRESS  "/sys/class/lego-sensor/sensor" _ID_SPOT "address"
 #define PATH_BIN_DATA  "/sys/class/lego-sensor/sensor" _ID_SPOT "bin_data"
 #define PATH_BIN_DATA_FORMAT  "/sys/class/lego-sensor/sensor" _ID_SPOT "bin_data_format"
 #define PATH_COMMAND  "/sys/class/lego-sensor/sensor" _ID_SPOT "command"
@@ -34,7 +35,6 @@
 #define PATH_MODES  "/sys/class/lego-sensor/sensor" _ID_SPOT "modes"
 #define PATH_NUM_VALUES  "/sys/class/lego-sensor/sensor" _ID_SPOT "num_values"
 #define PATH_POLL_MS  "/sys/class/lego-sensor/sensor" _ID_SPOT "poll_ms"
-#define PATH_PORT_NAME  "/sys/class/lego-sensor/sensor" _ID_SPOT "port_name"
 #define PATH_UNITS  "/sys/class/lego-sensor/sensor" _ID_SPOT "units"
 #define PATH_VALUE0  "/sys/class/lego-sensor/sensor" _ID_SPOT "value0"
 #define PATH_VALUE1  "/sys/class/lego-sensor/sensor" _ID_SPOT "value1"
@@ -44,8 +44,17 @@
 #define PATH_VALUE5  "/sys/class/lego-sensor/sensor" _ID_SPOT "value5"
 #define PATH_VALUE6  "/sys/class/lego-sensor/sensor" _ID_SPOT "value6"
 #define PATH_VALUE7  "/sys/class/lego-sensor/sensor" _ID_SPOT "value7"
+#define PATH_TEXT_VALUE  "/sys/class/lego-sensor/sensor" _ID_SPOT "text_value"
 
 #define PATH_VALUE  "/sys/class/lego-sensor/sensor" _ID_SPOT "value"
+
+size_t get_sensor_address( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_ADDRESS;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
+}
 
 size_t get_sensor_bin_data( uint8_t sn, byte *buf, size_t sz )
 {
@@ -175,14 +184,6 @@ size_t set_sensor_poll_ms( uint8_t sn, dword value )
 	return ev3_write_dword( s, value );
 }
 
-size_t get_sensor_port_name( uint8_t sn, char *buf, size_t sz )
-{
-	char s[] = PATH_PORT_NAME;
-	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
-
-	return ev3_read_char_array( s, buf, sz );
-}
-
 size_t get_sensor_units( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_UNITS;
@@ -253,6 +254,14 @@ size_t get_sensor_value7( uint8_t sn, float *buf )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_read_float( s, buf );
+}
+
+size_t get_sensor_text_value( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_TEXT_VALUE;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
 }
 
 size_t get_sensor_value( uint8_t inx, uint8_t sn, int *buf )
@@ -472,7 +481,7 @@ size_t get_sensor_desc( uint8_t sn, EV3_SENSOR *desc )
 	desc->type_inx = get_sensor_type_inx( sn );
 	if ( desc->type_inx == SENSOR_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_sensor_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_sensor_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	desc->addr = addr;

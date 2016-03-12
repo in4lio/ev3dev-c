@@ -21,19 +21,27 @@
 #define PATH_PREF_LEN  25
 #define _ID_SPOT  "///"
 
+#define PATH_ADDRESS  "/sys/class/dc-motor/motor" _ID_SPOT "address"
 #define PATH_COMMAND  "/sys/class/dc-motor/motor" _ID_SPOT "command"
 #define PATH_COMMANDS  "/sys/class/dc-motor/motor" _ID_SPOT "commands"
 #define PATH_DRIVER_NAME  "/sys/class/dc-motor/motor" _ID_SPOT "driver_name"
 #define PATH_DUTY_CYCLE  "/sys/class/dc-motor/motor" _ID_SPOT "duty_cycle"
 #define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" _ID_SPOT "duty_cycle_sp"
 #define PATH_POLARITY  "/sys/class/dc-motor/motor" _ID_SPOT "polarity"
-#define PATH_PORT_NAME  "/sys/class/dc-motor/motor" _ID_SPOT "port_name"
 #define PATH_STATE  "/sys/class/dc-motor/motor" _ID_SPOT "state"
 #define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" _ID_SPOT "stop_command"
 #define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" _ID_SPOT "stop_commands"
 #define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" _ID_SPOT "ramp_down_sp"
 #define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" _ID_SPOT "ramp_up_sp"
 #define PATH_TIME_SP  "/sys/class/dc-motor/motor" _ID_SPOT "time_sp"
+
+size_t get_dc_address( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_ADDRESS;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
+}
 
 size_t set_dc_command( uint8_t sn, char *value )
 {
@@ -97,14 +105,6 @@ size_t set_dc_polarity( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
-}
-
-size_t get_dc_port_name( uint8_t sn, char *buf, size_t sz )
-{
-	char s[] = PATH_PORT_NAME;
-	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
-
-	return ev3_read_char_array( s, buf, sz );
 }
 
 size_t get_dc_state( uint8_t sn, char *buf, size_t sz )
@@ -208,7 +208,7 @@ size_t get_dc_desc( uint8_t sn, EV3_DC *desc )
 	desc->type_inx = get_dc_type_inx( sn );
 	if ( desc->type_inx == DC_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_dc_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_dc_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	

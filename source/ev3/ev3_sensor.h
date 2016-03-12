@@ -50,7 +50,7 @@ typedef struct {
 	INX_T type_inx;  /**< Sensor type. */
 	uint8_t port;  /**< Sensor EV3 port. */
 	uint8_t extport;  /**< Sensor extended port. */
-	uint8_t addr;  /**< Sensor address. */
+	uint8_t addr;  /**< Sensor I2C address. */
 
 } EV3_SENSOR;
 
@@ -373,6 +373,15 @@ enum {
 };
 
 /**
+ *  \brief Read "address" attribute of the sensor.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_SENSOR_EXT size_t get_sensor_address( uint8_t sn, char *buf, size_t sz );
+
+/**
  *  \brief Read "bin_data" attribute of the sensor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -517,15 +526,6 @@ EV3_SENSOR_EXT size_t get_sensor_poll_ms( uint8_t sn, dword *buf );
 EV3_SENSOR_EXT size_t set_sensor_poll_ms( uint8_t sn, dword value );
 
 /**
- *  \brief Read "port_name" attribute of the sensor.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-EV3_SENSOR_EXT size_t get_sensor_port_name( uint8_t sn, char *buf, size_t sz );
-
-/**
  *  \brief Read "units" attribute of the sensor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -607,6 +607,15 @@ EV3_SENSOR_EXT size_t get_sensor_value6( uint8_t sn, float *buf );
 EV3_SENSOR_EXT size_t get_sensor_value7( uint8_t sn, float *buf );
 
 /**
+ *  \brief Read "text_value" attribute of the sensor.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+ *  \param sz Buffer size.
+ *  \return Count of read bytes.
+ */
+EV3_SENSOR_EXT size_t get_sensor_text_value( uint8_t sn, char *buf, size_t sz );
+
+/**
  *  \brief Read "value" attribute of the sensor.
  *  \param inx Attribute index.
  *  \param sn Sequence number.
@@ -667,7 +676,7 @@ EV3_SENSOR_EXT uint8_t ev3_sensor_desc_port( uint8_t sn );
 EV3_SENSOR_EXT uint8_t ev3_sensor_desc_extport( uint8_t sn );
 
 /**
- *  \brief Get address from the sensor descriptor.
+ *  \brief Get I2C address from the sensor descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */

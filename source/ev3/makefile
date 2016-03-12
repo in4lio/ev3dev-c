@@ -47,11 +47,14 @@ else
 PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
+# -- command to create 'object' and 'bin' directories and subdirectories
+MKDIR = mkdir -p
+
 # -- output subdirectory
 ifeq ($(PLATFORM),__MINGW__)
 D_PLATFORM = mingw
 else
-D_PLATFORM =
+D_PLATFORM = .
 endif
 
 # -- install directory
@@ -214,7 +217,7 @@ vpath %$(E_YUC) $(D_C)
 # -- build project
 .PHONY: all
 
-all: $(F_BIN)
+all: bindirs $(F_BIN)
 
 $(F_BIN): $(O)
 	$(call wrap,$(LINK),$(LFLAGS) $@ $^)
@@ -242,6 +245,15 @@ $(O_CXX): $(D_OBJ)/%$(E_OBJ): %$(E_CXX)
 
 $(O_ASM): $(D_OBJ)/%$(E_OBJ): %$(E_ASM)
 	$(call wrap,$(CC),$(ASMFLAGS) -c $< -o $@)
+
+# -- create 'object' and 'bin' directories
+bindirs: $(D_OBJ) $(D_BIN)
+
+$(D_OBJ):
+	${MKDIR} ${D_OBJ}
+
+$(D_BIN):
+	${MKDIR} ${D_BIN}
 
 # -- remove temporary files
 .PHONY: clean

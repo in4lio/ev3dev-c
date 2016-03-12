@@ -21,16 +21,24 @@
 #define PATH_PREF_LEN  28
 #define _ID_SPOT  "///"
 
+#define PATH_ADDRESS  "/sys/class/servo-motor/motor" _ID_SPOT "address"
 #define PATH_COMMAND  "/sys/class/servo-motor/motor" _ID_SPOT "command"
 #define PATH_DRIVER_NAME  "/sys/class/servo-motor/motor" _ID_SPOT "driver_name"
 #define PATH_MAX_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "max_pulse_sp"
 #define PATH_MID_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "mid_pulse_sp"
 #define PATH_MIN_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "min_pulse_sp"
 #define PATH_POLARITY  "/sys/class/servo-motor/motor" _ID_SPOT "polarity"
-#define PATH_PORT_NAME  "/sys/class/servo-motor/motor" _ID_SPOT "port_name"
 #define PATH_POSITION_SP  "/sys/class/servo-motor/motor" _ID_SPOT "position_sp"
 #define PATH_RATE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "rate_sp"
 #define PATH_STATE  "/sys/class/servo-motor/motor" _ID_SPOT "state"
+
+size_t get_servo_address( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_ADDRESS;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
+}
 
 size_t get_servo_command( uint8_t sn, char *buf, size_t sz )
 {
@@ -120,14 +128,6 @@ size_t set_servo_polarity( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
-size_t get_servo_port_name( uint8_t sn, char *buf, size_t sz )
-{
-	char s[] = PATH_PORT_NAME;
-	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
-
-	return ev3_read_char_array( s, buf, sz );
-}
-
 size_t get_servo_position_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_POSITION_SP;
@@ -197,7 +197,7 @@ size_t get_servo_desc( uint8_t sn, EV3_SERVO *desc )
 	desc->type_inx = get_servo_type_inx( sn );
 	if ( desc->type_inx == SERVO_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_servo_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_servo_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	desc->addr = addr;

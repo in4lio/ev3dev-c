@@ -20,12 +20,20 @@
 #define PATH_PREF_LEN  25
 #define _ID_SPOT  "///"
 
+#define PATH_ADDRESS  "/sys/class/lego-port/port" _ID_SPOT "address"
 #define PATH_DRIVER_NAME  "/sys/class/lego-port/port" _ID_SPOT "driver_name"
 #define PATH_MODE  "/sys/class/lego-port/port" _ID_SPOT "mode"
 #define PATH_MODES  "/sys/class/lego-port/port" _ID_SPOT "modes"
-#define PATH_PORT_NAME  "/sys/class/lego-port/port" _ID_SPOT "port_name"
 #define PATH_SET_DEVICE  "/sys/class/lego-port/port" _ID_SPOT "set_device"
 #define PATH_STATUS  "/sys/class/lego-port/port" _ID_SPOT "status"
+
+size_t get_port_address( uint8_t sn, char *buf, size_t sz )
+{
+	char s[] = PATH_ADDRESS;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_char_array( s, buf, sz );
+}
 
 size_t get_port_driver_name( uint8_t sn, char *buf, size_t sz )
 {
@@ -54,14 +62,6 @@ size_t set_port_mode( uint8_t sn, char *value )
 size_t get_port_modes( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_MODES;
-	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
-
-	return ev3_read_char_array( s, buf, sz );
-}
-
-size_t get_port_port_name( uint8_t sn, char *buf, size_t sz )
-{
-	char s[] = PATH_PORT_NAME;
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_read_char_array( s, buf, sz );
@@ -127,7 +127,7 @@ size_t get_port_desc( uint8_t sn, EV3_PORT *desc )
 	desc->type_inx = get_port_type_inx( sn );
 	if ( desc->type_inx == PORT_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_port_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_port_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	desc->addr = addr;

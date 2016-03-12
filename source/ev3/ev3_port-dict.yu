@@ -28,10 +28,10 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
+	(  "address"               char             1                 R                 )
 	(  "driver_name"           char             1                 R                 )
 	(  "mode"                  char             1                 RW                )
 	(  "modes"                 char             1                 R                 )
-	(  "port_name"             char             1                 R                 )
 	(  "set_device"            char             1                 W                 )
 	(  "status"                char             1                 R                 )
 	)
@@ -49,7 +49,7 @@
 	(  type_inx       INX_T            "type"              )
 	(  port           uint8_t          "EV3 port"          )
 	(  extport        uint8_t          "extended port"     )
-	(  addr           uint8_t          "address"           )
+	(  addr           uint8_t          "I2C address"       )
 	)
 )
 

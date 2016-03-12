@@ -102,7 +102,7 @@ size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc )
 	desc->type_inx = get_($CLASS_ID)_type_inx( sn );
 	if ( desc->type_inx == ($upper CLASS_ID)_TYPE__NONE_ ) return ( 0 );
 
-	if ( !get_($CLASS_ID)_port_name( sn, buf, sizeof( buf ))) return ( 0 );
+	if ( !get_($CLASS_ID)_address( sn, buf, sizeof( buf ))) return ( 0 );
 
 	ev3_parse_port_name( buf, &desc->port, &desc->extport, &addr );
 	($if CLASS_DESC_ADDR ]

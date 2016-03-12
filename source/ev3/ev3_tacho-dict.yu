@@ -29,6 +29,7 @@
 ($dict CLASS_ATTR
 	(` CLASS_ATTR_NAME         CLASS_ATTR_TYPE  CLASS_ATTR_ARRAY  CLASS_ATTR_WRITE  )
 	(`
+	(  "address"               char             1                 R                 )
 	(  "command"               char             1                 W                 )
 	(  "commands"              char             1                 R                 )
 	(  "count_per_rot"         int              0                 R                 )
@@ -40,7 +41,6 @@
 	(  "hold_pid/Ki"           int              0                 RW                )
 	(  "hold_pid/Kp"           int              0                 RW                )
 	(  "polarity"              char             1                 RW                )
-	(  "port_name"             char             1                 R                 )
 	(  "position"              int              0                 RW                )
 	(  "position_sp"           int              0                 RW                )
 	(  "ramp_down_sp"          int              0                 RW                )
