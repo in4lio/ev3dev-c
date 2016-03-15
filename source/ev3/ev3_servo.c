@@ -19,18 +19,17 @@
 #include "ev3_servo.h"
 
 #define PATH_PREF_LEN  28
-#define _ID_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/servo-motor/motor" _ID_SPOT "address"
-#define PATH_COMMAND  "/sys/class/servo-motor/motor" _ID_SPOT "command"
-#define PATH_DRIVER_NAME  "/sys/class/servo-motor/motor" _ID_SPOT "driver_name"
-#define PATH_MAX_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "max_pulse_sp"
-#define PATH_MID_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "mid_pulse_sp"
-#define PATH_MIN_PULSE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "min_pulse_sp"
-#define PATH_POLARITY  "/sys/class/servo-motor/motor" _ID_SPOT "polarity"
-#define PATH_POSITION_SP  "/sys/class/servo-motor/motor" _ID_SPOT "position_sp"
-#define PATH_RATE_SP  "/sys/class/servo-motor/motor" _ID_SPOT "rate_sp"
-#define PATH_STATE  "/sys/class/servo-motor/motor" _ID_SPOT "state"
+#define PATH_ADDRESS  "/sys/class/servo-motor/motor" SN_SPOT "address"
+#define PATH_COMMAND  "/sys/class/servo-motor/motor" SN_SPOT "command"
+#define PATH_DRIVER_NAME  "/sys/class/servo-motor/motor" SN_SPOT "driver_name"
+#define PATH_MAX_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "max_pulse_sp"
+#define PATH_MID_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "mid_pulse_sp"
+#define PATH_MIN_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "min_pulse_sp"
+#define PATH_POLARITY  "/sys/class/servo-motor/motor" SN_SPOT "polarity"
+#define PATH_POSITION_SP  "/sys/class/servo-motor/motor" SN_SPOT "position_sp"
+#define PATH_RATE_SP  "/sys/class/servo-motor/motor" SN_SPOT "rate_sp"
+#define PATH_STATE  "/sys/class/servo-motor/motor" SN_SPOT "state"
 
 size_t get_servo_address( uint8_t sn, char *buf, size_t sz )
 {
@@ -54,6 +53,13 @@ size_t set_servo_command( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_servo_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_servo_driver_name( uint8_t sn, char *buf, size_t sz )
@@ -80,6 +86,13 @@ size_t set_servo_max_pulse_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_servo_max_pulse_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_MAX_PULSE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_servo_mid_pulse_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_MID_PULSE_SP;
@@ -94,6 +107,13 @@ size_t set_servo_mid_pulse_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_servo_mid_pulse_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_MID_PULSE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_servo_min_pulse_sp( uint8_t sn, int *buf )
@@ -112,6 +132,13 @@ size_t set_servo_min_pulse_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_servo_min_pulse_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_MIN_PULSE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_servo_polarity( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_POLARITY;
@@ -126,6 +153,13 @@ size_t set_servo_polarity( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_servo_polarity( uint8_t *sn, char *value )
+{
+	char s[] = PATH_POLARITY;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_servo_position_sp( uint8_t sn, int *buf )
@@ -144,6 +178,13 @@ size_t set_servo_position_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_servo_position_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_POSITION_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_servo_rate_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_RATE_SP;
@@ -158,6 +199,13 @@ size_t set_servo_rate_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_servo_rate_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_RATE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_servo_state( uint8_t sn, char *buf, size_t sz )
@@ -306,6 +354,11 @@ INX_T get_servo_command_inx( uint8_t sn, INX_T type_inx )
 size_t set_servo_command_inx( uint8_t sn, INX_T command_inx )
 {
 	return set_servo_command( sn, ( char* ) ev3_servo_command( command_inx ));
+}
+
+size_t multi_set_servo_command_inx( uint8_t *sn, INX_T command_inx )
+{
+	return multi_set_servo_command( sn, ( char* ) ev3_servo_command( command_inx ));
 }
 
 size_t get_servo_state_flags( uint8_t sn, FLAGS_T *flags )

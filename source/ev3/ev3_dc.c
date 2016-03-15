@@ -19,21 +19,20 @@
 #include "ev3_dc.h"
 
 #define PATH_PREF_LEN  25
-#define _ID_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/dc-motor/motor" _ID_SPOT "address"
-#define PATH_COMMAND  "/sys/class/dc-motor/motor" _ID_SPOT "command"
-#define PATH_COMMANDS  "/sys/class/dc-motor/motor" _ID_SPOT "commands"
-#define PATH_DRIVER_NAME  "/sys/class/dc-motor/motor" _ID_SPOT "driver_name"
-#define PATH_DUTY_CYCLE  "/sys/class/dc-motor/motor" _ID_SPOT "duty_cycle"
-#define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" _ID_SPOT "duty_cycle_sp"
-#define PATH_POLARITY  "/sys/class/dc-motor/motor" _ID_SPOT "polarity"
-#define PATH_STATE  "/sys/class/dc-motor/motor" _ID_SPOT "state"
-#define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" _ID_SPOT "stop_command"
-#define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" _ID_SPOT "stop_commands"
-#define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" _ID_SPOT "ramp_down_sp"
-#define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" _ID_SPOT "ramp_up_sp"
-#define PATH_TIME_SP  "/sys/class/dc-motor/motor" _ID_SPOT "time_sp"
+#define PATH_ADDRESS  "/sys/class/dc-motor/motor" SN_SPOT "address"
+#define PATH_COMMAND  "/sys/class/dc-motor/motor" SN_SPOT "command"
+#define PATH_COMMANDS  "/sys/class/dc-motor/motor" SN_SPOT "commands"
+#define PATH_DRIVER_NAME  "/sys/class/dc-motor/motor" SN_SPOT "driver_name"
+#define PATH_DUTY_CYCLE  "/sys/class/dc-motor/motor" SN_SPOT "duty_cycle"
+#define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" SN_SPOT "duty_cycle_sp"
+#define PATH_POLARITY  "/sys/class/dc-motor/motor" SN_SPOT "polarity"
+#define PATH_STATE  "/sys/class/dc-motor/motor" SN_SPOT "state"
+#define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" SN_SPOT "stop_command"
+#define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" SN_SPOT "stop_commands"
+#define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" SN_SPOT "ramp_down_sp"
+#define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" SN_SPOT "ramp_up_sp"
+#define PATH_TIME_SP  "/sys/class/dc-motor/motor" SN_SPOT "time_sp"
 
 size_t get_dc_address( uint8_t sn, char *buf, size_t sz )
 {
@@ -49,6 +48,13 @@ size_t set_dc_command( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_dc_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_dc_commands( uint8_t sn, char *buf, size_t sz )
@@ -91,6 +97,13 @@ size_t set_dc_duty_cycle_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_dc_duty_cycle_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_DUTY_CYCLE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_dc_polarity( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_POLARITY;
@@ -107,6 +120,13 @@ size_t set_dc_polarity( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
+size_t multi_set_dc_polarity( uint8_t *sn, char *value )
+{
+	char s[] = PATH_POLARITY;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_dc_state( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_STATE;
@@ -121,6 +141,13 @@ size_t set_dc_stop_command( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_dc_stop_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_STOP_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_dc_stop_commands( uint8_t sn, char *buf, size_t sz )
@@ -147,6 +174,13 @@ size_t set_dc_ramp_down_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_dc_ramp_down_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_RAMP_DOWN_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_dc_ramp_up_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_RAMP_UP_SP;
@@ -163,6 +197,13 @@ size_t set_dc_ramp_up_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_dc_ramp_up_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_RAMP_UP_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_dc_time_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_TIME_SP;
@@ -177,6 +218,13 @@ size_t set_dc_time_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_dc_time_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_TIME_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 const char *ev3_dc_type( INX_T type_inx )
@@ -299,6 +347,11 @@ size_t set_dc_command_inx( uint8_t sn, INX_T command_inx )
 	return set_dc_command( sn, ( char* ) ev3_dc_command( command_inx ));
 }
 
+size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx )
+{
+	return multi_set_dc_command( sn, ( char* ) ev3_dc_command( command_inx ));
+}
+
 const char *ev3_dc_stop_command( INX_T stop_command_inx )
 {
 	switch ( stop_command_inx ) {
@@ -314,6 +367,11 @@ const char *ev3_dc_stop_command( INX_T stop_command_inx )
 size_t set_dc_stop_command_inx( uint8_t sn, INX_T stop_command_inx )
 {
 	return set_dc_stop_command( sn, ( char* ) ev3_dc_stop_command( stop_command_inx ));
+}
+
+size_t multi_set_dc_stop_command_inx( uint8_t *sn, INX_T stop_command_inx )
+{
+	return multi_set_dc_stop_command( sn, ( char* ) ev3_dc_stop_command( stop_command_inx ));
 }
 
 size_t get_dc_state_flags( uint8_t sn, FLAGS_T *flags )

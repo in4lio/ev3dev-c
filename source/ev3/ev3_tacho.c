@@ -19,34 +19,33 @@
 #include "ev3_tacho.h"
 
 #define PATH_PREF_LEN  28
-#define _ID_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/tacho-motor/motor" _ID_SPOT "address"
-#define PATH_COMMAND  "/sys/class/tacho-motor/motor" _ID_SPOT "command"
-#define PATH_COMMANDS  "/sys/class/tacho-motor/motor" _ID_SPOT "commands"
-#define PATH_COUNT_PER_ROT  "/sys/class/tacho-motor/motor" _ID_SPOT "count_per_rot"
-#define PATH_DRIVER_NAME  "/sys/class/tacho-motor/motor" _ID_SPOT "driver_name"
-#define PATH_DUTY_CYCLE  "/sys/class/tacho-motor/motor" _ID_SPOT "duty_cycle"
-#define PATH_DUTY_CYCLE_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "duty_cycle_sp"
-#define PATH_ENCODER_POLARITY  "/sys/class/tacho-motor/motor" _ID_SPOT "encoder_polarity"
-#define PATH_HOLD_PID_KD  "/sys/class/tacho-motor/motor" _ID_SPOT "hold_pid/Kd"
-#define PATH_HOLD_PID_KI  "/sys/class/tacho-motor/motor" _ID_SPOT "hold_pid/Ki"
-#define PATH_HOLD_PID_KP  "/sys/class/tacho-motor/motor" _ID_SPOT "hold_pid/Kp"
-#define PATH_POLARITY  "/sys/class/tacho-motor/motor" _ID_SPOT "polarity"
-#define PATH_POSITION  "/sys/class/tacho-motor/motor" _ID_SPOT "position"
-#define PATH_POSITION_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "position_sp"
-#define PATH_RAMP_DOWN_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "ramp_down_sp"
-#define PATH_RAMP_UP_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "ramp_up_sp"
-#define PATH_SPEED  "/sys/class/tacho-motor/motor" _ID_SPOT "speed"
-#define PATH_SPEED_PID_KD  "/sys/class/tacho-motor/motor" _ID_SPOT "speed_pid/Kd"
-#define PATH_SPEED_PID_KI  "/sys/class/tacho-motor/motor" _ID_SPOT "speed_pid/Ki"
-#define PATH_SPEED_PID_KP  "/sys/class/tacho-motor/motor" _ID_SPOT "speed_pid/Kp"
-#define PATH_SPEED_REGULATION  "/sys/class/tacho-motor/motor" _ID_SPOT "speed_regulation"
-#define PATH_SPEED_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "speed_sp"
-#define PATH_STATE  "/sys/class/tacho-motor/motor" _ID_SPOT "state"
-#define PATH_STOP_COMMAND  "/sys/class/tacho-motor/motor" _ID_SPOT "stop_command"
-#define PATH_STOP_COMMANDS  "/sys/class/tacho-motor/motor" _ID_SPOT "stop_commands"
-#define PATH_TIME_SP  "/sys/class/tacho-motor/motor" _ID_SPOT "time_sp"
+#define PATH_ADDRESS  "/sys/class/tacho-motor/motor" SN_SPOT "address"
+#define PATH_COMMAND  "/sys/class/tacho-motor/motor" SN_SPOT "command"
+#define PATH_COMMANDS  "/sys/class/tacho-motor/motor" SN_SPOT "commands"
+#define PATH_COUNT_PER_ROT  "/sys/class/tacho-motor/motor" SN_SPOT "count_per_rot"
+#define PATH_DRIVER_NAME  "/sys/class/tacho-motor/motor" SN_SPOT "driver_name"
+#define PATH_DUTY_CYCLE  "/sys/class/tacho-motor/motor" SN_SPOT "duty_cycle"
+#define PATH_DUTY_CYCLE_SP  "/sys/class/tacho-motor/motor" SN_SPOT "duty_cycle_sp"
+#define PATH_ENCODER_POLARITY  "/sys/class/tacho-motor/motor" SN_SPOT "encoder_polarity"
+#define PATH_HOLD_PID_KD  "/sys/class/tacho-motor/motor" SN_SPOT "hold_pid/Kd"
+#define PATH_HOLD_PID_KI  "/sys/class/tacho-motor/motor" SN_SPOT "hold_pid/Ki"
+#define PATH_HOLD_PID_KP  "/sys/class/tacho-motor/motor" SN_SPOT "hold_pid/Kp"
+#define PATH_POLARITY  "/sys/class/tacho-motor/motor" SN_SPOT "polarity"
+#define PATH_POSITION  "/sys/class/tacho-motor/motor" SN_SPOT "position"
+#define PATH_POSITION_SP  "/sys/class/tacho-motor/motor" SN_SPOT "position_sp"
+#define PATH_RAMP_DOWN_SP  "/sys/class/tacho-motor/motor" SN_SPOT "ramp_down_sp"
+#define PATH_RAMP_UP_SP  "/sys/class/tacho-motor/motor" SN_SPOT "ramp_up_sp"
+#define PATH_SPEED  "/sys/class/tacho-motor/motor" SN_SPOT "speed"
+#define PATH_SPEED_PID_KD  "/sys/class/tacho-motor/motor" SN_SPOT "speed_pid/Kd"
+#define PATH_SPEED_PID_KI  "/sys/class/tacho-motor/motor" SN_SPOT "speed_pid/Ki"
+#define PATH_SPEED_PID_KP  "/sys/class/tacho-motor/motor" SN_SPOT "speed_pid/Kp"
+#define PATH_SPEED_REGULATION  "/sys/class/tacho-motor/motor" SN_SPOT "speed_regulation"
+#define PATH_SPEED_SP  "/sys/class/tacho-motor/motor" SN_SPOT "speed_sp"
+#define PATH_STATE  "/sys/class/tacho-motor/motor" SN_SPOT "state"
+#define PATH_STOP_COMMAND  "/sys/class/tacho-motor/motor" SN_SPOT "stop_command"
+#define PATH_STOP_COMMANDS  "/sys/class/tacho-motor/motor" SN_SPOT "stop_commands"
+#define PATH_TIME_SP  "/sys/class/tacho-motor/motor" SN_SPOT "time_sp"
 
 size_t get_tacho_address( uint8_t sn, char *buf, size_t sz )
 {
@@ -62,6 +61,13 @@ size_t set_tacho_command( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_tacho_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_commands( uint8_t sn, char *buf, size_t sz )
@@ -112,6 +118,13 @@ size_t set_tacho_duty_cycle_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_duty_cycle_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_DUTY_CYCLE_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_encoder_polarity( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_ENCODER_POLARITY;
@@ -126,6 +139,13 @@ size_t set_tacho_encoder_polarity( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_tacho_encoder_polarity( uint8_t *sn, char *value )
+{
+	char s[] = PATH_ENCODER_POLARITY;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_hold_pid_Kd( uint8_t sn, int *buf )
@@ -144,6 +164,13 @@ size_t set_tacho_hold_pid_Kd( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_hold_pid_Kd( uint8_t *sn, int value )
+{
+	char s[] = PATH_HOLD_PID_KD;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_hold_pid_Ki( uint8_t sn, int *buf )
 {
 	char s[] = PATH_HOLD_PID_KI;
@@ -158,6 +185,13 @@ size_t set_tacho_hold_pid_Ki( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_hold_pid_Ki( uint8_t *sn, int value )
+{
+	char s[] = PATH_HOLD_PID_KI;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_hold_pid_Kp( uint8_t sn, int *buf )
@@ -176,6 +210,13 @@ size_t set_tacho_hold_pid_Kp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_hold_pid_Kp( uint8_t *sn, int value )
+{
+	char s[] = PATH_HOLD_PID_KP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_polarity( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_POLARITY;
@@ -190,6 +231,13 @@ size_t set_tacho_polarity( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_tacho_polarity( uint8_t *sn, char *value )
+{
+	char s[] = PATH_POLARITY;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_position( uint8_t sn, int *buf )
@@ -208,6 +256,13 @@ size_t set_tacho_position( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_position( uint8_t *sn, int value )
+{
+	char s[] = PATH_POSITION;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_position_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_POSITION_SP;
@@ -222,6 +277,13 @@ size_t set_tacho_position_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_position_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_POSITION_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_ramp_down_sp( uint8_t sn, int *buf )
@@ -240,6 +302,13 @@ size_t set_tacho_ramp_down_sp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_ramp_down_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_RAMP_DOWN_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_ramp_up_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_RAMP_UP_SP;
@@ -254,6 +323,13 @@ size_t set_tacho_ramp_up_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_ramp_up_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_RAMP_UP_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_speed( uint8_t sn, int *buf )
@@ -280,6 +356,13 @@ size_t set_tacho_speed_pid_Kd( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_speed_pid_Kd( uint8_t *sn, int value )
+{
+	char s[] = PATH_SPEED_PID_KD;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_speed_pid_Ki( uint8_t sn, int *buf )
 {
 	char s[] = PATH_SPEED_PID_KI;
@@ -294,6 +377,13 @@ size_t set_tacho_speed_pid_Ki( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_speed_pid_Ki( uint8_t *sn, int value )
+{
+	char s[] = PATH_SPEED_PID_KI;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_speed_pid_Kp( uint8_t sn, int *buf )
@@ -312,6 +402,13 @@ size_t set_tacho_speed_pid_Kp( uint8_t sn, int value )
 	return ev3_write_int( s, value );
 }
 
+size_t multi_set_tacho_speed_pid_Kp( uint8_t *sn, int value )
+{
+	char s[] = PATH_SPEED_PID_KP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_speed_regulation( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_SPEED_REGULATION;
@@ -328,6 +425,13 @@ size_t set_tacho_speed_regulation( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
+size_t multi_set_tacho_speed_regulation( uint8_t *sn, char *value )
+{
+	char s[] = PATH_SPEED_REGULATION;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_speed_sp( uint8_t sn, int *buf )
 {
 	char s[] = PATH_SPEED_SP;
@@ -342,6 +446,13 @@ size_t set_tacho_speed_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_speed_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_SPEED_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_tacho_state( uint8_t sn, char *buf, size_t sz )
@@ -368,6 +479,13 @@ size_t set_tacho_stop_command( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
+size_t multi_set_tacho_stop_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_STOP_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_tacho_stop_commands( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_STOP_COMMANDS;
@@ -390,6 +508,13 @@ size_t set_tacho_time_sp( uint8_t sn, int value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_int( s, value );
+}
+
+size_t multi_set_tacho_time_sp( uint8_t *sn, int value )
+{
+	char s[] = PATH_TIME_SP;
+
+	return ev3_multi_write_int( sn, PATH_PREF_LEN, s, value );
 }
 
 const char *ev3_tacho_type( INX_T type_inx )
@@ -554,6 +679,11 @@ size_t set_tacho_command_inx( uint8_t sn, INX_T command_inx )
 	return set_tacho_command( sn, ( char* ) ev3_tacho_command( command_inx ));
 }
 
+size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx )
+{
+	return multi_set_tacho_command( sn, ( char* ) ev3_tacho_command( command_inx ));
+}
+
 const char *ev3_tacho_stop_command( INX_T stop_command_inx )
 {
 	switch ( stop_command_inx ) {
@@ -618,6 +748,11 @@ INX_T get_tacho_stop_command_inx( uint8_t sn, INX_T type_inx )
 size_t set_tacho_stop_command_inx( uint8_t sn, INX_T stop_command_inx )
 {
 	return set_tacho_stop_command( sn, ( char* ) ev3_tacho_stop_command( stop_command_inx ));
+}
+
+size_t multi_set_tacho_stop_command_inx( uint8_t *sn, INX_T stop_command_inx )
+{
+	return multi_set_tacho_stop_command( sn, ( char* ) ev3_tacho_stop_command( stop_command_inx ));
 }
 
 size_t get_tacho_state_flags( uint8_t sn, FLAGS_T *flags )

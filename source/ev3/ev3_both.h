@@ -4,8 +4,8 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
  *//**
- *  \file  ev3_keys.h
- *  \brief  EV3 brick keys.
+ *  \file  ev3_both.h
+ *  \brief  EV3 brick definitions.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
@@ -25,3 +25,7 @@ enum {
 	EV3_KEY_CENTER = 0x10L,
 	EV3_KEY_BACK   = 0x20L,
 };
+
+#define SN_SPOT     "///"
+#define SN_VEC_LEN  4
+#define SN_LIMIT    100

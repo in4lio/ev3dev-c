@@ -192,6 +192,15 @@ EV3_TACHO_EXT size_t get_tacho_address( uint8_t sn, char *buf, size_t sz );
 EV3_TACHO_EXT size_t set_tacho_command( uint8_t sn, char *value );
 
 /**
+ *  \brief Write "command" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_command( uint8_t *sn, char *value );
+
+/**
  *  \brief Read "commands" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -246,6 +255,15 @@ EV3_TACHO_EXT size_t get_tacho_duty_cycle_sp( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_duty_cycle_sp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "duty_cycle_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_duty_cycle_sp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "encoder_polarity" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -262,6 +280,15 @@ EV3_TACHO_EXT size_t get_tacho_encoder_polarity( uint8_t sn, char *buf, size_t s
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_encoder_polarity( uint8_t sn, char *value );
+
+/**
+ *  \brief Write "encoder_polarity" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_encoder_polarity( uint8_t *sn, char *value );
 
 /**
  *  \brief Read "hold_pid/Kd" attribute of the tacho.
@@ -282,6 +309,15 @@ EV3_TACHO_EXT size_t get_tacho_hold_pid_Kd( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_hold_pid_Kd( uint8_t sn, int value );
 
 /**
+ *  \brief Write "hold_pid/Kd" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_hold_pid_Kd( uint8_t *sn, int value );
+
+/**
  *  \brief Read "hold_pid/Ki" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -298,6 +334,15 @@ EV3_TACHO_EXT size_t get_tacho_hold_pid_Ki( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_hold_pid_Ki( uint8_t sn, int value );
+
+/**
+ *  \brief Write "hold_pid/Ki" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_hold_pid_Ki( uint8_t *sn, int value );
 
 /**
  *  \brief Read "hold_pid/Kp" attribute of the tacho.
@@ -318,6 +363,15 @@ EV3_TACHO_EXT size_t get_tacho_hold_pid_Kp( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_hold_pid_Kp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "hold_pid/Kp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_hold_pid_Kp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "polarity" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -334,6 +388,15 @@ EV3_TACHO_EXT size_t get_tacho_polarity( uint8_t sn, char *buf, size_t sz );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_polarity( uint8_t sn, char *value );
+
+/**
+ *  \brief Write "polarity" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_polarity( uint8_t *sn, char *value );
 
 /**
  *  \brief Read "position" attribute of the tacho.
@@ -354,6 +417,15 @@ EV3_TACHO_EXT size_t get_tacho_position( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_position( uint8_t sn, int value );
 
 /**
+ *  \brief Write "position" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_position( uint8_t *sn, int value );
+
+/**
  *  \brief Read "position_sp" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -370,6 +442,15 @@ EV3_TACHO_EXT size_t get_tacho_position_sp( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_position_sp( uint8_t sn, int value );
+
+/**
+ *  \brief Write "position_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_position_sp( uint8_t *sn, int value );
 
 /**
  *  \brief Read "ramp_down_sp" attribute of the tacho.
@@ -390,6 +471,15 @@ EV3_TACHO_EXT size_t get_tacho_ramp_down_sp( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_ramp_down_sp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "ramp_down_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_ramp_down_sp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "ramp_up_sp" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -406,6 +496,15 @@ EV3_TACHO_EXT size_t get_tacho_ramp_up_sp( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_ramp_up_sp( uint8_t sn, int value );
+
+/**
+ *  \brief Write "ramp_up_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_ramp_up_sp( uint8_t *sn, int value );
 
 /**
  *  \brief Read "speed" attribute of the tacho.
@@ -435,6 +534,15 @@ EV3_TACHO_EXT size_t get_tacho_speed_pid_Kd( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_speed_pid_Kd( uint8_t sn, int value );
 
 /**
+ *  \brief Write "speed_pid/Kd" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_speed_pid_Kd( uint8_t *sn, int value );
+
+/**
  *  \brief Read "speed_pid/Ki" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -451,6 +559,15 @@ EV3_TACHO_EXT size_t get_tacho_speed_pid_Ki( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_speed_pid_Ki( uint8_t sn, int value );
+
+/**
+ *  \brief Write "speed_pid/Ki" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_speed_pid_Ki( uint8_t *sn, int value );
 
 /**
  *  \brief Read "speed_pid/Kp" attribute of the tacho.
@@ -471,6 +588,15 @@ EV3_TACHO_EXT size_t get_tacho_speed_pid_Kp( uint8_t sn, int *buf );
 EV3_TACHO_EXT size_t set_tacho_speed_pid_Kp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "speed_pid/Kp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_speed_pid_Kp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "speed_regulation" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -489,6 +615,15 @@ EV3_TACHO_EXT size_t get_tacho_speed_regulation( uint8_t sn, char *buf, size_t s
 EV3_TACHO_EXT size_t set_tacho_speed_regulation( uint8_t sn, char *value );
 
 /**
+ *  \brief Write "speed_regulation" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_speed_regulation( uint8_t *sn, char *value );
+
+/**
  *  \brief Read "speed_sp" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -505,6 +640,15 @@ EV3_TACHO_EXT size_t get_tacho_speed_sp( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_speed_sp( uint8_t sn, int value );
+
+/**
+ *  \brief Write "speed_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_speed_sp( uint8_t *sn, int value );
 
 /**
  *  \brief Read "state" attribute of the tacho.
@@ -534,6 +678,15 @@ EV3_TACHO_EXT size_t get_tacho_stop_command( uint8_t sn, char *buf, size_t sz );
 EV3_TACHO_EXT size_t set_tacho_stop_command( uint8_t sn, char *value );
 
 /**
+ *  \brief Write "stop_command" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_stop_command( uint8_t *sn, char *value );
+
+/**
  *  \brief Read "stop_commands" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -559,6 +712,15 @@ EV3_TACHO_EXT size_t get_tacho_time_sp( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_time_sp( uint8_t sn, int value );
+
+/**
+ *  \brief Write "time_sp" attribute of the tacho group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_time_sp( uint8_t *sn, int value );
 
 /**
  *  \brief Get name of the specified tacho type.
@@ -653,6 +815,14 @@ EV3_TACHO_EXT const char *ev3_tacho_command( INX_T command_inx );
 EV3_TACHO_EXT size_t set_tacho_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
+ *  \brief Write "command" attribute of the tacho group by the index.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param command_inx Index of the tacho command.
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx );
+
+/**
  *  \brief Get name of the specified tacho stop_command.
  *  \param stop_command_inx Index of the tacho stop_command.
  *  \return Requested value.
@@ -674,6 +844,14 @@ EV3_TACHO_EXT INX_T get_tacho_stop_command_inx( uint8_t sn, INX_T type_inx );
  *  \return Count of written bytes.
  */
 EV3_TACHO_EXT size_t set_tacho_stop_command_inx( uint8_t sn, INX_T stop_command_inx );
+
+/**
+ *  \brief Write "stop_command" attribute of the tacho group by the index.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param stop_command_inx Index of the tacho stop_command.
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_stop_command_inx( uint8_t *sn, INX_T stop_command_inx );
 
 /**
  *  \brief Read "state" attribute of the tacho and get the flags.

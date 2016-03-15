@@ -6,15 +6,14 @@
 
 ($set PATH_PREF,,($unq CLASS_PATH)/($unq CLASS_FOLDER_PREF))
 #define PATH_PREF_LEN  ($len PATH_PREF)
-#define _ID_SPOT  "///"
 
 ($each-CLASS_ATTR \i.]
-#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) _ID_SPOT ($i CLASS_ATTR_NAME)
+#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) SN_SPOT ($i CLASS_ATTR_NAME)
 
 [ )
 
 ($each-CLASS_AVEC \i.]
-#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) _ID_SPOT ($i CLASS_AVEC_NAME)
+#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) SN_SPOT ($i CLASS_AVEC_NAME)
 
 [ )
 
@@ -37,6 +36,13 @@
 			*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 			return ev3_write_($i CLASS_ATTR_TYPE)($[_array] ? ($i CLASS_ATTR_ARRAY))( s, value($[, sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+		}
+
+		size_t multi_set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t *sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) )
+		{
+			char s[] = PATH_($upper ($i CLASS_ATTR_ID));
+
+			return ev3_multi_write_($i CLASS_ATTR_TYPE)($[_array] ? ($i CLASS_ATTR_ARRAY))( sn, PATH_PREF_LEN, s, value($[, sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 		}
 	[ )
 
@@ -212,6 +218,11 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	{
 		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+	}
+
+	size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
+	{
+		return multi_set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
 
 [ )

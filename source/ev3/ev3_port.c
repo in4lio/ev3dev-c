@@ -18,14 +18,13 @@
 #include "ev3_port.h"
 
 #define PATH_PREF_LEN  25
-#define _ID_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/lego-port/port" _ID_SPOT "address"
-#define PATH_DRIVER_NAME  "/sys/class/lego-port/port" _ID_SPOT "driver_name"
-#define PATH_MODE  "/sys/class/lego-port/port" _ID_SPOT "mode"
-#define PATH_MODES  "/sys/class/lego-port/port" _ID_SPOT "modes"
-#define PATH_SET_DEVICE  "/sys/class/lego-port/port" _ID_SPOT "set_device"
-#define PATH_STATUS  "/sys/class/lego-port/port" _ID_SPOT "status"
+#define PATH_ADDRESS  "/sys/class/lego-port/port" SN_SPOT "address"
+#define PATH_DRIVER_NAME  "/sys/class/lego-port/port" SN_SPOT "driver_name"
+#define PATH_MODE  "/sys/class/lego-port/port" SN_SPOT "mode"
+#define PATH_MODES  "/sys/class/lego-port/port" SN_SPOT "modes"
+#define PATH_SET_DEVICE  "/sys/class/lego-port/port" SN_SPOT "set_device"
+#define PATH_STATUS  "/sys/class/lego-port/port" SN_SPOT "status"
 
 size_t get_port_address( uint8_t sn, char *buf, size_t sz )
 {
@@ -59,6 +58,13 @@ size_t set_port_mode( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
+size_t multi_set_port_mode( uint8_t *sn, char *value )
+{
+	char s[] = PATH_MODE;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_port_modes( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_MODES;
@@ -73,6 +79,13 @@ size_t set_port_set_device( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_port_set_device( uint8_t *sn, char *value )
+{
+	char s[] = PATH_SET_DEVICE;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_port_status( uint8_t sn, char *buf, size_t sz )
@@ -312,6 +325,11 @@ INX_T get_port_mode_inx( uint8_t sn, INX_T type_inx )
 size_t set_port_mode_inx( uint8_t sn, INX_T mode_inx )
 {
 	return set_port_mode( sn, ( char* ) ev3_port_mode( mode_inx ));
+}
+
+size_t multi_set_port_mode_inx( uint8_t *sn, INX_T mode_inx )
+{
+	return multi_set_port_mode( sn, ( char* ) ev3_port_mode( mode_inx ));
 }
 
 int ev3_port_init( void )

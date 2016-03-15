@@ -20,33 +20,32 @@
 #include "ev3_sensor.h"
 
 #define PATH_PREF_LEN  29
-#define _ID_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/lego-sensor/sensor" _ID_SPOT "address"
-#define PATH_BIN_DATA  "/sys/class/lego-sensor/sensor" _ID_SPOT "bin_data"
-#define PATH_BIN_DATA_FORMAT  "/sys/class/lego-sensor/sensor" _ID_SPOT "bin_data_format"
-#define PATH_COMMAND  "/sys/class/lego-sensor/sensor" _ID_SPOT "command"
-#define PATH_COMMANDS  "/sys/class/lego-sensor/sensor" _ID_SPOT "commands"
-#define PATH_DIRECT  "/sys/class/lego-sensor/sensor" _ID_SPOT "direct"
-#define PATH_DECIMALS  "/sys/class/lego-sensor/sensor" _ID_SPOT "decimals"
-#define PATH_DRIVER_NAME  "/sys/class/lego-sensor/sensor" _ID_SPOT "driver_name"
-#define PATH_FW_VERSION  "/sys/class/lego-sensor/sensor" _ID_SPOT "fw_version"
-#define PATH_MODE  "/sys/class/lego-sensor/sensor" _ID_SPOT "mode"
-#define PATH_MODES  "/sys/class/lego-sensor/sensor" _ID_SPOT "modes"
-#define PATH_NUM_VALUES  "/sys/class/lego-sensor/sensor" _ID_SPOT "num_values"
-#define PATH_POLL_MS  "/sys/class/lego-sensor/sensor" _ID_SPOT "poll_ms"
-#define PATH_UNITS  "/sys/class/lego-sensor/sensor" _ID_SPOT "units"
-#define PATH_VALUE0  "/sys/class/lego-sensor/sensor" _ID_SPOT "value0"
-#define PATH_VALUE1  "/sys/class/lego-sensor/sensor" _ID_SPOT "value1"
-#define PATH_VALUE2  "/sys/class/lego-sensor/sensor" _ID_SPOT "value2"
-#define PATH_VALUE3  "/sys/class/lego-sensor/sensor" _ID_SPOT "value3"
-#define PATH_VALUE4  "/sys/class/lego-sensor/sensor" _ID_SPOT "value4"
-#define PATH_VALUE5  "/sys/class/lego-sensor/sensor" _ID_SPOT "value5"
-#define PATH_VALUE6  "/sys/class/lego-sensor/sensor" _ID_SPOT "value6"
-#define PATH_VALUE7  "/sys/class/lego-sensor/sensor" _ID_SPOT "value7"
-#define PATH_TEXT_VALUE  "/sys/class/lego-sensor/sensor" _ID_SPOT "text_value"
+#define PATH_ADDRESS  "/sys/class/lego-sensor/sensor" SN_SPOT "address"
+#define PATH_BIN_DATA  "/sys/class/lego-sensor/sensor" SN_SPOT "bin_data"
+#define PATH_BIN_DATA_FORMAT  "/sys/class/lego-sensor/sensor" SN_SPOT "bin_data_format"
+#define PATH_COMMAND  "/sys/class/lego-sensor/sensor" SN_SPOT "command"
+#define PATH_COMMANDS  "/sys/class/lego-sensor/sensor" SN_SPOT "commands"
+#define PATH_DIRECT  "/sys/class/lego-sensor/sensor" SN_SPOT "direct"
+#define PATH_DECIMALS  "/sys/class/lego-sensor/sensor" SN_SPOT "decimals"
+#define PATH_DRIVER_NAME  "/sys/class/lego-sensor/sensor" SN_SPOT "driver_name"
+#define PATH_FW_VERSION  "/sys/class/lego-sensor/sensor" SN_SPOT "fw_version"
+#define PATH_MODE  "/sys/class/lego-sensor/sensor" SN_SPOT "mode"
+#define PATH_MODES  "/sys/class/lego-sensor/sensor" SN_SPOT "modes"
+#define PATH_NUM_VALUES  "/sys/class/lego-sensor/sensor" SN_SPOT "num_values"
+#define PATH_POLL_MS  "/sys/class/lego-sensor/sensor" SN_SPOT "poll_ms"
+#define PATH_UNITS  "/sys/class/lego-sensor/sensor" SN_SPOT "units"
+#define PATH_VALUE0  "/sys/class/lego-sensor/sensor" SN_SPOT "value0"
+#define PATH_VALUE1  "/sys/class/lego-sensor/sensor" SN_SPOT "value1"
+#define PATH_VALUE2  "/sys/class/lego-sensor/sensor" SN_SPOT "value2"
+#define PATH_VALUE3  "/sys/class/lego-sensor/sensor" SN_SPOT "value3"
+#define PATH_VALUE4  "/sys/class/lego-sensor/sensor" SN_SPOT "value4"
+#define PATH_VALUE5  "/sys/class/lego-sensor/sensor" SN_SPOT "value5"
+#define PATH_VALUE6  "/sys/class/lego-sensor/sensor" SN_SPOT "value6"
+#define PATH_VALUE7  "/sys/class/lego-sensor/sensor" SN_SPOT "value7"
+#define PATH_TEXT_VALUE  "/sys/class/lego-sensor/sensor" SN_SPOT "text_value"
 
-#define PATH_VALUE  "/sys/class/lego-sensor/sensor" _ID_SPOT "value"
+#define PATH_VALUE  "/sys/class/lego-sensor/sensor" SN_SPOT "value"
 
 size_t get_sensor_address( uint8_t sn, char *buf, size_t sz )
 {
@@ -72,6 +71,13 @@ size_t set_sensor_bin_data( uint8_t sn, byte *value, size_t sz )
 	return ev3_write_byte_array( s, value, sz );
 }
 
+size_t multi_set_sensor_bin_data( uint8_t *sn, byte *value, size_t sz )
+{
+	char s[] = PATH_BIN_DATA;
+
+	return ev3_multi_write_byte_array( sn, PATH_PREF_LEN, s, value, sz );
+}
+
 size_t get_sensor_bin_data_format( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_BIN_DATA_FORMAT;
@@ -86,6 +92,13 @@ size_t set_sensor_command( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_sensor_command( uint8_t *sn, char *value )
+{
+	char s[] = PATH_COMMAND;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_sensor_commands( uint8_t sn, char *buf, size_t sz )
@@ -110,6 +123,13 @@ size_t set_sensor_direct( uint8_t sn, char *value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
+}
+
+size_t multi_set_sensor_direct( uint8_t *sn, char *value )
+{
+	char s[] = PATH_DIRECT;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_sensor_decimals( uint8_t sn, dword *buf )
@@ -152,6 +172,13 @@ size_t set_sensor_mode( uint8_t sn, char *value )
 	return ev3_write_char_array( s, value );
 }
 
+size_t multi_set_sensor_mode( uint8_t *sn, char *value )
+{
+	char s[] = PATH_MODE;
+
+	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
+}
+
 size_t get_sensor_modes( uint8_t sn, char *buf, size_t sz )
 {
 	char s[] = PATH_MODES;
@@ -182,6 +209,13 @@ size_t set_sensor_poll_ms( uint8_t sn, dword value )
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_dword( s, value );
+}
+
+size_t multi_set_sensor_poll_ms( uint8_t *sn, dword value )
+{
+	char s[] = PATH_POLL_MS;
+
+	return ev3_multi_write_dword( sn, PATH_PREF_LEN, s, value );
 }
 
 size_t get_sensor_units( uint8_t sn, char *buf, size_t sz )
@@ -1209,6 +1243,11 @@ size_t set_sensor_mode_inx( uint8_t sn, INX_T mode_inx )
 	return set_sensor_mode( sn, ( char* ) ev3_sensor_mode( mode_inx ));
 }
 
+size_t multi_set_sensor_mode_inx( uint8_t *sn, INX_T mode_inx )
+{
+	return multi_set_sensor_mode( sn, ( char* ) ev3_sensor_mode( mode_inx ));
+}
+
 const char *ev3_sensor_command( INX_T command_inx )
 {
 	switch ( command_inx ) {
@@ -1318,6 +1357,11 @@ const char *ev3_sensor_command( INX_T command_inx )
 size_t set_sensor_command_inx( uint8_t sn, INX_T command_inx )
 {
 	return set_sensor_command( sn, ( char* ) ev3_sensor_command( command_inx ));
+}
+
+size_t multi_set_sensor_command_inx( uint8_t *sn, INX_T command_inx )
+{
+	return multi_set_sensor_command( sn, ( char* ) ev3_sensor_command( command_inx ));
 }
 
 int ev3_sensor_init( void )

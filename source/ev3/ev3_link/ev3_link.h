@@ -158,6 +158,17 @@ extern int udp_ev3_read( char *fn, void *buf, int sz );
 extern int udp_ev3_write( char *fn, void *data, int sz );
 
 /**
+ *  \brief Write data into the group of specified files over UDP.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param pos Position of the sequence number field into the template.
+ *  \param fn Filename template.
+ *  \param data Data.
+ *  \param sz Data size.
+ *  \return Count of written bytes.
+ */
+extern int udp_ev3_multi_write( uint8_t *sn, uint16_t pos, char *fn, void *data, int sz );
+
+/**
  *  \brief List files in the specified directory over UDP.
  *  \param fn Directory name.
  *  \param[out] buf Buffer for files list.

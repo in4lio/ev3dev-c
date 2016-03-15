@@ -65,7 +65,9 @@ int moving;   /* Current moving */
 int command;  /* Command for the 'drive' coroutine */
 int angle;    /* Angle of rotation */
 
-uint8_t l_motor, r_motor, ir, touch;  /* Sequence numbers of devices */
+uint8_t ir, touch;  /* Sequence numbers of sensors */
+enum { L, R };
+uint8_t motor[ 3 ] = { SN_LIMIT, SN_LIMIT, SN_LIMIT };  /* Sequence numbers of motors */
 
 static void _set_mode( int value )
 {
@@ -82,39 +84,35 @@ static void _set_mode( int value )
 
 static void _run_forever( int l_rate, int r_rate )
 {
-	set_tacho_duty_cycle_sp( l_motor, l_rate );
-	set_tacho_duty_cycle_sp( r_motor, r_rate );
-	set_tacho_command_inx( l_motor, TACHO_RUN_FOREVER );
-	set_tacho_command_inx( r_motor, TACHO_RUN_FOREVER );
+	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
+	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	multi_set_tacho_command_inx( motor, TACHO_RUN_FOREVER );
 }
 
 static void _run_to_rel_pos( int l_rate, int l_pos, int r_rate, int r_pos )
 {
-	set_tacho_duty_cycle_sp( l_motor, l_rate );
-	set_tacho_duty_cycle_sp( r_motor, r_rate );
-	set_tacho_position_sp( l_motor, l_pos );
-	set_tacho_position_sp( r_motor, r_pos );
-	set_tacho_command_inx( l_motor, TACHO_RUN_TO_REL_POS );
-	set_tacho_command_inx( r_motor, TACHO_RUN_TO_REL_POS );
+	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
+	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	set_tacho_position_sp( motor[ L ], l_pos );
+	set_tacho_position_sp( motor[ R ], r_pos );
+	multi_set_tacho_command_inx( motor, TACHO_RUN_TO_REL_POS );
 }
 
 static void _run_timed( int l_rate, int r_rate, int ms )
 {
-	set_tacho_duty_cycle_sp( l_motor, l_rate );
-	set_tacho_duty_cycle_sp( r_motor, r_rate );
-	set_tacho_time_sp( l_motor, ms );
-	set_tacho_time_sp( r_motor, ms );
-	set_tacho_command_inx( l_motor, TACHO_RUN_TIMED );
-	set_tacho_command_inx( r_motor, TACHO_RUN_TIMED );
+	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
+	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	multi_set_tacho_time_sp( motor, ms );
+	multi_set_tacho_command_inx( motor, TACHO_RUN_TIMED );
 }
 
 static int _is_running( void )
 {
 	FLAGS_T state = TACHO_STATE__NONE_;
 
-	get_tacho_state_flags( l_motor, &state );
+	get_tacho_state_flags( motor[ L ], &state );
 	if ( state != TACHO_STATE__NONE_ ) return ( 1 );
-	get_tacho_state_flags( r_motor, &state );
+	get_tacho_state_flags( motor[ R ], &state );
 	if ( state != TACHO_STATE__NONE_ ) return ( 1 );
 
 	return ( 0 );
@@ -122,25 +120,24 @@ static int _is_running( void )
 
 static void _stop( void )
 {
-	set_tacho_command_inx( l_motor, TACHO_STOP );
-	set_tacho_command_inx( r_motor, TACHO_STOP );
+	multi_set_tacho_command_inx( motor, TACHO_STOP );
 }
 
 int app_init( void )
 {
 	char s[ 16 ];
 
-	if ( ev3_search_tacho_plugged_in( L_MOTOR_PORT, L_MOTOR_EXT_PORT, &l_motor, 0 )) {
+	if ( ev3_search_tacho_plugged_in( L_MOTOR_PORT, L_MOTOR_EXT_PORT, motor + L, 0 )) {
 		/* Reset the motor */
-		set_tacho_command_inx( l_motor, TACHO_RESET );
+		set_tacho_command_inx( motor[ L ], TACHO_RESET );
 	} else {
 		printf( "LEFT motor (%s) is NOT found.\n", ev3_port_name( L_MOTOR_PORT, L_MOTOR_EXT_PORT, 0, s ));
 		/* Vehicle is inoperative */
 		return ( 0 );
 	}
-	if ( ev3_search_tacho_plugged_in( R_MOTOR_PORT, R_MOTOR_EXT_PORT, &r_motor, 0 )) {
+	if ( ev3_search_tacho_plugged_in( R_MOTOR_PORT, R_MOTOR_EXT_PORT, motor + R, 0 )) {
 		/* Reset the motor */
-		set_tacho_command_inx( r_motor, TACHO_RESET );
+		set_tacho_command_inx( motor[ R ], TACHO_RESET );
 	} else {
 		printf( "RIGHT motor (%s) is NOT found.\n", ev3_port_name( R_MOTOR_PORT, R_MOTOR_EXT_PORT, 0, s ));
 		/* Vehicle is inoperative */

@@ -156,6 +156,15 @@ EV3_DC_EXT size_t get_dc_address( uint8_t sn, char *buf, size_t sz );
 EV3_DC_EXT size_t set_dc_command( uint8_t sn, char *value );
 
 /**
+ *  \brief Write "command" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_command( uint8_t *sn, char *value );
+
+/**
  *  \brief Read "commands" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -201,6 +210,15 @@ EV3_DC_EXT size_t get_dc_duty_cycle_sp( uint8_t sn, int *buf );
 EV3_DC_EXT size_t set_dc_duty_cycle_sp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "duty_cycle_sp" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_duty_cycle_sp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "polarity" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -219,6 +237,15 @@ EV3_DC_EXT size_t get_dc_polarity( uint8_t sn, char *buf, size_t sz );
 EV3_DC_EXT size_t set_dc_polarity( uint8_t sn, char *value );
 
 /**
+ *  \brief Write "polarity" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_polarity( uint8_t *sn, char *value );
+
+/**
  *  \brief Read "state" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -235,6 +262,15 @@ EV3_DC_EXT size_t get_dc_state( uint8_t sn, char *buf, size_t sz );
  *  \return Count of written bytes.
  */
 EV3_DC_EXT size_t set_dc_stop_command( uint8_t sn, char *value );
+
+/**
+ *  \brief Write "stop_command" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_stop_command( uint8_t *sn, char *value );
 
 /**
  *  \brief Read "stop_commands" attribute of the DC motor.
@@ -264,6 +300,15 @@ EV3_DC_EXT size_t get_dc_ramp_down_sp( uint8_t sn, int *buf );
 EV3_DC_EXT size_t set_dc_ramp_down_sp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "ramp_down_sp" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_ramp_down_sp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "ramp_up_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -282,6 +327,15 @@ EV3_DC_EXT size_t get_dc_ramp_up_sp( uint8_t sn, int *buf );
 EV3_DC_EXT size_t set_dc_ramp_up_sp( uint8_t sn, int value );
 
 /**
+ *  \brief Write "ramp_up_sp" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_ramp_up_sp( uint8_t *sn, int value );
+
+/**
  *  \brief Read "time_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -298,6 +352,15 @@ EV3_DC_EXT size_t get_dc_time_sp( uint8_t sn, int *buf );
  *  \return Count of written bytes.
  */
 EV3_DC_EXT size_t set_dc_time_sp( uint8_t sn, int value );
+
+/**
+ *  \brief Write "time_sp" attribute of the DC motor group.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param value Attribute value.
+		 
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_time_sp( uint8_t *sn, int value );
 
 /**
  *  \brief Get name of the specified DC motor type.
@@ -392,6 +455,14 @@ EV3_DC_EXT const char *ev3_dc_command( INX_T command_inx );
 EV3_DC_EXT size_t set_dc_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
+ *  \brief Write "command" attribute of the DC motor group by the index.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param command_inx Index of the DC motor command.
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx );
+
+/**
  *  \brief Get name of the specified DC motor stop_command.
  *  \param stop_command_inx Index of the DC motor stop_command.
  *  \return Requested value.
@@ -405,6 +476,14 @@ EV3_DC_EXT const char *ev3_dc_stop_command( INX_T stop_command_inx );
  *  \return Count of written bytes.
  */
 EV3_DC_EXT size_t set_dc_stop_command_inx( uint8_t sn, INX_T stop_command_inx );
+
+/**
+ *  \brief Write "stop_command" attribute of the DC motor group by the index.
+ *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param stop_command_inx Index of the DC motor stop_command.
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_stop_command_inx( uint8_t *sn, INX_T stop_command_inx );
 
 /**
  *  \brief Read "state" attribute of the DC motor and get the flags.

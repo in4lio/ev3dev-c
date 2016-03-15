@@ -41,7 +41,7 @@
 #endif
 
 #include "ev3_link.h"
-#include "../ev3_keys.h"
+#include "../ev3_both.h"
 
 /**
  *  \addtogroup ev3_link
@@ -76,6 +76,8 @@ enum {
 
 	EV3_READ_KEYS    = 10, /**< Keys read command. */
 	EV3_KEYS         = 11, /**< Keys reply. */
+
+	EV3_MULTI_WRITE  = 12, /**< Multi files write command. */
 };
 
 /**
@@ -87,6 +89,14 @@ typedef struct {
 	uint16_t fn_size;    /**< Filename size. */
 	uint16_t data_size;  /**< Data size. */
 } EV3_MESSAGE_HEADER, *PEV3_MESSAGE_HEADER;
+
+/**
+ *  \brief Subheader for EV3_MULTI_WRITE.
+ */
+typedef struct {
+	uint8_t  sn[ SN_VEC_LEN ];  /**< Vector of sequence numbers. */
+	uint16_t pos;               /**< Position of the sequence number field into the filename. */
+} EV3_MULTI_WRITE_SUBHEADER, *PEV3_MULTI_WRITE_SUBHEADER;
 
 /**
  *  \brief UDP message.
@@ -104,6 +114,8 @@ static struct sockaddr_in __r_addr, __t_addr;
 // EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
+#include "modp_numtoa.h"
+
 static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 {
 	FILE *f;
@@ -116,6 +128,20 @@ static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 	}
 	result = fwrite( data, 1, sz, f );
 	fclose( f );
+	return ( result );
+}
+
+static size_t __ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz )
+{
+	int i = 0;
+	size_t result = 0;
+
+	while (( i < SN_VEC_LEN ) && ( sn[ i ] < SN_LIMIT )) {
+		*modp_uitoa10( sn[ i ], fn + pos ) = '/';
+		result = __ev3_write_binary( fn, data, sz );
+		if ( result == 0 ) return ( 0 );
+		i++;
+	}
 	return ( result );
 }
 
@@ -309,10 +335,16 @@ static int __receive( void )
 // EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
+		case EV3_MULTI_WRITE:
+			if ( msg_l < ( int ) sizeof( EV3_MULTI_WRITE_SUBHEADER )) {
+				printf( "*** ERROR *** (ev3_link) receive: SUBHEADER: msg_l = %d\n", msg_l );
+				return ( EOF );
+			}
+			/* fallthrough */
+
 		case EV3_WRITE_FILE:
 		case EV3_READ_FILE:
 		case EV3_LIST_DIR:
-
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
 
 			if (( h->fn_size == 0 ) || ( msg_l < ( int ) h->fn_size )) {
@@ -324,33 +356,47 @@ static int __receive( void )
 			t->fn_size = 0;
 			t->id = h->id;
 
-			if ( h->type == EV3_WRITE_FILE ) {
+			switch ( h->type ) {
+
+			case EV3_MULTI_WRITE:
+			case EV3_WRITE_FILE:
 				if (( h->data_size == 0 ) || ( msg_l != ( int ) h->data_size )) {
 					printf( "*** ERROR *** (ev3_link) receive: DATA: msg_l = %d data_size = %d\n"
 					, msg_l, h->data_size );
 					return ( EOF );
 				}
-				/* printf( "WRITE %s\n", __r_msg.body ); */
+
+				if ( h->type == EV3_WRITE_FILE ) {
+					/* printf( "WRITE %s\n", __r_msg.body ); */
+					t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
+				} else {
+					PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __r_msg.body;
+					uint8_t *p = ( void* ) __r_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
+					/* printf( "MULTI WRITE %s\n", p ); */
+					t->data_size = __ev3_multi_write_binary( sub->sn, sub->pos, p, p + h->fn_size, h->data_size );
+				}
 				t->type = EV3_RESULT_WRITE;
-				t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				__transmit( 0 );
 				return ( h->type );
+
+			case EV3_READ_FILE:
+			case EV3_LIST_DIR:
+				if (( h->data_size == 0 ) || (( int ) h->data_size > sizeof( __t_msg.body ))) {
+					printf( "*** ERROR *** (ev3_link) receive: DATA: data_size = %d\n", h->data_size );
+					return ( EOF );
+				}
+				if ( h->type == EV3_LIST_DIR ) {
+					/* printf( "LIST %s\n", __r_msg.body ); */
+					t->type = EV3_DIRECTORY;
+					t->data_size = __ev3_listdir( __r_msg.body, __t_msg.body, h->data_size );
+				} else {
+					/* printf( "READ %s\n", __r_msg.body ); */
+					t->type = EV3_DATA_READ;
+					t->data_size = __ev3_read_binary( __r_msg.body, __t_msg.body, h->data_size );
+				}
+				__transmit( t->data_size );
+				return ( h->type );
 			}
-			if (( h->data_size == 0 ) || (( int ) h->data_size > sizeof( __t_msg.body ))) {
-				printf( "*** ERROR *** (ev3_link) receive: DATA: data_size = %d\n", h->data_size );
-				return ( EOF );
-			}
-			if ( h->type == EV3_LIST_DIR ) {
-				/* printf( "LIST %s\n", __r_msg.body ); */
-				t->type = EV3_DIRECTORY;
-				t->data_size = __ev3_listdir( __r_msg.body, __t_msg.body, h->data_size );
-			} else {
-				/* printf( "READ %s\n", __r_msg.body ); */
-				t->type = EV3_DATA_READ;
-				t->data_size = __ev3_read_binary( __r_msg.body, __t_msg.body, h->data_size );
-			}
-			__transmit( t->data_size );
-			return ( h->type );
 
 		case EV3_READ_KEYS:
 
@@ -452,7 +498,7 @@ int main( int argc, char **argv )
 		__receive();
 		if ( ++i == UDP_SERVER_TX_DELAY / UDP_SERVER_RX_DELAY ) {
 			i = 0;
-			/* every 5 sec, in the real...)) */
+			/* every 5 sec, in the reality...)) */
 			__welcome();
 		}
 	}
@@ -500,6 +546,37 @@ int udp_ev3_write( char *fn, void *data, int sz )
 	memcpy( __t_msg.body + t->fn_size, data, t->data_size );
 	for ( i = 0; i < UDP_CLIENT_TX_TRIES; i++ ) {
 		__transmit( t->fn_size + t->data_size );
+		if ( __wait_reply()) {
+			return ( __r_msg.head.data_size );
+		}
+	}
+	return ( 0 );
+}
+
+int udp_ev3_multi_write( uint8_t *sn, uint16_t pos, char *fn, void *data, int sz )
+{
+	PEV3_MESSAGE_HEADER t = &__t_msg.head;
+	PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __t_msg.body;
+	uint8_t *p = ( void* ) __t_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
+	int i;
+
+	t->type = EV3_MULTI_WRITE;
+	t->id = ++__t_last;
+	t->fn_size = strlen( fn ) + 1;
+	t->data_size = sz;
+	for ( i = 0; i < SN_VEC_LEN; i++ ) {
+		if ( *sn < SN_LIMIT ) {
+			sub->sn[ i ] = *sn;
+			sn++;
+		} else {
+			sub->sn[ i ] = SN_LIMIT;
+		}
+	}
+	sub->pos = pos;
+	memcpy( p, fn, t->fn_size );
+	memcpy( p + t->fn_size, data, t->data_size );
+	for ( i = 0; i < UDP_CLIENT_TX_TRIES; i++ ) {
+		__transmit( sizeof( EV3_MULTI_WRITE_SUBHEADER ) + t->fn_size + t->data_size );
 		if ( __wait_reply()) {
 			return ( __r_msg.head.data_size );
 		}

@@ -130,6 +130,15 @@ enum {
 		 */
 		($h-extern) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 
+		/**
+		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of the ($_CLASS) group.
+		 *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+		 *  \param value Attribute value.
+		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
+		 *  \return Count of written bytes.
+		 */
+		($h-extern) size_t multi_set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t *sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+
 	[ )
 
 [ )
@@ -241,6 +250,14 @@ enum {
 	 *  \return Count of written bytes.
 	 */
 	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
+
+	/**
+	 *  \brief Write ($q attr) attribute of the ($_CLASS) group by the index.
+	 *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Count of written bytes.
+	 */
+	($h-extern) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
 
 [ )
 

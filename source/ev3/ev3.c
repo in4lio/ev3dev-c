@@ -53,6 +53,20 @@ size_t ev3_write_binary( const char *fn, char *data, size_t sz )
 	return ( result );
 }
 
+size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz )
+{
+	int i = 0;
+	size_t result = 0;
+
+	while (( i < SN_VEC_LEN ) && ( sn[ i ] < SN_LIMIT )) {
+		*modp_uitoa10( sn[ i ], fn + pos ) = '/';
+		result = ev3_write_binary( fn, data, sz );
+		if ( result == 0 ) return ( 0 );
+		i++;
+	}
+	return ( result );
+}
+
 size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 {
 	FILE *f;
@@ -162,6 +176,11 @@ size_t ev3_write_binary( const char *fn, char *data, size_t sz )
 	return udp_ev3_write(( char* ) fn, data, sz );
 }
 
+size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz )
+{
+	return udp_ev3_multi_write( sn, pos, ( char* ) fn, data, sz );
+}
+
 size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 {
 	return udp_ev3_read(( char* ) fn, buf, sz );
@@ -190,12 +209,25 @@ size_t ev3_write( const char *fn, char *value )
 	return ev3_write_binary( fn, value, strlen( value ));
 }
 
+size_t ev3_multi_write( uint8_t *sn, uint16_t pos, const char *fn, char *value )
+{
+	return ev3_multi_write_binary( sn, pos, fn, value, strlen( value ));
+}
+
 size_t ev3_write_int( const char *fn, int value )
 {
 	char s[ 12 ];
 
 	modp_itoa10( value, s );
 	return ev3_write( fn, s );
+}
+
+size_t ev3_multi_write_int( uint8_t *sn, uint16_t pos, const char *fn, int value )
+{
+	char s[ 12 ];
+
+	modp_itoa10( value, s );
+	return ev3_multi_write( sn, pos, fn, s );
 }
 
 size_t ev3_write_dword( const char *fn, uint32_t value )
@@ -206,6 +238,14 @@ size_t ev3_write_dword( const char *fn, uint32_t value )
 	return ev3_write( fn, s );
 }
 
+size_t ev3_multi_write_dword( uint8_t *sn, uint16_t pos, const char *fn, uint32_t value )
+{
+	char s[ 11 ];
+
+	modp_uitoa10( value, s );
+	return ev3_multi_write( sn, pos, fn, s );
+}
+
 size_t ev3_write_float( const char *fn, float value )
 {
 	char s[ 32 ];
@@ -214,9 +254,22 @@ size_t ev3_write_float( const char *fn, float value )
 	return ev3_write( fn, s );
 }
 
+size_t ev3_multi_write_float( uint8_t *sn, uint16_t pos, const char *fn, float value )
+{
+	char s[ 32 ];
+
+	modp_dtoa2( value, s, 4 );
+	return ev3_multi_write( sn, pos, fn, s );
+}
+
 size_t ev3_write_bool( const char *fn, bool value )
 {
 	return ev3_write_binary( fn, ( value ) ? "1" : "0", 1 );
+}
+
+size_t ev3_multi_write_bool( uint8_t *sn, uint16_t pos, const char *fn, bool value )
+{
+	return ev3_multi_write_binary( sn, pos, fn, ( value ) ? "1" : "0", 1 );
 }
 
 size_t ev3_write_byte( const char *fn, uint8_t value )
@@ -224,14 +277,29 @@ size_t ev3_write_byte( const char *fn, uint8_t value )
 	return ev3_write_int( fn, value );
 }
 
+size_t ev3_multi_write_byte( uint8_t *sn, uint16_t pos, const char *fn, uint8_t value )
+{
+	return ev3_multi_write_int( sn, pos, fn, value );
+}
+
 size_t ev3_write_char_array( const char *fn, char *value )
 {
 	return ev3_write( fn, value );
 }
 
+size_t ev3_multi_write_char_array( uint8_t *sn, uint16_t pos, const char *fn, char *value )
+{
+	return ev3_multi_write( sn, pos, fn, value );
+}
+
 size_t ev3_write_byte_array( const char *fn, uint8_t *value, size_t sz )
 {
 	return ev3_write_binary( fn, ( char* ) value, sz );
+}
+
+size_t ev3_multi_write_byte_array( uint8_t *sn, uint16_t pos, const char *fn, uint8_t *value, size_t sz )
+{
+	return ev3_multi_write_binary( sn, pos, fn, ( char* ) value, sz );
 }
 
 size_t ev3_read( const char *fn, char *buf, size_t sz )
