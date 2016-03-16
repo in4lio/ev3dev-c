@@ -7,15 +7,19 @@ LIBS := $(LIBS) -lws2_32
 endif
 
 CC = gcc
-CFLAGS = -g -Wall
+
+D_C = . ../../../3d_party
+D_H = $(D_C)
+
+CFLAGS = $(addprefix -I, $(D_H)) -g -Wall
 
 .PHONY: default all clean
 
 default: $(TARGET)
 all: default
 
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
-HEADERS = $(wildcard *.h)
+OBJECTS = $(patsubst %.c, %.o, $(wildcard $(addsuffix /*.c, $(D_C))))
+HEADERS = $(wildcard $(addsuffix /*.h, $(D_H)))
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@

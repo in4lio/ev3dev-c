@@ -59,7 +59,7 @@ size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *
 	size_t result = 0;
 
 	while (( i < SN_VEC_LEN ) && ( sn[ i ] < SN_LIMIT )) {
-		*modp_uitoa10( sn[ i ], fn + pos ) = '/';
+		*modp_uitoa10( sn[ i ], ( char* ) fn + pos ) = '/';
 		result = ev3_write_binary( fn, data, sz );
 		if ( result == 0 ) return ( 0 );
 		i++;

@@ -400,7 +400,7 @@ EV3_SENSOR_EXT size_t get_sensor_bin_data( uint8_t sn, byte *buf, size_t sz );
 EV3_SENSOR_EXT size_t set_sensor_bin_data( uint8_t sn, byte *value, size_t sz );
 
 /**
- *  \brief Write "bin_data" attribute of the sensor group.
+ *  \brief Write "bin_data" attribute of several sensors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
  *  \param sz Size of attribute value.
@@ -427,7 +427,7 @@ EV3_SENSOR_EXT size_t get_sensor_bin_data_format( uint8_t sn, char *buf, size_t 
 EV3_SENSOR_EXT size_t set_sensor_command( uint8_t sn, char *value );
 
 /**
- *  \brief Write "command" attribute of the sensor group.
+ *  \brief Write "command" attribute of several sensors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -463,7 +463,7 @@ EV3_SENSOR_EXT size_t get_sensor_direct( uint8_t sn, char *buf, size_t sz );
 EV3_SENSOR_EXT size_t set_sensor_direct( uint8_t sn, char *value );
 
 /**
- *  \brief Write "direct" attribute of the sensor group.
+ *  \brief Write "direct" attribute of several sensors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -517,7 +517,7 @@ EV3_SENSOR_EXT size_t get_sensor_mode( uint8_t sn, char *buf, size_t sz );
 EV3_SENSOR_EXT size_t set_sensor_mode( uint8_t sn, char *value );
 
 /**
- *  \brief Write "mode" attribute of the sensor group.
+ *  \brief Write "mode" attribute of several sensors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -562,7 +562,7 @@ EV3_SENSOR_EXT size_t get_sensor_poll_ms( uint8_t sn, dword *buf );
 EV3_SENSOR_EXT size_t set_sensor_poll_ms( uint8_t sn, dword value );
 
 /**
- *  \brief Write "poll_ms" attribute of the sensor group.
+ *  \brief Write "poll_ms" attribute of several sensors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -778,7 +778,7 @@ EV3_SENSOR_EXT INX_T get_sensor_mode_inx( uint8_t sn, INX_T type_inx );
 EV3_SENSOR_EXT size_t set_sensor_mode_inx( uint8_t sn, INX_T mode_inx );
 
 /**
- *  \brief Write "mode" attribute of the sensor group by the index.
+ *  \brief Write "mode" attribute of several sensors by the index.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param mode_inx Index of the sensor mode.
  *  \return Count of written bytes.
@@ -801,7 +801,7 @@ EV3_SENSOR_EXT const char *ev3_sensor_command( INX_T command_inx );
 EV3_SENSOR_EXT size_t set_sensor_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
- *  \brief Write "command" attribute of the sensor group by the index.
+ *  \brief Write "command" attribute of several sensors by the index.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param command_inx Index of the sensor command.
  *  \return Count of written bytes.

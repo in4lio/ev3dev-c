@@ -136,7 +136,7 @@ EV3_SERVO_EXT size_t get_servo_command( uint8_t sn, char *buf, size_t sz );
 EV3_SERVO_EXT size_t set_servo_command( uint8_t sn, char *value );
 
 /**
- *  \brief Write "command" attribute of the servo motor group.
+ *  \brief Write "command" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -172,7 +172,7 @@ EV3_SERVO_EXT size_t get_servo_max_pulse_sp( uint8_t sn, int *buf );
 EV3_SERVO_EXT size_t set_servo_max_pulse_sp( uint8_t sn, int value );
 
 /**
- *  \brief Write "max_pulse_sp" attribute of the servo motor group.
+ *  \brief Write "max_pulse_sp" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -199,7 +199,7 @@ EV3_SERVO_EXT size_t get_servo_mid_pulse_sp( uint8_t sn, int *buf );
 EV3_SERVO_EXT size_t set_servo_mid_pulse_sp( uint8_t sn, int value );
 
 /**
- *  \brief Write "mid_pulse_sp" attribute of the servo motor group.
+ *  \brief Write "mid_pulse_sp" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -226,7 +226,7 @@ EV3_SERVO_EXT size_t get_servo_min_pulse_sp( uint8_t sn, int *buf );
 EV3_SERVO_EXT size_t set_servo_min_pulse_sp( uint8_t sn, int value );
 
 /**
- *  \brief Write "min_pulse_sp" attribute of the servo motor group.
+ *  \brief Write "min_pulse_sp" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -253,7 +253,7 @@ EV3_SERVO_EXT size_t get_servo_polarity( uint8_t sn, char *buf, size_t sz );
 EV3_SERVO_EXT size_t set_servo_polarity( uint8_t sn, char *value );
 
 /**
- *  \brief Write "polarity" attribute of the servo motor group.
+ *  \brief Write "polarity" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -280,7 +280,7 @@ EV3_SERVO_EXT size_t get_servo_position_sp( uint8_t sn, int *buf );
 EV3_SERVO_EXT size_t set_servo_position_sp( uint8_t sn, int value );
 
 /**
- *  \brief Write "position_sp" attribute of the servo motor group.
+ *  \brief Write "position_sp" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -307,7 +307,7 @@ EV3_SERVO_EXT size_t get_servo_rate_sp( uint8_t sn, int *buf );
 EV3_SERVO_EXT size_t set_servo_rate_sp( uint8_t sn, int value );
 
 /**
- *  \brief Write "rate_sp" attribute of the servo motor group.
+ *  \brief Write "rate_sp" attribute of several servo motors.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -432,7 +432,7 @@ EV3_SERVO_EXT INX_T get_servo_command_inx( uint8_t sn, INX_T type_inx );
 EV3_SERVO_EXT size_t set_servo_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
- *  \brief Write "command" attribute of the servo motor group by the index.
+ *  \brief Write "command" attribute of several servo motors by the index.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param command_inx Index of the servo motor command.
  *  \return Count of written bytes.

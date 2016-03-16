@@ -152,7 +152,7 @@ EV3_PORT_EXT size_t get_port_mode( uint8_t sn, char *buf, size_t sz );
 EV3_PORT_EXT size_t set_port_mode( uint8_t sn, char *value );
 
 /**
- *  \brief Write "mode" attribute of the EV3 port group.
+ *  \brief Write "mode" attribute of several EV3 ports.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -179,7 +179,7 @@ EV3_PORT_EXT size_t get_port_modes( uint8_t sn, char *buf, size_t sz );
 EV3_PORT_EXT size_t set_port_set_device( uint8_t sn, char *value );
 
 /**
- *  \brief Write "set_device" attribute of the EV3 port group.
+ *  \brief Write "set_device" attribute of several EV3 ports.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param value Attribute value.
 		 
@@ -304,7 +304,7 @@ EV3_PORT_EXT INX_T get_port_mode_inx( uint8_t sn, INX_T type_inx );
 EV3_PORT_EXT size_t set_port_mode_inx( uint8_t sn, INX_T mode_inx );
 
 /**
- *  \brief Write "mode" attribute of the EV3 port group by the index.
+ *  \brief Write "mode" attribute of several EV3 ports by the index.
  *  \param sn Vector of sequence numbers ending with SN_LIMIT.
  *  \param mode_inx Index of the EV3 port mode.
  *  \return Count of written bytes.

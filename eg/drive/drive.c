@@ -162,6 +162,7 @@ int app_init( void )
 	if ( ev3_search_sensor( LEGO_EV3_TOUCH, &touch, 0 )) {
 		printf( " use the TOUCH sensor.\n" );
 	} else {
+		touch = SN_LIMIT;
 		printf( " press UP on the EV3 brick.\n" );
 	}
 	printf( "Press BACK on the EV3 brick for EXIT...\n" );
@@ -180,6 +181,8 @@ CORO_DEFINE( handle_touch )
 	CORO_LOCAL int val;
 
 	CORO_BEGIN();
+	if ( touch == SN_LIMIT ) CORO_QUIT();
+
 	for ( ; ; ) {
 		/* Waiting for the button is pressed */
 		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( val ), );
@@ -213,6 +216,9 @@ CORO_DEFINE( handle_brick_control )
 			/* Switch mode */
 			_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
 		}
+		/* Waiting for no key */
+		CORO_WAIT( ev3_read_keys( &keys ) && ( keys == 0 ), );
+
 		CORO_YIELD();
 	}
 	CORO_END();

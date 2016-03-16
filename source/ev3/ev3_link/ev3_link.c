@@ -131,7 +131,7 @@ static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 	return ( result );
 }
 
-static size_t __ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz )
+static size_t __ev3_multi_write_binary( uint8_t *sn, uint16_t pos, char *fn, char *data, size_t sz )
 {
 	int i = 0;
 	size_t result = 0;
@@ -175,6 +175,7 @@ size_t __ev3_read_keys( uint8_t *buf )
 	*buf = _TEST_KEY( UP, UP )        | _TEST_KEY( DOWN, DOWN )
 	     | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
 	     | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
+
 	close( f );
 	return ( sizeof( uint8_t ));
 }
@@ -317,6 +318,7 @@ static void __transmit( uint16_t sz )
 static int __receive( void )
 {
 	int msg_l;
+	char *fn;
 	socklen_t addr_l = sizeof( struct sockaddr_in );
 
 	msg_l = recvfrom( sockfd, ( char* ) &__r_msg, sizeof( __r_msg ), 0, ( struct sockaddr* ) &__r_addr, &addr_l );
@@ -329,6 +331,7 @@ static int __receive( void )
 			return ( EOF );
 		}
 		msg_l -= sizeof( EV3_MESSAGE_HEADER );
+		fn = ( char* ) __r_msg.body;
 
 		switch ( h->type ) {
 
@@ -340,6 +343,8 @@ static int __receive( void )
 				printf( "*** ERROR *** (ev3_link) receive: SUBHEADER: msg_l = %d\n", msg_l );
 				return ( EOF );
 			}
+			msg_l -= sizeof( EV3_MULTI_WRITE_SUBHEADER );
+			fn += sizeof( EV3_MULTI_WRITE_SUBHEADER );
 			/* fallthrough */
 
 		case EV3_WRITE_FILE:
@@ -352,9 +357,9 @@ static int __receive( void )
 				return ( EOF );
 			}
 			msg_l -= h->fn_size;
-			__r_msg.body[ h->fn_size - 1 ] = '\x00';
 			t->fn_size = 0;
 			t->id = h->id;
+			fn[ h->fn_size - 1 ] = '\x00';  /* Restrict filename length */
 
 			switch ( h->type ) {
 
@@ -365,15 +370,13 @@ static int __receive( void )
 					, msg_l, h->data_size );
 					return ( EOF );
 				}
-
 				if ( h->type == EV3_WRITE_FILE ) {
 					/* printf( "WRITE %s\n", __r_msg.body ); */
 					t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				} else {
 					PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __r_msg.body;
-					uint8_t *p = ( void* ) __r_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
-					/* printf( "MULTI WRITE %s\n", p ); */
-					t->data_size = __ev3_multi_write_binary( sub->sn, sub->pos, p, p + h->fn_size, h->data_size );
+					/* printf( "MULTI WRITE %s\n", fn ); */
+					t->data_size = __ev3_multi_write_binary( sub->sn, sub->pos, fn, fn + h->fn_size, h->data_size );
 				}
 				t->type = EV3_RESULT_WRITE;
 				__transmit( 0 );
@@ -399,8 +402,8 @@ static int __receive( void )
 			}
 
 		case EV3_READ_KEYS:
-
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
+			/* printf( "READ KEYS\n" ); */
 			t->id = h->id;
 			t->fn_size = 0;
 			t->data_size = __ev3_read_keys(( uint8_t* ) __t_msg.body );
@@ -409,7 +412,6 @@ static int __receive( void )
 			return ( h->type );
 
 		case EV3_POWEROFF:
-
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
 
 			if (( h->fn_size != 0x5555 ) || ( h->data_size != 0xAAAA )) {
@@ -428,7 +430,9 @@ static int __receive( void )
 #else
 		case EV3_DATA_READ:
 		case EV3_DIRECTORY:
-			( void ) t;
+		case EV3_KEYS:
+			( void ) t;   /* unused */
+			( void ) fn;  /* unused */
 			if ( msg_l != ( int ) h->data_size ) {
 				printf( "\n*** ERROR *** (ev3_link) receive: DATA: msg_l = %d data_size = %d\n", msg_l, h->data_size );
 				return ( EOF );
@@ -522,6 +526,7 @@ static int __wait_reply( void )
 			/* ERROR */
 			return ( 0 );
 
+		case EV3_KEYS:
 		case EV3_RESULT_WRITE:
 		case EV3_DATA_READ:
 		case EV3_DIRECTORY:
@@ -557,7 +562,7 @@ int udp_ev3_multi_write( uint8_t *sn, uint16_t pos, char *fn, void *data, int sz
 {
 	PEV3_MESSAGE_HEADER t = &__t_msg.head;
 	PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __t_msg.body;
-	uint8_t *p = ( void* ) __t_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
+	char *p = ( char* ) __t_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
 	int i;
 
 	t->type = EV3_MULTI_WRITE;
@@ -612,6 +617,7 @@ int udp_ev3_read( char *fn, void *buf, int sz )
 int udp_ev3_read_keys( uint8_t *buf )
 {
 	return __udp_ev3_read( EV3_READ_KEYS, "", buf, sizeof( uint8_t ));
+
 }
 
 int udp_ev3_listdir( char *fn, void *buf, int sz )
