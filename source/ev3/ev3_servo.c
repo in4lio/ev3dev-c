@@ -19,17 +19,18 @@
 #include "ev3_servo.h"
 
 #define PATH_PREF_LEN  28
+#define DESC_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/servo-motor/motor" SN_SPOT "address"
-#define PATH_COMMAND  "/sys/class/servo-motor/motor" SN_SPOT "command"
-#define PATH_DRIVER_NAME  "/sys/class/servo-motor/motor" SN_SPOT "driver_name"
-#define PATH_MAX_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "max_pulse_sp"
-#define PATH_MID_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "mid_pulse_sp"
-#define PATH_MIN_PULSE_SP  "/sys/class/servo-motor/motor" SN_SPOT "min_pulse_sp"
-#define PATH_POLARITY  "/sys/class/servo-motor/motor" SN_SPOT "polarity"
-#define PATH_POSITION_SP  "/sys/class/servo-motor/motor" SN_SPOT "position_sp"
-#define PATH_RATE_SP  "/sys/class/servo-motor/motor" SN_SPOT "rate_sp"
-#define PATH_STATE  "/sys/class/servo-motor/motor" SN_SPOT "state"
+#define PATH_ADDRESS  "/sys/class/servo-motor/motor" DESC_SPOT "address"
+#define PATH_COMMAND  "/sys/class/servo-motor/motor" DESC_SPOT "command"
+#define PATH_DRIVER_NAME  "/sys/class/servo-motor/motor" DESC_SPOT "driver_name"
+#define PATH_MAX_PULSE_SP  "/sys/class/servo-motor/motor" DESC_SPOT "max_pulse_sp"
+#define PATH_MID_PULSE_SP  "/sys/class/servo-motor/motor" DESC_SPOT "mid_pulse_sp"
+#define PATH_MIN_PULSE_SP  "/sys/class/servo-motor/motor" DESC_SPOT "min_pulse_sp"
+#define PATH_POLARITY  "/sys/class/servo-motor/motor" DESC_SPOT "polarity"
+#define PATH_POSITION_SP  "/sys/class/servo-motor/motor" DESC_SPOT "position_sp"
+#define PATH_RATE_SP  "/sys/class/servo-motor/motor" DESC_SPOT "rate_sp"
+#define PATH_STATE  "/sys/class/servo-motor/motor" DESC_SPOT "state"
 
 size_t get_servo_address( uint8_t sn, char *buf, size_t sz )
 {

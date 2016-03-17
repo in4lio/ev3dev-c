@@ -6,14 +6,15 @@
 
 ($set PATH_PREF,,($unq CLASS_PATH)/($unq CLASS_FOLDER_PREF))
 #define PATH_PREF_LEN  ($len PATH_PREF)
+#define DESC_SPOT  "///"
 
 ($each-CLASS_ATTR \i.]
-#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) SN_SPOT ($i CLASS_ATTR_NAME)
+#define PATH_($upper ($i CLASS_ATTR_ID))  ($q PATH_PREF) DESC_SPOT ($i CLASS_ATTR_NAME)
 
 [ )
 
 ($each-CLASS_AVEC \i.]
-#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) SN_SPOT ($i CLASS_AVEC_NAME)
+#define PATH_($upper ($i CLASS_AVEC_ID))  ($q PATH_PREF) DESC_SPOT ($i CLASS_AVEC_NAME)
 
 [ )
 

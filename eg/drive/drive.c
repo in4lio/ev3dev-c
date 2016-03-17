@@ -37,7 +37,7 @@
 #define R_MOTOR_EXT_PORT  EXT_PORT__NONE_
 #define IR_CHANNEL        0
 
-#define RATE_LINEAR       75  /* Motor duty cycle setpoint for linear motion */
+#define RATE_LINEAR       75  /* Motor duty cycle for linear motion */
 #define RATE_CIRCULAR     50  /* ... for circular motion */
 
 #define DEGREE_TO_COUNT( d )  (( d ) * 260 / 90 )
@@ -67,7 +67,7 @@ int angle;    /* Angle of rotation */
 
 uint8_t ir, touch;  /* Sequence numbers of sensors */
 enum { L, R };
-uint8_t motor[ 3 ] = { SN_LIMIT, SN_LIMIT, SN_LIMIT };  /* Sequence numbers of motors */
+uint8_t motor[ 3 ] = { DESC_LIMIT, DESC_LIMIT, DESC_LIMIT };  /* Sequence numbers of motors */
 
 static void _set_mode( int value )
 {
@@ -132,7 +132,7 @@ int app_init( void )
 		set_tacho_command_inx( motor[ L ], TACHO_RESET );
 	} else {
 		printf( "LEFT motor (%s) is NOT found.\n", ev3_port_name( L_MOTOR_PORT, L_MOTOR_EXT_PORT, 0, s ));
-		/* Vehicle is inoperative */
+		/* Inoperative without left motor */
 		return ( 0 );
 	}
 	if ( ev3_search_tacho_plugged_in( R_MOTOR_PORT, R_MOTOR_EXT_PORT, motor + R, 0 )) {
@@ -140,7 +140,7 @@ int app_init( void )
 		set_tacho_command_inx( motor[ R ], TACHO_RESET );
 	} else {
 		printf( "RIGHT motor (%s) is NOT found.\n", ev3_port_name( R_MOTOR_PORT, R_MOTOR_EXT_PORT, 0, s ));
-		/* Vehicle is inoperative */
+		/* Inoperative without right motor */
 		return ( 0 );
 	}
 	command	= moving = MOVE_NONE;
@@ -149,12 +149,12 @@ int app_init( void )
 		_set_mode( MODE_REMOTE );
 	} else {
 		printf( "IR sensor is NOT found.\n" );
-		/* Vehicle is inoperative */
+		/* Inoperative without IR sensor */
 		return ( 0 );
 	}
 	printf(	"IR remote control:\n"
-	"RED UP + BLUE UP     - forward\n"
-	"RED DOWN + BLUE DOWN - backward\n"
+	"RED UP & BLUE UP     - forward\n"
+	"RED DOWN & BLUE DOWN - backward\n"
 	"RED UP | BLUE DOWN   - left\n"
 	"RED DOWN | BLUE UP   - right\n"
 	"To switch between IR remote control and\n"
@@ -162,7 +162,7 @@ int app_init( void )
 	if ( ev3_search_sensor( LEGO_EV3_TOUCH, &touch, 0 )) {
 		printf( " use the TOUCH sensor.\n" );
 	} else {
-		touch = SN_LIMIT;
+		touch = DESC_LIMIT;
 		printf( " press UP on the EV3 brick.\n" );
 	}
 	printf( "Press BACK on the EV3 brick for EXIT...\n" );
@@ -181,16 +181,16 @@ CORO_DEFINE( handle_touch )
 	CORO_LOCAL int val;
 
 	CORO_BEGIN();
-	if ( touch == SN_LIMIT ) CORO_QUIT();
+	if ( touch == DESC_LIMIT ) CORO_QUIT();
 
 	for ( ; ; ) {
-		/* Waiting for the button is pressed */
+		/* Waiting the button is pressed */
 		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( val ), );
 
 		command = MOVE_NONE;  /* Stop the vehicle */
 		/* Switch mode */
 		_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
-		/* Waiting for the button is released */
+		/* Waiting the button is released */
 		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( !val ), );
 	}
 	CORO_END();
@@ -199,26 +199,23 @@ CORO_DEFINE( handle_touch )
 /* Coroutine of the EV3 brick keys handling */
 CORO_DEFINE( handle_brick_control )
 {
-	CORO_LOCAL uint8_t keys;
+	CORO_LOCAL uint8_t keys, pressed = EV3_KEY__NONE_;
 
 	CORO_BEGIN();
 	for ( ; ; ) {
-		/* Waiting for any key */
-		CORO_WAIT( ev3_read_keys( &keys ) && ( keys ), );
+		/* Waiting any key is pressed or released */
+		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ), );
+		pressed = keys;
 
-		if ( keys & EV3_KEY_BACK ) {
+		if ( pressed & EV3_KEY_BACK ) {
 			command = MOVE_NONE;  /* Stop the vehicle */
-			/* Quit */
-			app_alive = 0;
+			app_alive = 0;        /* Quit */
 
-		} else if ( keys & EV3_KEY_UP ) {
+		} else if ( pressed & EV3_KEY_UP ) {
 			command = MOVE_NONE;  /* Stop the vehicle */
 			/* Switch mode */
 			_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
 		}
-		/* Waiting for no key */
-		CORO_WAIT( ev3_read_keys( &keys ) && ( keys == 0 ), );
-
 		CORO_YIELD();
 	}
 	CORO_END();
@@ -231,7 +228,7 @@ CORO_DEFINE( handle_ir_control )
 
 	CORO_BEGIN();
 	for ( ; ; ) {
-		/* Waiting for IR remote control mode */
+		/* Waiting IR remote control mode */
 		CORO_WAIT( mode == MODE_REMOTE, );
 
 		val = IR_REMOTE__NONE_;
@@ -279,7 +276,7 @@ CORO_DEFINE( handle_ir_proximity )
 
 	CORO_BEGIN();
 	for ( ; ; ) {
-		/* Waiting for self-driving mode */
+		/* Waiting self-driving mode */
 		CORO_WAIT( mode == MODE_AUTO, );
 
 		prox = 0;
@@ -326,7 +323,7 @@ CORO_DEFINE( drive )
 
 	CORO_BEGIN();
 	for ( ; ; ) {
-		/* Waiting for a new command */
+		/* Waiting new command */
 		CORO_WAIT( moving != command, );
 
 		_wait_stopped = 0;
@@ -367,7 +364,7 @@ CORO_DEFINE( drive )
 		moving = command;
 
 		if ( _wait_stopped ) {
-			/* Waiting for the command is completed */
+			/* Waiting the command is completed */
 			CORO_WAIT( !_is_running(), );
 
 			command = moving = MOVE_NONE;

@@ -53,7 +53,7 @@ typedef struct {
 
 } EV3_SERVO;
 
-#define SERVO_DESC__LIMIT_  64  /**< Limit of servo motor descriptors. */
+#define SERVO_DESC__LIMIT_  DESC_LIMIT  /**< Limit of servo motor descriptors. */
 
 #define SERVO__NONE_  SERVO_DESC__LIMIT_  /**< Servo motor is not found. */
 
@@ -137,7 +137,7 @@ EV3_SERVO_EXT size_t set_servo_command( uint8_t sn, char *value );
 
 /**
  *  \brief Write "command" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -173,7 +173,7 @@ EV3_SERVO_EXT size_t set_servo_max_pulse_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "max_pulse_sp" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -200,7 +200,7 @@ EV3_SERVO_EXT size_t set_servo_mid_pulse_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "mid_pulse_sp" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -227,7 +227,7 @@ EV3_SERVO_EXT size_t set_servo_min_pulse_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "min_pulse_sp" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -254,7 +254,7 @@ EV3_SERVO_EXT size_t set_servo_polarity( uint8_t sn, char *value );
 
 /**
  *  \brief Write "polarity" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -281,7 +281,7 @@ EV3_SERVO_EXT size_t set_servo_position_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "position_sp" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -308,7 +308,7 @@ EV3_SERVO_EXT size_t set_servo_rate_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "rate_sp" attribute of several servo motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -433,7 +433,7 @@ EV3_SERVO_EXT size_t set_servo_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
  *  \brief Write "command" attribute of several servo motors by the index.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param command_inx Index of the servo motor command.
  *  \return Count of written bytes.
  */

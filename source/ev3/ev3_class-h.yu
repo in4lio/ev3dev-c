@@ -19,7 +19,7 @@ typedef struct {
 	[ )
 } EV3_($upper CLASS_ID);
 
-#define ($upper CLASS_ID)_DESC__LIMIT_  64  /**< Limit of ($_CLASS) descriptors. */
+#define ($upper CLASS_ID)_DESC__LIMIT_  DESC_LIMIT  /**< Limit of ($_CLASS) descriptors. */
 
 #define ($upper CLASS_ID)__NONE_  ($upper CLASS_ID)_DESC__LIMIT_  /**< ($_CLASS_1) is not found. */
 
@@ -132,7 +132,7 @@ enum {
 
 		/**
 		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of several ($_CLASS)s.
-		 *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+		 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
 		 *  \param value Attribute value.
 		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
 		 *  \return Count of written bytes.
@@ -253,7 +253,7 @@ enum {
 
 	/**
 	 *  \brief Write ($q attr) attribute of several ($_CLASS)s by the index.
-	 *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+	 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
 	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
 	 *  \return Count of written bytes.
 	 */

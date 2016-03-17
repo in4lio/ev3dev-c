@@ -94,17 +94,6 @@ EV3_EXT void ev3_uninit( void );
 EV3_EXT size_t ev3_write_binary( const char *fn, char *data, size_t sz );
 
 /**
- *  \brief Write binary data into the group of specified files of the EV3 brick.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
- *  \param pos Position of the sequence number field into the template.
- *  \param fn Filename template.
- *  \param data Data.
- *  \param sz Data size.
- *  \return Count of written bytes.
- */
-EV3_EXT size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz );
-
-/**
  *  \brief Write a string into the specified file.
  *  \param fn Filename.
  *  \param value Value.
@@ -154,6 +143,17 @@ EV3_EXT size_t ev3_write_float( const char *fn, float value );
 
 EV3_EXT size_t ev3_write_char_array( const char *fn, char *value );
 EV3_EXT size_t ev3_write_byte_array( const char *fn, uint8_t *value, size_t sz );
+
+/**
+ *  \brief Write binary data into several specified files of the EV3 brick.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param pos Position of the sequence number field into the template.
+ *  \param fn Filename template.
+ *  \param data Data.
+ *  \param sz Data size.
+ *  \return Count of written bytes.
+ */
+EV3_EXT size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz );
 
 EV3_EXT size_t ev3_multi_write( uint8_t *sn, uint16_t pos, const char *fn, char *value );
 EV3_EXT size_t ev3_multi_write_bool( uint8_t *sn, uint16_t pos, const char *fn, bool value );

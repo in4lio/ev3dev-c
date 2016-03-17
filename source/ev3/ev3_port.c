@@ -18,13 +18,14 @@
 #include "ev3_port.h"
 
 #define PATH_PREF_LEN  25
+#define DESC_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/lego-port/port" SN_SPOT "address"
-#define PATH_DRIVER_NAME  "/sys/class/lego-port/port" SN_SPOT "driver_name"
-#define PATH_MODE  "/sys/class/lego-port/port" SN_SPOT "mode"
-#define PATH_MODES  "/sys/class/lego-port/port" SN_SPOT "modes"
-#define PATH_SET_DEVICE  "/sys/class/lego-port/port" SN_SPOT "set_device"
-#define PATH_STATUS  "/sys/class/lego-port/port" SN_SPOT "status"
+#define PATH_ADDRESS  "/sys/class/lego-port/port" DESC_SPOT "address"
+#define PATH_DRIVER_NAME  "/sys/class/lego-port/port" DESC_SPOT "driver_name"
+#define PATH_MODE  "/sys/class/lego-port/port" DESC_SPOT "mode"
+#define PATH_MODES  "/sys/class/lego-port/port" DESC_SPOT "modes"
+#define PATH_SET_DEVICE  "/sys/class/lego-port/port" DESC_SPOT "set_device"
+#define PATH_STATUS  "/sys/class/lego-port/port" DESC_SPOT "status"
 
 size_t get_port_address( uint8_t sn, char *buf, size_t sz )
 {

@@ -19,20 +19,21 @@
 #include "ev3_dc.h"
 
 #define PATH_PREF_LEN  25
+#define DESC_SPOT  "///"
 
-#define PATH_ADDRESS  "/sys/class/dc-motor/motor" SN_SPOT "address"
-#define PATH_COMMAND  "/sys/class/dc-motor/motor" SN_SPOT "command"
-#define PATH_COMMANDS  "/sys/class/dc-motor/motor" SN_SPOT "commands"
-#define PATH_DRIVER_NAME  "/sys/class/dc-motor/motor" SN_SPOT "driver_name"
-#define PATH_DUTY_CYCLE  "/sys/class/dc-motor/motor" SN_SPOT "duty_cycle"
-#define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" SN_SPOT "duty_cycle_sp"
-#define PATH_POLARITY  "/sys/class/dc-motor/motor" SN_SPOT "polarity"
-#define PATH_STATE  "/sys/class/dc-motor/motor" SN_SPOT "state"
-#define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" SN_SPOT "stop_command"
-#define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" SN_SPOT "stop_commands"
-#define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" SN_SPOT "ramp_down_sp"
-#define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" SN_SPOT "ramp_up_sp"
-#define PATH_TIME_SP  "/sys/class/dc-motor/motor" SN_SPOT "time_sp"
+#define PATH_ADDRESS  "/sys/class/dc-motor/motor" DESC_SPOT "address"
+#define PATH_COMMAND  "/sys/class/dc-motor/motor" DESC_SPOT "command"
+#define PATH_COMMANDS  "/sys/class/dc-motor/motor" DESC_SPOT "commands"
+#define PATH_DRIVER_NAME  "/sys/class/dc-motor/motor" DESC_SPOT "driver_name"
+#define PATH_DUTY_CYCLE  "/sys/class/dc-motor/motor" DESC_SPOT "duty_cycle"
+#define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" DESC_SPOT "duty_cycle_sp"
+#define PATH_POLARITY  "/sys/class/dc-motor/motor" DESC_SPOT "polarity"
+#define PATH_STATE  "/sys/class/dc-motor/motor" DESC_SPOT "state"
+#define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" DESC_SPOT "stop_command"
+#define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" DESC_SPOT "stop_commands"
+#define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" DESC_SPOT "ramp_down_sp"
+#define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" DESC_SPOT "ramp_up_sp"
+#define PATH_TIME_SP  "/sys/class/dc-motor/motor" DESC_SPOT "time_sp"
 
 size_t get_dc_address( uint8_t sn, char *buf, size_t sz )
 {

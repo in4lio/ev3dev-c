@@ -37,6 +37,32 @@ Brick server reply
 |  6 .. 7                           |  Count of written bytes           |
 
 <HR>
+<H3>Write data into several specified files on the EV3 brick</H3>
+
+Host application command
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_WRITE_FILE              |
+|  2 .. 3                           |  Message counter (id)             |
+|  4 .. 5                           |  Filename size (f_sz)             |
+|  6 .. 7                           |  Data size (d_sz)                 |
+|  8                                |  Sequence number 1                |
+|  9                                |  SN 2                             |
+|  10                               |  SN 3                             |
+|  11                               |  SN 4                             |
+|  12 .. 13                         |  Position of SN in template       |
+|  14 .. 14 + f_sz - 1              |  Filename (template)              |
+|  14 + f_sz .. 14 + f_sz + d_sz - 1|  Data                             |
+
+Brick server reply
+| Bytes                             |  Content                          |
+|:--------------------------------- |:--------------------------------- |
+|  0 .. 1                           |  \ref EV3_RESULT_WRITE            |
+|  2 .. 3                           |  id                               |
+|  4 .. 5                           |  0                                |
+|  6 .. 7                           |  Count of written bytes           |
+
+<HR>
 <H3>Read data from the specified file on the EV3 brick</H3>
 
 Host application command
@@ -159,7 +185,7 @@ extern int udp_ev3_write( char *fn, void *data, int sz );
 
 /**
  *  \brief Write data into the group of specified files over UDP.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param pos Position of the sequence number field into the template.
  *  \param fn Filename template.
  *  \param data Data.

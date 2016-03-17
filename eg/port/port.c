@@ -42,7 +42,7 @@ int main( void )
 	ev3_port_init();
 
 	printf( "Found ports:\n" );
-	for ( i = 0; i < PORT_DESC__LIMIT_; i++ ) {
+	for ( i = 0; i < DESC_LIMIT; i++ ) {
 		if ( ev3_port[ i ].type_inx != PORT_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_port_type( ev3_port[ i ].type_inx ));
 			printf( "  port = %s\n", ev3_port_port_name( i, s ));

@@ -54,7 +54,7 @@ typedef struct {
 
 } EV3_PORT;
 
-#define PORT_DESC__LIMIT_  64  /**< Limit of EV3 port descriptors. */
+#define PORT_DESC__LIMIT_  DESC_LIMIT  /**< Limit of EV3 port descriptors. */
 
 #define PORT__NONE_  PORT_DESC__LIMIT_  /**< EV3 port is not found. */
 
@@ -153,7 +153,7 @@ EV3_PORT_EXT size_t set_port_mode( uint8_t sn, char *value );
 
 /**
  *  \brief Write "mode" attribute of several EV3 ports.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -180,7 +180,7 @@ EV3_PORT_EXT size_t set_port_set_device( uint8_t sn, char *value );
 
 /**
  *  \brief Write "set_device" attribute of several EV3 ports.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -305,7 +305,7 @@ EV3_PORT_EXT size_t set_port_mode_inx( uint8_t sn, INX_T mode_inx );
 
 /**
  *  \brief Write "mode" attribute of several EV3 ports by the index.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param mode_inx Index of the EV3 port mode.
  *  \return Count of written bytes.
  */

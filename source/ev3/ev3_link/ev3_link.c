@@ -94,8 +94,8 @@ typedef struct {
  *  \brief Subheader for EV3_MULTI_WRITE.
  */
 typedef struct {
-	uint8_t  sn[ SN_VEC_LEN ];  /**< Vector of sequence numbers. */
-	uint16_t pos;               /**< Position of the sequence number field into the filename. */
+	uint8_t  sn[ DESC_VEC_LEN ];  /**< Vector of sequence numbers. */
+	uint16_t pos;                 /**< Position of the sequence number field into the filename. */
 } EV3_MULTI_WRITE_SUBHEADER, *PEV3_MULTI_WRITE_SUBHEADER;
 
 /**
@@ -136,7 +136,7 @@ static size_t __ev3_multi_write_binary( uint8_t *sn, uint16_t pos, char *fn, cha
 	int i = 0;
 	size_t result = 0;
 
-	while (( i < SN_VEC_LEN ) && ( sn[ i ] < SN_LIMIT )) {
+	while (( i < DESC_VEC_LEN ) && ( sn[ i ] < DESC_LIMIT )) {
 		*modp_uitoa10( sn[ i ], fn + pos ) = '/';
 		result = __ev3_write_binary( fn, data, sz );
 		if ( result == 0 ) return ( 0 );
@@ -569,12 +569,12 @@ int udp_ev3_multi_write( uint8_t *sn, uint16_t pos, char *fn, void *data, int sz
 	t->id = ++__t_last;
 	t->fn_size = strlen( fn ) + 1;
 	t->data_size = sz;
-	for ( i = 0; i < SN_VEC_LEN; i++ ) {
-		if ( *sn < SN_LIMIT ) {
+	for ( i = 0; i < DESC_VEC_LEN; i++ ) {
+		if ( *sn < DESC_LIMIT ) {
 			sub->sn[ i ] = *sn;
 			sn++;
 		} else {
-			sub->sn[ i ] = SN_LIMIT;
+			sub->sn[ i ] = DESC_LIMIT;
 		}
 	}
 	sub->pos = pos;

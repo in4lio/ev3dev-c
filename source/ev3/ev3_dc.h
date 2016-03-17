@@ -53,7 +53,7 @@ typedef struct {
 
 } EV3_DC;
 
-#define DC_DESC__LIMIT_  64  /**< Limit of DC motor descriptors. */
+#define DC_DESC__LIMIT_  DESC_LIMIT  /**< Limit of DC motor descriptors. */
 
 #define DC__NONE_  DC_DESC__LIMIT_  /**< DC motor is not found. */
 
@@ -157,7 +157,7 @@ EV3_DC_EXT size_t set_dc_command( uint8_t sn, char *value );
 
 /**
  *  \brief Write "command" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -211,7 +211,7 @@ EV3_DC_EXT size_t set_dc_duty_cycle_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "duty_cycle_sp" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -238,7 +238,7 @@ EV3_DC_EXT size_t set_dc_polarity( uint8_t sn, char *value );
 
 /**
  *  \brief Write "polarity" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -265,7 +265,7 @@ EV3_DC_EXT size_t set_dc_stop_command( uint8_t sn, char *value );
 
 /**
  *  \brief Write "stop_command" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -301,7 +301,7 @@ EV3_DC_EXT size_t set_dc_ramp_down_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "ramp_down_sp" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -328,7 +328,7 @@ EV3_DC_EXT size_t set_dc_ramp_up_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "ramp_up_sp" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -355,7 +355,7 @@ EV3_DC_EXT size_t set_dc_time_sp( uint8_t sn, int value );
 
 /**
  *  \brief Write "time_sp" attribute of several DC motors.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
@@ -456,7 +456,7 @@ EV3_DC_EXT size_t set_dc_command_inx( uint8_t sn, INX_T command_inx );
 
 /**
  *  \brief Write "command" attribute of several DC motors by the index.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param command_inx Index of the DC motor command.
  *  \return Count of written bytes.
  */
@@ -479,7 +479,7 @@ EV3_DC_EXT size_t set_dc_stop_command_inx( uint8_t sn, INX_T stop_command_inx );
 
 /**
  *  \brief Write "stop_command" attribute of several DC motors by the index.
- *  \param sn Vector of sequence numbers ending with SN_LIMIT.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param stop_command_inx Index of the DC motor stop_command.
  *  \return Count of written bytes.
  */

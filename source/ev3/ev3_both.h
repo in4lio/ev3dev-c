@@ -26,6 +26,5 @@ enum {
 	EV3_KEY_BACK   = 0x20L,
 };
 
-#define SN_SPOT     "///"
-#define SN_VEC_LEN  4
-#define SN_LIMIT    100
+#define DESC_LIMIT    64
+#define DESC_VEC_LEN  4
