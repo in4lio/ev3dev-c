@@ -46,7 +46,7 @@ int main( void )
 	ev3_servo_init();
 
 	printf( "Found servo motors:\n" );
-	for ( i = 0; i < SERVO_DESC__LIMIT_; i++ ) {
+	for ( i = 0; i < DESC_LIMIT; i++ ) {
 		if ( ev3_servo[ i ].type_inx != SERVO_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_servo_type( ev3_servo[ i ].type_inx ));
 			printf( "  port = %s\n", ev3_servo_port_name( i, s ));

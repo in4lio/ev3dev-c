@@ -52,7 +52,7 @@ int main( void )
 	ev3_dc_init();
 
 	printf( "Found DC motors:\n" );
-	for ( i = 0; i < DC_DESC__LIMIT_; i++ ) {
+	for ( i = 0; i < DESC_LIMIT; i++ ) {
 		if ( ev3_dc[ i ].type_inx != DC_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_dc_type( ev3_dc[ i ].type_inx ));
 			printf( "  port = %s\n", ev3_dc_port_name( i, s ));

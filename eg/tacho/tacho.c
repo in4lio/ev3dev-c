@@ -55,7 +55,7 @@ int main( void )
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
 	printf( "Found tacho motors:\n" );
-	for ( i = 0; i < TACHO_DESC__LIMIT_; i++ ) {
+	for ( i = 0; i < DESC_LIMIT; i++ ) {
 		if ( ev3_tacho[ i ].type_inx != TACHO_TYPE__NONE_ ) {
 			printf( "  type = %s\n", ev3_tacho_type( ev3_tacho[ i ].type_inx ));
 			printf( "  port = %s\n", ev3_tacho_port_name( i, s ));

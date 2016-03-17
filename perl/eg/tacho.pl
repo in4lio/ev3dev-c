@@ -19,7 +19,7 @@ while ( ev3::ev3_tacho_init() < 1 ) {
 print "*** ( EV3 ) Hello! ***\n";
 
 print "Found tacho motors:\n";
-for ( $i = 0; $i < $ev3::TACHO_DESC__LIMIT_; $i++ ) {
+for ( $i = 0; $i < $ev3::DESC_LIMIT; $i++ ) {
     my $type_inx = ev3::ev3_tacho_desc_type_inx( $i );
     if ( $type_inx != $ev3::TACHO_TYPE__NONE_) {
         my $port_type = ev3::ev3_tacho_type( $type_inx );
