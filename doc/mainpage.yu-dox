@@ -181,6 +181,8 @@ this category at the moment.</P>
 
 	ev3_uninit();
 \endcode
+<P>The \ref remote.c "remote.c" example contains a prototype of high-level library, see
+\ref ev3_pool.c "ev3_pool.c".</P>
 
 <BR><HR>
 <H2>Python, Ruby, Perl and other languages</H2>
@@ -252,6 +254,8 @@ ev3::ev3_uninit();
 <P><I>Similarly, you can use SWIG to wrap the library in a number of other languages.</I></P>
 
 \example drive.c
+Example of using coroutines to control the motors.
+
 \example light.c
 \example tacho.c
 \example sensor.c
@@ -261,6 +265,15 @@ ev3::ev3_uninit();
 \example rcx_led.c
 \example io.c
 \example poweroff.c
+
+\example remote.c
+Example of using \ref ev3_pool.c "ev3_pool.c" (high-level library prototype).
+
+\example ev3_pool.h
+Prototype of high-level library.
+
+\example ev3_pool.c
+Prototype of high-level library.
 
 \example light.py
 \example tacho.py
