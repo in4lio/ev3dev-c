@@ -35,6 +35,10 @@ int main( void )
 
 	printf( "*** ( EV3 ) Hello! ***\n" );
 
+	set_light( LIT_LEFT, LIT_OFF );
+	set_light( LIT_RIGHT, LIT_OFF );
+	Sleep( 500 );
+
 	set_light_blink( LIT_RIGHT, LIT_GREEN, 1000, 500 );
 	Sleep( 500 );
 	set_light_blink( LIT_RIGHT, LIT_RED, 1000, 500 );

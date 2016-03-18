@@ -86,6 +86,7 @@ uint8_t get_light_trigger( uint8_t loc, uint8_t col )
 
 void set_light_blink( uint8_t loc, uint8_t col, int delay_on, int delay_off )
 {
+	/* the first (after delays setting) cycle could be shorter... (bug?) */
 	set_light_trigger( loc, col, TRIGGER_TIMER );
 
 	if ( __LED_GREEN_TRIGGER[ col ]) {
