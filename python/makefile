@@ -48,7 +48,12 @@ PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
 # -- simplified wrapper and interface generator
+#    tested on 3.0.2 (the last available on Debian)
+ifeq ($(PLATFORM),__MINGW__)
 SWIG = swig
+else
+SWIG = swig3.0
+endif
 
 # -- output subdirectory
 ifeq ($(PLATFORM),__MINGW__)
@@ -58,8 +63,7 @@ D_PLATFORM =
 endif
 
 # -- python directory
-#D_PYTHON = c:/dev/python27
-D_PYTHON = d:/prog/python27
+D_PYTHON = c:/dev/python
 
 # -- yupp import directories
 #    WARNING! single directory only, see the rule for __init__.py
@@ -135,7 +139,7 @@ endif
 F_BIN = $(D_BIN)/_$(BIN)$(E_BIN)
 
 # -- link options
-LIBS = -lm
+LIBS = -lm -lstdc++
 
 ifeq ($(PLATFORM),__MINGW__)
 LIBS := $(LIBS) -lws2_32 -lpython27 -L$(D_PYTHON)/libs
