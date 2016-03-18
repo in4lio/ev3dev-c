@@ -26,7 +26,7 @@
 
     Use pip or easy_install to install ev3dev-c Python package, e.g.
 
-        pip install --pre ev3dev-c
+        sudo pip install --pre ev3dev-c
 
     ev3dev-c is currently in a beta stage, therefore you have to use
     the key "--pre".
@@ -54,10 +54,12 @@
     "light"    - LEDs blinking example;
     "sensor"   - TOUCH and COLOR sensors example;
     "tacho"    - Tacho motor running for 5 sec;
+    "remote"   - IR remote control;
     "port"     - Using EV3 ports;
     "dc"       - Using DC motor;
     "rcx_led"  - Using RCX LED;
-    "servo"    - SERVO motor example.
+    "servo"    - SERVO motor example;
+    "drive"    - Complex example based on coroutines.
 
     > cd eg/light/
     > make
