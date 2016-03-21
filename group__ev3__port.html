@@ -92,7 +92,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:ga6035774ef51a86241d190f29e881368d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga6035774ef51a86241d190f29e881368d">PORT_DIR</a>&#160;&#160;&#160;&quot;/sys/class/lego-port&quot;</td></tr>
 <tr class="separator:ga6035774ef51a86241d190f29e881368d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a7579e5304d01c7a8584d02551d0f73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:ga8a7579e5304d01c7a8584d02551d0f73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a>&#160;&#160;&#160;DESC_LIMIT</td></tr>
 <tr class="separator:ga8a7579e5304d01c7a8584d02551d0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga15247a83ed93a7ba92aafc24655fbe11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga15247a83ed93a7ba92aafc24655fbe11">PORT__NONE_</a>&#160;&#160;&#160;<a class="el" href="group__ev3__port.html#ga8a7579e5304d01c7a8584d02551d0f73">PORT_DESC__LIMIT_</a></td></tr>
 <tr class="separator:ga15247a83ed93a7ba92aafc24655fbe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,12 +280,18 @@ Functions</h2></td></tr>
 <tr class="memitem:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gad0572d5213806ce2aee4e17d689fb7f6">set_port_mode</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:gad0572d5213806ce2aee4e17d689fb7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of the EV3 port.  <a href="#gad0572d5213806ce2aee4e17d689fb7f6">More...</a><br /></td></tr>
 <tr class="separator:gad0572d5213806ce2aee4e17d689fb7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf445c1417b1fbe310d99454212e924f0"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf445c1417b1fbe310d99454212e924f0">multi_set_port_mode</a> (uint8_t *sn, char *value)</td></tr>
+<tr class="memdesc:gaf445c1417b1fbe310d99454212e924f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of several EV3 ports.  <a href="#gaf445c1417b1fbe310d99454212e924f0">More...</a><br /></td></tr>
+<tr class="separator:gaf445c1417b1fbe310d99454212e924f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaf1fab82449805df888b968c5c3b7cc6d">get_port_modes</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:gaf1fab82449805df888b968c5c3b7cc6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "modes" attribute of the EV3 port.  <a href="#gaf1fab82449805df888b968c5c3b7cc6d">More...</a><br /></td></tr>
 <tr class="separator:gaf1fab82449805df888b968c5c3b7cc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga034ba1ff14b636611482c603ec03da2a"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga034ba1ff14b636611482c603ec03da2a">set_port_set_device</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:ga034ba1ff14b636611482c603ec03da2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "set_device" attribute of the EV3 port.  <a href="#ga034ba1ff14b636611482c603ec03da2a">More...</a><br /></td></tr>
 <tr class="separator:ga034ba1ff14b636611482c603ec03da2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga852525b979f072990e58282bceffc397"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga852525b979f072990e58282bceffc397">multi_set_port_set_device</a> (uint8_t *sn, char *value)</td></tr>
+<tr class="memdesc:ga852525b979f072990e58282bceffc397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "set_device" attribute of several EV3 ports.  <a href="#ga852525b979f072990e58282bceffc397">More...</a><br /></td></tr>
+<tr class="separator:ga852525b979f072990e58282bceffc397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2116e60295108e27931bf78b934bab23"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga2116e60295108e27931bf78b934bab23">get_port_status</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga2116e60295108e27931bf78b934bab23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "status" attribute of the EV3 port.  <a href="#ga2116e60295108e27931bf78b934bab23">More...</a><br /></td></tr>
 <tr class="separator:ga2116e60295108e27931bf78b934bab23"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,6 +337,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaed6b81e165d5ffd5606f0d5e2999109d"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gaed6b81e165d5ffd5606f0d5e2999109d">set_port_mode_inx</a> (uint8_t sn, INX_T mode_inx)</td></tr>
 <tr class="memdesc:gaed6b81e165d5ffd5606f0d5e2999109d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of the EV3 port by the index.  <a href="#gaed6b81e165d5ffd5606f0d5e2999109d">More...</a><br /></td></tr>
 <tr class="separator:gaed6b81e165d5ffd5606f0d5e2999109d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1de8ed2e202fd8905df52fd098622c02"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#ga1de8ed2e202fd8905df52fd098622c02">multi_set_port_mode_inx</a> (uint8_t *sn, INX_T mode_inx)</td></tr>
+<tr class="memdesc:ga1de8ed2e202fd8905df52fd098622c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of several EV3 ports by the index.  <a href="#ga1de8ed2e202fd8905df52fd098622c02">More...</a><br /></td></tr>
+<tr class="separator:ga1de8ed2e202fd8905df52fd098622c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab987b110b080b872b40d0a411c7a05f9"><td class="memItemLeft" align="right" valign="top">EV3_PORT_EXT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__port.html#gab987b110b080b872b40d0a411c7a05f9">ev3_port_init</a> (void)</td></tr>
 <tr class="memdesc:gab987b110b080b872b40d0a411c7a05f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect connected EV3 ports.  <a href="#gab987b110b080b872b40d0a411c7a05f9">More...</a><br /></td></tr>
 <tr class="separator:gab987b110b080b872b40d0a411c7a05f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,13 +384,12 @@ EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>&#160;</td><t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PORT_DESC__LIMIT_&#160;&#160;&#160;64</td>
+          <td class="memname">#define PORT_DESC__LIMIT_&#160;&#160;&#160;DESC_LIMIT</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Limit of EV3 port descriptors. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="port_8c-example.html#a2">port.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a class="anchor" id="ga6035774ef51a86241d190f29e881368d"></a>
@@ -1207,6 +1215,114 @@ EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>&#160;</td><t
 
 </div>
 </div>
+<a class="anchor" id="gaf445c1417b1fbe310d99454212e924f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT size_t multi_set_port_mode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "mode" attribute of several EV3 ports. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1de8ed2e202fd8905df52fd098622c02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT size_t multi_set_port_mode_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">INX_T&#160;</td>
+          <td class="paramname"><em>mode_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "mode" attribute of several EV3 ports by the index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">mode_inx</td><td>Index of the EV3 port mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga852525b979f072990e58282bceffc397"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_PORT_EXT size_t multi_set_port_set_device </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "set_device" attribute of several EV3 ports. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gad0572d5213806ce2aee4e17d689fb7f6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1318,7 +1434,7 @@ EV3_PORT_EXT <a class="el" href="structEV3__PORT.html">EV3_PORT</a>&#160;</td><t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:19 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

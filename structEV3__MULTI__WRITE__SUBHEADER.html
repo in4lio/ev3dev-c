@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>ev3_keys.h File Reference</title>
+<title>EV3_MULTI_WRITE_SUBHEADER Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,8 +31,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -54,8 +54,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>Globals</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -72,55 +72,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_f81aa6984f612c32817dba3e623b02be.html">ev3</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">ev3_keys.h File Reference</div>  </div>
+<div class="title">EV3_MULTI_WRITE_SUBHEADER Struct Reference<div class="ingroups"><a class="el" href="group__ev3__link.html">Remote access</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>EV3 brick keys.  
-<a href="#details">More...</a></p>
-
-<p><a href="ev3__keys_8h_source.html">Go to the source code of this file.</a></p>
+<p>Subheader for EV3_MULTI_WRITE.  
+ <a href="structEV3__MULTI__WRITE__SUBHEADER.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ade71d571eac5ed28f22412980dc1de94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade71d571eac5ed28f22412980dc1de94"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO_KEYS_PATH</b>&#160;&#160;&#160;&quot;/dev/input/by-path/platform-gpio-keys.0-event&quot;</td></tr>
-<tr class="separator:ade71d571eac5ed28f22412980dc1de94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a726ca809ffd3d67ab4b8476646f26635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<b>EV3_KEY__NONE_</b> = 0, 
-<b>EV3_KEY_UP</b> = 0x01L, 
-<b>EV3_KEY_DOWN</b> = 0x02L, 
-<b>EV3_KEY_LEFT</b> = 0x04L, 
-<br />
-&#160;&#160;<b>EV3_KEY_RIGHT</b> = 0x08L, 
-<b>EV3_KEY_CENTER</b> = 0x10L, 
-<b>EV3_KEY_BACK</b> = 0x20L
-<br />
- }<tr class="memdesc:a726ca809ffd3d67ab4b8476646f26635"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 keys. <br /></td></tr>
-</td></tr>
-<tr class="separator:a726ca809ffd3d67ab4b8476646f26635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:a054727e05dd805ae5365639f7e6c851c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MULTI__WRITE__SUBHEADER.html#a054727e05dd805ae5365639f7e6c851c">sn</a> [DESC_VEC_LEN]</td></tr>
+<tr class="separator:a054727e05dd805ae5365639f7e6c851c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0dffc35aa86c3f381de2b41070f9ea"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MULTI__WRITE__SUBHEADER.html#a0e0dffc35aa86c3f381de2b41070f9ea">pos</a></td></tr>
+<tr class="separator:a0e0dffc35aa86c3f381de2b41070f9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>EV3 brick keys. </p>
-<dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>See the LICENSE file. </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><p>Subheader for EV3_MULTI_WRITE. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="a0e0dffc35aa86c3f381de2b41070f9ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t pos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position of the sequence number field into the filename. </p>
+
+</div>
+</div>
+<a class="anchor" id="a054727e05dd805ae5365639f7e6c851c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sn[DESC_VEC_LEN]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vector of sequence numbers. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="ev3__link_8c.html">ev3_link.c</a></li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

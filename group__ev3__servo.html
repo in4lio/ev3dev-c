@@ -92,7 +92,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:ga2d6c780e3354e84ff0f9b38bb5ad9774"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga2d6c780e3354e84ff0f9b38bb5ad9774">SERVO_DIR</a>&#160;&#160;&#160;&quot;/sys/class/servo-motor&quot;</td></tr>
 <tr class="separator:ga2d6c780e3354e84ff0f9b38bb5ad9774"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19eda35d2e854c03bb2afaf38f57e6f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga19eda35d2e854c03bb2afaf38f57e6f2">SERVO_DESC__LIMIT_</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:ga19eda35d2e854c03bb2afaf38f57e6f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga19eda35d2e854c03bb2afaf38f57e6f2">SERVO_DESC__LIMIT_</a>&#160;&#160;&#160;DESC_LIMIT</td></tr>
 <tr class="separator:ga19eda35d2e854c03bb2afaf38f57e6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabb7e1dea34fb9fd2a4f6f696f48b8084"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gabb7e1dea34fb9fd2a4f6f696f48b8084">SERVO__NONE_</a>&#160;&#160;&#160;<a class="el" href="group__ev3__servo.html#ga19eda35d2e854c03bb2afaf38f57e6f2">SERVO_DESC__LIMIT_</a></td></tr>
 <tr class="separator:gabb7e1dea34fb9fd2a4f6f696f48b8084"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +140,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf7d14de6e236370f7e77b4fb390175a9"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaf7d14de6e236370f7e77b4fb390175a9">set_servo_command</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:gaf7d14de6e236370f7e77b4fb390175a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of the servo motor.  <a href="#gaf7d14de6e236370f7e77b4fb390175a9">More...</a><br /></td></tr>
 <tr class="separator:gaf7d14de6e236370f7e77b4fb390175a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab60c5e68bb57e42a9bd52275cc0bbe73"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gab60c5e68bb57e42a9bd52275cc0bbe73">multi_set_servo_command</a> (uint8_t *sn, char *value)</td></tr>
+<tr class="memdesc:gab60c5e68bb57e42a9bd52275cc0bbe73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of several servo motors.  <a href="#gab60c5e68bb57e42a9bd52275cc0bbe73">More...</a><br /></td></tr>
+<tr class="separator:gab60c5e68bb57e42a9bd52275cc0bbe73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e3d92f81699d159d0db6c2d1723f890"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3e3d92f81699d159d0db6c2d1723f890">get_servo_driver_name</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga3e3d92f81699d159d0db6c2d1723f890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "driver_name" attribute of the servo motor.  <a href="#ga3e3d92f81699d159d0db6c2d1723f890">More...</a><br /></td></tr>
 <tr class="separator:ga3e3d92f81699d159d0db6c2d1723f890"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,36 +152,54 @@ Functions</h2></td></tr>
 <tr class="memitem:ga2f2c3386968a399ab90f2de9893a0208"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga2f2c3386968a399ab90f2de9893a0208">set_servo_max_pulse_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:ga2f2c3386968a399ab90f2de9893a0208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "max_pulse_sp" attribute of the servo motor.  <a href="#ga2f2c3386968a399ab90f2de9893a0208">More...</a><br /></td></tr>
 <tr class="separator:ga2f2c3386968a399ab90f2de9893a0208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18865796004c1ade1ba2972e5c55d5e3"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga18865796004c1ade1ba2972e5c55d5e3">multi_set_servo_max_pulse_sp</a> (uint8_t *sn, int value)</td></tr>
+<tr class="memdesc:ga18865796004c1ade1ba2972e5c55d5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "max_pulse_sp" attribute of several servo motors.  <a href="#ga18865796004c1ade1ba2972e5c55d5e3">More...</a><br /></td></tr>
+<tr class="separator:ga18865796004c1ade1ba2972e5c55d5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3eea8b8ec737a074cfb93544fc295f53"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga3eea8b8ec737a074cfb93544fc295f53">get_servo_mid_pulse_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga3eea8b8ec737a074cfb93544fc295f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mid_pulse_sp" attribute of the servo motor.  <a href="#ga3eea8b8ec737a074cfb93544fc295f53">More...</a><br /></td></tr>
 <tr class="separator:ga3eea8b8ec737a074cfb93544fc295f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad70a935ffe20184620e9ab76f3c702ea"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gad70a935ffe20184620e9ab76f3c702ea">set_servo_mid_pulse_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:gad70a935ffe20184620e9ab76f3c702ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mid_pulse_sp" attribute of the servo motor.  <a href="#gad70a935ffe20184620e9ab76f3c702ea">More...</a><br /></td></tr>
 <tr class="separator:gad70a935ffe20184620e9ab76f3c702ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga233a665645538eb60f9a1e32b881bf50"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga233a665645538eb60f9a1e32b881bf50">multi_set_servo_mid_pulse_sp</a> (uint8_t *sn, int value)</td></tr>
+<tr class="memdesc:ga233a665645538eb60f9a1e32b881bf50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mid_pulse_sp" attribute of several servo motors.  <a href="#ga233a665645538eb60f9a1e32b881bf50">More...</a><br /></td></tr>
+<tr class="separator:ga233a665645538eb60f9a1e32b881bf50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac6d97098525e9dfc05b22fd08f3ee3c9"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gac6d97098525e9dfc05b22fd08f3ee3c9">get_servo_min_pulse_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:gac6d97098525e9dfc05b22fd08f3ee3c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "min_pulse_sp" attribute of the servo motor.  <a href="#gac6d97098525e9dfc05b22fd08f3ee3c9">More...</a><br /></td></tr>
 <tr class="separator:gac6d97098525e9dfc05b22fd08f3ee3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5c67694b18718d5ac9bde838c3e847d9"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga5c67694b18718d5ac9bde838c3e847d9">set_servo_min_pulse_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:ga5c67694b18718d5ac9bde838c3e847d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "min_pulse_sp" attribute of the servo motor.  <a href="#ga5c67694b18718d5ac9bde838c3e847d9">More...</a><br /></td></tr>
 <tr class="separator:ga5c67694b18718d5ac9bde838c3e847d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32697ebd8e2f2259fb3e87043b9c3469"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga32697ebd8e2f2259fb3e87043b9c3469">multi_set_servo_min_pulse_sp</a> (uint8_t *sn, int value)</td></tr>
+<tr class="memdesc:ga32697ebd8e2f2259fb3e87043b9c3469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "min_pulse_sp" attribute of several servo motors.  <a href="#ga32697ebd8e2f2259fb3e87043b9c3469">More...</a><br /></td></tr>
+<tr class="separator:ga32697ebd8e2f2259fb3e87043b9c3469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a80c09f15aba5673094de97019b4b81"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga9a80c09f15aba5673094de97019b4b81">get_servo_polarity</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga9a80c09f15aba5673094de97019b4b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "polarity" attribute of the servo motor.  <a href="#ga9a80c09f15aba5673094de97019b4b81">More...</a><br /></td></tr>
 <tr class="separator:ga9a80c09f15aba5673094de97019b4b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadbeb9c1f6b3f6aa34ea0194bd570cc8f"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gadbeb9c1f6b3f6aa34ea0194bd570cc8f">set_servo_polarity</a> (uint8_t sn, char *value)</td></tr>
 <tr class="memdesc:gadbeb9c1f6b3f6aa34ea0194bd570cc8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "polarity" attribute of the servo motor.  <a href="#gadbeb9c1f6b3f6aa34ea0194bd570cc8f">More...</a><br /></td></tr>
 <tr class="separator:gadbeb9c1f6b3f6aa34ea0194bd570cc8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad7fb4b99b1c1b62373e75ce5b592726"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaad7fb4b99b1c1b62373e75ce5b592726">multi_set_servo_polarity</a> (uint8_t *sn, char *value)</td></tr>
+<tr class="memdesc:gaad7fb4b99b1c1b62373e75ce5b592726"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "polarity" attribute of several servo motors.  <a href="#gaad7fb4b99b1c1b62373e75ce5b592726">More...</a><br /></td></tr>
+<tr class="separator:gaad7fb4b99b1c1b62373e75ce5b592726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21dddcd859ffb0d11dba4003fdf5bab5"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga21dddcd859ffb0d11dba4003fdf5bab5">get_servo_position_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga21dddcd859ffb0d11dba4003fdf5bab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "position_sp" attribute of the servo motor.  <a href="#ga21dddcd859ffb0d11dba4003fdf5bab5">More...</a><br /></td></tr>
 <tr class="separator:ga21dddcd859ffb0d11dba4003fdf5bab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga20eeafc627aefa95069bc9b422b576ce"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga20eeafc627aefa95069bc9b422b576ce">set_servo_position_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:ga20eeafc627aefa95069bc9b422b576ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "position_sp" attribute of the servo motor.  <a href="#ga20eeafc627aefa95069bc9b422b576ce">More...</a><br /></td></tr>
 <tr class="separator:ga20eeafc627aefa95069bc9b422b576ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27964e3c29f5c9c9dc0900c79a529ba5"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga27964e3c29f5c9c9dc0900c79a529ba5">multi_set_servo_position_sp</a> (uint8_t *sn, int value)</td></tr>
+<tr class="memdesc:ga27964e3c29f5c9c9dc0900c79a529ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "position_sp" attribute of several servo motors.  <a href="#ga27964e3c29f5c9c9dc0900c79a529ba5">More...</a><br /></td></tr>
+<tr class="separator:ga27964e3c29f5c9c9dc0900c79a529ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa4392f8c45c94a5c389225ea0fbc3559"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gaa4392f8c45c94a5c389225ea0fbc3559">get_servo_rate_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:gaa4392f8c45c94a5c389225ea0fbc3559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "rate_sp" attribute of the servo motor.  <a href="#gaa4392f8c45c94a5c389225ea0fbc3559">More...</a><br /></td></tr>
 <tr class="separator:gaa4392f8c45c94a5c389225ea0fbc3559"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadd3de03f141bb039e4615d77773872e0"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gadd3de03f141bb039e4615d77773872e0">set_servo_rate_sp</a> (uint8_t sn, int value)</td></tr>
 <tr class="memdesc:gadd3de03f141bb039e4615d77773872e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "rate_sp" attribute of the servo motor.  <a href="#gadd3de03f141bb039e4615d77773872e0">More...</a><br /></td></tr>
 <tr class="separator:gadd3de03f141bb039e4615d77773872e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ae55ac7b7baff6281a0fba6473297b6"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga8ae55ac7b7baff6281a0fba6473297b6">multi_set_servo_rate_sp</a> (uint8_t *sn, int value)</td></tr>
+<tr class="memdesc:ga8ae55ac7b7baff6281a0fba6473297b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "rate_sp" attribute of several servo motors.  <a href="#ga8ae55ac7b7baff6281a0fba6473297b6">More...</a><br /></td></tr>
+<tr class="separator:ga8ae55ac7b7baff6281a0fba6473297b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0bd5016266a920f641bee90a22276c0e"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga0bd5016266a920f641bee90a22276c0e">get_servo_state</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga0bd5016266a920f641bee90a22276c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "state" attribute of the servo motor.  <a href="#ga0bd5016266a920f641bee90a22276c0e">More...</a><br /></td></tr>
 <tr class="separator:ga0bd5016266a920f641bee90a22276c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +245,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga188bec81f9be96a94d1506d7dc5ef5e2"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga188bec81f9be96a94d1506d7dc5ef5e2">set_servo_command_inx</a> (uint8_t sn, INX_T command_inx)</td></tr>
 <tr class="memdesc:ga188bec81f9be96a94d1506d7dc5ef5e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of the servo motor by the index.  <a href="#ga188bec81f9be96a94d1506d7dc5ef5e2">More...</a><br /></td></tr>
 <tr class="separator:ga188bec81f9be96a94d1506d7dc5ef5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac61cb748957780f69baa118b933a7e24"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#gac61cb748957780f69baa118b933a7e24">multi_set_servo_command_inx</a> (uint8_t *sn, INX_T command_inx)</td></tr>
+<tr class="memdesc:gac61cb748957780f69baa118b933a7e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of several servo motors by the index.  <a href="#gac61cb748957780f69baa118b933a7e24">More...</a><br /></td></tr>
+<tr class="separator:gac61cb748957780f69baa118b933a7e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga743087b6224e3da0c335fa5b956aeccd"><td class="memItemLeft" align="right" valign="top">EV3_SERVO_EXT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__servo.html#ga743087b6224e3da0c335fa5b956aeccd">get_servo_state_flags</a> (uint8_t sn, FLAGS_T *flags)</td></tr>
 <tr class="memdesc:ga743087b6224e3da0c335fa5b956aeccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "state" attribute of the servo motor and get the flags.  <a href="#ga743087b6224e3da0c335fa5b956aeccd">More...</a><br /></td></tr>
 <tr class="separator:ga743087b6224e3da0c335fa5b956aeccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -260,13 +284,12 @@ EV3_SERVO_EXT <a class="el" href="structEV3__SERVO.html">EV3_SERVO</a>&#160;</td
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SERVO_DESC__LIMIT_&#160;&#160;&#160;64</td>
+          <td class="memname">#define SERVO_DESC__LIMIT_&#160;&#160;&#160;DESC_LIMIT</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Limit of servo motor descriptors. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="servo_8c-example.html#a3">servo.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a class="anchor" id="ga2d6c780e3354e84ff0f9b38bb5ad9774"></a>
@@ -1173,6 +1196,294 @@ EV3_SERVO_EXT <a class="el" href="structEV3__SERVO.html">EV3_SERVO</a>&#160;</td
 
 </div>
 </div>
+<a class="anchor" id="gab60c5e68bb57e42a9bd52275cc0bbe73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_command </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "command" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac61cb748957780f69baa118b933a7e24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_command_inx </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">INX_T&#160;</td>
+          <td class="paramname"><em>command_inx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "command" attribute of several servo motors by the index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">command_inx</td><td>Index of the servo motor command. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga18865796004c1ade1ba2972e5c55d5e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_max_pulse_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "max_pulse_sp" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga233a665645538eb60f9a1e32b881bf50"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_mid_pulse_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "mid_pulse_sp" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga32697ebd8e2f2259fb3e87043b9c3469"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_min_pulse_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "min_pulse_sp" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaad7fb4b99b1c1b62373e75ce5b592726"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_polarity </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "polarity" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga27964e3c29f5c9c9dc0900c79a529ba5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_position_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "position_sp" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8ae55ac7b7baff6281a0fba6473297b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EV3_SERVO_EXT size_t multi_set_servo_rate_sp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write "rate_sp" attribute of several servo motors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sn</td><td>Vector of sequence numbers ending with DESC_LIMIT. </td></tr>
+    <tr><td class="paramname">value</td><td>Attribute value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Count of written bytes. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gaf7d14de6e236370f7e77b4fb390175a9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1464,7 +1775,7 @@ EV3_SERVO_EXT <a class="el" href="structEV3__SERVO.html">EV3_SERVO</a>&#160;</td
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:19 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

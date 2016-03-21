@@ -123,6 +123,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:ga20ad37059b75ceea01f5b53be715ff2c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga20ad37059b75ceea01f5b53be715ff2c">ev3_write_binary</a> (const char *fn, char *data, size_t sz)</td></tr>
 <tr class="memdesc:ga20ad37059b75ceea01f5b53be715ff2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into the specified file of the EV3 brick.  <a href="group__ev3.html#ga20ad37059b75ceea01f5b53be715ff2c">More...</a><br /></td></tr>
 <tr class="separator:ga20ad37059b75ceea01f5b53be715ff2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga990a2f771cf3de9f975328421308239c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga990a2f771cf3de9f975328421308239c">ev3_multi_write_binary</a> (uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz)</td></tr>
+<tr class="memdesc:ga990a2f771cf3de9f975328421308239c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into several specified files of the EV3 brick.  <a href="group__ev3.html#ga990a2f771cf3de9f975328421308239c">More...</a><br /></td></tr>
+<tr class="separator:ga990a2f771cf3de9f975328421308239c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3de62e3f2581edd65d7d6500c387e054"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga3de62e3f2581edd65d7d6500c387e054">ev3_read_binary</a> (const char *fn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga3de62e3f2581edd65d7d6500c387e054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read binary data from the specified file.  <a href="group__ev3.html#ga3de62e3f2581edd65d7d6500c387e054">More...</a><br /></td></tr>
 <tr class="separator:ga3de62e3f2581edd65d7d6500c387e054"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,27 +138,51 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga4fa0d81a67bb2ffa3ad2c9979218582e">ev3_write</a> (const char *fn, char *value)</td></tr>
 <tr class="memdesc:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a string into the specified file.  <a href="group__ev3.html#ga4fa0d81a67bb2ffa3ad2c9979218582e">More...</a><br /></td></tr>
 <tr class="separator:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8d3afa336fde158e4b442b745facf15"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write</b> (uint8_t *sn, uint16_t pos, const char *fn, char *value)</td></tr>
+<tr class="separator:gab8d3afa336fde158e4b442b745facf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0116ad65b312375a47cd91de675a4554"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">ev3_write_int</a> (const char *fn, int value)</td></tr>
 <tr class="memdesc:ga0116ad65b312375a47cd91de675a4554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an integer value into the specified file.  <a href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">More...</a><br /></td></tr>
 <tr class="separator:ga0116ad65b312375a47cd91de675a4554"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01ed2197f3f3119c39c9bd45b83cdf36"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_int</b> (uint8_t *sn, uint16_t pos, const char *fn, int value)</td></tr>
+<tr class="separator:ga01ed2197f3f3119c39c9bd45b83cdf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2a07eb08a0710a91409db0a34e13a1c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gac2a07eb08a0710a91409db0a34e13a1c">ev3_write_dword</a> (const char *fn, uint32_t value)</td></tr>
 <tr class="memdesc:gac2a07eb08a0710a91409db0a34e13a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an unsigned integer value into the specified file.  <a href="group__ev3.html#gac2a07eb08a0710a91409db0a34e13a1c">More...</a><br /></td></tr>
 <tr class="separator:gac2a07eb08a0710a91409db0a34e13a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b187a18bf8bc54eed704bf1b3ecf34a"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_dword</b> (uint8_t *sn, uint16_t pos, const char *fn, uint32_t value)</td></tr>
+<tr class="separator:ga8b187a18bf8bc54eed704bf1b3ecf34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga9bfaa861cdc45a82017f3bfe963fb482">ev3_write_float</a> (const char *fn, float value)</td></tr>
 <tr class="memdesc:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a float value into the specified file.  <a href="group__ev3.html#ga9bfaa861cdc45a82017f3bfe963fb482">More...</a><br /></td></tr>
 <tr class="separator:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0315c622e34f0769ca9a8122c01ef121"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_float</b> (uint8_t *sn, uint16_t pos, const char *fn, float value)</td></tr>
+<tr class="separator:ga0315c622e34f0769ca9a8122c01ef121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a">ev3_write_bool</a> (const char *fn, bool value)</td></tr>
 <tr class="memdesc:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a boolean value into the specified file.  <a href="group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a">More...</a><br /></td></tr>
 <tr class="separator:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8161a1ef42045daca81c1867d5d3b590"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_bool</b> (uint8_t *sn, uint16_t pos, const char *fn, bool value)</td></tr>
+<tr class="separator:ga8161a1ef42045daca81c1867d5d3b590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga549d5bb24bca7dcc6b9f3af044e73243">ev3_write_byte</a> (const char *fn, uint8_t value)</td></tr>
 <tr class="memdesc:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a byte value into the specified file.  <a href="group__ev3.html#ga549d5bb24bca7dcc6b9f3af044e73243">More...</a><br /></td></tr>
 <tr class="separator:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33a24864532c4a4c01a4564cc0acf06b"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_byte</b> (uint8_t *sn, uint16_t pos, const char *fn, uint8_t value)</td></tr>
+<tr class="separator:ga33a24864532c4a4c01a4564cc0acf06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7de3add68eb55de04b84c04507aa42dd"><td class="memItemLeft" align="right" valign="top">
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_char_array</b> (const char *fn, char *value)</td></tr>
 <tr class="separator:ga7de3add68eb55de04b84c04507aa42dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2ca3637c9b2082719a851a8e3eaa4fd"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_char_array</b> (uint8_t *sn, uint16_t pos, const char *fn, char *value)</td></tr>
+<tr class="separator:gae2ca3637c9b2082719a851a8e3eaa4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac738a611bda0680775566e5729e0a9ff"><td class="memItemLeft" align="right" valign="top">
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_byte_array</b> (const char *fn, uint8_t *value, size_t sz)</td></tr>
 <tr class="separator:gac738a611bda0680775566e5729e0a9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac045b31986128e99c2bdc517c758c611"><td class="memItemLeft" align="right" valign="top">
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_byte_array</b> (uint8_t *sn, uint16_t pos, const char *fn, uint8_t *value, size_t sz)</td></tr>
+<tr class="separator:gac045b31986128e99c2bdc517c758c611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3b46cd9c624467603caa7c7c737063f8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8">ev3_read</a> (const char *fn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga3b46cd9c624467603caa7c7c737063f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a string from the specified file.  <a href="group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8">More...</a><br /></td></tr>
 <tr class="separator:ga3b46cd9c624467603caa7c7c737063f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,7 +221,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:17 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:21 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

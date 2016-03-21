@@ -104,6 +104,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <td align="left">6 .. 7 </td><td align="left">Count of written bytes </td></tr>
 </table>
 <hr/>
+ <h3>Write data into several specified files on the EV3 brick</h3>
+<p>Host application command </p><table class="doxtable">
+<tr>
+<th align="left">Bytes </th><th align="left">Content  </th></tr>
+<tr>
+<td align="left">0 .. 1 </td><td align="left"><a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8a2c57bad71afcd56d51f7bc639c97d064">EV3_WRITE_FILE</a> </td></tr>
+<tr>
+<td align="left">2 .. 3 </td><td align="left">Message counter (id) </td></tr>
+<tr>
+<td align="left">4 .. 5 </td><td align="left">Filename size (f_sz) </td></tr>
+<tr>
+<td align="left">6 .. 7 </td><td align="left">Data size (d_sz) </td></tr>
+<tr>
+<td align="left">8 </td><td align="left">Sequence number 1 </td></tr>
+<tr>
+<td align="left">9 </td><td align="left">SN 2 </td></tr>
+<tr>
+<td align="left">10 </td><td align="left">SN 3 </td></tr>
+<tr>
+<td align="left">11 </td><td align="left">SN 4 </td></tr>
+<tr>
+<td align="left">12 .. 13 </td><td align="left">Position of SN in template </td></tr>
+<tr>
+<td align="left">14 .. 14 + f_sz - 1 </td><td align="left">Filename (template) </td></tr>
+<tr>
+<td align="left">14 + f_sz .. 14 + f_sz + d_sz - 1</td><td align="left">Data </td></tr>
+</table>
+<p>Brick server reply </p><table class="doxtable">
+<tr>
+<th align="left">Bytes </th><th align="left">Content  </th></tr>
+<tr>
+<td align="left">0 .. 1 </td><td align="left"><a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8ad65fbc2bf6a1699a6aabee9a324b611b">EV3_RESULT_WRITE</a> </td></tr>
+<tr>
+<td align="left">2 .. 3 </td><td align="left">id </td></tr>
+<tr>
+<td align="left">4 .. 5 </td><td align="left">0 </td></tr>
+<tr>
+<td align="left">6 .. 7 </td><td align="left">Count of written bytes </td></tr>
+</table>
+<hr/>
  <h3>Read data from the specified file on the EV3 brick</h3>
 <p>Host application command </p><table class="doxtable">
 <tr>
@@ -206,7 +246,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

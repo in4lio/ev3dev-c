@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>ev3_keys.h Source File</title>
+<title>ev3_both.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -78,14 +78,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">ev3_keys.h</div>  </div>
+<div class="title">ev3_both.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ev3__keys_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">     ____ __     ____   ___    ____ __         (((((()</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">                                               ((())))</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define GPIO_KEYS_PATH  &quot;/dev/input/by-path/platform-gpio-keys.0-event&quot;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">enum</span> {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    EV3_KEY__NONE_ = 0,</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    EV3_KEY_UP     = 0x01L,</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    EV3_KEY_DOWN   = 0x02L,</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    EV3_KEY_LEFT   = 0x04L,</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    EV3_KEY_RIGHT  = 0x08L,</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    EV3_KEY_CENTER = 0x10L,</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    EV3_KEY_BACK   = 0x20L,</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div></div><!-- fragment --></div><!-- contents -->
+
+<p>EV3 brick definitions.  
+<a href="#details">More...</a></p>
+
+<p><a href="ev3__both_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ade71d571eac5ed28f22412980dc1de94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade71d571eac5ed28f22412980dc1de94"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO_KEYS_PATH</b>&#160;&#160;&#160;&quot;/dev/input/by-path/platform-gpio-keys.0-event&quot;</td></tr>
+<tr class="separator:ade71d571eac5ed28f22412980dc1de94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28098dffffa799506cf2374a64c3e3e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28098dffffa799506cf2374a64c3e3e7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DESC_LIMIT</b>&#160;&#160;&#160;64</td></tr>
+<tr class="separator:a28098dffffa799506cf2374a64c3e3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4ee3aa26c9140cff25eb92c4afdaaa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d4ee3aa26c9140cff25eb92c4afdaaa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DESC_VEC_LEN</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a9d4ee3aa26c9140cff25eb92c4afdaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>EV3_KEY__NONE_</b> = 0, 
+<b>EV3_KEY_UP</b> = 0x01L, 
+<b>EV3_KEY_DOWN</b> = 0x02L, 
+<b>EV3_KEY_LEFT</b> = 0x04L, 
+<br />
+&#160;&#160;<b>EV3_KEY_RIGHT</b> = 0x08L, 
+<b>EV3_KEY_CENTER</b> = 0x10L, 
+<b>EV3_KEY_BACK</b> = 0x20L
+<br />
+ }<tr class="memdesc:a06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of EV3 keys. <br /></td></tr>
+</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>EV3 brick definitions. </p>
+<dl class="section author"><dt>Author</dt><dd>Vitaly Kravtsov (<a href="#" onclick="location.href='mai'+'lto:'+'in4'+'li'+'o@g'+'ma'+'il.'+'co'+'m'; return false;">in4li<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>See the LICENSE file. </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:17 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

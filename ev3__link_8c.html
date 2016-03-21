@@ -105,12 +105,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;arpa/inet.h&gt;</code><br />
 <code>#include &lt;linux/input.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ev3__link_8h_source.html">ev3_link.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ev3__keys_8h_source.html">../ev3_keys.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ev3__both_8h_source.html">../ev3_both.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE__HEADER.html">EV3_MESSAGE_HEADER</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header of an UDP message.  <a href="structEV3__MESSAGE__HEADER.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MULTI__WRITE__SUBHEADER.html">EV3_MULTI_WRITE_SUBHEADER</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subheader for EV3_MULTI_WRITE.  <a href="structEV3__MULTI__WRITE__SUBHEADER.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE.html">EV3_MESSAGE</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">UDP message.  <a href="structEV3__MESSAGE.html#details">More...</a><br /></td></tr>
@@ -145,6 +148,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga146c3641839a72b17bee1dba42902cb8"><td class="memItemLeft" align="right" valign="top">
 typedef struct <a class="el" href="structEV3__MESSAGE__HEADER.html">EV3_MESSAGE_HEADER</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PEV3_MESSAGE_HEADER</b></td></tr>
 <tr class="separator:ga146c3641839a72b17bee1dba42902cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga028135f1cdd13d5e282d7afa149f5eba"><td class="memItemLeft" align="right" valign="top">
+typedef struct <a class="el" href="structEV3__MULTI__WRITE__SUBHEADER.html">EV3_MULTI_WRITE_SUBHEADER</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PEV3_MULTI_WRITE_SUBHEADER</b></td></tr>
+<tr class="separator:ga028135f1cdd13d5e282d7afa149f5eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1197b131a17507caf8c7b6ac3010063b"><td class="memItemLeft" align="right" valign="top">
 typedef struct <a class="el" href="structEV3__MESSAGE.html">EV3_MESSAGE</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>PEV3_MESSAGE</b></td></tr>
 <tr class="separator:ga1197b131a17507caf8c7b6ac3010063b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,7 +171,9 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8a3ec15adf60c4344dd19b1e90c32bfc2a">EV3_COMPLETION</a> = 8, 
 <a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8a16b993a498a7a5665fc8ad1032886139">EV3_WELCOME</a> = 9, 
 <a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8ae3c8fc6eb1e68c094a046296e9d2285d">EV3_READ_KEYS</a> = 10, 
-<a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8adb45aa07f26699ed3114cd265e536300">EV3_KEYS</a> = 11
+<a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8adb45aa07f26699ed3114cd265e536300">EV3_KEYS</a> = 11, 
+<br />
+&#160;&#160;<a class="el" href="group__ev3__link.html#ggaabfcbcb5ac86a1edac4035264bc7d2b8adaa81ff561039e95520a9541e8e24625">EV3_MULTI_WRITE</a> = 12
 <br />
  }</td></tr>
 <tr class="separator:gaabfcbcb5ac86a1edac4035264bc7d2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,6 +189,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga2f6dc70d733f48ae0be35b1aa93631f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__link.html#ga2f6dc70d733f48ae0be35b1aa93631f1">udp_ev3_write</a> (char *fn, void *data, int sz)</td></tr>
 <tr class="memdesc:ga2f6dc70d733f48ae0be35b1aa93631f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data into the specified file over UDP.  <a href="group__ev3__link.html#ga2f6dc70d733f48ae0be35b1aa93631f1">More...</a><br /></td></tr>
 <tr class="separator:ga2f6dc70d733f48ae0be35b1aa93631f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f4b6a1d9a9c0d02491d35391d08f44a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__link.html#ga7f4b6a1d9a9c0d02491d35391d08f44a">udp_ev3_multi_write</a> (uint8_t *sn, uint16_t pos, char *fn, void *data, int sz)</td></tr>
+<tr class="memdesc:ga7f4b6a1d9a9c0d02491d35391d08f44a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data into the group of specified files over UDP.  <a href="group__ev3__link.html#ga7f4b6a1d9a9c0d02491d35391d08f44a">More...</a><br /></td></tr>
+<tr class="separator:ga7f4b6a1d9a9c0d02491d35391d08f44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabe0891c5d35da4131cdb82012683261a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__link.html#gabe0891c5d35da4131cdb82012683261a">udp_ev3_read</a> (char *fn, void *buf, int sz)</td></tr>
 <tr class="memdesc:gabe0891c5d35da4131cdb82012683261a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the specified file over UDP.  <a href="group__ev3__link.html#gabe0891c5d35da4131cdb82012683261a">More...</a><br /></td></tr>
 <tr class="separator:gabe0891c5d35da4131cdb82012683261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +215,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 14:25:18 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
