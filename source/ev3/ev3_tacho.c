@@ -25,6 +25,8 @@
 #define PATH_COMMAND  "/sys/class/tacho-motor/motor" DESC_SPOT "command"
 #define PATH_COMMANDS  "/sys/class/tacho-motor/motor" DESC_SPOT "commands"
 #define PATH_COUNT_PER_ROT  "/sys/class/tacho-motor/motor" DESC_SPOT "count_per_rot"
+#define PATH_COUNT_PER_M  "/sys/class/tacho-motor/motor" DESC_SPOT "count_per_m"
+#define PATH_FULL_TRAVEL_COUNT  "/sys/class/tacho-motor/motor" DESC_SPOT "full_travel_count"
 #define PATH_DRIVER_NAME  "/sys/class/tacho-motor/motor" DESC_SPOT "driver_name"
 #define PATH_DUTY_CYCLE  "/sys/class/tacho-motor/motor" DESC_SPOT "duty_cycle"
 #define PATH_DUTY_CYCLE_SP  "/sys/class/tacho-motor/motor" DESC_SPOT "duty_cycle_sp"
@@ -82,6 +84,22 @@ size_t get_tacho_commands( uint8_t sn, char *buf, size_t sz )
 size_t get_tacho_count_per_rot( uint8_t sn, int *buf )
 {
 	char s[] = PATH_COUNT_PER_ROT;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_int( s, buf );
+}
+
+size_t get_tacho_count_per_m( uint8_t sn, int *buf )
+{
+	char s[] = PATH_COUNT_PER_M;
+	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
+
+	return ev3_read_int( s, buf );
+}
+
+size_t get_tacho_full_travel_count( uint8_t sn, int *buf )
+{
+	char s[] = PATH_FULL_TRAVEL_COUNT;
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_read_int( s, buf );
@@ -626,49 +644,19 @@ bool ev3_search_tacho_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, ui
 const char *ev3_tacho_command( INX_T command_inx )
 {
 	switch ( command_inx ) {
-	case LEGO_EV3_L_MOTOR_RUN_FOREVER:
+	case TACHO_RUN_FOREVER:
 		return "run-forever";
-	case LEGO_EV3_L_MOTOR_RUN_TO_ABS_POS:
+	case TACHO_RUN_TO_ABS_POS:
 		return "run-to-abs-pos";
-	case LEGO_EV3_L_MOTOR_RUN_TO_REL_POS:
+	case TACHO_RUN_TO_REL_POS:
 		return "run-to-rel-pos";
-	case LEGO_EV3_L_MOTOR_RUN_TIMED:
+	case TACHO_RUN_TIMED:
 		return "run-timed";
-	case LEGO_EV3_L_MOTOR_RUN_DIRECT:
+	case TACHO_RUN_DIRECT:
 		return "run-direct";
-	case LEGO_EV3_L_MOTOR_STOP:
+	case TACHO_STOP:
 		return "stop";
-	case LEGO_EV3_L_MOTOR_RESET:
-		return "reset";
-
-	case LEGO_EV3_M_MOTOR_RUN_FOREVER:
-		return "run-forever";
-	case LEGO_EV3_M_MOTOR_RUN_TO_ABS_POS:
-		return "run-to-abs-pos";
-	case LEGO_EV3_M_MOTOR_RUN_TO_REL_POS:
-		return "run-to-rel-pos";
-	case LEGO_EV3_M_MOTOR_RUN_TIMED:
-		return "run-timed";
-	case LEGO_EV3_M_MOTOR_RUN_DIRECT:
-		return "run-direct";
-	case LEGO_EV3_M_MOTOR_STOP:
-		return "stop";
-	case LEGO_EV3_M_MOTOR_RESET:
-		return "reset";
-
-	case FI_L12_EV3_RUN_FOREVER:
-		return "run-forever";
-	case FI_L12_EV3_RUN_TO_ABS_POS:
-		return "run-to-abs-pos";
-	case FI_L12_EV3_RUN_TO_REL_POS:
-		return "run-to-rel-pos";
-	case FI_L12_EV3_RUN_TIMED:
-		return "run-timed";
-	case FI_L12_EV3_RUN_DIRECT:
-		return "run-direct";
-	case FI_L12_EV3_STOP:
-		return "stop";
-	case FI_L12_EV3_RESET:
+	case TACHO_RESET:
 		return "reset";
 
 	}
@@ -685,64 +673,64 @@ size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx )
 	return multi_set_tacho_command( sn, ( char* ) ev3_tacho_command( command_inx ));
 }
 
+const char *ev3_tacho_polarity( INX_T polarity_inx )
+{
+	switch ( polarity_inx ) {
+	case TACHO_NORMAL:
+		return "normal";
+	case TACHO_INVERSED:
+		return "inversed";
+
+	}
+	return ( STR_unknown_ );
+}
+
+INX_T get_tacho_polarity_inx( uint8_t sn )
+{
+	char buf[ 64 ];
+
+	if ( !get_tacho_polarity( sn, buf, sizeof( buf ))) return ( TACHO_POLARITY__NONE_ );
+
+	if ( strcmp( buf, "normal" ) == 0 ) return TACHO_NORMAL;
+	if ( strcmp( buf, "inversed" ) == 0 ) return TACHO_INVERSED;
+
+	return ( TACHO_POLARITY__UNKNOWN_ );
+}
+
+size_t set_tacho_polarity_inx( uint8_t sn, INX_T polarity_inx )
+{
+	return set_tacho_polarity( sn, ( char* ) ev3_tacho_polarity( polarity_inx ));
+}
+
+size_t multi_set_tacho_polarity_inx( uint8_t *sn, INX_T polarity_inx )
+{
+	return multi_set_tacho_polarity( sn, ( char* ) ev3_tacho_polarity( polarity_inx ));
+}
+
 const char *ev3_tacho_stop_command( INX_T stop_command_inx )
 {
 	switch ( stop_command_inx ) {
-	case LEGO_EV3_L_MOTOR_COAST:
+	case TACHO_COAST:
 		return "coast";
-	case LEGO_EV3_L_MOTOR_BRAKE:
+	case TACHO_BRAKE:
 		return "brake";
-	case LEGO_EV3_L_MOTOR_HOLD:
-		return "hold";
-
-	case LEGO_EV3_M_MOTOR_COAST:
-		return "coast";
-	case LEGO_EV3_M_MOTOR_BRAKE:
-		return "brake";
-	case LEGO_EV3_M_MOTOR_HOLD:
-		return "hold";
-
-	case FI_L12_EV3_COAST:
-		return "coast";
-	case FI_L12_EV3_BRAKE:
-		return "brake";
-	case FI_L12_EV3_HOLD:
+	case TACHO_HOLD:
 		return "hold";
 
 	}
 	return ( STR_unknown_ );
 }
 
-INX_T get_tacho_stop_command_inx( uint8_t sn, INX_T type_inx )
+INX_T get_tacho_stop_command_inx( uint8_t sn )
 {
 	char buf[ 64 ];
 
 	if ( !get_tacho_stop_command( sn, buf, sizeof( buf ))) return ( TACHO_STOP_COMMAND__NONE_ );
 
-	switch ( type_inx ) {
-			
-	case LEGO_EV3_L_MOTOR:
-		if ( strcmp( buf, "coast" ) == 0 ) return LEGO_EV3_L_MOTOR_COAST;
-		if ( strcmp( buf, "brake" ) == 0 ) return LEGO_EV3_L_MOTOR_BRAKE;
-		if ( strcmp( buf, "hold" ) == 0 ) return LEGO_EV3_L_MOTOR_HOLD;
+	if ( strcmp( buf, "coast" ) == 0 ) return TACHO_COAST;
+	if ( strcmp( buf, "brake" ) == 0 ) return TACHO_BRAKE;
+	if ( strcmp( buf, "hold" ) == 0 ) return TACHO_HOLD;
 
-		break;
-
-	case LEGO_EV3_M_MOTOR:
-		if ( strcmp( buf, "coast" ) == 0 ) return LEGO_EV3_M_MOTOR_COAST;
-		if ( strcmp( buf, "brake" ) == 0 ) return LEGO_EV3_M_MOTOR_BRAKE;
-		if ( strcmp( buf, "hold" ) == 0 ) return LEGO_EV3_M_MOTOR_HOLD;
-
-		break;
-
-	case FI_L12_EV3:
-		if ( strcmp( buf, "coast" ) == 0 ) return FI_L12_EV3_COAST;
-		if ( strcmp( buf, "brake" ) == 0 ) return FI_L12_EV3_BRAKE;
-		if ( strcmp( buf, "hold" ) == 0 ) return FI_L12_EV3_HOLD;
-
-		break;
-
-	}
 	return ( TACHO_STOP_COMMAND__UNKNOWN_ );
 }
 

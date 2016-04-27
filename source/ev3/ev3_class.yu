@@ -176,7 +176,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 	return ( false );
 }
 
-($CLASS_ATTR_INDEX \attr.]
+($CLASS_TYPE_ATTR_ID_INDEX \attr.]
 
 	const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx )
 	{
@@ -228,7 +228,48 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 
 [ )
 
-($CLASS_ATTR_FLAGS \attr.]
+($CLASS_ATTR_ID_INDEX \attr.]
+
+	const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx )
+	{
+		switch ( ($attr)_inx ) {
+		($($$'CLASS_($0)S' ($upper attr)) \i.]
+			case ($upper CLASS_ID)_($upper ($_VALUE_TO_ID i)):
+				return ($i);
+
+			[ )
+		}
+		return ( STR_unknown_ );
+	}
+
+	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
+		INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn )
+		{
+			char buf[ 64 ];
+
+			if ( !get_($CLASS_ID)_($attr)( sn, buf, sizeof( buf ))) return ( ($upper CLASS_ID)_($upper attr)__NONE_ );
+
+			($($$'CLASS_($0)S' ($upper attr)) \i.]
+				if ( strcmp( buf, ($i) ) == 0 ) return ($upper CLASS_ID)_($upper ($_VALUE_TO_ID i));
+
+			[ )
+			return ( ($upper CLASS_ID)_($upper attr)__UNKNOWN_ );
+		}
+
+	[ )
+	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
+	{
+		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+	}
+
+	size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
+	{
+		return multi_set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+	}
+
+[ )
+
+($CLASS_ATTR_ID_FLAGS \attr.]
 
 	size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags )
 	{
@@ -241,7 +282,7 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 		*flags = ($upper CLASS_ID)_($upper attr)__NONE_;
 		if ( result == 1 ) return ( 1 );
 
-		($CLASS_STATES \i.]
+		($($$'CLASS_($0)S' ($upper attr)) \i.]
 			if ( strstr( buf, ($i) )) *flags |= ($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i)));
 
 		[ )

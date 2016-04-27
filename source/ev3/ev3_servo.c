@@ -325,30 +325,24 @@ bool ev3_search_servo_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, ui
 const char *ev3_servo_command( INX_T command_inx )
 {
 	switch ( command_inx ) {
-	case SERVO_MOTOR_RUN:
+	case SERVO_RUN:
 		return "run";
-	case SERVO_MOTOR_FLOAT:
+	case SERVO_FLOAT:
 		return "float";
 
 	}
 	return ( STR_unknown_ );
 }
 
-INX_T get_servo_command_inx( uint8_t sn, INX_T type_inx )
+INX_T get_servo_command_inx( uint8_t sn )
 {
 	char buf[ 64 ];
 
 	if ( !get_servo_command( sn, buf, sizeof( buf ))) return ( SERVO_COMMAND__NONE_ );
 
-	switch ( type_inx ) {
-			
-	case SERVO_MOTOR:
-		if ( strcmp( buf, "run" ) == 0 ) return SERVO_MOTOR_RUN;
-		if ( strcmp( buf, "float" ) == 0 ) return SERVO_MOTOR_FLOAT;
+	if ( strcmp( buf, "run" ) == 0 ) return SERVO_RUN;
+	if ( strcmp( buf, "float" ) == 0 ) return SERVO_FLOAT;
 
-		break;
-
-	}
 	return ( SERVO_COMMAND__UNKNOWN_ );
 }
 
@@ -360,6 +354,40 @@ size_t set_servo_command_inx( uint8_t sn, INX_T command_inx )
 size_t multi_set_servo_command_inx( uint8_t *sn, INX_T command_inx )
 {
 	return multi_set_servo_command( sn, ( char* ) ev3_servo_command( command_inx ));
+}
+
+const char *ev3_servo_polarity( INX_T polarity_inx )
+{
+	switch ( polarity_inx ) {
+	case SERVO_NORMAL:
+		return "normal";
+	case SERVO_INVERSED:
+		return "inversed";
+
+	}
+	return ( STR_unknown_ );
+}
+
+INX_T get_servo_polarity_inx( uint8_t sn )
+{
+	char buf[ 64 ];
+
+	if ( !get_servo_polarity( sn, buf, sizeof( buf ))) return ( SERVO_POLARITY__NONE_ );
+
+	if ( strcmp( buf, "normal" ) == 0 ) return SERVO_NORMAL;
+	if ( strcmp( buf, "inversed" ) == 0 ) return SERVO_INVERSED;
+
+	return ( SERVO_POLARITY__UNKNOWN_ );
+}
+
+size_t set_servo_polarity_inx( uint8_t sn, INX_T polarity_inx )
+{
+	return set_servo_polarity( sn, ( char* ) ev3_servo_polarity( polarity_inx ));
+}
+
+size_t multi_set_servo_polarity_inx( uint8_t *sn, INX_T polarity_inx )
+{
+	return multi_set_servo_polarity( sn, ( char* ) ev3_servo_polarity( polarity_inx ));
 }
 
 size_t get_servo_state_flags( uint8_t sn, FLAGS_T *flags )

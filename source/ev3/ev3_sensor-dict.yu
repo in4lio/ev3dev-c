@@ -16,6 +16,10 @@
 )
 ($import { grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json',
 '../sensors.json' ) })
+($set CLASS_TYPE_ID_SHORT ())
+($set CLASS_TYPE_ATTR_INDEX ( "mode" "command" ))
+($set CLASS_ATTR_INDEX ())
+($set CLASS_ATTR_FLAGS ())
 
 ($set R  0)
 ($set RW 1)

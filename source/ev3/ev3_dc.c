@@ -330,13 +330,13 @@ bool ev3_search_dc_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8
 const char *ev3_dc_command( INX_T command_inx )
 {
 	switch ( command_inx ) {
-	case RCX_MOTOR_RUN_FOREVER:
+	case DC_RUN_FOREVER:
 		return "run-forever";
-	case RCX_MOTOR_RUN_TIMED:
+	case DC_RUN_TIMED:
 		return "run-timed";
-	case RCX_MOTOR_RUN_DIRECT:
+	case DC_RUN_DIRECT:
 		return "run-direct";
-	case RCX_MOTOR_STOP:
+	case DC_STOP:
 		return "stop";
 
 	}
@@ -353,12 +353,46 @@ size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx )
 	return multi_set_dc_command( sn, ( char* ) ev3_dc_command( command_inx ));
 }
 
+const char *ev3_dc_polarity( INX_T polarity_inx )
+{
+	switch ( polarity_inx ) {
+	case DC_NORMAL:
+		return "normal";
+	case DC_INVERSED:
+		return "inversed";
+
+	}
+	return ( STR_unknown_ );
+}
+
+INX_T get_dc_polarity_inx( uint8_t sn )
+{
+	char buf[ 64 ];
+
+	if ( !get_dc_polarity( sn, buf, sizeof( buf ))) return ( DC_POLARITY__NONE_ );
+
+	if ( strcmp( buf, "normal" ) == 0 ) return DC_NORMAL;
+	if ( strcmp( buf, "inversed" ) == 0 ) return DC_INVERSED;
+
+	return ( DC_POLARITY__UNKNOWN_ );
+}
+
+size_t set_dc_polarity_inx( uint8_t sn, INX_T polarity_inx )
+{
+	return set_dc_polarity( sn, ( char* ) ev3_dc_polarity( polarity_inx ));
+}
+
+size_t multi_set_dc_polarity_inx( uint8_t *sn, INX_T polarity_inx )
+{
+	return multi_set_dc_polarity( sn, ( char* ) ev3_dc_polarity( polarity_inx ));
+}
+
 const char *ev3_dc_stop_command( INX_T stop_command_inx )
 {
 	switch ( stop_command_inx ) {
-	case RCX_MOTOR_COAST:
+	case DC_COAST:
 		return "coast";
-	case RCX_MOTOR_BRAKE:
+	case DC_BRAKE:
 		return "brake";
 
 	}

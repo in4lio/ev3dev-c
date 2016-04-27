@@ -75,31 +75,33 @@ enum {
 };
 
 /**
- *  \brief Identifiers of servo motor commands.
+ *  \brief Common identifiers of servo motor "command" attribute.
  */
 enum {
 	SERVO_COMMAND__NONE_ = 0,
 
-	SERVO_MOTOR_RUN, 
-	SERVO_MOTOR_FLOAT, 
+	SERVO_RUN,
+	SERVO_FLOAT,
 
-	SERVO_COMMAND__COUNT_,  /**< Count of servo motor commands. */
+	SERVO_COMMAND__COUNT_,  /**< Count of servo motor "command" attribute. */
 	SERVO_COMMAND__UNKNOWN_ = SERVO_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of servo motor commands.
+ *  \brief Common identifiers of servo motor "polarity" attribute.
  */
 enum {
-	SERVO_COMMAND__NULL_ = 0,
+	SERVO_POLARITY__NONE_ = 0,
 
-	SERVO_RUN,
-	SERVO_FLOAT,
+	SERVO_NORMAL,
+	SERVO_INVERSED,
 
+	SERVO_POLARITY__COUNT_,  /**< Count of servo motor "polarity" attribute. */
+	SERVO_POLARITY__UNKNOWN_ = SERVO_POLARITY__COUNT_
 };
 
 /**
- *  \brief Common identifiers of servo motor states.
+ *  \brief Common identifiers of servo motor "state" attribute.
  */
 enum {
 	SERVO_STATE__NONE_ = 0,
@@ -418,10 +420,9 @@ EV3_SERVO_EXT const char *ev3_servo_command( INX_T command_inx );
 /**
  *  \brief Read "command" attribute of the servo motor and get the index.
  *  \param sn Sequence number.
- *  \param type_inx Index of the servo motor type.
  *  \return Requested value.
  */
-EV3_SERVO_EXT INX_T get_servo_command_inx( uint8_t sn, INX_T type_inx );
+EV3_SERVO_EXT INX_T get_servo_command_inx( uint8_t sn );
 
 /**
  *  \brief Write "command" attribute of the servo motor by the index.
@@ -438,6 +439,36 @@ EV3_SERVO_EXT size_t set_servo_command_inx( uint8_t sn, INX_T command_inx );
  *  \return Count of written bytes.
  */
 EV3_SERVO_EXT size_t multi_set_servo_command_inx( uint8_t *sn, INX_T command_inx );
+
+/**
+ *  \brief Get name of the specified servo motor polarity.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Requested value.
+ */
+EV3_SERVO_EXT const char *ev3_servo_polarity( INX_T polarity_inx );
+
+/**
+ *  \brief Read "polarity" attribute of the servo motor and get the index.
+ *  \param sn Sequence number.
+ *  \return Requested value.
+ */
+EV3_SERVO_EXT INX_T get_servo_polarity_inx( uint8_t sn );
+
+/**
+ *  \brief Write "polarity" attribute of the servo motor by the index.
+ *  \param sn Sequence number.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Count of written bytes.
+ */
+EV3_SERVO_EXT size_t set_servo_polarity_inx( uint8_t sn, INX_T polarity_inx );
+
+/**
+ *  \brief Write "polarity" attribute of several servo motors by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Count of written bytes.
+ */
+EV3_SERVO_EXT size_t multi_set_servo_polarity_inx( uint8_t *sn, INX_T polarity_inx );
 
 /**
  *  \brief Read "state" attribute of the servo motor and get the flags.

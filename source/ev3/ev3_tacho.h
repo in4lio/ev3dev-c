@@ -77,66 +77,10 @@ enum {
 };
 
 /**
- *  \brief Identifiers of tacho commands.
+ *  \brief Common identifiers of tacho "command" attribute.
  */
 enum {
 	TACHO_COMMAND__NONE_ = 0,
-
-	LEGO_EV3_L_MOTOR_RUN_FOREVER, 
-	LEGO_EV3_L_MOTOR_RUN_TO_ABS_POS, 
-	LEGO_EV3_L_MOTOR_RUN_TO_REL_POS, 
-	LEGO_EV3_L_MOTOR_RUN_TIMED, 
-	LEGO_EV3_L_MOTOR_RUN_DIRECT, 
-	LEGO_EV3_L_MOTOR_STOP, 
-	LEGO_EV3_L_MOTOR_RESET, 
-
-	LEGO_EV3_M_MOTOR_RUN_FOREVER, 
-	LEGO_EV3_M_MOTOR_RUN_TO_ABS_POS, 
-	LEGO_EV3_M_MOTOR_RUN_TO_REL_POS, 
-	LEGO_EV3_M_MOTOR_RUN_TIMED, 
-	LEGO_EV3_M_MOTOR_RUN_DIRECT, 
-	LEGO_EV3_M_MOTOR_STOP, 
-	LEGO_EV3_M_MOTOR_RESET, 
-
-	FI_L12_EV3_RUN_FOREVER, 
-	FI_L12_EV3_RUN_TO_ABS_POS, 
-	FI_L12_EV3_RUN_TO_REL_POS, 
-	FI_L12_EV3_RUN_TIMED, 
-	FI_L12_EV3_RUN_DIRECT, 
-	FI_L12_EV3_STOP, 
-	FI_L12_EV3_RESET, 
-
-	TACHO_COMMAND__COUNT_,  /**< Count of tacho commands. */
-	TACHO_COMMAND__UNKNOWN_ = TACHO_COMMAND__COUNT_
-};
-
-/**
- *  \brief Identifiers of tacho stop_commands.
- */
-enum {
-	TACHO_STOP_COMMAND__NONE_ = 0,
-
-	LEGO_EV3_L_MOTOR_COAST, 
-	LEGO_EV3_L_MOTOR_BRAKE, 
-	LEGO_EV3_L_MOTOR_HOLD, 
-
-	LEGO_EV3_M_MOTOR_COAST, 
-	LEGO_EV3_M_MOTOR_BRAKE, 
-	LEGO_EV3_M_MOTOR_HOLD, 
-
-	FI_L12_EV3_COAST, 
-	FI_L12_EV3_BRAKE, 
-	FI_L12_EV3_HOLD, 
-
-	TACHO_STOP_COMMAND__COUNT_,  /**< Count of tacho stop_commands. */
-	TACHO_STOP_COMMAND__UNKNOWN_ = TACHO_STOP_COMMAND__COUNT_
-};
-
-/**
- *  \brief Common identifiers of tacho commands.
- */
-enum {
-	TACHO_COMMAND__NULL_ = 0,
 
 	TACHO_RUN_FOREVER,
 	TACHO_RUN_TO_ABS_POS,
@@ -146,22 +90,39 @@ enum {
 	TACHO_STOP,
 	TACHO_RESET,
 
+	TACHO_COMMAND__COUNT_,  /**< Count of tacho "command" attribute. */
+	TACHO_COMMAND__UNKNOWN_ = TACHO_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of tacho stop commands.
+ *  \brief Common identifiers of tacho "polarity" attribute.
  */
 enum {
-	TACHO_STOP_COMMAND__NULL_ = 0,
+	TACHO_POLARITY__NONE_ = 0,
+
+	TACHO_NORMAL,
+	TACHO_INVERSED,
+
+	TACHO_POLARITY__COUNT_,  /**< Count of tacho "polarity" attribute. */
+	TACHO_POLARITY__UNKNOWN_ = TACHO_POLARITY__COUNT_
+};
+
+/**
+ *  \brief Common identifiers of tacho "stop_command" attribute.
+ */
+enum {
+	TACHO_STOP_COMMAND__NONE_ = 0,
 
 	TACHO_COAST,
 	TACHO_BRAKE,
 	TACHO_HOLD,
 
+	TACHO_STOP_COMMAND__COUNT_,  /**< Count of tacho "stop_command" attribute. */
+	TACHO_STOP_COMMAND__UNKNOWN_ = TACHO_STOP_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of tacho states.
+ *  \brief Common identifiers of tacho "state" attribute.
  */
 enum {
 	TACHO_STATE__NONE_ = 0,
@@ -217,6 +178,24 @@ EV3_TACHO_EXT size_t get_tacho_commands( uint8_t sn, char *buf, size_t sz );
  *  \return Count of read bytes.
  */
 EV3_TACHO_EXT size_t get_tacho_count_per_rot( uint8_t sn, int *buf );
+
+/**
+ *  \brief Read "count_per_m" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+		 
+ *  \return Count of read bytes.
+ */
+EV3_TACHO_EXT size_t get_tacho_count_per_m( uint8_t sn, int *buf );
+
+/**
+ *  \brief Read "full_travel_count" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+		 
+ *  \return Count of read bytes.
+ */
+EV3_TACHO_EXT size_t get_tacho_full_travel_count( uint8_t sn, int *buf );
 
 /**
  *  \brief Read "driver_name" attribute of the tacho.
@@ -823,6 +802,36 @@ EV3_TACHO_EXT size_t set_tacho_command_inx( uint8_t sn, INX_T command_inx );
 EV3_TACHO_EXT size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx );
 
 /**
+ *  \brief Get name of the specified tacho polarity.
+ *  \param polarity_inx Index of the tacho polarity.
+ *  \return Requested value.
+ */
+EV3_TACHO_EXT const char *ev3_tacho_polarity( INX_T polarity_inx );
+
+/**
+ *  \brief Read "polarity" attribute of the tacho and get the index.
+ *  \param sn Sequence number.
+ *  \return Requested value.
+ */
+EV3_TACHO_EXT INX_T get_tacho_polarity_inx( uint8_t sn );
+
+/**
+ *  \brief Write "polarity" attribute of the tacho by the index.
+ *  \param sn Sequence number.
+ *  \param polarity_inx Index of the tacho polarity.
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t set_tacho_polarity_inx( uint8_t sn, INX_T polarity_inx );
+
+/**
+ *  \brief Write "polarity" attribute of several tachos by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param polarity_inx Index of the tacho polarity.
+ *  \return Count of written bytes.
+ */
+EV3_TACHO_EXT size_t multi_set_tacho_polarity_inx( uint8_t *sn, INX_T polarity_inx );
+
+/**
  *  \brief Get name of the specified tacho stop_command.
  *  \param stop_command_inx Index of the tacho stop_command.
  *  \return Requested value.
@@ -832,10 +841,9 @@ EV3_TACHO_EXT const char *ev3_tacho_stop_command( INX_T stop_command_inx );
 /**
  *  \brief Read "stop_command" attribute of the tacho and get the index.
  *  \param sn Sequence number.
- *  \param type_inx Index of the tacho type.
  *  \return Requested value.
  */
-EV3_TACHO_EXT INX_T get_tacho_stop_command_inx( uint8_t sn, INX_T type_inx );
+EV3_TACHO_EXT INX_T get_tacho_stop_command_inx( uint8_t sn );
 
 /**
  *  \brief Write "stop_command" attribute of the tacho by the index.

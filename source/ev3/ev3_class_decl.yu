@@ -4,40 +4,27 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($! list of attributes accessible by index )
-($set ACCESS_BY_INDEX ( "mode" "command" "stop_command" ))
-
-($! list of attributes accessible by flags )
-($set ACCESS_BY_FLAGS ( "state" ))
-
 ($! name of type attribute of class )
 ($set CLASS_TYPE_ATTR_NAME "driver_name")
 
-($set CLASS_ATTR_INDEX ($ACCESS_BY_INDEX \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
-($set CLASS_ATTR_FLAGS ($ACCESS_BY_FLAGS \i.($($unq i) ? ($ne ($index CLASS_ATTR_NAME i) -1))))
-
 ($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
 ($set _TYPE_TO_ID \val.($replace,,($unq val),,-,,_))
+($set _ATTR_TO_ID \val.($replace,,($unq val),,/,,_))
+
+($set CLASS_TYPE_ATTR_ID_INDEX ($CLASS_TYPE_ATTR_INDEX \i.($_ATTR_TO_ID i)))
+($set CLASS_ATTR_ID_INDEX ($CLASS_ATTR_INDEX \i.($_ATTR_TO_ID i)))
+($set CLASS_ATTR_ID_FLAGS ($CLASS_ATTR_FLAGS \i.($_ATTR_TO_ID i)))
 
 ($! identifiers of class instances )
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($_TYPE_TO_ID ($i CLASS_TYPE_NAME))))
 ($set CLASS_TYPE_ID_SYN ($() ? ($isatom CLASS_TYPE_ID_SHORT) | CLASS_TYPE_ID_SHORT))
 
 ($! identifiers of class attributes )
-($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($replace,,($unq ($i CLASS_ATTR_NAME)),,/,,_)))
-($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($replace,,($unq ($i CLASS_AVEC_NAME)),,/,,_)))
+($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($_ATTR_TO_ID ($i CLASS_ATTR_NAME))))
+($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($_ATTR_TO_ID ($i CLASS_AVEC_NAME))))
 
 ($! flag - class descriptor contains 'addr' attribute )
 ($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
-
-($! names of comman commands of class )
-($set CLASS_COMMANDS ($() ? ($isatom TYPE_COMMANDS) | TYPE_COMMANDS))
-
-($! names of comman stop commands of class )
-($set CLASS_STOP_COMMANDS ($() ? ($isatom TYPE_STOP_COMMANDS) | TYPE_STOP_COMMANDS))
-
-($! names of comman states of class )
-($set CLASS_STATES ($() ? ($isatom TYPE_STATES) | TYPE_STATES))
 
 ($! use crc32() instead strcmp() if the number of strings equal to or greater than the specified )
 ($set _USE_CRC32_FROM 7)

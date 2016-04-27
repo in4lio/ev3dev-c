@@ -81,7 +81,7 @@ enum {
 };
 
 /**
- *  \brief Identifiers of EV3 port modes.
+ *  \brief Identifiers of EV3 port "mode" attribute.
  */
 enum {
 	PORT_MODE__NONE_ = 0,
@@ -111,7 +111,7 @@ enum {
 
 	WEDO_PORT_AUTO, WEDO_AUTO = WEDO_PORT_AUTO,
 
-	PORT_MODE__COUNT_,  /**< Count of EV3 port modes. */
+	PORT_MODE__COUNT_,  /**< Count of EV3 port "mode" attribute. */
 	PORT_MODE__UNKNOWN_ = PORT_MODE__COUNT_
 };
 

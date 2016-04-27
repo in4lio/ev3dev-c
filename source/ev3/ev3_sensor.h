@@ -119,7 +119,7 @@ enum {
 };
 
 /**
- *  \brief Identifiers of sensor modes.
+ *  \brief Identifiers of sensor "mode" attribute.
  */
 enum {
 	SENSOR_MODE__NONE_ = 0,
@@ -304,12 +304,12 @@ enum {
 
 	MS_NXT_TOUCH_MUX_TOUCH_MUX, 
 
-	SENSOR_MODE__COUNT_,  /**< Count of sensor modes. */
+	SENSOR_MODE__COUNT_,  /**< Count of sensor "mode" attribute. */
 	SENSOR_MODE__UNKNOWN_ = SENSOR_MODE__COUNT_
 };
 
 /**
- *  \brief Identifiers of sensor commands.
+ *  \brief Identifiers of sensor "command" attribute.
  */
 enum {
 	SENSOR_COMMAND__NONE_ = 0,
@@ -368,7 +368,7 @@ enum {
 	MS_PIXY_ADAPTER_SORT_SIZE, 
 	MS_PIXY_ADAPTER_SORT_COL, 
 
-	SENSOR_COMMAND__COUNT_,  /**< Count of sensor commands. */
+	SENSOR_COMMAND__COUNT_,  /**< Count of sensor "command" attribute. */
 	SENSOR_COMMAND__UNKNOWN_ = SENSOR_COMMAND__COUNT_
 };
 

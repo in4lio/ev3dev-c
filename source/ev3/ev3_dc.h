@@ -75,59 +75,48 @@ enum {
 };
 
 /**
- *  \brief Identifiers of DC motor commands.
+ *  \brief Common identifiers of DC motor "command" attribute.
  */
 enum {
 	DC_COMMAND__NONE_ = 0,
-
-	RCX_MOTOR_RUN_FOREVER, 
-	RCX_MOTOR_RUN_TIMED, 
-	RCX_MOTOR_RUN_DIRECT, 
-	RCX_MOTOR_STOP, 
-
-	DC_COMMAND__COUNT_,  /**< Count of DC motor commands. */
-	DC_COMMAND__UNKNOWN_ = DC_COMMAND__COUNT_
-};
-
-/**
- *  \brief Identifiers of DC motor stop_commands.
- */
-enum {
-	DC_STOP_COMMAND__NONE_ = 0,
-
-	RCX_MOTOR_COAST, 
-	RCX_MOTOR_BRAKE, 
-
-	DC_STOP_COMMAND__COUNT_,  /**< Count of DC motor stop_commands. */
-	DC_STOP_COMMAND__UNKNOWN_ = DC_STOP_COMMAND__COUNT_
-};
-
-/**
- *  \brief Common identifiers of DC motor commands.
- */
-enum {
-	DC_COMMAND__NULL_ = 0,
 
 	DC_RUN_FOREVER,
 	DC_RUN_TIMED,
 	DC_RUN_DIRECT,
 	DC_STOP,
 
+	DC_COMMAND__COUNT_,  /**< Count of DC motor "command" attribute. */
+	DC_COMMAND__UNKNOWN_ = DC_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of DC motor stop commands.
+ *  \brief Common identifiers of DC motor "polarity" attribute.
  */
 enum {
-	DC_STOP_COMMAND__NULL_ = 0,
+	DC_POLARITY__NONE_ = 0,
+
+	DC_NORMAL,
+	DC_INVERSED,
+
+	DC_POLARITY__COUNT_,  /**< Count of DC motor "polarity" attribute. */
+	DC_POLARITY__UNKNOWN_ = DC_POLARITY__COUNT_
+};
+
+/**
+ *  \brief Common identifiers of DC motor "stop_command" attribute.
+ */
+enum {
+	DC_STOP_COMMAND__NONE_ = 0,
 
 	DC_COAST,
 	DC_BRAKE,
 
+	DC_STOP_COMMAND__COUNT_,  /**< Count of DC motor "stop_command" attribute. */
+	DC_STOP_COMMAND__UNKNOWN_ = DC_STOP_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of DC motor states.
+ *  \brief Common identifiers of DC motor "state" attribute.
  */
 enum {
 	DC_STATE__NONE_ = 0,
@@ -461,6 +450,36 @@ EV3_DC_EXT size_t set_dc_command_inx( uint8_t sn, INX_T command_inx );
  *  \return Count of written bytes.
  */
 EV3_DC_EXT size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx );
+
+/**
+ *  \brief Get name of the specified DC motor polarity.
+ *  \param polarity_inx Index of the DC motor polarity.
+ *  \return Requested value.
+ */
+EV3_DC_EXT const char *ev3_dc_polarity( INX_T polarity_inx );
+
+/**
+ *  \brief Read "polarity" attribute of the DC motor and get the index.
+ *  \param sn Sequence number.
+ *  \return Requested value.
+ */
+EV3_DC_EXT INX_T get_dc_polarity_inx( uint8_t sn );
+
+/**
+ *  \brief Write "polarity" attribute of the DC motor by the index.
+ *  \param sn Sequence number.
+ *  \param polarity_inx Index of the DC motor polarity.
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t set_dc_polarity_inx( uint8_t sn, INX_T polarity_inx );
+
+/**
+ *  \brief Write "polarity" attribute of several DC motors by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param polarity_inx Index of the DC motor polarity.
+ *  \return Count of written bytes.
+ */
+EV3_DC_EXT size_t multi_set_dc_polarity_inx( uint8_t *sn, INX_T polarity_inx );
 
 /**
  *  \brief Get name of the specified DC motor stop_command.

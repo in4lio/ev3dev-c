@@ -42,10 +42,10 @@ enum {
 	($upper CLASS_ID)_TYPE__UNKNOWN_ = ($upper CLASS_ID)_TYPE__COUNT_
 };
 
-($CLASS_ATTR_INDEX \attr.]
+($CLASS_TYPE_ATTR_ID_INDEX \attr.]
 
 	/**
-	 *  \brief Identifiers of ($_CLASS) ($attr)s.
+	 *  \brief Identifiers of ($_CLASS) ($q attr) attribute.
 	 */
 	enum {
 		($upper CLASS_ID)_($upper attr)__NONE_ = 0,
@@ -60,52 +60,43 @@ enum {
 			[ )
 
 		[ )
-		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($_CLASS) ($attr)s. */
+		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($_CLASS) ($q attr) attribute. */
 		($upper CLASS_ID)_($upper attr)__UNKNOWN_ = ($upper CLASS_ID)_($upper attr)__COUNT_
 	};
 
 [ )
 
-($if CLASS_COMMANDS ]
+($CLASS_ATTR_ID_INDEX \attr.]
+
 	/**
-	 *  \brief Common identifiers of ($_CLASS) commands.
+	 *  \brief Common identifiers of ($_CLASS) ($q attr) attribute.
 	 */
 	enum {
-		($upper CLASS_ID)_COMMAND__NULL_ = 0,
+		($upper CLASS_ID)_($upper attr)__NONE_ = 0,
 
-		($CLASS_COMMANDS \i.]
+		($($$'CLASS_($0)S' ($upper attr)) \i.]
 			($upper CLASS_ID)_($upper ($_VALUE_TO_ID i)),
 
 		[ )
+		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($_CLASS) ($q attr) attribute. */
+		($upper CLASS_ID)_($upper attr)__UNKNOWN_ = ($upper CLASS_ID)_($upper attr)__COUNT_
 	};
+
 [ )
 
-($if CLASS_STOP_COMMANDS ]
+($CLASS_ATTR_ID_FLAGS \attr.]
 	/**
-	 *  \brief Common identifiers of ($_CLASS) stop commands.
+	 *  \brief Common identifiers of ($_CLASS) ($q attr) attribute.
 	 */
 	enum {
-		($upper CLASS_ID)_STOP_COMMAND__NULL_ = 0,
+		($upper CLASS_ID)_($upper attr)__NONE_ = 0,
 
-		($CLASS_STOP_COMMANDS \i.]
-			($upper CLASS_ID)_($upper ($_VALUE_TO_ID i)),
+		($($range ($len ($$'CLASS_($0)S' ($upper attr)))) \i.]
+			($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i ($$'CLASS_($0)S' ($upper attr))))) = ($hex ($lshift 1 i)),
 
 		[ )
 	};
-[ )
 
-($if CLASS_STATES ]
-	/**
-	 *  \brief Common identifiers of ($_CLASS) states.
-	 */
-	enum {
-		($upper CLASS_ID)_STATE__NONE_ = 0,
-
-		($($range ($len CLASS_STATES)) \i.]
-			($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i CLASS_STATES))) = ($hex ($lshift 1 i)),
-
-		[ )
-	};
 [ )
 
 ($each-CLASS_ATTR \i.]
@@ -224,7 +215,7 @@ enum {
  */
 ($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from );
 
-($CLASS_ATTR_INDEX \attr.]
+($CLASS_TYPE_ATTR_ID_INDEX \attr.]
 
 	/**
 	 *  \brief Get name of the specified ($_CLASS) ($attr).
@@ -261,7 +252,43 @@ enum {
 
 [ )
 
-($CLASS_ATTR_FLAGS \attr.]
+($CLASS_ATTR_ID_INDEX \attr.]
+
+	/**
+	 *  \brief Get name of the specified ($_CLASS) ($attr).
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Requested value.
+	 */
+	($h-extern) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
+
+	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
+		/**
+		 *  \brief Read ($q attr) attribute of the ($_CLASS) and get the index.
+		 *  \param sn Sequence number.
+		 *  \return Requested value.
+		 */
+		($h-extern) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn );
+
+	[ )
+	/**
+	 *  \brief Write ($q attr) attribute of the ($_CLASS) by the index.
+	 *  \param sn Sequence number.
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Count of written bytes.
+	 */
+	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
+
+	/**
+	 *  \brief Write ($q attr) attribute of several ($_CLASS)s by the index.
+	 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+	 *  \param ($attr)_inx Index of the ($_CLASS) ($attr).
+	 *  \return Count of written bytes.
+	 */
+	($h-extern) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
+
+[ )
+
+($CLASS_ATTR_ID_FLAGS \attr.]
 
 	/**
 	 *  \brief Read ($q attr) attribute of the ($_CLASS) and get the flags.

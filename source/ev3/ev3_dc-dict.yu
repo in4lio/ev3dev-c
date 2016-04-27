@@ -9,16 +9,21 @@
 ($set CLASS_ID [dc])
 ($set CLASS_TITLE "DC motor")
 
-($set TYPE_COMMANDS ( "run-forever" "run-timed" "run-direct" "stop" ))
-($set TYPE_STOP_COMMANDS ( "coast" "brake" ))
-($set TYPE_STATES ( "running" "ramping" ))
+($set CLASS_COMMANDS ( "run-forever" "run-timed" "run-direct" "stop" ))
+($set CLASS_POLARITYS ( "normal" "inversed" ))   ($! it couldn't be called POLARITIES )
+($set CLASS_STATES ( "running" "ramping" ))
+($set CLASS_STOP_COMMANDS ( "coast" "brake" ))
 
 ($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME  CLASS_TYPE_COMMANDS  CLASS_TYPE_STOP_COMMANDS  )
+	(` CLASS_TYPE_NAME  )
 	(`
-	(  "rcx-motor"      TYPE_COMMANDS        TYPE_STOP_COMMANDS        )
+	(  "rcx-motor"      )
 	)
 )
+($set CLASS_TYPE_ID_SHORT ())
+($set CLASS_TYPE_ATTR_INDEX ())
+($set CLASS_ATTR_INDEX ( "command" "polarity" "stop_command" ))
+($set CLASS_ATTR_FLAGS ( "state" ))
 
 ($set R  0)
 ($set RW 1)

@@ -20,6 +20,9 @@
 	(  "wedo-port"            wedo                 ( "auto" ) )
 	)
 )
+($set CLASS_TYPE_ATTR_INDEX ( "mode" ))
+($set CLASS_ATTR_INDEX ())
+($set CLASS_ATTR_FLAGS ())
 
 ($set R  0)
 ($set RW 1)
