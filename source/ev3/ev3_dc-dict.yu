@@ -12,7 +12,7 @@
 ($set CLASS_COMMANDS ( "run-forever" "run-timed" "run-direct" "stop" ))
 ($set CLASS_POLARITYS ( "normal" "inversed" ))   ($! it couldn't be called POLARITIES )
 ($set CLASS_STATES ( "running" "ramping" ))
-($set CLASS_STOP_COMMANDS ( "coast" "brake" ))
+($set CLASS_STOP_ACTIONS ( "coast" "brake" ))
 
 ($dict CLASS_TYPE
 	(` CLASS_TYPE_NAME  )
@@ -22,7 +22,7 @@
 )
 ($set CLASS_TYPE_ID_SHORT ())
 ($set CLASS_TYPE_ATTR_INDEX ())
-($set CLASS_ATTR_INDEX ( "command" "polarity" "stop_command" ))
+($set CLASS_ATTR_INDEX ( "command" "polarity" "stop_action" ))
 ($set CLASS_ATTR_FLAGS ( "state" ))
 
 ($set R  0)
@@ -40,8 +40,8 @@
 	(  "duty_cycle_sp"         int              0                 RW                )
 	(  "polarity"              char             1                 RW                )
 	(  "state"                 char             1                 R                 )
-	(  "stop_command"          char             1                 W                 )
-	(  "stop_commands"         char             1                 R                 )
+	(  "stop_action"           char             1                 W                 )
+	(  "stop_actions"          char             1                 R                 )
 	(  "ramp_down_sp"          int              0                 RW                )
 	(  "ramp_up_sp"            int              0                 RW                )
 	(  "time_sp"               int              0                 RW                )

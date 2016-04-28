@@ -29,8 +29,8 @@
 #define PATH_DUTY_CYCLE_SP  "/sys/class/dc-motor/motor" DESC_SPOT "duty_cycle_sp"
 #define PATH_POLARITY  "/sys/class/dc-motor/motor" DESC_SPOT "polarity"
 #define PATH_STATE  "/sys/class/dc-motor/motor" DESC_SPOT "state"
-#define PATH_STOP_COMMAND  "/sys/class/dc-motor/motor" DESC_SPOT "stop_command"
-#define PATH_STOP_COMMANDS  "/sys/class/dc-motor/motor" DESC_SPOT "stop_commands"
+#define PATH_STOP_ACTION  "/sys/class/dc-motor/motor" DESC_SPOT "stop_action"
+#define PATH_STOP_ACTIONS  "/sys/class/dc-motor/motor" DESC_SPOT "stop_actions"
 #define PATH_RAMP_DOWN_SP  "/sys/class/dc-motor/motor" DESC_SPOT "ramp_down_sp"
 #define PATH_RAMP_UP_SP  "/sys/class/dc-motor/motor" DESC_SPOT "ramp_up_sp"
 #define PATH_TIME_SP  "/sys/class/dc-motor/motor" DESC_SPOT "time_sp"
@@ -136,24 +136,24 @@ size_t get_dc_state( uint8_t sn, char *buf, size_t sz )
 	return ev3_read_char_array( s, buf, sz );
 }
 
-size_t set_dc_stop_command( uint8_t sn, char *value )
+size_t set_dc_stop_action( uint8_t sn, char *value )
 {
-	char s[] = PATH_STOP_COMMAND;
+	char s[] = PATH_STOP_ACTION;
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_write_char_array( s, value );
 }
 
-size_t multi_set_dc_stop_command( uint8_t *sn, char *value )
+size_t multi_set_dc_stop_action( uint8_t *sn, char *value )
 {
-	char s[] = PATH_STOP_COMMAND;
+	char s[] = PATH_STOP_ACTION;
 
 	return ev3_multi_write_char_array( sn, PATH_PREF_LEN, s, value );
 }
 
-size_t get_dc_stop_commands( uint8_t sn, char *buf, size_t sz )
+size_t get_dc_stop_actions( uint8_t sn, char *buf, size_t sz )
 {
-	char s[] = PATH_STOP_COMMANDS;
+	char s[] = PATH_STOP_ACTIONS;
 	*modp_uitoa10( sn, s + PATH_PREF_LEN ) = '/';
 
 	return ev3_read_char_array( s, buf, sz );
@@ -387,9 +387,9 @@ size_t multi_set_dc_polarity_inx( uint8_t *sn, INX_T polarity_inx )
 	return multi_set_dc_polarity( sn, ( char* ) ev3_dc_polarity( polarity_inx ));
 }
 
-const char *ev3_dc_stop_command( INX_T stop_command_inx )
+const char *ev3_dc_stop_action( INX_T stop_action_inx )
 {
-	switch ( stop_command_inx ) {
+	switch ( stop_action_inx ) {
 	case DC_COAST:
 		return "coast";
 	case DC_BRAKE:
@@ -399,14 +399,14 @@ const char *ev3_dc_stop_command( INX_T stop_command_inx )
 	return ( STR_unknown_ );
 }
 
-size_t set_dc_stop_command_inx( uint8_t sn, INX_T stop_command_inx )
+size_t set_dc_stop_action_inx( uint8_t sn, INX_T stop_action_inx )
 {
-	return set_dc_stop_command( sn, ( char* ) ev3_dc_stop_command( stop_command_inx ));
+	return set_dc_stop_action( sn, ( char* ) ev3_dc_stop_action( stop_action_inx ));
 }
 
-size_t multi_set_dc_stop_command_inx( uint8_t *sn, INX_T stop_command_inx )
+size_t multi_set_dc_stop_action_inx( uint8_t *sn, INX_T stop_action_inx )
 {
-	return multi_set_dc_stop_command( sn, ( char* ) ev3_dc_stop_command( stop_command_inx ));
+	return multi_set_dc_stop_action( sn, ( char* ) ev3_dc_stop_action( stop_action_inx ));
 }
 
 size_t get_dc_state_flags( uint8_t sn, FLAGS_T *flags )
