@@ -30,27 +30,29 @@
 #define OUTD       0x08
 #define OUT_COUNT  4
 
-extern bool tacho_is_plugged( uint8_t pool );
-extern bool tacho_is_running( uint8_t pool );
-extern bool tacho_command( uint8_t pool, int command );
-extern bool tacho_reset( uint8_t pool );
-extern bool tacho_run_forever( uint8_t pool );
-extern bool tacho_run_to_rel_pos( uint8_t pool );
-extern bool tacho_run_timed( uint8_t pool );
-extern bool tacho_stop( uint8_t pool );
-extern bool tacho_set_duty_cycle( uint8_t pool, int rate );
-extern bool tacho_set_position( uint8_t pool, int pos );
-extern bool tacho_set_time( uint8_t pool, int ms );
+extern bool     tacho_is_plugged      ( uint8_t pool );
+extern bool     tacho_is_running      ( uint8_t pool );
+extern bool     tacho_command         ( uint8_t pool, int command );
+extern bool     tacho_reset           ( uint8_t pool );
+extern bool     tacho_run_forever     ( uint8_t pool );
+extern bool     tacho_run_to_rel_pos  ( uint8_t pool );
+extern bool     tacho_run_timed       ( uint8_t pool );
+extern bool     tacho_stop            ( uint8_t pool );
+extern int      tacho_get_max_speed   ( uint8_t out );
+extern bool     tacho_set_speed       ( uint8_t pool, int speed );
+extern bool     tacho_set_duty_cycle  ( uint8_t pool, int rate );
+extern bool     tacho_set_position    ( uint8_t pool, int pos );
+extern bool     tacho_set_time        ( uint8_t pool, int ms );
 
-extern bool sensor_is_plugged( uint8_t pool );
-extern uint8_t sensor_search( INX_T type_inx );
-extern int sensor_get_value( uint8_t in, uint8_t inx );
-extern bool sensor_set_mode( uint8_t pool, int mode );
-extern bool ir_set_mode_remote( uint8_t pool );
-extern bool ir_set_mode_prox( uint8_t pool );
+extern uint8_t  sensor_search         ( INX_T type_inx );
+extern bool     sensor_is_plugged     ( uint8_t pool );
+extern int      sensor_get_value      ( uint8_t in, uint8_t inx );
+extern bool     sensor_set_mode       ( uint8_t pool, int mode );
+extern bool     ir_set_mode_remote    ( uint8_t pool );
+extern bool     ir_set_mode_prox      ( uint8_t pool );
 
-extern bool brick_init( void );
-extern void brick_uninit( void );
-extern int brick_keys( void );
+extern bool     brick_init            ( void );
+extern void     brick_uninit          ( void );
+extern int      brick_keys            ( void );
 
-extern void sleep_ms( uint32_t ms );
+extern void     sleep_ms              ( uint32_t ms );

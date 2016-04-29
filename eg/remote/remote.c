@@ -13,8 +13,10 @@
 #include <stdio.h>
 #include <ev3_pool.h>
 
-#define RATE_LINEAR    75  /* Motor duty cycle for linear motion */
-#define RATE_CIRCULAR  50  /* ... for circular motion */
+#define SPEED_LINEAR    75  /* Motor speed for linear motion, in percents */
+#define SPEED_CIRCULAR  50  /* ... for circular motion */
+
+int max_speed;         /* Motor maximal speed */
 
 #define MOTOR_LEFT     OUTC
 #define MOTOR_RIGHT    OUTB
@@ -40,6 +42,7 @@ int alive;             /* Program is alive */
 int init( void )
 {
 	if ( tacho_is_plugged( MOTOR_BOTH )) {
+		max_speed = tacho_get_max_speed( MOTOR_LEFT );
 		tacho_reset( MOTOR_BOTH );
 	} else {
 		printf( "Please, plug LEFT motor in C port,\n"
@@ -60,7 +63,9 @@ int init( void )
 		"RED DOWN | BLUE UP   - right\n"
 		);
 	} else {
-		printf( "IR sensor is NOT found.\n" );
+		printf( "IR sensor is NOT found,\n"
+		"use the EV3 brick buttons.\n"
+		);
 	}
 	printf( "Press BACK on the EV3 brick for EXIT...\n" );
 
@@ -177,7 +182,12 @@ CORO_DEFINE( handle_brick_control )
 /* Coroutine of control the motors */
 CORO_DEFINE( drive )
 {
+	CORO_LOCAL int speed_linear, speed_circular;
+
 	CORO_BEGIN();
+	speed_linear = max_speed * SPEED_LINEAR / 100;
+	speed_circular = max_speed * SPEED_CIRCULAR / 100;
+
 	for ( ; ; ) {
 		/* Waiting new command */
 		CORO_WAIT( state != command, );
@@ -191,24 +201,24 @@ CORO_DEFINE( drive )
 			break;
 
 		case FORTH:
-			tacho_set_duty_cycle( MOTOR_BOTH, -RATE_LINEAR );
+			tacho_set_speed( MOTOR_BOTH, -speed_linear );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case BACK:
-			tacho_set_duty_cycle( MOTOR_BOTH, RATE_LINEAR );
+			tacho_set_speed( MOTOR_BOTH, speed_linear );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case LEFT:
-			tacho_set_duty_cycle( MOTOR_LEFT, RATE_CIRCULAR );
-			tacho_set_duty_cycle( MOTOR_RIGHT, -RATE_CIRCULAR );
+			tacho_set_speed( MOTOR_LEFT, speed_circular );
+			tacho_set_speed( MOTOR_RIGHT, -speed_circular );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case RIGHT:
-			tacho_set_duty_cycle( MOTOR_LEFT, -RATE_CIRCULAR );
-			tacho_set_duty_cycle( MOTOR_RIGHT, RATE_CIRCULAR );
+			tacho_set_speed( MOTOR_LEFT, -speed_circular );
+			tacho_set_speed( MOTOR_RIGHT, speed_circular );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 		}

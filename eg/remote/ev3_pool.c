@@ -192,6 +192,29 @@ bool tacho_stop( uint8_t pool )
 	return ( tacho_command( pool, TACHO_STOP ));
 }
 
+int tacho_get_max_speed( uint8_t out )
+{
+	uint8_t sn;
+	int val = 0;  /* default result */
+
+	if ( out == 0 ) return ( val );
+
+	if ( ev3_search_tacho_plugged_in( out_to_output( out ), EXT_PORT__NONE_, &sn, 0 )) {
+		get_tacho_max_speed( sn, &val );
+	}
+	return ( val );
+}
+
+bool tacho_set_speed( uint8_t pool, int speed )
+{
+	uint8_t sn[ DESC_VEC_LEN ];
+
+	if ( tacho_pool_to_desc( pool, sn )) {
+		return ( multi_set_tacho_speed_sp( sn, speed ));
+	}
+	return ( false );
+}
+
 bool tacho_set_duty_cycle( uint8_t pool, int rate )
 {
 	uint8_t sn[ DESC_VEC_LEN ];

@@ -62,7 +62,7 @@ int main( void )
 		printf( "DC motor is found, run for 5 sec...\n" );
 		set_dc_ramp_up_sp( sn, 2000 );
 		set_dc_duty_cycle_sp( sn, 100 );
-		set_dc_stop_command_inx( sn, DC_COAST );
+		set_dc_stop_action_inx( sn, DC_COAST );
 		set_dc_command_inx( sn, DC_RUN_FOREVER );
 		if ( get_dc_state( sn, s, sizeof( s ))) {
 			printf( "state: %s\n", s );

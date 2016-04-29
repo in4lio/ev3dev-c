@@ -62,9 +62,13 @@ int main( void )
 		}
 	}
 	if ( ev3_search_tacho( LEGO_EV3_M_MOTOR, &sn, 0 )) {
+		int max_speed;
+
 		printf( "LEGO_EV3_M_MOTOR is found, run for 5 sec...\n" );
-		set_tacho_stop_command_inx( sn, TACHO_COAST );
-		set_tacho_duty_cycle_sp( sn, 100 );
+		get_tacho_max_speed( sn, &max_speed );
+		printf("  max_speed = %d\n", max_speed );
+		set_tacho_stop_action_inx( sn, TACHO_COAST );
+		set_tacho_speed_sp( sn, max_speed * 2 / 3 );
 		set_tacho_time_sp( sn, 5000 );
 		set_tacho_ramp_up_sp( sn, 2000 );
 		set_tacho_ramp_down_sp( sn, 2000 );
@@ -75,7 +79,7 @@ int main( void )
 			get_tacho_state_flags( sn, &state );
 		} while ( state );
 		printf( "run to relative position...\n" );
-		set_tacho_duty_cycle_sp( sn, 50 );
+		set_tacho_speed_sp( sn, max_speed / 2 );
 		set_tacho_ramp_up_sp( sn, 0 );
 		set_tacho_ramp_down_sp( sn, 0 );
 		set_tacho_position_sp( sn, 90 );

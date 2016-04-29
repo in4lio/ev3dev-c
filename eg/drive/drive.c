@@ -37,8 +37,10 @@
 #define R_MOTOR_EXT_PORT  EXT_PORT__NONE_
 #define IR_CHANNEL        0
 
-#define RATE_LINEAR       75  /* Motor duty cycle for linear motion */
-#define RATE_CIRCULAR     50  /* ... for circular motion */
+#define SPEED_LINEAR      75  /* Motor speed for linear motion, in percents */
+#define SPEED_CIRCULAR    50  /* ... for circular motion */
+
+int max_speed;  /* Motor maximal speed */
 
 #define DEGREE_TO_COUNT( d )  (( d ) * 260 / 90 )
 
@@ -82,26 +84,26 @@ static void _set_mode( int value )
 	}
 }
 
-static void _run_forever( int l_rate, int r_rate )
+static void _run_forever( int l_speed, int r_speed )
 {
-	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
-	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	set_tacho_speed_sp( motor[ L ], l_speed );
+	set_tacho_speed_sp( motor[ R ], r_speed );
 	multi_set_tacho_command_inx( motor, TACHO_RUN_FOREVER );
 }
 
-static void _run_to_rel_pos( int l_rate, int l_pos, int r_rate, int r_pos )
+static void _run_to_rel_pos( int l_speed, int l_pos, int r_speed, int r_pos )
 {
-	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
-	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	set_tacho_speed_sp( motor[ L ], l_speed );
+	set_tacho_speed_sp( motor[ R ], r_speed );
 	set_tacho_position_sp( motor[ L ], l_pos );
 	set_tacho_position_sp( motor[ R ], r_pos );
 	multi_set_tacho_command_inx( motor, TACHO_RUN_TO_REL_POS );
 }
 
-static void _run_timed( int l_rate, int r_rate, int ms )
+static void _run_timed( int l_speed, int r_speed, int ms )
 {
-	set_tacho_duty_cycle_sp( motor[ L ], l_rate );
-	set_tacho_duty_cycle_sp( motor[ R ], r_rate );
+	set_tacho_speed_sp( motor[ L ], l_speed );
+	set_tacho_speed_sp( motor[ R ], r_speed );
 	multi_set_tacho_time_sp( motor, ms );
 	multi_set_tacho_command_inx( motor, TACHO_RUN_TIMED );
 }
@@ -128,6 +130,7 @@ int app_init( void )
 	char s[ 16 ];
 
 	if ( ev3_search_tacho_plugged_in( L_MOTOR_PORT, L_MOTOR_EXT_PORT, motor + L, 0 )) {
+		get_tacho_max_speed( motor[ L ], &max_speed );
 		/* Reset the motor */
 		set_tacho_command_inx( motor[ L ], TACHO_RESET );
 	} else {
@@ -319,9 +322,13 @@ CORO_DEFINE( handle_ir_proximity )
 /* Coroutine of control the motors */
 CORO_DEFINE( drive )
 {
+	CORO_LOCAL int speed_linear, speed_circular;
 	CORO_LOCAL int _wait_stopped;
 
 	CORO_BEGIN();
+	speed_linear = max_speed * SPEED_LINEAR / 100;
+	speed_circular = max_speed * SPEED_CIRCULAR / 100;
+
 	for ( ; ; ) {
 		/* Waiting new command */
 		CORO_WAIT( moving != command, );
@@ -335,29 +342,29 @@ CORO_DEFINE( drive )
 			break;
 
 		case MOVE_FORWARD:
-			_run_forever( -RATE_LINEAR, -RATE_LINEAR );
+			_run_forever( -speed_linear, -speed_linear );
 			break;
 
 		case MOVE_BACKWARD:
-			_run_forever( RATE_LINEAR, RATE_LINEAR );
+			_run_forever( speed_linear, speed_linear );
 			break;
 
 		case TURN_LEFT:
-			_run_forever( RATE_CIRCULAR, -RATE_CIRCULAR );
+			_run_forever( speed_circular, -speed_circular );
 			break;
 
 		case TURN_RIGHT:
-			_run_forever( -RATE_CIRCULAR, RATE_CIRCULAR );
+			_run_forever( -speed_circular, speed_circular );
 			break;
 
 		case TURN_ANGLE:
-			_run_to_rel_pos( RATE_CIRCULAR, DEGREE_TO_COUNT( -angle )
-			, RATE_CIRCULAR, DEGREE_TO_COUNT( angle ));
+			_run_to_rel_pos( speed_circular, DEGREE_TO_COUNT( -angle )
+			, speed_circular, DEGREE_TO_COUNT( angle ));
 			_wait_stopped = 1;
 			break;
 
 		case STEP_BACKWARD:
-			_run_timed( RATE_LINEAR, RATE_LINEAR, 1000 );
+			_run_timed( speed_linear, speed_linear, 1000 );
 			_wait_stopped = 1;
 			break;
 		}
