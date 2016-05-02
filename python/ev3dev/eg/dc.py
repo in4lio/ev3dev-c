@@ -35,7 +35,7 @@ if __name__ == '__main__':
         print 'DC motor is found, run for 5 sec...'
         set_dc_ramp_up_sp( sn, 2000 )
         set_dc_duty_cycle_sp( sn, 100 )
-        set_dc_stop_command_inx( sn, DC_COAST )
+        set_dc_stop_action_inx( sn, DC_COAST )
         set_dc_command_inx( sn, DC_RUN_FOREVER )
         ok, state = get_dc_state( sn, 256 )
         if ok:

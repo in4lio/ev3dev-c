@@ -393,7 +393,7 @@ enum {
 };
 
 /**
- *  \brief Identifiers of EV3 port modes.
+ *  \brief Identifiers of EV3 port "mode" attribute.
  */
 enum {
 	PORT_MODE__NONE_ = 0,
@@ -423,7 +423,7 @@ enum {
 
 	WEDO_PORT_AUTO, WEDO_AUTO = WEDO_PORT_AUTO,
 
-	PORT_MODE__COUNT_,  /**< Count of EV3 port modes. */
+	PORT_MODE__COUNT_,  /**< Count of EV3 port "mode" attribute. */
 	PORT_MODE__UNKNOWN_ = PORT_MODE__COUNT_
 };
 
@@ -772,7 +772,7 @@ enum {
 };
 
 /**
- *  \brief Identifiers of sensor modes.
+ *  \brief Identifiers of sensor "mode" attribute.
  */
 enum {
 	SENSOR_MODE__NONE_ = 0,
@@ -957,12 +957,12 @@ enum {
 
 	MS_NXT_TOUCH_MUX_TOUCH_MUX, 
 
-	SENSOR_MODE__COUNT_,  /**< Count of sensor modes. */
+	SENSOR_MODE__COUNT_,  /**< Count of sensor "mode" attribute. */
 	SENSOR_MODE__UNKNOWN_ = SENSOR_MODE__COUNT_
 };
 
 /**
- *  \brief Identifiers of sensor commands.
+ *  \brief Identifiers of sensor "command" attribute.
  */
 enum {
 	SENSOR_COMMAND__NONE_ = 0,
@@ -1021,7 +1021,7 @@ enum {
 	MS_PIXY_ADAPTER_SORT_SIZE, 
 	MS_PIXY_ADAPTER_SORT_COL, 
 
-	SENSOR_COMMAND__COUNT_,  /**< Count of sensor commands. */
+	SENSOR_COMMAND__COUNT_,  /**< Count of sensor "command" attribute. */
 	SENSOR_COMMAND__UNKNOWN_ = SENSOR_COMMAND__COUNT_
 };
 
@@ -1522,66 +1522,10 @@ enum {
 };
 
 /**
- *  \brief Identifiers of tacho commands.
+ *  \brief Common identifiers of tacho "command" attribute.
  */
 enum {
 	TACHO_COMMAND__NONE_ = 0,
-
-	LEGO_EV3_L_MOTOR_RUN_FOREVER, 
-	LEGO_EV3_L_MOTOR_RUN_TO_ABS_POS, 
-	LEGO_EV3_L_MOTOR_RUN_TO_REL_POS, 
-	LEGO_EV3_L_MOTOR_RUN_TIMED, 
-	LEGO_EV3_L_MOTOR_RUN_DIRECT, 
-	LEGO_EV3_L_MOTOR_STOP, 
-	LEGO_EV3_L_MOTOR_RESET, 
-
-	LEGO_EV3_M_MOTOR_RUN_FOREVER, 
-	LEGO_EV3_M_MOTOR_RUN_TO_ABS_POS, 
-	LEGO_EV3_M_MOTOR_RUN_TO_REL_POS, 
-	LEGO_EV3_M_MOTOR_RUN_TIMED, 
-	LEGO_EV3_M_MOTOR_RUN_DIRECT, 
-	LEGO_EV3_M_MOTOR_STOP, 
-	LEGO_EV3_M_MOTOR_RESET, 
-
-	FI_L12_EV3_RUN_FOREVER, 
-	FI_L12_EV3_RUN_TO_ABS_POS, 
-	FI_L12_EV3_RUN_TO_REL_POS, 
-	FI_L12_EV3_RUN_TIMED, 
-	FI_L12_EV3_RUN_DIRECT, 
-	FI_L12_EV3_STOP, 
-	FI_L12_EV3_RESET, 
-
-	TACHO_COMMAND__COUNT_,  /**< Count of tacho commands. */
-	TACHO_COMMAND__UNKNOWN_ = TACHO_COMMAND__COUNT_
-};
-
-/**
- *  \brief Identifiers of tacho stop_commands.
- */
-enum {
-	TACHO_STOP_COMMAND__NONE_ = 0,
-
-	LEGO_EV3_L_MOTOR_COAST, 
-	LEGO_EV3_L_MOTOR_BRAKE, 
-	LEGO_EV3_L_MOTOR_HOLD, 
-
-	LEGO_EV3_M_MOTOR_COAST, 
-	LEGO_EV3_M_MOTOR_BRAKE, 
-	LEGO_EV3_M_MOTOR_HOLD, 
-
-	FI_L12_EV3_COAST, 
-	FI_L12_EV3_BRAKE, 
-	FI_L12_EV3_HOLD, 
-
-	TACHO_STOP_COMMAND__COUNT_,  /**< Count of tacho stop_commands. */
-	TACHO_STOP_COMMAND__UNKNOWN_ = TACHO_STOP_COMMAND__COUNT_
-};
-
-/**
- *  \brief Common identifiers of tacho commands.
- */
-enum {
-	TACHO_COMMAND__NULL_ = 0,
 
 	TACHO_RUN_FOREVER,
 	TACHO_RUN_TO_ABS_POS,
@@ -1591,22 +1535,39 @@ enum {
 	TACHO_STOP,
 	TACHO_RESET,
 
+	TACHO_COMMAND__COUNT_,  /**< Count of tacho "command" attribute. */
+	TACHO_COMMAND__UNKNOWN_ = TACHO_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of tacho stop commands.
+ *  \brief Common identifiers of tacho "polarity" attribute.
  */
 enum {
-	TACHO_STOP_COMMAND__NULL_ = 0,
+	TACHO_POLARITY__NONE_ = 0,
+
+	TACHO_NORMAL,
+	TACHO_INVERSED,
+
+	TACHO_POLARITY__COUNT_,  /**< Count of tacho "polarity" attribute. */
+	TACHO_POLARITY__UNKNOWN_ = TACHO_POLARITY__COUNT_
+};
+
+/**
+ *  \brief Common identifiers of tacho "stop_action" attribute.
+ */
+enum {
+	TACHO_STOP_ACTION__NONE_ = 0,
 
 	TACHO_COAST,
 	TACHO_BRAKE,
 	TACHO_HOLD,
 
+	TACHO_STOP_ACTION__COUNT_,  /**< Count of tacho "stop_action" attribute. */
+	TACHO_STOP_ACTION__UNKNOWN_ = TACHO_STOP_ACTION__COUNT_
 };
 
 /**
- *  \brief Common identifiers of tacho states.
+ *  \brief Common identifiers of tacho "state" attribute.
  */
 enum {
 	TACHO_STATE__NONE_ = 0,
@@ -1614,7 +1575,8 @@ enum {
 	TACHO_RUNNING = 0x1L,
 	TACHO_RAMPING = 0x2L,
 	TACHO_HOLDING = 0x4L,
-	TACHO_STALLED = 0x8L,
+	TACHO_OVERLOADED = 0x8L,
+	TACHO_STALLED = 0x10L,
 
 };
 
@@ -1664,6 +1626,24 @@ extern size_t get_tacho_commands( uint8_t sn, char *buf, size_t sz );
 extern size_t get_tacho_count_per_rot( uint8_t sn, int *buf );
 
 /**
+ *  \brief Read "count_per_m" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+		 
+ *  \return Count of read bytes.
+ */
+extern size_t get_tacho_count_per_m( uint8_t sn, int *buf );
+
+/**
+ *  \brief Read "full_travel_count" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+		 
+ *  \return Count of read bytes.
+ */
+extern size_t get_tacho_full_travel_count( uint8_t sn, int *buf );
+
+/**
  *  \brief Read "driver_name" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -1707,33 +1687,6 @@ extern size_t set_tacho_duty_cycle_sp( uint8_t sn, int value );
  *  \return Count of written bytes.
  */
 extern size_t multi_set_tacho_duty_cycle_sp( uint8_t *sn, int value );
-
-/**
- *  \brief Read "encoder_polarity" attribute of the tacho.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-extern size_t get_tacho_encoder_polarity( uint8_t sn, char *buf, size_t sz );
-
-/**
- *  \brief Write "encoder_polarity" attribute of the tacho.
- *  \param sn Sequence number.
- *  \param value Attribute value.
-		 
- *  \return Count of written bytes.
- */
-extern size_t set_tacho_encoder_polarity( uint8_t sn, char *value );
-
-/**
- *  \brief Write "encoder_polarity" attribute of several tachos.
- *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
- *  \param value Attribute value.
-		 
- *  \return Count of written bytes.
- */
-extern size_t multi_set_tacho_encoder_polarity( uint8_t *sn, char *value );
 
 /**
  *  \brief Read "hold_pid/Kd" attribute of the tacho.
@@ -1815,6 +1768,15 @@ extern size_t set_tacho_hold_pid_Kp( uint8_t sn, int value );
  *  \return Count of written bytes.
  */
 extern size_t multi_set_tacho_hold_pid_Kp( uint8_t *sn, int value );
+
+/**
+ *  \brief Read "max_speed" attribute of the tacho.
+ *  \param sn Sequence number.
+ *  \param[out] buf Buffer for result.
+		 
+ *  \return Count of read bytes.
+ */
+extern size_t get_tacho_max_speed( uint8_t sn, int *buf );
 
 /**
  *  \brief Read "polarity" attribute of the tacho.
@@ -2042,33 +2004,6 @@ extern size_t set_tacho_speed_pid_Kp( uint8_t sn, int value );
 extern size_t multi_set_tacho_speed_pid_Kp( uint8_t *sn, int value );
 
 /**
- *  \brief Read "speed_regulation" attribute of the tacho.
- *  \param sn Sequence number.
- *  \param[out] buf Buffer for result.
- *  \param sz Buffer size.
- *  \return Count of read bytes.
- */
-extern size_t get_tacho_speed_regulation( uint8_t sn, char *buf, size_t sz );
-
-/**
- *  \brief Write "speed_regulation" attribute of the tacho.
- *  \param sn Sequence number.
- *  \param value Attribute value.
-		 
- *  \return Count of written bytes.
- */
-extern size_t set_tacho_speed_regulation( uint8_t sn, char *value );
-
-/**
- *  \brief Write "speed_regulation" attribute of several tachos.
- *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
- *  \param value Attribute value.
-		 
- *  \return Count of written bytes.
- */
-extern size_t multi_set_tacho_speed_regulation( uint8_t *sn, char *value );
-
-/**
  *  \brief Read "speed_sp" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -2105,40 +2040,40 @@ extern size_t multi_set_tacho_speed_sp( uint8_t *sn, int value );
 extern size_t get_tacho_state( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Read "stop_command" attribute of the tacho.
+ *  \brief Read "stop_action" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
  *  \return Count of read bytes.
  */
-extern size_t get_tacho_stop_command( uint8_t sn, char *buf, size_t sz );
+extern size_t get_tacho_stop_action( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Write "stop_command" attribute of the tacho.
+ *  \brief Write "stop_action" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
  */
-extern size_t set_tacho_stop_command( uint8_t sn, char *value );
+extern size_t set_tacho_stop_action( uint8_t sn, char *value );
 
 /**
- *  \brief Write "stop_command" attribute of several tachos.
+ *  \brief Write "stop_action" attribute of several tachos.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
  */
-extern size_t multi_set_tacho_stop_command( uint8_t *sn, char *value );
+extern size_t multi_set_tacho_stop_action( uint8_t *sn, char *value );
 
 /**
- *  \brief Read "stop_commands" attribute of the tacho.
+ *  \brief Read "stop_actions" attribute of the tacho.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
  *  \return Count of read bytes.
  */
-extern size_t get_tacho_stop_commands( uint8_t sn, char *buf, size_t sz );
+extern size_t get_tacho_stop_actions( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Read "time_sp" attribute of the tacho.
@@ -2268,35 +2203,64 @@ extern size_t set_tacho_command_inx( uint8_t sn, INX_T command_inx );
 extern size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx );
 
 /**
- *  \brief Get name of the specified tacho stop_command.
- *  \param stop_command_inx Index of the tacho stop_command.
+ *  \brief Get name of the specified tacho polarity.
+ *  \param polarity_inx Index of the tacho polarity.
  *  \return Requested value.
  */
-extern const char *ev3_tacho_stop_command( INX_T stop_command_inx );
+extern const char *ev3_tacho_polarity( INX_T polarity_inx );
 
 /**
- *  \brief Read "stop_command" attribute of the tacho and get the index.
+ *  \brief Read "polarity" attribute of the tacho and get the index.
  *  \param sn Sequence number.
- *  \param type_inx Index of the tacho type.
  *  \return Requested value.
  */
-extern INX_T get_tacho_stop_command_inx( uint8_t sn, INX_T type_inx );
+extern INX_T get_tacho_polarity_inx( uint8_t sn );
 
 /**
- *  \brief Write "stop_command" attribute of the tacho by the index.
+ *  \brief Write "polarity" attribute of the tacho by the index.
  *  \param sn Sequence number.
- *  \param stop_command_inx Index of the tacho stop_command.
+ *  \param polarity_inx Index of the tacho polarity.
  *  \return Count of written bytes.
  */
-extern size_t set_tacho_stop_command_inx( uint8_t sn, INX_T stop_command_inx );
+extern size_t set_tacho_polarity_inx( uint8_t sn, INX_T polarity_inx );
 
 /**
- *  \brief Write "stop_command" attribute of several tachos by the index.
+ *  \brief Write "polarity" attribute of several tachos by the index.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
- *  \param stop_command_inx Index of the tacho stop_command.
+ *  \param polarity_inx Index of the tacho polarity.
  *  \return Count of written bytes.
  */
-extern size_t multi_set_tacho_stop_command_inx( uint8_t *sn, INX_T stop_command_inx );
+extern size_t multi_set_tacho_polarity_inx( uint8_t *sn, INX_T polarity_inx );
+
+/**
+ *  \brief Get name of the specified tacho stop_action.
+ *  \param stop_action_inx Index of the tacho stop_action.
+ *  \return Requested value.
+ */
+extern const char *ev3_tacho_stop_action( INX_T stop_action_inx );
+
+/**
+ *  \brief Read "stop_action" attribute of the tacho and get the index.
+ *  \param sn Sequence number.
+ *  \return Requested value.
+ */
+extern INX_T get_tacho_stop_action_inx( uint8_t sn );
+
+/**
+ *  \brief Write "stop_action" attribute of the tacho by the index.
+ *  \param sn Sequence number.
+ *  \param stop_action_inx Index of the tacho stop_action.
+ *  \return Count of written bytes.
+ */
+extern size_t set_tacho_stop_action_inx( uint8_t sn, INX_T stop_action_inx );
+
+/**
+ *  \brief Write "stop_action" attribute of several tachos by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param stop_action_inx Index of the tacho stop_action.
+ *  \return Count of written bytes.
+ */
+extern size_t multi_set_tacho_stop_action_inx( uint8_t *sn, INX_T stop_action_inx );
 
 /**
  *  \brief Read "state" attribute of the tacho and get the flags.
@@ -2346,59 +2310,48 @@ enum {
 };
 
 /**
- *  \brief Identifiers of DC motor commands.
+ *  \brief Common identifiers of DC motor "command" attribute.
  */
 enum {
 	DC_COMMAND__NONE_ = 0,
-
-	RCX_MOTOR_RUN_FOREVER, 
-	RCX_MOTOR_RUN_TIMED, 
-	RCX_MOTOR_RUN_DIRECT, 
-	RCX_MOTOR_STOP, 
-
-	DC_COMMAND__COUNT_,  /**< Count of DC motor commands. */
-	DC_COMMAND__UNKNOWN_ = DC_COMMAND__COUNT_
-};
-
-/**
- *  \brief Identifiers of DC motor stop_commands.
- */
-enum {
-	DC_STOP_COMMAND__NONE_ = 0,
-
-	RCX_MOTOR_COAST, 
-	RCX_MOTOR_BRAKE, 
-
-	DC_STOP_COMMAND__COUNT_,  /**< Count of DC motor stop_commands. */
-	DC_STOP_COMMAND__UNKNOWN_ = DC_STOP_COMMAND__COUNT_
-};
-
-/**
- *  \brief Common identifiers of DC motor commands.
- */
-enum {
-	DC_COMMAND__NULL_ = 0,
 
 	DC_RUN_FOREVER,
 	DC_RUN_TIMED,
 	DC_RUN_DIRECT,
 	DC_STOP,
 
+	DC_COMMAND__COUNT_,  /**< Count of DC motor "command" attribute. */
+	DC_COMMAND__UNKNOWN_ = DC_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of DC motor stop commands.
+ *  \brief Common identifiers of DC motor "polarity" attribute.
  */
 enum {
-	DC_STOP_COMMAND__NULL_ = 0,
+	DC_POLARITY__NONE_ = 0,
+
+	DC_NORMAL,
+	DC_INVERSED,
+
+	DC_POLARITY__COUNT_,  /**< Count of DC motor "polarity" attribute. */
+	DC_POLARITY__UNKNOWN_ = DC_POLARITY__COUNT_
+};
+
+/**
+ *  \brief Common identifiers of DC motor "stop_action" attribute.
+ */
+enum {
+	DC_STOP_ACTION__NONE_ = 0,
 
 	DC_COAST,
 	DC_BRAKE,
 
+	DC_STOP_ACTION__COUNT_,  /**< Count of DC motor "stop_action" attribute. */
+	DC_STOP_ACTION__UNKNOWN_ = DC_STOP_ACTION__COUNT_
 };
 
 /**
- *  \brief Common identifiers of DC motor states.
+ *  \brief Common identifiers of DC motor "state" attribute.
  */
 enum {
 	DC_STATE__NONE_ = 0,
@@ -2526,31 +2479,31 @@ extern size_t multi_set_dc_polarity( uint8_t *sn, char *value );
 extern size_t get_dc_state( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Write "stop_command" attribute of the DC motor.
+ *  \brief Write "stop_action" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
  */
-extern size_t set_dc_stop_command( uint8_t sn, char *value );
+extern size_t set_dc_stop_action( uint8_t sn, char *value );
 
 /**
- *  \brief Write "stop_command" attribute of several DC motors.
+ *  \brief Write "stop_action" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
  *  \return Count of written bytes.
  */
-extern size_t multi_set_dc_stop_command( uint8_t *sn, char *value );
+extern size_t multi_set_dc_stop_action( uint8_t *sn, char *value );
 
 /**
- *  \brief Read "stop_commands" attribute of the DC motor.
+ *  \brief Read "stop_actions" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
  *  \return Count of read bytes.
  */
-extern size_t get_dc_stop_commands( uint8_t sn, char *buf, size_t sz );
+extern size_t get_dc_stop_actions( uint8_t sn, char *buf, size_t sz );
 
 /**
  *  \brief Read "ramp_down_sp" attribute of the DC motor.
@@ -2734,27 +2687,57 @@ extern size_t set_dc_command_inx( uint8_t sn, INX_T command_inx );
 extern size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx );
 
 /**
- *  \brief Get name of the specified DC motor stop_command.
- *  \param stop_command_inx Index of the DC motor stop_command.
+ *  \brief Get name of the specified DC motor polarity.
+ *  \param polarity_inx Index of the DC motor polarity.
  *  \return Requested value.
  */
-extern const char *ev3_dc_stop_command( INX_T stop_command_inx );
+extern const char *ev3_dc_polarity( INX_T polarity_inx );
 
 /**
- *  \brief Write "stop_command" attribute of the DC motor by the index.
+ *  \brief Read "polarity" attribute of the DC motor and get the index.
  *  \param sn Sequence number.
- *  \param stop_command_inx Index of the DC motor stop_command.
- *  \return Count of written bytes.
+ *  \return Requested value.
  */
-extern size_t set_dc_stop_command_inx( uint8_t sn, INX_T stop_command_inx );
+extern INX_T get_dc_polarity_inx( uint8_t sn );
 
 /**
- *  \brief Write "stop_command" attribute of several DC motors by the index.
- *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
- *  \param stop_command_inx Index of the DC motor stop_command.
+ *  \brief Write "polarity" attribute of the DC motor by the index.
+ *  \param sn Sequence number.
+ *  \param polarity_inx Index of the DC motor polarity.
  *  \return Count of written bytes.
  */
-extern size_t multi_set_dc_stop_command_inx( uint8_t *sn, INX_T stop_command_inx );
+extern size_t set_dc_polarity_inx( uint8_t sn, INX_T polarity_inx );
+
+/**
+ *  \brief Write "polarity" attribute of several DC motors by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param polarity_inx Index of the DC motor polarity.
+ *  \return Count of written bytes.
+ */
+extern size_t multi_set_dc_polarity_inx( uint8_t *sn, INX_T polarity_inx );
+
+/**
+ *  \brief Get name of the specified DC motor stop_action.
+ *  \param stop_action_inx Index of the DC motor stop_action.
+ *  \return Requested value.
+ */
+extern const char *ev3_dc_stop_action( INX_T stop_action_inx );
+
+/**
+ *  \brief Write "stop_action" attribute of the DC motor by the index.
+ *  \param sn Sequence number.
+ *  \param stop_action_inx Index of the DC motor stop_action.
+ *  \return Count of written bytes.
+ */
+extern size_t set_dc_stop_action_inx( uint8_t sn, INX_T stop_action_inx );
+
+/**
+ *  \brief Write "stop_action" attribute of several DC motors by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param stop_action_inx Index of the DC motor stop_action.
+ *  \return Count of written bytes.
+ */
+extern size_t multi_set_dc_stop_action_inx( uint8_t *sn, INX_T stop_action_inx );
 
 /**
  *  \brief Read "state" attribute of the DC motor and get the flags.
@@ -2805,31 +2788,33 @@ enum {
 };
 
 /**
- *  \brief Identifiers of servo motor commands.
+ *  \brief Common identifiers of servo motor "command" attribute.
  */
 enum {
 	SERVO_COMMAND__NONE_ = 0,
 
-	SERVO_MOTOR_RUN, 
-	SERVO_MOTOR_FLOAT, 
+	SERVO_RUN,
+	SERVO_FLOAT,
 
-	SERVO_COMMAND__COUNT_,  /**< Count of servo motor commands. */
+	SERVO_COMMAND__COUNT_,  /**< Count of servo motor "command" attribute. */
 	SERVO_COMMAND__UNKNOWN_ = SERVO_COMMAND__COUNT_
 };
 
 /**
- *  \brief Common identifiers of servo motor commands.
+ *  \brief Common identifiers of servo motor "polarity" attribute.
  */
 enum {
-	SERVO_COMMAND__NULL_ = 0,
+	SERVO_POLARITY__NONE_ = 0,
 
-	SERVO_RUN,
-	SERVO_FLOAT,
+	SERVO_NORMAL,
+	SERVO_INVERSED,
 
+	SERVO_POLARITY__COUNT_,  /**< Count of servo motor "polarity" attribute. */
+	SERVO_POLARITY__UNKNOWN_ = SERVO_POLARITY__COUNT_
 };
 
 /**
- *  \brief Common identifiers of servo motor states.
+ *  \brief Common identifiers of servo motor "state" attribute.
  */
 enum {
 	SERVO_STATE__NONE_ = 0,
@@ -3148,10 +3133,9 @@ extern const char *ev3_servo_command( INX_T command_inx );
 /**
  *  \brief Read "command" attribute of the servo motor and get the index.
  *  \param sn Sequence number.
- *  \param type_inx Index of the servo motor type.
  *  \return Requested value.
  */
-extern INX_T get_servo_command_inx( uint8_t sn, INX_T type_inx );
+extern INX_T get_servo_command_inx( uint8_t sn );
 
 /**
  *  \brief Write "command" attribute of the servo motor by the index.
@@ -3168,6 +3152,36 @@ extern size_t set_servo_command_inx( uint8_t sn, INX_T command_inx );
  *  \return Count of written bytes.
  */
 extern size_t multi_set_servo_command_inx( uint8_t *sn, INX_T command_inx );
+
+/**
+ *  \brief Get name of the specified servo motor polarity.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Requested value.
+ */
+extern const char *ev3_servo_polarity( INX_T polarity_inx );
+
+/**
+ *  \brief Read "polarity" attribute of the servo motor and get the index.
+ *  \param sn Sequence number.
+ *  \return Requested value.
+ */
+extern INX_T get_servo_polarity_inx( uint8_t sn );
+
+/**
+ *  \brief Write "polarity" attribute of the servo motor by the index.
+ *  \param sn Sequence number.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Count of written bytes.
+ */
+extern size_t set_servo_polarity_inx( uint8_t sn, INX_T polarity_inx );
+
+/**
+ *  \brief Write "polarity" attribute of several servo motors by the index.
+ *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
+ *  \param polarity_inx Index of the servo motor polarity.
+ *  \return Count of written bytes.
+ */
+extern size_t multi_set_servo_polarity_inx( uint8_t *sn, INX_T polarity_inx );
 
 /**
  *  \brief Read "state" attribute of the servo motor and get the flags.

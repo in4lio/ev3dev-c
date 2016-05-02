@@ -32,8 +32,8 @@ if __name__ == '__main__':
     if ok:
         print 'LEGO_EV3_M_MOTOR is found, run for 5 sec...'
 
-        set_tacho_stop_command_inx( sn, TACHO_COAST )
-        set_tacho_duty_cycle_sp( sn, 100 )
+        set_tacho_stop_action_inx( sn, TACHO_COAST )
+        set_tacho_speed_sp( sn, 1000 )
         set_tacho_time_sp( sn, 5000 )
         set_tacho_ramp_up_sp( sn, 2000 )
         set_tacho_ramp_down_sp( sn, 2000 )
@@ -45,7 +45,7 @@ if __name__ == '__main__':
             ok, flags = get_tacho_state_flags( sn )
 
         print 'run to relative position...'
-        set_tacho_duty_cycle_sp( sn, 50 )
+        set_tacho_speed_sp( sn, 500 )
         set_tacho_ramp_up_sp( sn, 0 )
         set_tacho_ramp_down_sp( sn, 0 )
         set_tacho_position_sp( sn, 90 )

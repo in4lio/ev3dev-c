@@ -1036,42 +1036,6 @@ FI_L12_EV3 = _ev3.FI_L12_EV3
 TACHO_TYPE__COUNT_ = _ev3.TACHO_TYPE__COUNT_
 TACHO_TYPE__UNKNOWN_ = _ev3.TACHO_TYPE__UNKNOWN_
 TACHO_COMMAND__NONE_ = _ev3.TACHO_COMMAND__NONE_
-LEGO_EV3_L_MOTOR_RUN_FOREVER = _ev3.LEGO_EV3_L_MOTOR_RUN_FOREVER
-LEGO_EV3_L_MOTOR_RUN_TO_ABS_POS = _ev3.LEGO_EV3_L_MOTOR_RUN_TO_ABS_POS
-LEGO_EV3_L_MOTOR_RUN_TO_REL_POS = _ev3.LEGO_EV3_L_MOTOR_RUN_TO_REL_POS
-LEGO_EV3_L_MOTOR_RUN_TIMED = _ev3.LEGO_EV3_L_MOTOR_RUN_TIMED
-LEGO_EV3_L_MOTOR_RUN_DIRECT = _ev3.LEGO_EV3_L_MOTOR_RUN_DIRECT
-LEGO_EV3_L_MOTOR_STOP = _ev3.LEGO_EV3_L_MOTOR_STOP
-LEGO_EV3_L_MOTOR_RESET = _ev3.LEGO_EV3_L_MOTOR_RESET
-LEGO_EV3_M_MOTOR_RUN_FOREVER = _ev3.LEGO_EV3_M_MOTOR_RUN_FOREVER
-LEGO_EV3_M_MOTOR_RUN_TO_ABS_POS = _ev3.LEGO_EV3_M_MOTOR_RUN_TO_ABS_POS
-LEGO_EV3_M_MOTOR_RUN_TO_REL_POS = _ev3.LEGO_EV3_M_MOTOR_RUN_TO_REL_POS
-LEGO_EV3_M_MOTOR_RUN_TIMED = _ev3.LEGO_EV3_M_MOTOR_RUN_TIMED
-LEGO_EV3_M_MOTOR_RUN_DIRECT = _ev3.LEGO_EV3_M_MOTOR_RUN_DIRECT
-LEGO_EV3_M_MOTOR_STOP = _ev3.LEGO_EV3_M_MOTOR_STOP
-LEGO_EV3_M_MOTOR_RESET = _ev3.LEGO_EV3_M_MOTOR_RESET
-FI_L12_EV3_RUN_FOREVER = _ev3.FI_L12_EV3_RUN_FOREVER
-FI_L12_EV3_RUN_TO_ABS_POS = _ev3.FI_L12_EV3_RUN_TO_ABS_POS
-FI_L12_EV3_RUN_TO_REL_POS = _ev3.FI_L12_EV3_RUN_TO_REL_POS
-FI_L12_EV3_RUN_TIMED = _ev3.FI_L12_EV3_RUN_TIMED
-FI_L12_EV3_RUN_DIRECT = _ev3.FI_L12_EV3_RUN_DIRECT
-FI_L12_EV3_STOP = _ev3.FI_L12_EV3_STOP
-FI_L12_EV3_RESET = _ev3.FI_L12_EV3_RESET
-TACHO_COMMAND__COUNT_ = _ev3.TACHO_COMMAND__COUNT_
-TACHO_COMMAND__UNKNOWN_ = _ev3.TACHO_COMMAND__UNKNOWN_
-TACHO_STOP_COMMAND__NONE_ = _ev3.TACHO_STOP_COMMAND__NONE_
-LEGO_EV3_L_MOTOR_COAST = _ev3.LEGO_EV3_L_MOTOR_COAST
-LEGO_EV3_L_MOTOR_BRAKE = _ev3.LEGO_EV3_L_MOTOR_BRAKE
-LEGO_EV3_L_MOTOR_HOLD = _ev3.LEGO_EV3_L_MOTOR_HOLD
-LEGO_EV3_M_MOTOR_COAST = _ev3.LEGO_EV3_M_MOTOR_COAST
-LEGO_EV3_M_MOTOR_BRAKE = _ev3.LEGO_EV3_M_MOTOR_BRAKE
-LEGO_EV3_M_MOTOR_HOLD = _ev3.LEGO_EV3_M_MOTOR_HOLD
-FI_L12_EV3_COAST = _ev3.FI_L12_EV3_COAST
-FI_L12_EV3_BRAKE = _ev3.FI_L12_EV3_BRAKE
-FI_L12_EV3_HOLD = _ev3.FI_L12_EV3_HOLD
-TACHO_STOP_COMMAND__COUNT_ = _ev3.TACHO_STOP_COMMAND__COUNT_
-TACHO_STOP_COMMAND__UNKNOWN_ = _ev3.TACHO_STOP_COMMAND__UNKNOWN_
-TACHO_COMMAND__NULL_ = _ev3.TACHO_COMMAND__NULL_
 TACHO_RUN_FOREVER = _ev3.TACHO_RUN_FOREVER
 TACHO_RUN_TO_ABS_POS = _ev3.TACHO_RUN_TO_ABS_POS
 TACHO_RUN_TO_REL_POS = _ev3.TACHO_RUN_TO_REL_POS
@@ -1079,14 +1043,24 @@ TACHO_RUN_TIMED = _ev3.TACHO_RUN_TIMED
 TACHO_RUN_DIRECT = _ev3.TACHO_RUN_DIRECT
 TACHO_STOP = _ev3.TACHO_STOP
 TACHO_RESET = _ev3.TACHO_RESET
-TACHO_STOP_COMMAND__NULL_ = _ev3.TACHO_STOP_COMMAND__NULL_
+TACHO_COMMAND__COUNT_ = _ev3.TACHO_COMMAND__COUNT_
+TACHO_COMMAND__UNKNOWN_ = _ev3.TACHO_COMMAND__UNKNOWN_
+TACHO_POLARITY__NONE_ = _ev3.TACHO_POLARITY__NONE_
+TACHO_NORMAL = _ev3.TACHO_NORMAL
+TACHO_INVERSED = _ev3.TACHO_INVERSED
+TACHO_POLARITY__COUNT_ = _ev3.TACHO_POLARITY__COUNT_
+TACHO_POLARITY__UNKNOWN_ = _ev3.TACHO_POLARITY__UNKNOWN_
+TACHO_STOP_ACTION__NONE_ = _ev3.TACHO_STOP_ACTION__NONE_
 TACHO_COAST = _ev3.TACHO_COAST
 TACHO_BRAKE = _ev3.TACHO_BRAKE
 TACHO_HOLD = _ev3.TACHO_HOLD
+TACHO_STOP_ACTION__COUNT_ = _ev3.TACHO_STOP_ACTION__COUNT_
+TACHO_STOP_ACTION__UNKNOWN_ = _ev3.TACHO_STOP_ACTION__UNKNOWN_
 TACHO_STATE__NONE_ = _ev3.TACHO_STATE__NONE_
 TACHO_RUNNING = _ev3.TACHO_RUNNING
 TACHO_RAMPING = _ev3.TACHO_RAMPING
 TACHO_HOLDING = _ev3.TACHO_HOLDING
+TACHO_OVERLOADED = _ev3.TACHO_OVERLOADED
 TACHO_STALLED = _ev3.TACHO_STALLED
 
 def get_tacho_address(*args):
@@ -1109,6 +1083,14 @@ def get_tacho_count_per_rot(*args):
   return _ev3.get_tacho_count_per_rot(*args)
 get_tacho_count_per_rot = _ev3.get_tacho_count_per_rot
 
+def get_tacho_count_per_m(*args):
+  return _ev3.get_tacho_count_per_m(*args)
+get_tacho_count_per_m = _ev3.get_tacho_count_per_m
+
+def get_tacho_full_travel_count(*args):
+  return _ev3.get_tacho_full_travel_count(*args)
+get_tacho_full_travel_count = _ev3.get_tacho_full_travel_count
+
 def get_tacho_driver_name(*args):
   return _ev3.get_tacho_driver_name(*args)
 get_tacho_driver_name = _ev3.get_tacho_driver_name
@@ -1128,18 +1110,6 @@ set_tacho_duty_cycle_sp = _ev3.set_tacho_duty_cycle_sp
 def multi_set_tacho_duty_cycle_sp(*args):
   return _ev3.multi_set_tacho_duty_cycle_sp(*args)
 multi_set_tacho_duty_cycle_sp = _ev3.multi_set_tacho_duty_cycle_sp
-
-def get_tacho_encoder_polarity(*args):
-  return _ev3.get_tacho_encoder_polarity(*args)
-get_tacho_encoder_polarity = _ev3.get_tacho_encoder_polarity
-
-def set_tacho_encoder_polarity(*args):
-  return _ev3.set_tacho_encoder_polarity(*args)
-set_tacho_encoder_polarity = _ev3.set_tacho_encoder_polarity
-
-def multi_set_tacho_encoder_polarity(*args):
-  return _ev3.multi_set_tacho_encoder_polarity(*args)
-multi_set_tacho_encoder_polarity = _ev3.multi_set_tacho_encoder_polarity
 
 def get_tacho_hold_pid_Kd(*args):
   return _ev3.get_tacho_hold_pid_Kd(*args)
@@ -1176,6 +1146,10 @@ set_tacho_hold_pid_Kp = _ev3.set_tacho_hold_pid_Kp
 def multi_set_tacho_hold_pid_Kp(*args):
   return _ev3.multi_set_tacho_hold_pid_Kp(*args)
 multi_set_tacho_hold_pid_Kp = _ev3.multi_set_tacho_hold_pid_Kp
+
+def get_tacho_max_speed(*args):
+  return _ev3.get_tacho_max_speed(*args)
+get_tacho_max_speed = _ev3.get_tacho_max_speed
 
 def get_tacho_polarity(*args):
   return _ev3.get_tacho_polarity(*args)
@@ -1277,18 +1251,6 @@ def multi_set_tacho_speed_pid_Kp(*args):
   return _ev3.multi_set_tacho_speed_pid_Kp(*args)
 multi_set_tacho_speed_pid_Kp = _ev3.multi_set_tacho_speed_pid_Kp
 
-def get_tacho_speed_regulation(*args):
-  return _ev3.get_tacho_speed_regulation(*args)
-get_tacho_speed_regulation = _ev3.get_tacho_speed_regulation
-
-def set_tacho_speed_regulation(*args):
-  return _ev3.set_tacho_speed_regulation(*args)
-set_tacho_speed_regulation = _ev3.set_tacho_speed_regulation
-
-def multi_set_tacho_speed_regulation(*args):
-  return _ev3.multi_set_tacho_speed_regulation(*args)
-multi_set_tacho_speed_regulation = _ev3.multi_set_tacho_speed_regulation
-
 def get_tacho_speed_sp(*args):
   return _ev3.get_tacho_speed_sp(*args)
 get_tacho_speed_sp = _ev3.get_tacho_speed_sp
@@ -1305,21 +1267,21 @@ def get_tacho_state(*args):
   return _ev3.get_tacho_state(*args)
 get_tacho_state = _ev3.get_tacho_state
 
-def get_tacho_stop_command(*args):
-  return _ev3.get_tacho_stop_command(*args)
-get_tacho_stop_command = _ev3.get_tacho_stop_command
+def get_tacho_stop_action(*args):
+  return _ev3.get_tacho_stop_action(*args)
+get_tacho_stop_action = _ev3.get_tacho_stop_action
 
-def set_tacho_stop_command(*args):
-  return _ev3.set_tacho_stop_command(*args)
-set_tacho_stop_command = _ev3.set_tacho_stop_command
+def set_tacho_stop_action(*args):
+  return _ev3.set_tacho_stop_action(*args)
+set_tacho_stop_action = _ev3.set_tacho_stop_action
 
-def multi_set_tacho_stop_command(*args):
-  return _ev3.multi_set_tacho_stop_command(*args)
-multi_set_tacho_stop_command = _ev3.multi_set_tacho_stop_command
+def multi_set_tacho_stop_action(*args):
+  return _ev3.multi_set_tacho_stop_action(*args)
+multi_set_tacho_stop_action = _ev3.multi_set_tacho_stop_action
 
-def get_tacho_stop_commands(*args):
-  return _ev3.get_tacho_stop_commands(*args)
-get_tacho_stop_commands = _ev3.get_tacho_stop_commands
+def get_tacho_stop_actions(*args):
+  return _ev3.get_tacho_stop_actions(*args)
+get_tacho_stop_actions = _ev3.get_tacho_stop_actions
 
 def get_tacho_time_sp(*args):
   return _ev3.get_tacho_time_sp(*args)
@@ -1385,21 +1347,37 @@ def multi_set_tacho_command_inx(*args):
   return _ev3.multi_set_tacho_command_inx(*args)
 multi_set_tacho_command_inx = _ev3.multi_set_tacho_command_inx
 
-def ev3_tacho_stop_command(*args):
-  return _ev3.ev3_tacho_stop_command(*args)
-ev3_tacho_stop_command = _ev3.ev3_tacho_stop_command
+def ev3_tacho_polarity(*args):
+  return _ev3.ev3_tacho_polarity(*args)
+ev3_tacho_polarity = _ev3.ev3_tacho_polarity
 
-def get_tacho_stop_command_inx(*args):
-  return _ev3.get_tacho_stop_command_inx(*args)
-get_tacho_stop_command_inx = _ev3.get_tacho_stop_command_inx
+def get_tacho_polarity_inx(*args):
+  return _ev3.get_tacho_polarity_inx(*args)
+get_tacho_polarity_inx = _ev3.get_tacho_polarity_inx
 
-def set_tacho_stop_command_inx(*args):
-  return _ev3.set_tacho_stop_command_inx(*args)
-set_tacho_stop_command_inx = _ev3.set_tacho_stop_command_inx
+def set_tacho_polarity_inx(*args):
+  return _ev3.set_tacho_polarity_inx(*args)
+set_tacho_polarity_inx = _ev3.set_tacho_polarity_inx
 
-def multi_set_tacho_stop_command_inx(*args):
-  return _ev3.multi_set_tacho_stop_command_inx(*args)
-multi_set_tacho_stop_command_inx = _ev3.multi_set_tacho_stop_command_inx
+def multi_set_tacho_polarity_inx(*args):
+  return _ev3.multi_set_tacho_polarity_inx(*args)
+multi_set_tacho_polarity_inx = _ev3.multi_set_tacho_polarity_inx
+
+def ev3_tacho_stop_action(*args):
+  return _ev3.ev3_tacho_stop_action(*args)
+ev3_tacho_stop_action = _ev3.ev3_tacho_stop_action
+
+def get_tacho_stop_action_inx(*args):
+  return _ev3.get_tacho_stop_action_inx(*args)
+get_tacho_stop_action_inx = _ev3.get_tacho_stop_action_inx
+
+def set_tacho_stop_action_inx(*args):
+  return _ev3.set_tacho_stop_action_inx(*args)
+set_tacho_stop_action_inx = _ev3.set_tacho_stop_action_inx
+
+def multi_set_tacho_stop_action_inx(*args):
+  return _ev3.multi_set_tacho_stop_action_inx(*args)
+multi_set_tacho_stop_action_inx = _ev3.multi_set_tacho_stop_action_inx
 
 def get_tacho_state_flags(*args):
   return _ev3.get_tacho_state_flags(*args)
@@ -1440,25 +1418,22 @@ RCX_MOTOR = _ev3.RCX_MOTOR
 DC_TYPE__COUNT_ = _ev3.DC_TYPE__COUNT_
 DC_TYPE__UNKNOWN_ = _ev3.DC_TYPE__UNKNOWN_
 DC_COMMAND__NONE_ = _ev3.DC_COMMAND__NONE_
-RCX_MOTOR_RUN_FOREVER = _ev3.RCX_MOTOR_RUN_FOREVER
-RCX_MOTOR_RUN_TIMED = _ev3.RCX_MOTOR_RUN_TIMED
-RCX_MOTOR_RUN_DIRECT = _ev3.RCX_MOTOR_RUN_DIRECT
-RCX_MOTOR_STOP = _ev3.RCX_MOTOR_STOP
-DC_COMMAND__COUNT_ = _ev3.DC_COMMAND__COUNT_
-DC_COMMAND__UNKNOWN_ = _ev3.DC_COMMAND__UNKNOWN_
-DC_STOP_COMMAND__NONE_ = _ev3.DC_STOP_COMMAND__NONE_
-RCX_MOTOR_COAST = _ev3.RCX_MOTOR_COAST
-RCX_MOTOR_BRAKE = _ev3.RCX_MOTOR_BRAKE
-DC_STOP_COMMAND__COUNT_ = _ev3.DC_STOP_COMMAND__COUNT_
-DC_STOP_COMMAND__UNKNOWN_ = _ev3.DC_STOP_COMMAND__UNKNOWN_
-DC_COMMAND__NULL_ = _ev3.DC_COMMAND__NULL_
 DC_RUN_FOREVER = _ev3.DC_RUN_FOREVER
 DC_RUN_TIMED = _ev3.DC_RUN_TIMED
 DC_RUN_DIRECT = _ev3.DC_RUN_DIRECT
 DC_STOP = _ev3.DC_STOP
-DC_STOP_COMMAND__NULL_ = _ev3.DC_STOP_COMMAND__NULL_
+DC_COMMAND__COUNT_ = _ev3.DC_COMMAND__COUNT_
+DC_COMMAND__UNKNOWN_ = _ev3.DC_COMMAND__UNKNOWN_
+DC_POLARITY__NONE_ = _ev3.DC_POLARITY__NONE_
+DC_NORMAL = _ev3.DC_NORMAL
+DC_INVERSED = _ev3.DC_INVERSED
+DC_POLARITY__COUNT_ = _ev3.DC_POLARITY__COUNT_
+DC_POLARITY__UNKNOWN_ = _ev3.DC_POLARITY__UNKNOWN_
+DC_STOP_ACTION__NONE_ = _ev3.DC_STOP_ACTION__NONE_
 DC_COAST = _ev3.DC_COAST
 DC_BRAKE = _ev3.DC_BRAKE
+DC_STOP_ACTION__COUNT_ = _ev3.DC_STOP_ACTION__COUNT_
+DC_STOP_ACTION__UNKNOWN_ = _ev3.DC_STOP_ACTION__UNKNOWN_
 DC_STATE__NONE_ = _ev3.DC_STATE__NONE_
 DC_RUNNING = _ev3.DC_RUNNING
 DC_RAMPING = _ev3.DC_RAMPING
@@ -1515,17 +1490,17 @@ def get_dc_state(*args):
   return _ev3.get_dc_state(*args)
 get_dc_state = _ev3.get_dc_state
 
-def set_dc_stop_command(*args):
-  return _ev3.set_dc_stop_command(*args)
-set_dc_stop_command = _ev3.set_dc_stop_command
+def set_dc_stop_action(*args):
+  return _ev3.set_dc_stop_action(*args)
+set_dc_stop_action = _ev3.set_dc_stop_action
 
-def multi_set_dc_stop_command(*args):
-  return _ev3.multi_set_dc_stop_command(*args)
-multi_set_dc_stop_command = _ev3.multi_set_dc_stop_command
+def multi_set_dc_stop_action(*args):
+  return _ev3.multi_set_dc_stop_action(*args)
+multi_set_dc_stop_action = _ev3.multi_set_dc_stop_action
 
-def get_dc_stop_commands(*args):
-  return _ev3.get_dc_stop_commands(*args)
-get_dc_stop_commands = _ev3.get_dc_stop_commands
+def get_dc_stop_actions(*args):
+  return _ev3.get_dc_stop_actions(*args)
+get_dc_stop_actions = _ev3.get_dc_stop_actions
 
 def get_dc_ramp_down_sp(*args):
   return _ev3.get_dc_ramp_down_sp(*args)
@@ -1615,17 +1590,33 @@ def multi_set_dc_command_inx(*args):
   return _ev3.multi_set_dc_command_inx(*args)
 multi_set_dc_command_inx = _ev3.multi_set_dc_command_inx
 
-def ev3_dc_stop_command(*args):
-  return _ev3.ev3_dc_stop_command(*args)
-ev3_dc_stop_command = _ev3.ev3_dc_stop_command
+def ev3_dc_polarity(*args):
+  return _ev3.ev3_dc_polarity(*args)
+ev3_dc_polarity = _ev3.ev3_dc_polarity
 
-def set_dc_stop_command_inx(*args):
-  return _ev3.set_dc_stop_command_inx(*args)
-set_dc_stop_command_inx = _ev3.set_dc_stop_command_inx
+def get_dc_polarity_inx(*args):
+  return _ev3.get_dc_polarity_inx(*args)
+get_dc_polarity_inx = _ev3.get_dc_polarity_inx
 
-def multi_set_dc_stop_command_inx(*args):
-  return _ev3.multi_set_dc_stop_command_inx(*args)
-multi_set_dc_stop_command_inx = _ev3.multi_set_dc_stop_command_inx
+def set_dc_polarity_inx(*args):
+  return _ev3.set_dc_polarity_inx(*args)
+set_dc_polarity_inx = _ev3.set_dc_polarity_inx
+
+def multi_set_dc_polarity_inx(*args):
+  return _ev3.multi_set_dc_polarity_inx(*args)
+multi_set_dc_polarity_inx = _ev3.multi_set_dc_polarity_inx
+
+def ev3_dc_stop_action(*args):
+  return _ev3.ev3_dc_stop_action(*args)
+ev3_dc_stop_action = _ev3.ev3_dc_stop_action
+
+def set_dc_stop_action_inx(*args):
+  return _ev3.set_dc_stop_action_inx(*args)
+set_dc_stop_action_inx = _ev3.set_dc_stop_action_inx
+
+def multi_set_dc_stop_action_inx(*args):
+  return _ev3.multi_set_dc_stop_action_inx(*args)
+multi_set_dc_stop_action_inx = _ev3.multi_set_dc_stop_action_inx
 
 def get_dc_state_flags(*args):
   return _ev3.get_dc_state_flags(*args)
@@ -1669,13 +1660,15 @@ SERVO_MOTOR = _ev3.SERVO_MOTOR
 SERVO_TYPE__COUNT_ = _ev3.SERVO_TYPE__COUNT_
 SERVO_TYPE__UNKNOWN_ = _ev3.SERVO_TYPE__UNKNOWN_
 SERVO_COMMAND__NONE_ = _ev3.SERVO_COMMAND__NONE_
-SERVO_MOTOR_RUN = _ev3.SERVO_MOTOR_RUN
-SERVO_MOTOR_FLOAT = _ev3.SERVO_MOTOR_FLOAT
-SERVO_COMMAND__COUNT_ = _ev3.SERVO_COMMAND__COUNT_
-SERVO_COMMAND__UNKNOWN_ = _ev3.SERVO_COMMAND__UNKNOWN_
-SERVO_COMMAND__NULL_ = _ev3.SERVO_COMMAND__NULL_
 SERVO_RUN = _ev3.SERVO_RUN
 SERVO_FLOAT = _ev3.SERVO_FLOAT
+SERVO_COMMAND__COUNT_ = _ev3.SERVO_COMMAND__COUNT_
+SERVO_COMMAND__UNKNOWN_ = _ev3.SERVO_COMMAND__UNKNOWN_
+SERVO_POLARITY__NONE_ = _ev3.SERVO_POLARITY__NONE_
+SERVO_NORMAL = _ev3.SERVO_NORMAL
+SERVO_INVERSED = _ev3.SERVO_INVERSED
+SERVO_POLARITY__COUNT_ = _ev3.SERVO_POLARITY__COUNT_
+SERVO_POLARITY__UNKNOWN_ = _ev3.SERVO_POLARITY__UNKNOWN_
 SERVO_STATE__NONE_ = _ev3.SERVO_STATE__NONE_
 SERVO_RUNNING = _ev3.SERVO_RUNNING
 
@@ -1834,6 +1827,22 @@ set_servo_command_inx = _ev3.set_servo_command_inx
 def multi_set_servo_command_inx(*args):
   return _ev3.multi_set_servo_command_inx(*args)
 multi_set_servo_command_inx = _ev3.multi_set_servo_command_inx
+
+def ev3_servo_polarity(*args):
+  return _ev3.ev3_servo_polarity(*args)
+ev3_servo_polarity = _ev3.ev3_servo_polarity
+
+def get_servo_polarity_inx(*args):
+  return _ev3.get_servo_polarity_inx(*args)
+get_servo_polarity_inx = _ev3.get_servo_polarity_inx
+
+def set_servo_polarity_inx(*args):
+  return _ev3.set_servo_polarity_inx(*args)
+set_servo_polarity_inx = _ev3.set_servo_polarity_inx
+
+def multi_set_servo_polarity_inx(*args):
+  return _ev3.multi_set_servo_polarity_inx(*args)
+multi_set_servo_polarity_inx = _ev3.multi_set_servo_polarity_inx
 
 def get_servo_state_flags(*args):
   return _ev3.get_servo_state_flags(*args)
