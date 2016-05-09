@@ -131,12 +131,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a01df50d6e84f0752af9d0a87e1ab3f76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01df50d6e84f0752af9d0a87e1ab3f76"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STATE</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;state&quot;</td></tr>
 <tr class="separator:a01df50d6e84f0752af9d0a87e1ab3f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb994ab85cbd1e53b4c620278b036fed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb994ab85cbd1e53b4c620278b036fed"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_COMMAND</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;stop_command&quot;</td></tr>
-<tr class="separator:acb994ab85cbd1e53b4c620278b036fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f94631c67ea52f2059a5efab85c2d48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f94631c67ea52f2059a5efab85c2d48"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_COMMANDS</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;stop_commands&quot;</td></tr>
-<tr class="separator:a1f94631c67ea52f2059a5efab85c2d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850da071be037664e4a813c3c052c31b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a850da071be037664e4a813c3c052c31b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_ACTION</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;stop_action&quot;</td></tr>
+<tr class="separator:a850da071be037664e4a813c3c052c31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ce4ba58af2a2abe757bb28b8603f8b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ce4ba58af2a2abe757bb28b8603f8b6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_STOP_ACTIONS</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;stop_actions&quot;</td></tr>
+<tr class="separator:a3ce4ba58af2a2abe757bb28b8603f8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ba53eb798390ff284cb7b5bb6057098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ba53eb798390ff284cb7b5bb6057098"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PATH_RAMP_DOWN_SP</b>&#160;&#160;&#160;&quot;/sys/class/dc-motor/motor&quot; DESC_SPOT &quot;ramp_down_sp&quot;</td></tr>
 <tr class="separator:a1ba53eb798390ff284cb7b5bb6057098"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,15 +188,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga02a3244db0f27c1287a9621aecce09fe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">get_dc_state</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
 <tr class="memdesc:ga02a3244db0f27c1287a9621aecce09fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "state" attribute of the DC motor.  <a href="group__ev3__dc.html#ga02a3244db0f27c1287a9621aecce09fe">More...</a><br /></td></tr>
 <tr class="separator:ga02a3244db0f27c1287a9621aecce09fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f4271623071649a7dd65149c9536018"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga4f4271623071649a7dd65149c9536018">set_dc_stop_command</a> (uint8_t sn, char *value)</td></tr>
-<tr class="memdesc:ga4f4271623071649a7dd65149c9536018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_command" attribute of the DC motor.  <a href="group__ev3__dc.html#ga4f4271623071649a7dd65149c9536018">More...</a><br /></td></tr>
-<tr class="separator:ga4f4271623071649a7dd65149c9536018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77820a016b92f8fcc1c2071447c43fa9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga77820a016b92f8fcc1c2071447c43fa9">multi_set_dc_stop_command</a> (uint8_t *sn, char *value)</td></tr>
-<tr class="memdesc:ga77820a016b92f8fcc1c2071447c43fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_command" attribute of several DC motors.  <a href="group__ev3__dc.html#ga77820a016b92f8fcc1c2071447c43fa9">More...</a><br /></td></tr>
-<tr class="separator:ga77820a016b92f8fcc1c2071447c43fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeaa87fcc7b0e042068b476cb867393ba"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gaeaa87fcc7b0e042068b476cb867393ba">get_dc_stop_commands</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:gaeaa87fcc7b0e042068b476cb867393ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "stop_commands" attribute of the DC motor.  <a href="group__ev3__dc.html#gaeaa87fcc7b0e042068b476cb867393ba">More...</a><br /></td></tr>
-<tr class="separator:gaeaa87fcc7b0e042068b476cb867393ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga279957315f9bdee0a5ab2fee42de4080"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga279957315f9bdee0a5ab2fee42de4080">set_dc_stop_action</a> (uint8_t sn, char *value)</td></tr>
+<tr class="memdesc:ga279957315f9bdee0a5ab2fee42de4080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_action" attribute of the DC motor.  <a href="group__ev3__dc.html#ga279957315f9bdee0a5ab2fee42de4080">More...</a><br /></td></tr>
+<tr class="separator:ga279957315f9bdee0a5ab2fee42de4080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f0662aac6ab46f866922ea5cbc731f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga9f0662aac6ab46f866922ea5cbc731f6">multi_set_dc_stop_action</a> (uint8_t *sn, char *value)</td></tr>
+<tr class="memdesc:ga9f0662aac6ab46f866922ea5cbc731f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_action" attribute of several DC motors.  <a href="group__ev3__dc.html#ga9f0662aac6ab46f866922ea5cbc731f6">More...</a><br /></td></tr>
+<tr class="separator:ga9f0662aac6ab46f866922ea5cbc731f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6abde16b65e0458ff3149fe07088a2e0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga6abde16b65e0458ff3149fe07088a2e0">get_dc_stop_actions</a> (uint8_t sn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga6abde16b65e0458ff3149fe07088a2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "stop_actions" attribute of the DC motor.  <a href="group__ev3__dc.html#ga6abde16b65e0458ff3149fe07088a2e0">More...</a><br /></td></tr>
+<tr class="separator:ga6abde16b65e0458ff3149fe07088a2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga2d6fd4ffe07f96741bb2ddf841196275">get_dc_ramp_down_sp</a> (uint8_t sn, int *buf)</td></tr>
 <tr class="memdesc:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "ramp_down_sp" attribute of the DC motor.  <a href="group__ev3__dc.html#ga2d6fd4ffe07f96741bb2ddf841196275">More...</a><br /></td></tr>
 <tr class="separator:ga2d6fd4ffe07f96741bb2ddf841196275"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,15 +263,27 @@ Functions</h2></td></tr>
 <tr class="memitem:ga49840d35adeb6a0e5fbee8c420e4b5a7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga49840d35adeb6a0e5fbee8c420e4b5a7">multi_set_dc_command_inx</a> (uint8_t *sn, INX_T command_inx)</td></tr>
 <tr class="memdesc:ga49840d35adeb6a0e5fbee8c420e4b5a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "command" attribute of several DC motors by the index.  <a href="group__ev3__dc.html#ga49840d35adeb6a0e5fbee8c420e4b5a7">More...</a><br /></td></tr>
 <tr class="separator:ga49840d35adeb6a0e5fbee8c420e4b5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e5fa21572d2784d58f6834461d6aa1b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga2e5fa21572d2784d58f6834461d6aa1b">ev3_dc_stop_command</a> (INX_T stop_command_inx)</td></tr>
-<tr class="memdesc:ga2e5fa21572d2784d58f6834461d6aa1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor stop_command.  <a href="group__ev3__dc.html#ga2e5fa21572d2784d58f6834461d6aa1b">More...</a><br /></td></tr>
-<tr class="separator:ga2e5fa21572d2784d58f6834461d6aa1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafb0a73ac47aad6a27646bc60400c6be1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gafb0a73ac47aad6a27646bc60400c6be1">set_dc_stop_command_inx</a> (uint8_t sn, INX_T stop_command_inx)</td></tr>
-<tr class="memdesc:gafb0a73ac47aad6a27646bc60400c6be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_command" attribute of the DC motor by the index.  <a href="group__ev3__dc.html#gafb0a73ac47aad6a27646bc60400c6be1">More...</a><br /></td></tr>
-<tr class="separator:gafb0a73ac47aad6a27646bc60400c6be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga35342c2fe419f819c7e49b705117574e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga35342c2fe419f819c7e49b705117574e">multi_set_dc_stop_command_inx</a> (uint8_t *sn, INX_T stop_command_inx)</td></tr>
-<tr class="memdesc:ga35342c2fe419f819c7e49b705117574e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_command" attribute of several DC motors by the index.  <a href="group__ev3__dc.html#ga35342c2fe419f819c7e49b705117574e">More...</a><br /></td></tr>
-<tr class="separator:ga35342c2fe419f819c7e49b705117574e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga388e346232d6ca4082c7e75b17cc3cf5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga388e346232d6ca4082c7e75b17cc3cf5">ev3_dc_polarity</a> (INX_T polarity_inx)</td></tr>
+<tr class="memdesc:ga388e346232d6ca4082c7e75b17cc3cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor polarity.  <a href="group__ev3__dc.html#ga388e346232d6ca4082c7e75b17cc3cf5">More...</a><br /></td></tr>
+<tr class="separator:ga388e346232d6ca4082c7e75b17cc3cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ba52963e2a4ce63955e230622ef0fa1"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga0ba52963e2a4ce63955e230622ef0fa1">get_dc_polarity_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga0ba52963e2a4ce63955e230622ef0fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "polarity" attribute of the DC motor and get the index.  <a href="group__ev3__dc.html#ga0ba52963e2a4ce63955e230622ef0fa1">More...</a><br /></td></tr>
+<tr class="separator:ga0ba52963e2a4ce63955e230622ef0fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3143945eb690bbff684b4007707e789b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga3143945eb690bbff684b4007707e789b">set_dc_polarity_inx</a> (uint8_t sn, INX_T polarity_inx)</td></tr>
+<tr class="memdesc:ga3143945eb690bbff684b4007707e789b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "polarity" attribute of the DC motor by the index.  <a href="group__ev3__dc.html#ga3143945eb690bbff684b4007707e789b">More...</a><br /></td></tr>
+<tr class="separator:ga3143945eb690bbff684b4007707e789b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga039d0ab4b52194b5e0b0e485182cc8cc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga039d0ab4b52194b5e0b0e485182cc8cc">multi_set_dc_polarity_inx</a> (uint8_t *sn, INX_T polarity_inx)</td></tr>
+<tr class="memdesc:ga039d0ab4b52194b5e0b0e485182cc8cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "polarity" attribute of several DC motors by the index.  <a href="group__ev3__dc.html#ga039d0ab4b52194b5e0b0e485182cc8cc">More...</a><br /></td></tr>
+<tr class="separator:ga039d0ab4b52194b5e0b0e485182cc8cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1076ea7cbd824b8679cbd344c942262f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga1076ea7cbd824b8679cbd344c942262f">ev3_dc_stop_action</a> (INX_T stop_action_inx)</td></tr>
+<tr class="memdesc:ga1076ea7cbd824b8679cbd344c942262f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified DC motor stop_action.  <a href="group__ev3__dc.html#ga1076ea7cbd824b8679cbd344c942262f">More...</a><br /></td></tr>
+<tr class="separator:ga1076ea7cbd824b8679cbd344c942262f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1eb2f0cd43ac087544018076d0964728"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#ga1eb2f0cd43ac087544018076d0964728">set_dc_stop_action_inx</a> (uint8_t sn, INX_T stop_action_inx)</td></tr>
+<tr class="memdesc:ga1eb2f0cd43ac087544018076d0964728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_action" attribute of the DC motor by the index.  <a href="group__ev3__dc.html#ga1eb2f0cd43ac087544018076d0964728">More...</a><br /></td></tr>
+<tr class="separator:ga1eb2f0cd43ac087544018076d0964728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad57b0371f82e4eaf07e9a8cac5bfdf2d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gad57b0371f82e4eaf07e9a8cac5bfdf2d">multi_set_dc_stop_action_inx</a> (uint8_t *sn, INX_T stop_action_inx)</td></tr>
+<tr class="memdesc:gad57b0371f82e4eaf07e9a8cac5bfdf2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "stop_action" attribute of several DC motors by the index.  <a href="group__ev3__dc.html#gad57b0371f82e4eaf07e9a8cac5bfdf2d">More...</a><br /></td></tr>
+<tr class="separator:gad57b0371f82e4eaf07e9a8cac5bfdf2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadd15608e50998854d040fb812bad97ca"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__dc.html#gadd15608e50998854d040fb812bad97ca">get_dc_state_flags</a> (uint8_t sn, FLAGS_T *flags)</td></tr>
 <tr class="memdesc:gadd15608e50998854d040fb812bad97ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "state" attribute of the DC motor and get the flags.  <a href="group__ev3__dc.html#gadd15608e50998854d040fb812bad97ca">More...</a><br /></td></tr>
 <tr class="separator:gadd15608e50998854d040fb812bad97ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,7 +298,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 18 2016 14:19:22 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 28 2016 14:44:16 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
