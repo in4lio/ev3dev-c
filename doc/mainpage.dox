@@ -22,7 +22,7 @@
 </CENTER>
 
 <H2>The <A HREF="https://github.com/in4lio/ev3dev-c/">library</A> hierarchic structure
-<BR>ev3dev-c 0.8b6 (for kernel 3.16.7-ckt21-9-ev3dev-ev3)</H2>
+<BR>ev3dev-c 0.8b8 (for kernel 3.16.7-ckt26-10-ev3dev-ev3)</H2>
 
 <H3>I LEVEL</H3>
 
@@ -116,8 +116,8 @@ ev3_init();
 ev3_tacho_init();
 
 if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
-	set_tacho_stop_command_inx( sn, TACHO_BRAKE );
-	set_tacho_duty_cycle_sp( sn, 100 );
+	set_tacho_stop_action_inx( sn, TACHO_BRAKE );
+	set_tacho_speed_sp( sn, 500 );
 	set_tacho_time_sp( sn, 5000 );
 	set_tacho_ramp_up_sp( sn, 2000 );
 	set_tacho_ramp_down_sp( sn, 2000 );
@@ -137,9 +137,9 @@ set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
 ev3_dc_init();
 
 if ( ev3_search_dc_plugged_in( OUTPUT_D, EXT_PORT__NONE_, &sn, 0 )) {
-	set_dc_duty_cycle( sn, 100 );
+	set_dc_duty_cycle_sp( sn, 100 );
 	set_dc_command_inx( sn, DC_RUN_FOREVER );
-	Sleep( 5000 );
+	usleep( 5000000 );
 	set_dc_command_inx( sn, DC_STOP );
 }
 set_port_mode_inx( sn_port, OUTPUT_AUTO );
@@ -251,7 +251,7 @@ ev3::ev3_tacho_init();
 
 my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );
 if ( $ok ) {
-    ev3::set_tacho_duty_cycle_sp( $sn, 50 );
+    ev3::set_tacho_speed_sp( $sn, 500 );
     ev3::set_tacho_command_inx( $sn, $ev3::TACHO_RUN_FOREVER );
     sleep( 2 );
     ev3::set_tacho_command_inx( $sn, $ev3::TACHO_STOP );
