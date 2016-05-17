@@ -31,7 +31,7 @@ for ( $i = 0; $i < $ev3::DESC_LIMIT; $i++ ) {
 my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );
 if ( $ok ) {
     print "LEGO_EV3_M_MOTOR is found, run for 5 sec...\n";
-    ev3::set_tacho_stop_command_inx( $sn, $ev3::TACHO_COAST );
+    ev3::set_tacho_stop_action_inx( $sn, $ev3::TACHO_COAST );
     ev3::set_tacho_duty_cycle_sp( $sn, 100 );
     ev3::set_tacho_time_sp( $sn, 5000 );
     ev3::set_tacho_ramp_up_sp( $sn, 2000 );
