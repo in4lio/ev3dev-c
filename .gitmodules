@@ -1,0 +1,3 @@
+[submodule "yupp"]
+	path = yupp
+	url = https://github.com/in4lio/yupp.git
