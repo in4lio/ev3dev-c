@@ -297,7 +297,7 @@ enum {
 /**
  *  \brief Light colors.
  */
-extern const char * const LIT_COLOR[] = { "OFF", "GREEN", "RED", "AMBER", STR_unknown_ };
+extern const char *const LIT_COLOR[] = { "OFF", "GREEN", "RED", "AMBER", STR_unknown_ };
 
 /**
  *  \brief Get the light color name.

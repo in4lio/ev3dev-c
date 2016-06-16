@@ -5,41 +5,39 @@
 #     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
 #                                                ((())))
 
-__author__ = "Vitaly Kravtsov"
-__author_email__ = "in4lio@gmail.com"
-__copyright__ = "See the LICENSE file."
-
-#pylint: skip-file
-
-import os
-
-M_CUT = ' *  \\{\n'
-M_CUT_END = '/** \\} */\n'
-M_IMPORT  = '($import "%sev3_'
-E1 = '* ERROR * File %s: label "%s" not found.'
-E2 = '* ERROR * File %s not found.'
+import os, re
 
 def clip_h( fn ):
-    try:
-        f = open( fn, 'r' )
-    except:
-        raise Exception( E2 % ( fn ))
 
-    t = f.readlines()
-    f.close()
+    M_CUT      = '* \\{'
+    RE_CUT     = re.compile( r'^\s*\*\s*\\\{' )
 
-    try:
-        b = t.index( M_CUT )
-    except:
-        raise Exception( E1 % ( fn, M_CUT[ :-1 ]))
+    M_CUT_END  = '/** \\} */'
+    RE_CUT_END = re.compile( r'^\s*/\*\*\s*\\\}\s*\*/' )
+
+    M_IMPORT   = '($import "%sev3_'
 
     try:
-        e = t.index( M_CUT_END, b + 1 )
+        with open( fn, 'r' ) as f:
+            txt = f.readlines()
     except:
-        raise Exception( E1 % ( fn, M_CUT_END[ :-1 ]))
+        raise Exception( '* ERROR * File "%s" not found.' % ( fn ))
 
-    a = ''.join( t[ b + 2 : e ])
-    d = os.path.dirname( fn ) + '/'
-    a = a.replace( M_IMPORT % ( '' ), M_IMPORT % ( d ))
+    b = 0;
+    for i, ln in enumerate( txt ):
+        if not b:
+#           Cut from the 2nd line after
+#           * \{
+            if RE_CUT.match( ln ):
+                b = i + 2
+        else:
+#           ... up to
+#           /** \} */
+            if RE_CUT_END.match( ln ):
+                e = i
+                break
+    else:
+        raise Exception( '* ERROR * File "%s": label "%s" not found.' % ( fn, M_CUT if not b else M_CUT_END ))
 
-    return a
+#   ... and add the directory name to each ($import) of 'ev3_' files.
+    return ''.join( txt[ b : e ]).replace( M_IMPORT % ( '' ), M_IMPORT % ( os.path.dirname( fn ) + '/' ))
