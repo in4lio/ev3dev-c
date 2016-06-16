@@ -73,7 +73,7 @@ ev3_port_init();
 
 sn_port = ev3_search_port( INPUT_1, HT_NXT_SMUX_PORT_2 );
 set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
-set_port_set_device( sn_port, ( char* ) ev3_sensor_type( LEGO_NXT_TOUCH ));
+set_port_set_device( sn_port, ( char *) ev3_sensor_type( LEGO_NXT_TOUCH ));
 
 ev3_sensor_init();
 
@@ -148,7 +148,7 @@ ev3_port_init();
 
 sn_port = ev3_search_port( INPUT_1, EXT_PORT__NONE_ );
 set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
-set_port_set_device( sn_port, ( char* ) ev3_sensor_type( MS_8CH_SERVO ));
+set_port_set_device( sn_port, ( char *) ev3_sensor_type( MS_8CH_SERVO ));
 
 ev3_servo_init();
 

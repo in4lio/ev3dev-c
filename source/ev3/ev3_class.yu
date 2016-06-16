@@ -218,12 +218,12 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 	[ )
 	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	{
-		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+		return set_($CLASS_ID)_($attr)( sn, ( char *) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
 
 	size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
 	{
-		return multi_set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+		return multi_set_($CLASS_ID)_($attr)( sn, ( char *) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
 
 [ )
@@ -259,12 +259,12 @@ bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *
 	[ )
 	size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	{
-		return set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+		return set_($CLASS_ID)_($attr)( sn, ( char *) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
 
 	size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
 	{
-		return multi_set_($CLASS_ID)_($attr)( sn, ( char* ) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
+		return multi_set_($CLASS_ID)_($attr)( sn, ( char *) ev3_($CLASS_ID)_($attr)( ($attr)_inx ));
 	}
 
 [ )

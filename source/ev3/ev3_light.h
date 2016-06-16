@@ -64,7 +64,7 @@ enum {
 /**
  *  \brief Light colors.
  */
-EV3_LIGHT_EXT_INIT( const char * const LIT_COLOR[], { "OFF" COMMA  "GREEN" COMMA  "RED" COMMA  "AMBER" COMMA  STR_unknown_ } );
+EV3_LIGHT_EXT_INIT( const char *const LIT_COLOR[], { "OFF" COMMA  "GREEN" COMMA  "RED" COMMA  "AMBER" COMMA  STR_unknown_ } );
 
 /**
  *  \brief Get the light color name.

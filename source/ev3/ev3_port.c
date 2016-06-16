@@ -325,12 +325,12 @@ INX_T get_port_mode_inx( uint8_t sn, INX_T type_inx )
 
 size_t set_port_mode_inx( uint8_t sn, INX_T mode_inx )
 {
-	return set_port_mode( sn, ( char* ) ev3_port_mode( mode_inx ));
+	return set_port_mode( sn, ( char *) ev3_port_mode( mode_inx ));
 }
 
 size_t multi_set_port_mode_inx( uint8_t *sn, INX_T mode_inx )
 {
-	return multi_set_port_mode( sn, ( char* ) ev3_port_mode( mode_inx ));
+	return multi_set_port_mode( sn, ( char *) ev3_port_mode( mode_inx ));
 }
 
 int ev3_port_init( void )

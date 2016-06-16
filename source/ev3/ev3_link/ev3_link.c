@@ -202,7 +202,7 @@ static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 		}
 	}
 	closedir( d );
-	return (( void* ) p - buf );
+	return (( void *) p - buf );
 }
 
 // CLIENT ////////////////////////////////////////
@@ -252,7 +252,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 	__r_addr.sin_port = htons( port );
 	__r_addr.sin_addr.s_addr = htonl( INADDR_ANY );
 
-	res = bind( sockfd, ( struct sockaddr* ) &__r_addr, sizeof( __r_addr ));
+	res = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
 	if ( res < 0 ) {
 		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
 		perror( "    bind()" );
@@ -271,7 +271,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
-	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char* ) &optval, sizeof( optval ));
+	setsockopt( sockfd, SOL_SOCKET, SO_BROADCAST, ( const char *) &optval, sizeof( optval ));
 	ioctlsocket( sockfd, FIONBIO, &optval );
 
 // UNIX //////////////////////////////////////////
@@ -307,7 +307,7 @@ static void __transmit( uint16_t sz )
 	int res, l;
 
 	l = sizeof( EV3_MESSAGE_HEADER ) + sz;
-	res = sendto( sockfd, ( const char* ) &__t_msg, l, 0, ( struct sockaddr* ) &__t_addr, sizeof( __t_addr ));
+	res = sendto( sockfd, ( const char *) &__t_msg, l, 0, ( struct sockaddr *) &__t_addr, sizeof( __t_addr ));
 	if ( res < 0 ) {
 		printf( "\n*** ERROR *** (ev3_link) transmit: sendto = %d\n", errno );
 		perror( "    sendto()" );
@@ -321,7 +321,7 @@ static int __receive( void )
 	char *fn;
 	socklen_t addr_l = sizeof( struct sockaddr_in );
 
-	msg_l = recvfrom( sockfd, ( char* ) &__r_msg, sizeof( __r_msg ), 0, ( struct sockaddr* ) &__r_addr, &addr_l );
+	msg_l = recvfrom( sockfd, ( char *) &__r_msg, sizeof( __r_msg ), 0, ( struct sockaddr *) &__r_addr, &addr_l );
 	if ( msg_l > 0 ) {
 		PEV3_MESSAGE_HEADER h = &__r_msg.head;
 		PEV3_MESSAGE_HEADER t = &__t_msg.head;
@@ -331,7 +331,7 @@ static int __receive( void )
 			return ( EOF );
 		}
 		msg_l -= sizeof( EV3_MESSAGE_HEADER );
-		fn = ( char* ) __r_msg.body;
+		fn = ( char *) __r_msg.body;
 
 		switch ( h->type ) {
 
@@ -374,7 +374,7 @@ static int __receive( void )
 					/* printf( "WRITE %s\n", __r_msg.body ); */
 					t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				} else {
-					PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __r_msg.body;
+					PEV3_MULTI_WRITE_SUBHEADER sub = ( void *) __r_msg.body;
 					/* printf( "MULTI WRITE %s\n", fn ); */
 					t->data_size = __ev3_multi_write_binary( sub->sn, sub->pos, fn, fn + h->fn_size, h->data_size );
 				}
@@ -406,7 +406,7 @@ static int __receive( void )
 			/* printf( "READ KEYS\n" ); */
 			t->id = h->id;
 			t->fn_size = 0;
-			t->data_size = __ev3_read_keys(( uint8_t* ) __t_msg.body );
+			t->data_size = __ev3_read_keys(( uint8_t *) __t_msg.body );
 			t->type = EV3_KEYS;
 			__transmit( t->data_size );
 			return ( h->type );
@@ -561,8 +561,8 @@ int udp_ev3_write( char *fn, void *data, int sz )
 int udp_ev3_multi_write( uint8_t *sn, uint16_t pos, char *fn, void *data, int sz )
 {
 	PEV3_MESSAGE_HEADER t = &__t_msg.head;
-	PEV3_MULTI_WRITE_SUBHEADER sub = ( void* ) __t_msg.body;
-	char *p = ( char* ) __t_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
+	PEV3_MULTI_WRITE_SUBHEADER sub = ( void *) __t_msg.body;
+	char *p = ( char *) __t_msg.body + sizeof( EV3_MULTI_WRITE_SUBHEADER );
 	int i;
 
 	t->type = EV3_MULTI_WRITE;

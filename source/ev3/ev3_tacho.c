@@ -626,12 +626,12 @@ const char *ev3_tacho_command( INX_T command_inx )
 
 size_t set_tacho_command_inx( uint8_t sn, INX_T command_inx )
 {
-	return set_tacho_command( sn, ( char* ) ev3_tacho_command( command_inx ));
+	return set_tacho_command( sn, ( char *) ev3_tacho_command( command_inx ));
 }
 
 size_t multi_set_tacho_command_inx( uint8_t *sn, INX_T command_inx )
 {
-	return multi_set_tacho_command( sn, ( char* ) ev3_tacho_command( command_inx ));
+	return multi_set_tacho_command( sn, ( char *) ev3_tacho_command( command_inx ));
 }
 
 const char *ev3_tacho_polarity( INX_T polarity_inx )
@@ -660,12 +660,12 @@ INX_T get_tacho_polarity_inx( uint8_t sn )
 
 size_t set_tacho_polarity_inx( uint8_t sn, INX_T polarity_inx )
 {
-	return set_tacho_polarity( sn, ( char* ) ev3_tacho_polarity( polarity_inx ));
+	return set_tacho_polarity( sn, ( char *) ev3_tacho_polarity( polarity_inx ));
 }
 
 size_t multi_set_tacho_polarity_inx( uint8_t *sn, INX_T polarity_inx )
 {
-	return multi_set_tacho_polarity( sn, ( char* ) ev3_tacho_polarity( polarity_inx ));
+	return multi_set_tacho_polarity( sn, ( char *) ev3_tacho_polarity( polarity_inx ));
 }
 
 const char *ev3_tacho_stop_action( INX_T stop_action_inx )
@@ -697,12 +697,12 @@ INX_T get_tacho_stop_action_inx( uint8_t sn )
 
 size_t set_tacho_stop_action_inx( uint8_t sn, INX_T stop_action_inx )
 {
-	return set_tacho_stop_action( sn, ( char* ) ev3_tacho_stop_action( stop_action_inx ));
+	return set_tacho_stop_action( sn, ( char *) ev3_tacho_stop_action( stop_action_inx ));
 }
 
 size_t multi_set_tacho_stop_action_inx( uint8_t *sn, INX_T stop_action_inx )
 {
-	return multi_set_tacho_stop_action( sn, ( char* ) ev3_tacho_stop_action( stop_action_inx ));
+	return multi_set_tacho_stop_action( sn, ( char *) ev3_tacho_stop_action( stop_action_inx ));
 }
 
 size_t get_tacho_state_flags( uint8_t sn, FLAGS_T *flags )

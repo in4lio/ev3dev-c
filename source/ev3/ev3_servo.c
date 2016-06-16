@@ -348,12 +348,12 @@ INX_T get_servo_command_inx( uint8_t sn )
 
 size_t set_servo_command_inx( uint8_t sn, INX_T command_inx )
 {
-	return set_servo_command( sn, ( char* ) ev3_servo_command( command_inx ));
+	return set_servo_command( sn, ( char *) ev3_servo_command( command_inx ));
 }
 
 size_t multi_set_servo_command_inx( uint8_t *sn, INX_T command_inx )
 {
-	return multi_set_servo_command( sn, ( char* ) ev3_servo_command( command_inx ));
+	return multi_set_servo_command( sn, ( char *) ev3_servo_command( command_inx ));
 }
 
 const char *ev3_servo_polarity( INX_T polarity_inx )
@@ -382,12 +382,12 @@ INX_T get_servo_polarity_inx( uint8_t sn )
 
 size_t set_servo_polarity_inx( uint8_t sn, INX_T polarity_inx )
 {
-	return set_servo_polarity( sn, ( char* ) ev3_servo_polarity( polarity_inx ));
+	return set_servo_polarity( sn, ( char *) ev3_servo_polarity( polarity_inx ));
 }
 
 size_t multi_set_servo_polarity_inx( uint8_t *sn, INX_T polarity_inx )
 {
-	return multi_set_servo_polarity( sn, ( char* ) ev3_servo_polarity( polarity_inx ));
+	return multi_set_servo_polarity( sn, ( char *) ev3_servo_polarity( polarity_inx ));
 }
 
 size_t get_servo_state_flags( uint8_t sn, FLAGS_T *flags )

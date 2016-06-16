@@ -1241,12 +1241,12 @@ INX_T get_sensor_mode_inx( uint8_t sn, INX_T type_inx )
 
 size_t set_sensor_mode_inx( uint8_t sn, INX_T mode_inx )
 {
-	return set_sensor_mode( sn, ( char* ) ev3_sensor_mode( mode_inx ));
+	return set_sensor_mode( sn, ( char *) ev3_sensor_mode( mode_inx ));
 }
 
 size_t multi_set_sensor_mode_inx( uint8_t *sn, INX_T mode_inx )
 {
-	return multi_set_sensor_mode( sn, ( char* ) ev3_sensor_mode( mode_inx ));
+	return multi_set_sensor_mode( sn, ( char *) ev3_sensor_mode( mode_inx ));
 }
 
 const char *ev3_sensor_command( INX_T command_inx )
@@ -1357,12 +1357,12 @@ const char *ev3_sensor_command( INX_T command_inx )
 
 size_t set_sensor_command_inx( uint8_t sn, INX_T command_inx )
 {
-	return set_sensor_command( sn, ( char* ) ev3_sensor_command( command_inx ));
+	return set_sensor_command( sn, ( char *) ev3_sensor_command( command_inx ));
 }
 
 size_t multi_set_sensor_command_inx( uint8_t *sn, INX_T command_inx )
 {
-	return multi_set_sensor_command( sn, ( char* ) ev3_sensor_command( command_inx ));
+	return multi_set_sensor_command( sn, ( char *) ev3_sensor_command( command_inx ));
 }
 
 int ev3_sensor_init( void )

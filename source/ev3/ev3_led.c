@@ -15,7 +15,7 @@
 #include "ev3.h"
 #include "ev3_led.h"
 
-static const char * const led_attr_brightness[] = {
+static const char *const led_attr_brightness[] = {
 	"/sys/class/leds/ev3:left:green:ev3dev/brightness",
 	"/sys/class/leds/ev3:right:green:ev3dev/brightness",
 	"/sys/class/leds/ev3:left:red:ev3dev/brightness",
@@ -27,7 +27,7 @@ static const char * const led_attr_brightness[] = {
 
 };
 
-static const char * const led_attr_delay_off[] = {
+static const char *const led_attr_delay_off[] = {
 	"/sys/class/leds/ev3:left:green:ev3dev/delay_off",
 	"/sys/class/leds/ev3:right:green:ev3dev/delay_off",
 	"/sys/class/leds/ev3:left:red:ev3dev/delay_off",
@@ -39,7 +39,7 @@ static const char * const led_attr_delay_off[] = {
 
 };
 
-static const char * const led_attr_delay_on[] = {
+static const char *const led_attr_delay_on[] = {
 	"/sys/class/leds/ev3:left:green:ev3dev/delay_on",
 	"/sys/class/leds/ev3:right:green:ev3dev/delay_on",
 	"/sys/class/leds/ev3:left:red:ev3dev/delay_on",
@@ -51,7 +51,7 @@ static const char * const led_attr_delay_on[] = {
 
 };
 
-static const char * const led_attr_max_brightness[] = {
+static const char *const led_attr_max_brightness[] = {
 	"/sys/class/leds/ev3:left:green:ev3dev/max_brightness",
 	"/sys/class/leds/ev3:right:green:ev3dev/max_brightness",
 	"/sys/class/leds/ev3:left:red:ev3dev/max_brightness",
@@ -63,7 +63,7 @@ static const char * const led_attr_max_brightness[] = {
 
 };
 
-static const char * const led_attr_trigger[] = {
+static const char *const led_attr_trigger[] = {
 	"/sys/class/leds/ev3:left:green:ev3dev/trigger",
 	"/sys/class/leds/ev3:right:green:ev3dev/trigger",
 	"/sys/class/leds/ev3:left:red:ev3dev/trigger",
@@ -197,5 +197,5 @@ INX_T get_led_trigger_inx( uint8_t inx )
 
 size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx )
 {
-	return set_led_trigger( inx, ( char* ) ev3_led_trigger( trigger_inx ));
+	return set_led_trigger( inx, ( char *) ev3_led_trigger( trigger_inx ));
 }

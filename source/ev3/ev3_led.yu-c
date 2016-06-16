@@ -21,7 +21,7 @@
 
 ($each-LED_ATTR \i.]
 
-	static const char * const led_attr_($i LED_ATTR_ID)[] = {
+	static const char *const led_attr_($i LED_ATTR_ID)[] = {
 		($each-LED \ii.]
 			($q,,($unq LED_PATH)/($unq ($ii LED_NAME))/($unq ($i LED_ATTR_NAME))),
 
@@ -83,5 +83,5 @@ INX_T get_led_trigger_inx( uint8_t inx )
 
 size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx )
 {
-	return set_led_trigger( inx, ( char* ) ev3_led_trigger( trigger_inx ));
+	return set_led_trigger( inx, ( char *) ev3_led_trigger( trigger_inx ));
 }
