@@ -15,10 +15,12 @@
 #define EV3_TACHO_EXT
 #define EV3_TACHO_EXT_INIT( dec, init ) \
 	dec = init
+#define EV3_TACHO_INL extern inline
 #else
 #define EV3_TACHO_EXT extern
 #define EV3_TACHO_EXT_INIT( dec, init ) \
 	extern dec
+#define EV3_TACHO_INL inline
 #endif
 
 #ifndef COMMA

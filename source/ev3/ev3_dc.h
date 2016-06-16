@@ -15,10 +15,12 @@
 #define EV3_DC_EXT
 #define EV3_DC_EXT_INIT( dec, init ) \
 	dec = init
+#define EV3_DC_INL extern inline
 #else
 #define EV3_DC_EXT extern
 #define EV3_DC_EXT_INIT( dec, init ) \
 	extern dec
+#define EV3_DC_INL inline
 #endif
 
 #ifndef COMMA
