@@ -372,6 +372,8 @@ const char *ev3_sensor_type( INX_T type_inx )
 		return "wedo-tilt";
 	case LEGO_POWER_STORAGE:
 		return "lego-power-storage";
+	case LEGO_NXT_TEMP:
+		return "lego-nxt-temp";
 	case LEGO_NXT_TOUCH:
 		return "lego-nxt-touch";
 	case LEGO_NXT_LIGHT:
@@ -398,6 +400,8 @@ const char *ev3_sensor_type( INX_T type_inx )
 		return "ms-nxtmmx";
 	case MS_8CH_SERVO:
 		return "ms-8ch-servo";
+	case MS_PPS58_NX:
+		return "ms-pps58-nx";
 	case MS_PIXY_ADAPTER:
 		return "ms-pixy-adapter";
 	case MS_NXT_TOUCH_MUX:
@@ -472,6 +476,8 @@ INX_T get_sensor_type_inx( uint8_t sn )
 		return WEDO_TILT;
 	case 0xc62761bdL:  /* "lego-power-storage" */
 		return LEGO_POWER_STORAGE;
+	case 0x986255fcL:  /* "lego-nxt-temp" */
+		return LEGO_NXT_TEMP;
 	case 0x399f89bbL:  /* "lego-nxt-touch" */
 		return LEGO_NXT_TOUCH;
 	case 0xa433f8beL:  /* "lego-nxt-light" */
@@ -498,6 +504,8 @@ INX_T get_sensor_type_inx( uint8_t sn )
 		return MS_NXTMMX;
 	case 0x993a454aL:  /* "ms-8ch-servo" */
 		return MS_8CH_SERVO;
+	case 0x9ae28244L:  /* "ms-pps58-nx" */
+		return MS_PPS58_NX;
 	case 0x5b31dc33L:  /* "ms-pixy-adapter" */
 		return MS_PIXY_ADAPTER;
 	case 0xb033713fL:  /* "ms-nxt-touch-mux" */
@@ -820,6 +828,11 @@ const char *ev3_sensor_mode( INX_T mode_inx )
 	case LEGO_POWER_STORAGE_ALL:
 		return "ALL";
 
+	case LEGO_NXT_TEMP_NXT_TEMP_C:
+		return "NXT-TEMP-C";
+	case LEGO_NXT_TEMP_NXT_TEMP_F:
+		return "NXT-TEMP-F";
+
 	case LEGO_NXT_TOUCH_TOUCH:
 		return "TOUCH";
 
@@ -904,6 +917,21 @@ const char *ev3_sensor_mode( INX_T mode_inx )
 		return "V3";
 	case MS_8CH_SERVO_OLD:
 		return "OLD";
+
+	case MS_PPS58_NX_RAW:
+		return "RAW";
+	case MS_PPS58_NX_ABS_PSI:
+		return "ABS-PSI";
+	case MS_PPS58_NX_ABS_MBAR:
+		return "ABS-MBAR";
+	case MS_PPS58_NX_ABS_KPA:
+		return "ABS-KPA";
+	case MS_PPS58_NX_REL_PSI:
+		return "REL-PSI";
+	case MS_PPS58_NX_REL_MBAR:
+		return "REL-MBAR";
+	case MS_PPS58_NX_REL_KPA:
+		return "REL-KPA";
 
 	case MS_PIXY_ADAPTER_TRACK:
 		return "TRACK";
@@ -1137,6 +1165,12 @@ INX_T get_sensor_mode_inx( uint8_t sn, INX_T type_inx )
 
 		break;
 
+	case LEGO_NXT_TEMP:
+		if ( strcmp( buf, "NXT-TEMP-C" ) == 0 ) return LEGO_NXT_TEMP_NXT_TEMP_C;
+		if ( strcmp( buf, "NXT-TEMP-F" ) == 0 ) return LEGO_NXT_TEMP_NXT_TEMP_F;
+
+		break;
+
 	case LEGO_NXT_TOUCH:
 		if ( strcmp( buf, "TOUCH" ) == 0 ) return LEGO_NXT_TOUCH_TOUCH;
 
@@ -1222,6 +1256,17 @@ INX_T get_sensor_mode_inx( uint8_t sn, INX_T type_inx )
 	case MS_8CH_SERVO:
 		if ( strcmp( buf, "V3" ) == 0 ) return MS_8CH_SERVO_V3;
 		if ( strcmp( buf, "OLD" ) == 0 ) return MS_8CH_SERVO_OLD;
+
+		break;
+
+	case MS_PPS58_NX:
+		if ( strcmp( buf, "RAW" ) == 0 ) return MS_PPS58_NX_RAW;
+		if ( strcmp( buf, "ABS-PSI" ) == 0 ) return MS_PPS58_NX_ABS_PSI;
+		if ( strcmp( buf, "ABS-MBAR" ) == 0 ) return MS_PPS58_NX_ABS_MBAR;
+		if ( strcmp( buf, "ABS-KPA" ) == 0 ) return MS_PPS58_NX_ABS_KPA;
+		if ( strcmp( buf, "REL-PSI" ) == 0 ) return MS_PPS58_NX_REL_PSI;
+		if ( strcmp( buf, "REL-MBAR" ) == 0 ) return MS_PPS58_NX_REL_MBAR;
+		if ( strcmp( buf, "REL-KPA" ) == 0 ) return MS_PPS58_NX_REL_KPA;
 
 		break;
 
@@ -1345,6 +1390,9 @@ const char *ev3_sensor_command( INX_T command_inx )
 		return "SORT-SIZE";
 	case MS_NXTCAM_SORT_COL:
 		return "SORT-COL";
+
+	case MS_PPS58_NX_ZERO:
+		return "ZERO";
 
 	case MS_PIXY_ADAPTER_SORT_SIZE:
 		return "SORT-SIZE";
