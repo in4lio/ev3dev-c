@@ -15,12 +15,16 @@
 #define EV3_EXT
 #define EV3_EXT_INIT( dec, init ) \
 	dec = init
-#define EV3_INL extern inline
+#define EV3_INL
 #else
 #define EV3_EXT extern
 #define EV3_EXT_INIT( dec, init ) \
 	extern dec
+#if __GNUC__ && !__GNUC_STDC_INLINE__
+#define EV3_INL extern inline
+#else
 #define EV3_INL inline
+#endif
 #endif
 
 #ifndef COMMA

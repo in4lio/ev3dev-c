@@ -15,12 +15,16 @@
 #define EV3_SERVO_EXT
 #define EV3_SERVO_EXT_INIT( dec, init ) \
 	dec = init
-#define EV3_SERVO_INL extern inline
+#define EV3_SERVO_INL
 #else
 #define EV3_SERVO_EXT extern
 #define EV3_SERVO_EXT_INIT( dec, init ) \
 	extern dec
+#if __GNUC__ && !__GNUC_STDC_INLINE__
+#define EV3_SERVO_INL extern inline
+#else
 #define EV3_SERVO_INL inline
+#endif
 #endif
 
 #ifndef COMMA
