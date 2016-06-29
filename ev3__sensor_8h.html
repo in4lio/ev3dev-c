@@ -111,6 +111,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a51131c7621020072fe348c96abb0eafa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51131c7621020072fe348c96abb0eafa"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_SENSOR_EXT_INIT</b>(dec,  init)&#160;&#160;&#160;extern dec</td></tr>
 <tr class="separator:a51131c7621020072fe348c96abb0eafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a482d2206a72b54b36ff661b4c7dcf454"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a482d2206a72b54b36ff661b4c7dcf454"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_SENSOR_INL</b>&#160;&#160;&#160;inline</td></tr>
+<tr class="separator:a482d2206a72b54b36ff661b4c7dcf454"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2f49001be13949a16a57e6c99ab00ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2f49001be13949a16a57e6c99ab00ad"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>COMMA</b>&#160;&#160;&#160;,</td></tr>
 <tr class="separator:aa2f49001be13949a16a57e6c99ab00ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,27 +164,30 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<b>WEDO_TILT</b>, 
 <b>LEGO_POWER_STORAGE</b>, 
+<b>LEGO_NXT_TEMP</b>, 
 <b>LEGO_NXT_TOUCH</b>, 
-<b>LEGO_NXT_LIGHT</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_SOUND</b>, 
+&#160;&#160;<b>LEGO_NXT_LIGHT</b>, 
+<b>LEGO_NXT_SOUND</b>, 
 <b>LEGO_NXT_US</b>, 
 <b>MI_XG1300L</b>, 
-<b>MS_ABSOLUTE_IMU</b>, 
 <br />
-&#160;&#160;<b>MS_ANGLE</b>, 
+&#160;&#160;<b>MS_ABSOLUTE_IMU</b>, 
+<b>MS_ANGLE</b>, 
 <b>MS_EV3_SMUX</b>, 
 <b>MS_LIGHT_ARRAY</b>, 
-<b>MS_LINE_LEADER</b>, 
 <br />
-&#160;&#160;<b>MS_NXTCAM</b>, 
+&#160;&#160;<b>MS_LINE_LEADER</b>, 
+<b>MS_NXTCAM</b>, 
 <b>MS_NXTMMX</b>, 
 <b>MS_8CH_SERVO</b>, 
-<b>MS_PIXY_ADAPTER</b>, 
 <br />
-&#160;&#160;<b>MS_NXT_TOUCH_MUX</b>, 
+&#160;&#160;<b>MS_PPS58_NX</b>, 
+<b>MS_PIXY_ADAPTER</b>, 
+<b>MS_NXT_TOUCH_MUX</b>, 
 <a class="el" href="group__ev3__sensor.html#ggac36f475ca5b446f4fde4c9b90bec77c8abb3539bdc22cabd1b8f5142ac8f507bc">SENSOR_TYPE__COUNT_</a>, 
-<b>SENSOR_TYPE__UNKNOWN_</b> = SENSOR_TYPE__COUNT_
+<br />
+&#160;&#160;<b>SENSOR_TYPE__UNKNOWN_</b> = SENSOR_TYPE__COUNT_
 <br />
  }<tr class="memdesc:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor types.  <a href="group__ev3__sensor.html#gac36f475ca5b446f4fde4c9b90bec77c8">More...</a><br /></td></tr>
 </td></tr>
@@ -310,54 +316,65 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>LEGO_POWER_STORAGE_IN_WATT</b>, 
 <b>LEGO_POWER_STORAGE_OUT_WATT</b>, 
 <b>LEGO_POWER_STORAGE_ALL</b>, 
+<b>LEGO_NXT_TEMP_NXT_TEMP_C</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_TEMP_NXT_TEMP_F</b>, 
 <b>LEGO_NXT_TOUCH_TOUCH</b>, 
-<br />
-&#160;&#160;<b>LEGO_NXT_LIGHT_REFLECT</b>, 
+<b>LEGO_NXT_LIGHT_REFLECT</b>, 
 <b>LEGO_NXT_LIGHT_AMBIENT</b>, 
-<b>LEGO_NXT_SOUND_DB</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_SOUND_DB</b>, 
 <b>LEGO_NXT_SOUND_DBA</b>, 
-<br />
-&#160;&#160;<b>LEGO_NXT_US_US_DIST_CM</b>, 
+<b>LEGO_NXT_US_US_DIST_CM</b>, 
 <b>LEGO_NXT_US_US_DIST_IN</b>, 
-<b>LEGO_NXT_US_US_SI_CM</b>, 
+<br />
+&#160;&#160;<b>LEGO_NXT_US_US_SI_CM</b>, 
 <b>LEGO_NXT_US_US_SI_IN</b>, 
-<br />
-&#160;&#160;<b>LEGO_NXT_US_US_LISTEN</b>, 
+<b>LEGO_NXT_US_US_LISTEN</b>, 
 <b>MI_XG1300L_ANGLE</b>, 
-<b>MI_XG1300L_SPEED</b>, 
+<br />
+&#160;&#160;<b>MI_XG1300L_SPEED</b>, 
 <b>MI_XG1300L_ACCEL</b>, 
-<br />
-&#160;&#160;<b>MI_XG1300L_ALL</b>, 
+<b>MI_XG1300L_ALL</b>, 
 <b>MS_ABSOLUTE_IMU_TILT</b>, 
-<b>MS_ABSOLUTE_IMU_ACCEL</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU_ACCEL</b>, 
 <b>MS_ABSOLUTE_IMU_COMPASS</b>, 
-<br />
-&#160;&#160;<b>MS_ABSOLUTE_IMU_MAG</b>, 
+<b>MS_ABSOLUTE_IMU_MAG</b>, 
 <b>MS_ABSOLUTE_IMU_GYRO</b>, 
-<b>MS_ABSOLUTE_IMU_ALL</b>, 
+<br />
+&#160;&#160;<b>MS_ABSOLUTE_IMU_ALL</b>, 
 <b>MS_ANGLE_ANGLE</b>, 
-<br />
-&#160;&#160;<b>MS_ANGLE_ANGLE2</b>, 
+<b>MS_ANGLE_ANGLE2</b>, 
 <b>MS_ANGLE_SPEED</b>, 
-<b>MS_ANGLE_ALL</b>, 
+<br />
+&#160;&#160;<b>MS_ANGLE_ALL</b>, 
 <b>MS_EV3_SMUX_MUX</b>, 
-<br />
-&#160;&#160;<b>MS_LIGHT_ARRAY_CAL</b>, 
+<b>MS_LIGHT_ARRAY_CAL</b>, 
 <b>MS_LIGHT_ARRAY_RAW</b>, 
-<b>MS_LINE_LEADER_PID</b>, 
+<br />
+&#160;&#160;<b>MS_LINE_LEADER_PID</b>, 
 <b>MS_LINE_LEADER_PID_ALL</b>, 
-<br />
-&#160;&#160;<b>MS_LINE_LEADER_CAL</b>, 
+<b>MS_LINE_LEADER_CAL</b>, 
 <b>MS_LINE_LEADER_RAW</b>, 
-<b>MS_NXTCAM_TRACK</b>, 
+<br />
+&#160;&#160;<b>MS_NXTCAM_TRACK</b>, 
 <b>MS_NXTMMX_STATUS</b>, 
-<br />
-&#160;&#160;<b>MS_NXTMMX_STATUS_OLD</b>, 
+<b>MS_NXTMMX_STATUS_OLD</b>, 
 <b>MS_8CH_SERVO_V3</b>, 
-<b>MS_8CH_SERVO_OLD</b>, 
-<b>MS_PIXY_ADAPTER_TRACK</b>, 
 <br />
-&#160;&#160;<b>MS_NXT_TOUCH_MUX_TOUCH_MUX</b>, 
+&#160;&#160;<b>MS_8CH_SERVO_OLD</b>, 
+<b>MS_PPS58_NX_RAW</b>, 
+<b>MS_PPS58_NX_ABS_PSI</b>, 
+<b>MS_PPS58_NX_ABS_MBAR</b>, 
+<br />
+&#160;&#160;<b>MS_PPS58_NX_ABS_KPA</b>, 
+<b>MS_PPS58_NX_REL_PSI</b>, 
+<b>MS_PPS58_NX_REL_MBAR</b>, 
+<b>MS_PPS58_NX_REL_KPA</b>, 
+<br />
+&#160;&#160;<b>MS_PIXY_ADAPTER_TRACK</b>, 
+<b>MS_NXT_TOUCH_MUX_TOUCH_MUX</b>, 
 <a class="el" href="group__ev3__sensor.html#gga05589fbab0657f08285ebdfe93f5ec9eaea368fbe2fa5f8b47bbe1d8b564f5441">SENSOR_MODE__COUNT_</a>, 
 <b>SENSOR_MODE__UNKNOWN_</b> = SENSOR_MODE__COUNT_
 <br />
@@ -418,9 +435,10 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>MS_NXTCAM_TRACK_LINE</b>, 
 <b>MS_NXTCAM_SORT_SIZE</b>, 
 <b>MS_NXTCAM_SORT_COL</b>, 
-<b>MS_PIXY_ADAPTER_SORT_SIZE</b>, 
+<b>MS_PPS58_NX_ZERO</b>, 
 <br />
-&#160;&#160;<b>MS_PIXY_ADAPTER_SORT_COL</b>, 
+&#160;&#160;<b>MS_PIXY_ADAPTER_SORT_SIZE</b>, 
+<b>MS_PIXY_ADAPTER_SORT_COL</b>, 
 <a class="el" href="group__ev3__sensor.html#gga16af7b253440dadd46a80a4b9fddba4dabd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
 <b>SENSOR_COMMAND__UNKNOWN_</b> = SENSOR_COMMAND__COUNT_
 <br />
@@ -620,7 +638,7 @@ Variables</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 28 2016 14:44:16 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 29 2016 18:57:16 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

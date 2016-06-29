@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"># -*- coding: utf-8 -*-</div><div class="line"></div><div class="line">#FIXME: not the best way to import the library</div><div class="line">$LOAD_PATH &lt;&lt; if ENV[ &#39;OS&#39; ] == &#39;Windows_NT&#39; then &#39;../mingw&#39; else &#39;..&#39; end</div><div class="line">require &#39;ev3&#39;</div><div class="line">include Ev3</div><div class="line"></div><div class="line">if ev3_init() &lt; 1 then exit( 1 ) end</div><div class="line"></div><div class="line">print &#39;Enter \&#39;bye\&#39; to power-off the EV3 brick: &#39;</div><div class="line">$stdout.flush</div><div class="line">if gets.chomp.casecmp( &#39;bye&#39; ) == 0</div><div class="line">    ev3_poweroff()</div><div class="line">    puts &#39;Goodbye!&#39;</div><div class="line">else</div><div class="line">    puts &#39;Misspelling.&#39;</div><div class="line">end</div><div class="line"></div><div class="line">ev3_uninit()</div></div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 28 2016 14:44:16 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 29 2016 18:57:15 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
