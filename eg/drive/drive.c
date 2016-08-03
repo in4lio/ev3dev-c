@@ -188,13 +188,13 @@ CORO_DEFINE( handle_touch )
 
 	for ( ; ; ) {
 		/* Waiting the button is pressed */
-		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( val ), );
+		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( val ));
 
 		command = MOVE_NONE;  /* Stop the vehicle */
 		/* Switch mode */
 		_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
 		/* Waiting the button is released */
-		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( !val ), );
+		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( !val ));
 	}
 	CORO_END();
 }
@@ -207,7 +207,7 @@ CORO_DEFINE( handle_brick_control )
 	CORO_BEGIN();
 	for ( ; ; ) {
 		/* Waiting any key is pressed or released */
-		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ), );
+		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ));
 		pressed = keys;
 
 		if ( pressed & EV3_KEY_BACK ) {
@@ -232,7 +232,7 @@ CORO_DEFINE( handle_ir_control )
 	CORO_BEGIN();
 	for ( ; ; ) {
 		/* Waiting IR remote control mode */
-		CORO_WAIT( mode == MODE_REMOTE, );
+		CORO_WAIT( mode == MODE_REMOTE );
 
 		val = IR_REMOTE__NONE_;
 		get_sensor_value( IR_CHANNEL, ir, &val );
@@ -280,7 +280,7 @@ CORO_DEFINE( handle_ir_proximity )
 	CORO_BEGIN();
 	for ( ; ; ) {
 		/* Waiting self-driving mode */
-		CORO_WAIT( mode == MODE_AUTO, );
+		CORO_WAIT( mode == MODE_AUTO );
 
 		prox = 0;
 		get_sensor_value( 0, ir, &prox );
@@ -294,7 +294,7 @@ CORO_DEFINE( handle_ir_proximity )
 			angle = -30;
 			do {
 				command = TURN_ANGLE;
-				CORO_WAIT( command == MOVE_NONE, );
+				CORO_WAIT( command == MOVE_NONE );
 
 				prox = 0;
 				get_sensor_value( 0, ir, &prox );
@@ -305,7 +305,7 @@ CORO_DEFINE( handle_ir_proximity )
 					} else {
 						/* Step back */
 						command = STEP_BACKWARD;
-						CORO_WAIT( command == MOVE_NONE, );
+						CORO_WAIT( command == MOVE_NONE );
 					}
 				}
 			} while (( prox > 0 ) && ( prox < 40 ) && ( mode == MODE_AUTO ));
@@ -331,7 +331,7 @@ CORO_DEFINE( drive )
 
 	for ( ; ; ) {
 		/* Waiting new command */
-		CORO_WAIT( moving != command, );
+		CORO_WAIT( moving != command );
 
 		_wait_stopped = 0;
 		switch ( command ) {
@@ -372,7 +372,7 @@ CORO_DEFINE( drive )
 
 		if ( _wait_stopped ) {
 			/* Waiting the command is completed */
-			CORO_WAIT( !_is_running(), );
+			CORO_WAIT( !_is_running());
 
 			command = moving = MOVE_NONE;
 		}

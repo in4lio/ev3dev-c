@@ -11,7 +11,8 @@
  */
 
 #include <stdio.h>
-#include <ev3_pool.h>
+#include "ev3_pool.h"
+#include "coroutine.h"
 
 #define SPEED_LINEAR    75  /* Motor speed for linear motion, in percents */
 #define SPEED_CIRCULAR  50  /* ... for circular motion */
@@ -86,7 +87,7 @@ CORO_DEFINE( handle_ir_control )
 
 	for ( ; ; ) {
 		/* Waiting any button is pressed or released */
-		CORO_WAIT(( sensor_get_value( ir, IR_CHANNEL ) != pressed ), );
+		CORO_WAIT( sensor_get_value( ir, IR_CHANNEL ) != pressed );
 
 		/* Get state of IR RC buttons */
 		pressed = sensor_get_value( ir, IR_CHANNEL );
@@ -137,7 +138,7 @@ CORO_DEFINE( handle_brick_control )
 	CORO_BEGIN();
 	for ( ; ; ) {
 		/* Waiting any key is pressed or released */
-		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ), );
+		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ));
 		pressed = keys;
 
 		switch ( pressed ) {
@@ -190,14 +191,14 @@ CORO_DEFINE( drive )
 
 	for ( ; ; ) {
 		/* Waiting new command */
-		CORO_WAIT( state != command, );
+		CORO_WAIT( state != command );
 
 		switch ( command ) {
 
 		case STOP:
 			tacho_stop( MOTOR_BOTH );
 			/* Waiting the vehicle is stopped */
-			CORO_WAIT( !tacho_is_running( MOTOR_BOTH ), );
+			CORO_WAIT( !tacho_is_running( MOTOR_BOTH ));
 			break;
 
 		case FORTH:
