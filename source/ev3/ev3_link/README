@@ -11,6 +11,10 @@
     Also ev3_link is used as a stand-alone program (server) on the EV3 brick
     to handle requests from a remote computer (client).
 
+    The interchange protocol:
+
+        http://in4lio.github.io/ev3dev-c/udp.html
+
     ___        ___________________________________
     ___ SERVER ___________________________________
 
@@ -28,7 +32,7 @@
 
     * * *  How to set WLAN up on the EV3 brick?
 
-    http://www.ev3dev.org/docs/getting-started/#step-4-setup-a-network-connection
+    http://www.ev3dev.org/docs/getting-started/#step-5-setup-a-network-connection
 
     ___        ___________________________________
     ___ CLIENT ___________________________________
@@ -36,24 +40,19 @@
     The remote access to the EV3 brick is implied when you build a program
     under Windows or Linux (not on __ARM_ARCH_4T__).
 
-    Approximately every 5 seconds the broadcast message is sent by the server
-    on port 8800 (or specified when the server starts). The client detects
-    the IP address of the server catching a message like that.
-
-    Also you can specify the IP address before the brick initialization.
+    Approximately every 5 seconds the server transmits a broadcast message
+    to port 8800 (or other specified) that allows the client to detect
+    the brick's IP address. Or, you can specify the IP address of the server
+    manually before calling the initialization:
 
     #include "ev3.h"
 
-#ifndef __ARM_ARCH_4T__
-    ev3_brick_addr = "192.168.0.204";
+    #ifndef __ARM_ARCH_4T__
+        ev3_brick_addr = "192.168.0.204";
 
-#endif
+    #endif
 
     ev3_init();
-
-    The interchange protocol is described on
-
-        http://in4lio.github.io/ev3dev-c/udp.html
 
     ___         __________________________________
     ___ LICENSE __________________________________

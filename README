@@ -72,7 +72,7 @@
 
     * * *  How to drive the EV3 hardware remotely?
 
-    https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link
+    https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link/
 
     * * *  How to make a static library?
 
