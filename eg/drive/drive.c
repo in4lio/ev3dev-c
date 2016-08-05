@@ -51,7 +51,7 @@ enum {
 	MODE_AUTO,    /* Self-driving */
 };
 
-int mode;
+int mode;  /* Driving mode */
 
 enum {
 	MOVE_NONE,
@@ -189,8 +189,8 @@ CORO_DEFINE( handle_touch )
 	for ( ; ; ) {
 		/* Waiting the button is pressed */
 		CORO_WAIT( get_sensor_value( 0, touch, &val ) && ( val ));
-
-		command = MOVE_NONE;  /* Stop the vehicle */
+		/* Stop the vehicle */
+		command = MOVE_NONE;
 		/* Switch mode */
 		_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
 		/* Waiting the button is released */
@@ -211,11 +211,14 @@ CORO_DEFINE( handle_brick_control )
 		pressed = keys;
 
 		if ( pressed & EV3_KEY_BACK ) {
-			command = MOVE_NONE;  /* Stop the vehicle */
-			app_alive = 0;        /* Quit */
+			/* Stop the vehicle */
+			command = MOVE_NONE;
+			/* Quit */
+			app_alive = 0;
 
 		} else if ( pressed & EV3_KEY_UP ) {
-			command = MOVE_NONE;  /* Stop the vehicle */
+			/* Stop the vehicle */
+			command = MOVE_NONE;
 			/* Switch mode */
 			_set_mode(( mode == MODE_REMOTE ) ? MODE_AUTO : MODE_REMOTE );
 		}

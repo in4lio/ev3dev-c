@@ -6,10 +6,10 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.8b9
-                2016-06-20
+    ev3dev-c    0.9b1
+                2016-08-05
 
-    kernel      4.4.13-12-ev3dev-ev3
+    kernel      4.4.15-13-ev3dev-ev3
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -51,15 +51,15 @@
     https://github.com/in4lio/ev3dev-c/blob/master/eg/drive/drive.c
 
     There are a few more examples on C in "eg" folder:
-    "light"    - LEDs blinking example;
-    "sensor"   - TOUCH and COLOR sensors example;
-    "tacho"    - Tacho motor running for 5 sec;
-    "remote"   - IR remote control;
-    "port"     - Using EV3 ports;
-    "dc"       - Using DC motor;
-    "rcx_led"  - Using RCX LED;
-    "servo"    - SERVO motor example;
-    "drive"    - Complex example based on coroutines.
+    light    - LEDs blinking example;
+    sensor   - TOUCH and COLOR sensors example;
+    tacho    - Tacho motor running for 5 sec;
+    port     - Using EV3 ports;
+    dc       - Using DC motor;
+    rcx_led  - Using RCX LED;
+    servo    - SERVO motor example;
+    drive    - Complex example based on coroutines;
+    remote   - IR remote control and high-level library prototype.
 
     > cd eg/light/
     > make

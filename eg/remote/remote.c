@@ -49,7 +49,8 @@ int init( void )
 		printf( "Please, plug LEFT motor in C port,\n"
 		"RIGHT motor in B port and try again.\n"
 		);
-		return ( 0 );  /* Inoperative without both motors */
+		/* Inoperative without motors */
+		return ( 0 );
 	}
 	command	= state = STOP;
 
@@ -94,26 +95,22 @@ CORO_DEFINE( handle_ir_control )
 		switch ( pressed ) {
 		/* Forward */
 		case RED_UP_BLUE_UP:
-
 			command = FORTH;
 			break;
 		/* Backward */
 		case RED_DOWN_BLUE_DOWN:
-
 			command = BACK;
 			break;
 		/* Left */
 		case RED_UP:
 		case RED_UP_BLUE_DOWN:
 		case BLUE_DOWN:
-
 			command = LEFT;
 			break;
 		/* Right */
 		case BLUE_UP:
 		case RED_DOWN_BLUE_UP:
 		case RED_DOWN:
-
 			command = RIGHT;
 			break;
 		/* Stop */
@@ -121,7 +118,6 @@ CORO_DEFINE( handle_ir_control )
 		case RED_UP_RED_DOWN:
 		case BLUE_UP_BLUE_DOWN:
 		case BEACON_MODE_ON:
-
 			command = STOP;
 			break;
 		}
@@ -144,34 +140,28 @@ CORO_DEFINE( handle_brick_control )
 		switch ( pressed ) {
 		/* Quit */
 		case EV3_KEY_BACK:
-
 			command = STOP;
 			alive = 0;
 			break;
 		/* Stop */
 		case EV3_KEY__NONE_:
 		case EV3_KEY_CENTER:
-
 			command = STOP;
 			break;
 		/* Forward */
 		case EV3_KEY_UP:
-
 			command = FORTH;
  			break;
 		/* Backward */
 		case EV3_KEY_DOWN:
-
 			command = BACK;
 			break;
 		/* Left */
 		case EV3_KEY_LEFT:
-
 			command = LEFT;
 			break;
 		/* Right */
 		case EV3_KEY_RIGHT:
-
 			command = RIGHT;
 			break;
 		}
