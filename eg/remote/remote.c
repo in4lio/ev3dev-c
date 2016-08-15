@@ -5,14 +5,14 @@
                                                ((())))
  *//**
  *  \file  remote.c
- *  \brief  ev3dev-c example of wrapping of the library functions.
+ *  \brief  ev3dev-c example of "brick" simplified library.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
 
 #include <stdio.h>
-#include "ev3_pool.h"
 #include "coroutine.h"
+#include "brick.h"
 
 #define SPEED_LINEAR    75  /* Motor speed for linear motion, in percents */
 #define SPEED_CIRCULAR  50  /* ... for circular motion */
@@ -25,7 +25,7 @@ int max_speed;         /* Motor maximal speed */
 
 #define IR_CHANNEL     0
 
-uint8_t ir;            /* Port will be detected */
+POOL_T ir;             /* Port will be detected */
 
 enum {
 	STOP,
@@ -42,8 +42,8 @@ int alive;             /* Program is alive */
 
 int init( void )
 {
-	if ( tacho_is_plugged( MOTOR_BOTH )) {
-		max_speed = tacho_get_max_speed( MOTOR_LEFT );
+	if ( tacho_is_plugged( MOTOR_BOTH, TACHO_TYPE__NONE_ )) {  /* any type of motor */
+		max_speed = tacho_get_max_speed( MOTOR_LEFT, 0 );
 		tacho_reset( MOTOR_BOTH );
 	} else {
 		printf( "Please, plug LEFT motor in C port,\n"
@@ -56,7 +56,7 @@ int init( void )
 
 	ir = sensor_search( LEGO_EV3_IR );
 	if ( ir ) {
-		ir_set_mode_remote( ir );
+		ir_set_mode_ir_remote( ir );
 
 		printf(	"IR remote control:\n"
 		"RED UP & BLUE UP     - forward\n"
@@ -81,17 +81,16 @@ CORO_CONTEXT( drive );
 /* Coroutine of IR remote control handling */
 CORO_DEFINE( handle_ir_control )
 {
-	CORO_LOCAL int pressed = IR_REMOTE__NONE_;
+	CORO_LOCAL int btns, pressed = IR_REMOTE__NONE_;
 
 	CORO_BEGIN();
 	if ( ir == 0 ) CORO_QUIT();
 
 	for ( ; ; ) {
-		/* Waiting any button is pressed or released */
-		CORO_WAIT( sensor_get_value( ir, IR_CHANNEL ) != pressed );
+		/* Waiting any IR RC button is pressed or released */
+		CORO_WAIT(( btns = sensor_get_value( IR_CHANNEL, ir, IR_REMOTE__NONE_ )) != pressed );
+		pressed = btns;
 
-		/* Get state of IR RC buttons */
-		pressed = sensor_get_value( ir, IR_CHANNEL );
 		switch ( pressed ) {
 		/* Forward */
 		case RED_UP_BLUE_UP:
@@ -134,7 +133,7 @@ CORO_DEFINE( handle_brick_control )
 	CORO_BEGIN();
 	for ( ; ; ) {
 		/* Waiting any key is pressed or released */
-		CORO_WAIT( ev3_read_keys( &keys ) && ( keys != pressed ));
+		CORO_WAIT(( keys = brick_keys()) != pressed );
 		pressed = keys;
 
 		switch ( pressed ) {
@@ -192,24 +191,24 @@ CORO_DEFINE( drive )
 			break;
 
 		case FORTH:
-			tacho_set_speed( MOTOR_BOTH, -speed_linear );
+			tacho_set_speed_sp( MOTOR_BOTH, -speed_linear );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case BACK:
-			tacho_set_speed( MOTOR_BOTH, speed_linear );
+			tacho_set_speed_sp( MOTOR_BOTH, speed_linear );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case LEFT:
-			tacho_set_speed( MOTOR_LEFT, speed_circular );
-			tacho_set_speed( MOTOR_RIGHT, -speed_circular );
+			tacho_set_speed_sp( MOTOR_LEFT, speed_circular );
+			tacho_set_speed_sp( MOTOR_RIGHT, -speed_circular );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 
 		case RIGHT:
-			tacho_set_speed( MOTOR_LEFT, -speed_circular );
-			tacho_set_speed( MOTOR_RIGHT, speed_circular );
+			tacho_set_speed_sp( MOTOR_LEFT, -speed_circular );
+			tacho_set_speed_sp( MOTOR_RIGHT, speed_circular );
 			tacho_run_forever( MOTOR_BOTH );
 			break;
 		}
