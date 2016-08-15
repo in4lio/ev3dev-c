@@ -6,8 +6,8 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.9b1
-                2016-08-05
+    ev3dev-c    0.9b2
+                2016-08-15
 
     kernel      4.4.15-13-ev3dev-ev3
     ___             ______________________________
@@ -48,18 +48,25 @@
 
     * * *  How can I see some examples?
 
-    https://github.com/in4lio/ev3dev-c/blob/master/eg/drive/drive.c
+    The comprehensive example based on coroutines:
 
-    There are a few more examples on C in "eg" folder:
-    light    - LEDs blinking example;
-    sensor   - TOUCH and COLOR sensors example;
-    tacho    - Tacho motor running for 5 sec;
-    port     - Using EV3 ports;
-    dc       - Using DC motor;
-    rcx_led  - Using RCX LED;
-    servo    - SERVO motor example;
-    drive    - Complex example based on coroutines;
-    remote   - IR remote control and high-level library prototype.
+        https://github.com/in4lio/ev3dev-c/blob/master/eg/drive/drive.c
+
+    The example of using "brick" simplified library:
+
+        https://github.com/in4lio/ev3dev-c/blob/master/eg/remote/remote.c
+
+    There are a few more examples on C in
+
+        https://github.com/in4lio/ev3dev-c/blob/master/eg/
+
+    light    - LEDs blinking example
+    sensor   - TOUCH and COLOR sensors example
+    tacho    - Tacho motor running for 5 sec
+    port     - Using EV3 ports
+    dc       - Using DC motor
+    rcx_led  - Using RCX LED
+    servo    - SERVO motor example
 
     > cd eg/light/
     > make

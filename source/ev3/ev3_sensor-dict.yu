@@ -16,7 +16,10 @@
 )
 ($import { grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json',
 '../sensors.json' ) })
-($set CLASS_TYPE_ID_SHORT ())
+
+($set CLASS_TYPE_ID_SHORT_FOR ( "lego_ev3_us" "lego_ev3_gyro" "lego_ev3_color" "lego_ev3_touch" "lego_ev3_ir" ))
+($set CLASS_TYPE_ID_SHORT     ( "us"          "gyro"          "color"          "touch"          "ir"          ))
+
 ($set CLASS_TYPE_ATTR_INDEX ( "mode" "command" ))
 ($set CLASS_ATTR_INDEX ())
 ($set CLASS_ATTR_FLAGS ())

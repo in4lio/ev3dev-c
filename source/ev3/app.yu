@@ -8,7 +8,7 @@
 ev3dev-c
 [ )
 ($set VERSION ]
-0.9b1
+0.9b2
 [ )
 ($set KERNEL ]
 4.4.15-13-ev3dev-ev3

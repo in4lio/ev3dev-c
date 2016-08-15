@@ -4,27 +4,35 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
-($! name of type attribute of class )
+($! name of type attribute of the class )
 ($set CLASS_TYPE_ATTR_NAME "driver_name")
 
 ($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
-($set _TYPE_TO_ID \val.($replace,,($unq val),,-,,_))
-($set _ATTR_TO_ID \val.($replace,,($unq val),,/,,_))
+($set _TYPE_TO_ID  \val.($replace,,($unq val),,-,,_))
+($set _ATTR_TO_ID  \val.($replace,,($unq val),,/,,_))
 
 ($set CLASS_TYPE_ATTR_ID_INDEX ($CLASS_TYPE_ATTR_INDEX \i.($_ATTR_TO_ID i)))
 ($set CLASS_ATTR_ID_INDEX ($CLASS_ATTR_INDEX \i.($_ATTR_TO_ID i)))
 ($set CLASS_ATTR_ID_FLAGS ($CLASS_ATTR_FLAGS \i.($_ATTR_TO_ID i)))
 
-($! identifiers of class instances )
+($! identifiers of the class instances )
 ($set CLASS_TYPE_ID ($each-CLASS_TYPE \i.($_TYPE_TO_ID ($i CLASS_TYPE_NAME))))
-($set CLASS_TYPE_ID_SYN ($() ? ($isatom CLASS_TYPE_ID_SHORT) | CLASS_TYPE_ID_SHORT))
+($set CLASS_TYPE_ID_SYN_FOR CLASS_TYPE_ID ? ($isatom CLASS_TYPE_ID_SHORT_FOR) | ($CLASS_TYPE_ID_SHORT_FOR \i.($_TYPE_TO_ID i)))
+($set CLASS_TYPE_ID_SYN () ? ($isatom CLASS_TYPE_ID_SHORT) | ($CLASS_TYPE_ID_SHORT \i.($_TYPE_TO_ID i)))
 
-($! identifiers of class attributes )
+($! identifiers of the class attributes )
 ($set CLASS_ATTR_ID ($each-CLASS_ATTR \i.($_ATTR_TO_ID ($i CLASS_ATTR_NAME))))
 ($set CLASS_AVEC_ID ($each-CLASS_AVEC \i.($_ATTR_TO_ID ($i CLASS_AVEC_NAME))))
 
-($! flag - class descriptor contains 'addr' attribute )
+($! flag - the class descriptor contains 'addr' attribute )
 ($set CLASS_DESC_ADDR ($ne ($index CLASS_DESC_ID addr) -1))
+
+($! title of the class for using in comments )
+($set CL_TITLE ($unq CLASS_TITLE))
+($set CL_TITLE_1 CL_TITLE ? { CL_TITLE[ 0 ].isupper() } | ($capitalize CL_TITLE))
 
 ($! use crc32() instead strcmp() if the number of strings equal to or greater than the specified )
 ($set _USE_CRC32_FROM 7)
+
+($! anonymous attributes in "brick" library functions)
+($set _BRICK_ATTR_ANONYMOUS ("command"))

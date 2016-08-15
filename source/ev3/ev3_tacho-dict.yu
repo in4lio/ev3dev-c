@@ -22,7 +22,10 @@
 	(  "fi-l12-ev3"        )
 	)
 )
-($set CLASS_TYPE_ID_SHORT ())
+
+($set CLASS_TYPE_ID_SHORT_FOR ())
+($set CLASS_TYPE_ID_SHORT     ())
+
 ($set CLASS_TYPE_ATTR_INDEX ())
 ($set CLASS_ATTR_INDEX ( "command" "polarity" "stop_action" ))
 ($set CLASS_ATTR_FLAGS ( "state" ))
