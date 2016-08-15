@@ -12,3 +12,4 @@ html/
 sftp-config.json
 source/sensors.json
 makefile
+args
