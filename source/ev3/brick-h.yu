@@ -1,0 +1,149 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($each-CLASS_ATTR \i.]
+	($if ($le ($i CLASS_ATTR_WRITE) RW)
+		($if ($or ($ne ($index CLASS_TYPE_ATTR_ID_INDEX ($i CLASS_ATTR_ID)) -1)
+			      ($ne ($index CLASS_ATTR_ID_INDEX      ($i CLASS_ATTR_ID)) -1)) ]
+			/**
+			 *  \brief Get value (index) of ($i CLASS_ATTR_NAME) attribute of the ($CL_TITLE).
+			 *  \param sock Socket.
+			 *  \return Requested value.
+			 */
+			($h-extern) INX_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
+
+		[ \else ($if ($ne ($index CLASS_ATTR_ID_FLAGS ($i CLASS_ATTR_ID)) -1) ]
+			/**
+			 *  \brief Get value (flags) of ($i CLASS_ATTR_NAME) attribute of the ($CL_TITLE).
+			 *  \param sock Socket.
+			 *  \return Requested value.
+			 */
+			($h-extern) FLAGS_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
+
+		[ \else ]
+			/**
+			 *  \brief Get value of ($i CLASS_ATTR_NAME) attribute of the ($CL_TITLE).
+			 *  \param sock Socket.
+			 ($ ]
+			 *  \param[out] buf Buffer for result.
+			 *  \param sz Buffer size.
+			 [ ? ($i CLASS_ATTR_ARRAY) | ]
+			 *  \param defval Default value.
+			 [ )
+			 *  \return Requested value.
+			 */
+			($h-extern) ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock($[, ($i CLASS_ATTR_TYPE) *buf, size_t sz] ? ($i CLASS_ATTR_ARRAY) | [, ($i CLASS_ATTR_TYPE) defval]) );
+
+		[ ))
+	)
+
+	($if ($ge ($i CLASS_ATTR_WRITE) RW)
+		($if ($or ($ne ($index CLASS_TYPE_ATTR_ID_INDEX ($i CLASS_ATTR_ID)) -1)
+			      ($ne ($index CLASS_ATTR_ID_INDEX      ($i CLASS_ATTR_ID)) -1)) ]
+			/**
+			 *  \brief Set value of ($i CLASS_ATTR_NAME) attribute of ($CL_TITLE)s.
+			 *  \param pool Pool of sockets.
+			 *  \param ($i CLASS_ATTR_ID)_inx Index of the ($CL_TITLE) ($i CLASS_ATTR_ID).
+			 *  \return Flag - success operation.
+			 */
+			($h-extern) bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, INX_T ($i CLASS_ATTR_ID)_inx );
+
+		[ \else ]
+			/**
+			 *  \brief Set value of ($i CLASS_ATTR_NAME) attribute of ($CL_TITLE)s.
+			 *  \param pool Pool of sockets.
+			 *  \param value Attribute value.
+			 ($ ]
+			 *  \param sz Size of attribute value.
+			 [ ? ($eq ($i CLASS_ATTR_ARRAY) 2))
+			 *  \return Flag - success operation.
+			 */
+			($h-extern) bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+
+		[ )
+	)
+
+[ )
+
+($each-CLASS_AVEC \i.]
+	/**
+	 *  \brief Get value of ($i CLASS_AVEC_NAME) attribute of the ($CL_TITLE).
+	 *  \param inx Attribute index.
+	 *  \param sock Socket.
+	 ($ ]
+	 *  \param[out] buf Buffer for result.
+	 *  \param sz Buffer size.
+	 [ ? ($i CLASS_ATTR_ARRAY) | ]
+	 *  \param defval Default value.
+	 [ )
+	 *  \return Requested value.
+	 */
+	($h-extern) ($i CLASS_AVEC_TYPE) ($[*] ? ($i CLASS_AVEC_ARRAY))($CLASS_ID)_get_($i CLASS_AVEC_ID)( uint8_t inx, POOL_T sock($[, ($i CLASS_AVEC_TYPE) *buf, size_t sz] ? ($i CLASS_AVEC_ARRAY) | [, ($i CLASS_AVEC_TYPE) defval]) );
+
+[ )
+
+($CLASS_TYPE_ATTR_ID_INDEX \attr.]
+	($set _ATTR [_set_($attr)] ? ($eq ($index _BRICK_ATTR_ANONYMOUS ($q attr)) -1))
+
+	($each-CLASS_TYPE \i.]
+		($set _SYN  ($index CLASS_TYPE_ID_SYN_FOR ($i CLASS_TYPE_ID)))
+		($! only for short names )
+		($if ($ne _SYN -1) ]
+			($set _TYPE ($_SYN CLASS_TYPE_ID_SYN))
+
+			($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
+
+				/**
+				 *  \brief Set ($q ($_VALUE_TO_ID ii)) ($attr) for ($i CLASS_TYPE_ID) ($CL_TITLE)s.
+				 *  \param pool Pool of sockets.
+				 *  \return Flag - success operation.
+				 */
+				($h-extern) bool ($_TYPE)($_ATTR)_($lower ($_VALUE_TO_ID ii))( POOL_T pool );
+
+			[ )
+		[ )
+	[ )
+[ )
+
+($CLASS_ATTR_ID_INDEX \attr.]
+	($set _ATTR [_set_($attr)] ? ($eq ($index _BRICK_ATTR_ANONYMOUS ($q attr)) -1))
+
+	($($$'CLASS_($0)S' ($upper attr)) \i.]
+
+		/**
+		 *  \brief Set ($q ($_VALUE_TO_ID i)) ($attr) for ($CL_TITLE)s.
+		 *  \param pool Pool of sockets.
+		 *  \return Flag - success operation.
+		 */
+		($h-extern) bool ($CLASS_ID)($_ATTR)_($lower ($_VALUE_TO_ID i))( POOL_T pool );
+
+	[ )
+[ )
+
+/**
+ *  \brief Search of the specified ($CL_TITLE) type.
+ *  \param type_inx ($CL_TITLE_1) type.
+ *  \return Pool of sockets to which specified ($CL_TITLE)s are plugged.
+ */
+($h-extern) POOL_T ($CLASS_ID)_search( INX_T type_inx );
+
+/**
+ *  \brief Check that ($CL_TITLE)s of the specified type are plugged into specified sockets.
+ *  \param pool Pool of sockets.
+ *  \param type_inx ($CL_TITLE_1) type, if this parameter is `($CLASS_ID))_TYPE__NONE_` the type does not matter.
+ *  \return Flag - ($CL_TITLE)s are found.
+ */
+($h-extern) bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx );
+
+($if ($ne ($index CLASS_ATTR_FLAGS "state") -1) ]
+	/**
+	 *  \brief Check that ($CL_TITLE)s are running.
+	 *  \param pool Pool of sockets.
+	 *  \return Flag - at least one ($CL_TITLE) is running.
+	 */
+	($h-extern) bool ($CLASS_ID)_is_running( POOL_T pool );
+
+[ )
