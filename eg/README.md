@@ -12,8 +12,8 @@
 - [servo](./servo/servo.c) – SERVO motor example
 - [tacho](./tacho/tacho.c) – TACHO motor running for 5 sec
 
-[Examples on Python](../python/ev3dev/eg)
+## See also
 
-[Examples on Perl](../perl/eg)
-
+[Examples on Python](../python/ev3dev/eg)<br>
+[Examples on Perl](../perl/eg)<br>
 [Examples on Ruby](../ruby/eg)
