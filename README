@@ -32,8 +32,8 @@
     the key "--pre".
 
     The package contains the following binary modules:
-    _ev3.pyd    — for a remote access, under Windows (x86);
-    _ev3.so     — for LEGO Mindstorms EV3 Debian.
+    _ev3.pyd    – for a remote access, under Windows (x86);
+    _ev3.so     – for LEGO Mindstorms EV3 Debian.
 
     You have to install "python-dev", "ruby-dev" and "libperl-dev"
     packages to build the corresponding library.
@@ -60,13 +60,13 @@
 
         https://github.com/in4lio/ev3dev-c/blob/master/eg/
 
-    light    — LEDs blinking example
-    sensor   — TOUCH and COLOR sensors example
-    tacho    — TACHO motor running for 5 sec
-    port     — Using EV3 ports
-    dc       — Using DC motor
-    rcx_led  — Using RCX LED
-    servo    — SERVO motor example
+    light    – LEDs blinking example
+    sensor   – TOUCH and COLOR sensors example
+    tacho    – TACHO motor running for 5 sec
+    port     – Using EV3 ports
+    dc       – Using DC motor
+    rcx_led  – Using RCX LED
+    servo    – SERVO motor example
 
     > cd eg/light/
     > make
