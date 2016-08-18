@@ -57,6 +57,7 @@ enum {
 				($upper ($_SYN CLASS_TYPE_ID_SYN))_($_SUF) = ($upper ($i CLASS_TYPE_ID))_($_SUF),
 
 				[ )
+
 			[ )
 		[ )
 		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($CL_TITLE) ($q attr) attribute. */
