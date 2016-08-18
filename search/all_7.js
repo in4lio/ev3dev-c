@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['leds',['LEDs',['../group__ev3__led.html',1,'']]],
-  ['lights',['Lights',['../group__ev3__light.html',1,'']]],
-  ['lego_20mindstorms_20ev3_20debian_20c_20library_20_2b_20python_2c_20ruby_20and_20perl_20wrappers',['LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers',['../index.html',1,'']]],
-  ['led_5f_5fcount_5f',['LED__COUNT_',['../group__ev3__led.html#gga726ca809ffd3d67ab4b8476646f26635a6b24635800d220a5f4ee62410e66e2fe',1,'ev3_led.h']]],
-  ['light_5fcolor',['light_color',['../group__ev3__light.html#ga2249d765fed89db924331612e473a30b',1,'light_color(uint8_t col):&#160;ev3_light.c'],['../group__ev3__light.html#ga2249d765fed89db924331612e473a30b',1,'light_color(uint8_t col):&#160;ev3_light.c']]]
+  ['id',['id',['../structEV3__MESSAGE__HEADER.html#a4fc3a0c58dfbd1e68224521185cb9384',1,'EV3_MESSAGE_HEADER']]],
+  ['ir_5fset_5fmode_5fir_5fcal',['ir_set_mode_ir_cal',['../group__brick.html#ga81cf8f08bdf12883334bb90964e52e7c',1,'brick.c']]],
+  ['ir_5fset_5fmode_5fir_5fprox',['ir_set_mode_ir_prox',['../group__brick.html#gaaf7645383b01ed948085c68907689b7a',1,'brick.c']]],
+  ['ir_5fset_5fmode_5fir_5frem_5fa',['ir_set_mode_ir_rem_a',['../group__brick.html#ga72b16627a1234eee532d8ee5801c4d4b',1,'brick.c']]],
+  ['ir_5fset_5fmode_5fir_5fremote',['ir_set_mode_ir_remote',['../group__brick.html#ga9bc144e11b54ebe8b3bec3184671a47f',1,'brick.c']]],
+  ['ir_5fset_5fmode_5fir_5fs_5falt',['ir_set_mode_ir_s_alt',['../group__brick.html#gac719f2985ec86e775c90432603d462a7',1,'brick.c']]],
+  ['ir_5fset_5fmode_5fir_5fseek',['ir_set_mode_ir_seek',['../group__brick.html#ga056a96cfceacac52f49e7fe8821b465a',1,'brick.c']]],
+  ['input_20and_20output_20sockets',['Input and output sockets',['../group__pool.html',1,'']]]
 ];

@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['light_5fcolor',['light_color',['../group__ev3__light.html#ga2249d765fed89db924331612e473a30b',1,'light_color(uint8_t col):&#160;ev3_light.c'],['../group__ev3__light.html#ga2249d765fed89db924331612e473a30b',1,'light_color(uint8_t col):&#160;ev3_light.c']]]
+  ['dc_5fget_5faddress',['dc_get_address',['../group__brick.html#ga8274b07a3b4b3f704aa99e588d4b7515',1,'brick.c']]],
+  ['dc_5fget_5fcommands',['dc_get_commands',['../group__brick.html#ga591e5980a25e66d33e4cd183c92b373c',1,'brick.c']]],
+  ['dc_5fget_5fdriver_5fname',['dc_get_driver_name',['../group__brick.html#ga39c6c239c43020591119717538b55c8f',1,'brick.c']]],
+  ['dc_5fget_5fduty_5fcycle',['dc_get_duty_cycle',['../group__brick.html#ga6f821f5b32b385c9e6439195585383a6',1,'brick.c']]],
+  ['dc_5fget_5fduty_5fcycle_5fsp',['dc_get_duty_cycle_sp',['../group__brick.html#gaed8cc7a4977ee70fb44aada0c77a2947',1,'brick.c']]],
+  ['dc_5fget_5fpolarity',['dc_get_polarity',['../group__brick.html#ga76f25e367ec9e0d1ff921387e8a9620b',1,'brick.c']]],
+  ['dc_5fget_5framp_5fdown_5fsp',['dc_get_ramp_down_sp',['../group__brick.html#ga186a7677d2ab80bd61bb69fff5e7896c',1,'brick.c']]],
+  ['dc_5fget_5framp_5fup_5fsp',['dc_get_ramp_up_sp',['../group__brick.html#ga32a59ddc8b40f94f05dee72405bb8bec',1,'brick.c']]],
+  ['dc_5fget_5fstate',['dc_get_state',['../group__brick.html#gadbd99e968943a6625a6905a0cca8d743',1,'brick.c']]],
+  ['dc_5fget_5fstop_5factions',['dc_get_stop_actions',['../group__brick.html#ga6a455757e5de670780c7cdb72612f8fb',1,'brick.c']]],
+  ['dc_5fget_5ftime_5fsp',['dc_get_time_sp',['../group__brick.html#gad0bc25826fecebe27a1509b5eed68608',1,'brick.c']]],
+  ['dc_5fis_5fplugged',['dc_is_plugged',['../group__brick.html#ga6fbcc0770fb45d532e3d88ebfdb1c881',1,'brick.c']]],
+  ['dc_5fis_5frunning',['dc_is_running',['../group__brick.html#ga5bb07142f3f8c59ef907e0521153b813',1,'brick.c']]],
+  ['dc_5frun_5fdirect',['dc_run_direct',['../group__brick.html#ga324b4cac16a5e2cd6e81deecf117abe0',1,'brick.c']]],
+  ['dc_5frun_5fforever',['dc_run_forever',['../group__brick.html#gaac179a9b288980ca476f60f5a5cbdc19',1,'brick.c']]],
+  ['dc_5frun_5ftimed',['dc_run_timed',['../group__brick.html#ga4ed8596650aa7116a99600eed8f0f523',1,'brick.c']]],
+  ['dc_5fsearch',['dc_search',['../group__brick.html#gaf7611da60f80eee12826ab109a9963c3',1,'brick.c']]],
+  ['dc_5fset_5fcommand',['dc_set_command',['../group__brick.html#gace0a6cc3b3dcc2b54735b90e4eac54e5',1,'brick.c']]],
+  ['dc_5fset_5fduty_5fcycle_5fsp',['dc_set_duty_cycle_sp',['../group__brick.html#gad1dc24f7eb2aecc6e4e2fb6faff12f90',1,'brick.c']]],
+  ['dc_5fset_5fpolarity',['dc_set_polarity',['../group__brick.html#ga6dfaa018a3ad2a20bd5d4479d23d0263',1,'brick.c']]],
+  ['dc_5fset_5fpolarity_5finversed',['dc_set_polarity_inversed',['../group__brick.html#gaf8f56ef90082bc703e9f7fbd7d78fdd4',1,'brick.c']]],
+  ['dc_5fset_5fpolarity_5fnormal',['dc_set_polarity_normal',['../group__brick.html#gab5dfdadcc5b5cdfbb7be4a74d6638aeb',1,'brick.c']]],
+  ['dc_5fset_5framp_5fdown_5fsp',['dc_set_ramp_down_sp',['../group__brick.html#ga22ee1ca652fcb0106016a829d70f0147',1,'brick.c']]],
+  ['dc_5fset_5framp_5fup_5fsp',['dc_set_ramp_up_sp',['../group__brick.html#ga15844ef20d915a34eb8d9265a2408efb',1,'brick.c']]],
+  ['dc_5fset_5fstop_5faction',['dc_set_stop_action',['../group__brick.html#gaa4b0e69f8fa5c2323e1f0de50d88a421',1,'brick.c']]],
+  ['dc_5fset_5fstop_5faction_5fbrake',['dc_set_stop_action_brake',['../group__brick.html#gac6e22d14caea7ba4a1d0c3f6fad3cff3',1,'brick.c']]],
+  ['dc_5fset_5fstop_5faction_5fcoast',['dc_set_stop_action_coast',['../group__brick.html#gaa74d6e4dd48e05c807c03264df1472a1',1,'brick.c']]],
+  ['dc_5fset_5ftime_5fsp',['dc_set_time_sp',['../group__brick.html#gac91e7c08c515b68cce886c9488092f70',1,'brick.c']]],
+  ['dc_5fstop',['dc_stop',['../group__brick.html#gac212f25ecfd8de82ec4ba109fcc648ad',1,'brick.c']]]
 ];

@@ -129,7 +129,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memdesc:ga3de62e3f2581edd65d7d6500c387e054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read binary data from the specified file.  <a href="#ga3de62e3f2581edd65d7d6500c387e054">More...</a><br /></td></tr>
 <tr class="separator:ga3de62e3f2581edd65d7d6500c387e054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga48b863133ec0d0128ce17b1bfd1338af"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga48b863133ec0d0128ce17b1bfd1338af">ev3_read_keys</a> (uint8_t *buf)</td></tr>
-<tr class="memdesc:ga48b863133ec0d0128ce17b1bfd1338af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read state of EV3 brick keys.  <a href="#ga48b863133ec0d0128ce17b1bfd1338af">More...</a><br /></td></tr>
+<tr class="memdesc:ga48b863133ec0d0128ce17b1bfd1338af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read state of the EV3 brick's keys.  <a href="#ga48b863133ec0d0128ce17b1bfd1338af">More...</a><br /></td></tr>
 <tr class="separator:ga48b863133ec0d0128ce17b1bfd1338af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga594c82738fc7b7723470f81e893154da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga594c82738fc7b7723470f81e893154da">ev3_poweroff</a> (void)</td></tr>
 <tr class="memdesc:ga594c82738fc7b7723470f81e893154da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power-off the EV3 brick.  <a href="#ga594c82738fc7b7723470f81e893154da">More...</a><br /></td></tr>
@@ -241,7 +241,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 <p>Initialize the remote access and detect the EV3 brick. This function do nothing in the case of the local access. To disable the brick detection just specify IP address before the call of this function. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 - the brick is NOT found or auto-detection is disabled; 1 - the brick is found; -1 - an error has occurred. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="dc_8c-example.html#a0">dc.c</a>, <a class="el" href="drive_8c-example.html#a13">drive.c</a>, <a class="el" href="ev3_pool_8c-example.html#a15">ev3_pool.c</a>, <a class="el" href="io_8c-example.html#a0">io.c</a>, <a class="el" href="light_8c-example.html#a0">light.c</a>, <a class="el" href="port_8c-example.html#a0">port.c</a>, <a class="el" href="poweroff_8c-example.html#a0">poweroff.c</a>, <a class="el" href="rcx_led_8c-example.html#a0">rcx_led.c</a>, <a class="el" href="sensor_8c-example.html#a3">sensor.c</a>, <a class="el" href="servo_8c-example.html#a0">servo.c</a>, and <a class="el" href="tacho_8c-example.html#a0">tacho.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="dc_8c-example.html#a0">dc.c</a>, <a class="el" href="drive_8c-example.html#a13">drive.c</a>, <a class="el" href="io_8c-example.html#a0">io.c</a>, <a class="el" href="light_8c-example.html#a0">light.c</a>, <a class="el" href="port_8c-example.html#a0">port.c</a>, <a class="el" href="poweroff_8c-example.html#a0">poweroff.c</a>, <a class="el" href="rcx_led_8c-example.html#a0">rcx_led.c</a>, <a class="el" href="sensor_8c-example.html#a3">sensor.c</a>, <a class="el" href="servo_8c-example.html#a0">servo.c</a>, and <a class="el" href="tacho_8c-example.html#a0">tacho.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -647,7 +647,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
       </table>
 </div><div class="memdoc">
 
-<p>Read state of EV3 brick keys. </p>
+<p>Read state of the EV3 brick's keys. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer for a state. </td></tr>
@@ -655,7 +655,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="drive_8c-example.html#a12">drive.c</a>, <a class="el" href="ev3_pool_8c-example.html#a19">ev3_pool.c</a>, <a class="el" href="remote_8c-example.html#a0">remote.c</a>, and <a class="el" href="sensor_8c-example.html#a1">sensor.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="drive_8c-example.html#a12">drive.c</a>, and <a class="el" href="sensor_8c-example.html#a1">sensor.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -965,7 +965,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 18:04:29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 18 2016 15:35:53 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

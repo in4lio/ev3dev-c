@@ -126,7 +126,7 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>SENSOR_TYPE__NONE_</b> = 0, 
 <b>EV3_ANALOG_XX</b>, 
 <b>NXT_ANALOG</b>, 
@@ -185,14 +185,14 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>MS_PPS58_NX</b>, 
 <b>MS_PIXY_ADAPTER</b>, 
 <b>MS_NXT_TOUCH_MUX</b>, 
-<a class="el" href="group__ev3__sensor.html#ggac36f475ca5b446f4fde4c9b90bec77c8abb3539bdc22cabd1b8f5142ac8f507bc">SENSOR_TYPE__COUNT_</a>, 
+<a class="el" href="group__ev3__sensor.html#gga05589fbab0657f08285ebdfe93f5ec9eabb3539bdc22cabd1b8f5142ac8f507bc">SENSOR_TYPE__COUNT_</a>, 
 <br />
 &#160;&#160;<b>SENSOR_TYPE__UNKNOWN_</b> = SENSOR_TYPE__COUNT_
 <br />
- }<tr class="memdesc:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor types.  <a href="group__ev3__sensor.html#gac36f475ca5b446f4fde4c9b90bec77c8">More...</a><br /></td></tr>
+ }<tr class="memdesc:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor types.  <a href="group__ev3__sensor.html#ga05589fbab0657f08285ebdfe93f5ec9e">More...</a><br /></td></tr>
 </td></tr>
-<tr class="separator:gac36f475ca5b446f4fde4c9b90bec77c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="separator:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>SENSOR_MODE__NONE_</b> = 0, 
 <b>EV3_ANALOG_XX_ANALOG</b>, 
 <b>NXT_ANALOG_ANALOG_0</b>, 
@@ -266,120 +266,151 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>HT_SUPER_PRO_AOUT_0</b>, 
 <b>HT_SUPER_PRO_AOUT_1</b>, 
 <b>LEGO_EV3_US_US_DIST_CM</b>, 
-<b>LEGO_EV3_US_US_DIST_IN</b>, 
+<b>US_US_DIST_CM</b> = LEGO_EV3_US_US_DIST_CM, 
 <br />
-&#160;&#160;<b>LEGO_EV3_US_US_LISTEN</b>, 
-<b>LEGO_EV3_US_US_SI_CM</b>, 
+&#160;&#160;<b>LEGO_EV3_US_US_DIST_IN</b>, 
+<b>US_US_DIST_IN</b> = LEGO_EV3_US_US_DIST_IN, 
+<b>LEGO_EV3_US_US_LISTEN</b>, 
+<b>US_US_LISTEN</b> = LEGO_EV3_US_US_LISTEN, 
+<br />
+&#160;&#160;<b>LEGO_EV3_US_US_SI_CM</b>, 
+<b>US_US_SI_CM</b> = LEGO_EV3_US_US_SI_CM, 
 <b>LEGO_EV3_US_US_SI_IN</b>, 
-<b>LEGO_EV3_US_US_DC_CM</b>, 
+<b>US_US_SI_IN</b> = LEGO_EV3_US_US_SI_IN, 
 <br />
-&#160;&#160;<b>LEGO_EV3_US_US_DC_IN</b>, 
-<b>LEGO_EV3_GYRO_GYRO_ANG</b>, 
+&#160;&#160;<b>LEGO_EV3_US_US_DC_CM</b>, 
+<b>US_US_DC_CM</b> = LEGO_EV3_US_US_DC_CM, 
+<b>LEGO_EV3_US_US_DC_IN</b>, 
+<b>US_US_DC_IN</b> = LEGO_EV3_US_US_DC_IN, 
+<br />
+&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_ANG</b>, 
+<b>GYRO_GYRO_ANG</b> = LEGO_EV3_GYRO_GYRO_ANG, 
 <b>LEGO_EV3_GYRO_GYRO_RATE</b>, 
-<b>LEGO_EV3_GYRO_GYRO_FAS</b>, 
+<b>GYRO_GYRO_RATE</b> = LEGO_EV3_GYRO_GYRO_RATE, 
 <br />
-&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_G_AND_A</b>, 
-<b>LEGO_EV3_GYRO_GYRO_CAL</b>, 
+&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_FAS</b>, 
+<b>GYRO_GYRO_FAS</b> = LEGO_EV3_GYRO_GYRO_FAS, 
+<b>LEGO_EV3_GYRO_GYRO_G_AND_A</b>, 
+<b>GYRO_GYRO_G_AND_A</b> = LEGO_EV3_GYRO_GYRO_G_AND_A, 
+<br />
+&#160;&#160;<b>LEGO_EV3_GYRO_GYRO_CAL</b>, 
+<b>GYRO_GYRO_CAL</b> = LEGO_EV3_GYRO_GYRO_CAL, 
 <b>LEGO_EV3_COLOR_COL_REFLECT</b>, 
-<b>LEGO_EV3_COLOR_COL_AMBIENT</b>, 
+<b>COLOR_COL_REFLECT</b> = LEGO_EV3_COLOR_COL_REFLECT, 
 <br />
-&#160;&#160;<b>LEGO_EV3_COLOR_COL_COLOR</b>, 
-<b>LEGO_EV3_COLOR_REF_RAW</b>, 
+&#160;&#160;<b>LEGO_EV3_COLOR_COL_AMBIENT</b>, 
+<b>COLOR_COL_AMBIENT</b> = LEGO_EV3_COLOR_COL_AMBIENT, 
+<b>LEGO_EV3_COLOR_COL_COLOR</b>, 
+<b>COLOR_COL_COLOR</b> = LEGO_EV3_COLOR_COL_COLOR, 
+<br />
+&#160;&#160;<b>LEGO_EV3_COLOR_REF_RAW</b>, 
+<b>COLOR_REF_RAW</b> = LEGO_EV3_COLOR_REF_RAW, 
 <b>LEGO_EV3_COLOR_RGB_RAW</b>, 
-<b>LEGO_EV3_COLOR_COL_CAL</b>, 
+<b>COLOR_RGB_RAW</b> = LEGO_EV3_COLOR_RGB_RAW, 
 <br />
-&#160;&#160;<b>LEGO_EV3_TOUCH_TOUCH</b>, 
-<b>LEGO_EV3_IR_IR_PROX</b>, 
+&#160;&#160;<b>LEGO_EV3_COLOR_COL_CAL</b>, 
+<b>COLOR_COL_CAL</b> = LEGO_EV3_COLOR_COL_CAL, 
+<b>LEGO_EV3_TOUCH_TOUCH</b>, 
+<b>TOUCH_TOUCH</b> = LEGO_EV3_TOUCH_TOUCH, 
+<br />
+&#160;&#160;<b>LEGO_EV3_IR_IR_PROX</b>, 
+<b>IR_IR_PROX</b> = LEGO_EV3_IR_IR_PROX, 
 <b>LEGO_EV3_IR_IR_SEEK</b>, 
-<b>LEGO_EV3_IR_IR_REMOTE</b>, 
+<b>IR_IR_SEEK</b> = LEGO_EV3_IR_IR_SEEK, 
 <br />
-&#160;&#160;<b>LEGO_EV3_IR_IR_REM_A</b>, 
-<b>LEGO_EV3_IR_IR_S_ALT</b>, 
+&#160;&#160;<b>LEGO_EV3_IR_IR_REMOTE</b>, 
+<b>IR_IR_REMOTE</b> = LEGO_EV3_IR_IR_REMOTE, 
+<b>LEGO_EV3_IR_IR_REM_A</b>, 
+<b>IR_IR_REM_A</b> = LEGO_EV3_IR_IR_REM_A, 
+<br />
+&#160;&#160;<b>LEGO_EV3_IR_IR_S_ALT</b>, 
+<b>IR_IR_S_ALT</b> = LEGO_EV3_IR_IR_S_ALT, 
 <b>LEGO_EV3_IR_IR_CAL</b>, 
-<b>WEDO_HUB_HUB</b>, 
+<b>IR_IR_CAL</b> = LEGO_EV3_IR_IR_CAL, 
 <br />
-&#160;&#160;<b>WEDO_MOTION_PROX</b>, 
+&#160;&#160;<b>WEDO_HUB_HUB</b>, 
+<b>WEDO_MOTION_PROX</b>, 
 <b>WEDO_MOTION_RAW</b>, 
 <b>WEDO_TILT_TILT</b>, 
-<b>WEDO_TILT_TILT_AXIS</b>, 
 <br />
-&#160;&#160;<b>WEDO_TILT_RAW</b>, 
+&#160;&#160;<b>WEDO_TILT_TILT_AXIS</b>, 
+<b>WEDO_TILT_RAW</b>, 
 <b>LEGO_POWER_STORAGE_IN_VOLT</b>, 
 <b>LEGO_POWER_STORAGE_IN_AMP</b>, 
-<b>LEGO_POWER_STORAGE_OUT_VOLT</b>, 
 <br />
-&#160;&#160;<b>LEGO_POWER_STORAGE_OUT_AMP</b>, 
+&#160;&#160;<b>LEGO_POWER_STORAGE_OUT_VOLT</b>, 
+<b>LEGO_POWER_STORAGE_OUT_AMP</b>, 
 <b>LEGO_POWER_STORAGE_JOULE</b>, 
 <b>LEGO_POWER_STORAGE_IN_WATT</b>, 
-<b>LEGO_POWER_STORAGE_OUT_WATT</b>, 
 <br />
-&#160;&#160;<b>LEGO_POWER_STORAGE_ALL</b>, 
+&#160;&#160;<b>LEGO_POWER_STORAGE_OUT_WATT</b>, 
+<b>LEGO_POWER_STORAGE_ALL</b>, 
 <b>LEGO_NXT_TEMP_NXT_TEMP_C</b>, 
 <b>LEGO_NXT_TEMP_NXT_TEMP_F</b>, 
-<b>LEGO_NXT_TOUCH_TOUCH</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_LIGHT_REFLECT</b>, 
+&#160;&#160;<b>LEGO_NXT_TOUCH_TOUCH</b>, 
+<b>LEGO_NXT_LIGHT_REFLECT</b>, 
 <b>LEGO_NXT_LIGHT_AMBIENT</b>, 
 <b>LEGO_NXT_SOUND_DB</b>, 
-<b>LEGO_NXT_SOUND_DBA</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_US_US_DIST_CM</b>, 
+&#160;&#160;<b>LEGO_NXT_SOUND_DBA</b>, 
+<b>LEGO_NXT_US_US_DIST_CM</b>, 
 <b>LEGO_NXT_US_US_DIST_IN</b>, 
 <b>LEGO_NXT_US_US_SI_CM</b>, 
-<b>LEGO_NXT_US_US_SI_IN</b>, 
 <br />
-&#160;&#160;<b>LEGO_NXT_US_US_LISTEN</b>, 
+&#160;&#160;<b>LEGO_NXT_US_US_SI_IN</b>, 
+<b>LEGO_NXT_US_US_LISTEN</b>, 
 <b>MI_XG1300L_ANGLE</b>, 
 <b>MI_XG1300L_SPEED</b>, 
-<b>MI_XG1300L_ACCEL</b>, 
 <br />
-&#160;&#160;<b>MI_XG1300L_ALL</b>, 
+&#160;&#160;<b>MI_XG1300L_ACCEL</b>, 
+<b>MI_XG1300L_ALL</b>, 
 <b>MS_ABSOLUTE_IMU_TILT</b>, 
 <b>MS_ABSOLUTE_IMU_ACCEL</b>, 
-<b>MS_ABSOLUTE_IMU_COMPASS</b>, 
 <br />
-&#160;&#160;<b>MS_ABSOLUTE_IMU_MAG</b>, 
+&#160;&#160;<b>MS_ABSOLUTE_IMU_COMPASS</b>, 
+<b>MS_ABSOLUTE_IMU_MAG</b>, 
 <b>MS_ABSOLUTE_IMU_GYRO</b>, 
 <b>MS_ABSOLUTE_IMU_ALL</b>, 
-<b>MS_ANGLE_ANGLE</b>, 
 <br />
-&#160;&#160;<b>MS_ANGLE_ANGLE2</b>, 
+&#160;&#160;<b>MS_ANGLE_ANGLE</b>, 
+<b>MS_ANGLE_ANGLE2</b>, 
 <b>MS_ANGLE_SPEED</b>, 
 <b>MS_ANGLE_ALL</b>, 
-<b>MS_EV3_SMUX_MUX</b>, 
 <br />
-&#160;&#160;<b>MS_LIGHT_ARRAY_CAL</b>, 
+&#160;&#160;<b>MS_EV3_SMUX_MUX</b>, 
+<b>MS_LIGHT_ARRAY_CAL</b>, 
 <b>MS_LIGHT_ARRAY_RAW</b>, 
 <b>MS_LINE_LEADER_PID</b>, 
-<b>MS_LINE_LEADER_PID_ALL</b>, 
 <br />
-&#160;&#160;<b>MS_LINE_LEADER_CAL</b>, 
+&#160;&#160;<b>MS_LINE_LEADER_PID_ALL</b>, 
+<b>MS_LINE_LEADER_CAL</b>, 
 <b>MS_LINE_LEADER_RAW</b>, 
 <b>MS_NXTCAM_TRACK</b>, 
-<b>MS_NXTMMX_STATUS</b>, 
 <br />
-&#160;&#160;<b>MS_NXTMMX_STATUS_OLD</b>, 
+&#160;&#160;<b>MS_NXTMMX_STATUS</b>, 
+<b>MS_NXTMMX_STATUS_OLD</b>, 
 <b>MS_8CH_SERVO_V3</b>, 
 <b>MS_8CH_SERVO_OLD</b>, 
-<b>MS_PPS58_NX_RAW</b>, 
 <br />
-&#160;&#160;<b>MS_PPS58_NX_ABS_PSI</b>, 
+&#160;&#160;<b>MS_PPS58_NX_RAW</b>, 
+<b>MS_PPS58_NX_ABS_PSI</b>, 
 <b>MS_PPS58_NX_ABS_MBAR</b>, 
 <b>MS_PPS58_NX_ABS_KPA</b>, 
-<b>MS_PPS58_NX_REL_PSI</b>, 
 <br />
-&#160;&#160;<b>MS_PPS58_NX_REL_MBAR</b>, 
+&#160;&#160;<b>MS_PPS58_NX_REL_PSI</b>, 
+<b>MS_PPS58_NX_REL_MBAR</b>, 
 <b>MS_PPS58_NX_REL_KPA</b>, 
 <b>MS_PIXY_ADAPTER_TRACK</b>, 
-<b>MS_NXT_TOUCH_MUX_TOUCH_MUX</b>, 
 <br />
-&#160;&#160;<a class="el" href="group__ev3__sensor.html#gga05589fbab0657f08285ebdfe93f5ec9eaea368fbe2fa5f8b47bbe1d8b564f5441">SENSOR_MODE__COUNT_</a>, 
+&#160;&#160;<b>MS_NXT_TOUCH_MUX_TOUCH_MUX</b>, 
+<a class="el" href="group__ev3__sensor.html#gga16af7b253440dadd46a80a4b9fddba4daea368fbe2fa5f8b47bbe1d8b564f5441">SENSOR_MODE__COUNT_</a>, 
 <b>SENSOR_MODE__UNKNOWN_</b> = SENSOR_MODE__COUNT_
 <br />
- }<tr class="memdesc:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor "mode" attribute.  <a href="group__ev3__sensor.html#ga05589fbab0657f08285ebdfe93f5ec9e">More...</a><br /></td></tr>
+ }<tr class="memdesc:ga16af7b253440dadd46a80a4b9fddba4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor "mode" attribute.  <a href="group__ev3__sensor.html#ga16af7b253440dadd46a80a4b9fddba4d">More...</a><br /></td></tr>
 </td></tr>
-<tr class="separator:ga05589fbab0657f08285ebdfe93f5ec9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="separator:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba01db17f4a2bfbc3db60dc172972a25"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>SENSOR_COMMAND__NONE_</b> = 0, 
 <b>HT_NXT_ANGLE_RESET</b>, 
 <b>HT_NXT_ANGLE_CAL</b>, 
@@ -437,13 +468,13 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<b>MS_PIXY_ADAPTER_SORT_SIZE</b>, 
 <b>MS_PIXY_ADAPTER_SORT_COL</b>, 
-<a class="el" href="group__ev3__sensor.html#gga16af7b253440dadd46a80a4b9fddba4dabd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
+<a class="el" href="group__ev3__sensor.html#ggaba01db17f4a2bfbc3db60dc172972a25abd408f7065b39a7111c9b2b479af3b89">SENSOR_COMMAND__COUNT_</a>, 
 <b>SENSOR_COMMAND__UNKNOWN_</b> = SENSOR_COMMAND__COUNT_
 <br />
- }<tr class="memdesc:ga16af7b253440dadd46a80a4b9fddba4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor "command" attribute.  <a href="group__ev3__sensor.html#ga16af7b253440dadd46a80a4b9fddba4d">More...</a><br /></td></tr>
+ }<tr class="memdesc:gaba01db17f4a2bfbc3db60dc172972a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of sensor "command" attribute.  <a href="group__ev3__sensor.html#gaba01db17f4a2bfbc3db60dc172972a25">More...</a><br /></td></tr>
 </td></tr>
-<tr class="separator:ga16af7b253440dadd46a80a4b9fddba4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba01db17f4a2bfbc3db60dc172972a25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaba01db17f4a2bfbc3db60dc172972a25"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="separator:gaba01db17f4a2bfbc3db60dc172972a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf105ae5beaca1dee30ae54530691fce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaf105ae5beaca1dee30ae54530691fce"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>IR_REMOTE__NONE_</b> = 0, 
 <b>RED_UP</b> = 1, 
 <b>RED_DOWN</b> = 2, 
@@ -459,9 +490,9 @@ Enumerations</h2></td></tr>
 <b>RED_UP_RED_DOWN</b> = 10, 
 <b>BLUE_UP_BLUE_DOWN</b> = 11
 <br />
- }<tr class="memdesc:gaba01db17f4a2bfbc3db60dc172972a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of LEGO_EV3_IR sensor values for IR_REMOTE mode. <br /></td></tr>
+ }<tr class="memdesc:gaaf105ae5beaca1dee30ae54530691fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiers of LEGO_EV3_IR sensor values for IR_REMOTE mode. <br /></td></tr>
 </td></tr>
-<tr class="separator:gaba01db17f4a2bfbc3db60dc172972a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gaaf105ae5beaca1dee30ae54530691fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -571,7 +602,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaf7676ed1eafc54e2cb1547583f0ff617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "driver_name" attribute and get index of the sensor type.  <a href="group__ev3__sensor.html#gaf7676ed1eafc54e2cb1547583f0ff617">More...</a><br /></td></tr>
 <tr class="separator:gaf7676ed1eafc54e2cb1547583f0ff617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0f8346c482903632f686f983ab97dea4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">get_sensor_desc</a> (uint8_t sn, <a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *desc)</td></tr>
-<tr class="memdesc:ga0f8346c482903632f686f983ab97dea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor attributes that are required for filling the descriptor.  <a href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">More...</a><br /></td></tr>
+<tr class="memdesc:ga0f8346c482903632f686f983ab97dea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read sensor attributes that are required for filling the descriptor.  <a href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">More...</a><br /></td></tr>
 <tr class="separator:ga0f8346c482903632f686f983ab97dea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga930e5c5dcd3d84d071e016759a7ee1c0">ev3_sensor_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the sensor.  <a href="group__ev3__sensor.html#ga930e5c5dcd3d84d071e016759a7ee1c0">More...</a><br /></td></tr>
@@ -600,9 +631,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga085af9d778edfe983e8cd4c794654ea9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga085af9d778edfe983e8cd4c794654ea9">ev3_sensor_mode</a> (INX_T mode_inx)</td></tr>
 <tr class="memdesc:ga085af9d778edfe983e8cd4c794654ea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified sensor mode.  <a href="group__ev3__sensor.html#ga085af9d778edfe983e8cd4c794654ea9">More...</a><br /></td></tr>
 <tr class="separator:ga085af9d778edfe983e8cd4c794654ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga99df5ca10342c8b809d1d68cbd72dc7b">get_sensor_mode_inx</a> (uint8_t sn, INX_T type_inx)</td></tr>
-<tr class="memdesc:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the sensor and get the index.  <a href="group__ev3__sensor.html#ga99df5ca10342c8b809d1d68cbd72dc7b">More...</a><br /></td></tr>
-<tr class="separator:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a4cfee5854ae83084b68e4138feaac6"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga6a4cfee5854ae83084b68e4138feaac6">get_sensor_mode_inx_of_type</a> (uint8_t sn, INX_T type_inx)</td></tr>
+<tr class="memdesc:ga6a4cfee5854ae83084b68e4138feaac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the specified sensor type and get the index.  <a href="group__ev3__sensor.html#ga6a4cfee5854ae83084b68e4138feaac6">More...</a><br /></td></tr>
+<tr class="separator:ga6a4cfee5854ae83084b68e4138feaac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ab92bd15fee7bdf289f613f010b8475"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga0ab92bd15fee7bdf289f613f010b8475">get_sensor_mode_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga0ab92bd15fee7bdf289f613f010b8475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the sensor and get the index.  <a href="group__ev3__sensor.html#ga0ab92bd15fee7bdf289f613f010b8475">More...</a><br /></td></tr>
+<tr class="separator:ga0ab92bd15fee7bdf289f613f010b8475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga81a06c4be92853a7a374cceeaff2535b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga81a06c4be92853a7a374cceeaff2535b">set_sensor_mode_inx</a> (uint8_t sn, INX_T mode_inx)</td></tr>
 <tr class="memdesc:ga81a06c4be92853a7a374cceeaff2535b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of the sensor by the index.  <a href="group__ev3__sensor.html#ga81a06c4be92853a7a374cceeaff2535b">More...</a><br /></td></tr>
 <tr class="separator:ga81a06c4be92853a7a374cceeaff2535b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -636,7 +670,7 @@ Variables</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 18:04:29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 18 2016 15:35:52 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

@@ -289,7 +289,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaf7676ed1eafc54e2cb1547583f0ff617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "driver_name" attribute and get index of the sensor type.  <a href="group__ev3__sensor.html#gaf7676ed1eafc54e2cb1547583f0ff617">More...</a><br /></td></tr>
 <tr class="separator:gaf7676ed1eafc54e2cb1547583f0ff617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0f8346c482903632f686f983ab97dea4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">get_sensor_desc</a> (uint8_t sn, <a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *desc)</td></tr>
-<tr class="memdesc:ga0f8346c482903632f686f983ab97dea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the sensor attributes that are required for filling the descriptor.  <a href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">More...</a><br /></td></tr>
+<tr class="memdesc:ga0f8346c482903632f686f983ab97dea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read sensor attributes that are required for filling the descriptor.  <a href="group__ev3__sensor.html#ga0f8346c482903632f686f983ab97dea4">More...</a><br /></td></tr>
 <tr class="separator:ga0f8346c482903632f686f983ab97dea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEV3__SENSOR.html">EV3_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga930e5c5dcd3d84d071e016759a7ee1c0">ev3_sensor_desc</a> (uint8_t sn)</td></tr>
 <tr class="memdesc:ga930e5c5dcd3d84d071e016759a7ee1c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get descriptor of the sensor.  <a href="group__ev3__sensor.html#ga930e5c5dcd3d84d071e016759a7ee1c0">More...</a><br /></td></tr>
@@ -318,9 +318,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga085af9d778edfe983e8cd4c794654ea9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga085af9d778edfe983e8cd4c794654ea9">ev3_sensor_mode</a> (INX_T mode_inx)</td></tr>
 <tr class="memdesc:ga085af9d778edfe983e8cd4c794654ea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified sensor mode.  <a href="group__ev3__sensor.html#ga085af9d778edfe983e8cd4c794654ea9">More...</a><br /></td></tr>
 <tr class="separator:ga085af9d778edfe983e8cd4c794654ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga99df5ca10342c8b809d1d68cbd72dc7b">get_sensor_mode_inx</a> (uint8_t sn, INX_T type_inx)</td></tr>
-<tr class="memdesc:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the sensor and get the index.  <a href="group__ev3__sensor.html#ga99df5ca10342c8b809d1d68cbd72dc7b">More...</a><br /></td></tr>
-<tr class="separator:ga99df5ca10342c8b809d1d68cbd72dc7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a4cfee5854ae83084b68e4138feaac6"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga6a4cfee5854ae83084b68e4138feaac6">get_sensor_mode_inx_of_type</a> (uint8_t sn, INX_T type_inx)</td></tr>
+<tr class="memdesc:ga6a4cfee5854ae83084b68e4138feaac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the specified sensor type and get the index.  <a href="group__ev3__sensor.html#ga6a4cfee5854ae83084b68e4138feaac6">More...</a><br /></td></tr>
+<tr class="separator:ga6a4cfee5854ae83084b68e4138feaac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ab92bd15fee7bdf289f613f010b8475"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga0ab92bd15fee7bdf289f613f010b8475">get_sensor_mode_inx</a> (uint8_t sn)</td></tr>
+<tr class="memdesc:ga0ab92bd15fee7bdf289f613f010b8475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "mode" attribute of the sensor and get the index.  <a href="group__ev3__sensor.html#ga0ab92bd15fee7bdf289f613f010b8475">More...</a><br /></td></tr>
+<tr class="separator:ga0ab92bd15fee7bdf289f613f010b8475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga81a06c4be92853a7a374cceeaff2535b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__sensor.html#ga81a06c4be92853a7a374cceeaff2535b">set_sensor_mode_inx</a> (uint8_t sn, INX_T mode_inx)</td></tr>
 <tr class="memdesc:ga81a06c4be92853a7a374cceeaff2535b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "mode" attribute of the sensor by the index.  <a href="group__ev3__sensor.html#ga81a06c4be92853a7a374cceeaff2535b">More...</a><br /></td></tr>
 <tr class="separator:ga81a06c4be92853a7a374cceeaff2535b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -347,7 +350,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 10 2016 18:04:29 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 18 2016 15:35:52 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

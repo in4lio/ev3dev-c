@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['leds',['LEDs',['../group__ev3__led.html',1,'']]],
-  ['lights',['Lights',['../group__ev3__light.html',1,'']]]
+  ['input_20and_20output_20sockets',['Input and output sockets',['../group__pool.html',1,'']]]
 ];
