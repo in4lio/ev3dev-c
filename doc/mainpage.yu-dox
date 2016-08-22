@@ -42,6 +42,7 @@ Mid-level provides the performance optimized library that is intended to cover a
 To start working with the library, you have to call the library initialization `ev3_init()` which will connect
 to the brick over network if your program is running on a remote computer, then, to detect devices plugged
 to the brick, please call initialization for each of the necessary class of devices, e.g. `ev3_tacho_init()`.
+Do not forget to call `ev3_uninit()` at the program end.
 
 All functions to access the device's attributes require the sequence number of device `sn`.
 You can find the sequence number in the descriptor table, which was filled during initialization,

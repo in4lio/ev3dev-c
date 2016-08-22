@@ -50,11 +50,11 @@
 
     The comprehensive example based on coroutines:
 
-        https://github.com/in4lio/ev3dev-c/blob/master/eg/drive/drive.c
+        http://in4lio.github.io/ev3dev-c/drive_8c-example.html
 
     The example of using "brick" simplified library:
 
-        https://github.com/in4lio/ev3dev-c/blob/master/eg/remote/remote.c
+        http://in4lio.github.io/ev3dev-c/remote_8c-example.html
 
     There are a few more examples on C in
 

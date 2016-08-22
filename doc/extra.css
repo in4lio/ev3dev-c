@@ -5,3 +5,7 @@ div.contents {
         margin-right: auto;
         width: 960px;
 }
+
+div.line {
+	line-height: 1.5;
+}
