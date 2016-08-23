@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lego_20mindstorms_20ev3_20debian_20c_20library_20_2b_20python_2c_20ruby_20and_20perl_20wrappers',['LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers',['../index.html',1,'']]]
+  ['how_20to_20make_20and_20install_20the_20static_20library_3f',['How to make and install the static library?',['../md_C:_Users_VIT_Dropbox_ev3_ev3dev-c_source_ev3_README.html',1,'']]]
 ];
