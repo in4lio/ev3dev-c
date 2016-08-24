@@ -10,6 +10,8 @@
 
 /** \mainpage LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers
 
+\htmlinclude mainpage.style
+
 <center>
 \verbatim
  
@@ -33,9 +35,7 @@ or will send both of the arguments to the brick using UDP message (if running on
 
 \code {.c}
 ev3_init();
-
 ev3_write( "/sys/class/leds/ev3:red:right/trigger", "heartbeat" );
-
 ev3_uninit();
 \endcode
 
@@ -44,7 +44,7 @@ ev3_uninit();
 
 ### Mid-level
 
-Mid-level provides the performance optimized library that is intended to cover all ev3dev's main functionality.
+Mid-level provides the performance optimized library that is intended to cover all main functionality of "ev3dev".
 
 To start working with the library, you have to call the library initialization `ev3_init()` which will connect
 to the brick over network if your program is running on a remote computer, then, to detect devices plugged
@@ -53,28 +53,27 @@ Do not forget to call `ev3_uninit()` at the program end.
 
 All functions to access the device's attributes require the sequence number of device `sn`.
 You can find the sequence number in the descriptor table, which was filled during initialization,
-e.g. `ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )`.
+e.g. <tt>\ref ev3_search_tacho "ev3_search_tacho(LEGO_EV3_L_MOTOR, &sn, 0)"</tt>.
 
 Access to some frequently used string attributes can be performed by the index, for example,
-you can just check the mode index
+you can just check the mode index:
 \code {.c}
 ( get_sensor_mode_inx( sn ) == IR_IR_PROX )
 \endcode
-instead of string comparison
+instead of string comparison:
 \code {.c}
 ( get_sensor_mode( sn, buf, sizeof( buf )) && ( strcmp( buf, "IR-PROX" ) == 0 ))
 \endcode
 
 A few examples:
 
-&bull; Using \ref ev3_led "LEDs", see ["Using LEDs"](https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs).
+&bull; Using \ref ev3_led "LEDs", see ["Using LEDs"](https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs):
 
 \code {.c}
 int ok;
 uint8_t val;
 
 ev3_init();
-
 ok = get_led_brightness( EV3_GREEN_LEFT, &val );
 if ( ok ) {
 	printf( "EV3_GREEN_LEFT is %s\n", ( val ) ? "ON" : "OFF" );
@@ -83,14 +82,13 @@ ev3_uninit();
 \endcode
 
 &bull; Using \ref ev3_sensor "LEGO Sensors", see
-["LEGO Sensor Class"](http://www.ev3dev.org/docs/drivers/lego-sensor-class/).
+["LEGO Sensor Class"](http://www.ev3dev.org/docs/drivers/lego-sensor-class/):
 
 \code {.c}
 uint8_t sn;
 int val;
 
 ev3_init();
-
 if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn, 0 )) {
 	if ( get_sensor_value( 0, sn, &val )) {
 		printf( "TOUCH sensor value = %d\n", val );
@@ -100,14 +98,13 @@ ev3_uninit();
 \endcode
 
 &bull; Using \ref ev3_tacho "Tacho Motors", see
-["Tacho Motor Class"](http://www.ev3dev.org/docs/drivers/tacho-motor-class/).
+["Tacho Motor Class"](http://www.ev3dev.org/docs/drivers/tacho-motor-class/):
 
 \code {.c}
 uint8_t sn;
 
 ev3_init();
 ev3_tacho_init();
-
 if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
 	set_tacho_stop_action_inx( sn, TACHO_BRAKE );
 	set_tacho_speed_sp( sn, 500 );
@@ -119,7 +116,7 @@ if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
 ev3_uninit();
 \endcode
 
-&bull; Using \ref ev3_dc "DC Motors", see ["DC Motor Class"](http://www.ev3dev.org/docs/drivers/dc-motor-class/).
+&bull; Using \ref ev3_dc "DC Motors", see ["DC Motor Class"](http://www.ev3dev.org/docs/drivers/dc-motor-class/):
 
 \code {.c}
 uint8_t sn, sn_port;
@@ -128,8 +125,8 @@ ev3_init();
 ev3_port_init();
 sn_port = ev3_search_port( OUTPUT_D, EXT_PORT__NONE_ );
 set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
-ev3_dc_init();
 
+ev3_dc_init();
 if ( ev3_search_dc_plugged_in( OUTPUT_D, EXT_PORT__NONE_, &sn, 0 )) {
 	set_dc_duty_cycle_sp( sn, 100 );
 	set_dc_command_inx( sn, DC_RUN_FOREVER );
@@ -141,20 +138,18 @@ ev3_uninit();
 \endcode
 
 &bull; Using \ref ev3_servo "Servo Motors", see
-["Servo Motor Class"](http://www.ev3dev.org/docs/drivers/servo-motor-class/).
+["Servo Motor Class"](http://www.ev3dev.org/docs/drivers/servo-motor-class/):
 
 \code {.c}
 uint8_t sn, sn_port;
 
 ev3_init();
 ev3_port_init();
-
 sn_port = ev3_search_port( INPUT_1, EXT_PORT__NONE_ );
 set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
 set_port_set_device( sn_port, ( char *) ev3_sensor_type( MS_8CH_SERVO ));
 
 ev3_servo_init();
-
 if ( ev3_search_servo_plugged_in( INPUT_1, EXT_PORT__NONE_, 1, &sn, 0 )) {
 	set_servo_command_inx( sn, SERVO_RUN );
 	set_servo_position_sp( sn, 100 );
@@ -163,8 +158,8 @@ set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();
 \endcode
 
-&bull; Using \ref ev3_port "EV3 Ports and Extended Ports", see
-["Input and Output Ports"](http://www.ev3dev.org/docs/ports/).
+&bull; Using \ref ev3_port "EV3 Ports", see
+["Input and Output Ports"](http://www.ev3dev.org/docs/ports/):
 
 \code {.c}
 uint8_t sn;
@@ -172,13 +167,14 @@ char s[ 256 ];
 
 ev3_init();
 ev3_port_init();
-
 sn = ev3_search_port( INPUT_2, EXT_PORT__NONE_ );
 if ( get_port_mode( sn, s, sizeof( s ))) {
-	printf( "INPUT_2 mode = %s\n", s );
+4	printf( "INPUT_2 mode = %s\n", s );
 }
 ev3_uninit();
 \endcode
+
+&bull; Using \ref ev3_port "EV3 Extended Ports":
 
 \code {.c}
 uint8_t sn, sn_port;
@@ -186,13 +182,11 @@ int val;
 
 ev3_init();
 ev3_port_init();
-
 sn_port = ev3_search_port( INPUT_1, HT_NXT_SMUX_PORT_2 );
 set_port_mode_inx( sn_port, INPUT_NXT_ANALOG );
 set_port_set_device( sn_port, ( char *) ev3_sensor_type( LEGO_NXT_TOUCH ));
 
 ev3_sensor_init();
-
 if ( ev3_search_sensor_plugged_in( INPUT_1, HT_NXT_SMUX_PORT_2, &sn, 0 )) {
 	if ( get_sensor_value( 0, sn, &val )) {
 		printf( "TOUCH sensor value = %d\n", val );
@@ -202,31 +196,46 @@ set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();
 \endcode
 
-&bull; Using \ref ev3_read_keys "keys" of the EV3 brick.
+&bull; Using \ref ev3_read_keys "keys" of the EV3 brick:
 
 \code {.c}
-ev3_init();
-
 uint8_t val;
 
+ev3_init();
 do ev3_read_keys( &val ); while (( val & EV3_KEY_BACK ) == 0 );
-
 ev3_uninit();
 \endcode
 
 ### High-level
 
-_Sorry, still in progress..._
+\ref brick is a simplified interface of "ev3dev-c". We use a mask of sockets (ports)
+instead of sequence numbers for access to devices, it allows to set identical attributes
+of several devices concurrently, but extended ports are not supported.
 
-&bull; Using simplified interface of ev3dev-c library, see \ref remote.c.
+See, based on coroutines, example of using "brick" library \ref remote.c "here".
 
-&bull; Using \ref ev3_light "light" module.
+A few more examples:
+
+&bull; Using \ref brick :
+
+\code {.c}
+brick_init();
+if ( tacho_is_plugged(  OUTB | OUTC, LEGO_EV3_L_MOTOR )) {
+	tacho_set_speed_sp( OUTB | OUTC, tacho_get_max_speed( OUTB, 0 ) * 0.75 );  // 75%
+	tacho_run_forever(  OUTB | OUTC );
+	sleep_ms( 3000 );  // 3 sec
+	tacho_stop( OUTB );
+	sleep_ms( 2000 );  // 2 sec
+	tacho_stop( OUTC );
+}
+brick_uninit();
+\endcode
+
+&bull; Using \ref ev3_light "light" module:
 
 \code {.c}
 ev3_init();
-
 set_light_blink( LIT_LEFT, LIT_AMBER, 1000, 500 );
-
 ev3_uninit();
 \endcode
 
@@ -250,7 +259,6 @@ if not EV3_BRICK:
     ev3.brick_addr = '192.168.0.244'
 ev3_init()
 ev3_sensor_init()
-
 ok, sn = ev3_search_sensor( LEGO_EV3_UART_29 )
 if ok:
     set_sensor_mode( sn, 'COL-COLOR' )
@@ -258,7 +266,6 @@ if ok:
     ok, val = get_sensor_value( 0, sn )
     if ok:
         print 'COLOR =', color[ val ]
-
 ev3_uninit()
 \endcode
 
@@ -271,14 +278,13 @@ the first element has a boolean type;
 
 \code {.py}
 include Ev3
+
 ev3_init()
 ev3_sensor_init()
-
 ok, sn = ev3_search_sensor( LEGO_EV3_TOUCH )
 if ok
   while get_sensor_value( 0, sn )[ 1 ] == 0 do end
 end
-
 ev3_uninit()
 \endcode
 
@@ -293,7 +299,6 @@ use ev3;
 
 ev3::ev3_init();
 ev3::ev3_tacho_init();
-
 my ( $ok, $sn ) = ev3::ev3_search_tacho( $ev3::LEGO_EV3_M_MOTOR );
 if ( $ok ) {
     ev3::set_tacho_speed_sp( $sn, 500 );
