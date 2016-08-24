@@ -3,10 +3,10 @@
 #   |   |  _   _|   | |  _   _|
 #   |  _|_| |___ ___|_|___  |
 #   |_|                   |_|
-#   makefile ( yupp, gcc )
+#   makefile (yupp, gcc)
 
-# -- binary name (without prefix and extension)
-BIN = ev3dev-c
+# -- binary name without prefix and extension
+TARGET = ev3dev-c
 
 # -- platform (core)
 ifeq ($(OS),Windows_NT)
@@ -112,7 +112,7 @@ E_BIN = .a
 endif
 
 # -- binary full name
-F_BIN = $(D_BIN)/lib$(BIN)$(E_BIN)
+F_BIN = $(D_BIN)/lib$(TARGET)$(E_BIN)
 
 # -- link options
 LFLAGS = rcs

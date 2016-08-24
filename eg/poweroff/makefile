@@ -1,30 +1,24 @@
-TARGET = poweroff
+MAKEFILE_BASE = ..\Makefile
 
-LIBS = -lm -lev3dev-c
+.PHONY: default clean clean-binary debug debug-clean debug-clean-binary release release-clean
 
-ifeq ($(OS),Windows_NT)
-LIBS := $(LIBS) -lws2_32
-endif
+default: debug
 
-CC = gcc
-CFLAGS = -g -Wall
+clean: debug-clean
 
-.PHONY: default all clean
+clean-binary: debug-clean-binary
 
-default: $(TARGET)
-all: default
+debug:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug
 
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
-HEADERS = $(wildcard *.h)
+debug-clean: clean
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean
 
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+debug-clean-binary:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean-binary
 
-.PRECIOUS: $(TARGET) $(OBJECTS)
+release:
+	$(MAKE) -f $(MAKEFILE_BASE).Release
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
-
-clean:
-	-rm -f *.o
-	-rm -f $(TARGET)
+release-clean:
+	$(MAKE) -f $(MAKEFILE_BASE).Release clean

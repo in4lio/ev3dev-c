@@ -1,0 +1,33 @@
+TARGET = $(notdir $(shell pwd))
+
+LIBS = -lm -lev3dev-c
+D_BIN = Release
+
+ifeq ($(OS),Windows_NT)
+LIBS := $(LIBS) -lws2_32
+D_BIN := $(D_BIN)/mingw
+endif
+
+D_H = ../../yupp/lib
+CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
+CC = gcc
+
+F_BIN = $(D_BIN)/$(TARGET)
+OBJECTS = $(addprefix $(D_BIN)/, $(patsubst %.c, %.o, $(wildcard *.c)))
+
+.PHONY: default all clean
+
+default: $(F_BIN)
+all: default
+
+$(OBJECTS): $(D_BIN)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PRECIOUS: $(F_BIN) $(OBJECTS)
+
+$(F_BIN): $(OBJECTS)
+	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
+
+clean:
+	-rm -f $(D_BIN)/*.o
+	-rm -f $(F_BIN)

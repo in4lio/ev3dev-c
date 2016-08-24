@@ -3,10 +3,10 @@
 #   |   |  _   _|   | |  _   _|
 #   |  _|_| |___ ___|_|___  |
 #   |_|                   |_|
-#   makefile ( yupp, gcc )
+#   makefile (yupp, gcc)
 
-# -- binary name (without extension)
-BIN = tacho
+# -- binary name equals to name of the folder
+TARGET = $(notdir $(shell pwd))
 
 # -- creating MAP file
 MAP = 0
@@ -71,7 +71,7 @@ D_CXX = $(D_C)
 D_ASM = $(TOP)/source
 
 # -- include directories
-D_H = $(D_C)
+D_H = $(D_C) $(YUPP_HOME)/lib
 
 # -- binary directory
 D_BIN = debug
@@ -107,7 +107,7 @@ E_BIN =
 endif
 
 # -- binary full name
-F_BIN = $(D_BIN)/$(BIN)$(E_BIN)
+F_BIN = $(D_BIN)/$(TARGET)$(E_BIN)
 
 # -- LIST and MAP suffixes
 E_MAP = .map
@@ -123,7 +123,7 @@ endif
 LFLAGS =
 
 ifeq ($(MAP),1)
-LFLAGS := $(LFLAGS) -Wl,-Map,$(D_MAP)/$(BIN)$(E_MAP)
+LFLAGS := $(LFLAGS) -Wl,-Map,$(D_MAP)/$(TARGET)$(E_MAP)
 endif
 
 # -- preprocessor flags
@@ -188,7 +188,7 @@ R := $(R) $(G_H) $(G_C) $(G_CXX)
 endif
 
 ifeq ($(MAP),1)
-R := $(R) $(D_MAP)/$(BIN)$(E_MAP)
+R := $(R) $(D_MAP)/$(TARGET)$(E_MAP)
 endif
 
 ifeq ($(OS),Windows_NT)
