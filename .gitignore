@@ -11,5 +11,5 @@ html/
 .tags
 sftp-config.json
 source/sensors.json
-makefile
+makefile.predict
 args
