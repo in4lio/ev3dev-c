@@ -39,6 +39,8 @@ ev3_write( "/sys/class/leds/ev3:red:right/trigger", "heartbeat" );
 ev3_uninit();
 \endcode
 
+See also – \ref io.c
+
 <p>For more information about remote access to the brick, please, read
 ["ev3_link"](https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link).
 
@@ -65,7 +67,9 @@ instead of string comparison:
 ( get_sensor_mode( sn, buf, sizeof( buf )) && ( strcmp( buf, "IR-PROX" ) == 0 ))
 \endcode
 
-A few examples:
+See comprehensive example based on coroutines – \ref drive.c
+
+A few more examples:
 
 &bull; Using \ref ev3_led "LEDs", see ["Using LEDs"](https://github.com/ev3dev/ev3dev/wiki/Using-the-LEDs):
 
@@ -81,7 +85,9 @@ if ( ok ) {
 ev3_uninit();
 \endcode
 
-&bull; Using \ref ev3_sensor "LEGO Sensors", see
+See also – \ref rcx_led.c
+
+&bull; Using \ref ev3_sensor "Sensors", see
 ["LEGO Sensor Class"](http://www.ev3dev.org/docs/drivers/lego-sensor-class/):
 
 \code {.c}
@@ -96,6 +102,8 @@ if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
+
+See also – \ref sensor.c
 
 &bull; Using \ref ev3_tacho "Tacho Motors", see
 ["Tacho Motor Class"](http://www.ev3dev.org/docs/drivers/tacho-motor-class/):
@@ -115,6 +123,8 @@ if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
 }
 ev3_uninit();
 \endcode
+
+See also - \ref tacho.c
 
 &bull; Using \ref ev3_dc "DC Motors", see ["DC Motor Class"](http://www.ev3dev.org/docs/drivers/dc-motor-class/):
 
@@ -137,6 +147,8 @@ set_port_mode_inx( sn_port, OUTPUT_AUTO );
 ev3_uninit();
 \endcode
 
+See also - \ref dc.c
+
 &bull; Using \ref ev3_servo "Servo Motors", see
 ["Servo Motor Class"](http://www.ev3dev.org/docs/drivers/servo-motor-class/):
 
@@ -158,6 +170,8 @@ set_port_mode_inx( sn_port, INPUT_AUTO );
 ev3_uninit();
 \endcode
 
+See also – \ref servo.c
+
 &bull; Using \ref ev3_port "EV3 Ports", see
 ["Input and Output Ports"](http://www.ev3dev.org/docs/ports/):
 
@@ -173,6 +187,8 @@ if ( get_port_mode( sn, s, sizeof( s ))) {
 }
 ev3_uninit();
 \endcode
+
+See also – \ref port.c
 
 &bull; Using \ref ev3_port "EV3 Extended Ports":
 
@@ -212,7 +228,7 @@ ev3_uninit();
 instead of sequence numbers for access to devices, it allows to set identical attributes
 of several devices concurrently, but extended ports are not supported.
 
-See, based on coroutines, example of using "brick" library \ref remote.c "here".
+See example of using "brick" library, based on coroutines – \ref remote.c
 
 A few more examples:
 
@@ -238,6 +254,8 @@ ev3_init();
 set_light_blink( LIT_LEFT, LIT_AMBER, 1000, 500 );
 ev3_uninit();
 \endcode
+
+See also – \ref light.c
 
 ## Python, Ruby, Perl and other languages
 
@@ -269,6 +287,8 @@ if ok:
 ev3_uninit()
 \endcode
 
+See also – [Examples on Python](https://github.com/in4lio/ev3dev-c/blob/master/python/ev3dev/eg)
+
 #### Features of Ruby library:
 
 1. The functions return the requested value as the second element of the result tuple,
@@ -287,6 +307,8 @@ if ok
 end
 ev3_uninit()
 \endcode
+
+See also – [Examples on Ruby](https://github.com/in4lio/ev3dev-c/blob/master/ruby/eg)
 
 #### Features of Perl library:
 
@@ -308,6 +330,8 @@ if ( $ok ) {
 }
 ev3::ev3_uninit();
 \endcode
+
+See also – \ref [Examples on Perl](https://github.com/in4lio/ev3dev-c/blob/master/perl/eg)
 
 Similarly you can use SWIG to wrap the library in a number of other languages.
 
