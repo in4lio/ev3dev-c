@@ -9,7 +9,7 @@
     ev3dev-c    0.9b2
                 2016-08-15
 
-    kernel      4.4.15-13-ev3dev-ev3
+    kernel      4.4.17-14-ev3dev-ev3
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -70,9 +70,9 @@
 
     > cd eg/light/
     > make
-    > bin/light
+    > debug/light
     or
-    > bin\mingw\light.exe
+    > debug\mingw\light.exe
 
     Similar examples on Python could be found in "python/ev3dev/eg".
     Examples on Ruby are placed in "ruby/eg", on Perl in "perl/eg".
