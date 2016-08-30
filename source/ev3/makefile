@@ -5,10 +5,10 @@
 #   |_|                   |_|
 #   makefile (yupp, gcc)
 
-# -- binary name without extension
+# -- name of binary file without extension
 TARGET = ev3dev-c
 
-# -- platform (core)
+# -- platform
 ifeq ($(OS),Windows_NT)
 # WIN32
 PLATFORM = __MINGW__
@@ -19,12 +19,12 @@ endif
 
 TOP = ../..
 
-# -- compilers
+# -- compiler
 CC = gcc
 CXX = g++
 LINK = ar
 
-# -- on EV3 BRICK
+# -- build on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
 EV3 = $(if $(shell $(CC) -dM -E - < /dev/null | grep __ARM_ARCH_4T__),1,0)
 else
@@ -47,7 +47,7 @@ else
 PP = @echo makefile: warning: preprocessing step is skipped,
 endif
 
-# -- command to create 'object' and 'bin' directories and subdirectories
+# -- command to create directories
 MKDIR = mkdir -p
 
 # -- output subdirectory
@@ -57,7 +57,7 @@ else
 D_PLATFORM = .
 endif
 
-# -- install directory
+# -- installation directory
 ifeq ($(PLATFORM),__MINGW__)
 D_INSTALL = $(MINGW_HOME)
 else
@@ -66,7 +66,7 @@ endif
 
 D_INSTALL_H_FROM = .
 
-# -- yupp import directories
+# -- import directories for yupp
 D_YU = $(TOP)/source/ev3
 
 # -- source directories
@@ -82,7 +82,7 @@ D_ASM = $(TOP)/source
 # -- include directories
 D_H = $(D_C)
 
-# -- binary directory
+# -- binary file directory
 D_BIN = $(TOP)/lib
 D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
@@ -104,14 +104,14 @@ E_ASM = .asm
 # -- object suffix
 E_OBJ = .o
 
-# -- binary suffix
+# -- binary file suffix
 ifeq ($(OS),Windows_NT)
 E_BIN = .a
 else
 E_BIN = .a
 endif
 
-# -- binary full name
+# -- full name of binary file
 F_BIN = $(D_BIN)/lib$(TARGET)$(E_BIN)
 
 # -- link options
@@ -214,10 +214,10 @@ vpath %$(E_ASM) $(D_ASM)
 vpath %$(E_YUCXX) $(D_CXX)
 vpath %$(E_YUC) $(D_C)
 
-# -- build project
-.PHONY: all
+# -- build binary file
+.PHONY: default
 
-all: bindirs $(F_BIN)
+default: bindirs $(F_BIN)
 
 $(F_BIN): $(O)
 	$(call wrap,$(LINK),$(LFLAGS) $@ $^)
@@ -261,13 +261,13 @@ $(D_BIN):
 clean:
 	$(CLEAN)
 
-# -- remove binary files
+# -- remove binary and object files
 .PHONY: clean-binary
 
 clean-binary:
 	$(CLEAN_BIN)
 
-# -- install project
+# -- install
 .PHONY: install
 
 install:
