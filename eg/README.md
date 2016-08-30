@@ -25,10 +25,10 @@
 > make
 ```
 
-Makefile phony targets               | Description
+Makefile targets                     | Description
 :---                                 | :---
 `release`                            | Build example using precompiled "ev3dev-c" library
-`release-clean`                      | Remove files created during the build `release` process
-`(default)`, `debug`                 | Build example using source files of "ev3dev-c" library
-`clean`, `debug-clean`               | Remove all files created during the build from source files
-`clean-binary`, `debug-clean-binary` | Remove only binary files created during the build from source files
+`release-clean`                      | Remove files created during building `release` target
+`(default)`, `debug`                 | Build example using the source files of "ev3dev-c" library
+`clean`, `debug-clean`               | Remove all files created during building from the source files
+`clean-binary`, `debug-clean-binary` | Remove only binary files created during building from the source files
