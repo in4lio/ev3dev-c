@@ -41,7 +41,7 @@ extern "C" {
 
 /**
  *  \defgroup ev3_sensor Sensors
- *  \brief Access to EV3 Sensors.
+ *  \brief Access to EV3 sensors.
  *  \see http://www.ev3dev.org/docs/sensors/
  *  \see http://www.ev3dev.org/docs/drivers/lego-sensor-class/
  *  \{

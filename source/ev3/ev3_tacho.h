@@ -40,8 +40,8 @@ extern "C" {
 #endif
 
 /**
- *  \defgroup ev3_tacho Tacho Motors
- *  \brief Access to EV3 Tacho Motors.
+ *  \defgroup ev3_tacho Tacho motors
+ *  \brief Access to EV3 tacho motors.
  *  \see http://www.ev3dev.org/docs/motors/
  *  \see http://www.ev3dev.org/docs/drivers/tacho-motor-class/
  *  \{

@@ -5,7 +5,7 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,Simplified interface of ev3dev-c library.)
+($TITLE,,Simplified interface of "ev3dev-c" library.)
 
 ($import stdlib)
 ($import h)

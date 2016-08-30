@@ -40,8 +40,8 @@ extern "C" {
 #endif
 
 /**
- *  \defgroup ev3_servo Servo Motors
- *  \brief Access to EV3 Servo Motors.
+ *  \defgroup ev3_servo Servo motors
+ *  \brief Access to EV3 servo motors.
  *  \see http://www.ev3dev.org/docs/drivers/servo-motor-class/
  *  \{
  */

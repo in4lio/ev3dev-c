@@ -3,7 +3,7 @@
     out of brick.yu-h 
  *//**
  *  \file  brick.h (brick.yu-h)
- *  \brief  Simplified interface of ev3dev-c library.
+ *  \brief  Simplified interface of "ev3dev-c" library.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
@@ -45,16 +45,11 @@ extern "C" {
 
 /**
  *  \defgroup brick "brick" library
- *  \brief Simplified interface of ev3dev-c library.
+ *  \brief Simplified interface of "ev3dev-c" library.
  *
  *  "brick" library allows simultaneous setting of identical attributes of multiple
- *  devices using a ports mask, e.g. `tacho_run_forever( OUTA | OUTB )`,
+ *  devices using a ports mask, e.g. `tacho_run_forever(OUTA | OUTB)`,
  *  but extended ports are not supported.
- *  \{
- */
-
-/**
- *  \defgroup pool Input and output sockets
  *  \{
  */
 
@@ -93,8 +88,6 @@ BRICK_EXT POOL_T port_to_socket( uint8_t port );
  *  \return EV3 port.
  */
 BRICK_EXT uint8_t socket_to_port( POOL_T sock );
-
-/** \} */
 
 /**
  *  \brief Initialize the EV3 brick.

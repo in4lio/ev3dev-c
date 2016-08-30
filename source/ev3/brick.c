@@ -3,7 +3,7 @@
     out of brick.yu-c 
  *//**
  *  \file  brick.c (brick.yu-c)
- *  \brief  Simplified interface of ev3dev-c library.
+ *  \brief  Simplified interface of "ev3dev-c" library.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */

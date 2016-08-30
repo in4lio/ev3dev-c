@@ -40,8 +40,8 @@ extern "C" {
 #endif
 
 /**
- *  \defgroup ev3_port EV3 Ports and Extended Ports
- *  \brief Access to EV3 Ports and Extended Ports.
+ *  \defgroup ev3_port EV3 ports and extended ports
+ *  \brief Access to EV3 ports and extended ports.
  *  \see http://www.ev3dev.org/docs/ports/
  *  \see http://www.ev3dev.org/docs/drivers/lego-port-class/
  *  \{

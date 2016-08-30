@@ -87,7 +87,7 @@ ev3_uninit();
 
 See also – \ref rcx_led.c
 
-&bull; Using \ref ev3_sensor "Sensors", see
+&bull; Using \ref ev3_sensor "sensors", see
 ["LEGO Sensor Class"](http://www.ev3dev.org/docs/drivers/lego-sensor-class/):
 
 \code {.c}
@@ -105,7 +105,7 @@ ev3_uninit();
 
 See also – \ref sensor.c
 
-&bull; Using \ref ev3_tacho "Tacho Motors", see
+&bull; Using \ref ev3_tacho "tacho motors", see
 ["Tacho Motor Class"](http://www.ev3dev.org/docs/drivers/tacho-motor-class/):
 
 \code {.c}
@@ -126,7 +126,7 @@ ev3_uninit();
 
 See also - \ref tacho.c
 
-&bull; Using \ref ev3_dc "DC Motors", see ["DC Motor Class"](http://www.ev3dev.org/docs/drivers/dc-motor-class/):
+&bull; Using \ref ev3_dc "DC motors", see ["DC Motor Class"](http://www.ev3dev.org/docs/drivers/dc-motor-class/):
 
 \code {.c}
 uint8_t sn, sn_port;
@@ -149,7 +149,7 @@ ev3_uninit();
 
 See also - \ref dc.c
 
-&bull; Using \ref ev3_servo "Servo Motors", see
+&bull; Using \ref ev3_servo "servo motors", see
 ["Servo Motor Class"](http://www.ev3dev.org/docs/drivers/servo-motor-class/):
 
 \code {.c}
@@ -172,7 +172,7 @@ ev3_uninit();
 
 See also – \ref servo.c
 
-&bull; Using \ref ev3_port "EV3 Ports", see
+&bull; Using \ref ev3_port "EV3 ports", see
 ["Input and Output Ports"](http://www.ev3dev.org/docs/ports/):
 
 \code {.c}
@@ -190,7 +190,7 @@ ev3_uninit();
 
 See also – \ref port.c
 
-&bull; Using \ref ev3_port "EV3 Extended Ports":
+&bull; Using \ref ev3_port "EV3 extended ports":
 
 \code {.c}
 uint8_t sn, sn_port;

@@ -40,8 +40,8 @@ extern "C" {
 #endif
 
 /**
- *  \defgroup ev3_dc DC Motors
- *  \brief Access to EV3 DC Motors.
+ *  \defgroup ev3_dc DC motors
+ *  \brief Access to EV3 DC motors.
  *  \see http://www.ev3dev.org/docs/motors/
  *  \see http://www.ev3dev.org/docs/drivers/dc-motor-class/
  *  \{
