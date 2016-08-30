@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sensors',['Sensors',['../group__ev3__sensor.html',1,'']]],
-  ['servo_20motors',['Servo Motors',['../group__ev3__servo.html',1,'']]],
+  ['servo_20motors',['Servo motors',['../group__ev3__servo.html',1,'']]],
   ['sensor_5f_5fnone_5f',['SENSOR__NONE_',['../group__ev3__sensor.html#ga695302109f5b0a4a821902bede4e4e47',1,'ev3_sensor.h']]],
   ['sensor_5fcommand_5f_5fcount_5f',['SENSOR_COMMAND__COUNT_',['../group__ev3__sensor.html#ggaba01db17f4a2bfbc3db60dc172972a25abd408f7065b39a7111c9b2b479af3b89',1,'ev3_sensor.h']]],
   ['sensor_5fdesc_5f_5flimit_5f',['SENSOR_DESC__LIMIT_',['../group__ev3__sensor.html#ga95060d2f6ebd3bfd0c043c48d3f7e358',1,'ev3_sensor.h']]],
@@ -102,5 +102,5 @@ var searchData=
   ['set_5ftacho_5ftime_5fsp',['set_tacho_time_sp',['../group__ev3__tacho.html#ga215a000f558aa8ac03b884f5984ff438',1,'set_tacho_time_sp(uint8_t sn, int value):&#160;ev3_tacho.c'],['../group__ev3__tacho.html#ga215a000f558aa8ac03b884f5984ff438',1,'set_tacho_time_sp(uint8_t sn, int value):&#160;ev3_tacho.c']]],
   ['sleep_5fms',['sleep_ms',['../group__brick.html#ga6e15f6e9a9b49c8209bda66d39daf8b5',1,'brick.c']]],
   ['sn',['sn',['../structEV3__MULTI__WRITE__SUBHEADER.html#a054727e05dd805ae5365639f7e6c851c',1,'EV3_MULTI_WRITE_SUBHEADER']]],
-  ['socket_5fto_5fport',['socket_to_port',['../group__brick.html#gaea8f7e8a9f3545ebd6e2f2ed5ba067f1',1,'socket_to_port(POOL_T sock):&#160;brick.c'],['../group__pool.html#ga8b6d37be75d410022b5881d7dbc1a068',1,'socket_to_port(POOL_T sock):&#160;brick.c']]]
+  ['socket_5fto_5fport',['socket_to_port',['../group__brick.html#ga8b6d37be75d410022b5881d7dbc1a068',1,'brick.c']]]
 ];

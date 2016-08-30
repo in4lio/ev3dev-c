@@ -87,5 +87,5 @@ var searchData=
   ['set_5ftacho_5fstop_5faction_5finx',['set_tacho_stop_action_inx',['../group__ev3__tacho.html#ga017e2984e90c9b2dcb31e97b1c3e84ee',1,'set_tacho_stop_action_inx(uint8_t sn, INX_T stop_action_inx):&#160;ev3_tacho.c'],['../group__ev3__tacho.html#ga017e2984e90c9b2dcb31e97b1c3e84ee',1,'set_tacho_stop_action_inx(uint8_t sn, INX_T stop_action_inx):&#160;ev3_tacho.c']]],
   ['set_5ftacho_5ftime_5fsp',['set_tacho_time_sp',['../group__ev3__tacho.html#ga215a000f558aa8ac03b884f5984ff438',1,'set_tacho_time_sp(uint8_t sn, int value):&#160;ev3_tacho.c'],['../group__ev3__tacho.html#ga215a000f558aa8ac03b884f5984ff438',1,'set_tacho_time_sp(uint8_t sn, int value):&#160;ev3_tacho.c']]],
   ['sleep_5fms',['sleep_ms',['../group__brick.html#ga6e15f6e9a9b49c8209bda66d39daf8b5',1,'brick.c']]],
-  ['socket_5fto_5fport',['socket_to_port',['../group__brick.html#gaea8f7e8a9f3545ebd6e2f2ed5ba067f1',1,'socket_to_port(POOL_T sock):&#160;brick.c'],['../group__pool.html#ga8b6d37be75d410022b5881d7dbc1a068',1,'socket_to_port(POOL_T sock):&#160;brick.c']]]
+  ['socket_5fto_5fport',['socket_to_port',['../group__brick.html#ga8b6d37be75d410022b5881d7dbc1a068',1,'brick.c']]]
 ];

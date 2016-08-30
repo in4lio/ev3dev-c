@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['leds',['LEDs',['../group__ev3__led.html',1,'']]],
-  ['lights',['Lights',['../group__ev3__light.html',1,'']]]
+  ['remote_20access',['Remote access',['../group__ev3__link.html',1,'']]]
 ];

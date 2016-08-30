@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tacho_20motors',['Tacho Motors',['../group__ev3__tacho.html',1,'']]],
+  ['tacho_20motors',['Tacho motors',['../group__ev3__tacho.html',1,'']]],
   ['tacho_5f_5fnone_5f',['TACHO__NONE_',['../group__ev3__tacho.html#ga7b2a39715c424651b50a494e36a59d16',1,'ev3_tacho.h']]],
   ['tacho_5fcommand_5f_5fcount_5f',['TACHO_COMMAND__COUNT_',['../group__ev3__tacho.html#gga39fca1837c5ce7715cbf571669660c13adf7e9606e613547ee2f2c6775229ce02',1,'ev3_tacho.h']]],
   ['tacho_5fdesc_5f_5flimit_5f',['TACHO_DESC__LIMIT_',['../group__ev3__tacho.html#ga2d079a45ec7b0ee2c33f4c944df400b7',1,'ev3_tacho.h']]],
