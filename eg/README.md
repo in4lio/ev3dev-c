@@ -17,3 +17,21 @@
 [Examples on Python](../python/ev3dev/eg)<br>
 [Examples on Perl](../perl/eg)<br>
 [Examples on Ruby](../ruby/eg)
+
+## How to make examples?
+
+```
+> cd remote/
+> make
+```
+
+`Makefile` phony targets | Description
+:---                     | :---
+`release`                | Build example using precompiled "ev3dev-c" library
+`release-clean`          | Remove files created during the build `release` process
+`(default)`,             |
+`debug`                  | Build example using source files of "ev3dev-c" library
+`clean`,                 |
+`debug-clean`            | Remove all files created during the build from source files
+`clean-binary`,          |
+`debug-clean-binary`     | Remove only binary files created during the build from source files

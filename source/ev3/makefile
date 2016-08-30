@@ -5,7 +5,7 @@
 #   |_|                   |_|
 #   makefile (yupp, gcc)
 
-# -- binary name without prefix and extension
+# -- binary name without extension
 TARGET = ev3dev-c
 
 # -- platform (core)
