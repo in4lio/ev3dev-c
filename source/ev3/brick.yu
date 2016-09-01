@@ -8,7 +8,7 @@ static bool ($CLASS_ID)_pool_to_desc( POOL_T pool, uint8_t *sn )
 {
 	uint8_t _sn;
 
-	memset( sn, DESC_VEC_LEN, DESC_LIMIT );
+	memset( sn, DESC_LIMIT, DESC_VEC_LEN );
 	for ( _sn = 0; _sn < DESC_LIMIT; _sn++ ) {
 		if ( ev3_($CLASS_ID)[ _sn ].type_inx != ($upper ($CLASS_ID))_TYPE__NONE_ ) {
 			uint8_t sock = port_to_socket( ev3_($CLASS_ID)[ _sn ].port );

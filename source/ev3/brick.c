@@ -106,7 +106,7 @@ static bool sensor_pool_to_desc( POOL_T pool, uint8_t *sn )
 {
 	uint8_t _sn;
 
-	memset( sn, DESC_VEC_LEN, DESC_LIMIT );
+	memset( sn, DESC_LIMIT, DESC_VEC_LEN );
 	for ( _sn = 0; _sn < DESC_LIMIT; _sn++ ) {
 		if ( ev3_sensor[ _sn ].type_inx != SENSOR_TYPE__NONE_ ) {
 			uint8_t sock = port_to_socket( ev3_sensor[ _sn ].port );
@@ -579,7 +579,7 @@ static bool tacho_pool_to_desc( POOL_T pool, uint8_t *sn )
 {
 	uint8_t _sn;
 
-	memset( sn, DESC_VEC_LEN, DESC_LIMIT );
+	memset( sn, DESC_LIMIT, DESC_VEC_LEN );
 	for ( _sn = 0; _sn < DESC_LIMIT; _sn++ ) {
 		if ( ev3_tacho[ _sn ].type_inx != TACHO_TYPE__NONE_ ) {
 			uint8_t sock = port_to_socket( ev3_tacho[ _sn ].port );
@@ -1153,7 +1153,7 @@ static bool dc_pool_to_desc( POOL_T pool, uint8_t *sn )
 {
 	uint8_t _sn;
 
-	memset( sn, DESC_VEC_LEN, DESC_LIMIT );
+	memset( sn, DESC_LIMIT, DESC_VEC_LEN );
 	for ( _sn = 0; _sn < DESC_LIMIT; _sn++ ) {
 		if ( ev3_dc[ _sn ].type_inx != DC_TYPE__NONE_ ) {
 			uint8_t sock = port_to_socket( ev3_dc[ _sn ].port );

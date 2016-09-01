@@ -59,9 +59,9 @@ int init( void )
 		ir_set_mode_ir_remote( ir );
 
 		printf(	"IR remote control:\n"
-		"RED UP & BLUE UP     - forward\n"
+		"RED UP   & BLUE UP   - forward\n"
 		"RED DOWN & BLUE DOWN - backward\n"
-		"RED UP | BLUE DOWN   - left\n"
+		"RED UP   | BLUE DOWN - left\n"
 		"RED DOWN | BLUE UP   - right\n"
 		);
 	} else {
