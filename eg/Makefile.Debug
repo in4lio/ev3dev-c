@@ -74,7 +74,7 @@ D_ASM = $(TOP)/source
 D_H = $(D_C) $(YUPP_HOME)/lib
 
 # -- binary file directory
-D_BIN = debug
+D_BIN = Debug
 D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
 # -- object directory
