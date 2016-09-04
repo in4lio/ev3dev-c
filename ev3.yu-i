@@ -17,6 +17,7 @@
 #include "../source/ev3/ev3_tacho.h"
 #include "../source/ev3/ev3_dc.h"
 #include "../source/ev3/ev3_servo.h"
+#include "../source/ev3/brick.h"
 %}
 
 %define ALLOC_OUTPUT_BUFFER(TYPEMAP,MAX)
@@ -53,6 +54,7 @@ ALLOC_OUTPUT_BUFFER( char *buf, 64 );
 %apply uint8_t { byte };
 %apply uint8_t { INX_T };
 %apply uint8_t { FLAGS_T };
+%apply uint8_t { POOL_T };
 
 #ifdef SWIGRUBY
 %typemap( out ) size_t, bool { $result = $1 ? Qtrue : Qfalse; };
@@ -61,6 +63,9 @@ ALLOC_OUTPUT_BUFFER( char *buf, 64 );
 #endif
 
 %typemap( default ) uint8_t from { $1 = 0; };
+%typemap( default ) dword defval { $1 = 0; };
+%typemap( default ) float defval { $1 = 0.0; };
+%typemap( default ) int defval { $1 = 0; };
 
 ($import stdlib)
 
@@ -137,3 +142,4 @@ enum {
 ($import { clip_h( "../source/ev3/ev3_tacho.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_dc.yu-h" ) })
 ($import { clip_h( "../source/ev3/ev3_servo.yu-h" ) })
+($import { clip_h( "../source/ev3/brick.yu-h" ) })
