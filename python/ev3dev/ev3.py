@@ -348,6 +348,8 @@ LEGOEV3_INPUT_PORT_NXT_COLOR = _ev3.LEGOEV3_INPUT_PORT_NXT_COLOR
 INPUT_NXT_COLOR = _ev3.INPUT_NXT_COLOR
 LEGOEV3_INPUT_PORT_NXT_I2C = _ev3.LEGOEV3_INPUT_PORT_NXT_I2C
 INPUT_NXT_I2C = _ev3.INPUT_NXT_I2C
+LEGOEV3_INPUT_PORT_OTHER_I2C = _ev3.LEGOEV3_INPUT_PORT_OTHER_I2C
+INPUT_OTHER_I2C = _ev3.INPUT_OTHER_I2C
 LEGOEV3_INPUT_PORT_EV3_ANALOG = _ev3.LEGOEV3_INPUT_PORT_EV3_ANALOG
 INPUT_EV3_ANALOG = _ev3.INPUT_EV3_ANALOG
 LEGOEV3_INPUT_PORT_EV3_UART = _ev3.LEGOEV3_INPUT_PORT_EV3_UART
@@ -460,6 +462,10 @@ ev3_search_port_plugged_in = _ev3.ev3_search_port_plugged_in
 def ev3_port_mode(*args):
   return _ev3.ev3_port_mode(*args)
 ev3_port_mode = _ev3.ev3_port_mode
+
+def get_port_mode_inx_of_type(*args):
+  return _ev3.get_port_mode_inx_of_type(*args)
+get_port_mode_inx_of_type = _ev3.get_port_mode_inx_of_type
 
 def get_port_mode_inx(*args):
   return _ev3.get_port_mode_inx(*args)
@@ -579,6 +585,7 @@ WEDO_HUB = _ev3.WEDO_HUB
 WEDO_MOTION = _ev3.WEDO_MOTION
 WEDO_TILT = _ev3.WEDO_TILT
 LEGO_POWER_STORAGE = _ev3.LEGO_POWER_STORAGE
+LEGO_NXT_TEMP = _ev3.LEGO_NXT_TEMP
 LEGO_NXT_TOUCH = _ev3.LEGO_NXT_TOUCH
 LEGO_NXT_LIGHT = _ev3.LEGO_NXT_LIGHT
 LEGO_NXT_SOUND = _ev3.LEGO_NXT_SOUND
@@ -592,6 +599,7 @@ MS_LINE_LEADER = _ev3.MS_LINE_LEADER
 MS_NXTCAM = _ev3.MS_NXTCAM
 MS_NXTMMX = _ev3.MS_NXTMMX
 MS_8CH_SERVO = _ev3.MS_8CH_SERVO
+MS_PPS58_NX = _ev3.MS_PPS58_NX
 MS_PIXY_ADAPTER = _ev3.MS_PIXY_ADAPTER
 MS_NXT_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX
 SENSOR_TYPE__COUNT_ = _ev3.SENSOR_TYPE__COUNT_
@@ -608,8 +616,6 @@ PIXY_LEGO_SIG4 = _ev3.PIXY_LEGO_SIG4
 PIXY_LEGO_SIG5 = _ev3.PIXY_LEGO_SIG5
 PIXY_LEGO_SIG6 = _ev3.PIXY_LEGO_SIG6
 PIXY_LEGO_SIG7 = _ev3.PIXY_LEGO_SIG7
-PIXY_LEGO_COL_CODE = _ev3.PIXY_LEGO_COL_CODE
-PIXY_LEGO_ANGLE = _ev3.PIXY_LEGO_ANGLE
 DI_DFLEX_FLEX = _ev3.DI_DFLEX_FLEX
 HT_NXT_COLOR_COLOR = _ev3.HT_NXT_COLOR_COLOR
 HT_NXT_COLOR_RED = _ev3.HT_NXT_COLOR_RED
@@ -657,30 +663,55 @@ HT_SUPER_PRO_LED = _ev3.HT_SUPER_PRO_LED
 HT_SUPER_PRO_AOUT_0 = _ev3.HT_SUPER_PRO_AOUT_0
 HT_SUPER_PRO_AOUT_1 = _ev3.HT_SUPER_PRO_AOUT_1
 LEGO_EV3_US_US_DIST_CM = _ev3.LEGO_EV3_US_US_DIST_CM
+US_US_DIST_CM = _ev3.US_US_DIST_CM
 LEGO_EV3_US_US_DIST_IN = _ev3.LEGO_EV3_US_US_DIST_IN
+US_US_DIST_IN = _ev3.US_US_DIST_IN
 LEGO_EV3_US_US_LISTEN = _ev3.LEGO_EV3_US_US_LISTEN
+US_US_LISTEN = _ev3.US_US_LISTEN
 LEGO_EV3_US_US_SI_CM = _ev3.LEGO_EV3_US_US_SI_CM
+US_US_SI_CM = _ev3.US_US_SI_CM
 LEGO_EV3_US_US_SI_IN = _ev3.LEGO_EV3_US_US_SI_IN
+US_US_SI_IN = _ev3.US_US_SI_IN
 LEGO_EV3_US_US_DC_CM = _ev3.LEGO_EV3_US_US_DC_CM
+US_US_DC_CM = _ev3.US_US_DC_CM
 LEGO_EV3_US_US_DC_IN = _ev3.LEGO_EV3_US_US_DC_IN
+US_US_DC_IN = _ev3.US_US_DC_IN
 LEGO_EV3_GYRO_GYRO_ANG = _ev3.LEGO_EV3_GYRO_GYRO_ANG
+GYRO_GYRO_ANG = _ev3.GYRO_GYRO_ANG
 LEGO_EV3_GYRO_GYRO_RATE = _ev3.LEGO_EV3_GYRO_GYRO_RATE
+GYRO_GYRO_RATE = _ev3.GYRO_GYRO_RATE
 LEGO_EV3_GYRO_GYRO_FAS = _ev3.LEGO_EV3_GYRO_GYRO_FAS
+GYRO_GYRO_FAS = _ev3.GYRO_GYRO_FAS
 LEGO_EV3_GYRO_GYRO_G_AND_A = _ev3.LEGO_EV3_GYRO_GYRO_G_AND_A
+GYRO_GYRO_G_AND_A = _ev3.GYRO_GYRO_G_AND_A
 LEGO_EV3_GYRO_GYRO_CAL = _ev3.LEGO_EV3_GYRO_GYRO_CAL
+GYRO_GYRO_CAL = _ev3.GYRO_GYRO_CAL
 LEGO_EV3_COLOR_COL_REFLECT = _ev3.LEGO_EV3_COLOR_COL_REFLECT
+COLOR_COL_REFLECT = _ev3.COLOR_COL_REFLECT
 LEGO_EV3_COLOR_COL_AMBIENT = _ev3.LEGO_EV3_COLOR_COL_AMBIENT
+COLOR_COL_AMBIENT = _ev3.COLOR_COL_AMBIENT
 LEGO_EV3_COLOR_COL_COLOR = _ev3.LEGO_EV3_COLOR_COL_COLOR
+COLOR_COL_COLOR = _ev3.COLOR_COL_COLOR
 LEGO_EV3_COLOR_REF_RAW = _ev3.LEGO_EV3_COLOR_REF_RAW
+COLOR_REF_RAW = _ev3.COLOR_REF_RAW
 LEGO_EV3_COLOR_RGB_RAW = _ev3.LEGO_EV3_COLOR_RGB_RAW
+COLOR_RGB_RAW = _ev3.COLOR_RGB_RAW
 LEGO_EV3_COLOR_COL_CAL = _ev3.LEGO_EV3_COLOR_COL_CAL
+COLOR_COL_CAL = _ev3.COLOR_COL_CAL
 LEGO_EV3_TOUCH_TOUCH = _ev3.LEGO_EV3_TOUCH_TOUCH
+TOUCH_TOUCH = _ev3.TOUCH_TOUCH
 LEGO_EV3_IR_IR_PROX = _ev3.LEGO_EV3_IR_IR_PROX
+IR_IR_PROX = _ev3.IR_IR_PROX
 LEGO_EV3_IR_IR_SEEK = _ev3.LEGO_EV3_IR_IR_SEEK
+IR_IR_SEEK = _ev3.IR_IR_SEEK
 LEGO_EV3_IR_IR_REMOTE = _ev3.LEGO_EV3_IR_IR_REMOTE
+IR_IR_REMOTE = _ev3.IR_IR_REMOTE
 LEGO_EV3_IR_IR_REM_A = _ev3.LEGO_EV3_IR_IR_REM_A
+IR_IR_REM_A = _ev3.IR_IR_REM_A
 LEGO_EV3_IR_IR_S_ALT = _ev3.LEGO_EV3_IR_IR_S_ALT
+IR_IR_S_ALT = _ev3.IR_IR_S_ALT
 LEGO_EV3_IR_IR_CAL = _ev3.LEGO_EV3_IR_IR_CAL
+IR_IR_CAL = _ev3.IR_IR_CAL
 WEDO_HUB_HUB = _ev3.WEDO_HUB_HUB
 WEDO_MOTION_PROX = _ev3.WEDO_MOTION_PROX
 WEDO_MOTION_RAW = _ev3.WEDO_MOTION_RAW
@@ -695,6 +726,8 @@ LEGO_POWER_STORAGE_JOULE = _ev3.LEGO_POWER_STORAGE_JOULE
 LEGO_POWER_STORAGE_IN_WATT = _ev3.LEGO_POWER_STORAGE_IN_WATT
 LEGO_POWER_STORAGE_OUT_WATT = _ev3.LEGO_POWER_STORAGE_OUT_WATT
 LEGO_POWER_STORAGE_ALL = _ev3.LEGO_POWER_STORAGE_ALL
+LEGO_NXT_TEMP_NXT_TEMP_C = _ev3.LEGO_NXT_TEMP_NXT_TEMP_C
+LEGO_NXT_TEMP_NXT_TEMP_F = _ev3.LEGO_NXT_TEMP_NXT_TEMP_F
 LEGO_NXT_TOUCH_TOUCH = _ev3.LEGO_NXT_TOUCH_TOUCH
 LEGO_NXT_LIGHT_REFLECT = _ev3.LEGO_NXT_LIGHT_REFLECT
 LEGO_NXT_LIGHT_AMBIENT = _ev3.LEGO_NXT_LIGHT_AMBIENT
@@ -731,6 +764,13 @@ MS_NXTMMX_STATUS = _ev3.MS_NXTMMX_STATUS
 MS_NXTMMX_STATUS_OLD = _ev3.MS_NXTMMX_STATUS_OLD
 MS_8CH_SERVO_V3 = _ev3.MS_8CH_SERVO_V3
 MS_8CH_SERVO_OLD = _ev3.MS_8CH_SERVO_OLD
+MS_PPS58_NX_RAW = _ev3.MS_PPS58_NX_RAW
+MS_PPS58_NX_ABS_PSI = _ev3.MS_PPS58_NX_ABS_PSI
+MS_PPS58_NX_ABS_MBAR = _ev3.MS_PPS58_NX_ABS_MBAR
+MS_PPS58_NX_ABS_KPA = _ev3.MS_PPS58_NX_ABS_KPA
+MS_PPS58_NX_REL_PSI = _ev3.MS_PPS58_NX_REL_PSI
+MS_PPS58_NX_REL_MBAR = _ev3.MS_PPS58_NX_REL_MBAR
+MS_PPS58_NX_REL_KPA = _ev3.MS_PPS58_NX_REL_KPA
 MS_PIXY_ADAPTER_TRACK = _ev3.MS_PIXY_ADAPTER_TRACK
 MS_NXT_TOUCH_MUX_TOUCH_MUX = _ev3.MS_NXT_TOUCH_MUX_TOUCH_MUX
 SENSOR_MODE__COUNT_ = _ev3.SENSOR_MODE__COUNT_
@@ -778,6 +818,7 @@ MS_NXTCAM_TRACK_OBJ = _ev3.MS_NXTCAM_TRACK_OBJ
 MS_NXTCAM_TRACK_LINE = _ev3.MS_NXTCAM_TRACK_LINE
 MS_NXTCAM_SORT_SIZE = _ev3.MS_NXTCAM_SORT_SIZE
 MS_NXTCAM_SORT_COL = _ev3.MS_NXTCAM_SORT_COL
+MS_PPS58_NX_ZERO = _ev3.MS_PPS58_NX_ZERO
 MS_PIXY_ADAPTER_SORT_SIZE = _ev3.MS_PIXY_ADAPTER_SORT_SIZE
 MS_PIXY_ADAPTER_SORT_COL = _ev3.MS_PIXY_ADAPTER_SORT_COL
 SENSOR_COMMAND__COUNT_ = _ev3.SENSOR_COMMAND__COUNT_
@@ -962,6 +1003,10 @@ ev3_search_sensor_plugged_in = _ev3.ev3_search_sensor_plugged_in
 def ev3_sensor_mode(*args):
   return _ev3.ev3_sensor_mode(*args)
 ev3_sensor_mode = _ev3.ev3_sensor_mode
+
+def get_sensor_mode_inx_of_type(*args):
+  return _ev3.get_sensor_mode_inx_of_type(*args)
+get_sensor_mode_inx_of_type = _ev3.get_sensor_mode_inx_of_type
 
 def get_sensor_mode_inx(*args):
   return _ev3.get_sensor_mode_inx(*args)
@@ -1851,6 +1896,603 @@ get_servo_state_flags = _ev3.get_servo_state_flags
 def ev3_servo_init():
   return _ev3.ev3_servo_init()
 ev3_servo_init = _ev3.ev3_servo_init
+SOCKET__NONE_ = _ev3.SOCKET__NONE_
+IN1 = _ev3.IN1
+IN2 = _ev3.IN2
+IN3 = _ev3.IN3
+IN4 = _ev3.IN4
+OUTA = _ev3.OUTA
+OUTB = _ev3.OUTB
+OUTC = _ev3.OUTC
+OUTD = _ev3.OUTD
+
+def port_to_socket(*args):
+  return _ev3.port_to_socket(*args)
+port_to_socket = _ev3.port_to_socket
+
+def socket_to_port(*args):
+  return _ev3.socket_to_port(*args)
+socket_to_port = _ev3.socket_to_port
+
+def brick_init():
+  return _ev3.brick_init()
+brick_init = _ev3.brick_init
+
+def brick_uninit():
+  return _ev3.brick_uninit()
+brick_uninit = _ev3.brick_uninit
+
+def brick_keys():
+  return _ev3.brick_keys()
+brick_keys = _ev3.brick_keys
+
+def sensor_get_address(*args):
+  return _ev3.sensor_get_address(*args)
+sensor_get_address = _ev3.sensor_get_address
+
+def sensor_get_bin_data(*args):
+  return _ev3.sensor_get_bin_data(*args)
+sensor_get_bin_data = _ev3.sensor_get_bin_data
+
+def sensor_set_bin_data(*args):
+  return _ev3.sensor_set_bin_data(*args)
+sensor_set_bin_data = _ev3.sensor_set_bin_data
+
+def sensor_get_bin_data_format(*args):
+  return _ev3.sensor_get_bin_data_format(*args)
+sensor_get_bin_data_format = _ev3.sensor_get_bin_data_format
+
+def sensor_set_command(*args):
+  return _ev3.sensor_set_command(*args)
+sensor_set_command = _ev3.sensor_set_command
+
+def sensor_get_commands(*args):
+  return _ev3.sensor_get_commands(*args)
+sensor_get_commands = _ev3.sensor_get_commands
+
+def sensor_get_direct(*args):
+  return _ev3.sensor_get_direct(*args)
+sensor_get_direct = _ev3.sensor_get_direct
+
+def sensor_set_direct(*args):
+  return _ev3.sensor_set_direct(*args)
+sensor_set_direct = _ev3.sensor_set_direct
+
+def sensor_get_decimals(*args):
+  return _ev3.sensor_get_decimals(*args)
+sensor_get_decimals = _ev3.sensor_get_decimals
+
+def sensor_get_driver_name(*args):
+  return _ev3.sensor_get_driver_name(*args)
+sensor_get_driver_name = _ev3.sensor_get_driver_name
+
+def sensor_get_fw_version(*args):
+  return _ev3.sensor_get_fw_version(*args)
+sensor_get_fw_version = _ev3.sensor_get_fw_version
+
+def sensor_get_mode(*args):
+  return _ev3.sensor_get_mode(*args)
+sensor_get_mode = _ev3.sensor_get_mode
+
+def sensor_set_mode(*args):
+  return _ev3.sensor_set_mode(*args)
+sensor_set_mode = _ev3.sensor_set_mode
+
+def sensor_get_modes(*args):
+  return _ev3.sensor_get_modes(*args)
+sensor_get_modes = _ev3.sensor_get_modes
+
+def sensor_get_num_values(*args):
+  return _ev3.sensor_get_num_values(*args)
+sensor_get_num_values = _ev3.sensor_get_num_values
+
+def sensor_get_poll_ms(*args):
+  return _ev3.sensor_get_poll_ms(*args)
+sensor_get_poll_ms = _ev3.sensor_get_poll_ms
+
+def sensor_set_poll_ms(*args):
+  return _ev3.sensor_set_poll_ms(*args)
+sensor_set_poll_ms = _ev3.sensor_set_poll_ms
+
+def sensor_get_units(*args):
+  return _ev3.sensor_get_units(*args)
+sensor_get_units = _ev3.sensor_get_units
+
+def sensor_get_value0(*args):
+  return _ev3.sensor_get_value0(*args)
+sensor_get_value0 = _ev3.sensor_get_value0
+
+def sensor_get_value1(*args):
+  return _ev3.sensor_get_value1(*args)
+sensor_get_value1 = _ev3.sensor_get_value1
+
+def sensor_get_value2(*args):
+  return _ev3.sensor_get_value2(*args)
+sensor_get_value2 = _ev3.sensor_get_value2
+
+def sensor_get_value3(*args):
+  return _ev3.sensor_get_value3(*args)
+sensor_get_value3 = _ev3.sensor_get_value3
+
+def sensor_get_value4(*args):
+  return _ev3.sensor_get_value4(*args)
+sensor_get_value4 = _ev3.sensor_get_value4
+
+def sensor_get_value5(*args):
+  return _ev3.sensor_get_value5(*args)
+sensor_get_value5 = _ev3.sensor_get_value5
+
+def sensor_get_value6(*args):
+  return _ev3.sensor_get_value6(*args)
+sensor_get_value6 = _ev3.sensor_get_value6
+
+def sensor_get_value7(*args):
+  return _ev3.sensor_get_value7(*args)
+sensor_get_value7 = _ev3.sensor_get_value7
+
+def sensor_get_text_value(*args):
+  return _ev3.sensor_get_text_value(*args)
+sensor_get_text_value = _ev3.sensor_get_text_value
+
+def sensor_get_value(*args):
+  return _ev3.sensor_get_value(*args)
+sensor_get_value = _ev3.sensor_get_value
+
+def us_set_mode_us_dist_cm(*args):
+  return _ev3.us_set_mode_us_dist_cm(*args)
+us_set_mode_us_dist_cm = _ev3.us_set_mode_us_dist_cm
+
+def us_set_mode_us_dist_in(*args):
+  return _ev3.us_set_mode_us_dist_in(*args)
+us_set_mode_us_dist_in = _ev3.us_set_mode_us_dist_in
+
+def us_set_mode_us_listen(*args):
+  return _ev3.us_set_mode_us_listen(*args)
+us_set_mode_us_listen = _ev3.us_set_mode_us_listen
+
+def us_set_mode_us_si_cm(*args):
+  return _ev3.us_set_mode_us_si_cm(*args)
+us_set_mode_us_si_cm = _ev3.us_set_mode_us_si_cm
+
+def us_set_mode_us_si_in(*args):
+  return _ev3.us_set_mode_us_si_in(*args)
+us_set_mode_us_si_in = _ev3.us_set_mode_us_si_in
+
+def us_set_mode_us_dc_cm(*args):
+  return _ev3.us_set_mode_us_dc_cm(*args)
+us_set_mode_us_dc_cm = _ev3.us_set_mode_us_dc_cm
+
+def us_set_mode_us_dc_in(*args):
+  return _ev3.us_set_mode_us_dc_in(*args)
+us_set_mode_us_dc_in = _ev3.us_set_mode_us_dc_in
+
+def gyro_set_mode_gyro_ang(*args):
+  return _ev3.gyro_set_mode_gyro_ang(*args)
+gyro_set_mode_gyro_ang = _ev3.gyro_set_mode_gyro_ang
+
+def gyro_set_mode_gyro_rate(*args):
+  return _ev3.gyro_set_mode_gyro_rate(*args)
+gyro_set_mode_gyro_rate = _ev3.gyro_set_mode_gyro_rate
+
+def gyro_set_mode_gyro_fas(*args):
+  return _ev3.gyro_set_mode_gyro_fas(*args)
+gyro_set_mode_gyro_fas = _ev3.gyro_set_mode_gyro_fas
+
+def gyro_set_mode_gyro_g_and_a(*args):
+  return _ev3.gyro_set_mode_gyro_g_and_a(*args)
+gyro_set_mode_gyro_g_and_a = _ev3.gyro_set_mode_gyro_g_and_a
+
+def gyro_set_mode_gyro_cal(*args):
+  return _ev3.gyro_set_mode_gyro_cal(*args)
+gyro_set_mode_gyro_cal = _ev3.gyro_set_mode_gyro_cal
+
+def color_set_mode_col_reflect(*args):
+  return _ev3.color_set_mode_col_reflect(*args)
+color_set_mode_col_reflect = _ev3.color_set_mode_col_reflect
+
+def color_set_mode_col_ambient(*args):
+  return _ev3.color_set_mode_col_ambient(*args)
+color_set_mode_col_ambient = _ev3.color_set_mode_col_ambient
+
+def color_set_mode_col_color(*args):
+  return _ev3.color_set_mode_col_color(*args)
+color_set_mode_col_color = _ev3.color_set_mode_col_color
+
+def color_set_mode_ref_raw(*args):
+  return _ev3.color_set_mode_ref_raw(*args)
+color_set_mode_ref_raw = _ev3.color_set_mode_ref_raw
+
+def color_set_mode_rgb_raw(*args):
+  return _ev3.color_set_mode_rgb_raw(*args)
+color_set_mode_rgb_raw = _ev3.color_set_mode_rgb_raw
+
+def color_set_mode_col_cal(*args):
+  return _ev3.color_set_mode_col_cal(*args)
+color_set_mode_col_cal = _ev3.color_set_mode_col_cal
+
+def touch_set_mode_touch(*args):
+  return _ev3.touch_set_mode_touch(*args)
+touch_set_mode_touch = _ev3.touch_set_mode_touch
+
+def ir_set_mode_ir_prox(*args):
+  return _ev3.ir_set_mode_ir_prox(*args)
+ir_set_mode_ir_prox = _ev3.ir_set_mode_ir_prox
+
+def ir_set_mode_ir_seek(*args):
+  return _ev3.ir_set_mode_ir_seek(*args)
+ir_set_mode_ir_seek = _ev3.ir_set_mode_ir_seek
+
+def ir_set_mode_ir_remote(*args):
+  return _ev3.ir_set_mode_ir_remote(*args)
+ir_set_mode_ir_remote = _ev3.ir_set_mode_ir_remote
+
+def ir_set_mode_ir_rem_a(*args):
+  return _ev3.ir_set_mode_ir_rem_a(*args)
+ir_set_mode_ir_rem_a = _ev3.ir_set_mode_ir_rem_a
+
+def ir_set_mode_ir_s_alt(*args):
+  return _ev3.ir_set_mode_ir_s_alt(*args)
+ir_set_mode_ir_s_alt = _ev3.ir_set_mode_ir_s_alt
+
+def ir_set_mode_ir_cal(*args):
+  return _ev3.ir_set_mode_ir_cal(*args)
+ir_set_mode_ir_cal = _ev3.ir_set_mode_ir_cal
+
+def sensor_search(*args):
+  return _ev3.sensor_search(*args)
+sensor_search = _ev3.sensor_search
+
+def sensor_is_plugged(*args):
+  return _ev3.sensor_is_plugged(*args)
+sensor_is_plugged = _ev3.sensor_is_plugged
+
+def tacho_get_address(*args):
+  return _ev3.tacho_get_address(*args)
+tacho_get_address = _ev3.tacho_get_address
+
+def tacho_set_command(*args):
+  return _ev3.tacho_set_command(*args)
+tacho_set_command = _ev3.tacho_set_command
+
+def tacho_get_commands(*args):
+  return _ev3.tacho_get_commands(*args)
+tacho_get_commands = _ev3.tacho_get_commands
+
+def tacho_get_count_per_rot(*args):
+  return _ev3.tacho_get_count_per_rot(*args)
+tacho_get_count_per_rot = _ev3.tacho_get_count_per_rot
+
+def tacho_get_count_per_m(*args):
+  return _ev3.tacho_get_count_per_m(*args)
+tacho_get_count_per_m = _ev3.tacho_get_count_per_m
+
+def tacho_get_full_travel_count(*args):
+  return _ev3.tacho_get_full_travel_count(*args)
+tacho_get_full_travel_count = _ev3.tacho_get_full_travel_count
+
+def tacho_get_driver_name(*args):
+  return _ev3.tacho_get_driver_name(*args)
+tacho_get_driver_name = _ev3.tacho_get_driver_name
+
+def tacho_get_duty_cycle(*args):
+  return _ev3.tacho_get_duty_cycle(*args)
+tacho_get_duty_cycle = _ev3.tacho_get_duty_cycle
+
+def tacho_get_duty_cycle_sp(*args):
+  return _ev3.tacho_get_duty_cycle_sp(*args)
+tacho_get_duty_cycle_sp = _ev3.tacho_get_duty_cycle_sp
+
+def tacho_set_duty_cycle_sp(*args):
+  return _ev3.tacho_set_duty_cycle_sp(*args)
+tacho_set_duty_cycle_sp = _ev3.tacho_set_duty_cycle_sp
+
+def tacho_get_hold_pid_Kd(*args):
+  return _ev3.tacho_get_hold_pid_Kd(*args)
+tacho_get_hold_pid_Kd = _ev3.tacho_get_hold_pid_Kd
+
+def tacho_set_hold_pid_Kd(*args):
+  return _ev3.tacho_set_hold_pid_Kd(*args)
+tacho_set_hold_pid_Kd = _ev3.tacho_set_hold_pid_Kd
+
+def tacho_get_hold_pid_Ki(*args):
+  return _ev3.tacho_get_hold_pid_Ki(*args)
+tacho_get_hold_pid_Ki = _ev3.tacho_get_hold_pid_Ki
+
+def tacho_set_hold_pid_Ki(*args):
+  return _ev3.tacho_set_hold_pid_Ki(*args)
+tacho_set_hold_pid_Ki = _ev3.tacho_set_hold_pid_Ki
+
+def tacho_get_hold_pid_Kp(*args):
+  return _ev3.tacho_get_hold_pid_Kp(*args)
+tacho_get_hold_pid_Kp = _ev3.tacho_get_hold_pid_Kp
+
+def tacho_set_hold_pid_Kp(*args):
+  return _ev3.tacho_set_hold_pid_Kp(*args)
+tacho_set_hold_pid_Kp = _ev3.tacho_set_hold_pid_Kp
+
+def tacho_get_max_speed(*args):
+  return _ev3.tacho_get_max_speed(*args)
+tacho_get_max_speed = _ev3.tacho_get_max_speed
+
+def tacho_get_polarity(*args):
+  return _ev3.tacho_get_polarity(*args)
+tacho_get_polarity = _ev3.tacho_get_polarity
+
+def tacho_set_polarity(*args):
+  return _ev3.tacho_set_polarity(*args)
+tacho_set_polarity = _ev3.tacho_set_polarity
+
+def tacho_get_position(*args):
+  return _ev3.tacho_get_position(*args)
+tacho_get_position = _ev3.tacho_get_position
+
+def tacho_set_position(*args):
+  return _ev3.tacho_set_position(*args)
+tacho_set_position = _ev3.tacho_set_position
+
+def tacho_get_position_sp(*args):
+  return _ev3.tacho_get_position_sp(*args)
+tacho_get_position_sp = _ev3.tacho_get_position_sp
+
+def tacho_set_position_sp(*args):
+  return _ev3.tacho_set_position_sp(*args)
+tacho_set_position_sp = _ev3.tacho_set_position_sp
+
+def tacho_get_ramp_down_sp(*args):
+  return _ev3.tacho_get_ramp_down_sp(*args)
+tacho_get_ramp_down_sp = _ev3.tacho_get_ramp_down_sp
+
+def tacho_set_ramp_down_sp(*args):
+  return _ev3.tacho_set_ramp_down_sp(*args)
+tacho_set_ramp_down_sp = _ev3.tacho_set_ramp_down_sp
+
+def tacho_get_ramp_up_sp(*args):
+  return _ev3.tacho_get_ramp_up_sp(*args)
+tacho_get_ramp_up_sp = _ev3.tacho_get_ramp_up_sp
+
+def tacho_set_ramp_up_sp(*args):
+  return _ev3.tacho_set_ramp_up_sp(*args)
+tacho_set_ramp_up_sp = _ev3.tacho_set_ramp_up_sp
+
+def tacho_get_speed(*args):
+  return _ev3.tacho_get_speed(*args)
+tacho_get_speed = _ev3.tacho_get_speed
+
+def tacho_get_speed_pid_Kd(*args):
+  return _ev3.tacho_get_speed_pid_Kd(*args)
+tacho_get_speed_pid_Kd = _ev3.tacho_get_speed_pid_Kd
+
+def tacho_set_speed_pid_Kd(*args):
+  return _ev3.tacho_set_speed_pid_Kd(*args)
+tacho_set_speed_pid_Kd = _ev3.tacho_set_speed_pid_Kd
+
+def tacho_get_speed_pid_Ki(*args):
+  return _ev3.tacho_get_speed_pid_Ki(*args)
+tacho_get_speed_pid_Ki = _ev3.tacho_get_speed_pid_Ki
+
+def tacho_set_speed_pid_Ki(*args):
+  return _ev3.tacho_set_speed_pid_Ki(*args)
+tacho_set_speed_pid_Ki = _ev3.tacho_set_speed_pid_Ki
+
+def tacho_get_speed_pid_Kp(*args):
+  return _ev3.tacho_get_speed_pid_Kp(*args)
+tacho_get_speed_pid_Kp = _ev3.tacho_get_speed_pid_Kp
+
+def tacho_set_speed_pid_Kp(*args):
+  return _ev3.tacho_set_speed_pid_Kp(*args)
+tacho_set_speed_pid_Kp = _ev3.tacho_set_speed_pid_Kp
+
+def tacho_get_speed_sp(*args):
+  return _ev3.tacho_get_speed_sp(*args)
+tacho_get_speed_sp = _ev3.tacho_get_speed_sp
+
+def tacho_set_speed_sp(*args):
+  return _ev3.tacho_set_speed_sp(*args)
+tacho_set_speed_sp = _ev3.tacho_set_speed_sp
+
+def tacho_get_state(*args):
+  return _ev3.tacho_get_state(*args)
+tacho_get_state = _ev3.tacho_get_state
+
+def tacho_get_stop_action(*args):
+  return _ev3.tacho_get_stop_action(*args)
+tacho_get_stop_action = _ev3.tacho_get_stop_action
+
+def tacho_set_stop_action(*args):
+  return _ev3.tacho_set_stop_action(*args)
+tacho_set_stop_action = _ev3.tacho_set_stop_action
+
+def tacho_get_stop_actions(*args):
+  return _ev3.tacho_get_stop_actions(*args)
+tacho_get_stop_actions = _ev3.tacho_get_stop_actions
+
+def tacho_get_time_sp(*args):
+  return _ev3.tacho_get_time_sp(*args)
+tacho_get_time_sp = _ev3.tacho_get_time_sp
+
+def tacho_set_time_sp(*args):
+  return _ev3.tacho_set_time_sp(*args)
+tacho_set_time_sp = _ev3.tacho_set_time_sp
+
+def tacho_run_forever(*args):
+  return _ev3.tacho_run_forever(*args)
+tacho_run_forever = _ev3.tacho_run_forever
+
+def tacho_run_to_abs_pos(*args):
+  return _ev3.tacho_run_to_abs_pos(*args)
+tacho_run_to_abs_pos = _ev3.tacho_run_to_abs_pos
+
+def tacho_run_to_rel_pos(*args):
+  return _ev3.tacho_run_to_rel_pos(*args)
+tacho_run_to_rel_pos = _ev3.tacho_run_to_rel_pos
+
+def tacho_run_timed(*args):
+  return _ev3.tacho_run_timed(*args)
+tacho_run_timed = _ev3.tacho_run_timed
+
+def tacho_run_direct(*args):
+  return _ev3.tacho_run_direct(*args)
+tacho_run_direct = _ev3.tacho_run_direct
+
+def tacho_stop(*args):
+  return _ev3.tacho_stop(*args)
+tacho_stop = _ev3.tacho_stop
+
+def tacho_reset(*args):
+  return _ev3.tacho_reset(*args)
+tacho_reset = _ev3.tacho_reset
+
+def tacho_set_polarity_normal(*args):
+  return _ev3.tacho_set_polarity_normal(*args)
+tacho_set_polarity_normal = _ev3.tacho_set_polarity_normal
+
+def tacho_set_polarity_inversed(*args):
+  return _ev3.tacho_set_polarity_inversed(*args)
+tacho_set_polarity_inversed = _ev3.tacho_set_polarity_inversed
+
+def tacho_set_stop_action_coast(*args):
+  return _ev3.tacho_set_stop_action_coast(*args)
+tacho_set_stop_action_coast = _ev3.tacho_set_stop_action_coast
+
+def tacho_set_stop_action_brake(*args):
+  return _ev3.tacho_set_stop_action_brake(*args)
+tacho_set_stop_action_brake = _ev3.tacho_set_stop_action_brake
+
+def tacho_set_stop_action_hold(*args):
+  return _ev3.tacho_set_stop_action_hold(*args)
+tacho_set_stop_action_hold = _ev3.tacho_set_stop_action_hold
+
+def tacho_search(*args):
+  return _ev3.tacho_search(*args)
+tacho_search = _ev3.tacho_search
+
+def tacho_is_plugged(*args):
+  return _ev3.tacho_is_plugged(*args)
+tacho_is_plugged = _ev3.tacho_is_plugged
+
+def tacho_is_running(*args):
+  return _ev3.tacho_is_running(*args)
+tacho_is_running = _ev3.tacho_is_running
+
+def dc_get_address(*args):
+  return _ev3.dc_get_address(*args)
+dc_get_address = _ev3.dc_get_address
+
+def dc_set_command(*args):
+  return _ev3.dc_set_command(*args)
+dc_set_command = _ev3.dc_set_command
+
+def dc_get_commands(*args):
+  return _ev3.dc_get_commands(*args)
+dc_get_commands = _ev3.dc_get_commands
+
+def dc_get_driver_name(*args):
+  return _ev3.dc_get_driver_name(*args)
+dc_get_driver_name = _ev3.dc_get_driver_name
+
+def dc_get_duty_cycle(*args):
+  return _ev3.dc_get_duty_cycle(*args)
+dc_get_duty_cycle = _ev3.dc_get_duty_cycle
+
+def dc_get_duty_cycle_sp(*args):
+  return _ev3.dc_get_duty_cycle_sp(*args)
+dc_get_duty_cycle_sp = _ev3.dc_get_duty_cycle_sp
+
+def dc_set_duty_cycle_sp(*args):
+  return _ev3.dc_set_duty_cycle_sp(*args)
+dc_set_duty_cycle_sp = _ev3.dc_set_duty_cycle_sp
+
+def dc_get_polarity(*args):
+  return _ev3.dc_get_polarity(*args)
+dc_get_polarity = _ev3.dc_get_polarity
+
+def dc_set_polarity(*args):
+  return _ev3.dc_set_polarity(*args)
+dc_set_polarity = _ev3.dc_set_polarity
+
+def dc_get_state(*args):
+  return _ev3.dc_get_state(*args)
+dc_get_state = _ev3.dc_get_state
+
+def dc_set_stop_action(*args):
+  return _ev3.dc_set_stop_action(*args)
+dc_set_stop_action = _ev3.dc_set_stop_action
+
+def dc_get_stop_actions(*args):
+  return _ev3.dc_get_stop_actions(*args)
+dc_get_stop_actions = _ev3.dc_get_stop_actions
+
+def dc_get_ramp_down_sp(*args):
+  return _ev3.dc_get_ramp_down_sp(*args)
+dc_get_ramp_down_sp = _ev3.dc_get_ramp_down_sp
+
+def dc_set_ramp_down_sp(*args):
+  return _ev3.dc_set_ramp_down_sp(*args)
+dc_set_ramp_down_sp = _ev3.dc_set_ramp_down_sp
+
+def dc_get_ramp_up_sp(*args):
+  return _ev3.dc_get_ramp_up_sp(*args)
+dc_get_ramp_up_sp = _ev3.dc_get_ramp_up_sp
+
+def dc_set_ramp_up_sp(*args):
+  return _ev3.dc_set_ramp_up_sp(*args)
+dc_set_ramp_up_sp = _ev3.dc_set_ramp_up_sp
+
+def dc_get_time_sp(*args):
+  return _ev3.dc_get_time_sp(*args)
+dc_get_time_sp = _ev3.dc_get_time_sp
+
+def dc_set_time_sp(*args):
+  return _ev3.dc_set_time_sp(*args)
+dc_set_time_sp = _ev3.dc_set_time_sp
+
+def dc_run_forever(*args):
+  return _ev3.dc_run_forever(*args)
+dc_run_forever = _ev3.dc_run_forever
+
+def dc_run_timed(*args):
+  return _ev3.dc_run_timed(*args)
+dc_run_timed = _ev3.dc_run_timed
+
+def dc_run_direct(*args):
+  return _ev3.dc_run_direct(*args)
+dc_run_direct = _ev3.dc_run_direct
+
+def dc_stop(*args):
+  return _ev3.dc_stop(*args)
+dc_stop = _ev3.dc_stop
+
+def dc_set_polarity_normal(*args):
+  return _ev3.dc_set_polarity_normal(*args)
+dc_set_polarity_normal = _ev3.dc_set_polarity_normal
+
+def dc_set_polarity_inversed(*args):
+  return _ev3.dc_set_polarity_inversed(*args)
+dc_set_polarity_inversed = _ev3.dc_set_polarity_inversed
+
+def dc_set_stop_action_coast(*args):
+  return _ev3.dc_set_stop_action_coast(*args)
+dc_set_stop_action_coast = _ev3.dc_set_stop_action_coast
+
+def dc_set_stop_action_brake(*args):
+  return _ev3.dc_set_stop_action_brake(*args)
+dc_set_stop_action_brake = _ev3.dc_set_stop_action_brake
+
+def dc_search(*args):
+  return _ev3.dc_search(*args)
+dc_search = _ev3.dc_search
+
+def dc_is_plugged(*args):
+  return _ev3.dc_is_plugged(*args)
+dc_is_plugged = _ev3.dc_is_plugged
+
+def dc_is_running(*args):
+  return _ev3.dc_is_running(*args)
+dc_is_running = _ev3.dc_is_running
+
+def sleep_ms(*args):
+  return _ev3.sleep_ms(*args)
+sleep_ms = _ev3.sleep_ms
 # This file is compatible with both classic and new-style classes.
 
 
