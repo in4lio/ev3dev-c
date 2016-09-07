@@ -17,7 +17,7 @@
 #define SPEED_LINEAR    75  /* Motor speed for linear motion, in percents */
 #define SPEED_CIRCULAR  50  /* ... for circular motion */
 
-int max_speed;         /* Motor maximal speed */
+int max_speed;         /* Motor maximal speed (will be detected) */
 
 #define MOTOR_LEFT     OUTC
 #define MOTOR_RIGHT    OUTB
@@ -25,7 +25,7 @@ int max_speed;         /* Motor maximal speed */
 
 #define IR_CHANNEL     0
 
-POOL_T ir;             /* Port will be detected */
+POOL_T ir;             /* IR sensor port (will be detected) */
 
 enum {
 	STOP,
@@ -34,9 +34,7 @@ enum {
 	LEFT,
 	RIGHT,
 };
-
-int state;             /* Current state */
-int command;           /* Command for 'drive' coroutine */
+int command = STOP;    /* Command for `drive` coroutine */
 
 int alive;             /* Program is alive */
 
@@ -52,7 +50,6 @@ int init( void )
 		/* Inoperative without motors */
 		return ( 0 );
 	}
-	command	= state = STOP;
 
 	ir = sensor_search( LEGO_EV3_IR );
 	if ( ir ) {
@@ -84,7 +81,7 @@ CORO_DEFINE( handle_ir_control )
 	CORO_LOCAL int btns, pressed = IR_REMOTE__NONE_;
 
 	CORO_BEGIN();
-	if ( ir == 0 ) CORO_QUIT();
+	if ( ir == SOCKET__NONE_ ) CORO_QUIT();
 
 	for ( ; ; ) {
 		/* Waiting any IR RC button is pressed or released */
@@ -132,7 +129,7 @@ CORO_DEFINE( handle_brick_control )
 
 	CORO_BEGIN();
 	for ( ; ; ) {
-		/* Waiting any key is pressed or released */
+		/* Waiting any brick's key is pressed or released */
 		CORO_WAIT(( keys = brick_keys()) != pressed );
 		pressed = keys;
 
@@ -173,6 +170,7 @@ CORO_DEFINE( handle_brick_control )
 CORO_DEFINE( drive )
 {
 	CORO_LOCAL int speed_linear, speed_circular;
+	CORO_LOCAL int state = STOP;
 
 	CORO_BEGIN();
 	speed_linear = max_speed * SPEED_LINEAR / 100;
