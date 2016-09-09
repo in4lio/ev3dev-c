@@ -287,6 +287,21 @@ if ok:
 ev3_uninit()
 \endcode
 
+Using \ref brick with Python:
+
+\code {.py}
+brick_init()
+if tacho_is_plugged( OUTB | OUTC, LEGO_EV3_L_MOTOR ):
+	tacho_set_speed_sp( OUTB | OUTC, tacho_get_max_speed( OUTB ) * 0.75 )  # 75%
+	tacho_run_forever( OUTB | OUTC )
+	sleep_ms( 3000 )  # 3 sec
+	tacho_stop( OUTB )
+	sleep_ms( 2000 )  # 2 sec
+	tacho_stop( OUTC )
+
+brick_uninit()
+\endcode
+
 See also – [Examples on Python](https://github.com/in4lio/ev3dev-c/blob/master/python/ev3dev/eg)
 
 #### Features of Ruby library:
@@ -347,6 +362,7 @@ Similarly you can use SWIG to wrap the library in a number of other languages.
 \example io.c
 \example poweroff.c
 
+\example remote.py
 \example light.py
 \example sensor.py
 \example tacho.py
