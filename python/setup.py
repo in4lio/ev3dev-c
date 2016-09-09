@@ -103,18 +103,19 @@ def find_package_data(
     return out
 
 PACKAGE = "ev3dev"
-NAME = __import__(PACKAGE).__library__
-VERSION = __import__(PACKAGE).__version__
-DESCRIPTION = __import__(PACKAGE).__description__
-AUTHOR = __import__(PACKAGE).__author__
-AUTHOR_EMAIL = __import__(PACKAGE).__author_email__
-URL = __import__(PACKAGE).__url__
+pack = __import__(PACKAGE)
+NAME = pack.__library__
+VERSION = pack.__version__
+DESCRIPTION = pack.__description__
+AUTHOR = pack.__author__
+AUTHOR_EMAIL = pack.__author_email__
+URL = pack.__url__
 
 setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description='::\n%s' % ( read("README")),
+    long_description='::\n\n%s' % ( read("README")),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="MIT",
