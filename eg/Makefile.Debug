@@ -71,7 +71,7 @@ D_CXX = $(D_C)
 D_ASM = $(TOP)/source
 
 # -- include directories
-D_H = $(D_C) $(YUPP_HOME)/lib
+D_H = $(D_C)
 
 # -- binary file directory
 D_BIN = Debug
