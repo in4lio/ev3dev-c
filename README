@@ -24,14 +24,10 @@
     Perl (see "perl" folder) libraries are automatically generated from
     C library using SWIG tool.
 
-    Use pip or easy_install to install ev3dev-c Python package, e.g.
 
-        sudo pip install --pre ev3dev-c
+        pip install ev3dev-c
 
-    ev3dev-c is currently in a beta stage, therefore you have to use
-    the key "--pre".
-
-    The package contains the following binary modules:
+    Python package contains the following binary modules:
     _ev3.pyd    – for a remote access, under Windows (x86);
     _ev3.so     – for LEGO Mindstorms EV3 Debian.
 
