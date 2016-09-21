@@ -24,6 +24,7 @@
     Perl (see "perl" folder) libraries are automatically generated from
     C library using SWIG tool.
 
+    Use pip to install ev3dev-c Python package:
 
         pip install ev3dev-c
 
