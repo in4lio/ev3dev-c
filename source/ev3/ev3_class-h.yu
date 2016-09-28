@@ -51,13 +51,12 @@ enum {
 			($set _SYN ($index CLASS_TYPE_ID_SYN_FOR ($i CLASS_TYPE_ID)))
 
 			($($i ($$'CLASS_TYPE_($0)S' ($upper attr))) \ii.]
+
 				($set _SUF ($upper ($_VALUE_TO_ID ii)))
 
 				($upper ($i CLASS_TYPE_ID))_($_SUF), ($if ($ne _SYN -1) ]
 				($upper ($_SYN CLASS_TYPE_ID_SYN))_($_SUF) = ($upper ($i CLASS_TYPE_ID))_($_SUF),
-
 				[ )
-
 			[ )
 		[ )
 		($upper CLASS_ID)_($upper attr)__COUNT_,  /**< Count of ($CL_TITLE) ($q attr) attribute. */

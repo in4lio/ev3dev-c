@@ -6,10 +6,8 @@ from distutils.util import convert_path
 from fnmatch import fnmatchcase
 from setuptools import setup, find_packages
 
-
 def read(fname):
     return codecs.open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 
 # Provided as an attribute, so you can append to these instead
 # of replicating them:
@@ -17,7 +15,6 @@ standard_exclude = ["*.py", "*.pyc", "*$py.class", "*~", ".*", "*.bak", "*.yu-*"
 standard_exclude_directories = [
     ".*", "CVS", "_darcs", "./build", "./dist", "EGG-INFO", "*.egg-info"
 ]
-
 
 # (c) 2005 Ian Bicking and contributors; written for Paste (http://pythonpaste.org)
 # Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
@@ -103,6 +100,7 @@ def find_package_data(
     return out
 
 PACKAGE = "ev3dev"
+sys.path.insert(0, os.path.realpath(os.path.join(".", PACKAGE)))
 pack = __import__(PACKAGE)
 NAME = pack.__library__
 VERSION = pack.__version__
