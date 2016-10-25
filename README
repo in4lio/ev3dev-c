@@ -26,7 +26,10 @@
 
     Use pip to install ev3dev-c Python package:
 
-        pip install ev3dev-c
+        pip install --pre ev3dev-c
+
+    ev3dev-c is currently in a beta stage, therefore you have to use
+    the key "--pre".
 
     Python package contains the following binary modules:
     _ev3.pyd    – for a remote access, under Windows (x86);
