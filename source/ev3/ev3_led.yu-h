@@ -16,8 +16,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-($extern-c-begin)
-
 /**
  *  \defgroup ev3_led LEDs
  *  \brief Access to EV3 LEDs.
@@ -59,7 +57,7 @@ enum {
 		 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
 		 *  \return Count of read bytes.
 		 */
-		($h-extern) size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
+		($extern-c) size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) );
 
 	[ )
 	($if ($ge ($i LED_ATTR_WRITE) RW) ]
@@ -69,7 +67,7 @@ enum {
 		 *  \param value Attribute value.
 		 *  \return Count of written bytes.
 		 */
-		($h-extern) size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
+		($extern-c) size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value );
 
 	[ )
 
@@ -80,7 +78,7 @@ enum {
  *  \param inx Index of the LED.
  *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
  */
-($h-extern) INX_T get_led_trigger_inx( uint8_t inx );
+($extern-c) INX_T get_led_trigger_inx( uint8_t inx );
 
 /**
  *  \brief Write "trigger" attribute of the LED by the index.
@@ -88,17 +86,15 @@ enum {
  *  \param trigger_inx Index of the trigger.
  *  \return Count of written bytes.
  */
-($h-extern) size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx );
+($extern-c) size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx );
 
 /**
  *  \brief Get name of the specified LED trigger.
  *  \param trigger_inx Index of the trigger.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_led_trigger( INX_T trigger_inx );
+($extern-c) const char *ev3_led_trigger( INX_T trigger_inx );
 
 /** \} */
-
-($extern-c-end)
 
 ($h-end)

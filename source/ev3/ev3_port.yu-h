@@ -16,8 +16,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-($extern-c-begin)
-
 /**
  *  \defgroup ev3_port EV3 ports and extended ports
  *  \brief Access to EV3 ports and extended ports.
@@ -59,7 +57,7 @@
  *  \param extport Extended port index.
  *  \return Port sequence number.
  */
-($h-extern) uint8_t ev3_search_port( uint8_t port, uint8_t extport );
+($extern-c) uint8_t ev3_search_port( uint8_t port, uint8_t extport );
 
 /**
  *  \brief Parse name of the EV3 port.
@@ -68,7 +66,7 @@
  *  \param extport Buffer for the extended port index.
  *  \param addr Buffer for the address.
  */
-($h-extern) void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr );
+($extern-c) void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr );
 
 /**
  *  \brief Assemble name of the EV3 port.
@@ -78,10 +76,8 @@
  *  \param[out] buf Buffer for result.
  *  \return Requested value.
  */
-($h-extern) char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf );
+($extern-c) char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf );
 
 /** \} */
-
-($extern-c-end)
 
 ($h-end)

@@ -23,7 +23,7 @@ typedef struct {
 /**
  *  \brief Vector of ($CL_TITLE) descriptors (filled by \ref ev3_($CLASS_ID)_init).
  */
-($h-extern) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ];
+($extern-c) EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ];
 
 /**
  *  \brief Identifiers of ($CL_TITLE) types.
@@ -107,7 +107,7 @@ enum {
 		 ($[*  \param sz Buffer size.] ? ($i CLASS_ATTR_ARRAY))
 		 *  \return Count of read bytes.
 		 */
-		($h-extern) size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) );
+		($extern-c) size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) );
 
 	[ )
 	($if ($ge ($i CLASS_ATTR_WRITE) RW) ]
@@ -118,7 +118,7 @@ enum {
 		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
 		 *  \return Count of written bytes.
 		 */
-		($h-extern) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+		($extern-c) size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 
 		/**
 		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of several ($CL_TITLE)s.
@@ -127,7 +127,7 @@ enum {
 		 ($[*  \param sz Size of attribute value.] ? ($eq ($i CLASS_ATTR_ARRAY) 2))
 		 *  \return Count of written bytes.
 		 */
-		($h-extern) size_t multi_set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t *sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+		($extern-c) size_t multi_set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t *sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 
 	[ )
 
@@ -143,7 +143,7 @@ enum {
 	 ($[*  \param sz Buffer size.] ? ($i CLASS_AVEC_ARRAY))
 	 *  \return Count of read bytes.
 	 */
-	($h-extern) size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t inx, uint8_t sn, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) );
+	($extern-c) size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t inx, uint8_t sn, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) );
 
 [ )
 
@@ -152,14 +152,14 @@ enum {
  *  \param type_inx Index of the ($CL_TITLE) type.
  *  \return Requested value.
  */
-($h-extern) const char *ev3_($CLASS_ID)_type( INX_T type_inx );
+($extern-c) const char *ev3_($CLASS_ID)_type( INX_T type_inx );
 
 /**
  *  \brief Read ($CLASS_TYPE_ATTR_NAME) attribute and get index of the ($CL_TITLE) type.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
-($h-extern) INX_T get_($CLASS_ID)_type_inx( uint8_t sn );
+($extern-c) INX_T get_($CLASS_ID)_type_inx( uint8_t sn );
 
 /**
  *  \brief Read ($CL_TITLE) attributes that are required for filling the descriptor.
@@ -167,14 +167,14 @@ enum {
  *  \param desc Buffer for the descriptor.
  *  \return Count of read bytes.
  */
-($h-extern) size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc );
+($extern-c) size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc );
 
 /**
  *  \brief Get descriptor of the ($CL_TITLE).
  *  \param sn Sequence number.
  *  \return Pointer to the ($CL_TITLE) descriptor.
  */
-($h-extern) EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn );
+($extern-c) EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn );
 
 ($each-CLASS_DESC \i.]
 
@@ -183,7 +183,7 @@ enum {
 	 *  \param sn Sequence number.
 	 *  \return Requested value.
 	 */
-	($h-extern) ($i CLASS_DESC_TYPE) ev3_($CLASS_ID)_desc_($i CLASS_DESC_ID)( uint8_t sn );
+	($extern-c) ($i CLASS_DESC_TYPE) ev3_($CLASS_ID)_desc_($i CLASS_DESC_ID)( uint8_t sn );
 
 [ )
 
@@ -193,7 +193,7 @@ enum {
  *  \param[out] buf Buffer for result.
  *  \return Requested value.
  */
-($h-extern) char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf );
+($extern-c) char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf );
 
 /**
  *  \brief Search of a sequence number of the specified ($CL_TITLE) type.
@@ -202,7 +202,7 @@ enum {
  *  \param from Search initial value.
  *  \return Flag - the ($CL_TITLE) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( INX_T type_inx, uint8_t *sn, uint8_t from );
+($extern-c) bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( INX_T type_inx, uint8_t *sn, uint8_t from );
 
 /**
  *  \brief Search of a sequence number the ($CL_TITLE) by plug-in attributes.
@@ -212,7 +212,7 @@ enum {
  *  \param from Search initial value.
  *  \return Flag - the ($CL_TITLE) is found.
  */
-($h-extern) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from );
+($extern-c) bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from );
 
 ($CLASS_TYPE_ATTR_ID_INDEX \attr.]
 
@@ -221,7 +221,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Requested value.
 	 */
-	($h-extern) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
+	($extern-c) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
@@ -230,7 +230,7 @@ enum {
 		 *  \param type_inx Index of the ($CL_TITLE) type.
 		 *  \return Requested value.
 		 */
-		($h-extern) INX_T get_($CLASS_ID)_($attr)_inx_of_type( uint8_t sn, INX_T type_inx );
+		($extern-c) INX_T get_($CLASS_ID)_($attr)_inx_of_type( uint8_t sn, INX_T type_inx );
 
 		/**
 		 *  \brief Read ($q attr) attribute of the ($CL_TITLE) and get the index.
@@ -239,7 +239,7 @@ enum {
 		 *
 		 *  This function gets type of the ($CL_TITLE) from the descriptor.
 		 */
-		($h-extern) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn );
+		($extern-c) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn );
 
 	[ )
 	/**
@@ -248,7 +248,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
+	($extern-c) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
 
 	/**
 	 *  \brief Write ($q attr) attribute of several ($CL_TITLE)s by the index.
@@ -256,7 +256,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
+	($extern-c) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
 
 [ )
 
@@ -267,7 +267,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Requested value.
 	 */
-	($h-extern) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
+	($extern-c) const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx );
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
@@ -275,7 +275,7 @@ enum {
 		 *  \param sn Sequence number.
 		 *  \return Requested value.
 		 */
-		($h-extern) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn );
+		($extern-c) INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn );
 
 	[ )
 	/**
@@ -284,7 +284,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
+	($extern-c) size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx );
 
 	/**
 	 *  \brief Write ($q attr) attribute of several ($CL_TITLE)s by the index.
@@ -292,7 +292,7 @@ enum {
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Count of written bytes.
 	 */
-	($h-extern) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
+	($extern-c) size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx );
 
 [ )
 
@@ -304,7 +304,7 @@ enum {
 	 *  \param flags Buffer for the flags.
 	 *  \return Count of read bytes.
 	 */
-	($h-extern) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags );
+	($extern-c) size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags );
 
 [ )
 
@@ -312,4 +312,4 @@ enum {
  *  \brief Detect connected ($CL_TITLE)s.
  *  \return Number of found ($CL_TITLE)s or -1 in case of an error.
  */
-($h-extern) int ev3_($CLASS_ID)_init( void );
+($extern-c) int ev3_($CLASS_ID)_init( void );

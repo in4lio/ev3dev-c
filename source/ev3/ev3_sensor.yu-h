@@ -16,8 +16,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-($extern-c-begin)
-
 /**
  *  \defgroup ev3_sensor Sensors
  *  \brief Access to EV3 sensors.
@@ -50,7 +48,5 @@ enum {
 };
 
 /** \} */
-
-($extern-c-end)
 
 ($h-end)

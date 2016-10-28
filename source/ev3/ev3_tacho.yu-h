@@ -16,8 +16,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-($extern-c-begin)
-
 /**
  *  \defgroup ev3_tacho Tacho motors
  *  \brief Access to EV3 tacho motors.
@@ -31,7 +29,5 @@
 ($import "ev3_class-h.yu")
 
 /** \} */
-
-($extern-c-end)
 
 ($h-end)
