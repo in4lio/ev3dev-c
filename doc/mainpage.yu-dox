@@ -350,6 +350,7 @@ Similarly you can use SWIG to wrap the library in a number of other languages.
 \example light.c
 \example sensor.c
 \example tacho.c
+\example tacho.cpp
 \example dc.c
 \example servo.c
 \example rcx_led.c
