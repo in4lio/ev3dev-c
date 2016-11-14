@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dc_20motors',['DC motors',['../group__ev3__dc.html',1,'']]]
+  ['coro',['Coro',['../group__coro.html',1,'']]]
 ];

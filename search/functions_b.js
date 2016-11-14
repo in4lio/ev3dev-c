@@ -9,11 +9,11 @@ var searchData=
   ['udp_5fev3_5fread',['udp_ev3_read',['../group__ev3__link.html#gabe0891c5d35da4131cdb82012683261a',1,'ev3_link.c']]],
   ['udp_5fev3_5fread_5fkeys',['udp_ev3_read_keys',['../group__ev3__link.html#ga2f917d0ed6cbdb5e673137525547fa27',1,'ev3_link.c']]],
   ['udp_5fev3_5fwrite',['udp_ev3_write',['../group__ev3__link.html#ga2f6dc70d733f48ae0be35b1aa93631f1',1,'ev3_link.c']]],
-  ['us_5fset_5fmode_5fus_5fdc_5fcm',['us_set_mode_us_dc_cm',['../group__brick.html#gaf561d047b1ad23e688661a4f1100bb3e',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5fdc_5fin',['us_set_mode_us_dc_in',['../group__brick.html#ga2393e99762303bc50a3436b02275be07',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5fdist_5fcm',['us_set_mode_us_dist_cm',['../group__brick.html#ga2b51a679d4d490c77c7b0bb8f2d69173',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5fdist_5fin',['us_set_mode_us_dist_in',['../group__brick.html#ga23db41720f56849bf0ece9a4d6411a37',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5flisten',['us_set_mode_us_listen',['../group__brick.html#ga00bcb88cde78db54c4af7f1389e0d665',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5fsi_5fcm',['us_set_mode_us_si_cm',['../group__brick.html#ga5385d1869123c61277410b27eb2f9a74',1,'brick.c']]],
-  ['us_5fset_5fmode_5fus_5fsi_5fin',['us_set_mode_us_si_in',['../group__brick.html#gac2f1b2c590b7fd3b7f8161ea1233b225',1,'brick.c']]]
+  ['us_5fset_5fmode_5fus_5fdc_5fcm',['us_set_mode_us_dc_cm',['../group__brick.html#ga57b5af0062d1b1aa638cedeb590740f4',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5fdc_5fin',['us_set_mode_us_dc_in',['../group__brick.html#ga2e8300fdee7b680bc674c1b26695d2c0',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5fdist_5fcm',['us_set_mode_us_dist_cm',['../group__brick.html#gaecca4ec770fe8d232bf79588262adb0b',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5fdist_5fin',['us_set_mode_us_dist_in',['../group__brick.html#ga4ffa55fe0ce3015892f608c1b27ee47a',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5flisten',['us_set_mode_us_listen',['../group__brick.html#gac21fffcf8faba9bc5c8895e316c75aa3',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5fsi_5fcm',['us_set_mode_us_si_cm',['../group__brick.html#ga106f6de6328b3f770b43ebebfd48a3e6',1,'brick.c']]],
+  ['us_5fset_5fmode_5fus_5fsi_5fin',['us_set_mode_us_si_in',['../group__brick.html#ga8490094455620c31f8e01d8dc2bea5e5',1,'brick.c']]]
 ];

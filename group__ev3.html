@@ -112,125 +112,125 @@ typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>FLAGS_T</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga2ec28f7f97485be0445a5661f35e9707"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2ec28f7f97485be0445a5661f35e9707">ev3_init</a> (void)</td></tr>
-<tr class="memdesc:ga2ec28f7f97485be0445a5661f35e9707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the remote access and detect the EV3 brick. This function do nothing in the case of the local access. To disable the brick detection just specify IP address before the call of this function.  <a href="#ga2ec28f7f97485be0445a5661f35e9707">More...</a><br /></td></tr>
-<tr class="separator:ga2ec28f7f97485be0445a5661f35e9707"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7b5a520d3e5998127b7c84d11258d44e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7b5a520d3e5998127b7c84d11258d44e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga7b5a520d3e5998127b7c84d11258d44e">ev3_uninit</a> (void)</td></tr>
-<tr class="memdesc:ga7b5a520d3e5998127b7c84d11258d44e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uninitialize the remote access. <br /></td></tr>
-<tr class="separator:ga7b5a520d3e5998127b7c84d11258d44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga20ad37059b75ceea01f5b53be715ff2c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga20ad37059b75ceea01f5b53be715ff2c">ev3_write_binary</a> (const char *fn, char *data, size_t sz)</td></tr>
-<tr class="memdesc:ga20ad37059b75ceea01f5b53be715ff2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into the specified file of the EV3 brick.  <a href="#ga20ad37059b75ceea01f5b53be715ff2c">More...</a><br /></td></tr>
-<tr class="separator:ga20ad37059b75ceea01f5b53be715ff2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga990a2f771cf3de9f975328421308239c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga990a2f771cf3de9f975328421308239c">ev3_multi_write_binary</a> (uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz)</td></tr>
-<tr class="memdesc:ga990a2f771cf3de9f975328421308239c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into several specified files of the EV3 brick.  <a href="#ga990a2f771cf3de9f975328421308239c">More...</a><br /></td></tr>
-<tr class="separator:ga990a2f771cf3de9f975328421308239c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3de62e3f2581edd65d7d6500c387e054"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga3de62e3f2581edd65d7d6500c387e054">ev3_read_binary</a> (const char *fn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga3de62e3f2581edd65d7d6500c387e054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read binary data from the specified file.  <a href="#ga3de62e3f2581edd65d7d6500c387e054">More...</a><br /></td></tr>
-<tr class="separator:ga3de62e3f2581edd65d7d6500c387e054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga48b863133ec0d0128ce17b1bfd1338af"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga48b863133ec0d0128ce17b1bfd1338af">ev3_read_keys</a> (uint8_t *buf)</td></tr>
-<tr class="memdesc:ga48b863133ec0d0128ce17b1bfd1338af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read state of the EV3 brick's keys.  <a href="#ga48b863133ec0d0128ce17b1bfd1338af">More...</a><br /></td></tr>
-<tr class="separator:ga48b863133ec0d0128ce17b1bfd1338af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga594c82738fc7b7723470f81e893154da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga594c82738fc7b7723470f81e893154da">ev3_poweroff</a> (void)</td></tr>
-<tr class="memdesc:ga594c82738fc7b7723470f81e893154da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power-off the EV3 brick.  <a href="#ga594c82738fc7b7723470f81e893154da">More...</a><br /></td></tr>
-<tr class="separator:ga594c82738fc7b7723470f81e893154da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga4fa0d81a67bb2ffa3ad2c9979218582e">ev3_write</a> (const char *fn, char *value)</td></tr>
-<tr class="memdesc:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a string into the specified file.  <a href="#ga4fa0d81a67bb2ffa3ad2c9979218582e">More...</a><br /></td></tr>
-<tr class="separator:ga4fa0d81a67bb2ffa3ad2c9979218582e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8d3afa336fde158e4b442b745facf15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8d3afa336fde158e4b442b745facf15"></a>
+<tr class="memitem:gaaf70223547755b2055cfe26242f391cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gaaf70223547755b2055cfe26242f391cc">ev3_init</a> (void)</td></tr>
+<tr class="memdesc:gaaf70223547755b2055cfe26242f391cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the remote access and detect the EV3 brick. This function do nothing in the case of the local access. To disable the brick detection just specify IP address before the call of this function.  <a href="#gaaf70223547755b2055cfe26242f391cc">More...</a><br /></td></tr>
+<tr class="separator:gaaf70223547755b2055cfe26242f391cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7c72e81e3d09d8840cf6fff0cd01bae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac7c72e81e3d09d8840cf6fff0cd01bae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gac7c72e81e3d09d8840cf6fff0cd01bae">ev3_uninit</a> (void)</td></tr>
+<tr class="memdesc:gac7c72e81e3d09d8840cf6fff0cd01bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uninitialize the remote access. <br /></td></tr>
+<tr class="separator:gac7c72e81e3d09d8840cf6fff0cd01bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2a1e5cb8b96efb45c57933fd736b7df"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gad2a1e5cb8b96efb45c57933fd736b7df">ev3_write_binary</a> (const char *fn, char *data, size_t sz)</td></tr>
+<tr class="memdesc:gad2a1e5cb8b96efb45c57933fd736b7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into the specified file of the EV3 brick.  <a href="#gad2a1e5cb8b96efb45c57933fd736b7df">More...</a><br /></td></tr>
+<tr class="separator:gad2a1e5cb8b96efb45c57933fd736b7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa11628722c6d614ca6f22630ef7cd7a8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gaa11628722c6d614ca6f22630ef7cd7a8">ev3_multi_write_binary</a> (uint8_t *sn, uint16_t pos, const char *fn, char *data, size_t sz)</td></tr>
+<tr class="memdesc:gaa11628722c6d614ca6f22630ef7cd7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write binary data into several specified files of the EV3 brick.  <a href="#gaa11628722c6d614ca6f22630ef7cd7a8">More...</a><br /></td></tr>
+<tr class="separator:gaa11628722c6d614ca6f22630ef7cd7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3bcb43f034ea1cd79982c61d9fc37263"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga3bcb43f034ea1cd79982c61d9fc37263">ev3_read_binary</a> (const char *fn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga3bcb43f034ea1cd79982c61d9fc37263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read binary data from the specified file.  <a href="#ga3bcb43f034ea1cd79982c61d9fc37263">More...</a><br /></td></tr>
+<tr class="separator:ga3bcb43f034ea1cd79982c61d9fc37263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65c112b457c01217b4f325720649aa89"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga65c112b457c01217b4f325720649aa89">ev3_read_keys</a> (uint8_t *buf)</td></tr>
+<tr class="memdesc:ga65c112b457c01217b4f325720649aa89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read state of the EV3 brick's keys.  <a href="#ga65c112b457c01217b4f325720649aa89">More...</a><br /></td></tr>
+<tr class="separator:ga65c112b457c01217b4f325720649aa89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga553bc856e410d2dc27e6f255e5d2a9fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga553bc856e410d2dc27e6f255e5d2a9fc">ev3_poweroff</a> (void)</td></tr>
+<tr class="memdesc:ga553bc856e410d2dc27e6f255e5d2a9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power-off the EV3 brick.  <a href="#ga553bc856e410d2dc27e6f255e5d2a9fc">More...</a><br /></td></tr>
+<tr class="separator:ga553bc856e410d2dc27e6f255e5d2a9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab5848665617f05a2ad195e93ef13db03"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gab5848665617f05a2ad195e93ef13db03">ev3_write</a> (const char *fn, char *value)</td></tr>
+<tr class="memdesc:gab5848665617f05a2ad195e93ef13db03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a string into the specified file.  <a href="#gab5848665617f05a2ad195e93ef13db03">More...</a><br /></td></tr>
+<tr class="separator:gab5848665617f05a2ad195e93ef13db03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5582c6bca5ffaf42f34fd20e28868647"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5582c6bca5ffaf42f34fd20e28868647"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write</b> (uint8_t *sn, uint16_t pos, const char *fn, char *value)</td></tr>
-<tr class="separator:gab8d3afa336fde158e4b442b745facf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0116ad65b312375a47cd91de675a4554"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga0116ad65b312375a47cd91de675a4554">ev3_write_int</a> (const char *fn, int value)</td></tr>
-<tr class="memdesc:ga0116ad65b312375a47cd91de675a4554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an integer value into the specified file.  <a href="#ga0116ad65b312375a47cd91de675a4554">More...</a><br /></td></tr>
-<tr class="separator:ga0116ad65b312375a47cd91de675a4554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01ed2197f3f3119c39c9bd45b83cdf36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01ed2197f3f3119c39c9bd45b83cdf36"></a>
+<tr class="separator:ga5582c6bca5ffaf42f34fd20e28868647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4aaa95b9c7aebc56db6891ba87b5e70"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gaa4aaa95b9c7aebc56db6891ba87b5e70">ev3_write_int</a> (const char *fn, int value)</td></tr>
+<tr class="memdesc:gaa4aaa95b9c7aebc56db6891ba87b5e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an integer value into the specified file.  <a href="#gaa4aaa95b9c7aebc56db6891ba87b5e70">More...</a><br /></td></tr>
+<tr class="separator:gaa4aaa95b9c7aebc56db6891ba87b5e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa14f1f727fc03d940b48e2c37abae6b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa14f1f727fc03d940b48e2c37abae6b0"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_int</b> (uint8_t *sn, uint16_t pos, const char *fn, int value)</td></tr>
-<tr class="separator:ga01ed2197f3f3119c39c9bd45b83cdf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2a07eb08a0710a91409db0a34e13a1c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gac2a07eb08a0710a91409db0a34e13a1c">ev3_write_dword</a> (const char *fn, uint32_t value)</td></tr>
-<tr class="memdesc:gac2a07eb08a0710a91409db0a34e13a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an unsigned integer value into the specified file.  <a href="#gac2a07eb08a0710a91409db0a34e13a1c">More...</a><br /></td></tr>
-<tr class="separator:gac2a07eb08a0710a91409db0a34e13a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b187a18bf8bc54eed704bf1b3ecf34a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8b187a18bf8bc54eed704bf1b3ecf34a"></a>
+<tr class="separator:gaa14f1f727fc03d940b48e2c37abae6b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga931c13b55be4d5dfbd6bead087491596"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga931c13b55be4d5dfbd6bead087491596">ev3_write_dword</a> (const char *fn, uint32_t value)</td></tr>
+<tr class="memdesc:ga931c13b55be4d5dfbd6bead087491596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an unsigned integer value into the specified file.  <a href="#ga931c13b55be4d5dfbd6bead087491596">More...</a><br /></td></tr>
+<tr class="separator:ga931c13b55be4d5dfbd6bead087491596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacca5ada9a7ade1bd1c5a25d556f55f84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacca5ada9a7ade1bd1c5a25d556f55f84"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_dword</b> (uint8_t *sn, uint16_t pos, const char *fn, uint32_t value)</td></tr>
-<tr class="separator:ga8b187a18bf8bc54eed704bf1b3ecf34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga9bfaa861cdc45a82017f3bfe963fb482">ev3_write_float</a> (const char *fn, float value)</td></tr>
-<tr class="memdesc:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a float value into the specified file.  <a href="#ga9bfaa861cdc45a82017f3bfe963fb482">More...</a><br /></td></tr>
-<tr class="separator:ga9bfaa861cdc45a82017f3bfe963fb482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0315c622e34f0769ca9a8122c01ef121"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0315c622e34f0769ca9a8122c01ef121"></a>
+<tr class="separator:gacca5ada9a7ade1bd1c5a25d556f55f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13238fb0328fb8cca484880f229c48b0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga13238fb0328fb8cca484880f229c48b0">ev3_write_float</a> (const char *fn, float value)</td></tr>
+<tr class="memdesc:ga13238fb0328fb8cca484880f229c48b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a float value into the specified file.  <a href="#ga13238fb0328fb8cca484880f229c48b0">More...</a><br /></td></tr>
+<tr class="separator:ga13238fb0328fb8cca484880f229c48b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga637700344831f5c73e13f481a7c9dfb6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga637700344831f5c73e13f481a7c9dfb6"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_float</b> (uint8_t *sn, uint16_t pos, const char *fn, float value)</td></tr>
-<tr class="separator:ga0315c622e34f0769ca9a8122c01ef121"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2f4127ccb9188172eaa15e7e81cd137a">ev3_write_bool</a> (const char *fn, bool value)</td></tr>
-<tr class="memdesc:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a boolean value into the specified file.  <a href="#ga2f4127ccb9188172eaa15e7e81cd137a">More...</a><br /></td></tr>
-<tr class="separator:ga2f4127ccb9188172eaa15e7e81cd137a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8161a1ef42045daca81c1867d5d3b590"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8161a1ef42045daca81c1867d5d3b590"></a>
+<tr class="separator:ga637700344831f5c73e13f481a7c9dfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e2adce9577fd09a8b11d6a8f2cd33a5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2e2adce9577fd09a8b11d6a8f2cd33a5">ev3_write_bool</a> (const char *fn, bool value)</td></tr>
+<tr class="memdesc:ga2e2adce9577fd09a8b11d6a8f2cd33a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a boolean value into the specified file.  <a href="#ga2e2adce9577fd09a8b11d6a8f2cd33a5">More...</a><br /></td></tr>
+<tr class="separator:ga2e2adce9577fd09a8b11d6a8f2cd33a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga164d44165e57190967ad09f427700108"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga164d44165e57190967ad09f427700108"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_bool</b> (uint8_t *sn, uint16_t pos, const char *fn, bool value)</td></tr>
-<tr class="separator:ga8161a1ef42045daca81c1867d5d3b590"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga549d5bb24bca7dcc6b9f3af044e73243">ev3_write_byte</a> (const char *fn, uint8_t value)</td></tr>
-<tr class="memdesc:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a byte value into the specified file.  <a href="#ga549d5bb24bca7dcc6b9f3af044e73243">More...</a><br /></td></tr>
-<tr class="separator:ga549d5bb24bca7dcc6b9f3af044e73243"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga33a24864532c4a4c01a4564cc0acf06b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33a24864532c4a4c01a4564cc0acf06b"></a>
+<tr class="separator:ga164d44165e57190967ad09f427700108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb">ev3_write_byte</a> (const char *fn, uint8_t value)</td></tr>
+<tr class="memdesc:ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a byte value into the specified file.  <a href="#ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb">More...</a><br /></td></tr>
+<tr class="separator:ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0daf565ba8b5d2adab7081107c2f1c85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0daf565ba8b5d2adab7081107c2f1c85"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_byte</b> (uint8_t *sn, uint16_t pos, const char *fn, uint8_t value)</td></tr>
-<tr class="separator:ga33a24864532c4a4c01a4564cc0acf06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7de3add68eb55de04b84c04507aa42dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7de3add68eb55de04b84c04507aa42dd"></a>
+<tr class="separator:ga0daf565ba8b5d2adab7081107c2f1c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadaccb4df864ae58c37377f0251c639e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadaccb4df864ae58c37377f0251c639e8"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_char_array</b> (const char *fn, char *value)</td></tr>
-<tr class="separator:ga7de3add68eb55de04b84c04507aa42dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae2ca3637c9b2082719a851a8e3eaa4fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae2ca3637c9b2082719a851a8e3eaa4fd"></a>
+<tr class="separator:gadaccb4df864ae58c37377f0251c639e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4179c08c59c1901d6960d574cde28a64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4179c08c59c1901d6960d574cde28a64"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_char_array</b> (uint8_t *sn, uint16_t pos, const char *fn, char *value)</td></tr>
-<tr class="separator:gae2ca3637c9b2082719a851a8e3eaa4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac738a611bda0680775566e5729e0a9ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac738a611bda0680775566e5729e0a9ff"></a>
+<tr class="separator:ga4179c08c59c1901d6960d574cde28a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fce521ce506832d919af39cbb23de37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8fce521ce506832d919af39cbb23de37"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_write_byte_array</b> (const char *fn, uint8_t *value, size_t sz)</td></tr>
-<tr class="separator:gac738a611bda0680775566e5729e0a9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac045b31986128e99c2bdc517c758c611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac045b31986128e99c2bdc517c758c611"></a>
+<tr class="separator:ga8fce521ce506832d919af39cbb23de37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4b6a53aef3c4ae7d8693612d082cdb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae4b6a53aef3c4ae7d8693612d082cdb5"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_multi_write_byte_array</b> (uint8_t *sn, uint16_t pos, const char *fn, uint8_t *value, size_t sz)</td></tr>
-<tr class="separator:gac045b31986128e99c2bdc517c758c611"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3b46cd9c624467603caa7c7c737063f8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga3b46cd9c624467603caa7c7c737063f8">ev3_read</a> (const char *fn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga3b46cd9c624467603caa7c7c737063f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a string from the specified file.  <a href="#ga3b46cd9c624467603caa7c7c737063f8">More...</a><br /></td></tr>
-<tr class="separator:ga3b46cd9c624467603caa7c7c737063f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga24436e6a324b9b0dffd264e6f325042f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga24436e6a324b9b0dffd264e6f325042f">ev3_read_int</a> (const char *fn, int *buf)</td></tr>
-<tr class="memdesc:ga24436e6a324b9b0dffd264e6f325042f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read an integer value from the specified file.  <a href="#ga24436e6a324b9b0dffd264e6f325042f">More...</a><br /></td></tr>
-<tr class="separator:ga24436e6a324b9b0dffd264e6f325042f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d84f6178cbce31f53f14dcdbdfa875a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2d84f6178cbce31f53f14dcdbdfa875a">ev3_read_dword</a> (const char *fn, uint32_t *buf)</td></tr>
-<tr class="memdesc:ga2d84f6178cbce31f53f14dcdbdfa875a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read an unsigned integer value from the specified file.  <a href="#ga2d84f6178cbce31f53f14dcdbdfa875a">More...</a><br /></td></tr>
-<tr class="separator:ga2d84f6178cbce31f53f14dcdbdfa875a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7f8dbce26893d1bc967552e3af0fb690"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga7f8dbce26893d1bc967552e3af0fb690">ev3_read_float</a> (const char *fn, float *buf)</td></tr>
-<tr class="memdesc:ga7f8dbce26893d1bc967552e3af0fb690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a float value from the specified file.  <a href="#ga7f8dbce26893d1bc967552e3af0fb690">More...</a><br /></td></tr>
-<tr class="separator:ga7f8dbce26893d1bc967552e3af0fb690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga496393569c4d644c426367c8c1af73d0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga496393569c4d644c426367c8c1af73d0">ev3_read_bool</a> (const char *fn, bool *buf)</td></tr>
-<tr class="memdesc:ga496393569c4d644c426367c8c1af73d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a boolean value from the specified file.  <a href="#ga496393569c4d644c426367c8c1af73d0">More...</a><br /></td></tr>
-<tr class="separator:ga496393569c4d644c426367c8c1af73d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad8b3e75fc9c408dbf89f634e33068745"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gad8b3e75fc9c408dbf89f634e33068745">ev3_read_byte</a> (const char *fn, uint8_t *buf)</td></tr>
-<tr class="memdesc:gad8b3e75fc9c408dbf89f634e33068745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a byte value from the specified file.  <a href="#gad8b3e75fc9c408dbf89f634e33068745">More...</a><br /></td></tr>
-<tr class="separator:gad8b3e75fc9c408dbf89f634e33068745"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0d49bb2d7fad390b0760de66301ca19f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0d49bb2d7fad390b0760de66301ca19f"></a>
+<tr class="separator:gae4b6a53aef3c4ae7d8693612d082cdb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga116dcae56212f6350801e0a5862309b5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga116dcae56212f6350801e0a5862309b5">ev3_read</a> (const char *fn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga116dcae56212f6350801e0a5862309b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a string from the specified file.  <a href="#ga116dcae56212f6350801e0a5862309b5">More...</a><br /></td></tr>
+<tr class="separator:ga116dcae56212f6350801e0a5862309b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ae4475aec5abaed6bdd540a1c23e7da"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga1ae4475aec5abaed6bdd540a1c23e7da">ev3_read_int</a> (const char *fn, int *buf)</td></tr>
+<tr class="memdesc:ga1ae4475aec5abaed6bdd540a1c23e7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read an integer value from the specified file.  <a href="#ga1ae4475aec5abaed6bdd540a1c23e7da">More...</a><br /></td></tr>
+<tr class="separator:ga1ae4475aec5abaed6bdd540a1c23e7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2714900c8bc94a21cfbc11dc8d17f8a7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2714900c8bc94a21cfbc11dc8d17f8a7">ev3_read_dword</a> (const char *fn, uint32_t *buf)</td></tr>
+<tr class="memdesc:ga2714900c8bc94a21cfbc11dc8d17f8a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read an unsigned integer value from the specified file.  <a href="#ga2714900c8bc94a21cfbc11dc8d17f8a7">More...</a><br /></td></tr>
+<tr class="separator:ga2714900c8bc94a21cfbc11dc8d17f8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39f3fe6637b195469342ea7774b4c547"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga39f3fe6637b195469342ea7774b4c547">ev3_read_float</a> (const char *fn, float *buf)</td></tr>
+<tr class="memdesc:ga39f3fe6637b195469342ea7774b4c547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a float value from the specified file.  <a href="#ga39f3fe6637b195469342ea7774b4c547">More...</a><br /></td></tr>
+<tr class="separator:ga39f3fe6637b195469342ea7774b4c547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08cabfd10cbfe2cd50a659f378426468"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga08cabfd10cbfe2cd50a659f378426468">ev3_read_bool</a> (const char *fn, bool *buf)</td></tr>
+<tr class="memdesc:ga08cabfd10cbfe2cd50a659f378426468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a boolean value from the specified file.  <a href="#ga08cabfd10cbfe2cd50a659f378426468">More...</a><br /></td></tr>
+<tr class="separator:ga08cabfd10cbfe2cd50a659f378426468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa35be8aa3f8cc7cd488ca0949cc401fb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gaa35be8aa3f8cc7cd488ca0949cc401fb">ev3_read_byte</a> (const char *fn, uint8_t *buf)</td></tr>
+<tr class="memdesc:gaa35be8aa3f8cc7cd488ca0949cc401fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a byte value from the specified file.  <a href="#gaa35be8aa3f8cc7cd488ca0949cc401fb">More...</a><br /></td></tr>
+<tr class="separator:gaa35be8aa3f8cc7cd488ca0949cc401fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga110a34350059bb99898bcebffb5eb8b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga110a34350059bb99898bcebffb5eb8b2"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_char_array</b> (const char *fn, char *buf, size_t sz)</td></tr>
-<tr class="separator:ga0d49bb2d7fad390b0760de66301ca19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf5fd6caca347fdef1c81e98fa86b1b16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf5fd6caca347fdef1c81e98fa86b1b16"></a>
+<tr class="separator:ga110a34350059bb99898bcebffb5eb8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad602a1c5884c57d34bb0a5797c49872f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad602a1c5884c57d34bb0a5797c49872f"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array</b> (const char *fn, uint8_t *buf, size_t sz)</td></tr>
-<tr class="separator:gaf5fd6caca347fdef1c81e98fa86b1b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31ba00d5503095c825a99295c5d16dd0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga31ba00d5503095c825a99295c5d16dd0">ev3_listdir</a> (const char *fn, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga31ba00d5503095c825a99295c5d16dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">List files in the specified directory of the EV3 brick.  <a href="#ga31ba00d5503095c825a99295c5d16dd0">More...</a><br /></td></tr>
-<tr class="separator:ga31ba00d5503095c825a99295c5d16dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a74db327d49a3b6528f33fba868d1d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga9a74db327d49a3b6528f33fba868d1d5">ev3_string_suffix</a> (const char *prefix, char **s, uint32_t *buf)</td></tr>
-<tr class="memdesc:ga9a74db327d49a3b6528f33fba868d1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a numerical suffix of the string.  <a href="#ga9a74db327d49a3b6528f33fba868d1d5">More...</a><br /></td></tr>
-<tr class="separator:ga9a74db327d49a3b6528f33fba868d1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga377bcee0066eadc1b584c39492a92887"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga377bcee0066eadc1b584c39492a92887"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga377bcee0066eadc1b584c39492a92887">EV3_EXT_INIT</a> (char *ev3_brick_addr, NULL)</td></tr>
-<tr class="memdesc:ga377bcee0066eadc1b584c39492a92887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predefined IP address of the EV3 brick. <br /></td></tr>
-<tr class="separator:ga377bcee0066eadc1b584c39492a92887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ec06ee09a43dae612fe98dbef1d5e11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ec06ee09a43dae612fe98dbef1d5e11"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga1ec06ee09a43dae612fe98dbef1d5e11">EV3_EXT_INIT</a> (uint16_t ev3_brick_port, 8800)</td></tr>
-<tr class="memdesc:ga1ec06ee09a43dae612fe98dbef1d5e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">UDP port of the EV3 brick. <br /></td></tr>
-<tr class="separator:ga1ec06ee09a43dae612fe98dbef1d5e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gad602a1c5884c57d34bb0a5797c49872f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f440aec2f5787a56dd798438a449d5c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2f440aec2f5787a56dd798438a449d5c">ev3_listdir</a> (const char *fn, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:ga2f440aec2f5787a56dd798438a449d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List files in the specified directory of the EV3 brick.  <a href="#ga2f440aec2f5787a56dd798438a449d5c">More...</a><br /></td></tr>
+<tr class="separator:ga2f440aec2f5787a56dd798438a449d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c0e7a1b1a170e73df6cb92d81b476d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#gaf6c0e7a1b1a170e73df6cb92d81b476d">ev3_string_suffix</a> (const char *prefix, char **s, uint32_t *buf)</td></tr>
+<tr class="memdesc:gaf6c0e7a1b1a170e73df6cb92d81b476d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a numerical suffix of the string.  <a href="#gaf6c0e7a1b1a170e73df6cb92d81b476d">More...</a><br /></td></tr>
+<tr class="separator:gaf6c0e7a1b1a170e73df6cb92d81b476d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga53d15ed3c0127b1372dfdc93cc9610d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga53d15ed3c0127b1372dfdc93cc9610d9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga53d15ed3c0127b1372dfdc93cc9610d9">EV3_EXT_C_INIT</a> (char *ev3_brick_addr, NULL)</td></tr>
+<tr class="memdesc:ga53d15ed3c0127b1372dfdc93cc9610d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predefined IP address of the EV3 brick. <br /></td></tr>
+<tr class="separator:ga53d15ed3c0127b1372dfdc93cc9610d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d8765ceda933ea8f5482b87c10769a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2d8765ceda933ea8f5482b87c10769a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3.html#ga2d8765ceda933ea8f5482b87c10769a6">EV3_EXT_C_INIT</a> (uint16_t ev3_brick_port, 8800)</td></tr>
+<tr class="memdesc:ga2d8765ceda933ea8f5482b87c10769a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">UDP port of the EV3 brick. <br /></td></tr>
+<tr class="separator:ga2d8765ceda933ea8f5482b87c10769a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Access to the file system of the EV3 brick. </p>
 <p>This module contains functions for the local access to the file system of the EV3 brick, in case of the remote access appropriate functions from <a class="el" href="group__ev3__link.html">ev3_link</a> module will be called. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga2ec28f7f97485be0445a5661f35e9707"></a>
+<a class="anchor" id="gaaf70223547755b2055cfe26242f391cc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT int ev3_init </td>
+          <td class="memname">EV3_EXT_C int ev3_init </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -241,16 +241,16 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 <p>Initialize the remote access and detect the EV3 brick. This function do nothing in the case of the local access. To disable the brick detection just specify IP address before the call of this function. </p>
 <dl class="section return"><dt>Returns</dt><dd>0 - the brick is NOT found or auto-detection is disabled; 1 - the brick is found; -1 - an error has occurred. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="dc_8c-example.html#a0">dc.c</a>, <a class="el" href="drive_8c-example.html#a13">drive.c</a>, <a class="el" href="io_8c-example.html#a0">io.c</a>, <a class="el" href="light_8c-example.html#a0">light.c</a>, <a class="el" href="port_8c-example.html#a0">port.c</a>, <a class="el" href="poweroff_8c-example.html#a0">poweroff.c</a>, <a class="el" href="rcx_led_8c-example.html#a0">rcx_led.c</a>, <a class="el" href="sensor_8c-example.html#a3">sensor.c</a>, <a class="el" href="servo_8c-example.html#a0">servo.c</a>, and <a class="el" href="tacho_8c-example.html#a0">tacho.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="dc_8c-example.html#a0">dc.c</a>, <a class="el" href="drive_8c-example.html#a21">drive.c</a>, <a class="el" href="io_8c-example.html#a0">io.c</a>, <a class="el" href="light_8c-example.html#a0">light.c</a>, <a class="el" href="port_8c-example.html#a0">port.c</a>, <a class="el" href="poweroff_8c-example.html#a0">poweroff.c</a>, <a class="el" href="rcx_led_8c-example.html#a0">rcx_led.c</a>, <a class="el" href="sensor_8c-example.html#a3">sensor.c</a>, <a class="el" href="servo_8c-example.html#a0">servo.c</a>, and <a class="el" href="tacho_8c-example.html#a0">tacho.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga31ba00d5503095c825a99295c5d16dd0"></a>
+<a class="anchor" id="ga2f440aec2f5787a56dd798438a449d5c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_listdir </td>
+          <td class="memname">EV3_EXT_C size_t ev3_listdir </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -289,12 +289,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga990a2f771cf3de9f975328421308239c"></a>
+<a class="anchor" id="gaa11628722c6d614ca6f22630ef7cd7a8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_multi_write_binary </td>
+          <td class="memname">EV3_EXT_C size_t ev3_multi_write_binary </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>sn</em>, </td>
@@ -346,12 +346,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga594c82738fc7b7723470f81e893154da"></a>
+<a class="anchor" id="ga553bc856e410d2dc27e6f255e5d2a9fc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT bool ev3_poweroff </td>
+          <td class="memname">EV3_EXT_C bool ev3_poweroff </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -366,12 +366,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga3b46cd9c624467603caa7c7c737063f8"></a>
+<a class="anchor" id="ga116dcae56212f6350801e0a5862309b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -409,12 +409,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga3de62e3f2581edd65d7d6500c387e054"></a>
+<a class="anchor" id="ga3bcb43f034ea1cd79982c61d9fc37263"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_binary </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_binary </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -452,12 +452,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga496393569c4d644c426367c8c1af73d0"></a>
+<a class="anchor" id="ga08cabfd10cbfe2cd50a659f378426468"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_bool </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_bool </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -488,12 +488,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="gad8b3e75fc9c408dbf89f634e33068745"></a>
+<a class="anchor" id="gaa35be8aa3f8cc7cd488ca0949cc401fb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_byte </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_byte </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -524,12 +524,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga2d84f6178cbce31f53f14dcdbdfa875a"></a>
+<a class="anchor" id="ga2714900c8bc94a21cfbc11dc8d17f8a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_dword </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_dword </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -560,12 +560,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga7f8dbce26893d1bc967552e3af0fb690"></a>
+<a class="anchor" id="ga39f3fe6637b195469342ea7774b4c547"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_float </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_float </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -596,12 +596,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga24436e6a324b9b0dffd264e6f325042f"></a>
+<a class="anchor" id="ga1ae4475aec5abaed6bdd540a1c23e7da"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_int </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_int </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -633,12 +633,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga48b863133ec0d0128ce17b1bfd1338af"></a>
+<a class="anchor" id="ga65c112b457c01217b4f325720649aa89"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_read_keys </td>
+          <td class="memname">EV3_EXT_C size_t ev3_read_keys </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -655,16 +655,16 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Count of read bytes. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="drive_8c-example.html#a12">drive.c</a>, and <a class="el" href="sensor_8c-example.html#a1">sensor.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="drive_8c-example.html#a19">drive.c</a>, and <a class="el" href="sensor_8c-example.html#a1">sensor.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga9a74db327d49a3b6528f33fba868d1d5"></a>
+<a class="anchor" id="gaf6c0e7a1b1a170e73df6cb92d81b476d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT int ev3_string_suffix </td>
+          <td class="memname">EV3_EXT_C int ev3_string_suffix </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>prefix</em>, </td>
@@ -702,12 +702,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga4fa0d81a67bb2ffa3ad2c9979218582e"></a>
+<a class="anchor" id="gab5848665617f05a2ad195e93ef13db03"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -738,12 +738,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga20ad37059b75ceea01f5b53be715ff2c"></a>
+<a class="anchor" id="gad2a1e5cb8b96efb45c57933fd736b7df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_binary </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_binary </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -781,12 +781,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga2f4127ccb9188172eaa15e7e81cd137a"></a>
+<a class="anchor" id="ga2e2adce9577fd09a8b11d6a8f2cd33a5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_bool </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_bool </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -817,12 +817,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga549d5bb24bca7dcc6b9f3af044e73243"></a>
+<a class="anchor" id="ga5e1342ce7f3ce6b8003b3f3a9e1f6ecb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_byte </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_byte </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -853,12 +853,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="gac2a07eb08a0710a91409db0a34e13a1c"></a>
+<a class="anchor" id="ga931c13b55be4d5dfbd6bead087491596"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_dword </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_dword </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -889,12 +889,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga9bfaa861cdc45a82017f3bfe963fb482"></a>
+<a class="anchor" id="ga13238fb0328fb8cca484880f229c48b0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_float </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_float </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -925,12 +925,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 
 </div>
 </div>
-<a class="anchor" id="ga0116ad65b312375a47cd91de675a4554"></a>
+<a class="anchor" id="gaa4aaa95b9c7aebc56db6891ba87b5e70"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EV3_EXT size_t ev3_write_int </td>
+          <td class="memname">EV3_EXT_C size_t ev3_write_int </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>fn</em>, </td>
@@ -965,7 +965,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ev3_read_byte_array
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 7 2016 18:38:39 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 14 2016 18:36:03 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

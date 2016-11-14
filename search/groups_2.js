@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['file_20operations',['File operations',['../group__ev3.html',1,'']]]
+  ['ev3_20ports_20and_20extended_20ports',['EV3 ports and extended ports',['../group__ev3__port.html',1,'']]]
 ];
