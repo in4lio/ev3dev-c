@@ -10,30 +10,35 @@ endif
 
 D_H = ../../source/ev3
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
+CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -g -W -Wall -Wno-comment
 CC = gcc
+CXX = g++
 
 ifeq ($(OS),Windows_NT)
 E_BIN = .exe
 else
 E_BIN =
 endif
-
 F_BIN = $(D_BIN)/$(TARGET)$(E_BIN)
 
-OBJECTS = $(addprefix $(D_BIN)/, $(patsubst %.c, %.o, $(wildcard *.c)))
+C_OBJS = $(addprefix $(D_BIN)/, $(patsubst %.c, %.o, $(wildcard *.c)))
+CXX_OBJS = $(addprefix $(D_BIN)/, $(patsubst %.cpp, %.o, $(wildcard *.cpp)))
 
 .PHONY: default all clean
 
 default: $(F_BIN)
 all: default
 
-$(OBJECTS): $(D_BIN)/%.o: %.c
+$(C_OBJS): $(D_BIN)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PRECIOUS: $(F_BIN) $(OBJECTS)
+$(CXX_OBJS): $(D_BIN)/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(F_BIN): $(OBJECTS)
-	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
+.PRECIOUS: $(F_BIN) $(C_OBJS) $(CXX_OBJS)
+
+$(F_BIN): $(C_OBJS) $(CXX_OBJS)
+	$(CXX) $(C_OBJS) $(CXX_OBJS) -Wall $(LIBS) -o $@
 
 clean:
 	-rm -f $(D_BIN)/*.o

@@ -131,7 +131,7 @@ PPFLAGS = -q --pp-browse $(addprefix -d, $(D_YU))
 
 # -- compiler flags
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
-CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -ffast-math -funroll-loops -fno-exceptions -fomit-frame-pointer -g -W -Wall -Wno-comment
+CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -g -W -Wall -Wno-comment
 ASMFLAGS = -Wall
 
 # ---------------------------------
