@@ -11,7 +11,7 @@
 - [sensor](http://in4lio.github.io/ev3dev-c/sensor_8c-example.html) – TOUCH and COLOR sensors example
 - [servo](http://in4lio.github.io/ev3dev-c/servo_8c-example.html) – SERVO motor example
 - [tacho](http://in4lio.github.io/ev3dev-c/tacho_8c-example.html) – TACHO motor running for 5 sec
-- [tacho_cpp](./tacho.cpp) – TACHO motor example on C++
+- [tacho_cpp](./tacho_cpp/tacho.cpp) – TACHO motor example on C++
 
 ## See also
 
