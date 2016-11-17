@@ -43,8 +43,12 @@ int main( void )
 
 	if ( ev3_search_tacho( LEGO_EV3_L_MOTOR, &sn, 0 )) {
 
-		cout << "LEGO_EV3_M_MOTOR is found, run forever..." << endl;
+		cout << "LEGO_EV3_L_MOTOR is found, run forever..." << endl;
 		set_tacho_stop_action_inx( sn, TACHO_COAST );
+		set_tacho_speed_sp( sn, 800 );
+		set_tacho_ramp_up_sp( sn, 500 );
+		set_tacho_ramp_down_sp( sn, 500 );
+
 		set_tacho_command_inx( sn, TACHO_RUN_FOREVER );
 		cout << "wait 5 sec..." << endl;
 		Sleep( 5000 );
