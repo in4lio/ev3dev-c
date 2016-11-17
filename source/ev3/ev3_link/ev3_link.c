@@ -1,8 +1,8 @@
 /*
-     ____ __     ____   ___    ____ __         (((((()
-    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
-    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
-                                               ((())))
+	 ____ __     ____   ___    ____ __         (((((()
+	| |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+	|_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+											   ((())))
  *//**
  *  \file  ev3_link.c
  *  \brief  EV3 remote access.
@@ -33,7 +33,6 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <arpa/inet.h>
-#include <linux/input.h>
 
 #define Sleep( msec ) usleep(( msec ) * 1000 )
 
@@ -48,10 +47,10 @@
  *  \{
  */
 
-#define UDP_MESSAGE_LIMIT  1500
+#define UDP_MESSAGE_LIMIT    1500
 
 #define UDP_CLIENT_RX_TRIES  50
-#define UDP_CLIENT_RX_WAIT   10  /* ms */
+#define UDP_CLIENT_RX_WAIT   10    /* ms */
 #define UDP_CLIENT_TX_TRIES  2
 
 #define UDP_SERVER_RX_DELAY  1000  /* us */
@@ -91,7 +90,7 @@ typedef struct {
 } EV3_MESSAGE_HEADER, *PEV3_MESSAGE_HEADER;
 
 /**
- *  \brief Subheader for EV3_MULTI_WRITE.
+ *  \brief Sub-header for EV3_MULTI_WRITE.
  */
 typedef struct {
 	uint8_t  sn[ DESC_VEC_LEN ];  /**< Vector of sequence numbers. */
@@ -111,10 +110,31 @@ static EV3_MESSAGE __r_msg;
 static EV3_MESSAGE __t_msg;
 static struct sockaddr_in __r_addr, __t_addr;
 
+#define EOL       "\n"
+#define ERR_PREF  "*** ERROR *** ev3_link: "
+
 // EV3 BRICK /////////////////////////////////////
 #ifdef __ARM_ARCH_4T__
 
+#include <linux/input.h>
+#include <sys/stat.h>
+#include <syslog.h>
 #include "modp_numtoa.h"
+
+/* logging requires `apt-get install inetutils-syslogd`
+ */
+#define ERR_OUT( F, ... ) do { \
+	syslog( LOG_ERR, F, ## __VA_ARGS__ ); \
+} while ( 0 )
+
+#define ERRNO_OUT( F, ... ) do { \
+	int _err = errno; \
+	syslog( LOG_ERR, F ": %s (%d)", ## __VA_ARGS__, strerror( _err ), _err ); \
+} while ( 0 )
+
+#define DEBUG_OUT( F, ... ) do { \
+	syslog( LOG_DEBUG, F, ## __VA_ARGS__ ); \
+} while ( 0 )
 
 static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 {
@@ -123,7 +143,7 @@ static size_t __ev3_write_binary( char *fn, char *data, size_t sz )
 
 	f = fopen( fn, "w" );
 	if ( f == NULL ) {
-		printf( "*** ERROR *** (ev3_link) fopen(%s): %s\n", fn, strerror( errno ));
+		ERRNO_OUT( "write: fopen(%s)", fn );
 		return ( 0 );
 	}
 	result = fwrite( data, 1, sz, f );
@@ -152,7 +172,7 @@ static size_t __ev3_read_binary( char *fn, char *buf, size_t sz )
 
 	f = fopen( fn, "r" );
 	if ( f == NULL ) {
-		printf( "*** ERROR *** (ev3_link) fopen(%s): %s\n", fn, strerror( errno ));
+		ERRNO_OUT( "read: fopen(%s)", fn );
 		return ( 0 );
 	}
 	result = fread( buf, 1, sz, f );
@@ -173,8 +193,8 @@ size_t __ev3_read_keys( uint8_t *buf )
 	ioctl( f, EVIOCGKEY( sizeof( keyb )), &keyb );
 
 	*buf = _TEST_KEY( UP, UP )        | _TEST_KEY( DOWN, DOWN )
-	     | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
-	     | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
+		 | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
+		 | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
 
 	close( f );
 	return ( sizeof( uint8_t ));
@@ -208,6 +228,15 @@ static size_t __ev3_listdir( char *fn, void *buf, size_t sz )
 // CLIENT ////////////////////////////////////////
 #else
 
+#define ERR_OUT( F, ... ) do { \
+	printf( EOL ERR_PREF F EOL, ## __VA_ARGS__ ); \
+} while ( 0 )
+
+#define ERRNO_OUT( F, ... ) do { \
+	int e = errno; \
+	printf( EOL ERR_PREF F ": %s (%d)" EOL, ## __VA_ARGS__, strerror( e ), e ); \
+} while ( 0 )
+
 static uint16_t __t_last = 0;
 
 //////////////////////////////////////////////////
@@ -223,9 +252,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 	WSADATA wsa;
 	res = WSAStartup( MAKEWORD( 2, 2 ), &wsa );
 	if ( res ) {
-		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
-		perror( "    WSAStartup()" );
-		printf( "\n" );
+		ERRNO_OUT( "open: WSAStartup()" );
 		sockfd = EOF;
 		return ( EOF );
 	}
@@ -234,9 +261,7 @@ int udp_ev3_open( char *addr, uint16_t port )
 #endif
 	sockfd = socket( PF_INET, SOCK_DGRAM, 0 );
 	if ( sockfd < 0 ) {
-		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", sockfd );
-		perror( "    socket()" );
-		printf( "\n" );
+		ERRNO_OUT( "open: socket()" );
 		sockfd = EOF;
 
 // WIN32 /////////////////////////////////////////
@@ -254,18 +279,20 @@ int udp_ev3_open( char *addr, uint16_t port )
 
 	res = bind( sockfd, ( struct sockaddr *) &__r_addr, sizeof( __r_addr ));
 	if ( res < 0 ) {
-		printf( "\n*** ERROR *** udp_ev3_open() = %d\n", res );
-		perror( "    bind()" );
-		printf( "\n" );
-		close( sockfd );
-		sockfd = EOF;
+		ERRNO_OUT( "open: bind()" );
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
+		closesocket( sockfd );
 		WSACleanup();
+
+// UNIX //////////////////////////////////////////
+#else
+		close( sockfd );
 
 //////////////////////////////////////////////////
 #endif
+		sockfd = EOF;
 		return ( EOF );
 	}
 
@@ -291,11 +318,15 @@ int udp_ev3_open( char *addr, uint16_t port )
 int udp_ev3_close( void )
 {
 	if ( sockfd < 0 ) return ( EOF );
-	close( sockfd );
 
 // WIN32 /////////////////////////////////////////
 #ifdef __WIN32__
+	closesocket( sockfd );
 	WSACleanup();
+
+// UNIX //////////////////////////////////////////
+#else
+	close( sockfd );
 
 //////////////////////////////////////////////////
 #endif
@@ -309,9 +340,7 @@ static void __transmit( uint16_t sz )
 	l = sizeof( EV3_MESSAGE_HEADER ) + sz;
 	res = sendto( sockfd, ( const char *) &__t_msg, l, 0, ( struct sockaddr *) &__t_addr, sizeof( __t_addr ));
 	if ( res < 0 ) {
-		printf( "\n*** ERROR *** (ev3_link) transmit: sendto = %d\n", errno );
-		perror( "    sendto()" );
-		printf( "\n" );
+		ERRNO_OUT( "transmit: sendto()" );
 	}
 }
 
@@ -327,7 +356,7 @@ static int __receive( void )
 		PEV3_MESSAGE_HEADER t = &__t_msg.head;
 
 		if ( msg_l < ( int ) sizeof( EV3_MESSAGE_HEADER )) {
-			printf( "\n*** ERROR *** (ev3_link) receive: HEADER: msg_l = %d\n", msg_l );
+			ERR_OUT( "receive: HEADER: msg_l = %d", msg_l );
 			return ( EOF );
 		}
 		msg_l -= sizeof( EV3_MESSAGE_HEADER );
@@ -340,7 +369,7 @@ static int __receive( void )
 
 		case EV3_MULTI_WRITE:
 			if ( msg_l < ( int ) sizeof( EV3_MULTI_WRITE_SUBHEADER )) {
-				printf( "*** ERROR *** (ev3_link) receive: SUBHEADER: msg_l = %d\n", msg_l );
+				ERR_OUT( "receive: SUBHEADER: msg_l = %d", msg_l );
 				return ( EOF );
 			}
 			msg_l -= sizeof( EV3_MULTI_WRITE_SUBHEADER );
@@ -353,7 +382,7 @@ static int __receive( void )
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
 
 			if (( h->fn_size == 0 ) || ( msg_l < ( int ) h->fn_size )) {
-				printf( "*** ERROR *** (ev3_link) receive: FILE: msg_l = %d fn_size = %d\n", msg_l, h->fn_size );
+				ERR_OUT( "receive: FILE: msg_l = %d fn_size = %d", msg_l, h->fn_size );
 				return ( EOF );
 			}
 			msg_l -= h->fn_size;
@@ -366,16 +395,15 @@ static int __receive( void )
 			case EV3_MULTI_WRITE:
 			case EV3_WRITE_FILE:
 				if (( h->data_size == 0 ) || ( msg_l != ( int ) h->data_size )) {
-					printf( "*** ERROR *** (ev3_link) receive: DATA: msg_l = %d data_size = %d\n"
-					, msg_l, h->data_size );
+					ERR_OUT( "receive: DATA: msg_l = %d data_size = %d", msg_l, h->data_size );
 					return ( EOF );
 				}
 				if ( h->type == EV3_WRITE_FILE ) {
-					/* printf( "WRITE %s\n", __r_msg.body ); */
+					DEBUG_OUT( "WRITE %s", __r_msg.body );
 					t->data_size = __ev3_write_binary( __r_msg.body, __r_msg.body + h->fn_size, h->data_size );
 				} else {
 					PEV3_MULTI_WRITE_SUBHEADER sub = ( void *) __r_msg.body;
-					/* printf( "MULTI WRITE %s\n", fn ); */
+					DEBUG_OUT( "MULTI WRITE %s", fn );
 					t->data_size = __ev3_multi_write_binary( sub->sn, sub->pos, fn, fn + h->fn_size, h->data_size );
 				}
 				t->type = EV3_RESULT_WRITE;
@@ -385,15 +413,15 @@ static int __receive( void )
 			case EV3_READ_FILE:
 			case EV3_LIST_DIR:
 				if (( h->data_size == 0 ) || (( int ) h->data_size > sizeof( __t_msg.body ))) {
-					printf( "*** ERROR *** (ev3_link) receive: DATA: data_size = %d\n", h->data_size );
+					ERR_OUT( "receive: DATA: data_size = %d", h->data_size );
 					return ( EOF );
 				}
 				if ( h->type == EV3_LIST_DIR ) {
-					/* printf( "LIST %s\n", __r_msg.body ); */
+					DEBUG_OUT( "LIST %s", __r_msg.body );
 					t->type = EV3_DIRECTORY;
 					t->data_size = __ev3_listdir( __r_msg.body, __t_msg.body, h->data_size );
 				} else {
-					/* printf( "READ %s\n", __r_msg.body ); */
+					DEBUG_OUT( "READ %s", __r_msg.body );
 					t->type = EV3_DATA_READ;
 					t->data_size = __ev3_read_binary( __r_msg.body, __t_msg.body, h->data_size );
 				}
@@ -403,7 +431,7 @@ static int __receive( void )
 
 		case EV3_READ_KEYS:
 			__t_addr.sin_addr.s_addr = __r_addr.sin_addr.s_addr;
-			/* printf( "READ KEYS\n" ); */
+			DEBUG_OUT( "READ KEYS" );
 			t->id = h->id;
 			t->fn_size = 0;
 			t->data_size = __ev3_read_keys(( uint8_t *) __t_msg.body );
@@ -434,7 +462,7 @@ static int __receive( void )
 			( void ) t;   /* unused */
 			( void ) fn;  /* unused */
 			if ( msg_l != ( int ) h->data_size ) {
-				printf( "\n*** ERROR *** (ev3_link) receive: DATA: msg_l = %d data_size = %d\n", msg_l, h->data_size );
+				ERR_OUT( "receive: DATA: msg_l = %d data_size = %d", msg_l, h->data_size );
 				return ( EOF );
 			}
 			return ( h->type );
@@ -475,6 +503,7 @@ void __welcome( void )
 
 int main( int argc, char **argv )
 {
+	pid_t pid;
 	struct sigaction sigint;
 	uint32_t i = 0;
 
@@ -484,14 +513,39 @@ int main( int argc, char **argv )
 		if (( *end == '\x00' ) && ( val > 0 ) && ( val < USHRT_MAX )) {
 			port = val;
 		} else {
-			printf( "\nUsage: ev3_link [port]\n" );
+			printf( EOL ERR_PREF "main: wrong argument" EOL );
+			printf( "Usage: ev3_link [port]" EOL );
 			return ( 2 );
 		}
 	}
-	printf( "\n*** ( ev3_link ) Hello! ***\n" );
 
-	if ( udp_ev3_open( NULL, port ) == EOF ) return ( 1 );
+	pid = fork();  /* fork parent process */
+	if ( pid < 0 ) {
+		printf( EOL ERR_PREF "main: fork(): unsuccessful" EOL );
+		return ( 1 );
+	}
+	if ( pid > 0 ) return ( 0 );  /* exit parent process */
 
+	umask( 0 );
+
+	setlogmask( LOG_UPTO( LOG_NOTICE ));
+	openlog( "ev3_link", LOG_PID, LOG_DAEMON );
+
+	if ( setsid() < 0 ) {
+		ERRNO_OUT( "main: setsid()" );
+		closelog();
+		return ( 1 );
+	}
+	chdir( "/" );
+	/* close standard file descriptors */
+	close( STDIN_FILENO );
+	close( STDOUT_FILENO );
+	close( STDERR_FILENO );
+
+	if ( udp_ev3_open( NULL, port ) == EOF ) {
+		closelog();
+		return ( 1 );
+	}
 	sigint.sa_handler = __sig_handler;
 	sigemptyset( &sigint.sa_mask );
 	sigint.sa_flags = 0;
@@ -507,7 +561,7 @@ int main( int argc, char **argv )
 		}
 	}
 	udp_ev3_close();
-	printf( "\n*** ( ev3_link ) Bye! ***\n" );
+	closelog();
 	return ( 0 );
 }
 
