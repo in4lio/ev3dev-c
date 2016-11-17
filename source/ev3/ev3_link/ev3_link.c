@@ -1,8 +1,8 @@
 /*
-	 ____ __     ____   ___    ____ __         (((((()
-	| |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
-	|_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
-											   ((())))
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
  *//**
  *  \file  ev3_link.c
  *  \brief  EV3 remote access.
@@ -193,8 +193,8 @@ size_t __ev3_read_keys( uint8_t *buf )
 	ioctl( f, EVIOCGKEY( sizeof( keyb )), &keyb );
 
 	*buf = _TEST_KEY( UP, UP )        | _TEST_KEY( DOWN, DOWN )
-		 | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
-		 | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
+	     | _TEST_KEY( LEFT, LEFT )    | _TEST_KEY( RIGHT, RIGHT )
+	     | _TEST_KEY( ENTER, CENTER ) | _TEST_KEY( BACKSPACE, BACK );
 
 	close( f );
 	return ( sizeof( uint8_t ));
