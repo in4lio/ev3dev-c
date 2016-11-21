@@ -78,15 +78,28 @@
     Similar examples on Python could be found in "python/ev3dev/eg".
     Examples on Ruby are placed in "ruby/eg", on Perl in "perl/eg".
 
-    * * *  How to drive the EV3 hardware remotely?
+    * * *  How to drive the EV3 hardware remotely
 
     https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link/
 
-    * * *  How to make and install the static library?
+    * * *  How to make and install STATIC library
 
     > cd source/ev3/
     > make
     > make install
+
+    * * *  How to make and install SHARED library
+
+    > cd source/ev3/
+    > make shared
+    > make shared-install
+
+    * * *  How to use SHARED library
+
+    > cd eg/port/
+    > gcc port.c -lev3dev-c -o port
+    > export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+    > ./port
 
     ___          _________________________________
     ___ GET HELP _________________________________
