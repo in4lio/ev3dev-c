@@ -5,7 +5,7 @@
 #   |_|                   |_|
 #   makefile (yupp, gcc)
 
-# -- name of binary file without extension
+# -- library name
 TARGET = ev3dev-c
 
 # -- platform
@@ -82,7 +82,7 @@ D_ASM = $(TOP)/source
 # -- include directories
 D_H = $(D_C)
 
-# -- binary file directory
+# -- library directory
 D_BIN = $(TOP)/lib
 D_BIN := $(if $(D_PLATFORM), $(D_BIN)/$(D_PLATFORM), $(D_BIN))
 
@@ -104,18 +104,37 @@ E_ASM = .asm
 # -- object suffix
 E_OBJ = .o
 
-# -- binary file suffix
+# -- static library suffix
 ifeq ($(OS),Windows_NT)
 E_BIN = .a
 else
 E_BIN = .a
 endif
 
-# -- full name of binary file
+# -- shared library suffix
+ifeq ($(OS),Windows_NT)
+E_BIN_SHARED = .dll
+else
+E_BIN_SHARED = .so
+endif
+
+# -- full name of static library
 F_BIN = $(D_BIN)/lib$(TARGET)$(E_BIN)
 
-# -- link options
+# -- full name of shared library
+F_BIN_SHARED = $(D_BIN)/lib$(TARGET)$(E_BIN_SHARED)
+
+# -- static library link options
 LFLAGS = rcs
+
+# -- shared library link options
+LFLAGS_SHARED = -shared
+
+ifeq ($(PLATFORM),__UNIX__)
+LFLAGS_SHARED := $(LFLAGS_SHARED) -fPIC
+else
+LFLAGS_SHARED := $(LFLAGS_SHARED) -Wl,--out-implib,$(strip $(F_BIN_SHARED)).a -lws2_32
+endif
 
 # -- preprocessor flags
 PPFLAGS = -q --pp-browse $(addprefix -d, $(D_YU))
@@ -182,7 +201,7 @@ define final
 endef
 
 # -- removal list
-R_BIN = $(F_BIN) $(O)
+R_BIN = $(F_BIN) $(F_BIN_SHARED) $(O)
 R = $(R_BIN)
 
 ifeq ($(SKIP_PP),0)
@@ -198,9 +217,9 @@ endif
 
 CLEAN_BIN = rm -rf $(R_BIN)
 
-# -- install
+# -- install library
 define install
-	cp -f $(F_BIN) $(D_INSTALL)/lib
+	cp -f $1 $(D_INSTALL)/lib
 	cp -f $(S_INSTALL_H) $(D_INSTALL)/include
 endef
 
@@ -214,15 +233,24 @@ vpath %$(E_ASM) $(D_ASM)
 vpath %$(E_YUCXX) $(D_CXX)
 vpath %$(E_YUC) $(D_C)
 
-# -- build binary file
-.PHONY: default
+# ---- build library
+.PHONY: default shared
 
+# -- build static library
 default: bindirs $(F_BIN)
+
+# -- build shared library
+shared: bindirs $(F_BIN_SHARED)
 
 $(F_BIN): $(O)
 	$(call wrap,$(LINK),$(LFLAGS) $@ $^)
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
+
+$(F_BIN_SHARED): $(O)
+	$(call wrap,$(CC),$^ $(LFLAGS_SHARED) -o $@)
+	$(call final,$@)
+	@echo "*** $(F_BIN_SHARED) ***"
 
 $(G_C) $(G_CXX) $(G_H): $(S_YU)
 
@@ -255,22 +283,25 @@ $(D_OBJ):
 $(D_BIN):
 	${MKDIR} ${D_BIN}
 
-# -- remove temporary files
+# ---- remove temporary files
 .PHONY: clean
 
 clean:
 	$(CLEAN)
 
-# -- remove binary and object files
+# ---- remove binary and object files
 .PHONY: clean-binary
 
 clean-binary:
 	$(CLEAN_BIN)
 
-# -- install
-.PHONY: install
+# ---- install
+.PHONY: install shared-install
 
 install:
-	$(call install)
+	$(call install,$(F_BIN))
+
+shared-install:
+	$(call install,$(F_BIN_SHARED))
 
 # -- EOF
