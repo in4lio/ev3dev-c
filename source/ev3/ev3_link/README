@@ -22,7 +22,7 @@
     remotely.
     There are makefile in "source/ev3/ev3_link" folder to build the server.
 
-    * * *  How to automatically start ev3_link server on boot?
+    * * *  How to automatically start ev3_link server (daemon) on boot
 
     > cd ev3dev-c/
     > sudo cp source/ev3/ev3_link/ev3_link_d /etc/init.d/
@@ -30,9 +30,9 @@
     > sudo chmod 755 /etc/init.d/ev3_link_d
     > sudo update-rc.d ev3_link_d defaults
 
-    * * *  How to set WLAN up on the EV3 brick?
+    * * *  How to set WLAN up on the EV3 brick
 
-    http://www.ev3dev.org/docs/getting-started/#step-5-setup-a-network-connection
+    http://www.ev3dev.org/docs/getting-started/#step-5-set-up-a-network-connection
 
     ___        ___________________________________
     ___ CLIENT ___________________________________
