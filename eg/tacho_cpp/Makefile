@@ -4,7 +4,7 @@ LIBS = -lm -lev3dev-c
 D_BIN = Release
 
 ifeq ($(OS),Windows_NT)
-LIBS := $(LIBS) -lws2_32
+LIBS := $(LIBS) -lws2_32 -Wl,-rpath=../../lib/mingw -L../../lib/mingw
 D_BIN := $(D_BIN)/mingw
 endif
 
