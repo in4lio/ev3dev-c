@@ -41,10 +41,10 @@
     ___       ____________________________________
     ___ F A Q ____________________________________
 
-    * * *  What are unusual ".yu" files for?
+    * * *  What are unusual ".yu", ".yu-с" and ".yu-h" files for?
 
-    ev3dev-c is written using yupp C preprocessor, but don't panic,
-    generated source files in C also included.
+    ev3dev-c is written using yupp lexical preprocessor, but don't
+    panic, generated source files in C also included.
 
     * * *  How can I see some examples?
 
