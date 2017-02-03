@@ -111,10 +111,18 @@
     ___     ______________________________________
     ___ GIT ______________________________________
 
-    Enter in the following on your command-line to clone the library
-    repository:
+    Run the following on your command-line to clone the library
+    repository and its submodules:
 
         git clone https://github.com/in4lio/ev3dev-c.git
+        cd ev3dev-c
+        git submodule update --init --recursive
+
+    To pull the latest library and its submodules:
+
+        cd ev3dev-c
+        git pull origin master
+        git submodule foreach git pull origin master
 
     ___         __________________________________
     ___ CONTACT __________________________________
