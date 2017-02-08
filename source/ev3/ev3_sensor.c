@@ -322,6 +322,20 @@ const char *ev3_sensor_type( INX_T type_inx )
 		return "pixy-lego";
 	case DI_DFLEX:
 		return "di-dflex";
+	case FCL_ADC:
+		return "fcl-adc";
+	case FCL_GESTURE:
+		return "fcl-gesture";
+	case FCL_LIGHT:
+		return "fcl-light";
+	case FCL_ALTITUDE:
+		return "fcl-altitude";
+	case FCL_IR:
+		return "fcl-ir";
+	case FCL_9DOF:
+		return "fcl-9dof";
+	case FCL_HUMIDITY:
+		return "fcl-humidity";
 	case HT_NXT_COLOR:
 		return "ht-nxt-color";
 	case HT_NXT_ANGLE:
@@ -426,6 +440,20 @@ INX_T get_sensor_type_inx( uint8_t sn )
 		return PIXY_LEGO;
 	case 0xe1f9430cL:  /* "di-dflex" */
 		return DI_DFLEX;
+	case 0x69cf09acL:  /* "fcl-adc" */
+		return FCL_ADC;
+	case 0xffe329dL:  /* "fcl-gesture" */
+		return FCL_GESTURE;
+	case 0xcd08d04bL:  /* "fcl-light" */
+		return FCL_LIGHT;
+	case 0x130104efL:  /* "fcl-altitude" */
+		return FCL_ALTITUDE;
+	case 0xfaac1d8fL:  /* "fcl-ir" */
+		return FCL_IR;
+	case 0xbd6636bL:  /* "fcl-9dof" */
+		return FCL_9DOF;
+	case 0xc137d61fL:  /* "fcl-humidity" */
+		return FCL_HUMIDITY;
 	case 0x49a6f8bfL:  /* "ht-nxt-color" */
 		return HT_NXT_COLOR;
 	case 0x2f71f55fL:  /* "ht-nxt-angle" */
@@ -630,6 +658,47 @@ const char *ev3_sensor_mode( INX_T mode_inx )
 
 	case DI_DFLEX_FLEX:
 		return "FLEX";
+
+	case FCL_ADC_CH1_VOLTAGE:
+		return "CH1-VOLTAGE";
+	case FCL_ADC_CH2_VOLTAGE:
+		return "CH2-VOLTAGE";
+	case FCL_ADC_VOLTAGE:
+		return "VOLTAGE";
+
+	case FCL_GESTURE_GESTURE:
+		return "GESTURE";
+	case FCL_GESTURE_PROXIMITY:
+		return "PROXIMITY";
+	case FCL_GESTURE_RGB_RAW:
+		return "RGB-RAW";
+	case FCL_GESTURE_CLEAR:
+		return "CLEAR";
+
+	case FCL_LIGHT_ILLUMINANCE:
+		return "ILLUMINANCE";
+
+	case FCL_ALTITUDE_PRESSURE:
+		return "PRESSURE";
+	case FCL_ALTITUDE_ALTITUDE:
+		return "ALTITUDE";
+
+	case FCL_IR_IR_DATA:
+		return "IR DATA";
+
+	case FCL_9DOF_GYRO:
+		return "GYRO";
+	case FCL_9DOF_ACC:
+		return "ACC";
+	case FCL_9DOF_MAGNET:
+		return "MAGNET";
+
+	case FCL_HUMIDITY_CENTIGRADE:
+		return "CENTIGRADE";
+	case FCL_HUMIDITY_FAHRENHEIT:
+		return "FAHRENHEIT";
+	case FCL_HUMIDITY_HUMIDITY:
+		return "HUMIDITY";
 
 	case HT_NXT_COLOR_COLOR:
 		return "COLOR";
@@ -972,6 +1041,51 @@ INX_T get_sensor_mode_inx_of_type( uint8_t sn, INX_T type_inx )
 
 	case DI_DFLEX:
 		if ( strcmp( buf, "FLEX" ) == 0 ) return DI_DFLEX_FLEX;
+
+		break;
+
+	case FCL_ADC:
+		if ( strcmp( buf, "CH1-VOLTAGE" ) == 0 ) return FCL_ADC_CH1_VOLTAGE;
+		if ( strcmp( buf, "CH2-VOLTAGE" ) == 0 ) return FCL_ADC_CH2_VOLTAGE;
+		if ( strcmp( buf, "VOLTAGE" ) == 0 ) return FCL_ADC_VOLTAGE;
+
+		break;
+
+	case FCL_GESTURE:
+		if ( strcmp( buf, "GESTURE" ) == 0 ) return FCL_GESTURE_GESTURE;
+		if ( strcmp( buf, "PROXIMITY" ) == 0 ) return FCL_GESTURE_PROXIMITY;
+		if ( strcmp( buf, "RGB-RAW" ) == 0 ) return FCL_GESTURE_RGB_RAW;
+		if ( strcmp( buf, "CLEAR" ) == 0 ) return FCL_GESTURE_CLEAR;
+
+		break;
+
+	case FCL_LIGHT:
+		if ( strcmp( buf, "ILLUMINANCE" ) == 0 ) return FCL_LIGHT_ILLUMINANCE;
+
+		break;
+
+	case FCL_ALTITUDE:
+		if ( strcmp( buf, "PRESSURE" ) == 0 ) return FCL_ALTITUDE_PRESSURE;
+		if ( strcmp( buf, "ALTITUDE" ) == 0 ) return FCL_ALTITUDE_ALTITUDE;
+
+		break;
+
+	case FCL_IR:
+		if ( strcmp( buf, "IR DATA" ) == 0 ) return FCL_IR_IR_DATA;
+
+		break;
+
+	case FCL_9DOF:
+		if ( strcmp( buf, "GYRO" ) == 0 ) return FCL_9DOF_GYRO;
+		if ( strcmp( buf, "ACC" ) == 0 ) return FCL_9DOF_ACC;
+		if ( strcmp( buf, "MAGNET" ) == 0 ) return FCL_9DOF_MAGNET;
+
+		break;
+
+	case FCL_HUMIDITY:
+		if ( strcmp( buf, "CENTIGRADE" ) == 0 ) return FCL_HUMIDITY_CENTIGRADE;
+		if ( strcmp( buf, "FAHRENHEIT" ) == 0 ) return FCL_HUMIDITY_FAHRENHEIT;
+		if ( strcmp( buf, "HUMIDITY" ) == 0 ) return FCL_HUMIDITY_HUMIDITY;
 
 		break;
 

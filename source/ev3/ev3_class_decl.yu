@@ -7,7 +7,7 @@
 ($! name of type attribute of the class )
 ($set CLASS_TYPE_ATTR_NAME "driver_name")
 
-($set _VALUE_TO_ID \val.($replace,,($replace,,($unq val),,-,,_),,&,,_AND_))
+($set _VALUE_TO_ID \val.($replace,,($replace,,($replace,,($unq val),, ,,_),,-,,_),,&,,_AND_))
 ($set _TYPE_TO_ID  \val.($replace,,($unq val),,-,,_))
 ($set _ATTR_TO_ID  \val.($replace,,($unq val),,/,,_))
 
