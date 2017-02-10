@@ -1,7 +1,9 @@
 ($import "app.yu")
 ($TITLE,,SWIG interface file.)
-($macro extern () extern)
-($macro extern-init ( dec init ) extern ($dec) = ($init);)
+($macro extern ()extern)
+($macro extern-c ()extern)
+($macro extern-init ( dec init )extern ($dec);)
+($macro extern-c-init ( dec init )extern ($dec);)
 
 %module ev3
 %include "cstring.i"
