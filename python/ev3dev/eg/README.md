@@ -1,4 +1,4 @@
-## Examples on Python
+## Examples in Python
 
 - [dc](http://in4lio.github.io/ev3dev-c/dc_8py-example.html) – Using DC motor
 - [io](http://in4lio.github.io/ev3dev-c/io_8py-example.html) – Using low-level functions
@@ -12,6 +12,6 @@
 
 ## See also
 
-[Examples on C](../../../eg)<br>
-[Examples on Perl](../../../perl/eg)<br>
-[Examples on Ruby](../../../ruby/eg)
+[Examples in C](../../../eg)<br>
+[Examples in Perl](../../../perl/eg)<br>
+[Examples in Ruby](../../../ruby/eg)
