@@ -296,7 +296,7 @@ if tacho_is_plugged( OUTB | OUTC, LEGO_EV3_L_MOTOR ):
 brick_uninit()
 \endcode
 
-See also – [Examples on Python](https://github.com/in4lio/ev3dev-c/blob/master/python/ev3dev/eg)
+See also – [Examples in Python](https://github.com/in4lio/ev3dev-c/blob/master/python/ev3dev/eg)
 
 #### Features of Ruby library:
 
@@ -317,7 +317,7 @@ end
 ev3_uninit()
 \endcode
 
-See also – [Examples on Ruby](https://github.com/in4lio/ev3dev-c/blob/master/ruby/eg)
+See also – [Examples in Ruby](https://github.com/in4lio/ev3dev-c/blob/master/ruby/eg)
 
 #### Features of Perl library:
 
@@ -340,7 +340,7 @@ if ( $ok ) {
 ev3::ev3_uninit();
 \endcode
 
-See also – \ref [Examples on Perl](https://github.com/in4lio/ev3dev-c/blob/master/perl/eg)
+See also – \ref [Examples in Perl](https://github.com/in4lio/ev3dev-c/blob/master/perl/eg)
 
 Similarly you can use SWIG to wrap the library in a number of other languages.
 

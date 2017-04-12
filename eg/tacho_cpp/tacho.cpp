@@ -5,7 +5,7 @@
                                                ((())))
  *//**
  *  \file  tacho.cpp
- *  \brief  ev3dev-c Tacho Motors example on C++.
+ *  \brief  ev3dev-c Tacho Motors example in C++.
  *  \author  Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright  See the LICENSE file.
  */
