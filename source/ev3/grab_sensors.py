@@ -77,4 +77,4 @@ def grab_sensors( url, cache = None ):
 if __name__ == '__main__':
 #   -- test
     with open( 'sensors.yu', 'w' ) as f:
-        f.write( grab_sensors( 'https://raw.githubusercontent.com/ev3dev/ev3dev.github.io/master/_data/sensors.json' ))
+        f.write( grab_sensors( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensors.json' ))
