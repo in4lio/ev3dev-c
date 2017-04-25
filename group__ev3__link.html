@@ -88,7 +88,7 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header of an UDP message.  <a href="structEV3__MESSAGE__HEADER.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MULTI__WRITE__SUBHEADER.html">EV3_MULTI_WRITE_SUBHEADER</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subheader for EV3_MULTI_WRITE.  <a href="structEV3__MULTI__WRITE__SUBHEADER.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sub-header for EV3_MULTI_WRITE.  <a href="structEV3__MULTI__WRITE__SUBHEADER.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEV3__MESSAGE.html">EV3_MESSAGE</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">UDP message.  <a href="structEV3__MESSAGE.html#details">More...</a><br /></td></tr>
@@ -103,7 +103,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_CLIENT_RX_TRIES</b>&#160;&#160;&#160;50</td></tr>
 <tr class="separator:gabe9bb2c640e1ebad589f15ae7b7a5a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaf66c8d837bd258001e426bc40dd1ffe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaf66c8d837bd258001e426bc40dd1ffe"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_CLIENT_RX_WAIT</b>&#160;&#160;&#160;10  /* ms */</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_CLIENT_RX_WAIT</b>&#160;&#160;&#160;10    /* ms */</td></tr>
 <tr class="separator:gaaf66c8d837bd258001e426bc40dd1ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0563fc959918c646dc48e89180ac3866"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0563fc959918c646dc48e89180ac3866"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_CLIENT_TX_TRIES</b>&#160;&#160;&#160;2</td></tr>
@@ -114,6 +114,16 @@ Macros</h2></td></tr>
 <tr class="memitem:ga8c013b5f1d7ff1eac114b58107752a83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8c013b5f1d7ff1eac114b58107752a83"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UDP_SERVER_TX_DELAY</b>&#160;&#160;&#160;2000000</td></tr>
 <tr class="separator:ga8c013b5f1d7ff1eac114b58107752a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e67e9429d48a2ba8f833ee3b1dceb5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4e67e9429d48a2ba8f833ee3b1dceb5d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EOL</b>&#160;&#160;&#160;&quot;\n&quot;</td></tr>
+<tr class="separator:ga4e67e9429d48a2ba8f833ee3b1dceb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ac36a87bfefe5b67a188dbd53fa0475"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4ac36a87bfefe5b67a188dbd53fa0475"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERR_PREF</b>&#160;&#160;&#160;&quot;*** ERROR *** ev3_link: &quot;</td></tr>
+<tr class="separator:ga4ac36a87bfefe5b67a188dbd53fa0475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5d53a510914961cbefef6f986573bd13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERR_OUT</b>(F, ...)</td></tr>
+<tr class="separator:ga5d53a510914961cbefef6f986573bd13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4e640994d37d239c200d51be3abb26c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERRNO_OUT</b>(F, ...)</td></tr>
+<tr class="separator:gaf4e640994d37d239c200d51be3abb26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -182,6 +192,59 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Remote access to the EV3 brick over UDP. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga5d53a510914961cbefef6f986573bd13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR_OUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">F, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">    printf( EOL ERR_PREF F EOL, ## __VA_ARGS__ ); \</div><div class="line">} <span class="keywordflow">while</span> ( 0 )</div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="gaf4e640994d37d239c200d51be3abb26c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERRNO_OUT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">F, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">    int e = errno; \</div><div class="line">    printf( EOL ERR_PREF F <span class="stringliteral">&quot;: %s (%d)&quot;</span> EOL, ## __VA_ARGS__, strerror( e ), e ); \</div><div class="line">} <span class="keywordflow">while</span> ( 0 )</div></div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a class="anchor" id="gaabfcbcb5ac86a1edac4035264bc7d2b8"></a>
 <div class="memitem">
@@ -541,7 +604,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 15 2016 16:00:12 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 25 2017 16:54:37 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
