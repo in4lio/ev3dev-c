@@ -82,7 +82,7 @@ size_t ev3_read_binary( const char *fn, char *buf, size_t sz )
 	return ( result );
 }
 
-#define _TEST_KEY( K, R )  (( keyb[ KEY_##K >> 3 ] & ( 1 << ( KEY_##K & 7 ))) ? 0 : EV3_KEY_##R )
+#define _TEST_KEY( K, R )  (( keyb[ KEY_##K >> 3 ] & ( 1 << ( KEY_##K & 7 ))) ? EV3_KEY_##R : 0 )
 
 size_t ev3_read_keys( uint8_t *buf )
 {

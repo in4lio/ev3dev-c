@@ -8,10 +8,10 @@
 ev3dev-c
 [ )
 ($set VERSION ]
-0.9b7
+0.9b8
 [ )
 ($set KERNEL ]
-4.4.59-19-ev3dev-ev3
+4.4.61-20-ev3dev-ev3
 [ )
 ($set DESCRIPTION ]
 LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers
