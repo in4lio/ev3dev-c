@@ -62,8 +62,8 @@ int init( void )
 		"RED DOWN | BLUE UP   - right\n"
 		);
 	} else {
-		printf( "IR sensor is NOT found,\n"
-		"use the EV3 brick buttons.\n"
+		printf( "IR sensor is NOT found.\n"
+		"Please, use the EV3 brick buttons.\n"
 		);
 	}
 	printf( "Press BACK on the EV3 brick for EXIT...\n" );
