@@ -246,12 +246,12 @@ const char *ev3_port_mode( INX_T mode_inx )
 
 	case LEGOEV3_OUTPUT_PORT_AUTO:
 		return "auto";
-	case LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR:
-		return "ev3-tacho-motor";
-	case LEGOEV3_OUTPUT_PORT_RCX_MOTOR:
-		return "rcx-motor";
-	case LEGOEV3_OUTPUT_PORT_RCX_LED:
-		return "rcx-led";
+	case LEGOEV3_OUTPUT_PORT_TACHO_MOTOR:
+		return "tacho-motor";
+	case LEGOEV3_OUTPUT_PORT_DC_MOTOR:
+		return "dc-motor";
+	case LEGOEV3_OUTPUT_PORT_LED:
+		return "led";
 	case LEGOEV3_OUTPUT_PORT_RAW:
 		return "raw";
 
@@ -299,9 +299,9 @@ INX_T get_port_mode_inx_of_type( uint8_t sn, INX_T type_inx )
 
 	case LEGOEV3_OUTPUT_PORT:
 		if ( strcmp( buf, "auto" ) == 0 ) return LEGOEV3_OUTPUT_PORT_AUTO;
-		if ( strcmp( buf, "ev3-tacho-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_EV3_TACHO_MOTOR;
-		if ( strcmp( buf, "rcx-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_RCX_MOTOR;
-		if ( strcmp( buf, "rcx-led" ) == 0 ) return LEGOEV3_OUTPUT_PORT_RCX_LED;
+		if ( strcmp( buf, "tacho-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_TACHO_MOTOR;
+		if ( strcmp( buf, "dc-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_DC_MOTOR;
+		if ( strcmp( buf, "led" ) == 0 ) return LEGOEV3_OUTPUT_PORT_LED;
 		if ( strcmp( buf, "raw" ) == 0 ) return LEGOEV3_OUTPUT_PORT_RAW;
 
 		break;

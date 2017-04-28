@@ -14,7 +14,7 @@
 	(`
 	(  "ht-nxt-smux-port"     "ht_nxt_smux"        ( "analog" "i2c" ) )
 	(  "legoev3-input-port"   "input"              ( "auto" "nxt-analog" "nxt-color" "nxt-i2c" "other-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw" ) )
-	(  "legoev3-output-port"  "output"             ( "auto" "ev3-tacho-motor" "rcx-motor" "rcx-led" "raw" ) )
+	(  "legoev3-output-port"  "output"             ( "auto" "tacho-motor" "dc-motor" "led" "raw" ) )
 	(  "ms-ev3-smux-port"     "ms_ev3_smux"        ( "uart" "analog" ) )
 	(  "ms-nxtmmx-out-port"   "ms_nxtmmx"          ( "tacho-motor" ) )
 	(  "wedo-port"            "wedo"               ( "auto" ) )

@@ -43,7 +43,7 @@ int main( void )
 
 	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( OUTPUT_C, EXT_PORT__NONE_, 0, name_port ));
 	sn_port = ev3_search_port( OUTPUT_C, EXT_PORT__NONE_ );
-	set_port_mode_inx( sn_port, OUTPUT_RCX_LED );
+	set_port_mode_inx( sn_port, OUTPUT_DC_LED );
 	if ( get_port_mode( sn_port, s, sizeof( s ))) {
 		printf( "%s: %s\n", name_port, s );
 	}
