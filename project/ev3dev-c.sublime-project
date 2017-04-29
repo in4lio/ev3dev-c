@@ -24,6 +24,12 @@
 			"shell": true,
 			"variants": [
 				{
+					"name": "Make ev3dev-c library - SHARED",
+					"working_dir": "${project_path}/../source/ev3",
+					"cmd": ["mingw32-make", "shared"],
+					"shell": true
+				},
+				{
 					"name": "Make ev3dev-c library - CLEAN",
 					"working_dir": "${project_path}/../source/ev3",
 					"cmd": ["mingw32-make", "clean"],
@@ -39,6 +45,12 @@
 					"name": "Make ev3dev-c library - INSTALL",
 					"working_dir": "${project_path}/../source/ev3",
 					"cmd": ["mingw32-make", "install"],
+					"shell": true
+				},
+				{
+					"name": "Make ev3dev-c library - SHARED INSTALL",
+					"working_dir": "${project_path}/../source/ev3",
+					"cmd": ["mingw32-make", "shared-install"],
 					"shell": true
 				}
 			]
