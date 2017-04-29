@@ -48,8 +48,7 @@ int main( void )
 	char s[ 256 ];
 	int val;
 	uint32_t n, i, ii;
-	uint8_t sn_touch;
-	uint8_t sn_color;
+	uint8_t sn_touch, sn_color, sn_ir;
 
 	printf( "Waiting the EV3 brick online...\n" );
 	if ( ev3_init() < 1 ) return ( 1 );
@@ -73,6 +72,11 @@ int main( void )
 				}
 			}
 		}
+	}
+	if ( ev3_search_sensor( LEGO_EV3_IR, &sn_ir, 0 )) {
+		printf( "IR sensor is found\n" );
+	} else {
+		printf( "IR sensor is NOT found\n" );
 	}
 	if ( ev3_search_sensor( LEGO_EV3_TOUCH, &sn_touch, 0 )) {
 		printf( "TOUCH sensor is found, press BUTTON for EXIT...\n" );
