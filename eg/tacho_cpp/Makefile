@@ -11,8 +11,14 @@ endif
 D_H = ../../source/ev3
 CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -g -W -Wall -Wno-comment
+
+ifeq ($(OS),Windows_NT)
 CC = gcc
 CXX = g++
+else
+CC = arm-linux-gnueabi-gcc
+CXX = arm-linux-gnueabi-g++
+endif
 
 ifeq ($(OS),Windows_NT)
 E_BIN = .exe
