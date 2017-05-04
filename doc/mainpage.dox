@@ -23,7 +23,7 @@
 \endverbatim
 </center>
 
-## [ev3dev-c](https://github.com/in4lio/ev3dev-c/) 0.9b7 (for kernel 4.4.59-19-ev3dev-ev3)
+## [ev3dev-c](https://github.com/in4lio/ev3dev-c/) 0.9b8 (for kernel 4.4.61-20-ev3dev-ev3)
 
 ## The library hierarchic structure
 
@@ -134,7 +134,7 @@ uint8_t sn, sn_port;
 ev3_init();
 ev3_port_init();
 sn_port = ev3_search_port( OUTPUT_D, EXT_PORT__NONE_ );
-set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR );
+set_port_mode_inx( sn_port, OUTPUT_DC_MOTOR );
 
 ev3_dc_init();
 if ( ev3_search_dc_plugged_in( OUTPUT_D, EXT_PORT__NONE_, &sn, 0 )) {
