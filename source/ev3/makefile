@@ -20,9 +20,15 @@ endif
 TOP = ../..
 
 # -- compiler
+ifeq ($(PLATFORM),__UNIX__)
+CC = arm-linux-gnueabi-gcc
+CXX = arm-linux-gnueabi-g++
+LINK = arm-linux-gnueabi-ar
+else
 CC = gcc
 CXX = g++
 LINK = ar
+endif
 
 # -- build on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -303,5 +309,6 @@ install:
 
 shared-install:
 	$(call install,$(F_BIN_SHARED))
+	ldconfig
 
 # -- EOF
