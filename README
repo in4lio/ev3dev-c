@@ -13,7 +13,7 @@
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
-    ev3dev-c is a C library for LEGO MINDSTORMS EV3 Debian
+    ev3dev-c is a C library for LEGO MINDSTORMS EV3 Debian Linux
     (http://www.ev3dev.org/) which wraps an access to the EV3 hardware.
 
     The library also supports a remote access to the EV3 brick over UDP.
@@ -32,7 +32,7 @@
     the key "--pre".
 
     Python package contains the following binary modules:
-    _ev3.pyd    – for a remote access, under Windows (x86);
+    _ev3.pyd    – for a remote access under Windows (x86);
     _ev3.so     – for LEGO Mindstorms EV3 Debian.
 
     You have to install "python-dev", "ruby-dev" and "libperl-dev"
@@ -59,14 +59,14 @@
 
     There are a few more examples in C:
 
-        https://github.com/in4lio/ev3dev-c/blob/master/eg/
+        https://github.com/in4lio/ev3dev-c/tree/master/eg/
 
     light    – LEDs blinking example
     sensor   – TOUCH and COLOR sensors usage
     tacho    – a TACHO motor running for 5 sec
-    port     – Use of EV3 ports
-    dc       – Use of a DC motor
-    rcx_led  – Use of a RCX LED
+    port     – use of EV3 ports
+    dc       – use of a DC motor
+    rcx_led  – use of a RCX LED
     servo    – a SERVO motor example
 
     > cd eg/light/
@@ -98,7 +98,6 @@
 
     > cd eg/port/
     > gcc port.c -lev3dev-c -o port
-    > export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
     > ./port
 
     ___          _________________________________

@@ -24,11 +24,11 @@ Name                                                                  | Descript
 
 Makefile targets                       | Description
 :---                                   | :---
-`release`                              | BUILD example using precompiled "ev3dev-c" library
-`release-clean`                        | REMOVE files created during building `release` target
-`debug` (default)                      | BUILD example using the source files of "ev3dev-c" library
-`debug-clean` or `clean`               | REMOVE all files created during building `debug` target
-`debug-clean-binary` or `clean-binary` | REMOVE only binary files created during building `debug` target
+`release`                              | **build** example using precompiled "ev3dev-c" library
+`release-clean`                        | **remove** files created during building `release` target
+`debug` (default)                      | **build** example using the source files of "ev3dev-c" library
+`debug-clean` or `clean`               | **remove** all files created during building `debug` target
+`debug-clean-binary` or `clean-binary` | **remove** only binary files created during building `debug` target
 
 ## See also
 
