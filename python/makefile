@@ -20,8 +20,14 @@ endif
 TOP = ..
 
 # -- compilers
+ifeq ($(PLATFORM),__UNIX__)
+CC = arm-linux-gnueabi-gcc
+CXX = arm-linux-gnueabi-g++
+else
 CC = gcc
 CXX = g++
+endif
+
 LINK = $(CC)
 
 # -- on EV3 BRICK

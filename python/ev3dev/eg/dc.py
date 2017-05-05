@@ -15,7 +15,7 @@ if __name__ == '__main__':
     name_port = ev3_port_name( port, EXT_PORT__NONE_, 0 )
     print 'Set mode of the EV3 output port (%s)...' % ( name_port )
     sn_port = ev3_search_port( port, EXT_PORT__NONE_ )
-    set_port_mode_inx( sn_port, OUTPUT_RCX_MOTOR )
+    set_port_mode_inx( sn_port, OUTPUT_DC_MOTOR )
     ok, mode = get_port_mode( sn_port, 256 )
     if ok:
         print '%s: %s' % ( name_port, mode )

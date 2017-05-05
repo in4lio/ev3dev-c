@@ -11,9 +11,9 @@ if ok:
 else:
 	print 'ERROR: ev3_listdir( leds )'
 
-ok, state = ev3_read_int( '/sys/class/leds/ev3-left0:red:ev3dev/brightness' )
+ok, state = ev3_read_int( '/sys/class/leds/ev3:left:red:ev3dev/brightness' )
 if ok:
-    if not ev3_write_int( '/sys/class/leds/ev3-left0:red:ev3dev/brightness', 0 if state else 255 ):
+    if not ev3_write_int( '/sys/class/leds/ev3:left:red:ev3dev/brightness', 0 if state else 255 ):
 			print 'ERROR: ev3_write_int( brightness )'
 else:
     print 'ERROR: ev3_read_int( brightness )'

@@ -31,21 +31,22 @@ if __name__ == '__main__':
     ok, sn = ev3_search_tacho( LEGO_EV3_M_MOTOR )
     if ok:
         print 'LEGO_EV3_M_MOTOR is found, run for 5 sec...'
-
+		max_speed = get_tacho_max_speed( sn )
+		print '  max_speed =', max_speed
         set_tacho_stop_action_inx( sn, TACHO_COAST )
-        set_tacho_speed_sp( sn, 1000 )
+        set_tacho_speed_sp( sn, max_speed * 2 / 3 )
         set_tacho_time_sp( sn, 5000 )
         set_tacho_ramp_up_sp( sn, 2000 )
         set_tacho_ramp_down_sp( sn, 2000 )
         set_tacho_command_inx( sn, TACHO_RUN_TIMED )
-        # Wait tacho is stopped
+        # Wait tacho stop
         sleep( 0.1 )
         ok, flags = get_tacho_state_flags( sn )
         while ok and flags:
             ok, flags = get_tacho_state_flags( sn )
 
         print 'run to relative position...'
-        set_tacho_speed_sp( sn, 500 )
+        set_tacho_speed_sp( sn, max_speed / 2 )
         set_tacho_ramp_up_sp( sn, 0 )
         set_tacho_ramp_down_sp( sn, 0 )
         set_tacho_position_sp( sn, 90 )

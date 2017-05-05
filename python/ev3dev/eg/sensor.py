@@ -37,6 +37,12 @@ if __name__ == '__main__':
                     if ok:
                         print '  value%d = %d' % ( ii, val )
 
+    ok, sn_ir = ev3_search_sensor( LEGO_EV3_IR )
+    if ok:
+        print 'IR sensor is found'
+    else:
+        print 'IR sensor is NOT found'
+
     ok, sn_touch = ev3_search_sensor( LEGO_EV3_TOUCH )
     if ok:
         print 'TOUCH sensor is found, press BUTTON for EXIT...'

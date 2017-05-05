@@ -9,6 +9,10 @@ if ev3_init() < 1: sys.exit( 1 )
 
 print '*** ( EV3 ) Hello! ***'
 
+set_light( LIT_LEFT, LIT_OFF )
+set_light( LIT_RIGHT, LIT_OFF )
+sleep( 0.5 )
+
 set_light_blink( LIT_RIGHT, LIT_GREEN, 1000, 500 )
 sleep( 0.5 )
 set_light_blink( LIT_RIGHT, LIT_RED, 1000, 500 )
