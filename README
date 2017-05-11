@@ -79,34 +79,34 @@
     rcx_led  – use of a RCX LED
     servo    – a SERVO motor example
 
-    > cd eg/light/
+    > cd ev3dev-c/eg/light/
     > make
-    > Debug/light
+    > ./Debug/light
     or
-    > Debug\mingw\light.exe
+    > .\Debug\mingw\light.exe
 
     Similar examples in Python could be found in "python/ev3dev/eg".
     Examples for Ruby are placed in "ruby/eg", for Perl in "perl/eg".
 
-    * * *  How to drive the EV3 hardware remotely
+    * * *  How to control the EV3 hardware remotely
 
     https://github.com/in4lio/ev3dev-c/tree/master/source/ev3/ev3_link/
 
     * * *  How to make and install STATIC library
 
-    > cd source/ev3/
+    > cd ev3dev-c/source/ev3/
     > make
-    > make install
+    > sudo make install
 
     * * *  How to make and install SHARED library
 
-    > cd source/ev3/
+    > cd ev3dev-c/source/ev3/
     > make shared
-    > make shared-install
+    > sudo make shared-install
 
     * * *  How to use SHARED library
 
-    > cd eg/port/
+    > cd ev3dev-c/eg/port/
     > gcc port.c -lev3dev-c -o port
     > ./port
 
@@ -117,12 +117,12 @@
     repository and its submodules:
 
         git clone https://github.com/in4lio/ev3dev-c.git
-        cd ev3dev-c
+        cd ev3dev-c/
         git submodule update --init --recursive
 
     To pull the latest library and its submodules:
 
-        cd ev3dev-c
+        cd ev3dev-c/
         git pull origin master
         git submodule foreach git pull origin master
 

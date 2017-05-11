@@ -18,7 +18,7 @@ Name                                                                  | Descript
 ## How to make examples?
 
 ```
-> cd remote/
+> cd ev3dev-c/eg/remote/
 > make
 ```
 
