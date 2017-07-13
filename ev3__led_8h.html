@@ -97,27 +97,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a7dc5a229f63f4729fdf8dd20140a9ccd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dc5a229f63f4729fdf8dd20140a9ccd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_EXT</b>&#160;&#160;&#160;extern</td></tr>
-<tr class="separator:a7dc5a229f63f4729fdf8dd20140a9ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49c0043485882bea4164092582402659"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49c0043485882bea4164092582402659"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_EXT_INIT</b>(dec,  init)&#160;&#160;&#160;extern dec</td></tr>
-<tr class="separator:a49c0043485882bea4164092582402659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d97780aae2301820893a75336598ecd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d97780aae2301820893a75336598ecd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_C</b></td></tr>
-<tr class="separator:a6d97780aae2301820893a75336598ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0daf2360de926ae5210f2062b778e6b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0daf2360de926ae5210f2062b778e6b3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_EXT_C</b>&#160;&#160;&#160;extern EV3_LED_C</td></tr>
-<tr class="separator:a0daf2360de926ae5210f2062b778e6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab85c22952bed5b0e2899f1954757885a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab85c22952bed5b0e2899f1954757885a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_EXT_C_INIT</b>(dec,  init)&#160;&#160;&#160;extern EV3_LED_C dec</td></tr>
-<tr class="separator:ab85c22952bed5b0e2899f1954757885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c9ab05fd7f19c0063a857336b853a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8c9ab05fd7f19c0063a857336b853a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_VAR</b>(decl)&#160;&#160;&#160;extern decl</td></tr>
+<tr class="separator:aa8c9ab05fd7f19c0063a857336b853a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acedfc574a0c1d27e2d4ecd69a6562ada"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acedfc574a0c1d27e2d4ecd69a6562ada"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_VAR_INIT</b>(decl, ...)&#160;&#160;&#160;extern decl</td></tr>
+<tr class="separator:acedfc574a0c1d27e2d4ecd69a6562ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4463675043facb3c7910b9855a966b3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4463675043facb3c7910b9855a966b3d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EV3_LED_INL</b>&#160;&#160;&#160;inline</td></tr>
 <tr class="separator:a4463675043facb3c7910b9855a966b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f49001be13949a16a57e6c99ab00ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2f49001be13949a16a57e6c99ab00ad"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>COMMA</b>&#160;&#160;&#160;,</td></tr>
-<tr class="separator:aa2f49001be13949a16a57e6c99ab00ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f815fe3643635dce9d8f3d0979fa9ea"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>LED_ATTR__COUNT_</b>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:ga2f815fe3643635dce9d8f3d0979fa9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,42 +157,42 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga0669db839c16b88af3ce084225933eeb"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga0669db839c16b88af3ce084225933eeb">get_led_brightness</a> (uint8_t inx, byte *buf)</td></tr>
-<tr class="memdesc:ga0669db839c16b88af3ce084225933eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "brightness" attribute of the LED.  <a href="group__ev3__led.html#ga0669db839c16b88af3ce084225933eeb">More...</a><br /></td></tr>
-<tr class="separator:ga0669db839c16b88af3ce084225933eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga58dff7305d43ef01735c3d1dc36fecd4"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga58dff7305d43ef01735c3d1dc36fecd4">set_led_brightness</a> (uint8_t inx, byte value)</td></tr>
-<tr class="memdesc:ga58dff7305d43ef01735c3d1dc36fecd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "brightness" attribute of the LED.  <a href="group__ev3__led.html#ga58dff7305d43ef01735c3d1dc36fecd4">More...</a><br /></td></tr>
-<tr class="separator:ga58dff7305d43ef01735c3d1dc36fecd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace80dde70f9c3733d6ebf4ab20c6b3a0"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gace80dde70f9c3733d6ebf4ab20c6b3a0">get_led_delay_off</a> (uint8_t inx, int *buf)</td></tr>
-<tr class="memdesc:gace80dde70f9c3733d6ebf4ab20c6b3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "delay_off" attribute of the LED.  <a href="group__ev3__led.html#gace80dde70f9c3733d6ebf4ab20c6b3a0">More...</a><br /></td></tr>
-<tr class="separator:gace80dde70f9c3733d6ebf4ab20c6b3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabed1afad405f477ac95067e5afa57fb0"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gabed1afad405f477ac95067e5afa57fb0">set_led_delay_off</a> (uint8_t inx, int value)</td></tr>
-<tr class="memdesc:gabed1afad405f477ac95067e5afa57fb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "delay_off" attribute of the LED.  <a href="group__ev3__led.html#gabed1afad405f477ac95067e5afa57fb0">More...</a><br /></td></tr>
-<tr class="separator:gabed1afad405f477ac95067e5afa57fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad54285c2f04b28bb5624a58e211807aa"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gad54285c2f04b28bb5624a58e211807aa">get_led_delay_on</a> (uint8_t inx, int *buf)</td></tr>
-<tr class="memdesc:gad54285c2f04b28bb5624a58e211807aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "delay_on" attribute of the LED.  <a href="group__ev3__led.html#gad54285c2f04b28bb5624a58e211807aa">More...</a><br /></td></tr>
-<tr class="separator:gad54285c2f04b28bb5624a58e211807aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae6922b48ce5c7eda05d2e9d0b255fc60"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gae6922b48ce5c7eda05d2e9d0b255fc60">set_led_delay_on</a> (uint8_t inx, int value)</td></tr>
-<tr class="memdesc:gae6922b48ce5c7eda05d2e9d0b255fc60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "delay_on" attribute of the LED.  <a href="group__ev3__led.html#gae6922b48ce5c7eda05d2e9d0b255fc60">More...</a><br /></td></tr>
-<tr class="separator:gae6922b48ce5c7eda05d2e9d0b255fc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab95f028d333e46e77d8464e45a952fbb"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gab95f028d333e46e77d8464e45a952fbb">get_led_max_brightness</a> (uint8_t inx, byte *buf)</td></tr>
-<tr class="memdesc:gab95f028d333e46e77d8464e45a952fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "max_brightness" attribute of the LED.  <a href="group__ev3__led.html#gab95f028d333e46e77d8464e45a952fbb">More...</a><br /></td></tr>
-<tr class="separator:gab95f028d333e46e77d8464e45a952fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f49364bc6f4a0b3fca4bf26c6d5a955"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga8f49364bc6f4a0b3fca4bf26c6d5a955">get_led_trigger</a> (uint8_t inx, char *buf, size_t sz)</td></tr>
-<tr class="memdesc:ga8f49364bc6f4a0b3fca4bf26c6d5a955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "trigger" attribute of the LED.  <a href="group__ev3__led.html#ga8f49364bc6f4a0b3fca4bf26c6d5a955">More...</a><br /></td></tr>
-<tr class="separator:ga8f49364bc6f4a0b3fca4bf26c6d5a955"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga525fad0149a0157457ade6f341fcfa10"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga525fad0149a0157457ade6f341fcfa10">set_led_trigger</a> (uint8_t inx, char *value)</td></tr>
-<tr class="memdesc:ga525fad0149a0157457ade6f341fcfa10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "trigger" attribute of the LED.  <a href="group__ev3__led.html#ga525fad0149a0157457ade6f341fcfa10">More...</a><br /></td></tr>
-<tr class="separator:ga525fad0149a0157457ade6f341fcfa10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac54cf281b9a5312aa5305dba2fd6a8e3"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gac54cf281b9a5312aa5305dba2fd6a8e3">get_led_trigger_inx</a> (uint8_t inx)</td></tr>
-<tr class="memdesc:gac54cf281b9a5312aa5305dba2fd6a8e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "trigger" attribute of the LED and get the index.  <a href="group__ev3__led.html#gac54cf281b9a5312aa5305dba2fd6a8e3">More...</a><br /></td></tr>
-<tr class="separator:gac54cf281b9a5312aa5305dba2fd6a8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05469fb59101acddb7ba97d6cd4dea3e"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga05469fb59101acddb7ba97d6cd4dea3e">set_led_trigger_inx</a> (uint8_t inx, INX_T trigger_inx)</td></tr>
-<tr class="memdesc:ga05469fb59101acddb7ba97d6cd4dea3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "trigger" attribute of the LED by the index.  <a href="group__ev3__led.html#ga05469fb59101acddb7ba97d6cd4dea3e">More...</a><br /></td></tr>
-<tr class="separator:ga05469fb59101acddb7ba97d6cd4dea3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga759d0a4bf99bb6f3d673d47c7eaaec5d"><td class="memItemLeft" align="right" valign="top">EV3_LED_EXT_C const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga759d0a4bf99bb6f3d673d47c7eaaec5d">ev3_led_trigger</a> (INX_T trigger_inx)</td></tr>
-<tr class="memdesc:ga759d0a4bf99bb6f3d673d47c7eaaec5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified LED trigger.  <a href="group__ev3__led.html#ga759d0a4bf99bb6f3d673d47c7eaaec5d">More...</a><br /></td></tr>
-<tr class="separator:ga759d0a4bf99bb6f3d673d47c7eaaec5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3b9ff25e6218fc1d766f7a14526524a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gad3b9ff25e6218fc1d766f7a14526524a">get_led_brightness</a> (uint8_t inx, byte *buf)</td></tr>
+<tr class="memdesc:gad3b9ff25e6218fc1d766f7a14526524a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "brightness" attribute of the LED.  <a href="group__ev3__led.html#gad3b9ff25e6218fc1d766f7a14526524a">More...</a><br /></td></tr>
+<tr class="separator:gad3b9ff25e6218fc1d766f7a14526524a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2c05a52cfbadc2f8d3e43880b83c6af"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gae2c05a52cfbadc2f8d3e43880b83c6af">set_led_brightness</a> (uint8_t inx, byte value)</td></tr>
+<tr class="memdesc:gae2c05a52cfbadc2f8d3e43880b83c6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "brightness" attribute of the LED.  <a href="group__ev3__led.html#gae2c05a52cfbadc2f8d3e43880b83c6af">More...</a><br /></td></tr>
+<tr class="separator:gae2c05a52cfbadc2f8d3e43880b83c6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7540f35a4ae1acb638a7e6e4b312f7c8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga7540f35a4ae1acb638a7e6e4b312f7c8">get_led_delay_off</a> (uint8_t inx, int *buf)</td></tr>
+<tr class="memdesc:ga7540f35a4ae1acb638a7e6e4b312f7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "delay_off" attribute of the LED.  <a href="group__ev3__led.html#ga7540f35a4ae1acb638a7e6e4b312f7c8">More...</a><br /></td></tr>
+<tr class="separator:ga7540f35a4ae1acb638a7e6e4b312f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga42c3572b0ed7507c0c981853ff954b36"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga42c3572b0ed7507c0c981853ff954b36">set_led_delay_off</a> (uint8_t inx, int value)</td></tr>
+<tr class="memdesc:ga42c3572b0ed7507c0c981853ff954b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "delay_off" attribute of the LED.  <a href="group__ev3__led.html#ga42c3572b0ed7507c0c981853ff954b36">More...</a><br /></td></tr>
+<tr class="separator:ga42c3572b0ed7507c0c981853ff954b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4255c1d2fa52e05969f92c4dbbccaac3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga4255c1d2fa52e05969f92c4dbbccaac3">get_led_delay_on</a> (uint8_t inx, int *buf)</td></tr>
+<tr class="memdesc:ga4255c1d2fa52e05969f92c4dbbccaac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "delay_on" attribute of the LED.  <a href="group__ev3__led.html#ga4255c1d2fa52e05969f92c4dbbccaac3">More...</a><br /></td></tr>
+<tr class="separator:ga4255c1d2fa52e05969f92c4dbbccaac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e52bb8637d0ac332a4a78831fc37c0b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga0e52bb8637d0ac332a4a78831fc37c0b">set_led_delay_on</a> (uint8_t inx, int value)</td></tr>
+<tr class="memdesc:ga0e52bb8637d0ac332a4a78831fc37c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "delay_on" attribute of the LED.  <a href="group__ev3__led.html#ga0e52bb8637d0ac332a4a78831fc37c0b">More...</a><br /></td></tr>
+<tr class="separator:ga0e52bb8637d0ac332a4a78831fc37c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4779af94fc1e579f3cca6c7e36cb7c1c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga4779af94fc1e579f3cca6c7e36cb7c1c">get_led_max_brightness</a> (uint8_t inx, byte *buf)</td></tr>
+<tr class="memdesc:ga4779af94fc1e579f3cca6c7e36cb7c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "max_brightness" attribute of the LED.  <a href="group__ev3__led.html#ga4779af94fc1e579f3cca6c7e36cb7c1c">More...</a><br /></td></tr>
+<tr class="separator:ga4779af94fc1e579f3cca6c7e36cb7c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac32cc03ed9c59082a7b6cafd95b933eb"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gac32cc03ed9c59082a7b6cafd95b933eb">get_led_trigger</a> (uint8_t inx, char *buf, size_t sz)</td></tr>
+<tr class="memdesc:gac32cc03ed9c59082a7b6cafd95b933eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "trigger" attribute of the LED.  <a href="group__ev3__led.html#gac32cc03ed9c59082a7b6cafd95b933eb">More...</a><br /></td></tr>
+<tr class="separator:gac32cc03ed9c59082a7b6cafd95b933eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7143db1263ee187153be4de3350287f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gaa7143db1263ee187153be4de3350287f">set_led_trigger</a> (uint8_t inx, char *value)</td></tr>
+<tr class="memdesc:gaa7143db1263ee187153be4de3350287f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "trigger" attribute of the LED.  <a href="group__ev3__led.html#gaa7143db1263ee187153be4de3350287f">More...</a><br /></td></tr>
+<tr class="separator:gaa7143db1263ee187153be4de3350287f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8864bdea63fbe7888907f30f2776d40"><td class="memItemLeft" align="right" valign="top">INX_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#gaa8864bdea63fbe7888907f30f2776d40">get_led_trigger_inx</a> (uint8_t inx)</td></tr>
+<tr class="memdesc:gaa8864bdea63fbe7888907f30f2776d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read "trigger" attribute of the LED and get the index.  <a href="group__ev3__led.html#gaa8864bdea63fbe7888907f30f2776d40">More...</a><br /></td></tr>
+<tr class="separator:gaa8864bdea63fbe7888907f30f2776d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7dd0099415b0a42080e334f9b2569809"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga7dd0099415b0a42080e334f9b2569809">set_led_trigger_inx</a> (uint8_t inx, INX_T trigger_inx)</td></tr>
+<tr class="memdesc:ga7dd0099415b0a42080e334f9b2569809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write "trigger" attribute of the LED by the index.  <a href="group__ev3__led.html#ga7dd0099415b0a42080e334f9b2569809">More...</a><br /></td></tr>
+<tr class="separator:ga7dd0099415b0a42080e334f9b2569809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga055ff14c68c6ed5979778642212cf7c6"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ev3__led.html#ga055ff14c68c6ed5979778642212cf7c6">ev3_led_trigger</a> (INX_T trigger_inx)</td></tr>
+<tr class="memdesc:ga055ff14c68c6ed5979778642212cf7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get name of the specified LED trigger.  <a href="group__ev3__led.html#ga055ff14c68c6ed5979778642212cf7c6">More...</a><br /></td></tr>
+<tr class="separator:ga055ff14c68c6ed5979778642212cf7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>EV3 LEDs. </p>
@@ -213,7 +201,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 5 2017 16:45:11 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 13 2017 14:58:24 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
