@@ -9,7 +9,7 @@
     ev3dev-c    0.9b8
                 2017-05-05
 
-    kernel      4.4.61-20-ev3dev-ev3
+    kernel      4.4.68-20-ev3dev-ev3
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -54,7 +54,7 @@
     * * *  What are unusual ".yu", ".yu-с" and ".yu-h" files for?
 
     ev3dev-c is written using yupp lexical preprocessor, but don't
-    panic, generated source files in C also included.
+    panic, the generated source files in C also included.
 
     * * *  How can I see some examples?
 
