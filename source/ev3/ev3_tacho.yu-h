@@ -8,7 +8,7 @@
 ($TITLE,,EV3 Tacho Motors.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($h-begin-named)
 
@@ -24,9 +24,13 @@
  *  \{
  */
 
+($extern-c-begin)
+
 ($import "ev3_tacho-dict.yu")
 ($import "ev3_class_decl.yu")
 ($import "ev3_class-h.yu")
+
+($extern-c-end)
 
 /** \} */
 

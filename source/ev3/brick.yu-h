@@ -8,7 +8,7 @@
 ($TITLE,,Simplified interface of "ev3dev-c" library.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($h-begin-named)
 
@@ -29,6 +29,8 @@
  *  but extended ports are not supported.
  *  \{
  */
+
+($extern-c-begin)
 
 ($import "brick_socket-dict.yu")
 
@@ -54,32 +56,32 @@ enum {
  *  \param port EV3 port.
  *  \return Socket.
  */
-($extern-c) POOL_T port_to_socket( uint8_t port );
+extern POOL_T port_to_socket( uint8_t port );
 
 /**
  *  \brief Get EV3 port of the socket.
  *  \param sock Socket.
  *  \return EV3 port.
  */
-($extern-c) uint8_t socket_to_port( POOL_T sock );
+extern uint8_t socket_to_port( POOL_T sock );
 
 /**
  *  \brief Initialize the EV3 brick.
  *  \return false - the brick is NOT found or an error has occurred;
  *  true - the brick is OK.
  */
-($extern-c) bool brick_init( void );
+extern bool brick_init( void );
 
 /**
  *  \brief Uninitialize the EV3 brick.
  */
-($extern-c) void brick_uninit( void );
+extern void brick_uninit( void );
 
 /**
  *  \brief Read state of the EV3 brick's keys.
  *  \return State.
  */
-($extern-c) uint8_t brick_keys( void );
+extern uint8_t brick_keys( void );
 
 ($import "ev3_sensor-dict.yu")
 ($import "ev3_class_decl.yu")
@@ -97,7 +99,9 @@ enum {
  *  \brief Delay in milliseconds.
  *  \param ms Value.
  */
-($extern-c) void sleep_ms( uint32_t ms );
+extern void sleep_ms( uint32_t ms );
+
+($extern-c-end)
 
 /** \} */
 

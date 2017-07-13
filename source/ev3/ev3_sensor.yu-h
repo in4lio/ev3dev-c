@@ -8,7 +8,7 @@
 ($TITLE,,EV3 Sensors.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($h-begin-named)
 
@@ -23,6 +23,8 @@
  *  \see http://www.ev3dev.org/docs/drivers/lego-sensor-class/
  *  \{
  */
+
+($extern-c-begin)
 
 ($import "ev3_sensor-dict.yu")
 ($import "ev3_class_decl.yu")
@@ -46,6 +48,8 @@ enum {
 	RED_UP_RED_DOWN    = 10,
 	BLUE_UP_BLUE_DOWN  = 11,
 };
+
+($extern-c-end)
 
 /** \} */
 

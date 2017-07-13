@@ -13,7 +13,7 @@
 			 *  \param sock Socket.
 			 *  \return Requested value.
 			 */
-			($extern-c) INX_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
+			extern INX_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
 
 		[ \else ($if ($ne ($index CLASS_ATTR_ID_FLAGS ($i CLASS_ATTR_ID)) -1) ]
 			/**
@@ -21,7 +21,7 @@
 			 *  \param sock Socket.
 			 *  \return Requested value.
 			 */
-			($extern-c) FLAGS_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
+			extern FLAGS_T ($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock );
 
 		[ \else ]
 			/**
@@ -35,7 +35,7 @@
 			 [ )
 			 *  \return Requested value.
 			 */
-			($extern-c) ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock($[, ($i CLASS_ATTR_TYPE) *buf, size_t sz] ? ($i CLASS_ATTR_ARRAY) | [, ($i CLASS_ATTR_TYPE) defval]) );
+			extern ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))($CLASS_ID)_get_($i CLASS_ATTR_ID)( POOL_T sock($[, ($i CLASS_ATTR_TYPE) *buf, size_t sz] ? ($i CLASS_ATTR_ARRAY) | [, ($i CLASS_ATTR_TYPE) defval]) );
 
 		[ ))
 	)
@@ -49,7 +49,7 @@
 			 *  \param ($i CLASS_ATTR_ID)_inx Index of the ($CL_TITLE) ($i CLASS_ATTR_ID).
 			 *  \return Flag - success operation.
 			 */
-			($extern-c) bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, INX_T ($i CLASS_ATTR_ID)_inx );
+			extern bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, INX_T ($i CLASS_ATTR_ID)_inx );
 
 		[ \else ]
 			/**
@@ -61,7 +61,7 @@
 			 [ ? ($eq ($i CLASS_ATTR_ARRAY) 2))
 			 *  \return Flag - success operation.
 			 */
-			($extern-c) bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
+			extern bool ($CLASS_ID)_set_($i CLASS_ATTR_ID)( POOL_T pool, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) );
 
 		[ )
 	)
@@ -81,7 +81,7 @@
 	 [ )
 	 *  \return Requested value.
 	 */
-	($extern-c) ($i CLASS_AVEC_TYPE) ($[*] ? ($i CLASS_AVEC_ARRAY))($CLASS_ID)_get_($i CLASS_AVEC_ID)( uint8_t inx, POOL_T sock($[, ($i CLASS_AVEC_TYPE) *buf, size_t sz] ? ($i CLASS_AVEC_ARRAY) | [, ($i CLASS_AVEC_TYPE) defval]) );
+	extern ($i CLASS_AVEC_TYPE) ($[*] ? ($i CLASS_AVEC_ARRAY))($CLASS_ID)_get_($i CLASS_AVEC_ID)( uint8_t inx, POOL_T sock($[, ($i CLASS_AVEC_TYPE) *buf, size_t sz] ? ($i CLASS_AVEC_ARRAY) | [, ($i CLASS_AVEC_TYPE) defval]) );
 
 [ )
 
@@ -101,7 +101,7 @@
 				 *  \param pool Pool of sockets.
 				 *  \return Flag - success operation.
 				 */
-				($extern-c) bool ($_TYPE)($_ATTR)_($lower ($_VALUE_TO_ID ii))( POOL_T pool );
+				extern bool ($_TYPE)($_ATTR)_($lower ($_VALUE_TO_ID ii))( POOL_T pool );
 
 			[ )
 		[ )
@@ -118,7 +118,7 @@
 		 *  \param pool Pool of sockets.
 		 *  \return Flag - success operation.
 		 */
-		($extern-c) bool ($CLASS_ID)($_ATTR)_($lower ($_VALUE_TO_ID i))( POOL_T pool );
+		extern bool ($CLASS_ID)($_ATTR)_($lower ($_VALUE_TO_ID i))( POOL_T pool );
 
 	[ )
 [ )
@@ -128,7 +128,7 @@
  *  \param type_inx ($CL_TITLE_1) type.
  *  \return Pool of sockets to which specified ($CL_TITLE)s are plugged.
  */
-($extern-c) POOL_T ($CLASS_ID)_search( INX_T type_inx );
+extern POOL_T ($CLASS_ID)_search( INX_T type_inx );
 
 /**
  *  \brief Check that ($CL_TITLE)s of the specified type are plugged into specified sockets.
@@ -136,7 +136,7 @@
  *  \param type_inx ($CL_TITLE_1) type, if this parameter is `($CLASS_ID))_TYPE__NONE_` the type does not matter.
  *  \return Flag - ($CL_TITLE)s are found.
  */
-($extern-c) bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx );
+extern bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx );
 
 ($if ($ne ($index CLASS_ATTR_FLAGS "state") -1) ]
 	/**
@@ -144,6 +144,6 @@
 	 *  \param pool Pool of sockets.
 	 *  \return Flag - at least one ($CL_TITLE) is running.
 	 */
-	($extern-c) bool ($CLASS_ID)_is_running( POOL_T pool );
+	extern bool ($CLASS_ID)_is_running( POOL_T pool );
 
 [ )

@@ -8,7 +8,7 @@
 ($TITLE,,EV3 Lights (GREEN and RED LEDs at once).)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($implement-named)
 

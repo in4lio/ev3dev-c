@@ -8,7 +8,7 @@
 ($TITLE,,EV3 Ports.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($h-begin-named)
 
@@ -23,6 +23,8 @@
  *  \see http://www.ev3dev.org/docs/drivers/lego-port-class/
  *  \{
  */
+
+($extern-c-begin)
 
 ($import "ev3_port-dict.yu")
 ($import "ev3_class_decl.yu")
@@ -57,7 +59,7 @@
  *  \param extport Extended port index.
  *  \return Port sequence number.
  */
-($extern-c) uint8_t ev3_search_port( uint8_t port, uint8_t extport );
+extern uint8_t ev3_search_port( uint8_t port, uint8_t extport );
 
 /**
  *  \brief Parse name of the EV3 port.
@@ -66,7 +68,7 @@
  *  \param extport Buffer for the extended port index.
  *  \param addr Buffer for the address.
  */
-($extern-c) void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr );
+extern void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *addr );
 
 /**
  *  \brief Assemble name of the EV3 port.
@@ -76,7 +78,9 @@
  *  \param[out] buf Buffer for result.
  *  \return Requested value.
  */
-($extern-c) char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf );
+extern char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf );
+
+($extern-c-end)
 
 /** \} */
 

@@ -8,7 +8,7 @@
 ($TITLE,,Simplified interface of "ev3dev-c" library.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($implement-named)
 

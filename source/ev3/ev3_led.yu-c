@@ -8,7 +8,7 @@
 ($TITLE,,EV3 LEDs.)
 
 ($import stdlib)
-($import h)
+($import hlib)
 
 ($implement-named)
 
