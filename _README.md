@@ -24,7 +24,7 @@ from a remote computer, for example, running under Windows.
 ## OTHER LANGUAGES
 
 [Python](python), [Ruby](ruby) and [Perl](perl) libraries are
-automatically generated from C library using SWIG tool.
+automatically generated from the C library using SWIG tool.
 
 Use "pip" to install **ev3dev-c** Python package:
 
@@ -34,8 +34,8 @@ Use "pip" to install **ev3dev-c** Python package:
 the key `--pre`.
 
 Python package contains the following binary modules:
-* _"\_ev3.pyd"_ – for a remote access under Windows (x86);
-* _"\_ev3.so"_ – for LEGO Mindstorms EV3 Debian.
+* _"\_ev3.pyd"_ – for a remote access under Windows (x86)
+* _"\_ev3.so"_ – for LEGO Mindstorms EV3 Debian
 
 You have to install "python-dev", "ruby-dev" and "libperl-dev"
 packages to build the corresponding library.
@@ -49,8 +49,8 @@ packages to build the corresponding library.
 ### What are unusual _".yu"_, _".yu-с"_ and _".yu-h"_ files for?
 
 **ev3dev-c** is written using
-[yupp lexical preprocessor](https://github.com/in4lio/yupp),
-but don't panic, the generated source files in C also included.
+[yupp lexical preprocessor](https://github.com/in4lio/yupp) –
+but don't panic – the generated source files in C also included.
 
 ### How can I see some examples
 
@@ -80,16 +80,17 @@ Name           | Description
 
 [Further examples in C...](eg)
 
+Similar examples also available in [Python](python/ev3dev/eg),
+[Ruby](ruby/eg) and [Perl](perl/eg).
+
 ### How to make examples
 
     cd ev3dev-c/eg/light/
     make
     ./Debug/light
 or
-    .\Debug\mingw\light.exe
 
-Similar examples also available in [Python](python/ev3dev/eg),
-[Ruby](ruby/eg) and [Perl](perl/eg).
+    .\Debug\mingw\light.exe
 
 ### [How to control the EV3 hardware remotely](source/ev3/ev3_link)
 
