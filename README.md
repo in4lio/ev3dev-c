@@ -29,9 +29,9 @@ Use **pip** to install **ev3dev-c** Python package:
 **ev3dev-c** is currently in a beta stage, therefore you have to use
 the key `--pre`.
 
-Python package contains the following binary modules:
-* _"\_ev3.pyd"_ for a remote access under Windows (x86)
-* _"\_ev3.so"_ for LEGO Mindstorms EV3 Debian
+**ev3dev-c** Python package contains the following binary modules:
+* _"\_ev3.pyd"_, for remote control from Windows (x86)
+* _"\_ev3.so"_, for LEGO MINDSTORMS EV3 Debian
 
 You have to install _"python-dev"_, _"ruby-dev"_ and _"libperl-dev"_
 packages to build the corresponding library.
@@ -85,6 +85,7 @@ For instance, to compile [_"light.c"_](eg/light) example:
 
     cd ev3dev-c/eg/light/
     make
+
     ./Debug/light
 
 or, if you are running Windows:
