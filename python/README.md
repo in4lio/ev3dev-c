@@ -1,5 +1,3 @@
-## `ev3dev-c` Python Package
+### **ev3dev-c** Python Package
 
-```
-pip install ev3dev-c
-```
+    pip install ev3dev-c
