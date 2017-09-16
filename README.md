@@ -9,15 +9,16 @@
 
 ### WHAT IS IT?
 
-**ev3dev-c** is a C library for
-[LEGO MINDSTORMS EV3 Debian Linux](http://www.ev3dev.org/)
-which wraps an access to the EV3 hardware.
+**ev3dev-c** is a C library for [LEGO MINDSTORMS EV3 Debian Linux][ev3dev]
+which wraps access to the EV3 hardware.
 
-The library also supports remote access to the EV3 brick over UDP.
-So, if you configure WLAN on the brick you can control the EV3 hardware
+[ev3dev]: http://www.ev3dev.org/
+
+The library also supports remote access to the EV3 brick over a network.
+So, if you configure WLAN on the brick, you can control the EV3 hardware
 from a remote computer, for example, running under Windows.
 
-### OTHER LANGUAGES
+### PYTHON, RUBY and PERL
 
 [Python](python), [Ruby](ruby) and [Perl](perl) libraries are
 automatically generated from the C library using SWIG tool.
@@ -34,7 +35,7 @@ the key `--pre`.
 * _"\_ev3.so"_ – for LEGO MINDSTORMS EV3 Debian
 
 You have to install _"python-dev"_, _"ruby-dev"_ and _"libperl-dev"_
-packages to build the corresponding library.
+packages to build the corresponding libraries.
 
 ### GET HELP
 
@@ -44,24 +45,25 @@ packages to build the corresponding library.
 
 #### What are unusual _".yu"_, _".yu-с"_ and _".yu-h"_ files for?
 
-**ev3dev-c** is written using
-[yupp lexical preprocessor](https://github.com/in4lio/yupp) –
+**ev3dev-c** is written using [yupp lexical preprocessor][yupp] –
 but don't panic – the generated source files in C also included.
+
+[yupp]: https://github.com/in4lio/yupp
 
 #### How can I see some examples
 
 Name           | Description
 :---:          | :---
-[drive.c]      | a comprehensive example based on coroutines
-[remote.c]     | an IR remote control using "brick" simplified library
-[remote.py]    | use of "brick" library in Python
-[port.c]       | use of EV3 ports
+[drive.c]      | Comprehensive example based on coroutines
+[remote.c]     | IR remote control using "brick" simplified library
+[remote.py]    | Use of "brick" library in Python
+[port.c]       | Use of EV3 ports
 [sensor.c]     | TOUCH and COLOR sensors example
-[tacho.c]      | a TACHO motor running for 5 sec
-[dc.c]         | use of a DC motor
-[servo.c]      | a SERVO motor example
+[tacho.c]      | TACHO motor running for 5 sec
+[dc.c]         | Use of a DC motor
+[servo.c]      | SERVO motor example
 [light.c]      | LEDs blinking example
-[rcx_led.c]    | use of a RCX LED
+[rcx_led.c]    | Use of a RCX LED
 
 [drive.c]:       http://in4lio.github.io/ev3dev-c/drive_8c-example.html
 [remote.c]:      http://in4lio.github.io/ev3dev-c/remote_8c-example.html
@@ -112,6 +114,7 @@ or, if you are running Windows:
 
     cd ev3dev-c/eg/port/
     gcc port.c -lev3dev-c -o port
+
     ./port
 
 ### GIT
@@ -123,7 +126,7 @@ repository and its submodules:
     cd ev3dev-c/
     git submodule update --init --recursive
 
-To pull the latest library and its submodules:
+Pull the latest library and its submodules:
 
     cd ev3dev-c/
     git pull origin master
@@ -132,7 +135,7 @@ To pull the latest library and its submodules:
 ### CONTACT
 
 Please feel free to contact me at in4lio+ev3@gmail.com if you have
-any questions about the library.
+any questions about this library.
 
 ### LICENSE
 
