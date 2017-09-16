@@ -1,16 +1,26 @@
 ## Examples in Python
 
-Name                                                                   | Description
-:---:                                                                  | :---
-[dc](http://in4lio.github.io/ev3dev-c/dc_8py-example.html)             | use of a DC motor
-[io](http://in4lio.github.io/ev3dev-c/io_8py-example.html)             | use of low-level functions
-[led](http://in4lio.github.io/ev3dev-c/led_8py-example.html)           | use of LEDs
-[light](http://in4lio.github.io/ev3dev-c/light_8py-example.html)       | LEDs blinking example
-[port](http://in4lio.github.io/ev3dev-c/port_8py-example.html)         | use of EV3 ports
-[poweroff](http://in4lio.github.io/ev3dev-c/poweroff_8py-example.html) | turn the brick off remotely
-[remote](http://in4lio.github.io/ev3dev-c/remote_8py-example.html)     | an IR remote control using "brick" simplified library
-[sensor](http://in4lio.github.io/ev3dev-c/sensor_8py-example.html)     | TOUCH and COLOR sensors example
-[tacho](http://in4lio.github.io/ev3dev-c/tacho_8py-example.html)       | a TACHO motor running for 5 sec
+Name           | Description
+:---:          | :---
+[dc.py]        | Use of a DC motor
+[io.py]        | Use of low-level functions
+[led.py]       | Use of LEDs
+[light.py]     | LEDs blinking example
+[port.py]      | Use of EV3 ports
+[poweroff.py]  | Turn off the EV3 brick remotely
+[remote.py]    | IR remote control using "brick" simplified library
+[sensor.py]    | TOUCH and COLOR sensors example
+[tacho.py]     | TACHO motor running for 5 sec
+
+[dc.py]:         http://in4lio.github.io/ev3dev-c/dc_8py-example.html
+[io.py]:         http://in4lio.github.io/ev3dev-c/io_8py-example.html
+[led.py]:        http://in4lio.github.io/ev3dev-c/led_8py-example.html
+[light.py]:      http://in4lio.github.io/ev3dev-c/light_8py-example.html
+[port.py]:       http://in4lio.github.io/ev3dev-c/port_8py-example.html
+[poweroff.py]:   http://in4lio.github.io/ev3dev-c/poweroff_8py-example.html
+[remote.py]:     http://in4lio.github.io/ev3dev-c/remote_8py-example.html
+[sensor.py]:     http://in4lio.github.io/ev3dev-c/sensor_8py-example.html
+[tacho.py]:      http://in4lio.github.io/ev3dev-c/tacho_8py-example.html
 
 ## See also
 
