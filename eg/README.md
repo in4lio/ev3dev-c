@@ -35,11 +35,11 @@ Name           | Description
 
 Makefile targets                       | Description
 :---                                   | :---
-`release`                              | **build** example using precompiled "ev3dev-c" library
-`release-clean`                        | **remove** files created during building `release` target
-`debug` (default)                      | **build** example using the source files of "ev3dev-c" library
-`debug-clean` or `clean`               | **remove** all files created during building `debug` target
-`debug-clean-binary` or `clean-binary` | **remove** only binary files created during building `debug` target
+`release`                              | **Build** example using precompiled "ev3dev-c" library
+`release-clean`                        | **Remove** files created during building `release` target
+`debug` (default)                      | **Build** example using the source files of "ev3dev-c" library
+`debug-clean` or `clean`               | **Remove** all files created during building `debug` target
+`debug-clean-binary` or `clean-binary` | **Remove** only binary files created during building `debug` target
 
 ### See also
 
