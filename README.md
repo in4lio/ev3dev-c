@@ -2,10 +2,10 @@
 
 ### VERSION
 
-    ev3dev-c    0.9b9
-                2017-07-13
+    ev3dev-c    1.0c1
+                2017-09-18
 
-    kernel      4.4.68-20-ev3dev-ev3
+    kernel      4.4.87-22-ev3dev-ev3
 
 ### WHAT IS IT?
 
