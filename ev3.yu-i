@@ -1,9 +1,5 @@
 ($import "app.yu")
 ($TITLE,,SWIG interface file.)
-($macro extern ()extern)
-($macro extern-c ()extern)
-($macro extern-init ( dec init )extern ($dec);)
-($macro extern-c-init ( dec init )extern ($dec);)
 
 %module ev3
 %include "cstring.i"
@@ -71,55 +67,62 @@ ALLOC_OUTPUT_BUFFER( char *buf, 64 );
 
 ($import stdlib)
 
+($macro extern-c-begin ())
+($macro extern-c-end ())
+($macro var ( dec )extern ($dec);)
+($macro var-init ( dec init )extern ($dec);)
+
 /*
  *  ev3
  */
+
+($extern-c-begin)
 
 // CLIENT ////////////////////////////////////////
 #if EV3_BRICK == 0
 
 %rename( brick_addr ) ev3_brick_addr;
-($extern) char *ev3_brick_addr;
+extern char *ev3_brick_addr;
 %rename( brick_port ) ev3_brick_port;
-($extern) uint16_t ev3_brick_port;
+extern uint16_t ev3_brick_port;
 
 //////////////////////////////////////////////////
 #endif
 
-($extern) int ev3_init( void );
-($extern) void ev3_uninit( void );
+extern int ev3_init( void );
+extern void ev3_uninit( void );
 
-($extern) size_t ev3_write_binary( const char *fn, char *STRING, size_t LENGTH );
-($extern) size_t ev3_write( const char *fn, char *value );
-($extern) size_t ev3_write_bool( const char *fn, bool value );
-($extern) size_t ev3_write_int( const char *fn, int value );
-($extern) size_t ev3_write_dword( const char *fn, uint32_t value );
-($extern) size_t ev3_write_byte( const char *fn, uint8_t value );
-($extern) size_t ev3_write_float( const char *fn, float value );
+extern size_t ev3_write_binary( const char *fn, char *STRING, size_t LENGTH );
+extern size_t ev3_write( const char *fn, char *value );
+extern size_t ev3_write_bool( const char *fn, bool value );
+extern size_t ev3_write_int( const char *fn, int value );
+extern size_t ev3_write_dword( const char *fn, uint32_t value );
+extern size_t ev3_write_byte( const char *fn, uint8_t value );
+extern size_t ev3_write_float( const char *fn, float value );
 
-($extern) size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *STRING, size_t LENGTH );
-($extern) size_t ev3_multi_write( uint8_t *sn, uint16_t pos, const char *fn, char *value );
-($extern) size_t ev3_multi_write_bool( uint8_t *sn, uint16_t pos, const char *fn, bool value );
-($extern) size_t ev3_multi_write_int( uint8_t *sn, uint16_t pos, const char *fn, int value );
-($extern) size_t ev3_multi_write_dword( uint8_t *sn, uint16_t pos, const char *fn, uint32_t value );
-($extern) size_t ev3_multi_write_byte( uint8_t *sn, uint16_t pos, const char *fn, uint8_t value );
-($extern) size_t ev3_multi_write_float( uint8_t *sn, uint16_t pos, const char *fn, float value );
+extern size_t ev3_multi_write_binary( uint8_t *sn, uint16_t pos, const char *fn, char *STRING, size_t LENGTH );
+extern size_t ev3_multi_write( uint8_t *sn, uint16_t pos, const char *fn, char *value );
+extern size_t ev3_multi_write_bool( uint8_t *sn, uint16_t pos, const char *fn, bool value );
+extern size_t ev3_multi_write_int( uint8_t *sn, uint16_t pos, const char *fn, int value );
+extern size_t ev3_multi_write_dword( uint8_t *sn, uint16_t pos, const char *fn, uint32_t value );
+extern size_t ev3_multi_write_byte( uint8_t *sn, uint16_t pos, const char *fn, uint8_t value );
+extern size_t ev3_multi_write_float( uint8_t *sn, uint16_t pos, const char *fn, float value );
 
-($extern) size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
-($extern) size_t ev3_read( const char *fn, char *buf, size_t sz );
+extern size_t ev3_read_binary( const char *fn, char *buf, size_t sz );
+extern size_t ev3_read( const char *fn, char *buf, size_t sz );
 
 #ifndef SWIGRUBY
-($extern) size_t ev3_read_bool( const char *fn, bool *buf );
+extern size_t ev3_read_bool( const char *fn, bool *buf );
 
 #endif
-($extern) size_t ev3_read_int( const char *fn, int *buf );
-($extern) size_t ev3_read_dword( const char *fn, uint32_t *buf );
-($extern) size_t ev3_read_byte( const char *fn, uint8_t *buf );
-($extern) size_t ev3_read_float( const char *fn, float *buf );
+extern size_t ev3_read_int( const char *fn, int *buf );
+extern size_t ev3_read_dword( const char *fn, uint32_t *buf );
+extern size_t ev3_read_byte( const char *fn, uint8_t *buf );
+extern size_t ev3_read_float( const char *fn, float *buf );
 
-($extern) size_t ev3_listdir( const char *fn, char *buf, size_t sz );
-($extern) size_t ev3_read_keys( uint8_t *buf );
-($extern) bool ev3_poweroff( void );
+extern size_t ev3_listdir( const char *fn, char *buf, size_t sz );
+extern size_t ev3_read_keys( uint8_t *buf );
+extern bool ev3_poweroff( void );
 
 enum {
 	EV3_KEY__NONE_ = 0,
@@ -134,6 +137,8 @@ enum {
 
 #define DESC_LIMIT    64
 #define DESC_VEC_LEN  4
+
+($extern-c-end)
 
 ($import "tools.py")
 
