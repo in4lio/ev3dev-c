@@ -71,7 +71,7 @@ typedef struct {
 /**
  *  \brief Vector of EV3 port descriptors (filled by \ref ev3_port_init).
  */
-EV3_PORT_VAR( EV3_PORT ev3_port[ PORT_DESC__LIMIT_ ] );;
+EV3_PORT_VAR( EV3_PORT ev3_port[ PORT_DESC__LIMIT_ ] );
 
 /**
  *  \brief Identifiers of EV3 port types.

@@ -70,7 +70,7 @@ typedef struct {
 /**
  *  \brief Vector of servo motor descriptors (filled by \ref ev3_servo_init).
  */
-EV3_SERVO_VAR( EV3_SERVO ev3_servo[ SERVO_DESC__LIMIT_ ] );;
+EV3_SERVO_VAR( EV3_SERVO ev3_servo[ SERVO_DESC__LIMIT_ ] );
 
 /**
  *  \brief Identifiers of servo motor types.

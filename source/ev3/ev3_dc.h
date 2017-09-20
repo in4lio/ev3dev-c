@@ -70,7 +70,7 @@ typedef struct {
 /**
  *  \brief Vector of DC motor descriptors (filled by \ref ev3_dc_init).
  */
-EV3_DC_VAR( EV3_DC ev3_dc[ DC_DESC__LIMIT_ ] );;
+EV3_DC_VAR( EV3_DC ev3_dc[ DC_DESC__LIMIT_ ] );
 
 /**
  *  \brief Identifiers of DC motor types.

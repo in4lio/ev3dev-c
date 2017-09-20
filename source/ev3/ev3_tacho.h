@@ -70,7 +70,7 @@ typedef struct {
 /**
  *  \brief Vector of tacho descriptors (filled by \ref ev3_tacho_init).
  */
-EV3_TACHO_VAR( EV3_TACHO ev3_tacho[ TACHO_DESC__LIMIT_ ] );;
+EV3_TACHO_VAR( EV3_TACHO ev3_tacho[ TACHO_DESC__LIMIT_ ] );
 
 /**
  *  \brief Identifiers of tacho types.

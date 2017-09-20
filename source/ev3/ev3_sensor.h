@@ -71,7 +71,7 @@ typedef struct {
 /**
  *  \brief Vector of sensor descriptors (filled by \ref ev3_sensor_init).
  */
-EV3_SENSOR_VAR( EV3_SENSOR ev3_sensor[ SENSOR_DESC__LIMIT_ ] );;
+EV3_SENSOR_VAR( EV3_SENSOR ev3_sensor[ SENSOR_DESC__LIMIT_ ] );
 
 /**
  *  \brief Identifiers of sensor types.

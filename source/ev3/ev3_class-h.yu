@@ -23,7 +23,7 @@ typedef struct {
 /**
  *  \brief Vector of ($CL_TITLE) descriptors (filled by \ref ev3_($CLASS_ID)_init).
  */
-($var,,EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ]);
+($var,,EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ])
 
 /**
  *  \brief Identifiers of ($CL_TITLE) types.
