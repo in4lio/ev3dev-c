@@ -6,10 +6,10 @@
     ___         __________________________________
     ___ VERSION __________________________________
 
-    ev3dev-c    0.9b9
-                2017-07-13
+    ev3dev-c    1.0c1
+                2017-09-18
 
-    kernel      4.4.68-20-ev3dev-ev3
+    kernel      4.4.87-22-ev3dev-ev3
     ___             ______________________________
     ___ WHAT IS IT? ______________________________
 
@@ -29,10 +29,7 @@
 
     Use pip to install ev3dev-c Python package:
 
-        pip install --pre ev3dev-c
-
-    ev3dev-c is currently in a beta stage, therefore you have to use
-    the key "--pre".
+        pip install ev3dev-c
 
     Python package contains the following binary modules:
     _ev3.pyd    – for remote control from Windows (x86)

@@ -25,10 +25,7 @@ automatically generated from the C library using SWIG tool.
 
 Use **pip** to install **ev3dev-c** Python package:
 
-    pip install --pre ev3dev-c
-
-**ev3dev-c** is currently in a beta stage, therefore you have to use
-the key `--pre`.
+    pip install ev3dev-c
 
 **ev3dev-c** Python package contains the following binary modules:
 * _"\_ev3.pyd"_ – for remote control from Windows (x86)
