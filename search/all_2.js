@@ -21,6 +21,5 @@ var searchData=
   ['coro_5fyield',['CORO_YIELD',['../group__coro.html#ga7d59f9e868b47b16704623e79dcd5d82',1,'coroutine.h']]],
   ['coroutine_2eh',['coroutine.h',['../coroutine_8h.html',1,'']]],
   ['crc32_2ec',['crc32.c',['../crc32_8c.html',1,'']]],
-  ['crc32_2eh',['crc32.h',['../crc32_8h.html',1,'']]],
-  ['compilation_20notes',['Compilation notes',['../md_C:_Users_VIT_Dropbox_ev3_ev3dev-c_source_ev3_README.html',1,'']]]
+  ['crc32_2eh',['crc32.h',['../crc32_8h.html',1,'']]]
 ];
