@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Coro</title>
+<title>Coroutines in C</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">Coro</div>  </div>
+<div class="title">Coroutines in C</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -151,6 +151,7 @@ Enumerations</h2></td></tr>
 <tr class="separator:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Coroutine mechanics, implemented using the C language extensions "Labels as Values", "Statements and Declarations in Expressions" and "Locally Declared Labels". Based on Simon Tatham "Coroutines in C".</p>
 <div class="fragment"><div class="line"><a class="code" href="group__coro.html#ga3c9ae20176a0a0989b2ce834c410afbb">CORO_CONTEXT</a>( A );</div><div class="line"><a class="code" href="group__coro.html#ga3c9ae20176a0a0989b2ce834c410afbb">CORO_CONTEXT</a>( B );</div><div class="line"></div><div class="line"><a class="code" href="group__coro.html#ga0fc518855e8bfbbd08507c5168b5179f">CORO_DEFINE</a>( A )</div><div class="line">{</div><div class="line">    <a class="code" href="group__coro.html#gacc13ffa58c0df054bdee48d2458af53e">CORO_BEGIN</a>();</div><div class="line">    <span class="keywordflow">for</span> ( ; ; ) {</div><div class="line">        <span class="comment">// ...</span></div><div class="line">        <a class="code" href="group__coro.html#ga7d59f9e868b47b16704623e79dcd5d82">CORO_YIELD</a>();</div><div class="line">    }</div><div class="line">    <a class="code" href="group__coro.html#ga181ca12514e7ba67e2963256b422822a">CORO_END</a>();</div><div class="line">}</div><div class="line"></div><div class="line"><a class="code" href="group__coro.html#ga0fc518855e8bfbbd08507c5168b5179f">CORO_DEFINE</a>( B )</div><div class="line">{</div><div class="line">    <a class="code" href="group__coro.html#gaa6631be22594cd558ae8730c9ec764f4">CORO_LOCAL</a> <span class="keywordtype">int</span> b;</div><div class="line"></div><div class="line">    <a class="code" href="group__coro.html#gacc13ffa58c0df054bdee48d2458af53e">CORO_BEGIN</a>();</div><div class="line">    <span class="keywordflow">for</span> ( ; ; ) {</div><div class="line">        <span class="comment">// ...</span></div><div class="line">        <a class="code" href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">CORO_WAIT</a>( cond );</div><div class="line">    }</div><div class="line">    <a class="code" href="group__coro.html#ga181ca12514e7ba67e2963256b422822a">CORO_END</a>();</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> )</div><div class="line">{</div><div class="line">    <span class="keywordflow">for</span> ( ; ; ) {</div><div class="line">        <a class="code" href="group__coro.html#ga74863e04c83a229ccea23a468c7322b2">CORO_CALL</a>( A );</div><div class="line">        <a class="code" href="group__coro.html#ga74863e04c83a229ccea23a468c7322b2">CORO_CALL</a>( B );</div><div class="line">    }</div><div class="line">    <span class="keywordflow">return</span> 0;</div><div class="line">}</div></div><!-- fragment --><p>Any local variables which need to be persistent across a coroutine switching must be declared static (CORO_LOCAL). </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga9e4ff47d8f280a9b73f5f7219df3b39b"></a>
@@ -487,7 +488,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">({ <a class="code" href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">\</a></div><div class="line"><a class="code" href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">	CORO_WAIT</a>(( name &gt; 0 ), ## __VA_ARGS__ ); \</div><div class="line">    --name; \</div><div class="line">})</div><div class="ttc" id="group__coro_html_ga091d96c8c8089cfdaab6071808724871"><div class="ttname"><a href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">CORO_WAIT</a></div><div class="ttdeci">#define CORO_WAIT(cond,...)</div><div class="ttdoc">Waiting for the condition is true. </div><div class="ttdef"><b>Definition:</b> coroutine.h:133</div></div>
+<b>Value:</b><div class="fragment"><div class="line">({ <a class="code" href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">\</a></div><div class="line"><a class="code" href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">	CORO_WAIT</a>(( name &gt; 0 ), ## __VA_ARGS__ ); \</div><div class="line">    --name; \</div><div class="line">})</div><div class="ttc" id="group__coro_html_ga091d96c8c8089cfdaab6071808724871"><div class="ttname"><a href="group__coro.html#ga091d96c8c8089cfdaab6071808724871">CORO_WAIT</a></div><div class="ttdeci">#define CORO_WAIT(cond,...)</div><div class="ttdoc">Waiting for the condition is true. </div><div class="ttdef"><b>Definition:</b> coroutine.h:131</div></div>
 </div><!-- fragment -->
 <p>Waiting and acquire the semaphore. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -562,7 +563,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 13 2017 14:58:24 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 22 2017 19:31:53 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

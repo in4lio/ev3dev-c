@@ -6,7 +6,7 @@ var searchData=
   ['color_5fset_5fmode_5fcol_5freflect',['color_set_mode_col_reflect',['../group__brick.html#ga51efacf14b157baf5d018f74e17dec03',1,'brick.c']]],
   ['color_5fset_5fmode_5fref_5fraw',['color_set_mode_ref_raw',['../group__brick.html#gaf74979bd57339ab97b0778d6db6e0eb6',1,'brick.c']]],
   ['color_5fset_5fmode_5frgb_5fraw',['color_set_mode_rgb_raw',['../group__brick.html#ga84b9c2f8954292eef332d36e5cdd4b8e',1,'brick.c']]],
-  ['coro',['Coro',['../group__coro.html',1,'']]],
+  ['coroutines_20in_20c',['Coroutines in C',['../group__coro.html',1,'']]],
   ['coro_5falive',['CORO_ALIVE',['../group__coro.html#ga9e4ff47d8f280a9b73f5f7219df3b39b',1,'coroutine.h']]],
   ['coro_5fbegin',['CORO_BEGIN',['../group__coro.html#gacc13ffa58c0df054bdee48d2458af53e',1,'coroutine.h']]],
   ['coro_5fcall',['CORO_CALL',['../group__coro.html#ga74863e04c83a229ccea23a468c7322b2',1,'coroutine.h']]],
@@ -21,5 +21,6 @@ var searchData=
   ['coro_5fyield',['CORO_YIELD',['../group__coro.html#ga7d59f9e868b47b16704623e79dcd5d82',1,'coroutine.h']]],
   ['coroutine_2eh',['coroutine.h',['../coroutine_8h.html',1,'']]],
   ['crc32_2ec',['crc32.c',['../crc32_8c.html',1,'']]],
-  ['crc32_2eh',['crc32.h',['../crc32_8h.html',1,'']]]
+  ['crc32_2eh',['crc32.h',['../crc32_8h.html',1,'']]],
+  ['compilation_20notes',['Compilation notes',['../md_C:_Users_VIT_Dropbox_ev3_ev3dev-c_source_ev3_README.html',1,'']]]
 ];

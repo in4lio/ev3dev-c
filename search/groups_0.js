@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['coro',['Coro',['../group__coro.html',1,'']]]
+  ['coroutines_20in_20c',['Coroutines in C',['../group__coro.html',1,'']]]
 ];
