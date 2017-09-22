@@ -1,3 +1,5 @@
+## Compilation notes
+
 ### How to make and install STATIC library
 
     cd ev3dev-c/source/ev3/

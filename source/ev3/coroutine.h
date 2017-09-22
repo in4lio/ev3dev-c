@@ -4,13 +4,11 @@
  *  \author Vitaly Kravtsov (in4lio@gmail.com)
  *  \copyright The MIT License
  *
+ *  \defgroup coro Coroutines in C
+ *
  *  Coroutine mechanics, implemented using the C language extensions "Labels as Values",
  *  "Statements and Declarations in Expressions" and "Locally Declared Labels".
  *  Based on Simon Tatham "Coroutines in C".
- */
-
-/**
- *  \defgroup coro
  *
  *  \code
  *  CORO_CONTEXT( A );
@@ -205,6 +203,6 @@ L: \
 	++name; \
 })
 
-/** \} */
-
 #endif /* COROUTINE_H */
+
+/** \} */
