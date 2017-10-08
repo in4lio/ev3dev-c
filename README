@@ -17,7 +17,7 @@
     (http://www.ev3dev.org/) which wraps access to the EV3 hardware.
 
     The library also supports remote access to the EV3 brick over a network.
-    So, if you configure WLAN on the brick you can control the EV3 hardware
+    So, if you configure WLAN on the brick, you can control the EV3 hardware
     from a remote computer, for example, running under Windows.
 
     ___                       ____________________
@@ -31,7 +31,7 @@
 
         pip install ev3dev-c
 
-    Python package contains the following binary modules:
+    ev3dev-c Python package contains the following binary modules:
     _ev3.pyd    – for remote control from Windows (x86)
     _ev3.so     – for LEGO MINDSTORMS EV3 Debian.
 
@@ -59,7 +59,7 @@
 
         http://in4lio.github.io/ev3dev-c/drive_8c-example.html
 
-    An example of using "brick" simplified library:
+    An example of IR remote control using "brick" simplified library:
 
         http://in4lio.github.io/ev3dev-c/remote_8c-example.html
         http://in4lio.github.io/ev3dev-c/remote_8py-example.html
@@ -68,13 +68,13 @@
 
         https://github.com/in4lio/ev3dev-c/tree/master/eg/
 
-    light    – LEDs blinking example
-    sensor   – TOUCH and COLOR sensors usage
-    tacho    – a TACHO motor running for 5 sec
-    port     – use of EV3 ports
-    dc       – use of a DC motor
-    rcx_led  – use of a RCX LED
-    servo    – a SERVO motor example
+    light.c    – LEDs blinking example
+    sensor.c   – TOUCH and COLOR sensors usage
+    tacho.c    – TACHO motor running for 5 sec
+    port.c     – Use of EV3 ports
+    dc.c       – Use of a DC motor
+    rcx_led.c  – Use of a RCX LED
+    servo.c    – SERVO motor example
 
     Similar examples also avaible in Python ("python/ev3dev/eg"),
     Ruby ("ruby/eg"), and Perl ("perl/eg").
