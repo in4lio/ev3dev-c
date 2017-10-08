@@ -14,7 +14,7 @@ ev3dev-c
 4.4.87-22-ev3dev-ev3
 [ )
 ($set DESCRIPTION ]
-LEGO Mindstorms EV3 Debian C library + Python, Ruby and Perl wrappers
+LEGO MINDSTORMS EV3 Debian C library + Python, Ruby and Perl wrappers
 [ )
 ($set AUTHOR ]
 Vitaly Kravtsov
