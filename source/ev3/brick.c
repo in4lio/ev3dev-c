@@ -555,20 +555,20 @@ bool sensor_is_plugged( POOL_T pool, INX_T type_inx )
 
 	if ( pool == SOCKET__NONE_ ) return ( false );
 
-	if ( OUTA & pool ) {
-		if ( !ev3_search_sensor_plugged_in( socket_to_port( OUTA ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
+	if ( IN1 & pool ) {
+		if ( !ev3_search_sensor_plugged_in( socket_to_port( IN1 ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
 		if (( type_inx != SENSOR_TYPE__NONE_ ) && ( ev3_sensor[ sn ].type_inx != type_inx )) return ( false );
 	}
-	if ( OUTB & pool ) {
-		if ( !ev3_search_sensor_plugged_in( socket_to_port( OUTB ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
+	if ( IN2 & pool ) {
+		if ( !ev3_search_sensor_plugged_in( socket_to_port( IN2 ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
 		if (( type_inx != SENSOR_TYPE__NONE_ ) && ( ev3_sensor[ sn ].type_inx != type_inx )) return ( false );
 	}
-	if ( OUTC & pool ) {
-		if ( !ev3_search_sensor_plugged_in( socket_to_port( OUTC ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
+	if ( IN3 & pool ) {
+		if ( !ev3_search_sensor_plugged_in( socket_to_port( IN3 ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
 		if (( type_inx != SENSOR_TYPE__NONE_ ) && ( ev3_sensor[ sn ].type_inx != type_inx )) return ( false );
 	}
-	if ( OUTD & pool ) {
-		if ( !ev3_search_sensor_plugged_in( socket_to_port( OUTD ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
+	if ( IN4 & pool ) {
+		if ( !ev3_search_sensor_plugged_in( socket_to_port( IN4 ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
 		if (( type_inx != SENSOR_TYPE__NONE_ ) && ( ev3_sensor[ sn ].type_inx != type_inx )) return ( false );
 	}
 
