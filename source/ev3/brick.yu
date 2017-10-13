@@ -162,7 +162,9 @@ bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx )
 
 	if ( pool == SOCKET__NONE_ ) return ( false );
 
-	($each-SOCKET \i.($if ($ne ($find ($i SOCKET_ID) (`OUT)) -1) ]
+	($set _PREF (`OUT) ? _CLASS_MOTOR | (`IN))
+
+	($each-SOCKET \i.($if ($ne ($find ($i SOCKET_ID) _PREF) -1) ]
 		if ( ($i SOCKET_ID) & pool ) {
 			if ( !ev3_search_($CLASS_ID)_plugged_in( socket_to_port( ($i SOCKET_ID) ), EXT_PORT__NONE_, &sn, 0 ) ) return ( false );
 			if (( type_inx != ($upper ($CLASS_ID))_TYPE__NONE_ ) && ( ev3_($CLASS_ID)[ sn ].type_inx != type_inx )) return ( false );
@@ -172,7 +174,7 @@ bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx )
 	return ( true );
 }
 
-($if ($ne ($index CLASS_ATTR_FLAGS "state") -1) ]
+($if _CLASS_MOTOR ]
 	bool ($CLASS_ID)_is_running( POOL_T pool )
 	{
 		($each-SOCKET \i.($if ($ne ($find ($i SOCKET_ID) (`OUT)) -1) ]

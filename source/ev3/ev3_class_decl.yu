@@ -36,3 +36,6 @@
 
 ($! anonymous attributes in "brick" library functions)
 ($set _BRICK_ATTR_ANONYMOUS ("command"))
+
+($! flag - the class is a motor, we proceed from the fact that only motors have 'state' attribute )
+($set _CLASS_MOTOR ($ne ($index CLASS_ATTR_FLAGS "state") -1))

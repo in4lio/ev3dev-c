@@ -138,7 +138,7 @@ extern POOL_T ($CLASS_ID)_search( INX_T type_inx );
  */
 extern bool ($CLASS_ID)_is_plugged( POOL_T pool, INX_T type_inx );
 
-($if ($ne ($index CLASS_ATTR_FLAGS "state") -1) ]
+($if _CLASS_MOTOR ]
 	/**
 	 *  \brief Check that ($CL_TITLE)s are running.
 	 *  \param pool Pool of sockets.
