@@ -18,6 +18,16 @@ The library also supports remote access to the EV3 brick over a network.
 So, if you configure WLAN on the brick, you can control the EV3 hardware
 from a remote computer, for example, running under Windows.
 
+### GETTING STARTED
+
+Before you start, make sure that you have opened an SSH connection to
+your EV3 brick.
+
+You need to install the compiler and other tools:
+
+    sudo apt-get update
+    sudo apt-get install build-essential
+
 ### PYTHON, RUBY and PERL
 
 [Python](python), [Ruby](ruby) and [Perl](perl) libraries are
