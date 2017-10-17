@@ -1,5 +1,8 @@
 [ev3dev]: http://www.ev3dev.org/
+[ev3dev-net]: http://www.ev3dev.org/docs/networking/
 [ev3dev-ssh]: http://www.ev3dev.org/docs/tutorials/connecting-to-ev3dev-with-ssh/
+[ev3dev-pure_c]: http://www.ev3dev.org/docs/tutorials/getting-started-with-c/
+
 [yupp]: https://github.com/in4lio/yupp
 
 [![logo](doc/pic/logo.png)](README.md)
@@ -17,8 +20,8 @@
 which wraps access to the EV3 hardware.
 
 The library also supports remote access to the EV3 brick over a network.
-So, if you configure WLAN on the brick, you can control the EV3 hardware
-from a remote computer, for example, running under Windows.
+So, if you [configure WLAN][ev3dev-net] on the brick, you can control
+the EV3 hardware from a remote computer, for example, running under Windows.
 
 ### GETTING STARTED
 
@@ -45,6 +48,8 @@ Compile and install static and shared libraries:
     sudo make install
     make shared
     sudo make shared-install
+
+See also – ["Getting Started with C"][ev3dev-pure_c]
 
 ### PYTHON, RUBY and PERL
 
