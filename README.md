@@ -1,3 +1,7 @@
+[ev3dev]: http://www.ev3dev.org/
+[ev3dev-ssh]: http://www.ev3dev.org/docs/tutorials/connecting-to-ev3dev-with-ssh/
+[yupp]: https://github.com/in4lio/yupp
+
 [![logo](doc/pic/logo.png)](README.md)
 
 ### VERSION
@@ -12,16 +16,14 @@
 **ev3dev-c** is a C library for [LEGO MINDSTORMS EV3 Debian Linux][ev3dev]
 which wraps access to the EV3 hardware.
 
-[ev3dev]: http://www.ev3dev.org/
-
 The library also supports remote access to the EV3 brick over a network.
 So, if you configure WLAN on the brick, you can control the EV3 hardware
 from a remote computer, for example, running under Windows.
 
 ### GETTING STARTED
 
-Before you start, make sure that you have opened an SSH connection to
-your EV3 brick.
+Before you start, make sure that you have opened an [SSH connection][ev3dev-ssh]
+to your EV3 brick.
 
 You need to install the compiler and other tools:
 
@@ -29,7 +31,7 @@ You need to install the compiler and other tools:
     sudo apt-get install build-essential
 
 Then, clone the library repository and its submodules to the directory
-of your choice, such as "/home/robot/ev3dev-c":
+of your choice, such as _"/home/robot/ev3dev-c"_:
 
     cd /home/robot/
     git clone https://github.com/in4lio/ev3dev-c.git
@@ -70,8 +72,6 @@ packages to build the corresponding libraries.
 
 **ev3dev-c** is written using [yupp lexical preprocessor][yupp] –
 but don't panic – the generated source files in C also included.
-
-[yupp]: https://github.com/in4lio/yupp
 
 #### How can I see some examples
 
