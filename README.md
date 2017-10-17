@@ -28,6 +28,22 @@ You need to install the compiler and other tools:
     sudo apt-get update
     sudo apt-get install build-essential
 
+Then, clone the library repository and its submodules to the directory
+of your choice, such as "/home/robot/ev3dev-c":
+
+    cd /home/robot/
+    git clone https://github.com/in4lio/ev3dev-c.git
+    cd ev3dev-c/
+    git submodule update --init --recursive
+
+Compile and install static and shared libraries:
+
+    cd source/ev3/
+    make
+    sudo make install
+    make shared
+    sudo make shared-install
+
 ### PYTHON, RUBY and PERL
 
 [Python](python), [Ruby](ruby) and [Perl](perl) libraries are
