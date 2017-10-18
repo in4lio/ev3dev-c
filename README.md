@@ -32,6 +32,7 @@ You need to install the compiler and other tools:
 
     sudo apt-get update
     sudo apt-get install build-essential
+    sudo apt-get install git
 
 Then, clone the library repository and its submodules to the directory
 of your choice, such as _"/home/robot/ev3dev-c"_:
@@ -48,6 +49,18 @@ Compile and install static and shared libraries:
     sudo make install
     make shared
     sudo make shared-install
+
+It's the right time to take a look at a small example. `hello.c` outputs
+a greeting as well as toggles the left LED color:
+
+    cd ../../eg/hello/
+    more ./hello.c
+
+Let's compile and run this program. Note that we link our example with
+a static library:
+
+    gcc hello.c -lev3dev-c -o hello
+    ./hello
 
 See also – ["Getting Started with C"][ev3dev-pure_c]
 
