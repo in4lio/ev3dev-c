@@ -20,6 +20,50 @@
     So, if you configure WLAN on the brick, you can control the EV3 hardware
     from a remote computer, for example, running under Windows.
 
+    ___                 __________________________
+    ___ GETTING STARTED __________________________
+
+    Before you start, make sure that you have opened an SSH connection
+    to your EV3 brick.
+
+    You need to install the compiler and other tools:
+
+        sudo apt-get update
+        sudo apt-get install build-essential
+        sudo apt-get install git
+
+    Then, clone the library repository and its submodules to the directory
+    of your choice, such as "/home/robot/ev3dev-c":
+
+        cd /home/robot/
+        git clone https://github.com/in4lio/ev3dev-c.git
+        cd ev3dev-c/
+        git submodule update --init --recursive
+
+    Compile and install static and shared libraries:
+
+        cd source/ev3/
+        make
+        sudo make install
+        make shared
+        sudo make shared-install
+
+    It's the right time to take a look at a small example. "hello.c" outputs
+    a greeting as well as toggles the left LED color:
+
+        cd ../../eg/hello/
+        more ./hello.c
+
+    Let's compile and run this program. Note that we link our example with
+    a static library:
+
+        gcc hello.c -lev3dev-c -o hello
+        ./hello
+
+    See also:
+
+        http://www.ev3dev.org/docs/tutorials/getting-started-with-c/
+
     ___                       ____________________
     ___ PYTHON, RUBY and PERL ____________________
 

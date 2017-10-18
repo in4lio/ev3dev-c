@@ -50,7 +50,7 @@ Compile and install static and shared libraries:
     make shared
     sudo make shared-install
 
-It's the right time to take a look at a small example. `hello.c` outputs
+It's the right time to take a look at a small example. _"hello.c"_ outputs
 a greeting as well as toggles the left LED color:
 
     cd ../../eg/hello/
