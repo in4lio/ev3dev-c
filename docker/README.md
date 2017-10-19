@@ -9,8 +9,7 @@ We assume that you have already installed and ran Docker and cloned
 Once **ev3cc** image is built, you can compile the library, examples and your
 programs using Docker. First, run a new Docker container, for example:
 
-    docker run --rm -it -h ev3dev -v /PATH/TO/ev3dev-c/:/home/robot/ev3dev-c \
-    -w /home/robot/ev3dev-c ev3cc /bin/bash
+    docker run --rm -it -h ev3 -v /PATH/TO/ev3dev-c/:/home/robot/ev3dev-c -w /home/robot/ev3dev-c ev3cc /bin/bash
 
 Before that, in case you are using MinGW MSYS, you may need to execute:
 
