@@ -1,10 +1,3 @@
-[ev3dev]: http://www.ev3dev.org/
-[ev3dev-net]: http://www.ev3dev.org/docs/networking/
-[ev3dev-ssh]: http://www.ev3dev.org/docs/tutorials/connecting-to-ev3dev-with-ssh/
-[ev3dev-pure_c]: http://www.ev3dev.org/docs/tutorials/getting-started-with-c/
-
-[yupp]: https://github.com/in4lio/yupp
-
 [![logo](doc/pic/logo.png)](README.md)
 
 ### VERSION
@@ -139,6 +132,10 @@ or, if you are running Windows:
 
 [Read here...](source/ev3/ev3_link)
 
+#### How to use Docker for Cross-Compilation
+
+[Read here...](docker)
+
 #### How to make and install STATIC library
 
     cd ev3dev-c/source/ev3/
@@ -181,3 +178,9 @@ any questions about this library.
 ### LICENSE
 
 Please see the file called [_"LICENSE"_](LICENSE).
+
+[ev3dev]: http://www.ev3dev.org/
+[ev3dev-net]: http://www.ev3dev.org/docs/networking/
+[ev3dev-ssh]: http://www.ev3dev.org/docs/tutorials/connecting-to-ev3dev-with-ssh/
+[ev3dev-pure_c]: http://www.ev3dev.org/docs/tutorials/getting-started-with-c/
+[yupp]: https://github.com/in4lio/yupp/
