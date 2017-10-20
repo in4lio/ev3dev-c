@@ -357,6 +357,7 @@ Similarly you can use SWIG to wrap the library in a number of other languages.
 \example port.c
 \example io.c
 \example poweroff.c
+\example hello.c
 
 \example remote.py
 \example light.py

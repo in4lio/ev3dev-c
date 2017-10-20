@@ -1,7 +1,7 @@
-### Getting ~started~ compiled inside the Docker container
+### Getting ~started~ compiled inside a Docker container
 
 We assume that you have already installed and ran Docker and cloned
-**ev3dev-c** library, so you are ready to build Docker image:
+**ev3dev-c** library, so you are ready to build a Docker image:
 
     cd /PATH/TO/ev3dev-c/docker/
     docker build --rm -t ev3cc .
