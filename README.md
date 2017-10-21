@@ -43,8 +43,8 @@ Compile and install static and shared libraries:
     make shared
     sudo make shared-install
 
-It's the right time to take a look at a small example. _"hello.c"_ outputs
-a greeting as well as toggles the left LED color:
+It's the right time to take a look at a small example. [_"hello.c"_][hello.c]
+outputs a greeting as well as toggles the left LED color:
 
     cd ../../eg/hello/
     more ./hello.c
@@ -109,6 +109,7 @@ Name           | Description
 [servo.c]:       http://in4lio.github.io/ev3dev-c/servo_8c-example.html
 [light.c]:       http://in4lio.github.io/ev3dev-c/light_8c-example.html
 [rcx_led.c]:     http://in4lio.github.io/ev3dev-c/rcx_led_8c-example.html
+[hello.c]:       http://in4lio.github.io/ev3dev-c/hello_8c-example.html
 
 [Further examples in C...](eg)
 
