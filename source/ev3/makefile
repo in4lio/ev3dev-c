@@ -215,8 +215,14 @@ R := $(R) $(G_H) $(G_C) $(G_CXX)
 endif
 
 ifeq ($(OS),Windows_NT)
-#CLEAN = cmd /c "del $(subst /,\,$(R))"
+ifdef ComSpec
+# -- cmd
+CLEAN = cmd /c "del $(subst /,\,$(R))"
+else
+# -- sh (MSYS)
 CLEAN = rm -rf $(R)
+endif
+# -- sh (Linux)
 else
 CLEAN = rm -rf $(R)
 endif
