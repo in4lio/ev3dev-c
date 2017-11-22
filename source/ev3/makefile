@@ -217,7 +217,7 @@ endif
 ifeq ($(OS),Windows_NT)
 ifdef ComSpec
 # -- cmd
-CLEAN = cmd /c "del $(subst /,\,$(R))"
+CLEAN = cmd /c del $(subst /,\,$(R))
 else
 # -- sh (MSYS)
 CLEAN = rm -rf $(R)
