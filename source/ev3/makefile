@@ -188,13 +188,29 @@ O = $(O_CXX) $(O_C) $(O_ASM)
 #   commands
 # ---------------------------------
 
+_BASH = 1
+
+ifeq ($(OS),Windows_NT)
+ifdef ComSpec
+_BASH = 0
+endif
+endif
+
+ifeq ($(_BASH),0)
+# -- cmd
+RM = cmd /c del /f
+else
+# -- sh (MSYS)
+RM = rm -rf
+endif
+
 # -- wrap compiler arguments
 ifeq ($(OS),Windows_NT)
 # -- too long command line workaround
 define wrap
 	echo $2 > args
 	$1 @args
-	-rm args
+	-$(RM) args
 endef
 else
 define wrap
@@ -214,20 +230,15 @@ ifeq ($(SKIP_PP),0)
 R := $(R) $(G_H) $(G_C) $(G_CXX)
 endif
 
-ifeq ($(OS),Windows_NT)
-ifdef ComSpec
+ifeq ($(_BASH),0)
 # -- cmd
-CLEAN = cmd /c del $(subst /,\,$(R))
+CLEAN = cmd /c del /f $(subst /,\,$(R))
+CLEAN_BIN = cmd /c del /f $(R_BIN)
 else
 # -- sh (MSYS)
 CLEAN = rm -rf $(R)
-endif
-# -- sh (Linux)
-else
-CLEAN = rm -rf $(R)
-endif
-
 CLEAN_BIN = rm -rf $(R_BIN)
+endif
 
 # -- install library
 define install
