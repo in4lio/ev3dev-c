@@ -1,9 +1,24 @@
-all: hello.o
-	gcc hello.o -lev3dev-c -o hello
+MAKEFILE_BASE = ../Makefile
 
-hello.o: hello.c
-	gcc -c hello.c -I.
+.PHONY: default clean clean-binary debug debug-clean debug-clean-binary release release-clean
 
-clean:
-	rm -f *.o
-	rm hello
+default: debug
+
+clean: debug-clean
+
+clean-binary: debug-clean-binary
+
+debug:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug
+
+debug-clean: clean
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean
+
+debug-clean-binary:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean-binary
+
+release:
+	$(MAKE) -f $(MAKEFILE_BASE).Release
+
+release-clean:
+	$(MAKE) -f $(MAKEFILE_BASE).Release clean
