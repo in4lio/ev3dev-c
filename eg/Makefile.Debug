@@ -136,9 +136,9 @@ endif
 PPFLAGS = -q --pp-browse $(addprefix -d, $(D_YU))
 
 # -- compiler flags
-CFLAGS = $(addprefix -I, $(D_H)) -O2 -std=gnu99 -W -Wall -Wno-comment
+CFLAGS = $(addprefix -I, $(D_H)) -O2 -g -std=gnu99 -W -Wall -Wno-comment
 CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -g -W -Wall -Wno-comment
-ASMFLAGS = -Wall
+ASMFLAGS = -g -Wall
 
 # ---------------------------------
 #   files lists
