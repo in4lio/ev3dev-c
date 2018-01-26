@@ -6,7 +6,7 @@ We assume that you have already installed and ran Docker and cloned
     cd /PATH/TO/ev3dev-c/docker/
     docker build --rm -t ev3cc -f <dockerfile> .
 
-where <dockerfile> is the path to one of the Docker configuration files in the Dockerfiles subfolder, e.g.:
+where `<dockerfile>` is the path to one of the Docker configuration files in the Dockerfiles subfolder, e.g.:
      Dockerfiles/debian-jessie-armel-cross-pydev.dockerfile
 
 Once **ev3cc** image is built, you can compile the library, examples and your
