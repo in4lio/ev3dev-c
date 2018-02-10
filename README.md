@@ -84,6 +84,10 @@ packages to build the corresponding libraries.
 **ev3dev-c** is written using [yupp lexical preprocessor][yupp] –
 but don't panic – the generated source files in C also included.
 
+You have to take into account that, by default, the preprocessing stage
+is skipping when compilation is performed on the brick or using Docker.
+Please set `SKIP_PP = 0` in the makefile to allow preprocessing anywhere.
+
 #### How can I see some examples
 
 Name           | Description
