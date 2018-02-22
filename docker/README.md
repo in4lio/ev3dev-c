@@ -1,7 +1,10 @@
 ### Getting ~started~ compiled inside a Docker container
 
 We assume that you have already installed and ran Docker and cloned
-**ev3dev-c** library, so you are ready to build a Docker image:
+**ev3dev-c** library, so you are ready to build a Docker image. You should
+use the Dockerfile from the _"ev3dev-c/docker/"_ directory, which is
+referring to the ev3dev cross-compiler image but also installs _"swig3.0"_
+and _"python-dev"_ packages:
 
     cd /PATH/TO/ev3dev-c/docker/
     docker build --rm -t ev3cc -f <dockerfile> .

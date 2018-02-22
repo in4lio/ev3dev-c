@@ -242,7 +242,9 @@ endif
 
 # -- install library
 define install
+	${MKDIR} $(D_INSTALL)/lib
 	cp -f $1 $(D_INSTALL)/lib
+	${MKDIR} $(D_INSTALL)/include
 	cp -f $(S_INSTALL_H) $(D_INSTALL)/include
 endef
 
