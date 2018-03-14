@@ -9,6 +9,8 @@
 
 ($import stdlib)
 
+#pragma once
+
 ($import "../source/ev3/ev3_dc-dict.yu")
 ($import "../source/ev3/ev3_class_decl.yu")
 ($import "ev3_class-h.yu")

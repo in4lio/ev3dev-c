@@ -8,19 +8,27 @@
  *  \copyright  See the LICENSE file.
  */
 
+#pragma once
+
+#ifndef __ASM_ENUM_MACRO__
+#define __ASM_ENUM_MACRO__
+
 .macro ENUM_0 name
-.equiv \name, 0
-.set ENUM_COUNTER, 1
+.set ENUM_COUNTER, 0
+.equiv \name, ENUM_COUNTER
 .endm
 
 .macro ENUM_N name
-.equiv \name, ENUM_COUNTER
 .set ENUM_COUNTER, ENUM_COUNTER + 1
+.equiv \name, ENUM_COUNTER
 .endm
 
 .macro ENUM_EQ name, value
-.equiv \name, \value
+.set ENUM_COUNTER, \value
+.equiv \name, ENUM_COUNTER
 .endm
+
+#endif /* __ASM_ENUM_MACRO__ */
 
 #define DC_DIR  "/sys/class/dc-motor"  /**< Directory of DC motors. */
 
@@ -29,6 +37,7 @@
 #define DC__NONE_  DC_DESC__LIMIT_  /**< DC motor is not found. */
 
 /**
+ *  \var EV3_DC ev3_dc[ DC_DESC__LIMIT_ ]
  *  \brief Vector of DC motor descriptors (filled by \ref ev3_dc_init).
  */
 .extern ev3_dc
@@ -86,6 +95,7 @@ ENUM_EQ DC_RUNNING, 0x1L
 ENUM_EQ DC_RAMPING, 0x2L
 
 /**
+ *  \fn size_t get_dc_address( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "address" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -95,6 +105,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_address
 
 /**
+ *  \fn size_t set_dc_command( uint8_t sn, char *value )
  *  \brief Write "command" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -104,6 +115,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_command
 
 /**
+ *  \fn size_t multi_set_dc_command( uint8_t *sn, char *value )
  *  \brief Write "command" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -113,6 +125,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_command
 
 /**
+ *  \fn size_t get_dc_commands( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "commands" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -122,6 +135,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_commands
 
 /**
+ *  \fn size_t get_dc_driver_name( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "driver_name" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -131,6 +145,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_driver_name
 
 /**
+ *  \fn size_t get_dc_duty_cycle( uint8_t sn, int *buf )
  *  \brief Read "duty_cycle" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -140,6 +155,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_duty_cycle
 
 /**
+ *  \fn size_t get_dc_duty_cycle_sp( uint8_t sn, int *buf )
  *  \brief Read "duty_cycle_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -149,6 +165,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_duty_cycle_sp
 
 /**
+ *  \fn size_t set_dc_duty_cycle_sp( uint8_t sn, int value )
  *  \brief Write "duty_cycle_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -158,6 +175,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_duty_cycle_sp
 
 /**
+ *  \fn size_t multi_set_dc_duty_cycle_sp( uint8_t *sn, int value )
  *  \brief Write "duty_cycle_sp" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -167,6 +185,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_duty_cycle_sp
 
 /**
+ *  \fn size_t get_dc_polarity( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "polarity" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -176,6 +195,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_polarity
 
 /**
+ *  \fn size_t set_dc_polarity( uint8_t sn, char *value )
  *  \brief Write "polarity" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -185,6 +205,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_polarity
 
 /**
+ *  \fn size_t multi_set_dc_polarity( uint8_t *sn, char *value )
  *  \brief Write "polarity" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -194,6 +215,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_polarity
 
 /**
+ *  \fn size_t get_dc_state( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "state" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -203,6 +225,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_state
 
 /**
+ *  \fn size_t set_dc_stop_action( uint8_t sn, char *value )
  *  \brief Write "stop_action" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -212,6 +235,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_stop_action
 
 /**
+ *  \fn size_t multi_set_dc_stop_action( uint8_t *sn, char *value )
  *  \brief Write "stop_action" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -221,6 +245,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_stop_action
 
 /**
+ *  \fn size_t get_dc_stop_actions( uint8_t sn, char *buf, size_t sz )
  *  \brief Read "stop_actions" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -230,6 +255,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_stop_actions
 
 /**
+ *  \fn size_t get_dc_ramp_down_sp( uint8_t sn, int *buf )
  *  \brief Read "ramp_down_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -239,6 +265,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_ramp_down_sp
 
 /**
+ *  \fn size_t set_dc_ramp_down_sp( uint8_t sn, int value )
  *  \brief Write "ramp_down_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -248,6 +275,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_ramp_down_sp
 
 /**
+ *  \fn size_t multi_set_dc_ramp_down_sp( uint8_t *sn, int value )
  *  \brief Write "ramp_down_sp" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -257,6 +285,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_ramp_down_sp
 
 /**
+ *  \fn size_t get_dc_ramp_up_sp( uint8_t sn, int *buf )
  *  \brief Read "ramp_up_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -266,6 +295,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_ramp_up_sp
 
 /**
+ *  \fn size_t set_dc_ramp_up_sp( uint8_t sn, int value )
  *  \brief Write "ramp_up_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -275,6 +305,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_ramp_up_sp
 
 /**
+ *  \fn size_t multi_set_dc_ramp_up_sp( uint8_t *sn, int value )
  *  \brief Write "ramp_up_sp" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -284,6 +315,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_ramp_up_sp
 
 /**
+ *  \fn size_t get_dc_time_sp( uint8_t sn, int *buf )
  *  \brief Read "time_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -293,6 +325,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_time_sp
 
 /**
+ *  \fn size_t set_dc_time_sp( uint8_t sn, int value )
  *  \brief Write "time_sp" attribute of the DC motor.
  *  \param sn Sequence number.
  *  \param value Attribute value.
@@ -302,6 +335,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_time_sp
 
 /**
+ *  \fn size_t multi_set_dc_time_sp( uint8_t *sn, int value )
  *  \brief Write "time_sp" attribute of several DC motors.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
@@ -311,6 +345,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_time_sp
 
 /**
+ *  \fn const char *ev3_dc_type( INX_T type_inx )
  *  \brief Get name of the specified DC motor type.
  *  \param type_inx Index of the DC motor type.
  *  \return Requested value.
@@ -318,6 +353,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_type
 
 /**
+ *  \fn INX_T get_dc_type_inx( uint8_t sn )
  *  \brief Read "driver_name" attribute and get index of the DC motor type.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -325,6 +361,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_type_inx
 
 /**
+ *  \fn size_t get_dc_desc( uint8_t sn, EV3_DC *desc )
  *  \brief Read DC motor attributes that are required for filling the descriptor.
  *  \param sn Sequence number.
  *  \param desc Buffer for the descriptor.
@@ -333,6 +370,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_desc
 
 /**
+ *  \fn EV3_DC *ev3_dc_desc( uint8_t sn )
  *  \brief Get descriptor of the DC motor.
  *  \param sn Sequence number.
  *  \return Pointer to the DC motor descriptor.
@@ -340,6 +378,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_desc
 
 /**
+ *  \fn INX_T ev3_dc_desc_type_inx( uint8_t sn )
  *  \brief Get type from the DC motor descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -347,6 +386,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_desc_type_inx
 
 /**
+ *  \fn uint8_t ev3_dc_desc_port( uint8_t sn )
  *  \brief Get EV3 port from the DC motor descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -354,6 +394,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_desc_port
 
 /**
+ *  \fn uint8_t ev3_dc_desc_extport( uint8_t sn )
  *  \brief Get extended port from the DC motor descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -361,6 +402,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_desc_extport
 
 /**
+ *  \fn char *ev3_dc_port_name( uint8_t sn, char *buf )
  *  \brief Assemble EV3 port name from the DC motor descriptor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -369,6 +411,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_port_name
 
 /**
+ *  \fn bool ev3_search_dc( INX_T type_inx, uint8_t *sn, uint8_t from )
  *  \brief Search of a sequence number of the specified DC motor type.
  *  \param type_inx DC motor type.
  *  \param[out] sn Buffer for the sequence number.
@@ -378,6 +421,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_search_dc
 
 /**
+ *  \fn bool ev3_search_dc_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from )
  *  \brief Search of a sequence number the DC motor by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
@@ -388,6 +432,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_search_dc_plugged_in
 
 /**
+ *  \fn const char *ev3_dc_command( INX_T command_inx )
  *  \brief Get name of the specified DC motor command.
  *  \param command_inx Index of the DC motor command.
  *  \return Requested value.
@@ -395,6 +440,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_command
 
 /**
+ *  \fn size_t set_dc_command_inx( uint8_t sn, INX_T command_inx )
  *  \brief Write "command" attribute of the DC motor by the index.
  *  \param sn Sequence number.
  *  \param command_inx Index of the DC motor command.
@@ -403,6 +449,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_command_inx
 
 /**
+ *  \fn size_t multi_set_dc_command_inx( uint8_t *sn, INX_T command_inx )
  *  \brief Write "command" attribute of several DC motors by the index.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param command_inx Index of the DC motor command.
@@ -411,6 +458,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_command_inx
 
 /**
+ *  \fn const char *ev3_dc_polarity( INX_T polarity_inx )
  *  \brief Get name of the specified DC motor polarity.
  *  \param polarity_inx Index of the DC motor polarity.
  *  \return Requested value.
@@ -418,6 +466,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_polarity
 
 /**
+ *  \fn INX_T get_dc_polarity_inx( uint8_t sn )
  *  \brief Read "polarity" attribute of the DC motor and get the index.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -425,6 +474,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_polarity_inx
 
 /**
+ *  \fn size_t set_dc_polarity_inx( uint8_t sn, INX_T polarity_inx )
  *  \brief Write "polarity" attribute of the DC motor by the index.
  *  \param sn Sequence number.
  *  \param polarity_inx Index of the DC motor polarity.
@@ -433,6 +483,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_polarity_inx
 
 /**
+ *  \fn size_t multi_set_dc_polarity_inx( uint8_t *sn, INX_T polarity_inx )
  *  \brief Write "polarity" attribute of several DC motors by the index.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param polarity_inx Index of the DC motor polarity.
@@ -441,6 +492,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_polarity_inx
 
 /**
+ *  \fn const char *ev3_dc_stop_action( INX_T stop_action_inx )
  *  \brief Get name of the specified DC motor stop_action.
  *  \param stop_action_inx Index of the DC motor stop_action.
  *  \return Requested value.
@@ -448,6 +500,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern ev3_dc_stop_action
 
 /**
+ *  \fn size_t set_dc_stop_action_inx( uint8_t sn, INX_T stop_action_inx )
  *  \brief Write "stop_action" attribute of the DC motor by the index.
  *  \param sn Sequence number.
  *  \param stop_action_inx Index of the DC motor stop_action.
@@ -456,6 +509,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern set_dc_stop_action_inx
 
 /**
+ *  \fn size_t multi_set_dc_stop_action_inx( uint8_t *sn, INX_T stop_action_inx )
  *  \brief Write "stop_action" attribute of several DC motors by the index.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param stop_action_inx Index of the DC motor stop_action.
@@ -464,6 +518,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern multi_set_dc_stop_action_inx
 
 /**
+ *  \fn size_t get_dc_state_flags( uint8_t sn, FLAGS_T *flags )
  *  \brief Read "state" attribute of the DC motor and get the flags.
  *  \param sn Sequence number.
  *  \param flags Buffer for the flags.
@@ -472,6 +527,7 @@ ENUM_EQ DC_RAMPING, 0x2L
 .extern get_dc_state_flags
 
 /**
+ *  \fn int ev3_dc_init( void )
  *  \brief Detect connected DC motors.
  *  \return Number of found DC motors or -1 in case of an error.
  */

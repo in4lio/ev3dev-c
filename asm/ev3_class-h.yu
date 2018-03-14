@@ -4,19 +4,25 @@
     |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
                                                ((())))
 
+#ifndef __ASM_ENUM_MACRO__
+#define __ASM_ENUM_MACRO__
+
 .macro ENUM_0 name
-.equiv \name, 0
-.set ENUM_COUNTER, 1
+.set ENUM_COUNTER, 0
+.equiv \name, ENUM_COUNTER
 .endm
 
 .macro ENUM_N name
-.equiv \name, ENUM_COUNTER
 .set ENUM_COUNTER, ENUM_COUNTER + 1
+.equiv \name, ENUM_COUNTER
 .endm
 
 .macro ENUM_EQ name, value
-.equiv \name, \value
+.set ENUM_COUNTER, \value
+.equiv \name, ENUM_COUNTER
 .endm
+
+#endif /* __ASM_ENUM_MACRO__ */
 
 #define ($upper CLASS_ID)_DIR  ($CLASS_PATH)  /**< Directory of ($CL_TITLE)s. */
 
@@ -27,6 +33,7 @@
 typedef struct {
 	($each-CLASS_DESC \i.]
 		($i CLASS_DESC_TYPE) ($i CLASS_DESC_ID);  /**< ($CL_TITLE_1) ($unq ($i CLASS_DESC_COMMENT)). */
+
 	[ )
 } EV3_($upper CLASS_ID);
 )
@@ -36,6 +43,7 @@ typedef struct {
 #define ($upper CLASS_ID)__NONE_  ($upper CLASS_ID)_DESC__LIMIT_  /**< ($CL_TITLE_1) is not found. */
 
 /**
+ *  \var EV3_($upper CLASS_ID) ev3_($CLASS_ID)[ ($upper CLASS_ID)_DESC__LIMIT_ ]
  *  \brief Vector of ($CL_TITLE) descriptors (filled by \ref ev3_($CLASS_ID)_init).
  */
 .extern ev3_($CLASS_ID)
@@ -107,6 +115,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($each-CLASS_ATTR \i.]
 	($if ($le ($i CLASS_ATTR_WRITE) RW) ]
 		/**
+		 *  \fn size_t get_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) *buf($[, size_t sz] ? ($i CLASS_ATTR_ARRAY)) )
 		 *  \brief Read ($i CLASS_ATTR_NAME) attribute of the ($CL_TITLE).
 		 *  \param sn Sequence number.
 		 *  \param[out] buf Buffer for result.
@@ -118,6 +127,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 	[ )
 	($if ($ge ($i CLASS_ATTR_WRITE) RW) ]
 		/**
+		 *  \fn size_t set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) )
 		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of the ($CL_TITLE).
 		 *  \param sn Sequence number.
 		 *  \param value Attribute value.
@@ -127,6 +137,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 		.extern set_($CLASS_ID)_($i CLASS_ATTR_ID)
 
 		/**
+		 *  \fn size_t multi_set_($CLASS_ID)_($i CLASS_ATTR_ID)( uint8_t *sn, ($i CLASS_ATTR_TYPE) ($[*] ? ($i CLASS_ATTR_ARRAY))value($[, size_t sz] ? ($eq ($i CLASS_ATTR_ARRAY) 2)) )
 		 *  \brief Write ($i CLASS_ATTR_NAME) attribute of several ($CL_TITLE)s.
 		 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
 		 *  \param value Attribute value.
@@ -142,6 +153,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($each-CLASS_AVEC \i.]
 
 	/**
+	 *  \fn size_t get_($CLASS_ID)_($i CLASS_AVEC_ID)( uint8_t inx, uint8_t sn, ($i CLASS_AVEC_TYPE) *buf($[, size_t sz] ? ($i CLASS_AVEC_ARRAY)) )
 	 *  \brief Read ($i CLASS_AVEC_NAME) attribute of the ($CL_TITLE).
 	 *  \param inx Attribute index.
 	 *  \param sn Sequence number.
@@ -154,6 +166,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 [ )
 
 /**
+ *  \fn const char *ev3_($CLASS_ID)_type( INX_T type_inx )
  *  \brief Get name of the specified ($CL_TITLE) type.
  *  \param type_inx Index of the ($CL_TITLE) type.
  *  \return Requested value.
@@ -161,6 +174,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 .extern ev3_($CLASS_ID)_type
 
 /**
+ *  \fn INX_T get_($CLASS_ID)_type_inx( uint8_t sn )
  *  \brief Read ($CLASS_TYPE_ATTR_NAME) attribute and get index of the ($CL_TITLE) type.
  *  \param sn Sequence number.
  *  \return Requested value.
@@ -168,6 +182,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 .extern get_($CLASS_ID)_type_inx
 
 /**
+ *  \fn size_t get_($CLASS_ID)_desc( uint8_t sn, EV3_($upper CLASS_ID) *desc )
  *  \brief Read ($CL_TITLE) attributes that are required for filling the descriptor.
  *  \param sn Sequence number.
  *  \param desc Buffer for the descriptor.
@@ -176,6 +191,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 .extern get_($CLASS_ID)_desc
 
 /**
+ *  \fn EV3_($upper CLASS_ID) *ev3_($CLASS_ID)_desc( uint8_t sn )
  *  \brief Get descriptor of the ($CL_TITLE).
  *  \param sn Sequence number.
  *  \return Pointer to the ($CL_TITLE) descriptor.
@@ -185,6 +201,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($each-CLASS_DESC \i.]
 
 	/**
+	 *  \fn ($i CLASS_DESC_TYPE) ev3_($CLASS_ID)_desc_($i CLASS_DESC_ID)( uint8_t sn )
 	 *  \brief Get ($unq ($i CLASS_DESC_COMMENT)) from the ($CL_TITLE) descriptor.
 	 *  \param sn Sequence number.
 	 *  \return Requested value.
@@ -194,6 +211,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 [ )
 
 /**
+ *  \fn char *ev3_($CLASS_ID)_port_name( uint8_t sn, char *buf )
  *  \brief Assemble EV3 port name from the ($CL_TITLE) descriptor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
@@ -202,6 +220,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 .extern ev3_($CLASS_ID)_port_name
 
 /**
+ *  \fn bool ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))( INX_T type_inx, uint8_t *sn, uint8_t from )
  *  \brief Search of a sequence number of the specified ($CL_TITLE) type.
  *  \param type_inx ($CL_TITLE_1) type.
  *  \param[out] sn Buffer for the sequence number.
@@ -211,6 +230,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 .extern ev3_search_($CLASS_ID)($[_type] ? ($eq CLASS_ID [port]))
 
 /**
+ *  \fn bool ev3_search_($CLASS_ID)_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from )
  *  \brief Search of a sequence number the ($CL_TITLE) by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
@@ -223,6 +243,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($CLASS_TYPE_ATTR_ID_INDEX \attr.]
 
 	/**
+	 *  \fn const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx )
 	 *  \brief Get name of the specified ($CL_TITLE) ($attr).
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Requested value.
@@ -231,6 +252,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
+		 *  \fn INX_T get_($CLASS_ID)_($attr)_inx_of_type( uint8_t sn, INX_T type_inx )
 		 *  \brief Read ($q attr) attribute of the specified ($CL_TITLE) type and get the index.
 		 *  \param sn Sequence number.
 		 *  \param type_inx Index of the ($CL_TITLE) type.
@@ -239,6 +261,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 		.extern get_($CLASS_ID)_($attr)_inx_of_type
 
 		/**
+		 *  \fn INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn )
 		 *  \brief Read ($q attr) attribute of the ($CL_TITLE) and get the index.
 		 *  \param sn Sequence number.
 		 *  \return Requested value.
@@ -249,6 +272,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 
 	[ )
 	/**
+	 *  \fn size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	 *  \brief Write ($q attr) attribute of the ($CL_TITLE) by the index.
 	 *  \param sn Sequence number.
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
@@ -257,6 +281,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 	.extern set_($CLASS_ID)_($attr)_inx
 
 	/**
+	 *  \fn size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
 	 *  \brief Write ($q attr) attribute of several ($CL_TITLE)s by the index.
 	 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
@@ -269,6 +294,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($CLASS_ATTR_ID_INDEX \attr.]
 
 	/**
+	 *  \fn const char *ev3_($CLASS_ID)_($attr)( INX_T ($attr)_inx )
 	 *  \brief Get name of the specified ($CL_TITLE) ($attr).
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
 	 *  \return Requested value.
@@ -277,6 +303,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 
 	($if ($le ($($index CLASS_ATTR_NAME ($q attr)) CLASS_ATTR_WRITE) RW) ]
 		/**
+		 *  \fn INX_T get_($CLASS_ID)_($attr)_inx( uint8_t sn )
 		 *  \brief Read ($q attr) attribute of the ($CL_TITLE) and get the index.
 		 *  \param sn Sequence number.
 		 *  \return Requested value.
@@ -285,6 +312,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 
 	[ )
 	/**
+	 *  \fn size_t set_($CLASS_ID)_($attr)_inx( uint8_t sn, INX_T ($attr)_inx )
 	 *  \brief Write ($q attr) attribute of the ($CL_TITLE) by the index.
 	 *  \param sn Sequence number.
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
@@ -293,6 +321,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 	.extern set_($CLASS_ID)_($attr)_inx
 
 	/**
+	 *  \fn size_t multi_set_($CLASS_ID)_($attr)_inx( uint8_t *sn, INX_T ($attr)_inx )
 	 *  \brief Write ($q attr) attribute of several ($CL_TITLE)s by the index.
 	 *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
 	 *  \param ($attr)_inx Index of the ($CL_TITLE) ($attr).
@@ -305,6 +334,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 ($CLASS_ATTR_ID_FLAGS \attr.]
 
 	/**
+	 *  \fn size_t get_($CLASS_ID)_($attr)_flags( uint8_t sn, FLAGS_T *flags )
 	 *  \brief Read ($q attr) attribute of the ($CL_TITLE) and get the flags.
 	 *  \param sn Sequence number.
 	 *  \param flags Buffer for the flags.
@@ -315,6 +345,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 [ )
 
 /**
+ *  \fn int ev3_($CLASS_ID)_init( void )
  *  \brief Detect connected ($CL_TITLE)s.
  *  \return Number of found ($CL_TITLE)s or -1 in case of an error.
  */
