@@ -5,12 +5,12 @@
                                                ((())))
 
 ($import "app.yu")
-($TITLE,,EV3 DC Motors.)
+($TITLE,,EV3 Servo Motors.)
 
 ($import stdlib)
 
 #pragma once
 
-($import "ev3_dc-dict.yu")
+($import "ev3_servo-dict.yu")
 ($import "ev3_class_decl.yu")
 ($import "ev3_class-asm.yu")
