@@ -1,5 +1,4 @@
-#ifndef __ASM_ENUM_MACRO__
-#define __ASM_ENUM_MACRO__
+#pragma once
 
 .macro ENUM_0 name
 .set ENUM_COUNTER, 0
@@ -15,5 +14,3 @@
 .set ENUM_COUNTER, \value
 .equiv \name, ENUM_COUNTER
 .endm
-
-#endif /* __ASM_ENUM_MACRO__ */
