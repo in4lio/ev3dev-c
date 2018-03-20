@@ -55,9 +55,11 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 
 			($set _SUF ($upper ($_VALUE_TO_ID ii)))
 
-			ENUM_N  ($upper ($i CLASS_TYPE_ID))_($_SUF) ($if ($ne _SYN -1) ]
-			ENUM_EQ ($upper ($_SYN CLASS_TYPE_ID_SYN))_($_SUF), ($upper ($i CLASS_TYPE_ID))_($_SUF)
+			ENUM_N  ($upper ($i CLASS_TYPE_ID))_($_SUF)
+			($if ($ne _SYN -1) ]
+				ENUM_EQ ($upper ($_SYN CLASS_TYPE_ID_SYN))_($_SUF), ($upper ($i CLASS_TYPE_ID))_($_SUF)
 			[ )
+
 		[ )
 	[ )
 	ENUM_N  ($upper CLASS_ID)_($upper attr)__COUNT_  /**< Count of ($CL_TITLE) ($q attr) attribute. */
