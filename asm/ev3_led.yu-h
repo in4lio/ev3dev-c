@@ -1,0 +1,91 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,EV3 LEDs.)
+
+($import stdlib)
+
+#pragma once
+
+($import "ev3_led-dict.yu")
+
+/**
+ *  \brief Identifiers of LEDs.
+ */
+.set ENUM_COUNTER, 0
+($each-LED \i.]
+	.equiv ($i LED_ID), ENUM_COUNTER
+	.set ENUM_COUNTER, ENUM_COUNTER + 1
+
+[ )
+.equiv LED__COUNT_, ENUM_COUNTER  /**< Count of EV3 LEDs. */
+
+/**
+ *  \brief Triggers identifiers of LEDs.
+ */
+.set ENUM_COUNTER, 0
+($LED_TRIGGER_ID \i.]
+	.equiv TRIGGER_($upper i), ENUM_COUNTER
+	.set ENUM_COUNTER, ENUM_COUNTER + 1
+
+[ )
+.equiv TRIGGER__COUNT_, ENUM_COUNTER  /**< Count of EV3 triggers. */
+};
+
+($define,,LED_ATTR__COUNT_,,($len LED_ATTR_ID))
+
+($each-LED_ATTR \i.]
+	($if ($le ($i LED_ATTR_WRITE) RW) ]
+		/**
+		 *  \fn size_t get_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) *buf($[, size_t sz] ? ($i LED_ATTR_ARRAY)) )
+		 *  \brief Read ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \param inx Index of the LED.
+		 *  \param[out] buf Buffer for result.
+		 ($[*  \param sz Buffer size.] ? ($i LED_ATTR_ARRAY))
+		 *  \return Count of read bytes.
+		 */
+		.extern get_led_($i LED_ATTR_ID)
+
+	[ )
+	($if ($ge ($i LED_ATTR_WRITE) RW) ]
+		/**
+		 *  \fn size_t set_led_($i LED_ATTR_ID)( uint8_t inx, ($i LED_ATTR_TYPE) ($[*] ? ($i LED_ATTR_ARRAY))value )
+		 *  \brief Write ($i LED_ATTR_NAME) attribute of the LED.
+		 *  \param inx Index of the LED.
+		 *  \param value Attribute value.
+		 *  \return Count of written bytes.
+		 */
+		.extern set_led_($i LED_ATTR_ID)
+
+	[ )
+
+[ )
+
+/**
+ *  \fn INX_T get_led_trigger_inx( uint8_t inx )
+ *  \brief Read "trigger" attribute of the LED and get the index.
+ *  \param inx Index of the LED.
+ *  \return Index of trigger or TRIGGER__COUNT_ - error has occurred.
+ */
+.extern get_led_trigger_inx
+
+/**
+ *  \fn size_t set_led_trigger_inx( uint8_t inx, INX_T trigger_inx )
+ *  \brief Write "trigger" attribute of the LED by the index.
+ *  \param inx Index of the LED.
+ *  \param trigger_inx Index of the trigger.
+ *  \return Count of written bytes.
+ */
+.extern set_led_trigger_inx
+
+/**
+ *  \fn const char *ev3_led_trigger( INX_T trigger_inx )
+ *  \brief Get name of the specified LED trigger.
+ *  \param trigger_inx Index of the trigger.
+ *  \return Requested value.
+ */
+.extern ev3_led_trigger
