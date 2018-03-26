@@ -13,3 +13,7 @@ sftp-config.json
 source/sensors.json
 makefile.predict
 args
+
+.cproject
+.project
+.settings/
