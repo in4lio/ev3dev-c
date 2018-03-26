@@ -29,10 +29,10 @@ clean::
 	done
 	
 lib::
-	make -C source/ev3
+	make -C source/ev3 SKIP_PP=0
 
 shared-lib::
-	make -C source/ev3 shared
+	make -C source/ev3 SKIP_PP=0 shared
 	
 install-lib::
 	make -C source/ev3 install
