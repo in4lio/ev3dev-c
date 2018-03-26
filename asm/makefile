@@ -26,5 +26,5 @@ $(G_H): $(S_YU)
 $(G_H): %$(E_H): %$(E_YUH)
 	$(PP) $(PPFLAGS) $<
 
-clean:
-	-rm -f *.h
+clean: 
+	-rm -f $(G_H)
