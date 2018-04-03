@@ -120,7 +120,7 @@ E_MAP = .map
 E_LIST = .listing
 
 # -- link options
-LIBS = -lm
+LIBS = -lm -lev3dev-c
 
 ifeq ($(PLATFORM),__MINGW__)
 LIBS := $(LIBS) -lws2_32
