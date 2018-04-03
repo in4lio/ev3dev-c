@@ -4,14 +4,16 @@ MAKEFILE_BASE = ../Makefile
 
 default: debug
 
-clean: debug-clean
+clean: debug-clean-binary
 
 clean-binary: debug-clean-binary
+
+clean-all: debug-clean
 
 debug:
 	$(MAKE) -f $(MAKEFILE_BASE).Debug
 
-debug-clean: clean
+debug-clean:
 	$(MAKE) -f $(MAKEFILE_BASE).Debug clean
 
 debug-clean-binary:
