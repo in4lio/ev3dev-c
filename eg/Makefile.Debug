@@ -31,7 +31,7 @@ CC = gcc
 CXX = g++
 endif
 
-LINK = $(CC)
+LINK = $(CXX)
 
 # -- build on EV3 BRICK
 ifeq ($(PLATFORM),__UNIX__)
@@ -227,6 +227,7 @@ vpath %$(E_YUC) $(D_C)
 default: $(F_BIN)
 
 $(F_BIN): $(O)
+	mkdir -p $(D_BIN)
 	$(call wrap,$(LINK),$^ -o $@ $(LIBS) $(LFLAGS))
 	$(call final,$@)
 	@echo "*** $(F_BIN) ***"
