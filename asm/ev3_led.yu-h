@@ -16,25 +16,20 @@
 /**
  *  \brief Identifiers of LEDs.
  */
-.set ENUM_COUNTER, 0
 ($each-LED \i.]
-	.equiv ($i LED_ID), ENUM_COUNTER
-	.set ENUM_COUNTER, ENUM_COUNTER + 1
+	($define,,($i LED_ID),,($i))
 
 [ )
-.equiv LED__COUNT_, ENUM_COUNTER  /**< Count of EV3 LEDs. */
+($define,,LED__COUNT_,,($len LED_ID))  /**< Count of EV3 LEDs. */
 
 /**
  *  \brief Triggers identifiers of LEDs.
  */
-.set ENUM_COUNTER, 0
-($LED_TRIGGER_ID \i.]
-	.equiv TRIGGER_($upper i), ENUM_COUNTER
-	.set ENUM_COUNTER, ENUM_COUNTER + 1
+($each-LED_TRIGGER \i.]
+	($define,,TRIGGER_($upper ($i LED_TRIGGER_ID)),,($i))
 
 [ )
-.equiv TRIGGER__COUNT_, ENUM_COUNTER  /**< Count of EV3 triggers. */
-};
+($define,,TRIGGER__COUNT_,,($len LED_TRIGGER_ID))  /**< Count of EV3 triggers. */
 
 ($define,,LED_ATTR__COUNT_,,($len LED_ATTR_ID))
 

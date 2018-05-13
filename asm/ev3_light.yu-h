@@ -14,9 +14,9 @@
 /**
  *  \brief Identifiers of light locations.
  */
-.equiv LIT_LEFT,   0
-.equiv LIT_RIGHT,  1
-.equiv LIT__LOC__, 2
+($define,,LIT_LEFT,,0)
+($define,,LIT_RIGHT,,1)
+($define,,LIT__LOC__,,2)
 
 ($dict LIT_COLOR
 	(` LIT_COLOR_NAME  )
@@ -31,13 +31,11 @@
 /**
  *  \brief Identifiers of light colors.
  */
-.set ENUM_COUNTER, 0
 ($each-LIT_COLOR \i.]
-	.equiv LIT_($unq ($i LIT_COLOR_NAME)), ENUM_COUNTER
-	.set ENUM_COUNTER, ENUM_COUNTER + 1
+	($define,,LIT_($unq ($i LIT_COLOR_NAME)),,($i))
 
 [ )
-.equiv LIT__COL__, ENUM_COUNTER
+($define,,LIT__COL__,,($len LIT_COLOR_NAME))
 };
 
 /**

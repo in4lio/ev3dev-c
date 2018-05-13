@@ -13,24 +13,19 @@
 /**
  *  \brief Identifiers of light locations.
  */
-.equiv LIT_LEFT,   0
-.equiv LIT_RIGHT,  1
-.equiv LIT__LOC__, 2
+#define LIT_LEFT 0
+#define LIT_RIGHT 1
+#define LIT__LOC__ 2
 
 /**
  *  \brief Identifiers of light colors.
  */
-.set ENUM_COUNTER, 0
-.equiv LIT_OFF, ENUM_COUNTER
-.set ENUM_COUNTER, ENUM_COUNTER + 1
-.equiv LIT_GREEN, ENUM_COUNTER
-.set ENUM_COUNTER, ENUM_COUNTER + 1
-.equiv LIT_RED, ENUM_COUNTER
-.set ENUM_COUNTER, ENUM_COUNTER + 1
-.equiv LIT_AMBER, ENUM_COUNTER
-.set ENUM_COUNTER, ENUM_COUNTER + 1
+#define LIT_OFF 0
+#define LIT_GREEN 1
+#define LIT_RED 2
+#define LIT_AMBER 3
 
-.equiv LIT__COL__, ENUM_COUNTER
+#define LIT__COL__ 4
 };
 
 /**
