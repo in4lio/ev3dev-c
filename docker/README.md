@@ -21,8 +21,12 @@ Before that, in case you are using MinGW MSYS, you may need to execute:
 
     export MSYS_NO_PATHCONV=1
 
-After that, inside the container, you have to compile and install static and
-shared libraries:
+You have to take into account that, by default, the preprocessing stage
+is skipping when compilation is performed on the brick or using Docker.
+Please set `SKIP_PP = 0` in the makefile to allow preprocessing anywhere.
+
+After that, inside the container, you are able to compile and install
+static and shared libraries:
 
     cd source/ev3/
     make

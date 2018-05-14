@@ -1,0 +1,26 @@
+($!
+     ____ __     ____   ___    ____ __         (((((()
+    | |_  \ \  /   ) ) | |  ) | |_  \ \  /  \(@)- /
+    |_|__  \_\/  __)_) |_|_/  |_|__  \_\/   /(@)- \
+                                               ((())))
+
+($import "app.yu")
+($TITLE,,EV3 brick definitions.)
+
+#pragma once
+
+#define GPIO_KEYS_PATH  "/dev/input/by-path/platform-gpio-keys.0-event"
+
+/**
+ *  \brief Identifiers of EV3 keys.
+ */
+#define EV3_KEY__NONE_  0
+#define EV3_KEY_UP      0x01L
+#define EV3_KEY_DOWN    0x02L
+#define EV3_KEY_LEFT    0x04L
+#define EV3_KEY_RIGHT   0x08L
+#define EV3_KEY_CENTER  0x10L
+#define EV3_KEY_BACK    0x20L
+
+#define DESC_LIMIT    64
+#define DESC_VEC_LEN  4
