@@ -227,7 +227,7 @@ vpath %$(E_YUC) $(D_C)
 # -- build binary file
 .PHONY: default
 
-default: $(F_BIN)
+default: bindirs $(F_BIN)
 
 $(F_BIN): $(O)
 	$(call wrap,$(LINK),$^ -o $@ $(LIBS) $(LFLAGS))
