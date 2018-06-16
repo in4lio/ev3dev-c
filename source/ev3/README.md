@@ -1,4 +1,4 @@
-## Compilation notes
+# Compiling the ev3dev-c Library
 
 ### How to make and install STATIC library
 
