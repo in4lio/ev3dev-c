@@ -73,8 +73,8 @@ ENUM_EQ DC_STOP_ACTION__UNKNOWN_, DC_STOP_ACTION__COUNT_
  */
 ENUM_0  DC_STATE__NONE_
 
-ENUM_EQ DC_RUNNING, 0x1L
-ENUM_EQ DC_RAMPING, 0x2L
+ENUM_EQ DC_RUNNING, 0x1
+ENUM_EQ DC_RAMPING, 0x2
 
 /**
  *  \fn size_t get_dc_address( uint8_t sn, char *buf, size_t sz )

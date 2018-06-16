@@ -90,7 +90,7 @@ ENUM_EQ ($upper CLASS_ID)_TYPE__UNKNOWN_, ($upper CLASS_ID)_TYPE__COUNT_
 	ENUM_0  ($upper CLASS_ID)_($upper attr)__NONE_
 
 	($($range ($len ($$'CLASS_($0)S' ($upper attr)))) \i.]
-		ENUM_EQ ($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i ($$'CLASS_($0)S' ($upper attr))))), ($hex ($lshift 1 i))
+		ENUM_EQ ($upper CLASS_ID)_($upper ($_VALUE_TO_ID ($i ($$'CLASS_($0)S' ($upper attr))))), ($rstrip ($hex ($lshift 1 i)) (`L))
 
 	[ )
 
