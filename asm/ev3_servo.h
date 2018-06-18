@@ -60,7 +60,7 @@ ENUM_EQ SERVO_POLARITY__UNKNOWN_, SERVO_POLARITY__COUNT_
  */
 ENUM_0  SERVO_STATE__NONE_
 
-ENUM_EQ SERVO_RUNNING, 0x1L
+ENUM_EQ SERVO_RUNNING, 0x1
 
 /**
  *  \fn size_t get_servo_address( uint8_t sn, char *buf, size_t sz )

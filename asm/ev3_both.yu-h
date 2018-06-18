@@ -15,12 +15,12 @@
  *  \brief Identifiers of EV3 keys.
  */
 #define EV3_KEY__NONE_  0
-#define EV3_KEY_UP      0x01L
-#define EV3_KEY_DOWN    0x02L
-#define EV3_KEY_LEFT    0x04L
-#define EV3_KEY_RIGHT   0x08L
-#define EV3_KEY_CENTER  0x10L
-#define EV3_KEY_BACK    0x20L
+#define EV3_KEY_UP      0x01
+#define EV3_KEY_DOWN    0x02
+#define EV3_KEY_LEFT    0x04
+#define EV3_KEY_RIGHT   0x08
+#define EV3_KEY_CENTER  0x10
+#define EV3_KEY_BACK    0x20
 
 #define DESC_LIMIT    64
 #define DESC_VEC_LEN  4
