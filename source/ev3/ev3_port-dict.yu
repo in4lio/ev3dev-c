@@ -7,19 +7,18 @@
 ($set CLASS_PATH "/sys/class/lego-port")
 ($set CLASS_FOLDER_PREF "port")
 ($set CLASS_ID ($unq CLASS_FOLDER_PREF))
-($set CLASS_TITLE "EV3 port")
+($set CLASS_TITLE "lego port")
 
-($dict CLASS_TYPE
-	(` CLASS_TYPE_NAME        CLASS_TYPE_ID_SHORT  CLASS_TYPE_MODES  )
-	(`
-	(  "ht-nxt-smux-port"     "ht_nxt_smux"        ( "analog" "i2c" ) )
-	(  "legoev3-input-port"   "input"              ( "auto" "nxt-analog" "nxt-color" "nxt-i2c" "other-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw" ) )
-	(  "legoev3-output-port"  "output"             ( "auto" "tacho-motor" "dc-motor" "led" "raw" ) )
-	(  "ms-ev3-smux-port"     "ms_ev3_smux"        ( "uart" "analog" ) )
-	(  "ms-nxtmmx-out-port"   "ms_nxtmmx"          ( "tacho-motor" ) )
-	(  "wedo-port"            "wedo"               ( "auto" ) )
-	)
+($import "grab/spec.py")
+
+($!dict CLASS_TYPE
+	(` CLASS_TYPE_NAME  CLASS_TYPE_MODES  )
 )
+($import { grab_ports( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/ports.json' ) })
+
+($set _TYPE_TO_SHORT \val.($replace,,($replace,,($unq val),,-port,,),,-,,_))
+($set CLASS_TYPE_ID_SHORT ($each-CLASS_TYPE \i.($_TYPE_TO_SHORT ($i CLASS_TYPE_NAME))))
+
 ($set CLASS_TYPE_ATTR_INDEX ( "mode" ))
 ($set CLASS_ATTR_INDEX ())
 ($set CLASS_ATTR_FLAGS ())

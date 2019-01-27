@@ -51,77 +51,108 @@
 extern "C" {
 #endif
 
-#define PORT_DIR  "/sys/class/lego-port"  /**< Directory of EV3 ports. */
+#define PORT_DIR  "/sys/class/lego-port"  /**< Directory of lego ports. */
 
 /**
- *  \brief Structure of a EV3 port descriptor.
+ *  \brief Structure of a lego port descriptor.
  */
 typedef struct {
-	INX_T type_inx;  /**< EV3 port type. */
-	uint8_t port;  /**< EV3 port EV3 port. */
-	uint8_t extport;  /**< EV3 port extended port. */
-	uint8_t addr;  /**< EV3 port I2C address. */
+	INX_T type_inx;  /**< Lego port type. */
+	uint8_t port;  /**< Lego port EV3 port. */
+	uint8_t extport;  /**< Lego port extended port. */
+	uint8_t addr;  /**< Lego port I2C address. */
 
 } EV3_PORT;
 
-#define PORT_DESC__LIMIT_  DESC_LIMIT  /**< Limit of EV3 port descriptors. */
+#define PORT_DESC__LIMIT_  DESC_LIMIT  /**< Limit of lego port descriptors. */
 
-#define PORT__NONE_  PORT_DESC__LIMIT_  /**< EV3 port is not found. */
+#define PORT__NONE_  PORT_DESC__LIMIT_  /**< Lego port is not found. */
 
 /**
- *  \brief Vector of EV3 port descriptors (filled by \ref ev3_port_init).
+ *  \brief Vector of lego port descriptors (filled by \ref ev3_port_init).
  */
 EV3_PORT_VAR( EV3_PORT ev3_port[ PORT_DESC__LIMIT_ ] );
 
 /**
- *  \brief Identifiers of EV3 port types.
+ *  \brief Identifiers of lego port types.
  */
 enum {
 	PORT_TYPE__NONE_ = 0,  /* XXX: memset( 0 ) is used */
 
+	BRICKPI_OUT_PORT,
+	BRICKPI3_IN_PORT,
 	HT_NXT_SMUX_PORT,
-	LEGOEV3_INPUT_PORT,
-	LEGOEV3_OUTPUT_PORT,
+	EV3_OUTPUT_PORT,
+	WEDO_PORT,
+	EV3_INPUT_PORT,
+	PISTORMS_OUT_PORT,
+	BRICKPI3_OUT_PORT,
+	PISTORMS_IN_PORT,
+	BRICKPI_IN_PORT,
 	MS_EV3_SMUX_PORT,
 	MS_NXTMMX_OUT_PORT,
-	WEDO_PORT,
 
-	PORT_TYPE__COUNT_,  /**< Count of EV3 port types. */
+	PORT_TYPE__COUNT_,  /**< Count of lego port types. */
 	PORT_TYPE__UNKNOWN_ = PORT_TYPE__COUNT_
 };
 
 /**
- *  \brief Identifiers of EV3 port "mode" attribute.
+ *  \brief Identifiers of lego port "mode" attribute.
  */
 enum {
 	PORT_MODE__NONE_ = 0,
 
+	BRICKPI_OUT_PORT_TACHO_MOTOR, BRICKPI_OUT_TACHO_MOTOR = BRICKPI_OUT_PORT_TACHO_MOTOR,
+	BRICKPI_OUT_PORT_DC_MOTOR, BRICKPI_OUT_DC_MOTOR = BRICKPI_OUT_PORT_DC_MOTOR,
+	BRICKPI_OUT_PORT_LED, BRICKPI_OUT_LED = BRICKPI_OUT_PORT_LED,			
+	BRICKPI3_IN_PORT_NONE, BRICKPI3_IN_NONE = BRICKPI3_IN_PORT_NONE,
+	BRICKPI3_IN_PORT_NXT_ANALOG, BRICKPI3_IN_NXT_ANALOG = BRICKPI3_IN_PORT_NXT_ANALOG,
+	BRICKPI3_IN_PORT_NXT_COLOR, BRICKPI3_IN_NXT_COLOR = BRICKPI3_IN_PORT_NXT_COLOR,
+	BRICKPI3_IN_PORT_NXT_I2C, BRICKPI3_IN_NXT_I2C = BRICKPI3_IN_PORT_NXT_I2C,
+	BRICKPI3_IN_PORT_EV3_ANALOG, BRICKPI3_IN_EV3_ANALOG = BRICKPI3_IN_PORT_EV3_ANALOG,
+	BRICKPI3_IN_PORT_EV3_UART, BRICKPI3_IN_EV3_UART = BRICKPI3_IN_PORT_EV3_UART,			
 	HT_NXT_SMUX_PORT_ANALOG, HT_NXT_SMUX_ANALOG = HT_NXT_SMUX_PORT_ANALOG,
 	HT_NXT_SMUX_PORT_I2C, HT_NXT_SMUX_I2C = HT_NXT_SMUX_PORT_I2C,			
-	LEGOEV3_INPUT_PORT_AUTO, INPUT_AUTO = LEGOEV3_INPUT_PORT_AUTO,
-	LEGOEV3_INPUT_PORT_NXT_ANALOG, INPUT_NXT_ANALOG = LEGOEV3_INPUT_PORT_NXT_ANALOG,
-	LEGOEV3_INPUT_PORT_NXT_COLOR, INPUT_NXT_COLOR = LEGOEV3_INPUT_PORT_NXT_COLOR,
-	LEGOEV3_INPUT_PORT_NXT_I2C, INPUT_NXT_I2C = LEGOEV3_INPUT_PORT_NXT_I2C,
-	LEGOEV3_INPUT_PORT_OTHER_I2C, INPUT_OTHER_I2C = LEGOEV3_INPUT_PORT_OTHER_I2C,
-	LEGOEV3_INPUT_PORT_EV3_ANALOG, INPUT_EV3_ANALOG = LEGOEV3_INPUT_PORT_EV3_ANALOG,
-	LEGOEV3_INPUT_PORT_EV3_UART, INPUT_EV3_UART = LEGOEV3_INPUT_PORT_EV3_UART,
-	LEGOEV3_INPUT_PORT_OTHER_UART, INPUT_OTHER_UART = LEGOEV3_INPUT_PORT_OTHER_UART,
-	LEGOEV3_INPUT_PORT_RAW, INPUT_RAW = LEGOEV3_INPUT_PORT_RAW,			
-	LEGOEV3_OUTPUT_PORT_AUTO, OUTPUT_AUTO = LEGOEV3_OUTPUT_PORT_AUTO,
-	LEGOEV3_OUTPUT_PORT_TACHO_MOTOR, OUTPUT_TACHO_MOTOR = LEGOEV3_OUTPUT_PORT_TACHO_MOTOR,
-	LEGOEV3_OUTPUT_PORT_DC_MOTOR, OUTPUT_DC_MOTOR = LEGOEV3_OUTPUT_PORT_DC_MOTOR,
-	LEGOEV3_OUTPUT_PORT_LED, OUTPUT_LED = LEGOEV3_OUTPUT_PORT_LED,
-	LEGOEV3_OUTPUT_PORT_RAW, OUTPUT_RAW = LEGOEV3_OUTPUT_PORT_RAW,			
+	EV3_OUTPUT_PORT_AUTO, EV3_OUTPUT_AUTO = EV3_OUTPUT_PORT_AUTO,
+	EV3_OUTPUT_PORT_TACHO_MOTOR, EV3_OUTPUT_TACHO_MOTOR = EV3_OUTPUT_PORT_TACHO_MOTOR,
+	EV3_OUTPUT_PORT_DC_MOTOR, EV3_OUTPUT_DC_MOTOR = EV3_OUTPUT_PORT_DC_MOTOR,
+	EV3_OUTPUT_PORT_LED, EV3_OUTPUT_LED = EV3_OUTPUT_PORT_LED,
+	EV3_OUTPUT_PORT_RAW, EV3_OUTPUT_RAW = EV3_OUTPUT_PORT_RAW,			
+	WEDO_PORT_AUTO, WEDO_AUTO = WEDO_PORT_AUTO,			
+	EV3_INPUT_PORT_AUTO, EV3_INPUT_AUTO = EV3_INPUT_PORT_AUTO,
+	EV3_INPUT_PORT_NXT_ANALOG, EV3_INPUT_NXT_ANALOG = EV3_INPUT_PORT_NXT_ANALOG,
+	EV3_INPUT_PORT_NXT_COLOR, EV3_INPUT_NXT_COLOR = EV3_INPUT_PORT_NXT_COLOR,
+	EV3_INPUT_PORT_NXT_I2C, EV3_INPUT_NXT_I2C = EV3_INPUT_PORT_NXT_I2C,
+	EV3_INPUT_PORT_OTHER_I2C, EV3_INPUT_OTHER_I2C = EV3_INPUT_PORT_OTHER_I2C,
+	EV3_INPUT_PORT_EV3_ANALOG, EV3_INPUT_EV3_ANALOG = EV3_INPUT_PORT_EV3_ANALOG,
+	EV3_INPUT_PORT_EV3_UART, EV3_INPUT_EV3_UART = EV3_INPUT_PORT_EV3_UART,
+	EV3_INPUT_PORT_OTHER_UART, EV3_INPUT_OTHER_UART = EV3_INPUT_PORT_OTHER_UART,
+	EV3_INPUT_PORT_RAW, EV3_INPUT_RAW = EV3_INPUT_PORT_RAW,			
+	PISTORMS_OUT_PORT_TACHO_MOTOR, PISTORMS_OUT_TACHO_MOTOR = PISTORMS_OUT_PORT_TACHO_MOTOR,			
+	BRICKPI3_OUT_PORT_TACHO_MOTOR, BRICKPI3_OUT_TACHO_MOTOR = BRICKPI3_OUT_PORT_TACHO_MOTOR,
+	BRICKPI3_OUT_PORT_DC_MOTOR, BRICKPI3_OUT_DC_MOTOR = BRICKPI3_OUT_PORT_DC_MOTOR,
+	BRICKPI3_OUT_PORT_LED, BRICKPI3_OUT_LED = BRICKPI3_OUT_PORT_LED,			
+	PISTORMS_IN_PORT_NONE, PISTORMS_IN_NONE = PISTORMS_IN_PORT_NONE,
+	PISTORMS_IN_PORT_NXT_ANALOG, PISTORMS_IN_NXT_ANALOG = PISTORMS_IN_PORT_NXT_ANALOG,
+	PISTORMS_IN_PORT_NXT_COLOR, PISTORMS_IN_NXT_COLOR = PISTORMS_IN_PORT_NXT_COLOR,
+	PISTORMS_IN_PORT_I2C_THRU, PISTORMS_IN_I2C_THRU = PISTORMS_IN_PORT_I2C_THRU,
+	PISTORMS_IN_PORT_EV3_ANALOG, PISTORMS_IN_EV3_ANALOG = PISTORMS_IN_PORT_EV3_ANALOG,
+	PISTORMS_IN_PORT_EV3_UART, PISTORMS_IN_EV3_UART = PISTORMS_IN_PORT_EV3_UART,			
+	BRICKPI_IN_PORT_NONE, BRICKPI_IN_NONE = BRICKPI_IN_PORT_NONE,
+	BRICKPI_IN_PORT_NXT_ANALOG, BRICKPI_IN_NXT_ANALOG = BRICKPI_IN_PORT_NXT_ANALOG,
+	BRICKPI_IN_PORT_NXT_COLOR, BRICKPI_IN_NXT_COLOR = BRICKPI_IN_PORT_NXT_COLOR,
+	BRICKPI_IN_PORT_NXT_I2C, BRICKPI_IN_NXT_I2C = BRICKPI_IN_PORT_NXT_I2C,
+	BRICKPI_IN_PORT_EV3_ANALOG, BRICKPI_IN_EV3_ANALOG = BRICKPI_IN_PORT_EV3_ANALOG,
+	BRICKPI_IN_PORT_EV3_UART, BRICKPI_IN_EV3_UART = BRICKPI_IN_PORT_EV3_UART,			
 	MS_EV3_SMUX_PORT_UART, MS_EV3_SMUX_UART = MS_EV3_SMUX_PORT_UART,
 	MS_EV3_SMUX_PORT_ANALOG, MS_EV3_SMUX_ANALOG = MS_EV3_SMUX_PORT_ANALOG,			
-	MS_NXTMMX_OUT_PORT_TACHO_MOTOR, MS_NXTMMX_TACHO_MOTOR = MS_NXTMMX_OUT_PORT_TACHO_MOTOR,			
-	WEDO_PORT_AUTO, WEDO_AUTO = WEDO_PORT_AUTO,
-	PORT_MODE__COUNT_,  /**< Count of EV3 port "mode" attribute. */
+	MS_NXTMMX_OUT_PORT_TACHO_MOTOR, MS_NXTMMX_OUT_TACHO_MOTOR = MS_NXTMMX_OUT_PORT_TACHO_MOTOR,
+	PORT_MODE__COUNT_,  /**< Count of lego port "mode" attribute. */
 	PORT_MODE__UNKNOWN_ = PORT_MODE__COUNT_
 };
 
 /**
- *  \brief Read "address" attribute of the EV3 port.
+ *  \brief Read "address" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
@@ -130,7 +161,7 @@ enum {
 extern size_t get_port_address( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Read "driver_name" attribute of the EV3 port.
+ *  \brief Read "driver_name" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
@@ -139,7 +170,7 @@ extern size_t get_port_address( uint8_t sn, char *buf, size_t sz );
 extern size_t get_port_driver_name( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Read "mode" attribute of the EV3 port.
+ *  \brief Read "mode" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
@@ -148,7 +179,7 @@ extern size_t get_port_driver_name( uint8_t sn, char *buf, size_t sz );
 extern size_t get_port_mode( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Write "mode" attribute of the EV3 port.
+ *  \brief Write "mode" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param value Attribute value.
 		 
@@ -157,7 +188,7 @@ extern size_t get_port_mode( uint8_t sn, char *buf, size_t sz );
 extern size_t set_port_mode( uint8_t sn, char *value );
 
 /**
- *  \brief Write "mode" attribute of several EV3 ports.
+ *  \brief Write "mode" attribute of several lego ports.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
@@ -166,7 +197,7 @@ extern size_t set_port_mode( uint8_t sn, char *value );
 extern size_t multi_set_port_mode( uint8_t *sn, char *value );
 
 /**
- *  \brief Read "modes" attribute of the EV3 port.
+ *  \brief Read "modes" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
@@ -175,7 +206,7 @@ extern size_t multi_set_port_mode( uint8_t *sn, char *value );
 extern size_t get_port_modes( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Write "set_device" attribute of the EV3 port.
+ *  \brief Write "set_device" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param value Attribute value.
 		 
@@ -184,7 +215,7 @@ extern size_t get_port_modes( uint8_t sn, char *buf, size_t sz );
 extern size_t set_port_set_device( uint8_t sn, char *value );
 
 /**
- *  \brief Write "set_device" attribute of several EV3 ports.
+ *  \brief Write "set_device" attribute of several lego ports.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
  *  \param value Attribute value.
 		 
@@ -193,7 +224,7 @@ extern size_t set_port_set_device( uint8_t sn, char *value );
 extern size_t multi_set_port_set_device( uint8_t *sn, char *value );
 
 /**
- *  \brief Read "status" attribute of the EV3 port.
+ *  \brief Read "status" attribute of the lego port.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \param sz Buffer size.
@@ -202,21 +233,21 @@ extern size_t multi_set_port_set_device( uint8_t *sn, char *value );
 extern size_t get_port_status( uint8_t sn, char *buf, size_t sz );
 
 /**
- *  \brief Get name of the specified EV3 port type.
- *  \param type_inx Index of the EV3 port type.
+ *  \brief Get name of the specified lego port type.
+ *  \param type_inx Index of the lego port type.
  *  \return Requested value.
  */
 extern const char *ev3_port_type( INX_T type_inx );
 
 /**
- *  \brief Read "driver_name" attribute and get index of the EV3 port type.
+ *  \brief Read "driver_name" attribute and get index of the lego port type.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
 extern INX_T get_port_type_inx( uint8_t sn );
 
 /**
- *  \brief Read EV3 port attributes that are required for filling the descriptor.
+ *  \brief Read lego port attributes that are required for filling the descriptor.
  *  \param sn Sequence number.
  *  \param desc Buffer for the descriptor.
  *  \return Count of read bytes.
@@ -224,42 +255,42 @@ extern INX_T get_port_type_inx( uint8_t sn );
 extern size_t get_port_desc( uint8_t sn, EV3_PORT *desc );
 
 /**
- *  \brief Get descriptor of the EV3 port.
+ *  \brief Get descriptor of the lego port.
  *  \param sn Sequence number.
- *  \return Pointer to the EV3 port descriptor.
+ *  \return Pointer to the lego port descriptor.
  */
 extern EV3_PORT *ev3_port_desc( uint8_t sn );
 
 /**
- *  \brief Get type from the EV3 port descriptor.
+ *  \brief Get type from the lego port descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
 extern INX_T ev3_port_desc_type_inx( uint8_t sn );
 
 /**
- *  \brief Get EV3 port from the EV3 port descriptor.
+ *  \brief Get EV3 port from the lego port descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
 extern uint8_t ev3_port_desc_port( uint8_t sn );
 
 /**
- *  \brief Get extended port from the EV3 port descriptor.
+ *  \brief Get extended port from the lego port descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
 extern uint8_t ev3_port_desc_extport( uint8_t sn );
 
 /**
- *  \brief Get I2C address from the EV3 port descriptor.
+ *  \brief Get I2C address from the lego port descriptor.
  *  \param sn Sequence number.
  *  \return Requested value.
  */
 extern uint8_t ev3_port_desc_addr( uint8_t sn );
 
 /**
- *  \brief Assemble EV3 port name from the EV3 port descriptor.
+ *  \brief Assemble EV3 port name from the lego port descriptor.
  *  \param sn Sequence number.
  *  \param[out] buf Buffer for result.
  *  \return Requested value.
@@ -267,67 +298,67 @@ extern uint8_t ev3_port_desc_addr( uint8_t sn );
 extern char *ev3_port_port_name( uint8_t sn, char *buf );
 
 /**
- *  \brief Search of a sequence number of the specified EV3 port type.
- *  \param type_inx EV3 port type.
+ *  \brief Search of a sequence number of the specified lego port type.
+ *  \param type_inx Lego port type.
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
- *  \return Flag - the EV3 port is found.
+ *  \return Flag - the lego port is found.
  */
 extern bool ev3_search_port_type( INX_T type_inx, uint8_t *sn, uint8_t from );
 
 /**
- *  \brief Search of a sequence number the EV3 port by plug-in attributes.
+ *  \brief Search of a sequence number the lego port by plug-in attributes.
  *  \param port EV3 port.
  *  \param extport Extended port.
  *  \param[out] sn Buffer for the sequence number.
  *  \param from Search initial value.
- *  \return Flag - the EV3 port is found.
+ *  \return Flag - the lego port is found.
  */
 extern bool ev3_search_port_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uint8_t from );
 
 /**
- *  \brief Get name of the specified EV3 port mode.
- *  \param mode_inx Index of the EV3 port mode.
+ *  \brief Get name of the specified lego port mode.
+ *  \param mode_inx Index of the lego port mode.
  *  \return Requested value.
  */
 extern const char *ev3_port_mode( INX_T mode_inx );
 
 /**
- *  \brief Read "mode" attribute of the specified EV3 port type and get the index.
+ *  \brief Read "mode" attribute of the specified lego port type and get the index.
  *  \param sn Sequence number.
- *  \param type_inx Index of the EV3 port type.
+ *  \param type_inx Index of the lego port type.
  *  \return Requested value.
  */
 extern INX_T get_port_mode_inx_of_type( uint8_t sn, INX_T type_inx );
 
 /**
- *  \brief Read "mode" attribute of the EV3 port and get the index.
+ *  \brief Read "mode" attribute of the lego port and get the index.
  *  \param sn Sequence number.
  *  \return Requested value.
  *
- *  This function gets type of the EV3 port from the descriptor.
+ *  This function gets type of the lego port from the descriptor.
  */
 extern INX_T get_port_mode_inx( uint8_t sn );
 
 /**
- *  \brief Write "mode" attribute of the EV3 port by the index.
+ *  \brief Write "mode" attribute of the lego port by the index.
  *  \param sn Sequence number.
- *  \param mode_inx Index of the EV3 port mode.
+ *  \param mode_inx Index of the lego port mode.
  *  \return Count of written bytes.
  */
 extern size_t set_port_mode_inx( uint8_t sn, INX_T mode_inx );
 
 /**
- *  \brief Write "mode" attribute of several EV3 ports by the index.
+ *  \brief Write "mode" attribute of several lego ports by the index.
  *  \param sn Vector of sequence numbers ending with DESC_LIMIT.
- *  \param mode_inx Index of the EV3 port mode.
+ *  \param mode_inx Index of the lego port mode.
  *  \return Count of written bytes.
  */
 extern size_t multi_set_port_mode_inx( uint8_t *sn, INX_T mode_inx );
 
 /**
- *  \brief Detect connected EV3 ports.
- *  \return Number of found EV3 ports or -1 in case of an error.
+ *  \brief Detect connected lego ports.
+ *  \return Number of found lego ports or -1 in case of an error.
  */
 extern int ev3_port_init( void );
 

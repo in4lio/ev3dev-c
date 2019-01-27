@@ -1,0 +1,17 @@
+($dict CLASS_TYPE
+(`CLASS_TYPE_NAME CLASS_TYPE_MODES)
+(`
+("brickpi-out-port" ("tacho-motor" "dc-motor" "led"))
+("brickpi3-in-port" ("none" "nxt-analog" "nxt-color" "nxt-i2c" "ev3-analog" "ev3-uart"))
+("ht-nxt-smux-port" ("analog" "i2c"))
+("ev3-output-port" ("auto" "tacho-motor" "dc-motor" "led" "raw"))
+("wedo-port" ("auto"))
+("ev3-input-port" ("auto" "nxt-analog" "nxt-color" "nxt-i2c" "other-i2c" "ev3-analog" "ev3-uart" "other-uart" "raw"))
+("pistorms-out-port" ("tacho-motor"))
+("brickpi3-out-port" ("tacho-motor" "dc-motor" "led"))
+("pistorms-in-port" ("none" "nxt-analog" "nxt-color" "i2c-thru" "ev3-analog" "ev3-uart"))
+("brickpi-in-port" ("none" "nxt-analog" "nxt-color" "nxt-i2c" "ev3-analog" "ev3-uart"))
+("ms-ev3-smux-port" ("uart" "analog"))
+("ms-nxtmmx-out-port" ("tacho-motor"))
+)
+)

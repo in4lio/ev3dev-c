@@ -100,18 +100,30 @@ size_t get_port_status( uint8_t sn, char *buf, size_t sz )
 const char *ev3_port_type( INX_T type_inx )
 {
 	switch ( type_inx ) {
+	case BRICKPI_OUT_PORT:
+		return "brickpi-out-port";
+	case BRICKPI3_IN_PORT:
+		return "brickpi3-in-port";
 	case HT_NXT_SMUX_PORT:
 		return "ht-nxt-smux-port";
-	case LEGOEV3_INPUT_PORT:
-		return "legoev3-input-port";
-	case LEGOEV3_OUTPUT_PORT:
-		return "legoev3-output-port";
+	case EV3_OUTPUT_PORT:
+		return "ev3-output-port";
+	case WEDO_PORT:
+		return "wedo-port";
+	case EV3_INPUT_PORT:
+		return "ev3-input-port";
+	case PISTORMS_OUT_PORT:
+		return "pistorms-out-port";
+	case BRICKPI3_OUT_PORT:
+		return "brickpi3-out-port";
+	case PISTORMS_IN_PORT:
+		return "pistorms-in-port";
+	case BRICKPI_IN_PORT:
+		return "brickpi-in-port";
 	case MS_EV3_SMUX_PORT:
 		return "ms-ev3-smux-port";
 	case MS_NXTMMX_OUT_PORT:
 		return "ms-nxtmmx-out-port";
-	case WEDO_PORT:
-		return "wedo-port";
 
 	}
 	return ( STR_unknown_ );
@@ -123,12 +135,33 @@ INX_T get_port_type_inx( uint8_t sn )
 
 	if ( !get_port_driver_name( sn, buf, sizeof( buf ))) return ( PORT_TYPE__NONE_ );
 
-	if ( strcmp( buf, "ht-nxt-smux-port" ) == 0 ) return HT_NXT_SMUX_PORT;
-	if ( strcmp( buf, "legoev3-input-port" ) == 0 ) return LEGOEV3_INPUT_PORT;
-	if ( strcmp( buf, "legoev3-output-port" ) == 0 ) return LEGOEV3_OUTPUT_PORT;
-	if ( strcmp( buf, "ms-ev3-smux-port" ) == 0 ) return MS_EV3_SMUX_PORT;
-	if ( strcmp( buf, "ms-nxtmmx-out-port" ) == 0 ) return MS_NXTMMX_OUT_PORT;
-	if ( strcmp( buf, "wedo-port" ) == 0 ) return WEDO_PORT;
+	switch ( crc32( 0, buf, strlen( buf ))) {
+	case 0xe830f5e7L:  /* "brickpi-out-port" */
+		return BRICKPI_OUT_PORT;
+	case 0xe5b97ed3L:  /* "brickpi3-in-port" */
+		return BRICKPI3_IN_PORT;
+	case 0xf239351bL:  /* "ht-nxt-smux-port" */
+		return HT_NXT_SMUX_PORT;
+	case 0x2fdeaddeL:  /* "ev3-output-port" */
+		return EV3_OUTPUT_PORT;
+	case 0x371fa871L:  /* "wedo-port" */
+		return WEDO_PORT;
+	case 0x8d0f20dcL:  /* "ev3-input-port" */
+		return EV3_INPUT_PORT;
+	case 0xc55dcb65L:  /* "pistorms-out-port" */
+		return PISTORMS_OUT_PORT;
+	case 0x983f2322L:  /* "brickpi3-out-port" */
+		return BRICKPI3_OUT_PORT;
+	case 0xef4a3b29L:  /* "pistorms-in-port" */
+		return PISTORMS_IN_PORT;
+	case 0x809b34d6L:  /* "brickpi-in-port" */
+		return BRICKPI_IN_PORT;
+	case 0xe2ea87c6L:  /* "ms-ev3-smux-port" */
+		return MS_EV3_SMUX_PORT;
+	case 0x9127ffbaL:  /* "ms-nxtmmx-out-port" */
+		return MS_NXTMMX_OUT_PORT;
+
+	}
 
 	return ( PORT_TYPE__UNKNOWN_ );
 }
@@ -220,40 +253,99 @@ bool ev3_search_port_plugged_in( uint8_t port, uint8_t extport, uint8_t *sn, uin
 const char *ev3_port_mode( INX_T mode_inx )
 {
 	switch ( mode_inx ) {
+	case BRICKPI_OUT_PORT_TACHO_MOTOR:
+		return "tacho-motor";
+	case BRICKPI_OUT_PORT_DC_MOTOR:
+		return "dc-motor";
+	case BRICKPI_OUT_PORT_LED:
+		return "led";
+
+	case BRICKPI3_IN_PORT_NONE:
+		return "none";
+	case BRICKPI3_IN_PORT_NXT_ANALOG:
+		return "nxt-analog";
+	case BRICKPI3_IN_PORT_NXT_COLOR:
+		return "nxt-color";
+	case BRICKPI3_IN_PORT_NXT_I2C:
+		return "nxt-i2c";
+	case BRICKPI3_IN_PORT_EV3_ANALOG:
+		return "ev3-analog";
+	case BRICKPI3_IN_PORT_EV3_UART:
+		return "ev3-uart";
+
 	case HT_NXT_SMUX_PORT_ANALOG:
 		return "analog";
 	case HT_NXT_SMUX_PORT_I2C:
 		return "i2c";
 
-	case LEGOEV3_INPUT_PORT_AUTO:
+	case EV3_OUTPUT_PORT_AUTO:
 		return "auto";
-	case LEGOEV3_INPUT_PORT_NXT_ANALOG:
-		return "nxt-analog";
-	case LEGOEV3_INPUT_PORT_NXT_COLOR:
-		return "nxt-color";
-	case LEGOEV3_INPUT_PORT_NXT_I2C:
-		return "nxt-i2c";
-	case LEGOEV3_INPUT_PORT_OTHER_I2C:
-		return "other-i2c";
-	case LEGOEV3_INPUT_PORT_EV3_ANALOG:
-		return "ev3-analog";
-	case LEGOEV3_INPUT_PORT_EV3_UART:
-		return "ev3-uart";
-	case LEGOEV3_INPUT_PORT_OTHER_UART:
-		return "other-uart";
-	case LEGOEV3_INPUT_PORT_RAW:
+	case EV3_OUTPUT_PORT_TACHO_MOTOR:
+		return "tacho-motor";
+	case EV3_OUTPUT_PORT_DC_MOTOR:
+		return "dc-motor";
+	case EV3_OUTPUT_PORT_LED:
+		return "led";
+	case EV3_OUTPUT_PORT_RAW:
 		return "raw";
 
-	case LEGOEV3_OUTPUT_PORT_AUTO:
+	case WEDO_PORT_AUTO:
 		return "auto";
-	case LEGOEV3_OUTPUT_PORT_TACHO_MOTOR:
-		return "tacho-motor";
-	case LEGOEV3_OUTPUT_PORT_DC_MOTOR:
-		return "dc-motor";
-	case LEGOEV3_OUTPUT_PORT_LED:
-		return "led";
-	case LEGOEV3_OUTPUT_PORT_RAW:
+
+	case EV3_INPUT_PORT_AUTO:
+		return "auto";
+	case EV3_INPUT_PORT_NXT_ANALOG:
+		return "nxt-analog";
+	case EV3_INPUT_PORT_NXT_COLOR:
+		return "nxt-color";
+	case EV3_INPUT_PORT_NXT_I2C:
+		return "nxt-i2c";
+	case EV3_INPUT_PORT_OTHER_I2C:
+		return "other-i2c";
+	case EV3_INPUT_PORT_EV3_ANALOG:
+		return "ev3-analog";
+	case EV3_INPUT_PORT_EV3_UART:
+		return "ev3-uart";
+	case EV3_INPUT_PORT_OTHER_UART:
+		return "other-uart";
+	case EV3_INPUT_PORT_RAW:
 		return "raw";
+
+	case PISTORMS_OUT_PORT_TACHO_MOTOR:
+		return "tacho-motor";
+
+	case BRICKPI3_OUT_PORT_TACHO_MOTOR:
+		return "tacho-motor";
+	case BRICKPI3_OUT_PORT_DC_MOTOR:
+		return "dc-motor";
+	case BRICKPI3_OUT_PORT_LED:
+		return "led";
+
+	case PISTORMS_IN_PORT_NONE:
+		return "none";
+	case PISTORMS_IN_PORT_NXT_ANALOG:
+		return "nxt-analog";
+	case PISTORMS_IN_PORT_NXT_COLOR:
+		return "nxt-color";
+	case PISTORMS_IN_PORT_I2C_THRU:
+		return "i2c-thru";
+	case PISTORMS_IN_PORT_EV3_ANALOG:
+		return "ev3-analog";
+	case PISTORMS_IN_PORT_EV3_UART:
+		return "ev3-uart";
+
+	case BRICKPI_IN_PORT_NONE:
+		return "none";
+	case BRICKPI_IN_PORT_NXT_ANALOG:
+		return "nxt-analog";
+	case BRICKPI_IN_PORT_NXT_COLOR:
+		return "nxt-color";
+	case BRICKPI_IN_PORT_NXT_I2C:
+		return "nxt-i2c";
+	case BRICKPI_IN_PORT_EV3_ANALOG:
+		return "ev3-analog";
+	case BRICKPI_IN_PORT_EV3_UART:
+		return "ev3-uart";
 
 	case MS_EV3_SMUX_PORT_UART:
 		return "uart";
@@ -262,9 +354,6 @@ const char *ev3_port_mode( INX_T mode_inx )
 
 	case MS_NXTMMX_OUT_PORT_TACHO_MOTOR:
 		return "tacho-motor";
-
-	case WEDO_PORT_AUTO:
-		return "auto";
 
 	}
 	return ( STR_unknown_ );
@@ -278,31 +367,85 @@ INX_T get_port_mode_inx_of_type( uint8_t sn, INX_T type_inx )
 
 	switch ( type_inx ) {
 			
+	case BRICKPI_OUT_PORT:
+		if ( strcmp( buf, "tacho-motor" ) == 0 ) return BRICKPI_OUT_PORT_TACHO_MOTOR;
+		if ( strcmp( buf, "dc-motor" ) == 0 ) return BRICKPI_OUT_PORT_DC_MOTOR;
+		if ( strcmp( buf, "led" ) == 0 ) return BRICKPI_OUT_PORT_LED;
+
+		break;
+
+	case BRICKPI3_IN_PORT:
+		if ( strcmp( buf, "none" ) == 0 ) return BRICKPI3_IN_PORT_NONE;
+		if ( strcmp( buf, "nxt-analog" ) == 0 ) return BRICKPI3_IN_PORT_NXT_ANALOG;
+		if ( strcmp( buf, "nxt-color" ) == 0 ) return BRICKPI3_IN_PORT_NXT_COLOR;
+		if ( strcmp( buf, "nxt-i2c" ) == 0 ) return BRICKPI3_IN_PORT_NXT_I2C;
+		if ( strcmp( buf, "ev3-analog" ) == 0 ) return BRICKPI3_IN_PORT_EV3_ANALOG;
+		if ( strcmp( buf, "ev3-uart" ) == 0 ) return BRICKPI3_IN_PORT_EV3_UART;
+
+		break;
+
 	case HT_NXT_SMUX_PORT:
 		if ( strcmp( buf, "analog" ) == 0 ) return HT_NXT_SMUX_PORT_ANALOG;
 		if ( strcmp( buf, "i2c" ) == 0 ) return HT_NXT_SMUX_PORT_I2C;
 
 		break;
 
-	case LEGOEV3_INPUT_PORT:
-		if ( strcmp( buf, "auto" ) == 0 ) return LEGOEV3_INPUT_PORT_AUTO;
-		if ( strcmp( buf, "nxt-analog" ) == 0 ) return LEGOEV3_INPUT_PORT_NXT_ANALOG;
-		if ( strcmp( buf, "nxt-color" ) == 0 ) return LEGOEV3_INPUT_PORT_NXT_COLOR;
-		if ( strcmp( buf, "nxt-i2c" ) == 0 ) return LEGOEV3_INPUT_PORT_NXT_I2C;
-		if ( strcmp( buf, "other-i2c" ) == 0 ) return LEGOEV3_INPUT_PORT_OTHER_I2C;
-		if ( strcmp( buf, "ev3-analog" ) == 0 ) return LEGOEV3_INPUT_PORT_EV3_ANALOG;
-		if ( strcmp( buf, "ev3-uart" ) == 0 ) return LEGOEV3_INPUT_PORT_EV3_UART;
-		if ( strcmp( buf, "other-uart" ) == 0 ) return LEGOEV3_INPUT_PORT_OTHER_UART;
-		if ( strcmp( buf, "raw" ) == 0 ) return LEGOEV3_INPUT_PORT_RAW;
+	case EV3_OUTPUT_PORT:
+		if ( strcmp( buf, "auto" ) == 0 ) return EV3_OUTPUT_PORT_AUTO;
+		if ( strcmp( buf, "tacho-motor" ) == 0 ) return EV3_OUTPUT_PORT_TACHO_MOTOR;
+		if ( strcmp( buf, "dc-motor" ) == 0 ) return EV3_OUTPUT_PORT_DC_MOTOR;
+		if ( strcmp( buf, "led" ) == 0 ) return EV3_OUTPUT_PORT_LED;
+		if ( strcmp( buf, "raw" ) == 0 ) return EV3_OUTPUT_PORT_RAW;
 
 		break;
 
-	case LEGOEV3_OUTPUT_PORT:
-		if ( strcmp( buf, "auto" ) == 0 ) return LEGOEV3_OUTPUT_PORT_AUTO;
-		if ( strcmp( buf, "tacho-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_TACHO_MOTOR;
-		if ( strcmp( buf, "dc-motor" ) == 0 ) return LEGOEV3_OUTPUT_PORT_DC_MOTOR;
-		if ( strcmp( buf, "led" ) == 0 ) return LEGOEV3_OUTPUT_PORT_LED;
-		if ( strcmp( buf, "raw" ) == 0 ) return LEGOEV3_OUTPUT_PORT_RAW;
+	case WEDO_PORT:
+		if ( strcmp( buf, "auto" ) == 0 ) return WEDO_PORT_AUTO;
+
+		break;
+
+	case EV3_INPUT_PORT:
+		if ( strcmp( buf, "auto" ) == 0 ) return EV3_INPUT_PORT_AUTO;
+		if ( strcmp( buf, "nxt-analog" ) == 0 ) return EV3_INPUT_PORT_NXT_ANALOG;
+		if ( strcmp( buf, "nxt-color" ) == 0 ) return EV3_INPUT_PORT_NXT_COLOR;
+		if ( strcmp( buf, "nxt-i2c" ) == 0 ) return EV3_INPUT_PORT_NXT_I2C;
+		if ( strcmp( buf, "other-i2c" ) == 0 ) return EV3_INPUT_PORT_OTHER_I2C;
+		if ( strcmp( buf, "ev3-analog" ) == 0 ) return EV3_INPUT_PORT_EV3_ANALOG;
+		if ( strcmp( buf, "ev3-uart" ) == 0 ) return EV3_INPUT_PORT_EV3_UART;
+		if ( strcmp( buf, "other-uart" ) == 0 ) return EV3_INPUT_PORT_OTHER_UART;
+		if ( strcmp( buf, "raw" ) == 0 ) return EV3_INPUT_PORT_RAW;
+
+		break;
+
+	case PISTORMS_OUT_PORT:
+		if ( strcmp( buf, "tacho-motor" ) == 0 ) return PISTORMS_OUT_PORT_TACHO_MOTOR;
+
+		break;
+
+	case BRICKPI3_OUT_PORT:
+		if ( strcmp( buf, "tacho-motor" ) == 0 ) return BRICKPI3_OUT_PORT_TACHO_MOTOR;
+		if ( strcmp( buf, "dc-motor" ) == 0 ) return BRICKPI3_OUT_PORT_DC_MOTOR;
+		if ( strcmp( buf, "led" ) == 0 ) return BRICKPI3_OUT_PORT_LED;
+
+		break;
+
+	case PISTORMS_IN_PORT:
+		if ( strcmp( buf, "none" ) == 0 ) return PISTORMS_IN_PORT_NONE;
+		if ( strcmp( buf, "nxt-analog" ) == 0 ) return PISTORMS_IN_PORT_NXT_ANALOG;
+		if ( strcmp( buf, "nxt-color" ) == 0 ) return PISTORMS_IN_PORT_NXT_COLOR;
+		if ( strcmp( buf, "i2c-thru" ) == 0 ) return PISTORMS_IN_PORT_I2C_THRU;
+		if ( strcmp( buf, "ev3-analog" ) == 0 ) return PISTORMS_IN_PORT_EV3_ANALOG;
+		if ( strcmp( buf, "ev3-uart" ) == 0 ) return PISTORMS_IN_PORT_EV3_UART;
+
+		break;
+
+	case BRICKPI_IN_PORT:
+		if ( strcmp( buf, "none" ) == 0 ) return BRICKPI_IN_PORT_NONE;
+		if ( strcmp( buf, "nxt-analog" ) == 0 ) return BRICKPI_IN_PORT_NXT_ANALOG;
+		if ( strcmp( buf, "nxt-color" ) == 0 ) return BRICKPI_IN_PORT_NXT_COLOR;
+		if ( strcmp( buf, "nxt-i2c" ) == 0 ) return BRICKPI_IN_PORT_NXT_I2C;
+		if ( strcmp( buf, "ev3-analog" ) == 0 ) return BRICKPI_IN_PORT_EV3_ANALOG;
+		if ( strcmp( buf, "ev3-uart" ) == 0 ) return BRICKPI_IN_PORT_EV3_UART;
 
 		break;
 
@@ -314,11 +457,6 @@ INX_T get_port_mode_inx_of_type( uint8_t sn, INX_T type_inx )
 
 	case MS_NXTMMX_OUT_PORT:
 		if ( strcmp( buf, "tacho-motor" ) == 0 ) return MS_NXTMMX_OUT_PORT_TACHO_MOTOR;
-
-		break;
-
-	case WEDO_PORT:
-		if ( strcmp( buf, "auto" ) == 0 ) return WEDO_PORT_AUTO;
 
 		break;
 

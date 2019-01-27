@@ -9,12 +9,12 @@
 ($set CLASS_ID ($unq CLASS_FOLDER_PREF))
 ($set CLASS_TITLE "sensor")
 
-($import "grab/sensors.py")
+($import "grab/spec.py")
 
 ($!dict CLASS_TYPE
 	(` CLASS_TYPE_NAME  CLASS_TYPE_MODES  CLASS_TYPE_COMMANDS  )
 )
-($import { grab_sensors( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensors.json' ) })
+($import { grab_sensors( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/sensors.json' ) })
 
 ($set CLASS_TYPE_ID_SHORT_FOR ( "lego_ev3_us" "lego_ev3_gyro" "lego_ev3_color" "lego_ev3_touch" "lego_ev3_ir" ))
 ($set CLASS_TYPE_ID_SHORT     ( "us"          "gyro"          "color"          "touch"          "ir"          ))
