@@ -15,13 +15,15 @@ import urllib2
 import json
 import os
 
-F_SENSOR_JSON = 'sensors.json'
+DIR     = os.path.dirname( os.path.realpath(__file__))
+DICT    = os.path.join( DIR, 'sensors.yu' )
+CACHE   = os.path.join( DIR, 'sensors.json' )
 
 D_BEGIN = '($dict CLASS_TYPE\n(`CLASS_TYPE_NAME CLASS_TYPE_MODES CLASS_TYPE_COMMANDS)\n(`\n'
 D_ROW   = '("{0}" ({1}) ({2}))\n'
 D_END   = ')\n)'
 
-def grab_sensors( url, cache = None ):
+def grab_sensors( url ):
     """
     Get sensor types, modes and commands from JSON file and make a dictionary
     with the following layout:
@@ -34,26 +36,26 @@ def grab_sensors( url, cache = None ):
         )
     )
     """
-    if isinstance( cache, basestring ):
-        if not cache:
-            cache = F_SENSOR_JSON
-#       -- cache the file from URL if it doesn't exist
-        if not os.path.isfile( cache ):
-            j = urllib2.urlopen( url )
-            with open( cache, 'wb' ) as f:
-                f.write( j.read())
-#       -- read the cached file
-        with open( cache ) as f:
-            data = json.load( f )
-    else:
-#       -- read data directly
-        data = json.load( urllib2.urlopen( url ))
+    if os.path.isfile( DICT ):
+        return open( DICT, 'r' ).read()
+
+#   -- cache the file from URL
+    if not os.path.isfile( CACHE ):
+        j = urllib2.urlopen( urllib2.Request(
+            url,
+            headers={ 'User-Agent': 'Mozilla/5.0', 'Content-Type': 'application/json' }
+        ))
+        with open( CACHE, 'wb' ) as f:
+            f.write( j.read())
+
+#   -- read the cached file
+    with open( CACHE ) as f:
+        data = json.load( f )
 
 #   -- parse data
     result = D_BEGIN
 
     for sensor in data:
-
         if 'mode_info' in sensor:
             modes = ' '.join(( '"' + x[ 'name' ] + '"' for x in sensor[ 'mode_info' ]))
         else:
@@ -72,9 +74,11 @@ def grab_sensors( url, cache = None ):
             print '{0: <24}(ignored)'.format( sensor[ 'name' ])
 
     result += D_END
+
+    with open( DICT, 'w' ) as f:
+        f.write( result )
+
     return result
 
 if __name__ == '__main__':
-#   -- test
-    with open( 'sensors.yu', 'w' ) as f:
-        f.write( grab_sensors( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensors.json' ))
+    grab_sensors( 'http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-jessie/sensors.json' )
