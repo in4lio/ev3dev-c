@@ -2,8 +2,8 @@
 
 ### VERSION
 
-    ev3dev-c    1.0c2
-                2017-10-13
+    ev3dev-c    1.0c3
+                2019-01-27
 
     kernel      4.4.87-22-ev3dev-ev3
 
