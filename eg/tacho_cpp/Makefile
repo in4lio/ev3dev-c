@@ -1,4 +1,4 @@
-TARGET = $(notdir $(shell pwd))
+TARGET = $(notdir $(CURDIR))
 
 LIBS = -lm -lev3dev-c
 D_BIN = Release
@@ -15,9 +15,15 @@ CXXFLAGS = $(addprefix -I, $(D_H)) -O2 -g -W -Wall -Wno-comment
 ifeq ($(OS),Windows_NT)
 CC = gcc
 CXX = g++
+define remove
+	cmd /c del /f $(subst /,\,$1)
+endef
 else
 CC = arm-linux-gnueabi-gcc
 CXX = arm-linux-gnueabi-g++
+define remove
+	rm -f
+endef
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -47,5 +53,6 @@ $(F_BIN): $(C_OBJS) $(CXX_OBJS)
 	$(CXX) $(C_OBJS) $(CXX_OBJS) -Wall $(LIBS) -o $@
 
 clean:
-	-rm -f $(D_BIN)/*.o
-	-rm -f $(F_BIN)
+	-$(call remove,$(D_BIN)/*.o)
+	-$(call remove,$(F_BIN))
+
