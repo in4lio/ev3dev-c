@@ -44,7 +44,7 @@ int main( void )
 
 	printf( "Set mode of the EV3 output port (%s)...\n", ev3_port_name( port, EXT_PORT__NONE_, 0, name_port ));
 	sn_port = ev3_search_port( port, EXT_PORT__NONE_ );
-	set_port_mode_inx( sn_port, OUTPUT_DC_MOTOR );
+	set_port_mode_inx( sn_port, EV3_OUTPUT_DC_MOTOR );
 	if ( get_port_mode( sn_port, s, sizeof( s ))) {
 		printf( "%s: %s\n", name_port, s );
 	}
@@ -77,7 +77,7 @@ int main( void )
 	}
 	Sleep( 200 );
 	printf( "Reset mode of the EV3 output port...\n" );
-	set_port_mode_inx( sn_port, OUTPUT_AUTO );
+	set_port_mode_inx( sn_port, EV3_OUTPUT_AUTO );
 	if ( get_port_mode( sn_port, s, sizeof( s ))) {
 		printf( "%s: %s\n", name_port, s );
 	}
