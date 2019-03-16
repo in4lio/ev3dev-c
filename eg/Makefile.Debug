@@ -6,7 +6,7 @@
 #   makefile (yupp, gcc)
 
 # -- name of binary file equals to the folder name
-TARGET = $(notdir $(shell pwd))
+TARGET = $(notdir $(CURDIR))
 
 # -- creating MAP file
 MAP = 0
@@ -173,7 +173,7 @@ ifeq ($(OS),Windows_NT)
 define wrap
 	echo $2 > args
 	$1 @args
-	-rm args
+	-cmd /c 'del args'
 endef
 else
 define wrap
@@ -198,13 +198,17 @@ R := $(R) $(D_MAP)/$(TARGET)$(E_MAP)
 endif
 
 ifeq ($(OS),Windows_NT)
-#CLEAN = cmd /c "del $(subst /,\,$(R))"
-CLEAN = rm -rf $(R)
+CLEAN = cmd //c 'del $(subst /,\,$(R))'
 else
 CLEAN = rm -rf $(R)
 endif
 
+ifeq ($(OS),Windows_NT)
+CLEAN = cmd //c 'del $(subst /,\,$(R_BIN))'
+else
 CLEAN_BIN = rm -rf $(R_BIN)
+endif
+
 
 # -- install
 define install
