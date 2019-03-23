@@ -11,7 +11,7 @@ clean-binary: debug-clean-binary
 debug:
 	$(MAKE) -f $(MAKEFILE_BASE).Debug
 
-debug-clean: clean
+debug-clean:
 	$(MAKE) -f $(MAKEFILE_BASE).Debug clean
 
 debug-clean-binary:
