@@ -197,10 +197,8 @@ endif
 endif
 
 ifeq ($(_BASH),0)
-# -- cmd
 RM = cmd /c del /f
 else
-# -- sh (MSYS)
 RM = rm -rf
 endif
 
@@ -232,8 +230,8 @@ endif
 
 ifeq ($(_BASH),0)
 # -- cmd
-CLEAN = cmd /c del /f $(subst /,\,$(R))
-CLEAN_BIN = cmd /c del /f $(R_BIN)
+CLEAN = cmd '/c del /f $(subst /,\,$(R))'
+CLEAN_BIN = cmd /c 'del /f $(R_BIN)'
 else
 # -- sh (MSYS)
 CLEAN = rm -rf $(R)
@@ -241,12 +239,19 @@ CLEAN_BIN = rm -rf $(R_BIN)
 endif
 
 # -- install library
+ifeq ($(_BASH),0)
 define install
-	${MKDIR} $(D_INSTALL)/lib
-	cp -f $1 $(D_INSTALL)/lib
-	${MKDIR} $(D_INSTALL)/include
-	cp -f $(S_INSTALL_H) $(D_INSTALL)/include
+	cmd /c 'copy /y $(subst /,\,$1) $(D_INSTALL)\lib'
+	cmd /c 'for %i in ($(subst /,\,$(S_INSTALL_H))) do copy /y %i $(D_INSTALL)\include'
 endef
+else
+define install
+	sudo ${MKDIR} $(D_INSTALL)/lib
+	sudo cp -f $1 $(D_INSTALL)/lib
+	sudo ${MKDIR} $(D_INSTALL)/include
+	sudo cp -f $(S_INSTALL_H) $(D_INSTALL)/include
+endef
+endif
 
 # ---------------------------------
 #   make rules
@@ -328,6 +333,6 @@ install:
 
 shared-install:
 	$(call install,$(F_BIN_SHARED))
-	ldconfig
+	-ldconfig
 
 # -- EOF
