@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "crc32.h"
 #include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_port.h"
