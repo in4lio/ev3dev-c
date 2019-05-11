@@ -1,23 +1,24 @@
-ifeq ($(OS),Windows_NT)
-CC = gcc
-LFLAGS := -lws2_32
-define remove
-	cmd /c 'del /f $(subst /,\,$1)'
-endef
-else
-CC = arm-linux-gnueabi-gcc
-LFLAGS :=
-define remove
-	rm -f
-endef
-endif
+MAKEFILE_BASE = ../Makefile
 
-all: hello.o
-	$(CC) hello.o -lev3dev-c $(LFLAGS) -o hello
+.PHONY: default clean clean-binary debug debug-clean debug-clean-binary release release-clean
 
-hello.o: hello.c
-	$(CC) -c hello.c -I../../source/ev3/
+default: debug
 
-clean:
-	-$(call remove,*.o)
-	-$(call remove,hello)
+clean: debug-clean
+
+clean-binary: debug-clean-binary
+
+debug:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug
+
+debug-clean:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean
+
+debug-clean-binary:
+	$(MAKE) -f $(MAKEFILE_BASE).Debug clean-binary
+
+release:
+	$(MAKE) -f $(MAKEFILE_BASE).Release
+
+release-clean:
+	$(MAKE) -f $(MAKEFILE_BASE).Release clean
