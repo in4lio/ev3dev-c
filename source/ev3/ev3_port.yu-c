@@ -19,6 +19,7 @@
 #include "modp_numtoa.h"
 #include "ev3.h"
 #include "ev3_port.h"
+#include "crc32.h"
 
 ($import "ev3_port-dict.yu")
 ($import "ev3_class_decl.yu")
@@ -38,6 +39,11 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 	*port = EV3_PORT__NONE_;
 	*extport = EXT_PORT__NONE_;
 	*addr = 0;
+
+	/* ev3dev Stretch distro adds a platform prefix to the address */
+	char *platform_prefix = strchr(name, ':');
+	if (platform_prefix)
+		name = platform_prefix + 1;
 
 	($set parse_slice \parent.\indent.($each-PORT_SLICE \i.]
 		($if ($eq parent ($i PORT_SLICE_PARENT)) ]
@@ -64,6 +70,18 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 {
 	char *p = buf;
+	
+	char canonical_address[16] = "";								/* Canonical Port Address including prefix */
+	size_t numchar = get_port_address(0, canonical_address, 16);	/* Assume that port0 prefix is the canonical prefix */
+	if (numchar >= 16)
+		return NULL;												/* Error, prefix length exceeded canonical_address size */
+	
+	char *platform_prefix = strchr(canonical_address, ':');			/* Assumes that a delimited port address will always have a prefix */
+	if (platform_prefix) {
+		*platform_prefix = '\0';						/* Terminate prefix at first delimiter */
+		p = stpcpy(p, canonical_address);				/* Include prefix for stretch distro */
+		p = stpcpy(p, ":");								/* Add the delimiter manually */
+	}
 
 	($set add_slice \parent.\indent.($each-PORT_SLICE \i.]
 		($if ($eq parent ($i PORT_SLICE_PARENT)) ]
