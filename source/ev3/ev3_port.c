@@ -592,10 +592,9 @@ char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 {
 	char *p = buf;
 	
-	char canonical_address[16] = "";								/* Canonical Port Address including prefix */
-	size_t numchar = get_port_address(0, canonical_address, 16);	/* Assume that port0 prefix is the canonical prefix */
-	if (numchar >= 16)
-		return NULL;												/* Error, prefix length exceeded canonical_address size */
+	char canonical_address[32] = "";								/* Canonical Port Address including prefix */
+	if (!get_port_address(0, canonical_address, sizeof(canonical_address))) /* Assume that port0 prefix is the canonical prefix */
+		return NULL;												/* Error, zero sized read */
 	
 	char *platform_prefix = strchr(canonical_address, ':');			/* Assumes that a delimited port address will always have a prefix */
 	if (platform_prefix) {
