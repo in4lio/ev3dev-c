@@ -10,7 +10,7 @@
  *  \copyright  See the LICENSE file.
  */
 
-#define GPIO_KEYS_PATH  "/dev/input/by-path/platform-gpio-keys.0-event"
+#define GPIO_KEYS_PATH  "/dev/input/by-path/platform-gpio_keys-event"
 
 /**
  *  \brief Identifiers of EV3 keys.
