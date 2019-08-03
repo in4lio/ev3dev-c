@@ -1,0 +1,1 @@
+.\docker\dock.cmd make %*
