@@ -138,29 +138,29 @@ INX_T get_port_type_inx( uint8_t sn )
 	if ( !get_port_driver_name( sn, buf, sizeof( buf ))) return ( PORT_TYPE__NONE_ );
 
 	switch ( crc32( 0, buf, strlen( buf ))) {
-	case 0xe830f5e7:  /* "brickpi-out-port" */
+	case 0xe830f5e7L:  /* "brickpi-out-port" */
 		return BRICKPI_OUT_PORT;
-	case 0xe5b97ed3:  /* "brickpi3-in-port" */
+	case 0xe5b97ed3L:  /* "brickpi3-in-port" */
 		return BRICKPI3_IN_PORT;
-	case 0xf239351b:  /* "ht-nxt-smux-port" */
+	case 0xf239351bL:  /* "ht-nxt-smux-port" */
 		return HT_NXT_SMUX_PORT;
-	case 0x2fdeadde:  /* "ev3-output-port" */
+	case 0x2fdeaddeL:  /* "ev3-output-port" */
 		return EV3_OUTPUT_PORT;
-	case 0x371fa871:  /* "wedo-port" */
+	case 0x371fa871L:  /* "wedo-port" */
 		return WEDO_PORT;
-	case 0x8d0f20dc:  /* "ev3-input-port" */
+	case 0x8d0f20dcL:  /* "ev3-input-port" */
 		return EV3_INPUT_PORT;
-	case 0xc55dcb65:  /* "pistorms-out-port" */
+	case 0xc55dcb65L:  /* "pistorms-out-port" */
 		return PISTORMS_OUT_PORT;
-	case 0x983f2322:  /* "brickpi3-out-port" */
+	case 0x983f2322L:  /* "brickpi3-out-port" */
 		return BRICKPI3_OUT_PORT;
-	case 0xef4a3b29:  /* "pistorms-in-port" */
+	case 0xef4a3b29L:  /* "pistorms-in-port" */
 		return PISTORMS_IN_PORT;
-	case 0x809b34d6:  /* "brickpi-in-port" */
+	case 0x809b34d6L:  /* "brickpi-in-port" */
 		return BRICKPI_IN_PORT;
-	case 0xe2ea87c6:  /* "ms-ev3-smux-port" */
+	case 0xe2ea87c6L:  /* "ms-ev3-smux-port" */
 		return MS_EV3_SMUX_PORT;
-	case 0x9127ffba:  /* "ms-nxtmmx-out-port" */
+	case 0x9127ffbaL:  /* "ms-nxtmmx-out-port" */
 		return MS_NXTMMX_OUT_PORT;
 
 	}
@@ -517,9 +517,8 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 	*extport = EXT_PORT__NONE_;
 	*addr = 0;
 
-	/* ev3dev Stretch distro adds a platform prefix to the address */
-	char *platform_prefix = strchr(name, ':');
-	if (platform_prefix)
+	char *platform_prefix = strchr( name, ':' );
+	if ( platform_prefix )
 		name = platform_prefix + 1;
 
 	if ( strncmp( name, "in", IN_PREF_LEN ) == 0 ) {
@@ -591,16 +590,18 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 {
 	char *p = buf;
-	
-	char canonical_address[32] = "";								/* Canonical Port Address including prefix */
-	if (!get_port_address(0, canonical_address, sizeof(canonical_address))) /* Assume that port0 prefix is the canonical prefix */
-		return NULL;												/* Error, zero sized read */
-	
-	char *platform_prefix = strchr(canonical_address, ':');			/* Assumes that a delimited port address will always have a prefix */
-	if (platform_prefix) {
-		*platform_prefix = '\0';						/* Terminate prefix at first delimiter */
-		p = stpcpy(p, canonical_address);				/* Include prefix for stretch distro */
-		p = stpcpy(p, ":");								/* Add the delimiter manually */
+
+	/* assume that port0 prefix is the canonical prefix */
+	char canonical_address[ 32 ] = "";  /* canonical port address including prefix */
+	if ( !get_port_address( 0, canonical_address, sizeof( canonical_address )))
+		return NULL;
+
+	/* assumes that a delimited port address will always have a prefix */
+	char *platform_prefix = strchr( canonical_address, ':' );
+	if ( platform_prefix ) {
+		*platform_prefix = '\0';  /* terminate prefix at first delimiter */
+		p = strcpy( p, canonical_address );  /* include prefix */
+		p = strcpy( p, ":" );  /* add the delimiter manually */
 	}
 
 	if (( port >= INPUT_1 ) && ( port <= INPUT_4 )) {

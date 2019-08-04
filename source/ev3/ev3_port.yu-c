@@ -40,9 +40,8 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 	*extport = EXT_PORT__NONE_;
 	*addr = 0;
 
-	/* ev3dev Stretch distro adds a platform prefix to the address */
-	char *platform_prefix = strchr(name, ':');
-	if (platform_prefix)
+	char *platform_prefix = strchr( name, ':' );
+	if ( platform_prefix )
 		name = platform_prefix + 1;
 
 	($set parse_slice \parent.\indent.($each-PORT_SLICE \i.]
@@ -70,16 +69,18 @@ void ev3_parse_port_name( char *name, uint8_t *port, uint8_t *extport, uint8_t *
 char *ev3_port_name( uint8_t port, uint8_t extport, uint8_t addr, char *buf )
 {
 	char *p = buf;
-	
-	char canonical_address[32] = "";								/* Canonical Port Address including prefix */
-	if (!get_port_address(0, canonical_address, sizeof(canonical_address))) /* Assume that port0 prefix is the canonical prefix */
-		return NULL;												/* Error, zero sized read */
-	
-	char *platform_prefix = strchr(canonical_address, ':');			/* Assumes that a delimited port address will always have a prefix */
-	if (platform_prefix) {
-		*platform_prefix = '\0';						/* Terminate prefix at first delimiter */
-		p = stpcpy(p, canonical_address);				/* Include prefix for stretch distro */
-		p = stpcpy(p, ":");								/* Add the delimiter manually */
+
+	/* assume that port0 prefix is the canonical prefix */
+	char canonical_address[ 32 ] = "";  /* canonical port address including prefix */
+	if ( !get_port_address( 0, canonical_address, sizeof( canonical_address )))
+		return NULL;
+
+	/* assumes that a delimited port address will always have a prefix */
+	char *platform_prefix = strchr( canonical_address, ':' );
+	if ( platform_prefix ) {
+		*platform_prefix = '\0';  /* terminate prefix at first delimiter */
+		p = strcpy( p, canonical_address );  /* include prefix */
+		p = strcpy( p, ":" );  /* add the delimiter manually */
 	}
 
 	($set add_slice \parent.\indent.($each-PORT_SLICE \i.]
