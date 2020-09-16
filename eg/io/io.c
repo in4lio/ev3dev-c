@@ -33,8 +33,8 @@ int main( void )
 	} else {
 		printf( "ERROR: ev3_listdir( leds )\n" );
 	}
-	if ( ev3_read_int( "/sys/class/leds/ev3:left:red:ev3dev/brightness", &state )) {
-		if ( !ev3_write_int( "/sys/class/leds/ev3:left:red:ev3dev/brightness", ( state ) ? 0 : 255 )) {
+	if ( ev3_read_int( "/sys/class/leds/led0:red:brick-status/brightness", &state )) {
+		if ( !ev3_write_int( "/sys/class/leds/led0:red:brick-status/brightness", ( state ) ? 0 : 255 )) {
 			printf( "ERROR: ev3_write_int( brightness )\n" );
 		}
 	} else {

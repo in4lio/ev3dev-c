@@ -9,10 +9,10 @@
 ($dict LED
 	(` LED_NAME                  LED_ID           )
 	(`
-	(  "ev3:left:green:ev3dev"   EV3_LEFT_GREEN   )
-	(  "ev3:right:green:ev3dev"  EV3_RIGHT_GREEN  )
-	(  "ev3:left:red:ev3dev"     EV3_LEFT_RED     )
-	(  "ev3:right:red:ev3dev"    EV3_RIGHT_RED    )
+	(  "led0:green:brick-status" EV3_LEFT_GREEN   )
+	(  "led1:green:brick-status" EV3_RIGHT_GREEN  )
+	(  "led0:red:brick-status"   EV3_LEFT_RED     )
+	(  "led1:red:brick-status"   EV3_RIGHT_RED    )
 	(  "outA::ev3dev"            LED_OUTA         )
 	(  "outB::ev3dev"            LED_OUTB         )
 	(  "outC::ev3dev"            LED_OUTC         )

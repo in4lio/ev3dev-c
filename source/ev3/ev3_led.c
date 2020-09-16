@@ -16,10 +16,10 @@
 #include "ev3_led.h"
 
 static const char *const led_attr_brightness[] = {
-	"/sys/class/leds/ev3:left:green:ev3dev/brightness",
-	"/sys/class/leds/ev3:right:green:ev3dev/brightness",
-	"/sys/class/leds/ev3:left:red:ev3dev/brightness",
-	"/sys/class/leds/ev3:right:red:ev3dev/brightness",
+	"/sys/class/leds/led0:green:brick-status/brightness",
+	"/sys/class/leds/led1:green:brick-status/brightness",
+	"/sys/class/leds/led0:red:brick-status/brightness",
+	"/sys/class/leds/led1:red:brick-status/brightness",
 	"/sys/class/leds/outA::ev3dev/brightness",
 	"/sys/class/leds/outB::ev3dev/brightness",
 	"/sys/class/leds/outC::ev3dev/brightness",
@@ -28,10 +28,10 @@ static const char *const led_attr_brightness[] = {
 };
 
 static const char *const led_attr_delay_off[] = {
-	"/sys/class/leds/ev3:left:green:ev3dev/delay_off",
-	"/sys/class/leds/ev3:right:green:ev3dev/delay_off",
-	"/sys/class/leds/ev3:left:red:ev3dev/delay_off",
-	"/sys/class/leds/ev3:right:red:ev3dev/delay_off",
+	"/sys/class/leds/led0:green:brick-status/delay_off",
+	"/sys/class/leds/led1:green:brick-status/delay_off",
+	"/sys/class/leds/led0:red:brick-status/delay_off",
+	"/sys/class/leds/led1:red:brick-status/delay_off",
 	"/sys/class/leds/outA::ev3dev/delay_off",
 	"/sys/class/leds/outB::ev3dev/delay_off",
 	"/sys/class/leds/outC::ev3dev/delay_off",
@@ -40,10 +40,10 @@ static const char *const led_attr_delay_off[] = {
 };
 
 static const char *const led_attr_delay_on[] = {
-	"/sys/class/leds/ev3:left:green:ev3dev/delay_on",
-	"/sys/class/leds/ev3:right:green:ev3dev/delay_on",
-	"/sys/class/leds/ev3:left:red:ev3dev/delay_on",
-	"/sys/class/leds/ev3:right:red:ev3dev/delay_on",
+	"/sys/class/leds/led0:green:brick-status/delay_on",
+	"/sys/class/leds/led1:green:brick-status/delay_on",
+	"/sys/class/leds/led0:red:brick-status/delay_on",
+	"/sys/class/leds/led1:red:brick-status/delay_on",
 	"/sys/class/leds/outA::ev3dev/delay_on",
 	"/sys/class/leds/outB::ev3dev/delay_on",
 	"/sys/class/leds/outC::ev3dev/delay_on",
@@ -52,10 +52,10 @@ static const char *const led_attr_delay_on[] = {
 };
 
 static const char *const led_attr_max_brightness[] = {
-	"/sys/class/leds/ev3:left:green:ev3dev/max_brightness",
-	"/sys/class/leds/ev3:right:green:ev3dev/max_brightness",
-	"/sys/class/leds/ev3:left:red:ev3dev/max_brightness",
-	"/sys/class/leds/ev3:right:red:ev3dev/max_brightness",
+	"/sys/class/leds/led0:green:brick-status/max_brightness",
+	"/sys/class/leds/led1:green:brick-status/max_brightness",
+	"/sys/class/leds/led0:red:brick-status/max_brightness",
+	"/sys/class/leds/led1:red:brick-status/max_brightness",
 	"/sys/class/leds/outA::ev3dev/max_brightness",
 	"/sys/class/leds/outB::ev3dev/max_brightness",
 	"/sys/class/leds/outC::ev3dev/max_brightness",
@@ -64,10 +64,10 @@ static const char *const led_attr_max_brightness[] = {
 };
 
 static const char *const led_attr_trigger[] = {
-	"/sys/class/leds/ev3:left:green:ev3dev/trigger",
-	"/sys/class/leds/ev3:right:green:ev3dev/trigger",
-	"/sys/class/leds/ev3:left:red:ev3dev/trigger",
-	"/sys/class/leds/ev3:right:red:ev3dev/trigger",
+	"/sys/class/leds/led0:green:brick-status/trigger",
+	"/sys/class/leds/led1:green:brick-status/trigger",
+	"/sys/class/leds/led0:red:brick-status/trigger",
+	"/sys/class/leds/led1:red:brick-status/trigger",
 	"/sys/class/leds/outA::ev3dev/trigger",
 	"/sys/class/leds/outB::ev3dev/trigger",
 	"/sys/class/leds/outC::ev3dev/trigger",
